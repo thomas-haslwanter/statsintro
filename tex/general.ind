@@ -1,0 +1,150 @@
+\begin{theindex}
+
+  \item ANOVA, 69
+
+  \indexspace
+
+  \item bias, 20
+  \item blinding, 22
+  \item Bonferroni correction, 49
+  \item bootstrapping, 79
+
+  \indexspace
+
+  \item centiles, 26
+  \item central limit theorem, 27
+  \item clinical investigation plan (CIP), 23
+  \item confidence interval, 37
+  \item control group, 20
+  \item correlation
+    \subitem Kendall's $\tau$, 57
+    \subitem Pearson, 57
+    \subitem Spearman, 57
+  \item correlation coefficient, 57
+  \item covariate, 60
+  \item Cox regression model, 82
+  \item crossover studies, 21
+  \item cumulative distribution function, 26
+  \item cumulative frequency, 16
+
+  \indexspace
+
+  \item data
+    \subitem categorical, 15
+    \subitem numerical, 15
+    \subitem ordinal, 15
+  \item distributions
+    \subitem binomial, 34
+    \subitem chi square, 29
+    \subitem continuous, 29
+    \subitem discrete, 34, 36
+    \subitem exponential, 32
+    \subitem F distribution, 29
+    \subitem lognormal, 31
+    \subitem normal, 27
+    \subitem poisson, 35
+    \subitem t-distribution, 29
+    \subitem uniform, 32
+  \item documentation, 22
+
+  \indexspace
+
+  \item endogenous variable, 60
+  \item error
+    \subitem Type I, 39
+    \subitem Type II, 40
+  \item exogenous variable, 60
+
+  \indexspace
+
+  \item factor, 22
+  \item frequency tables, 53
+
+  \indexspace
+
+  \item geometric mean, 25
+
+  \indexspace
+
+  \item hypotheses, 39
+
+  \indexspace
+
+  \item IQR, 26
+
+  \indexspace
+
+  \item Kaplan-Meier survival curve, 81
+
+  \indexspace
+
+  \item mean, 25
+  \item median, 25
+  \item mode, 25
+
+  \indexspace
+
+  \item negative predictive value, 42
+  \item nominal, 15
+  \item normality check, 37
+
+  \indexspace
+
+  \item percentiles, 26
+  \item plots
+    \subitem $Q-Q$ plot, 37
+    \subitem boxplot, 17
+    \subitem histogram, 16
+    \subitem scatter, 16
+  \item positive predictive value, 42
+  \item power, 39
+  \item prevalence, 43
+  \item probability density function, 27
+
+  \indexspace
+
+  \item randomization, 21
+  \item randomized controlled trial, 20
+  \item range, 25
+  \item regressand, 60
+  \item regression, 57
+    \subitem multilinear, 60, 69, 71
+    \subitem multiple, 74
+  \item regressor, 60
+  \item replication, 22
+
+  \indexspace
+
+  \item sample selection, 22
+  \item sample size, 40
+  \item sensitivity, 42
+  \item skewness, 27
+  \item specificity, 42
+  \item standard deviation, 26
+  \item standard error, 27
+  \item statistic, 27
+  \item statistical modeling, 73
+  \item survival times, 81
+
+  \indexspace
+
+  \item test
+    \subitem  t-test, one sample, 45
+    \subitem  t-test, paired, 46
+    \subitem ANOVA, 49, 69
+    \subitem chi square, 53
+    \subitem F test, 49
+    \subitem Fisher's exact, 54
+    \subitem Kruskal-Wallis, 49
+    \subitem Levene, 69
+    \subitem logrank, 82
+    \subitem Mann-Whitney, 49
+    \subitem Wilcoxon signed rank sum, 46
+  \item transformation, 37
+
+  \indexspace
+
+  \item variance, 26
+  \item variate, 27
+
+\end{theindex}

@@ -1,0 +1,2374 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; Introduction to Statistics 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Introduction to Statistics 1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="line-block">
+<div class="line"><img alt="image1" src="_images/regression.png" /></div>
+</div>
+<div class="line-block">
+<div class="line">University of Applied Sciences</div>
+</div>
+<div class="line-block">
+<div class="line">An Introduction to</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><strong>Statistics</strong></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>0.4</p>
+<div class="line-block">
+<div class="line"><em>Author:</em></div>
+<div class="line">Thomas Haslwanter</div>
+</div>
+<p>0.4</p>
+<div class="line-block">
+<div class="line"><em>email:</em></div>
+<div class="line"><a class="reference external" href="mailto:thomas&#46;haslwanter&#37;&#52;&#48;fh-linz&#46;at">thomas<span>&#46;</span>haslwanter<span>&#64;</span>fh-linz<span>&#46;</span>at</a></div>
+</div>
+<div class="line-block">
+<div class="line">Version: 1.4</div>
+<div class="line"><img alt="image2" src="_images/cc_licence.png" /></div>
+</div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p><em>&#8220;Statistics ist the explanation of variance in the light of what
+remains unexplained.&#8221;</em></p>
+<p>Statistics was originally invented - as so many other things - by the
+famous mathematician C.F. Gauss, who said about his own work <em>&#8220;Ich habe
+fleissig sein müssen; wer es gleichfalls ist, wird eben so weit
+kommen&#8221;</em>. Even if your aspirations are not that high, you can get a lot
+out of statistics. In fact, if your work with real data, you probably
+won’t be able to avoid it. Statistics can</p>
+<ul class="simple">
+<li>Describe variation.</li>
+<li>Make quantitative statements about populations.</li>
+<li>Make predictions.</li>
+</ul>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Books: <a href="#id3"><span class="problematic" id="id4">**</span></a>There are a number of good books about statistics. My
+favorite is : it does not talk a lot about computers and modeling, but
+gives you a terrific introduction into the field. Many formulations and
+examples in this manuscript have been taken from that book. A more
+modern book, which is more voluminous and in my opionion a bit harder to
+read, is . If you are interested in a simple introduction to modern
+regression modeling, check out .</p>
+<p><a href="#id5"><span class="problematic" id="id6">**</span></a>WWW: <a href="#id7"><span class="problematic" id="id8">**</span></a>On the web, you find good very extensive statistics
+information in English under <em>http://www.statsref.com/</em>. A good German
+webpage on statistics and regulatory issues is
+<em>http://www.reiter1.com/</em>.</p>
+<div class="section" id="why-statistics">
+<h2>Why Statistics?<a class="headerlink" href="#why-statistics" title="Permalink to this headline">¶</a></h2>
+<p>Statistics will help you to</p>
+<ul class="simple">
+<li>Clarify the question.</li>
+<li>Identify the variable and the measure of that variable that will
+answer that question.</li>
+<li>Determine the required sample size.</li>
+<li>Find the correct analysis for your data.</li>
+<li>Make predictions based on your data.</li>
+</ul>
+</div>
+<div class="section" id="population-and-samples">
+<h2>Population and samples<a class="headerlink" href="#population-and-samples" title="Permalink to this headline">¶</a></h2>
+<p>While the whole <em>population</em> of a group has certain characteristics, we
+can typically never measure all of them. Instead, we have to confine
+ourselves to investigate a representative <em>sample</em> of this group, and
+estimate the properties of the population. Great care should be used to
+make the sample representative for the population you study.</p>
+</div>
+<div class="section" id="projects">
+<h2>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h2>
+<p>For this course, you will choose a partner, and analyze one of the five
+projects described below. You will have to</p>
+<ol class="arabic simple">
+<li>Read up on the problem.</li>
+<li>Design the study:<ol class="arabic">
+<li>Determine the parameter to analyze.</li>
+<li>Decide on the requirements of the sample population.</li>
+<li>Plan the randomization.</li>
+<li>Decide which test you want to use for the analysis.</li>
+</ol>
+</li>
+<li>Present your study design at the <em>Intermediate Presentation</em></li>
+<li>Analyze dummy data provided by me.</li>
+<li>Generate the appropriate graphs.</li>
+<li>Present the results at the <em>Final Presentation</em>.</li>
+</ol>
+<p>Two groups will independently work on each project. You can choose from
+one of the following projects:</p>
+<ol class="arabic simple">
+<li>Surgical Trainer</li>
+<li>Dry Eyes and Lasik</li>
+<li>Recovery after Stroke</li>
+<li>Active Office: Activity and Attention</li>
+<li>Pathological Heart Muscles</li>
+</ol>
+<blockquote>
+<div>Surgical Trainer</div></blockquote>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line">l p12cm Researcher &amp; David Fuerst</div>
+<div class="line">Topic &amp; Development of a surgical trainer for surgeries on the spine.</div>
+<div class="line">Task &amp; Develop a study design for a test if training on a model spine</div>
+</div>
+<p>has the same educational benefits as training surgeries on human
+cadavers.</p>
+<blockquote>
+<div>Dry Eyes and Lasik</div></blockquote>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line">l p12cm Researcher &amp; Michael Ring</div>
+<div class="line">Topic &amp; Benefits of iodine rinsing on dry eyes after Lasik surgery.</div>
+<div class="line">Task &amp; Corneal reshaping with a laser, or &#8220;Lasik&#8221;-surgery, often</div>
+</div>
+<p>causes severe dry eye problems. Treatment at the &#8220;Therme Bad Hall&#8221;
+promises relieve for dry eye patients. Design a study that uses the
+device developed by Michael Ring to investigate if the benefits of such
+a treatment are significant.</p>
+<blockquote>
+<div>Recovery after Stroke</div></blockquote>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line">l p12cm Researcher &amp; Thomas Minarik</div>
+<div class="line">Topic &amp; Improvements due to home-training after stroke</div>
+<div class="line">Task &amp; The typical treatment after stroke consists of intensive</div>
+</div>
+<p>physiotherapy during the weeks in hospital, followed by intermittent
+treatment at the physiotherapist when the patients return home. We want
+to improve the recovery by introducing interactive home-based therapy.
+With this study we want to investigate if interactive home-based therapy
+leads to an improvement, compared to classical therapy.</p>
+<blockquote>
+<div>Active Office: Activity and Attention</div></blockquote>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line">l p12cm Researcher &amp; Bernhard Schwartz</div>
+<div class="line">Topic &amp; Improvements of attention due to increased activity in an</div>
+</div>
+<p>office environment.
+| Task &amp; Your ability to focus on your work depends on a lot of factors.
+One of them is your physical activity. We want to investigate how
+different working environments (e.g. working sitting vs. working
+standing) can affect your concentration at work.</p>
+<blockquote>
+<div>Pathological Heart Muscles</div></blockquote>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line">l p12cm Researcher &amp; Sandra Mayr</div>
+<div class="line">Topic &amp; The effects of <em>medication</em> and other factors on the structure</div>
+</div>
+<p>of the cardiac muscle, as investigated by atomic force microscopy (AFM)
+on histological samples.
+| Task &amp; To distinguish between healthy and hypertrophic hearts, the
+lengths of the sarcomeres of the heart muscles are measured using an
+AFM. Samples from hearts of healthy subjects and from patients with
+hypertrophic hearts are supplied by the Wagner-Jauregg Hospital in Linz.</p>
+</div>
+<div class="section" id="programming-matters">
+<h2>Programming Matters<a class="headerlink" href="#programming-matters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<p>There are three reasons why I have decided to use Python for this
+lecture.</p>
+<ol class="arabic simple">
+<li>It is the most elegant programming language that I know.</li>
+<li>It is free.</li>
+<li>It is powerful.</li>
+</ol>
+<p>I have not seen many books on Python that I really liked. My favorite
+introductory book is .</p>
+<p>In general, I suggest that you start out by installing a Python
+distribution which includes the most important libraries. My favorites
+here are and , which are very good starting points when you are using
+Windows. The former one has the advantage that most available
+documentation and help files also get installed locally. Mac and Unix
+users should check out the installations tips from Johansson (see Table
+[table:python]).</p>
+<p>There are also many tutorials available on the internet (Table
+[table:python]). Personally, most of the time I just google; thereby I
+stick primarily a) to the official pages, and b) to
+<em>http://stackoverflow.com/</em>. Also, I have found user groups surprisingly
+active and helpful!</p>
+<p>[table:python]</p>
+<p>If you decide to install things manually, you need the following modules
+in addition to the Python standard library:</p>
+<ul class="simple">
+<li><em>numpy</em> ... For working with vectors and arrays.</li>
+<li><em>scipy</em> ... All the essential scientific algorithms, including those
+for statistics.</li>
+<li><em>matplotlib</em> ... The de-facto standard module for plotting and
+visualization.</li>
+<li><em>pandas</em> ... Adds <em>DataFrames</em> (imagine powerful spreadsheets) to
+Python.</li>
+<li><em>statsmodels</em> ... This one is only required if you want to look more
+into statistical modeling.</li>
+</ul>
+<p>Also, make sure that you have a good programming environment! Currently,
+my favorite way of programming is similar to my old Matlab style: I
+first get the individual steps worked out interactively in <em>ipython</em>.
+And to write a program, I then go to either <em>Spyder</em> (which is free) or
+<em>Wing</em> (which is very good, but commercial).</p>
+<p>Here an example, to get you started with Python (you find a
+corresponding ipython notebook under
+<em>http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/getting_started.ipynb</em>):</p>
+<div class="section" id="example-session">
+<h4>Example-Session<a class="headerlink" href="#example-session" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="pandas">
+<h3>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h3>
+<p><em>Pandas</em> is a Python module which provides suitable data structures for
+statistical analysis. The following piece of code shows you how pandas
+can be used for data analysis:</p>
+<p>Here is also a good place to introduce the short function that we will
+use a number of times to simplify the reading in of data:</p>
+</div>
+</div>
+</div>
+<div class="section" id="basic-principles">
+<h1>Basic Principles<a class="headerlink" href="#basic-principles" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="datatypes">
+<h2>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h2>
+<p>The type of your data is essential for the choice of test that you have
+to use for your data analysis. Your data can have one of the following
+datatypes:</p>
+<blockquote>
+<div>Categorical</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div>boolean</div></blockquote>
+<hr class="docutils" />
+<p>Some data can only have two values. For example,</p>
+<ol class="arabic simple">
+<li>male/female</li>
+<li>smoker/non-smoker</li>
+</ol>
+<blockquote>
+<div>nominal</div></blockquote>
+<hr class="docutils" />
+<p>Many classifications require more than two categories, e.g. * married /
+single / divorced *</p>
+<blockquote>
+<div>ordinal</div></blockquote>
+<hr class="docutils" />
+<p>These are ordered categorical data, e.g. * very few / few / some / many
+/ very many *</p>
+<blockquote>
+<div>Numerical</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div>Numerical discrete</div></blockquote>
+<hr class="docutils" />
+<p>For example * Number of children: 0 1 2 3 4 5 *</p>
+<blockquote>
+<div>Continuous</div></blockquote>
+<hr class="docutils" />
+<p>Whenever possible, it is best to record the data in their original
+continuous format, and only with a sensible number of decimal places.
+For example, it does not make sense to record the body size with more
+than 1 mm accuracy, as there are larger changes in body height between
+the size in the morning and the size in the evening, due to compression
+of the intervertebral disks.</p>
+</div>
+<div class="section" id="data-display">
+<h2>Data Display<a class="headerlink" href="#data-display" title="Permalink to this headline">¶</a></h2>
+<p>When working with a statistical data set, you should <em>always</em> first look
+at the raw-data. Our visual system is incredibly good at recognizing
+patterns in visually represented data.</p>
+<blockquote>
+<div>Scatter Plots</div></blockquote>
+<hr class="docutils" />
+<p>This is the simplest way of representing your data: just plot each
+individual data point. (In cases where many data points are superposed,
+you may want to add a little bit of jitter to show each data point.)</p>
+<div class="line-block">
+<div class="line">[h] <img alt="image3" src="_images/scatterPlot.png" /></div>
+</div>
+<blockquote>
+<div>Histograms</div></blockquote>
+<hr class="docutils" />
+<p><em>Histograms</em> provide a first good overview of the distribution of your
+data. If you divide by the overall number of data points, you get a
+<em>relative frequency histogram</em>; and if you just connect the top center
+points of each bin, you obtain a <em>relative frequency polygon</em>.</p>
+<div class="line-block">
+<div class="line">[ht] <img alt="image4" src="_images/Histogram.png" /></div>
+</div>
+<blockquote>
+<div>Cumulative Frequencies</div></blockquote>
+<hr class="docutils" />
+<p><em>Cumulative frequency</em> curves indicate the number (or percent) of data
+with less than a given value. This is important for the statistical
+analysis (e.g. when we want to know the data range containing 95% of all
+the values). Cumulative frequencies are also useful for comparing the
+distribution of values in two or more different groups of individuals.</p>
+<p>When you use percentage points, the cumulative frequency presentation
+has the additional advantage that it is bounded:</p>
+<div class="math">
+\[0 \leq x \leq 1\]</div>
+<div class="line-block">
+<div class="line">[ht] <img alt="image5" src="_images/CumulativeFrequencyFunction.png" /></div>
+</div>
+<blockquote>
+<div>Box Plots</div></blockquote>
+<hr class="docutils" />
+<p><em>Box plots</em> are frequently used in scientific publications to indicate
+values in two or more groups. The error bars typically indicate the
+<em>range</em>. However, outliers are often excluded, and plotted separately.
+There are a number of tests to check for outliers. One of them is to
+check for data which lie more than 1.5 * <em>inter-quartile-range</em> (IQR)
+above or below the first/third quartile (see Section [sec:centiles]).</p>
+<div class="line-block">
+<div class="line">[!ht] <img alt="image6" src="_images/boxplot.png" /></div>
+<div class="line">[fig:Boxplot]</div>
+</div>
+<blockquote>
+<div>Programs: Data Display</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div>Study Design</div></blockquote>
+<hr class="docutils" />
+<p>To design a medical study properly is not only advisable - it is even
+required by ISO 14155-1:2003, for <em>Clinical investigations of medical
+devices for human subjects</em>. This norm specifies many aspects of your
+clinical study. It enforces the preparation of a <em>Clinical Investigation
+Plan (CIP)</em>, specifying</p>
+<ul class="simple">
+<li>The designation of a <em>monitor</em> for the investigation.</li>
+<li>The designation of a <em>clinical investigator</em>.</li>
+<li>Specification the data handling.</li>
+<li>Specification of the inclusion/exclusion criteria for the subjects.</li>
+<li>Specification of the paradigm.</li>
+<li>Specification and justification of the chosen sample numbers.</li>
+<li>Description of the data analysis.</li>
+</ul>
+<div class="section" id="types-of-studies">
+<h3>Types of Studies<a class="headerlink" href="#types-of-studies" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Observational or experimental</div></blockquote>
+<hr class="docutils" />
+<p>With <em>observational</em> studies the researcher only collects information,
+but does not interact with the study population. In contrast, in
+<em>experimental</em> studies the researcher deliberately influences events
+(e.g. treats the patient with a new type of treatment) and investigates
+the effects of these interventions.</p>
+<blockquote>
+<div>Prospective or retrospective</div></blockquote>
+<hr class="docutils" />
+<p>In <em>prospective</em> studies the data are collected, starting with the
+beginning of the study. In contrast, a <em>retrospective</em> study takes data
+acquired from previous events, e.g. routine tests taken at a hospital.</p>
+<blockquote>
+<div>Longitudinal or cross-sectional</div></blockquote>
+<hr class="docutils" />
+<p>In <em>longitudinal</em> investigations, the researcher collects information
+over a period of time, maybe multiple times from each patient. In
+contrast, in <em>cross-sectional</em> studies individuals are observed only
+once. For example, most surveys are cross-sectional, but experiments are
+usually longitudinal.</p>
+<blockquote>
+<div>Case control and Cohort studies</div></blockquote>
+<hr class="docutils" />
+<p>In <em>case control</em> studies, first the patients are treated, and then they
+are selected for inclusion in the study, based on some characteristic
+(e.g. if they responded to a certain medication). In contrast, in
+<em>cohort studies</em>, first subjects of interest are selected, and then
+these subjects are studied over time, e.g. for their response to a
+treatment.</p>
+<blockquote>
+<div>Design of Experiments</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div>Bias</div></blockquote>
+<hr class="docutils" />
+<p>In general, when selecting our subject you try to make them
+representative of the population that you want to study; and you try to
+conduct your experiments in a way representative of investigations by
+other researchers. However, it is <em>very</em> easy to get a <em>bias</em> into your
+data. Bias can arise from a number of sources:</p>
+<ul class="simple">
+<li>The selection of subjects.</li>
+<li>The structure of the experiment.</li>
+<li>The measurement device.</li>
+<li>The analysis of the data.</li>
+</ul>
+<p>Care should be taken to avoid bias as much as possible.</p>
+<blockquote>
+<div>Randomized controlled trial</div></blockquote>
+<hr class="docutils" />
+<p>The gold standard for experimental scientific clinical trials is the
+<em>randomized controlled trial</em>. Thereby bias is avoided by splitting the
+subjects to be tested into an <em>intervention group</em> and a <em>control
+group</em>. The group allocation is made <em>random</em>. By having the groups
+differ in only one aspect, i.e. is the factor <em>treatment</em>, we should be
+able to detect the effect of the treatment on the patients. Factors that
+can affect the outcome of the experiment are called <em>covariates</em> or
+<em>confoundings</em>. Through <em>randomization</em>, covariates should be balanced
+across the groups.</p>
+<blockquote>
+<div>Randomization</div></blockquote>
+<hr class="docutils" />
+<p>This may be one of the most important aspects of experimental planning.
+Randomization is used to avoid bias as much as possible, and there are
+different ways to randomize an experiment. For the randomization,
+<em>random number generators</em>, which are available with most computer
+languages, can be used. To minimize the chance of bias, the randomly
+allocated numbers should be presented to the experimenter as late as
+possible.</p>
+<p>Depending on the experiment, there are different ways to randomize the
+group assingment.</p>
+<p>This procedure is robust against selection and accidental bias. The
+disadvantage is that the resulting groupsize can differ significantly.</p>
+<p>For many types of data analysis it is important to have the same sample
+number in each group. To achieve this, other options are possible:</p>
+<p>This is used to keep the number of subjects in the different groups
+closely balanced at all times. For example, if you have two types of
+treatment, A and B, you can allocate them to two subjects in the
+following blocks:</p>
+<ol class="arabic simple">
+<li>AABB</li>
+<li>ABAB</li>
+<li>ABBA</li>
+<li>BBAA</li>
+<li>BABA</li>
+<li>BAAB</li>
+</ol>
+<p>Based on this, you can use a random number generator to generate random
+integers between 1 and 6, and use the corresponding blocks to allocate
+the respective treatments. This will keep the number of subjects in each
+group always almost equal.</p>
+<p>A closely related, but not completely random way to allocate a treatment
+is <em>minimization</em>. Thereby you take whichever treatment has the smallest
+number of subjects, and allocate this treatment with a probability
+greater than 0.5 to the next patient.</p>
+<p>Sometimes you may want to include a wider variety of subjects, with
+different characteristics. For example, you may choose to have younger
+as well as older subjects. In that case you should try to keep the
+number of subjects within each <em>stratum</em> balanced. For this you will
+have to keep different lists of random numbers for each group of
+subjects.</p>
+<blockquote>
+<div>Crossover studies</div></blockquote>
+<hr class="docutils" />
+<p>An alternative to randomization is the <em>crossover</em> design of studies. A
+crossover study is a longitudinal study in which subjects receive a
+sequence of different treatments. Every subject receives every
+treatment. To avoid causal effects, the sequence of the treatment
+allocation should be randomized.</p>
+<blockquote>
+<div>Blinding</div></blockquote>
+<hr class="docutils" />
+<p>Consciously or not, the experimenter can significantly influence the
+outcome of an experiment. For example, a young researcher with a new
+&#8220;brilliant&#8221; idea for a new treatment will be bias in the execution of
+the experiment, as well in the analysis of the data, to see his
+hypothesis confirmed. To avoid such a subjective influence, ideally the
+experimenter as well as the subject should be blinded to the therapy.
+This is referred to as <em>double blinding</em>.</p>
+<blockquote>
+<div>Replication</div></blockquote>
+<hr class="docutils" />
+<p>For variable measurements it is helpful to have a number of independent
+repetitions of each measurement.</p>
+<blockquote>
+<div>Sample selection</div></blockquote>
+<hr class="docutils" />
+<p>When selecting your subjects, you should take care of two points:</p>
+<ol class="arabic simple">
+<li>Make sure that the samples are representative of the population.</li>
+<li>In comparative studies, care is needed in making groups similar with
+respect to known sources of variation.</li>
+</ol>
+<p>For example, if you select your subjects randomly from patients at a
+hospital, you automatically bias your sample towards subjects with
+health problems.</p>
+<blockquote>
+<div>Sample size</div></blockquote>
+<hr class="docutils" />
+<p>Many studies fail, because the sample size is too small to observed an
+effect of the desired magnitude. To plan your sample size, you have to
+know</p>
+<ul class="simple">
+<li>What is the variance of the parameter in the population you are
+investigating.</li>
+<li>What is the magnitude of the effect you are interested in, relative
+to the standard deviation of the parameter.</li>
+</ul>
+</div>
+<div class="section" id="structure-of-experiments">
+<h3>Structure of Experiments<a class="headerlink" href="#structure-of-experiments" title="Permalink to this headline">¶</a></h3>
+<p>In a designed experiment, there may be several conditions, called
+<em>factors</em>, that are controlled by the experimenter. If each combination
+of factors is tested, we talk about a <em>factorial design</em> of the
+experiment.</p>
+<p>In planning the analysis, you have to keep the important distinction
+between <em>within subject</em> comparisons, and <em>between subjects</em>
+comparisons.</p>
+</div>
+<div class="section" id="data-management">
+<h3>Data Management<a class="headerlink" href="#data-management" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Documentation</div></blockquote>
+<hr class="docutils" />
+<p>Make sure that you document all the factors that may influence your
+results:</p>
+<ul class="simple">
+<li>The date and time of the experiment.</li>
+<li>Information about the experimenters and the subjects.</li>
+<li>The exact paradigm that you have decided on.</li>
+<li>Anything noteworthy that happens during the experiment.</li>
+</ul>
+<blockquote>
+<div>Data Handling</div></blockquote>
+<hr class="docutils" />
+<p>You can already significantly facilitate the data handling by storing
+your data with telltale names. For example, if you execute your
+experiments in Vienna and in Linz, you can store your rawdata with the
+format &#8220;[town][year][month][day].dat&#8221;. For example, an experiment in
+Vienna on April 1, 2013 would be stored as &#8220;vi20130401.dat&#8221;.</p>
+<p>When you have finished recording the data, back up your data right away.
+Best do that into a directory that is separate from the one where you do
+your data analysis afterwards.</p>
+<blockquote>
+<div>Clinical Investigation Plan</div></blockquote>
+<hr class="docutils" />
+<p>The ISO norm 14155 specifies in detail the requirements for the
+<em>clinical investigation plan (CIP)</em>:</p>
+<ol class="arabic simple">
+<li>Type of study (e.g. double-blind, with or without control group
+etc.).</li>
+<li>Discussion of the control group and the allocation procedure.</li>
+<li>Description of the paradigm.</li>
+<li>Description and justification of primary endpoint of study.</li>
+<li>Description and justification of chosen measurement variable.</li>
+<li>Measurement devices and their calibration.</li>
+<li>Inclusion criteria for subjects.</li>
+<li>Exclusion criteria for subjects.</li>
+<li>Point of inclusion (&#8220;When is a subject part of the study?&#8221;)</li>
+<li>Description of the measurement procedure.</li>
+<li>Criteria and procedures for the dropout of a subject.</li>
+<li>Chosen sample number and level of significance, and their
+justification.</li>
+<li>Procedure for documentation of negative effects or side-effects.</li>
+<li>List of factors that can influence the measurement results or their
+interpretation.</li>
+<li>Procedure for documentation, also for missing data.</li>
+<li>Statistical analysis procedure.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="distributions-of-one-variable">
+<h1>Distributions of one Variable<a class="headerlink" href="#distributions-of-one-variable" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="characterizing-a-distribution">
+<h2>Characterizing a Distribution<a class="headerlink" href="#characterizing-a-distribution" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Distribution Center</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div>Mean</div></blockquote>
+<hr class="docutils" />
+<p>By default, when we talk about the <em>mean value</em> we mean the <em>arithmetic
+mean</em> <span class="math">\(\bar{x}\)</span>:</p>
+<div class="math">
+\[\bar{x} = \frac{{\sum\limits_{i = 1}^n {{x_i}} }}{n}\]\[Median\]</div>
+<hr class="docutils" />
+<p>The <em>median</em> is that value that comes half-way when the data are ranked
+in order. In contrast to the mean, it is not affected by outlying data
+points.</p>
+<blockquote>
+<div>Mode</div></blockquote>
+<hr class="docutils" />
+<p>The <em>mode</em> value is the most frequently occurring value in a
+distribution.</p>
+<blockquote>
+<div>Geometric Mean</div></blockquote>
+<hr class="docutils" />
+<p>In some situations the <em>geometric mean</em> can be useful to describe the
+location of a distribution. It is usually close to the median, and can
+be calculated via the arithmetic mean of the log of the values.</p>
+<blockquote>
+<div>Quantifying Variability</div></blockquote>
+<hr class="docutils" />
+<p>[sec:centiles]</p>
+<blockquote>
+<div>Range</div></blockquote>
+<hr class="docutils" />
+<p>This one is fairly easy: it is the difference between the highest and
+the lowest data value. The only thing that you have to watch out for:
+after you have acquired your data, you have to check for <em>outliers</em>,
+i.e. data points with a value much higher or lower than the rest of the
+data. Often, such points are caused by errors in the selection of the
+sample or in the measurement procedure. There are a number of tests to
+check for outliers. One of them is to check for data which lie more than
+1.5*<em>inter-quartile-range</em> (IQR) above or below the first/third
+quartile (see below).</p>
+<blockquote>
+<div>Centiles</div></blockquote>
+<hr class="docutils" />
+<p>The <em>Cumulative distribution function (CDF) * tells you for each value
+which percentage of the data has a lower value (Figure [fig:CDF]). The
+value below which a given percentage of the values occur is called
+*centile</em> or <em>percentile</em>, and corresponds to a value with a specified
+cumulative frequency.</p>
+<p>For example, when you look for the data range which includes 95% of the
+data, you have to find the <span class="math">\(2.5^{th}\)</span> and the <span class="math">\(97.5^{th}\)</span>
+percentile of your sample distribution.</p>
+<p>The 50th percentile is the <em>median</em>.</p>
+<p>Also important are the <em>quartiles</em>, i.e. the 25th and the 75th
+percentile. The difference between them is sometimes referred to as
+<em>inter-quartile range (IQR)</em>.</p>
+<p>Median, upper and lower quartile are used for the data display in box
+plots (Fig.[fig:Boxplot]).</p>
+<div class="line-block">
+<div class="line">[ht] <img alt="image7" src="_images/NormalDist_PDF_CDF.png" /></div>
+<div class="line">[fig:CDF]</div>
+</div>
+<blockquote>
+<div>Standard Deviation and Variance</div></blockquote>
+<hr class="docutils" />
+<p>The <em>variance</em> (SD) of a distribution is defined as</p>
+<div class="math">
+\[\label{eq_variance} \index{general}{variance}
+  var = \frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}\]</div>
+<p>Note that we divide by <em>n-1</em> rather than the more obvious n: dividing by
+<span class="math">\(n\)</span> gives the variance of the observations around the sample mean,
+but we virtually always consider our data as a sample from some larger
+population and wish to use the sample data to estimate the variability
+in the population. Dividing by <span class="math">\(n-1\)</span> gives us a better estimate of
+the population variance.</p>
+<p>The <em>standard deviation</em> is simply given by the square root of the
+variance:</p>
+<div class="math">
+\[s = \sqrt{var}\]</div>
+<p>In statistics it is often common to denote the population standard
+deviation with <span class="math">\(\sigma\)</span>, and the sample standard deviation with
+<span class="math">\(s\)</span>.</p>
+<p>Watch out: in Python, by default the variance is calculated for &#8220;n&#8221;. You
+have to set &#8220;ddof=1&#8221; to obtain the variance for &#8220;n-1&#8221;:</p>
+<div class="highlight-python"><pre>       In[19]: data = arange(7,14)
+
+       In[20]: std(data, ddof=0)
+       Out[20]: 2.0
+
+       In[21]: std(data, ddof=1)
+       Out[21]: 2.1602468994692865
+
+Standard Error</pre>
+</div>
+<hr class="docutils" />
+<p>While the standard deviation is a good measure for the distribution of
+your values, often you are more interested in the distribution of the
+mean value. For example, when you measure the response to a new
+medication, you might be interested in how well you can characterize
+this response, i.e. is how well you know the mean value. This measure is
+called the <em>standard error of the mean</em>, or sometimes just the <em>standard
+error</em>. In a single sample from a population with a standard deviation
+of <span class="math">\(\sigma\)</span> the variance of the sampling distribution of the mean
+is <span class="math">\(\sigma^2/n\)</span>, and so the standard error of the mean is
+<span class="math">\(\sigma/\sqrt{n}\)</span>.</p>
+<blockquote>
+<div>Skewness</div></blockquote>
+<hr class="docutils" />
+<p>Distributions are <em>skewed</em> if they depart from symmetry. For example, if
+you have a measurement that cannot be negative, which is usually the
+case, then we can infer that the data have a skewed distribution if the
+standard deviation is more than half the mean. Such an asymmetry is
+referred to as <em>positive skewness</em>. The opposite, negative skewness, is
+rare.</p>
+<blockquote>
+<div>Central Limit Theorem</div></blockquote>
+<hr class="docutils" />
+<p>The central limit theorem states that for identically distributed
+independent random variables (also referred to as <em>random variates</em>),
+the mean of a sufficiently large number of these variables will be
+approximately normally distributed.</p>
+</div>
+<div class="section" id="distribution-functions">
+<h2>Distribution Functions<a class="headerlink" href="#distribution-functions" title="Permalink to this headline">¶</a></h2>
+<p>The variable for a standardized distribution function is often called
+<em>statistic</em>. So you often find expressions like &#8220;the z-statistic&#8221; (for
+the normal distribution function), the &#8220;t-statistic&#8221; (for the
+t-distribution) or the &#8220;F-statistic&#8221; (for the F-distribution).</p>
+<div class="section" id="probability-and-samples">
+<h3>Probability and Samples<a class="headerlink" href="#probability-and-samples" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="normal-distribution">
+<h3>Normal Distribution<a class="headerlink" href="#normal-distribution" title="Permalink to this headline">¶</a></h3>
+<p>[sec:normalDistribution]</p>
+<p>The <em>Normal distribution</em> or <em>Gaussian distribution</em> is by far the most
+important of all the distribution functions. This is due to the fact
+that the mean values of <em>all</em> distribution functions approximate a
+normal distribution for large enough sample numbers. Mathematically, the
+normal distribution is characterized by a mean value <span class="math">\(\mu\)</span>, and a
+standard deviation <span class="math">\(\sigma\)</span>:</p>
+<div class="math">
+\[\label{eq_normal}
+     f_{\mu,\sigma} (x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-( x - \mu )^2 /2 \sigma^2}\]</div>
+<p>where :math:` - infty &lt; x &lt; infty <cite>, and :math:`f_{mu,sigma}</cite> is the
+<em>probability density function (PDF)</em> .</p>
+<div class="line-block">
+<div class="line"><img alt="image8" src="_images/Normal_Distribution_PDF.png" /></div>
+<div class="line">[fig:normal]</div>
+</div>
+<p>For smaller sample numbers, the sample distribution can show quite a bit
+of variability. For example, look at 25 distributions generated by
+sampling 100 numbers from a normal distribution (Fig.
+[fig:MultipleNormal])</p>
+<div class="line-block">
+<div class="line">[h] <img alt="image9" src="_images/Normal_MultHist.png" /></div>
+<div class="line">[fig:MultipleNormal]</div>
+</div>
+<p>Some examples of applications are:</p>
+<ul class="simple">
+<li>If the average man is 175 cm tall with a variance of 6 cm, what is
+the probability that a man found at random will be 183 cm tall?</li>
+<li>If the average man is 175 cm tall with a variance of 6 cm and the
+average woman is 168 cm tall with a variance of 3 cm, what is the
+probability that the average man from a given sample will be shorter
+than the average woman from a given sample?</li>
+<li>If cans are assumed to have a variance of 4 grams, what does the
+average weight need to be in order to ensure that the 99% of all cans
+have a weight of at least 250 grams?</li>
+</ul>
+<p>The normal distribution with parameters <span class="math">\(\mu\)</span> and <span class="math">\(\sigma\)</span>
+is denoted as <span class="math">\(N(\mu,\sigma)\)</span>. If the <em>random variate (rv)</em> <em>X</em> is
+normally distributed with expectation <span class="math">\(\mu\)</span> and standard deviation
+<span class="math">\(\sigma\)</span>, one denotes: <span class="math">\(\,X \sim N(\mu,\sigma)\)</span> or
+<span class="math">\(\,X \in N(\mu,\sigma)\)</span>.</p>
+<div class="line-block">
+<div class="line">c c c &amp; Probability of being</div>
+<div class="line">Range &amp; within range &amp; outside range</div>
+<div class="line">mean <span class="math">\(\pm\)</span> 1SD &amp; 0.683 &amp; .317</div>
+<div class="line">mean <span class="math">\(\pm\)</span> 2SD &amp; 0.954 &amp; 0.046</div>
+<div class="line">mean <span class="math">\(\pm\)</span> 3SD &amp; 0.9973 &amp; 0.0027</div>
+</div>
+<p>Figure [fig:DistributionUtilities] shows a number of functions are
+commonly used to select appropriate points from the normal distribution
+function:</p>
+<ul class="simple">
+<li><em>Probability density function (PDF)</em>: note that to obtain the
+probability for the variable appearing in a certain interval, you
+have to <em>integrate</em> the PDF over that range.</li>
+<li><em>Cumulative distribution function (CDF)</em>: gives the probability of
+obtaining a value smaller than the given value</li>
+<li><em>Survival function (SF)</em>: 1-CDF</li>
+<li><em>Percentile point function (PPF)</em>: the inverse of the CDF. Answers
+the question &#8220;Given a certain probability, what is the corresponding
+value for the CDF?&#8221;</li>
+<li><em>Inverse survival function (ISF)</em>: the name says it all.</li>
+</ul>
+<div class="line-block">
+<div class="line">[h] <img alt="image10" src="_images/DistributionFunctions.png" /></div>
+<div class="line">[fig:DistributionUtilities]</div>
+</div>
+</div>
+<div class="section" id="other-continuous-distributions">
+<h3>Other Continuous Distributions<a class="headerlink" href="#other-continuous-distributions" title="Permalink to this headline">¶</a></h3>
+<p>[sec:ContinuousDistributions]</p>
+<div class="section" id="t-distribution">
+<h4>t Distribution<a class="headerlink" href="#t-distribution" title="Permalink to this headline">¶</a></h4>
+<p>For a small number of samples (ca.:math:<cite>&lt;10</cite>) from a normal
+distribution, the distribution of the mean deviates slightly from the
+normal distribution. The reason is that the sample mean does not
+coincide exactly with the population mean. This modified distribution is
+the <em>t-distribution</em>, and converges for larger values towards the normal
+distribution (Fig. [fig:t]).</p>
+<div class="line-block">
+<div class="line"><img alt="image11" src="_images/Student_t_pdf.png" /></div>
+<div class="line">[fig:t]</div>
+</div>
+</div>
+<div class="section" id="chi-square-distribution">
+<h4>Chi-square Distribution<a class="headerlink" href="#chi-square-distribution" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Chi-square distribution</em> is related to normal distribution in a
+simple way: If a random variable <span class="math">\(X\)</span> has a normal distribution
+(<span class="math">\(X \in N(0,1)\)</span>), then <span class="math">\(X^2\)</span> has a chi-square distribution,
+with one degree of freedom (<span class="math">\(X^2 \in \chi_{1}^2\)</span>). The sum squares
+of <span class="math">\(n\)</span> independent and standard normal random variables has a
+chi-square distribution with <span class="math">\(n\)</span> degrees of freedom:</p>
+<div class="math">
+\[\sum\limits_{i = 1}^n {X_i^2} \in \chi_{n}^2\]</div>
+<div class="line-block">
+<div class="line"><img alt="image12" src="_images/ChiSquare_pdf.png" /></div>
+</div>
+</div>
+<div class="section" id="f-distribution">
+<h4>F Distribution<a class="headerlink" href="#f-distribution" title="Permalink to this headline">¶</a></h4>
+<p>Named after Sir Ronald Fisher, who developed the F distribution for use
+in determining critical values in ANOVAs (<em>ANalysis Of VAriance</em>). The
+cutoff values in an F table are found using three variables:</p>
+<ul class="simple">
+<li>ANOVA numerator degrees of freedom</li>
+<li>ANOVA denominator degrees of freedom</li>
+<li>significance level</li>
+</ul>
+<p>ANOVA compares the size of the variance between two different samples.
+This is done by dividing the larger variance over the smaller variance.
+The formula for the resulting <em>F statistic</em> is:</p>
+<div class="math">
+\[F(r_1, r_2) = \frac{\chi_{r1} ^2 /r_1}{\chi_{r2} ^2 /r_2}\]</div>
+<p>where <span class="math">\(\chi_{r1}^2\)</span> and <span class="math">\(\chi_{r2}^2\)</span> are the chi-square
+statistics of sample one and two respectively, and <span class="math">\(r_1\)</span> and
+<span class="math">\(r_2\)</span> are their degrees of freedom, i.e. the number of
+observations.</p>
+<div class="section" id="f-test-of-equality-of-variances">
+<h5>F-Test of Equality of Variances<a class="headerlink" href="#f-test-of-equality-of-variances" title="Permalink to this headline">¶</a></h5>
+<p>One example could be if you want to compare apples that look alike but
+are from different trees and have different sizes. If you want to
+investigate whether they have the same variance of the weight on
+average, you have to calculate</p>
+<div class="math">
+\[F = \frac{S_x^2}{S_y^2}\]</div>
+<p>where <span class="math">\(S_x\)</span> ist he sample standard deviation of the first batch of
+apples, and <span class="math">\(S_y\)</span> the sample standard deviation for the second
+batch of apples.</p>
+<p>There are three apples from the first tree that weigh 110, 121 and 143
+grams respectively, and four from the other which weigh 88, 93, 105 and
+124 grams respectively. The F statistic is <span class="math">\(F 1.05\)</span>, and has
+<span class="math">\(n-1\)</span> and <span class="math">\(m-1\)</span> degrees of freedom, where <span class="math">\(n\)</span> and
+<span class="math">\(m\)</span> are the number of apples in each batch. The code sample below
+shots what the F statistic is close to the center of the distribution,
+so we cannot reject the hypthesis that the two batches have the same
+variance.</p>
+<div class="highlight-python"><pre>In [1]:  apples1 = array([110, 121, 143])
+In [2]:  apples2 = array([88, 93, 105, 124])
+In [3]:  fval = std(apples1, ddof=1)/std(apples2, ddof=1)
+In [4]:  fd = stats.distributions.f(3,4)
+In [5]:fd.cdf(fval)
+Out[27]: 0.537640478466751</pre>
+</div>
+<div class="line-block">
+<div class="line"><img alt="image13" src="_images/F_distributionPDF.png" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="lognormal-distribution">
+<h4>Lognormal Distribution<a class="headerlink" href="#lognormal-distribution" title="Permalink to this headline">¶</a></h4>
+<p>In some circumstances a set of data with a positively skewed
+distribution can be transformed into a symmetric distribution by taking
+logarithms. Taking logs of data with a skewed distribution will often
+give a distribution that is near to normal (see Figure [fig:lognormal]).</p>
+<p>.5 <img alt="Plotted against a linear abscissa." src="_images/LogNormal_Linear.png" /> [fig:Lognormal:sub:<cite>S</cite>ub1]</p>
+<p>.5 <img alt="Plotted against a logarithmic abscissa." src="_images/LogNormal_Logarithmic.png" />
+[fig:Lognormal:sub:<cite>S</cite>ub2]</p>
+<p>[fig:lognormal]</p>
+</div>
+<div class="section" id="exponential-distribution">
+<h4>Exponential Distribution<a class="headerlink" href="#exponential-distribution" title="Permalink to this headline">¶</a></h4>
+<p>For a stochastic variable X with an <em>exponential distribution</em>, the
+probability distribution function is:</p>
+<div class="math">
+\[\begin{split}\label{eq_exponential}
+f_x (x) =
+  \begin{cases}
+\lambda e^{- \lambda x}, &amp; \mbox{if } x \ge 0 \\
+0, &amp; \mbox{if } x &lt; 0
+\end{cases}\end{split}\]</div>
+<p>The exponential PDF is shown in Figure [fig:exponential]</p>
+<div class="line-block">
+<div class="line"><a href="#id18"><span class="problematic" id="id19">|image14|</span></a></div>
+<div class="line">[fig:exponential]</div>
+</div>
+</div>
+<div class="section" id="uniform-distribution">
+<h4>Uniform Distribution<a class="headerlink" href="#uniform-distribution" title="Permalink to this headline">¶</a></h4>
+<p>This is a simple one: an even probability for all data values (Figure
+[fig:uniform]). Not very common for real data.</p>
+<div class="line-block">
+<div class="line"><a href="#id20"><span class="problematic" id="id21">|image15|</span></a></div>
+<div class="line-block">
+<div class="line">[fig:uniform]</div>
+</div>
+</div>
+<blockquote>
+<div>Programs: Continuous Distribution Functions</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="discrete-distributions">
+<h3>Discrete Distributions<a class="headerlink" href="#discrete-distributions" title="Permalink to this headline">¶</a></h3>
+<p>While the functions describing continuous distributions are referred to
+as <em>probability distribution functions</em>, discrete distributions are
+described by <em>probability mass functions</em>.</p>
+<div class="section" id="binomial-distribution">
+<h4>Binomial Distribution<a class="headerlink" href="#binomial-distribution" title="Permalink to this headline">¶</a></h4>
+<p>The Binomial is associated with the question &#8220;Out of a given number of
+trials, how many will succeed?&#8221; Some example questions that are modeled
+with a Binomial distribution are:</p>
+<ul class="simple">
+<li>Out of ten tosses, how many times will this coin land ”heads”?</li>
+<li>From the children born in a given hospital on a given day, how many
+of them will be girls?</li>
+<li>How many students in a given classroom will have green eyes?</li>
+<li>How many mosquitos, out of a swarm, will die when sprayed with
+insecticide?</li>
+</ul>
+<p>We conduct <span class="math">\(n\)</span> repeated experiments where the probability of
+success is given by the parameter <span class="math">\(p\)</span> and add up the number of
+successes. This number of successes is represented by the random
+variable <span class="math">\(X\)</span>. The value of <span class="math">\(X\)</span> is then between 0 and
+<span class="math">\(n\)</span>.</p>
+<p>When a random variable X has a Binomial Distribution with parameters
+<span class="math">\(p\)</span> and <span class="math">\(n\)</span> we write it as <span class="math">\(\,X \sim Bin(n,p)\)</span> or
+<span class="math">\(\,X \sim B(n,p)\)</span> and the probability mass function is given at
+<span class="math">\(X=k\)</span> by the equation:</p>
+<div class="math">
+\[\begin{split}P\left[X = k\right] = \begin{cases} {n \choose k} p^k \left(1-p\right)^{n-k}\ &amp; 0 \le k \le n \\ 0 &amp; \mbox{otherwise} \end{cases} \quad 0 \leq p \leq 1, \quad n \in \mathbb{N}\end{split}\]</div>
+<p>where <span class="math">\({n \choose k}={n! \over k!(n-k)!}\)</span></p>
+<div class="line-block">
+<div class="line"><img alt="image16" src="_images/Exponential_pdf.png" /></div>
+</div>
+</div>
+<div class="section" id="poisson-distribution">
+<h4>Poisson Distribution<a class="headerlink" href="#poisson-distribution" title="Permalink to this headline">¶</a></h4>
+<p>Any French speaker will notice that &#8220;Poisson&#8221; means &#8220;fish&#8221;, but really
+there’s nothing fishy about this distribution. It’s actually pretty
+straightforward. The name comes from the mathematician Siméon-Denis
+Poisson (1781-1840).</p>
+<p>The Poisson Distribution is ”very similar” to the Binomial Distribution.
+We are examining the number of times an event happens. The difference is
+subtle. Whereas the Binomial Distribution looks at how many times we
+register a success over a fixed total number of trials, the Poisson
+Distribution measures how many times a discrete event occurs, over a
+period of continuous space or time. There isn’t a &#8220;total&#8221; value n. As
+with the previous sections, let’s examine a couple of experiments or
+questions that might have an underlying Poisson nature.</p>
+<ul class="simple">
+<li>How many pennies will I encounter on my walk home?</li>
+<li>How many children will be delivered at the hospital today?</li>
+<li>How many products will I sell after airing a new television
+commercial?</li>
+<li>How many mosquito bites did you get today after having sprayed with
+insecticide?</li>
+<li>How many defects will there be per 100 metres of rope sold?</li>
+</ul>
+<p>What’s a little different about this distribution is that the random
+variable <span class="math">\(X\)</span> which counts the number of events can take on <em>any
+non-negative integer</em> value. In other words, I could walk home and find
+no pennies on the street. I could also find one penny. It’s also
+possible (although unlikely, short of an armored-car exploding nearby)
+that I would find 10 or 100 or 10,000 pennies.</p>
+<p>Instead of having a parameter p that represents a component probability
+like in the Binomial distribution, this time we have the parameter
+&#8220;lambda&#8221; or <span class="math">\(\lambda\)</span> which represents the &#8220;average or expected&#8221;
+number of events to happen within our experiment. The probability mass
+function of the Poisson is given by</p>
+<div class="math">
+\[P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}\]</div>
+<p>.</p>
+<div class="line-block">
+<div class="line"><img alt="image17" src="_images/Uniform_Distribution_PDF.png" /></div>
+</div>
+<blockquote>
+<div>Programs: Discrete Distribution Functions</div></blockquote>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="data-analysis">
+<h2>Data Analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-screening">
+<h3>Data Screening<a class="headerlink" href="#data-screening" title="Permalink to this headline">¶</a></h3>
+<p>The first thing you have to do for your data analysis is simply <em>look at
+your data</em>. You should check for <em>missing data</em> in your data set, and
+<em>outliers</em> which can significantly influence the result of your
+analysis.</p>
+</div>
+<div class="section" id="normality-check">
+<h3>Normality Check<a class="headerlink" href="#normality-check" title="Permalink to this headline">¶</a></h3>
+<p>The first way to check if your data are normally distributed, i.e. that
+they are linearly related to the standard normal distribution. In
+statistics, <em>:math:`Q–Q` plots</em> (&#8220;Q&#8221; stands for quantile) are used for
+visual assessments of distributions. They are a graphical method for
+comparing two probability distributions by plotting their quantiles
+against each other. First, the set of intervals for the quantiles are
+chosen. A point <span class="math">\((x,y)\)</span> on the plot corresponds to one of the
+quantiles of the second distribution (y-coordinate) plotted against the
+same quantile of the first distribution (x-coordinate). Thus the line is
+a parametric curve with the parameter which is the (number of the)
+interval for the quantile.</p>
+<p>If the two distributions being compared are similar, the points in the
+<span class="math">\(Q-Q\)</span> plot will approximately lie on the line <span class="math">\(y = x\)</span>. If
+the distributions are linearly related, the points in the <span class="math">\(Q-Q\)</span>
+plot will approximately lie on a line, but not necessarily on the line
+<span class="math">\(y = x\)</span> (Figure [fig:qqplot]).</p>
+<div class="line-block">
+<div class="line"><img alt="image18" src="_images/Binomial_distribution_pmf.png" /></div>
+<div class="line">[fig:qqplot]</div>
+</div>
+<p>In addition, there are quantitative tests for normality. The test that I
+have encountered most frequently in recent literature is the
+<em>Kolmogorov-Smirnov test</em>.  <a class="footnote-reference" href="#id14" id="id9">[1]</a> Altman mainly uses the <em>Shapiro-Wilk W
+test</em> , and a number of other tests are also available.</p>
+</div>
+<div class="section" id="transformation">
+<h3>Transformation<a class="headerlink" href="#transformation" title="Permalink to this headline">¶</a></h3>
+<p>If your data deviate significantly from a normal distribution, it is
+sometimes possible to make the distribution approximately normal by
+transforming your data. For example, data often have values that can
+only be positive (e.g. the size of persons), and that have long positive
+tail: such data can often be made normal by applying a <em>log transform</em>.
+This is demonstrated in Figure [fig:lognormal].</p>
+</div>
+<div class="section" id="confidence-intervals">
+<h3>Confidence Intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this headline">¶</a></h3>
+<p>Although it is common to concentrate the analysis on the p-values, it is
+often much more informative to report the <em>confidence intervals</em> for
+your data. The confidence intervals are given by</p>
+<div class="math">
+\[ci = mean \pm se * t_{n,\alpha}\]</div>
+<p>where <span class="math">\(se\)</span> is the standard error, and <span class="math">\(t_{n,\alpha}\)</span> the
+<span class="math">\(t\)</span> statistic for <span class="math">\(n\)</span> degrees of freedom. For the 95%
+two-sided confidence intervals, for example, you have to set
+<span class="math">\(\alpha=0.025\)</span> and <span class="math">\(\alpha=0.975\)</span> .</p>
+<blockquote>
+<div>Statistical Tests</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="hypothesis-tests">
+<h2>Hypothesis tests<a class="headerlink" href="#hypothesis-tests" title="Permalink to this headline">¶</a></h2>
+<p>[sec:hypotheses] Statistical evaluations are based on the initially
+often counterintuitive procedure of <em>hypothesis tests</em>. A hypothesis
+test is a standard format for assessing statistical evidence. It is
+ubiquitous in scientific literature, most often appearing in the form of
+statements of <em>statistical significance</em> and quotations like
+<span class="math">\(&quot;p&lt;0.01&quot;\)</span> that pepper scientific journals. Thereby you proceed as
+follows: you</p>
+<ul class="simple">
+<li>state your hypothesis.</li>
+<li>decide which value you want to test your hypothesis on.</li>
+<li>calculate the <em>probability p</em> that you find the given value, assuming
+that your hypothesis is true</li>
+</ul>
+<p>The first hypothesis is referred to as <em>null-hypothesis</em>, since we
+assume that there is <em>null</em> difference between the hypothesis and the
+result. The found probability for a specific target value is the
+<em>p-value</em> that you typically find in the literature. If <span class="math">\(p&lt;0.05\)</span>,
+the difference between your sample and the value that you check is
+<em>significant</em>. If <span class="math">\(p&lt;0.001\)</span>, we speak of a <em>highly significant</em>
+difference.</p>
+<p>An example for a <em>null hypothesis</em>: &#8220;We assume that our population has a
+mean value of 7.&#8221;</p>
+<blockquote>
+<div>Types of Error</div></blockquote>
+<hr class="docutils" />
+<p>In hypothesis testing, two types of errors can occur:</p>
+<p>These are errors, where you get a significant result despite the fact
+that the hypothesis is true. The likelihood of a Type I error is
+commonly indicated with <span class="math">\(\alpha\)</span>, and <em>is set before you start the
+data analysis</em>.</p>
+<p>For example, assume that the population of young Austrian adults has a
+mean IQ of 105 (i.e. we are smarter than the rest) and a standard
+deviation of 15. We now want to check if the average FH student in Linz
+has the same IQ as the average Austrian, and we select 20 students. We
+set <span class="math">\(\alpha=0.05\)</span>, i.e. we set our significance level to 95%. Let
+us now assume that the average student has in fact the same IQ as the
+average Austrian. If we repeat our study 20 times, we will find one of
+those 20 times that our sample mean is significantly different from the
+Austrian average IQ. Such a finding would be a false result, despite the
+fact that our assumption is correct, and would constitute a <em>type I
+error</em>.</p>
+<p>If we want to answer the question &#8220;How much chance do we have to reject
+the null hypothesis when the alternative is in fact true?&#8221; Or in other
+words, &#8220;What’s the probability of detecting a real effect?&#8221; we are faced
+with a different problem. To answer these questions, we need an
+<em>alternative hypothesis</em>.</p>
+<p>For the example given above, an <em>alternative hypothesis</em> could be: &#8220;We
+assume that our population has a mean value of 6.&#8221;</p>
+<p>A <em>Type II error</em> is an error, where you do <em>not</em> get a significant
+result, despite the fact that the null-hypothesis is false. The
+probability for this type of error is commonly indicated with
+<span class="math">\(\beta\)</span>. The <em>power</em> of a statistical test is defined as
+<span class="math">\((1-\beta)*100\)</span>, and is the chance of correctly accepting the
+alternate hypothesis. Figure [fig:power1] shows the meaning of the
+<em>power</em> of a statistical test. Note that for finding the power of a
+test, you need an alternative hypothesis.</p>
+<div class="section" id="sample-size">
+<h3>Sample Size<a class="headerlink" href="#sample-size" title="Permalink to this headline">¶</a></h3>
+<p>The power of a statistical test depends on four factors:</p>
+<ol class="arabic simple">
+<li><span class="math">\(\alpha\)</span>, the probability for Type I errors</li>
+<li><span class="math">\(\beta\)</span>, the probability for Type II errors (
+<span class="math">\(\Rightarrow\)</span> power of the test)</li>
+<li><span class="math">\(d\)</span>, the magnitude of the investigated effect relative to
+<span class="math">\(\sigma\)</span>, the standard deviation of the sample</li>
+<li><span class="math">\(n\)</span>, the sample size</li>
+</ol>
+<p>Only 3 of these 4 parameters can be chosen, the <span class="math">\(4^{th}\)</span> is then
+automatically fixed.</p>
+<p>The size of the difference, <span class="math">\(d\)</span>, between mean treatment outcomes
+that will answer the clinical question being posed is often called
+<em>clinical significance</em> or <em>clinical relevance</em>.</p>
+<div class="line-block">
+<div class="line">[!ht] <img alt="image19" src="_images/Poisson_pmf.png" /></div>
+<div class="line">[fig:power1]</div>
+</div>
+<div class="line-block">
+<div class="line">[!ht] <img alt="image20" src="_images/ProbPlot.png" /></div>
+<div class="line">[fig:power2]</div>
+</div>
+<blockquote>
+<div>Examples for some special cases</div></blockquote>
+<hr class="docutils" />
+<p>For a test on one mean, this leads to a <em>minimum sample number</em> of</p>
+<div class="math">
+\[n = \frac{{{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{\sigma ^2}}}{{{d^2}}}\]</div>
+<p>Here z is the standardized normal variable (see also chapter
+[sec:normalDistribution])</p>
+<div class="math">
+\[z = \frac{x-\mu}{\sigma} .\]</div>
+<p>For finding a difference between two normally distributed means, the
+minimum number of samples we need in each group is</p>
+<div class="math">
+\[{n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{d^2} .\]\[Programs: SampleSize\]</div>
+<hr class="docutils" />
+<blockquote>
+<div>Sensitivity and Specificity</div></blockquote>
+<hr class="docutils" />
+<p>Some of the more confusing terms in statistical analysis are
+<em>sensitivity</em> and <em>specificity</em> . A related topic are <em>positive
+predictive value (PPV)</em> and <em>negative predictive value (NPV)</em> . The
+following diagram shows how the four are related:</p>
+<div class="line-block">
+<div class="line">[ht] <img alt="image21" src="_images/power1.png" /></div>
+<div class="line">[fig:sens:sub:<cite>s</cite>pec<sub>d</sub>iagram]</div>
+</div>
+<ul class="simple">
+<li><strong>Sensitivity</strong> = proportion of positives that are correctly
+identified by a test = probability of a positive test, given the
+patient is ill.</li>
+<li><strong>Specificity</strong> = proportion of negatives that are correctly
+identified by a test = probability of a negative test, given that
+patient is well.</li>
+<li><strong>Positive predictive value</strong> is the proportion of patients with
+positive test results who are correctly diagnosed.</li>
+<li><strong>Negative predictive value</strong> is the proportion of patients with
+negative test results who are correctly diagnosed.</li>
+</ul>
+<p>While sensitivity and specificity are independent of prevalence, they do
+not tell us what portion of patients with abnormal test results are
+truly abnormal. This information is provided by the positive/negative
+predictive value. However, as Fig. [fig:prevalence] indicates, these
+values are affected by the <em>prevalence</em> of the disease. In other words,
+we need to know the prevalence of the disease as well as the PPV/NPV of
+a test to provide a sensible interpretation of the test results.</p>
+<div class="line-block">
+<div class="line">[ht] <img alt="image22" src="_images/power2.png" /></div>
+<div class="line-block">
+<div class="line">[fig:prevalence]</div>
+</div>
+</div>
+<p>Figure [fig:sens:sub:<cite>s</cite>pec<sub>e</sub>xample] gives a worked example:</p>
+<div class="line-block">
+<div class="line">[ht] <img alt="image23" src="_images/Sensitivity_Specificity_Diagram.png" /></div>
+<div class="line">[fig:sens:sub:<cite>s</cite>pec<sub>e</sub>xample]</div>
+</div>
+<ul class="simple">
+<li>False positive rate (<span class="math">\(\alpha\)</span>) = type I error =
+<span class="math">\(1-specificity\)</span> = <span class="math">\(\frac{FP}{FP + TN}\)</span> =
+<span class="math">\(\frac{180}{180+1820}\)</span> = 9%</li>
+<li>False negative rate (<span class="math">\(\beta\)</span>) = type II error =
+<span class="math">\(1−sensitivity\)</span> = <span class="math">\(\frac{FN}{TP + FN}\)</span> =
+<span class="math">\(\frac{10}{20+10}\)</span> = 33%</li>
+<li>Power = sensitivity = <span class="math">\(1−\beta\)</span></li>
+<li>Likelihood ratio positive = <span class="math">\(\frac{sensitivity}{1−specificity}\)</span>
+= <span class="math">\(\frac{66.67\%}{1−91\%}\)</span> = 7.4</li>
+<li>Likelihood ratio negative = <span class="math">\(\frac{1−sensitivity}{specificity}\)</span>
+= <span class="math">\(\frac{1−66.67\%}{91\%}\)</span> = 0.37</li>
+</ul>
+<p>Hence with large numbers of false positives and few false negatives, a
+positive FOB screen test is in itself poor at confirming cancer (PPV =
+10%) and further investigations must be undertaken; it did, however,
+correctly identify 66.7% of all cancers (the sensitivity). However as a
+screening test, a negative result is very good at reassuring that a
+patient does not have cancer (NPV = 99.5%) and at this initial screen
+correctly identifies 91% of those who do not have cancer (the
+specificity).</p>
+<blockquote>
+<div>Large Sample Tests</div></blockquote>
+<hr class="docutils" />
+<p>Here I give an overview of the most common statistical tests for
+different combinations of data. This overview is taken from .</p>
+<p>[table:tests]</p>
+</div>
+</div>
+</div>
+<div class="section" id="test-of-means-of-continuous-data">
+<h1>Test of Means of Continuous Data<a class="headerlink" href="#test-of-means-of-continuous-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="distribution-of-a-sample-mean">
+<h2>Distribution of a Sample Mean<a class="headerlink" href="#distribution-of-a-sample-mean" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="one-sample-t-test-for-a-mean-value">
+<h3>One sample t-test for a mean value<a class="headerlink" href="#one-sample-t-test-for-a-mean-value" title="Permalink to this headline">¶</a></h3>
+<p>If we knew the mean and the standard deviation of a normally distributed
+population, we would know exactly the standard error, and use values
+from the normal distribution to determine how likely it is to find a
+certain mean value, given the population mean and standard deviation.
+However, in practice we have to <em>estimate</em> the mean and standard
+deviation from the sample, and the resulting distribution for the mean
+value deviates slightly from a normal distribution. Such distributions
+are called <em>t-distributions</em>, and were first described by a researcher
+working under the pseudonym of &#8220;Student&#8221;.</p>
+<p>Let us look at a specific example: we take 100 normally distributed
+data, with a mean of 7 and with a standard deviation of 3. What is the
+chance of finding a mean value at a distance of 0.5 or more from the
+mean:?</p>
+<p><span class="math">\(&gt;&gt;&gt;\)</span> The probability from the t-test is 0.057, and from the
+normal distribution 0.054</p>
+</div>
+<div class="section" id="wilcoxon-signed-rank-sum-test">
+<h3>Wilcoxon signed rank sum test<a class="headerlink" href="#wilcoxon-signed-rank-sum-test" title="Permalink to this headline">¶</a></h3>
+<p>If our data are not normally distributed, we cannot use the t-test
+(although this test is fairly robust against deviations from normality).
+Instead, we must use a <em>non-parametric</em> test on the mean value. We can
+do this by performing a <em>Wilcoxon signed rank sum test</em>.  <a class="footnote-reference" href="#id15" id="id10">[2]</a>  <a class="footnote-reference" href="#id16" id="id11">[3]</a>
+This method has three steps:</p>
+<ol class="arabic simple">
+<li>Calculate the difference between each observation and the value of
+interest.</li>
+<li>Ignoring the signs of the differences, rank them in order of
+magnitude.</li>
+<li>Calculate the sum of the ranks of all the negative (or positive)
+ranks, corresponding to the observations below (or above) the chosen
+hypothetical value.</li>
+</ol>
+<p>In Table [tab:wilcoxon] you see an example, where the significance to a
+deviation from the value of 7725 is tested. The rank sum of the negative
+values gives <span class="math">\(3+5=8\)</span>, and can be looked up in the corresponding
+tables to be significant. In practice, your computer program will
+nowadays do this for you. This example also shows another feature of
+rank evaluations: tied values (here <span class="math">\(7515\)</span>) get accorded their
+mean rank (here <span class="math">\(1.5\)</span>).</p>
+<div class="line-block">
+<div class="line">l p2cm p2cm p2cm Subject &amp; Daily energy intake (kJ) &amp; Difference from</div>
+</div>
+<p>7725 kJ &amp; Ranks of differences
+| 1 &amp; 5260 &amp; 2465 &amp; 11
+| 2 &amp; 5470 &amp; 2255 &amp; 10
+| 3 &amp; 5640 &amp; 2085 &amp; 9
+| 4 &amp; 6180 &amp; 1545 &amp; 8
+| 5 &amp; 6390 &amp; 1335 &amp; 7
+| 6 &amp; 6515 &amp; 1210 &amp; 6
+| 7 &amp; 6805 &amp; 920 &amp; 4
+| 8 &amp; 7515 &amp; 210 &amp; 1.5
+| 9 &amp; 7515 &amp; 210 &amp; 1.5
+| 10 &amp; 8230 &amp; -505 &amp; 3
+| 11 &amp; 8770 &amp; -1045 &amp; 5</p>
+<p>[tab:wilcoxon]</p>
+</div>
+</div>
+<div class="section" id="comparison-of-two-groups">
+<h2>Comparison of Two Groups<a class="headerlink" href="#comparison-of-two-groups" title="Permalink to this headline">¶</a></h2>
+<p>When you compare two groups with each other, we have to distinguish
+between two cases. In the first case, we compare two values recorded
+from the same subject at two specific times. For example, we measure the
+size of students when they enter primary school and after their first
+year, and check if they have been growing. Since we are only interested
+in the <em>difference</em> between the first and the second measurement, this
+test is called <em>paired t-test</em>, and is essentially equivalent to a
+one-sample t-test for the mean difference.</p>
+<p>The second test is if we compare two independent groups. For example, we
+can compare the effect of a two medications given to two different
+groups of patients, and compare how the two groups respond. This is
+called an <em>unpaired t-test</em>, or <em>t-test for two independent groups</em>.</p>
+<p>If we have two independent samples the variance of the difference
+between their means is the <em>sum</em> of the separate variances, so the
+standard error of the difference in means is the square root of the sum
+of the separate variances:</p>
+<div class="math">
+\[\begin{split}\begin{aligned}
+   se({{\bar x}_1} - {{\bar x}_2}) &amp;= \sqrt {\operatorname{var} ({{\bar x}_1}) + \operatorname{var} ({{\bar x}_2})}  \\
+   &amp;= \sqrt {{{\left\{ {se({{\bar x}_1})} \right\}}^2} + {{\left\{ {se({{\bar x}_2})} \right\}}^2}}  \\
+   &amp;= \sqrt {\frac{{s_1^2}}{{{n_1}}} + \frac{{s_2^2}}{{{n_2}}}}  \\\end{aligned}\end{split}\]</div>
+<p>where <span class="math">\(\bar{x}_i\)</span> is the mean of the i-th sample, and <em>se</em>
+indicates the <em>standard error</em>.</p>
+<blockquote>
+<div>Non-parametric Comparison of Two Groups: Mann-Whitney Test</div></blockquote>
+<hr class="docutils" />
+<p>If the measurement values from the two groups are not normally
+distributed we have to resort to a non-parametric test. The most common
+test for that is the <em>Mann-Whitney(-Wilkoxon) test</em>.</p>
+</div>
+<div class="section" id="comparison-of-more-groups">
+<h2>Comparison of More Groups<a class="headerlink" href="#comparison-of-more-groups" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Analysis of Variance</div></blockquote>
+<hr class="docutils" />
+<p>If we want to compare three or more groups with each other, we need to
+use a <em>one way analysis of variance (ANOVA)</em>, sometimes also called a
+<em>one factor ANOVA</em>. Because the null hypothesis is that there is no
+difference between the groups, the test is based on a comparison of the
+observed variation between the groups (i.e. between their means) with
+that expected from the observed variability between subjects. The
+comparison takes the general form of an <em>F test</em> to compare variances,
+but for two groups the t test leads to exactly the same answer. We will
+discuss ANOVAs in more detail in chapter [sec:anova].</p>
+<blockquote>
+<div>F Test</div></blockquote>
+<hr class="docutils" />
+<p>The <span class="math">\(F\)</span> test or <em>variance ratio test</em> is very simple. Under the
+null hypothesis that two Normally distributed populations have equal
+variances we expect the ratio of the two sample variances to have an <em>F
+distribution</em> (see section [sec:ContinuousDistributions]).</p>
+<blockquote>
+<div>Bonferroni correction</div></blockquote>
+<hr class="docutils" />
+<p>If an ANOVA yields a significant result, we have to test which of the
+groups are different. Typically, this is done with <span class="math">\(t-tests\)</span>.
+Since we perform multiple t tests, we should compensate for the risk of
+getting a significant result, even if our null hypothesis is true. The
+simplest - and at the same time quite conservative - approach is to
+divide the required p-value by the number of tests that we do
+(<em>Bonferroni correction</em>). For example, if you perform 4 comparisons,
+you check for significance not at <span class="math">\(p=0.05\)</span>, but at
+<span class="math">\(p=0.0125\)</span>.</p>
+<p>While multiple testing is not yet included in Python standardly, you can
+get a number of multiple-testing corrections done with the statsmodels
+package:</p>
+<div class="highlight-python"><pre>     In[7]: from statsmodels.sandbox.stats.multicomp import multipletests
+     In[8]: multipletests([.05, 0.3, 0.01], method='bonferroni')
+   Out[8]:
+     (array([False, False,  True], dtype=bool),
+     array([ 0.15,  0.9 ,  0.03]),
+     0.016952427508441503,
+     0.016666666666666666)
+
+Kruskal-Wallis test</pre>
+</div>
+<hr class="docutils" />
+<p>Just as analysis of variance is a more general form of <span class="math">\(t\)</span> test,
+so there is a more general form of the non-parametric Mann-whitney test:
+the <em>Kruskal-Wallis test</em>. When the null hypothesis is true the test
+statistic follows the <em>Chi squared distribution</em>.</p>
+</div>
+</div>
+<div class="section" id="tests-on-categorical-data">
+<h1>Tests on Categorical Data<a class="headerlink" href="#tests-on-categorical-data" title="Permalink to this headline">¶</a></h1>
+<p>In a sample of individuals the number falling into a particular group is
+called the <em>frequency</em>, so the analysis of categorical data is the
+analysis of frequencies. When two or more groups are compared the data
+are often shown in the form of a <em>frequency table</em>, sometimes also
+called <em>contingency table</em>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="31%" />
+<col width="29%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head"><em>Right Handed</em></th>
+<th class="head"><em>Left Handed</em></th>
+<th class="head"><em>Total</em></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>Males</em></td>
+<td>43</td>
+<td>9</td>
+<td>52</td>
+</tr>
+<tr class="row-odd"><td><em>Females</em></td>
+<td>44</td>
+<td>4</td>
+<td>48</td>
+</tr>
+<tr class="row-even"><td><em>Total</em></td>
+<td>87</td>
+<td>13</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>[table:frequency]</p>
+<div class="section" id="one-proportion">
+<h2>One Proportion<a class="headerlink" href="#one-proportion" title="Permalink to this headline">¶</a></h2>
+<p>If you have one sample group of data, you can check if your sample is
+representative of the standard population. To do so, you have to know
+the proportion <span class="math">\(p\)</span> of the characteristic in the standard
+population. It can be shown that a in population with a characteristic
+with probability <span class="math">\(p\)</span>, the standard error of samples with this
+characteristic is given by</p>
+<div class="math">
+\[se(p) = \sqrt{p(1-p)/n}\]</div>
+<p>and the corresponding 95% confidence interval is</p>
+<div class="math">
+\[ci = mean \pm se * t_{n,0.95}\]</div>
+<p>If your data lie outside this confidence interval, they are <em>not</em>
+representative of the population.</p>
+</div>
+<div class="section" id="frequency-tables">
+<h2>Frequency Tables<a class="headerlink" href="#frequency-tables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="chi-square-test">
+<h3>Chi-square Test<a class="headerlink" href="#chi-square-test" title="Permalink to this headline">¶</a></h3>
+<p>Assume you have observed absolute frequencies <span class="math">\(o_i\)</span> and expected
+absolute frequencies <span class="math">\(e_i\)</span> under the Null hypothesis of your test
+then it holds</p>
+<div class="math">
+\[V = \sum_i \frac{(o_i-e_i)^2}{e_i} \approx \chi^2_f\]</div>
+<p>.</p>
+<p>where <span class="math">\(f\)</span> are the degrees of freedom. <span class="math">\(i\)</span> might denote a
+simple index running from <span class="math">\(1,...,I\)</span> or even a multiindex
+<span class="math">\((i_1,...,i_p)\)</span> running from <span class="math">\((1,...,1)\)</span> to
+<span class="math">\((I_1,...,I_p)\)</span>.</p>
+<p>The test statistic <span class="math">\(V\)</span> is approximately <span class="math">\(\chi^2\)</span>
+distributed, if</p>
+<ul class="simple">
+<li>for all absolute expected frequencies <span class="math">\(e_i\)</span> holds
+<span class="math">\(e_i \geq 1\)</span> and</li>
+<li>for at least 80% of the absolute expected frequencies <span class="math">\(e_i\)</span>
+holds <span class="math">\(e_i \geq 5\)</span>.</li>
+</ul>
+<p>The degrees of freedom can be computed by the numbers of absolute
+observed frequencies which can be chosen freely. We know that the sum of
+absolute expected frequencies is</p>
+<div class="math">
+\[\sum_i o_i = n\]</div>
+<p>which means that the maximum number of degrees of freedom is
+<span class="math">\(I-1\)</span>. We might have to subtract from the number of degrees of
+freedom the number of parameters we need to estimate from the sample,
+since this implies further relationships between the observed
+frequencies.</p>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="math">\(\chi^2\)</span> test can be used to generate &#8220;quick and dirty&#8221; test,
+e.g.</p>
+<p><span class="math">\(H_0:\)</span> The random variable <span class="math">\(X\)</span> is symmetrically distributed
+versus</p>
+<p><span class="math">\(H_1:\)</span> the random variable <span class="math">\(X\)</span> is not symmetrically
+distributed.</p>
+<p>We know that in case of a symmetrical distribution the arithmetic mean
+<span class="math">\(\bar{x}\)</span> and median should be nearly the same. So a simple way to
+test this hypothesis would be to count how many observations are less
+than the mean (<span class="math">\(n_-\)</span>)and how many observations are larger than the
+arithmetic mean (<span class="math">\(n_+\)</span>). If mean and median are the same than 50%
+of the observation should smaller than the mean and 50% should be larger
+than the mean. It holds</p>
+<div class="math">
+\[V = \frac{(n_- - n/2)^2}{n/2} + \frac{(n_+ - n/2)^2}{n/2} \approx \chi^2_1\]</div>
+<p>.</p>
+</div>
+<div class="section" id="comments">
+<h4>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h4>
+<p>The Chi-square test is a pure hypothesis test. It tells you if your
+observed frequency can be due to a random sample selection from a single
+population. A number of different expressions have been used for
+chi-square tests, which are due to the original derivation of the
+formulas (from the time before computers were pervasive). Expression
+such as <em>2x2 tables</em>, <em>r-c tables</em>, or <em>Chi-square test of contingency</em>
+all refer to frequency tables and are typically analyzed with chi-square
+tests.</p>
+</div>
+</div>
+<div class="section" id="fishers-exact-test">
+<h3>Fisher’s Exact Test<a class="headerlink" href="#fishers-exact-test" title="Permalink to this headline">¶</a></h3>
+<p>For small sample numbers, corrections should be made for some bias that
+is caused by the use of the continuous chi-squared distribution. This
+correction is referred to as <em>Yates correction</em>.</p>
+<p>If the requirement that 80% of cells should have expected values of at
+least 5 is not fulfilled, <em>Fisher’s exact test</em> should be used. This
+test is based on the observed row and column totals. The method consists
+of evaluating the probability associated with all possible 2x2 tables
+which have the same row and column totals as the observed data, making
+the assumption that the null hypothesis (i.e. that the row and column
+variables are unrelated) is true. In most cases, Fisher’s exact test is
+preferable to the chi-square test. But until the advent of powerful
+computers, it was not practical. You should use it up to approximately
+10-15 cells in the frequency tables.</p>
+</div>
+</div>
+<div class="section" id="analysis-programs">
+<h2>Analysis Programs<a class="headerlink" href="#analysis-programs" title="Permalink to this headline">¶</a></h2>
+<p>With computers, the computational steps are trivial:</p>
+</div>
+</div>
+<div class="section" id="relation-between-two-continuous-variables">
+<h1>Relation Between Two Continuous Variables<a class="headerlink" href="#relation-between-two-continuous-variables" title="Permalink to this headline">¶</a></h1>
+<p>If we have two related variables, the <em>correlation</em> measures the
+association between the two variables. In contrast, a <em>linear
+regression</em> is used for the prediction of the value of one variable from
+another. If we want to compare more than two groups of variables, we
+have to use a technique known as <em>Analysis of Variance (ANOVA)</em>.</p>
+<div class="section" id="correlation">
+<h2>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="correlation-coefficient">
+<h3>Correlation Coefficient<a class="headerlink" href="#correlation-coefficient" title="Permalink to this headline">¶</a></h3>
+<p>If the two variables are normally distributed, the standard measure of
+determining the <em>correlation coefficient</em>, often ascribed to <em>Pearson</em> ,
+is</p>
+<div class="math">
+\[\label{eq:pearson}
+  r = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum\limits_{i=1}^n (X_i - \bar{X})^2} \sqrt{\sum\limits_{i=1}^n (Y_i - \bar{Y})^2}}\]</div>
+<p>Pearson’s correlation coefficient, sometimes also referred to as
+<em>population correlation coefficient</em>, can take any value from -1 to +1.
+Examples are given in Figure [fig:correlation]. Note that the formula
+for the correlation coefficient is symmetrical between <span class="math">\(x\)</span> and
+<span class="math">\(y\)</span>.</p>
+<div class="line-block">
+<div class="line"><img alt="image24" src="_images/Sensitivity_Specificity.png" /></div>
+<div class="line">[fig:correlation]</div>
+</div>
+<blockquote>
+<div>Rank correlation</div></blockquote>
+<hr class="docutils" />
+<p>If the data distribution is not normal, a different approach is
+necessary. In that case one can rank the set of subjects for each
+variable and compare the orderings. There are two commonly used methods
+of calculating the rank correlation.</p>
+<ul class="simple">
+<li><em>Spearman’s :math:`rho`</em>, which is exactly the same as the Pearson
+correlation coefficient <span class="math">\(r\)</span> calculated on the ranks of the
+observations.</li>
+<li><em>Kendall’s :math:`tau`</em>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="regression">
+<h2>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<p>We can use the method of <em>regression</em> when we want to predict the value
+of one variable from the other.</p>
+<div class="line-block">
+<div class="line"><img alt="image25" src="_images/Sensitivity_Specificity_Example.png" /></div>
+<div class="line">[fig:regression]</div>
+</div>
+<p>When we search for the best-fit line to a given <span class="math">\((x_i,y_i)\)</span>
+dataset, we are looking for the parameters <span class="math">\((k,d)\)</span> which minimize
+the sum of the squared <em>residuals</em> <span class="math">\(\epsilon_i\)</span> in</p>
+<div class="math">
+\[\label{eq:simpleRegression}
+  y_i = k * x_i + d + \epsilon_i\]</div>
+<p>where <span class="math">\(k\)</span> is the <em>slope</em> or <em>inclination</em> of the line, and
+<span class="math">\(d\)</span> the <em>intercept</em>. This is in fact just the one-dimensional
+example of the more general technique, which is described in the next
+section. Note that in contrast to the correlation, this relationship
+between <span class="math">\(x\)</span> and <span class="math">\(y\)</span> is no more symmetrical: it is assumed
+that the <span class="math">\(x-\)</span>values are known exactly, and that all the
+variability lies in the residuals.</p>
+<div class="line-block">
+<div class="line"><img alt="image26" src="_images/Correlation_examples2.png" /></div>
+<div class="line">[fig:residuals]</div>
+</div>
+<div class="section" id="id12">
+<h3>Introduction<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><a class="footnote-reference" href="#id17" id="id13">[4]</a> Given a data set <span class="math">\(\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n\)</span></div></blockquote>
+<p>of <span class="math">\(n\)</span> statistical units, a linear regression model assumes that
+the relationship between the dependent variable <span class="math">\(y_i\)</span> and the
+<span class="math">\(p\)</span>-vector of regressors <span class="math">\(x_i\)</span> is linear. This relationship
+is modelled through a <em>disturbance term</em> or <em>error variable</em>
+<span class="math">\(\epsilon_i\)</span>, an unobserved random variable that adds noise to the
+linear relationship between the dependent variable and regressors. Thus
+the model takes the form</p>
+<div class="math">
+\[\label{eq:regression}
+   y_i = \beta_1   x_{i1} + \cdots + \beta_p x_{ip} + \varepsilon_i
+   = \mathbf{x}^{\rm T}_i\boldsymbol\beta + \varepsilon_i,
+   \qquad i = 1, \ldots, n,\]</div>
+<p>where <span class="math">\(^T\)</span> denotes the transpose, so that <span class="math">\(x_i^T\beta\)</span> is
+the inner product between vectors <span class="math">\(x_i\)</span> <span class="math">\(\beta\)</span>.</p>
+<p>Often these <span class="math">\(n\)</span> equations are stacked together and written in
+vector form as</p>
+<div class="math">
+\[\mathbf{y} = \mathbf{X}\boldsymbol\beta + \boldsymbol\varepsilon, \,\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\mathbf{y} = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}, \quad
+   \mathbf{X} = \begin{pmatrix} \mathbf{x}^{\rm T}_1 \\ \mathbf{x}^{\rm T}_2 \\ \vdots \\ \mathbf{x}^{\rm T}_n \end{pmatrix}
+   = \begin{pmatrix} x_{11} &amp; \cdots &amp; x_{1p} \\
+   x_{21} &amp; \cdots &amp; x_{2p} \\
+   \vdots &amp; \ddots &amp; \vdots \\
+   x_{n1} &amp; \cdots &amp; x_{np}
+   \end{pmatrix}, \quad
+   \boldsymbol\beta = \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_p \end{pmatrix}, \quad
+   \boldsymbol\varepsilon = \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}.\end{split}\]</div>
+<p>Some remarks on terminology and general use:</p>
+<ul class="simple">
+<li><span class="math">\(y_i\)</span> is called the <em>regressand</em>, <em>endogenous variable</em>,
+<em>response variable</em>, <em>measured variable</em>, or <em>dependent variable</em>.
+The decision as to which variable in a data set is modeled as the
+dependent variable and which are modeled as the independent variables
+may be based on a presumption that the value of one of the variables
+is caused by, or directly influenced by the other variables.
+Alternatively, there may be an operational reason to model one of the
+variables in terms of the others, in which case there need be no
+presumption of causality.</li>
+<li><span class="math">\(\mathbf{x}_i\)</span> are called <em>regressors</em>, <em>exogenous variables</em>,
+<em>explanatory variables</em>, <em>covariates</em>, <em>input variables</em>, <em>predictor
+variables</em>, or <em>independent variables</em>, but not to be confused with
+<em>independent random variables</em>. The matrix <span class="math">\(\mathbf{X}\)</span> is
+sometimes called the <em>design matrix</em>.<ul>
+<li>Usually a constant is included as one of the regressors. For
+example we can take <span class="math">\(x_{i1}=1\)</span> for <span class="math">\(i=1,...,n\)</span>. The
+corresponding element of <span class="math">\(\beta\)</span> is called the <em>intercept</em>.
+Many statistical inference procedures for linear models require an
+intercept to be present, so it is often included even if
+theoretical considerations suggest that its value should be zero.</li>
+<li>Sometimes one of the regressors can be a non-linear function of
+another regressor or of the data, as in polynomial regression and
+segmented regression. The model remains linear as long as it is
+linear in the parameter vector <span class="math">\(\beta\)</span>.</li>
+<li>The regressors <span class="math">\(x_{ij}\)</span> may be viewed either as random
+variables, which we simply observe, or they can be considered as
+predetermined fixed values which we can choose. Both
+interpretations may be appropriate in different cases, and they
+generally lead to the same estimation procedures; however
+different approaches to asymptotic analysis are used in these two
+situations.</li>
+</ul>
+</li>
+<li><span class="math">\(\boldsymbol\beta\,\)</span> is a <span class="math">\(p\)</span>-dimensional <em>parameter
+vector</em>. Its elements are also called <em>effects</em>, or <em>regression
+coefficients</em>. Statistical estimation and inference in linear
+regression focuses on <span class="math">\(\beta\)</span>.</li>
+<li><span class="math">\(\varepsilon_i\,\)</span> is called the <em>error term</em>, <em>disturbance
+term</em>, or <em>noise</em>. This variable captures all other factors which
+influence the dependent variable <span class="math">\(y_i\)</span> other than the
+regressors <span class="math">\(x_i\)</span>. The relationship between the error term and
+the regressors, for example whether they are correlated, is a crucial
+step in formulating a linear regression model, as it will determine
+the method to use for estimation.</li>
+<li>If <span class="math">\(i=1\)</span> and <span class="math">\(p=1\)</span> in Eq.[eq:regression], we have a
+<em>simple linear regression</em>, corresponding to
+Eq.[eq:simpleRegression]. If <span class="math">\(i&gt;1\)</span> we talk about <em>multilinear
+regression</em> or <em>multiple linear regression</em> .</li>
+</ul>
+<p><em>Example</em>. Consider a situation where a small ball is being tossed up in
+the air and then we measure its heights of ascent <span class="math">\(h_i\)</span> at various
+moments in time <span class="math">\(t_i\)</span>. Physics tells us that, ignoring the drag,
+the relationship can be modelled as :</p>
+<div class="math">
+\[h_i = \beta_1 t_i + \beta_2 t_i^2 + \varepsilon_i,\]</div>
+<p>where <span class="math">\(\beta_1\)</span> determines the initial velocity of the ball,
+<span class="math">\(\beta_2\)</span> is proportional to the standard gravity, and
+<span class="math">\(\epsilon_i\)</span> is due to measurement errors. Linear regression can
+be used to estimate the values of <span class="math">\(\beta_1\)</span> and <span class="math">\(\beta_2\)</span>
+from the measured data. This model is non-linear in the time variable,
+but it is linear in the parameters <span class="math">\(\beta_1\)</span> and <span class="math">\(\beta_2\)</span>;
+if we take regressors
+<span class="math">\(\mathbf{x}_i = (x_{i1},x_{i2}) = (t_i,t_i^2)\)</span>, the model takes on
+the standard form :
+<span class="math">\(h_i = \mathbf{x}^{\rm T}_i\boldsymbol\beta + \varepsilon_i.\)</span></p>
+</div>
+<div class="section" id="assumptions">
+<h3>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h3>
+<p>To use the technique of linear regression, five assumptions should be
+fulfilled:</p>
+<ul class="simple">
+<li>The errors in the data values (i.e. the deviations from average) are
+independent from one another.</li>
+<li>The model must be appropriate. (A linear regression does not properly
+describe a quadratic curve.)</li>
+<li>The <em>independent variables</em> (i.e. <span class="math">\(x\)</span>) are exactly known.</li>
+<li>The variance of the <em>dependent variable</em> (i.e. <span class="math">\(y\)</span>) is the same
+for all values of <span class="math">\(x\)</span>.</li>
+<li>The distribution of <span class="math">\(y\)</span> is approximately normal for all values
+of <span class="math">\(x\)</span>.</li>
+</ul>
+<div class="line-block">
+<div class="line"><img alt="image27" src="_images/Linear_regression.png" /></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="image28" src="_images/residuals_linreg.png" /></div>
+<div class="line-block">
+<div class="line">[fig:regline]</div>
+</div>
+</div>
+<p>Since to my knowledge there exists no program in the Python standard
+library (or numpy, scipy) to calculate the confidence intervals for a
+regression line, I include my corresponding program <em>lineFit.py</em>
+[py:fitLine]. The output of this program is shown in Figure
+[fig:regline]. This program also shows how Python programs intended for
+distribution should be documented.</p>
+</div>
+</div>
+</div>
+<div class="section" id="relation-between-several-variables">
+<h1>Relation Between Several Variables<a class="headerlink" href="#relation-between-several-variables" title="Permalink to this headline">¶</a></h1>
+<p>When we have two groups, we can ask the question: &#8220;Are they different?&#8221;
+The answer is provided by hypothesis tests: by a <em>t-test</em> if the data
+are normally distributed, or by a <em>Mann-Whitney test</em> otherwise. If we
+want to go one step further and predict the value of one variable from
+another, we have to use the technique of <em>linear regression</em>.</p>
+<p>So what happens when we have more than two groups?</p>
+<p>To answer the question &#8220;Are they different?&#8221; for more than two groups,
+we have to use the <em>Analysis of Variance (ANOVA)-test</em> for data where
+the residuals are normally distributed. If this condition is not
+fulfilled, the <em>Friedmann Test</em> has to be used. And if we want to and
+predict the value of one variable <em>many</em> other variables, linear
+regression has to be replaced by of <em>multilinear regression</em> , sometimes
+also referred to as <em>multiple linear regression</em>.</p>
+<div class="section" id="variance-analysis">
+<h2>Variance Analysis<a class="headerlink" href="#variance-analysis" title="Permalink to this headline">¶</a></h2>
+<p>[sec:anova] The idea behind ANOVA is to divide the variance into the
+variance <em>between</em> groups, and that <em>within</em> groups, and see if those
+distributions match the null hypothesis that all groups come from the
+same distribution. The variables that distinguish the different groups
+are often called <em>factors</em>.</p>
+<p>(By comparison, t-tests look at the mean values of two groups, and check
+if those are consistent with the assumption that the two groups come
+from the same distribution.)</p>
+<p>For example, if we compare a group with No treatment, another with
+treatment A, and a third with treatment B, then we perform a <em>one factor
+ANOVA</em>, sometimes also called <em>one-way ANOVA</em>, with &#8220;treatment&#8221; the one
+analysis factor. If we do the same test with men and with women, then we
+have a <em>two-factor</em> or <em>two-way ANOVA</em>, with &#8220;gender&#8221; and &#8220;treatment&#8221; as
+the two treatment factors. Note that with ANOVAs, it is quite important
+to have exactly the same number of samples in each analysis group!</p>
+<p>The one-way ANOVA assumes all the samples are drawn from normally
+distributed populations with equal variance. To test this assumption,
+you can use the <em>Levene test</em>.</p>
+<p>Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new
+element. We can look not only if each of the factors is significant; we
+can also check if the <em>interaction</em> of the factors has a significant
+influence on the distribution of the data. For sticking to the example
+above, if only women with treatment B get healthy, we have a significant
+interaction effect between &#8220;gender&#8221; and &#8220;treatment&#8221;.</p>
+<blockquote>
+<div>Example: one-way ANOVA</div></blockquote>
+<hr class="docutils" />
+<p>As an example, let us take the red cell folate levels (<span class="math">\(\mu g/l\)</span>)
+in threee groups of cardiac bypass patients given different levels of
+nitrous oxide ventilation (Amess et al, 1978):</p>
+<ul class="simple">
+<li>First the &#8220;Sums of squares (SS)&#8221; are calculated. Here the SS between
+treatments is 15515.88, and the SS of the residuals is 39716.09 . The
+total SS is the sum of these two values.</li>
+<li>The mean squares is the SS divided by the corresponding degrees of
+freedom.</li>
+<li>The F-value is the larger mean squares value divided by the smaller
+value. (If we only have two groups, the F-value is the square of the
+corresponding t-value. See listing [py:multivariate]).</li>
+<li>From the F-value, we can looking up the corresponding p-value.</li>
+</ul>
+<blockquote>
+<div>Example: two-way ANOVA</div></blockquote>
+<hr class="docutils" />
+<p>See the example in listing [py:modeling]</p>
+<blockquote>
+<div>Multilinear Regression</div></blockquote>
+<hr class="docutils" />
+<p>If you have truly independent variables, <em>multilinear regression</em> is a
+straitforward extension of the simple linear regression. However, if
+your variables may be related to each other, you have to proceed much
+more carefully. For example, you may want to investigate how the
+prevalence of some disease correlates with age and with income: if you
+do so, you have to keep in mind that age and income are most likely
+correlated! For details, gives a good introduction to that topic. Also,
+check out the chapter on Modeling.</p>
+<blockquote>
+<div>Statistical Models</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div>Model language</div></blockquote>
+<hr class="docutils" />
+<p>The mini-language commonly used now in statistics to describe formulas
+was first used in the languages <span class="math">\(R\)</span> and <span class="math">\(S\)</span>, but is now also
+available in Python through the module <em>patsy</em>.</p>
+<p>For instance, if we have some variable <span class="math">\(y\)</span>, and we want to regress
+it against some other variables <span class="math">\(x, a, b\)</span>, and the interaction of
+a and b, then we simply write</p>
+<div class="math">
+\[y \sim x + a + b + a:b\]</div>
+<p>The symbols in Table [tab:syntax] are used on the right hand side to
+denote different interactions.</p>
+<p>[tab:syntax]</p>
+<p>A complete set of the description is found under</p>
+<blockquote>
+<div>Design Matrix</div></blockquote>
+<hr class="docutils" />
+<p>In a regression model, written in matrix-vector form as</p>
+<div class="math">
+\[y=X\beta+ \epsilon,\]</div>
+<p>the matrix <span class="math">\(X\)</span> is the <em>design matrix</em>.</p>
+<p>Example of <em>simple linear regression</em> with 7 observations. Suppose there
+are 7 data points <span class="math">\(\left\{ {{y_i},{x_i}} \right\}\)</span>, where
+<span class="math">\(i=1,2,…,7\)</span>. The simple linear regression model is</p>
+<div class="math">
+\[y_i = \beta_0 + \beta_1 x_i +\epsilon_i, \,\]</div>
+<p>where <span class="math">\(\beta_0\)</span> is the y-intercept and <span class="math">\(\beta_1\)</span> is the
+slope of the regression line. This model can be represented in matrix
+form as</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+  =
+  \begin{bmatrix}1 &amp; x_1  \\1 &amp; x_2  \\1 &amp; x_3  \\1 &amp; x_4  \\1 &amp; x_5  \\1 &amp; x_6 \\ 1 &amp; x_7  \end{bmatrix}
+  \begin{bmatrix} \beta_0 \\ \beta_1  \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}\end{split}\]</div>
+<p>where the first column of ones in the design matrix represents the
+y-intercept term while the second column is the x-values associated with
+the y-value.</p>
+<p>Example of <em>multiple regression</em> with covariates (i.e. independent
+variables) <span class="math">\(w_i\)</span> and <span class="math">\(x_i\)</span>. Again suppose that the data are
+7 observations, and for each observed value to be predicted
+(<span class="math">\(y_i\)</span>), there are two covariates that were also observed
+<span class="math">\(w_i\)</span> and <span class="math">\(x_i\)</span>. The model to be considered is</p>
+<div class="math">
+\[y_i = \beta_0 + \beta_1 w_i + \beta_2 x_i + \epsilon_i\]</div>
+<p>This model can be written in matrix terms as</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix} =
+    \begin{bmatrix} 1 &amp; w_1 &amp; x_1  \\1 &amp; w_2 &amp; x_2  \\1 &amp; w_3 &amp; x_3  \\1 &amp; w_4 &amp; x_4  \\1 &amp; w_5 &amp; x_5  \\1 &amp; w_6 &amp; x_6 \\ 1&amp; w_7  &amp; x_7  \end{bmatrix}
+    \begin{bmatrix} \beta_0 \\ \beta_1 \\ \beta_2  \end{bmatrix}
+    +
+    \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}\end{split}\]</div>
+<p>Example with a one-way analysis of variance (ANOVA) with 3 groups and 7
+observations. The given data set has the first three observations
+belonging to the first group, the following two observations belong to
+the second group and the final two observations are from the third
+group. If the model to be fit is just the mean of each group, then the
+model is</p>
+<div class="math">
+\[y_{ij} = \mu_i + \epsilon_{ij}\]</div>
+<p>which can be written</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix} =
+  \begin{bmatrix}1 &amp; 0 &amp; 0 \\1 &amp;0  &amp;0 \\ 1 &amp; 0 &amp; 0 \\  0 &amp; 1 &amp; 0 \\  0 &amp; 1 &amp; 0 \\  0 &amp; 0 &amp; 1 \\  0 &amp; 0 &amp; 1\end{bmatrix}
+  \begin{bmatrix}\mu_1 \\ \mu_2 \\ \mu_3  \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}\end{split}\]</div>
+<p>It should be emphasized that in this model <span class="math">\(\mu_i\)</span> represents the
+mean of the <span class="math">\(i\)</span>th group.</p>
+<p>The ANOVA model could be equivalently written as each group parameter
+<span class="math">\(\tau_i\)</span> being an offset from some overall reference. Typically
+this reference point is taken to be one of the groups under
+consideration. This makes sense in the context of comparing multiple
+treatment groups to a control group and the control group is considered
+the &#8220;reference&#8221;. In this example, group 1 was chosen to be the reference
+group. As such the model to be fit is:</p>
+<div class="math">
+\[y_{ij} = \mu + \tau_i + \epsilon_{ij}\]</div>
+<p>with the constraint that <span class="math">\(\tau_1\)</span> is zero.</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix} =
+  \begin{bmatrix}1 &amp;0 &amp;0 \\1 &amp;0  &amp;0 \\ 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 1  &amp; 0 &amp; 1\end{bmatrix}
+  \begin{bmatrix}\mu \\  \tau_2 \\ \tau_3 \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}\end{split}\]</div>
+<p>In this model <span class="math">\(\mu\)</span> is the mean of the reference group and
+<span class="math">\(\tau_i\)</span> is the difference from group <span class="math">\(i\)</span> to the reference
+group. <span class="math">\(\tau_1\)</span> and is not included in the matrix because its
+difference from the reference group (itself) is necessarily zero.</p>
+<blockquote>
+<div>Assumptions</div></blockquote>
+<hr class="docutils" />
+<p>Standard linear regression models with standard estimation techniques
+make a number of assumptions about the predictor variables, the response
+variables and their relationship. Numerous extensions have been
+developed that allow each of these assumptions to be relaxed (i.e.
+reduced to a weaker form), and in some cases eliminated entirely. Some
+methods are general enough that they can relax multiple assumptions at
+once, and in other cases this can be achieved by combining different
+extensions. Generally these extensions make the estimation procedure
+more complex and time-consuming, and may also require more data in order
+to get an accurate model.</p>
+<p>The following are the major assumptions made by standard linear
+regression models with standard estimation techniques (e.g. ordinary
+least squares):</p>
+<ul class="simple">
+<li><strong>Weak exogeneity</strong>. This essentially means that the predictor
+variables <span class="math">\(x\)</span> can be treated as fixed values, rather than
+random variables. This means, for example, that the predictor
+variables are assumed to be error-free, that is they are not
+contaminated with measurement errors. Although not realistic in many
+settings, dropping this assumption leads to significantly more
+difficult errors-in-variables models.</li>
+<li><strong>Linearity</strong>. This means that the mean of the response variable is a
+linear combination of the parameters (regression coefficients) and
+the predictor variables. Note that this assumption is much less
+restrictive than it may at first seem. Because the predictor
+variables are treated as fixed values (see above), linearity is
+really only a restriction on the parameters. The predictor variables
+themselves can be arbitrarily transformed, and in fact multiple
+copies of the same underlying predictor variable can be added, each
+one transformed differently. This trick is used, for example, in
+polynomial regression, which uses linear regression to fit the
+response variable as an arbitrary polynomial function (up to a given
+rank) of a predictor variable. This makes linear regression an
+extremely powerful inference method. In fact, models such as
+polynomial regression are often &#8220;too powerful&#8221;, in that they tend to
+overfit the data. As a result, some kind of regularization must
+typically be used to prevent unreasonable solutions coming out of the
+estimation process. Common examples are ridge regression and lasso
+regression. Bayesian linear regression can also be used, which by its
+nature is more or less immune to the problem of overfitting. (In
+fact, ridge regression and lasso regression can both be viewed as
+special cases of Bayesian linear regression, with particular types of
+prior distributions placed on the regression coefficients.)</li>
+<li><strong>Constant variance</strong> (aka <em>homoscedasticity</em>). This means that
+different response variables have the same variance in their errors,
+regardless of the values of the predictor variables. In practice this
+assumption is invalid (i.e. the errors are heteroscedastic) if the
+response variables can vary over a wide scale. In order to determine
+for heterogeneous error variance, or when a pattern of residuals
+violates model assumptions of homoscedasticity (error is equally
+variable around the ’best-fitting line’ for all points of x), it is
+prudent to look for a &#8220;fanning effect&#8221; between residual error and
+predicted values. This is to say there will be a systematic change in
+the absolute or squared residuals when plotted against the predicting
+outcome. Error will not be evenly distributed across the regression
+line. Heteroscedasticity will result in the averaging over of
+distinguishable variances around the points to get a single variance
+that is inaccurately representing all the variances of the line. In
+effect, residuals appear clustered and spread apart on their
+predicted plots for larger and smaller values for points along the
+linear regression line, and the mean squared error for the model will
+be wrong. Typically, for example, a response variable whose mean is
+large will have a greater variance than one whose mean is small. For
+example, a given person whose income is predicted to be $100,000 may
+easily have an actual income of $80,000 or $120,000 (a standard
+deviation]] of around $20,000), while another person with a predicted
+income of $10,000 is unlikely to have the same $20,000 standard
+deviation, which would imply their actual income would vary anywhere
+between -$10,000 and $30,000. (In fact, as this shows, in many cases
+– often the same cases where the assumption of normally distributed
+errors fails – the variance or standard deviation should be predicted
+to be proportional to the mean, rather than constant.) Simple linear
+regression estimation methods give less precise parameter estimates
+and misleading inferential quantities such as standard errors when
+substantial heteroscedasticity is present. However, various
+estimation techniques (e.g. weighted least squares and
+heteroscedasticity-consistent standard errors) can handle
+heteroscedasticity in a quite general way. Bayesian linear regression
+techniques can also be used when the variance is assumed to be a
+function of the mean. It is also possible in some cases to fix the
+problem by applying a transformation to the response variable (e.g.
+fit the logarithm of the response variable using a linear regression
+model, which implies that the response variable has a log-normal
+distribution rather than a normal distribution).</li>
+<li><strong>Independence of errors</strong>. This assumes that the errors of the
+response variables are uncorrelated with each other. (Actual
+statistical independence is a stronger condition than mere lack of
+correlation and is often not needed, although it can be exploited if
+it is known to hold.) Some methods (e.g. generalized least squares)
+are capable of handling correlated errors, although they typically
+require significantly more data unless some sort of regularization is
+used to bias the model towards assuming uncorrelated errors. Bayesian
+linear regression is a general way of handling this issue.</li>
+<li><strong>Lack of multicollinearity in the predictors</strong>. For standard least
+squares estimation methods, the design matrix <span class="math">\(X\)</span> must have
+full column rank <span class="math">\(p\)</span>; otherwise, we have a condition known as
+multicollinearity in the predictor variables. This can be triggered
+by having two or more perfectly correlated predictor variables (e.g.
+if the same predictor variable is mistakenly given twice, either
+without transforming one of the copies or by transforming one of the
+copies linearly). It can also happen if there is too little data
+available compared to the number of parameters to be estimated (e.g.
+fewer data points than regression coefficients). In the case of
+multicollinearity, the parameter vector <span class="math">\(\beta\)</span> will be
+non-identifiable, it has no unique solution. At most we will be able
+to identify some of the parameters, i.e. narrow down its value to
+some linear subspace of <span class="math">\(R^p\)</span>. Methods for fitting linear
+models with multicollinearity have been developed. Note that the more
+computationally expensive iterated algorithms for parameter
+estimation, such as those used in generalized linear models, do not
+suffer from this problem — and in fact it’s quite normal to when
+handling categorical data|categorically-valued predictors to
+introduce a separate indicator variable predictor for each possible
+category, which inevitably introduces multicollinearity.</li>
+</ul>
+<p>Beyond these assumptions, several other statistical properties of the
+data strongly influence the performance of different estimation methods:</p>
+<ul class="simple">
+<li>The statistical relationship between the error terms and the
+regressors plays an important role in determining whether an
+estimation procedure has desirable sampling properties such as being
+unbiased and consistent.</li>
+<li>The arrangement, or probability distribution of the predictor
+variables <span class="math">\(x\)</span> has a major influence on the precision of
+estimates of <span class="math">\(\beta\)</span>. Sampling and design of experiments are
+highly-developed subfields of statistics that provide guidance for
+collecting data in such a way to achieve a precise estimate of
+<span class="math">\(\beta\)</span>.</li>
+</ul>
+<div class="section" id="interpretation">
+<h3>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h3>
+<p>A fitted linear regression model can be used to identify the
+relationship between a single predictor variable <span class="math">\(x_j\)</span> and the
+response variable <span class="math">\(y\)</span> when all the other predictor variables in
+the model are “held fixed”. Specifically, the interpretation of
+<span class="math">\(\beta_j\)</span> is the expected change in <span class="math">\(y\)</span> for a one-unit
+change in <span class="math">\(x_j\)</span> when the other covariates are held fixed—that is,
+the expected value of the partial derivative of <span class="math">\(y\)</span> with respect
+to <span class="math">\(x_j\)</span>. This is sometimes called the ”unique effect” of
+<span class="math">\(x_j\)</span> on ”y”. In contrast, the ”marginal effect” of <span class="math">\(x_j\)</span> on
+<span class="math">\(y\)</span> can be assessed using a correlation coefficient or simple
+linear regression model relating <span class="math">\(x_j\)</span> to <span class="math">\(y\)</span>; this effect
+is the total derivative of <span class="math">\(y\)</span> with respect to <span class="math">\(x_j\)</span>.</p>
+<p>Care must be taken when interpreting regression results, as some of the
+regressors may not allow for marginal changes (such as dummy variables,
+or the intercept term), while others cannot be held fixed (recall the
+example from the introduction: it would be impossible to “hold
+<span class="math">\(t_j\)</span> fixed” and at the same time change the value of
+<span class="math">\(t_i^2\)</span>.</p>
+<p>It is possible that the unique effect can be nearly zero even when the
+marginal effect is large. This may imply that some other covariate
+captures all the information in <span class="math">\(x_j\)</span>, so that once that variable
+is in the model, there is no contribution of <span class="math">\(x_j\)</span> to the
+variation in <span class="math">\(y\)</span>. Conversely, the unique effect of <span class="math">\(x_j\)</span> can
+be large while its marginal effect is nearly zero. This would happen if
+the other covariates explained a great deal of the variation of
+<span class="math">\(y\)</span>, but they mainly explain variation in a way that is
+complementary to what is captured by <span class="math">\(x_j\)</span>. In this case,
+including the other variables in the model reduces the part of the
+variability of <span class="math">\(y\)</span> that is unrelated to <span class="math">\(x_j\)</span>, thereby
+strengthening the apparent relationship with <span class="math">\(x_j\)</span>.</p>
+<p>The meaning of the expression “held fixed” may depend on how the values
+of the predictor variables arise. If the experimenter directly sets the
+values of the predictor variables according to a study design, the
+comparisons of interest may literally correspond to comparisons among
+units whose predictor variables have been “held fixed” by the
+experimenter. Alternatively, the expression “held fixed” can refer to a
+selection that takes place in the context of data analysis. In this
+case, we “hold a variable fixed” by restricting our attention to the
+subsets of the data that happen to have a common value for the given
+predictor variable. This is the only interpretation of “held fixed” that
+can be used in an observational study.</p>
+<p>The notion of a “unique effect” is appealing when studying a complex
+system where multiple interrelated components influence the response
+variable. In some cases, it can literally be interpreted as the causal
+effect of an intervention that is linked to the value of a predictor
+variable. However, it has been argued that in many cases multiple
+regression analysis fails to clarify the relationships between the
+predictor variables and the response variable when the predictors are
+correlated with each other and are not assigned following a study
+design.</p>
+</div>
+</div>
+<div class="section" id="bootstrapping">
+<h2>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">¶</a></h2>
+<p>Another type of modelling is <em>bootstrapping</em>/. Sometimes you have data
+describing a distribution, but do not know what type of distribution it
+is. So what can you do if you want to find out e.g. confidence values
+for the mean?</p>
+<p>The answer is bootstrapping. Bootstrapping is a scheme of <em>resampling</em>,
+i.e. taking additional samples repeatedly from the initial sample, to
+provide estimates of its variability. In a case where the distribution
+of the initial sample is unknown, bootstrapping is of especial help in
+that it provides information about the distribution.</p>
+</div>
+</div>
+<div class="section" id="analysis-of-survival-times">
+<h1>Analysis of Survival Times<a class="headerlink" href="#analysis-of-survival-times" title="Permalink to this headline">¶</a></h1>
+<p>When analyzing survival times, different problems come up than the ones
+discussed so far. One question is how do we deal with subjects dropping
+out of a study. For example, assume that we test a new cancer drug.
+While some subjects die, others may believe that the new drug is not
+effective, and decide to drop out of the study before the study is
+finished. A similar problem would be faced when we investigate how long
+a machine lasts before it breaks down.</p>
+<div class="section" id="survival-probabilities">
+<h2>Survival Probabilities<a class="headerlink" href="#survival-probabilities" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kaplan-meier-survival-curve">
+<h3>Kaplan-Meier survival curve<a class="headerlink" href="#kaplan-meier-survival-curve" title="Permalink to this headline">¶</a></h3>
+<p>A clever way to deal with these problems is described in detail in .
+First, the time is subdivided into small periods. Then the likelihood is
+calculated that a subject survives a given period. The survival
+probability is given by</p>
+<div class="math">
+\[p_k = p_{k-1} * \frac{r_k-f_k}{r_k}\]</div>
+<p>where <span class="math">\(p_k\)</span> is the probability to survive period <span class="math">\(k\)</span>;
+<span class="math">\(r_k\)</span> is the number of subjects still at risk (i.e. still being
+followed up) immediately before the <span class="math">\(k^{th}\)</span> day, and <span class="math">\(f_k\)</span>
+is the number of observed failures on the day <span class="math">\(k\)</span>. The curve
+describing the resulting survival probability is called <em>life table</em>,
+<em>survival curve</em>, or <em>Kaplan-Meier curve</em> (see Figure
+[fig:SurvivalCurve]).</p>
+<div class="line-block">
+<div class="line"><img alt="image29" src="_images/Anscombes_quartet.png" /></div>
+<div class="line">[fig:SurvivalCurve]</div>
+</div>
+<p>Note that the survival curve changes only when a &#8220;failure&#8221; occurs, i.e.
+when a subject dies. <em>Censored</em> entries, describing either when a
+subject drops out of the study or when the study finishes, are taken
+into consideration at the &#8220;failure&#8221; times, but otherwise do not affect
+the survival curve.</p>
+</div>
+</div>
+<div class="section" id="comparing-survival-curves-in-two-groups">
+<h2>Comparing Survival Curves in Two Groups<a class="headerlink" href="#comparing-survival-curves-in-two-groups" title="Permalink to this headline">¶</a></h2>
+<p>The most common test for comparing independent groups of survival times
+is the <em>logrank test</em>. This test is a non-parametric hypothesis test,
+testing the probability that both groups come from the same underlying
+population. Since to my knowledge this test is not yet implemented in a
+Python library, I have included an implementation based on the equations
+given by (see program [py:survival]).</p>
+<p>To explore the effect of different variables on survival, more advanced
+methods are required. The <em>Cox regression model</em> introduced by Cox in
+1972 is used widely when it is desired to investigate several variables
+at the same time. For details, check or other statistic textbooks.</p>
+</div>
+</div>
+<div class="section" id="appendix">
+<h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>Lecture Schedule</div></blockquote>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li>Introduction</li>
+<li>Basics [T]</li>
+<li>Study Design</li>
+<li>Normal Distribution [T]</li>
+<li>Other Continuous Distributions</li>
+<li>Data Analysis [T]</li>
+<li>Statistical Tests</li>
+<li>Continous Tests</li>
+<li><strong>Presentation Experimental Design</strong></li>
+<li>Categorical Tests</li>
+<li>Correlation [T]</li>
+<li>Regression [T]</li>
+<li>ANOVA [T]</li>
+<li>Statistical Models</li>
+<li><strong>Final Presentation</strong></li>
+</ol>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[1]</a></td><td>see scipy.stats.kstest, example given in univariate.py</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id10">[2]</a></td><td>Python Example: scipy.stats.wilcoxon, in &#8220;univariate.py&#8221;</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11">[3]</a></td><td>The following description and example has been taken from , Table 9.2</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id13">[4]</a></td><td>This section has been taken from Wikipedia</td></tr>
+</tbody>
+</table>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="StatsFH.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#why-statistics">Why Statistics?</a></li>
+<li><a class="reference internal" href="#population-and-samples">Population and samples</a></li>
+<li><a class="reference internal" href="#projects">Projects</a></li>
+<li><a class="reference internal" href="#programming-matters">Programming Matters</a><ul>
+<li><a class="reference internal" href="#python">Python</a><ul>
+<li><a class="reference internal" href="#example-session">Example-Session</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pandas">Pandas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#basic-principles">Basic Principles</a><ul>
+<li><a class="reference internal" href="#datatypes">Datatypes</a></li>
+<li><a class="reference internal" href="#data-display">Data Display</a><ul>
+<li><a class="reference internal" href="#types-of-studies">Types of Studies</a></li>
+<li><a class="reference internal" href="#structure-of-experiments">Structure of Experiments</a></li>
+<li><a class="reference internal" href="#data-management">Data Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#distributions-of-one-variable">Distributions of one Variable</a><ul>
+<li><a class="reference internal" href="#characterizing-a-distribution">Characterizing a Distribution</a></li>
+<li><a class="reference internal" href="#distribution-functions">Distribution Functions</a><ul>
+<li><a class="reference internal" href="#probability-and-samples">Probability and Samples</a></li>
+<li><a class="reference internal" href="#normal-distribution">Normal Distribution</a></li>
+<li><a class="reference internal" href="#other-continuous-distributions">Other Continuous Distributions</a><ul>
+<li><a class="reference internal" href="#t-distribution">t Distribution</a></li>
+<li><a class="reference internal" href="#chi-square-distribution">Chi-square Distribution</a></li>
+<li><a class="reference internal" href="#f-distribution">F Distribution</a><ul>
+<li><a class="reference internal" href="#f-test-of-equality-of-variances">F-Test of Equality of Variances</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lognormal-distribution">Lognormal Distribution</a></li>
+<li><a class="reference internal" href="#exponential-distribution">Exponential Distribution</a></li>
+<li><a class="reference internal" href="#uniform-distribution">Uniform Distribution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#discrete-distributions">Discrete Distributions</a><ul>
+<li><a class="reference internal" href="#binomial-distribution">Binomial Distribution</a></li>
+<li><a class="reference internal" href="#poisson-distribution">Poisson Distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-analysis">Data Analysis</a><ul>
+<li><a class="reference internal" href="#data-screening">Data Screening</a></li>
+<li><a class="reference internal" href="#normality-check">Normality Check</a></li>
+<li><a class="reference internal" href="#transformation">Transformation</a></li>
+<li><a class="reference internal" href="#confidence-intervals">Confidence Intervals</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hypothesis-tests">Hypothesis tests</a><ul>
+<li><a class="reference internal" href="#sample-size">Sample Size</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-of-means-of-continuous-data">Test of Means of Continuous Data</a><ul>
+<li><a class="reference internal" href="#distribution-of-a-sample-mean">Distribution of a Sample Mean</a><ul>
+<li><a class="reference internal" href="#one-sample-t-test-for-a-mean-value">One sample t-test for a mean value</a></li>
+<li><a class="reference internal" href="#wilcoxon-signed-rank-sum-test">Wilcoxon signed rank sum test</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comparison-of-two-groups">Comparison of Two Groups</a></li>
+<li><a class="reference internal" href="#comparison-of-more-groups">Comparison of More Groups</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tests-on-categorical-data">Tests on Categorical Data</a><ul>
+<li><a class="reference internal" href="#one-proportion">One Proportion</a></li>
+<li><a class="reference internal" href="#frequency-tables">Frequency Tables</a><ul>
+<li><a class="reference internal" href="#chi-square-test">Chi-square Test</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#comments">Comments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fishers-exact-test">Fisher’s Exact Test</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#analysis-programs">Analysis Programs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#relation-between-two-continuous-variables">Relation Between Two Continuous Variables</a><ul>
+<li><a class="reference internal" href="#correlation">Correlation</a><ul>
+<li><a class="reference internal" href="#correlation-coefficient">Correlation Coefficient</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#regression">Regression</a><ul>
+<li><a class="reference internal" href="#id12">Introduction</a></li>
+<li><a class="reference internal" href="#assumptions">Assumptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#relation-between-several-variables">Relation Between Several Variables</a><ul>
+<li><a class="reference internal" href="#variance-analysis">Variance Analysis</a><ul>
+<li><a class="reference internal" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bootstrapping">Bootstrapping</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#analysis-of-survival-times">Analysis of Survival Times</a><ul>
+<li><a class="reference internal" href="#survival-probabilities">Survival Probabilities</a><ul>
+<li><a class="reference internal" href="#kaplan-meier-survival-curve">Kaplan-Meier survival curve</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comparing-survival-curves-in-two-groups">Comparing Survival Curves in Two Groups</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#appendix">Appendix</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/StatsFH - Kopie.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright March 2013, Thomas Haslwanter.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

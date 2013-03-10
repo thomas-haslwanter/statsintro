@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Model language &mdash; Introduction to Statistics 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Introduction to Statistics 1.0 documentation" href="index.html" />
+    <link rel="next" title="Survival Probabilities" href="statsSurvival.html" />
+    <link rel="prev" title="Variance Analysis" href="statsANOVA.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="statsSurvival.html" title="Survival Probabilities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="statsANOVA.html" title="Variance Analysis"
+             accesskey="P">previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <img alt="_images/title_models.png" src="_images/title_models.png" style="height: 100px;" />
+<div class="section" id="model-language">
+<h1>Model language<a class="headerlink" href="#model-language" title="Permalink to this headline">¶</a></h1>
+<p>The mini-language commonly used now in statistics to describe formulas
+was first used in the languages <span class="math">\(R\)</span> and <span class="math">\(S\)</span>, but is now also
+available in Python through the module <em>patsy</em>.</p>
+<p>For instance, if we have some variable <span class="math">\(y\)</span>, and we want to regress
+it against some other variables <span class="math">\(x, a, b\)</span>, and the interaction of
+a and b, then we simply write</p>
+<div class="math">
+\[y \sim x + a + b + a:b\]</div>
+<p>The symbols in Table [tab:syntax] are used on the right hand side to
+denote different interactions.</p>
+<p>[tab:syntax]</p>
+<p>A complete set of the description is found under</p>
+<div class="section" id="design-matrix">
+<h2>Design Matrix<a class="headerlink" href="#design-matrix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+<p>In a regression model, written in matrix-vector form as</p>
+<div class="math">
+\[y=X\beta+ \epsilon,\]</div>
+<p>the matrix <span class="math">\(X\)</span> is the <em>design matrix</em>.</p>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="simple-regression">
+<h4>Simple Regression<a class="headerlink" href="#simple-regression" title="Permalink to this headline">¶</a></h4>
+<p>Example of <em>simple linear regression</em> with 7 observations. Suppose there
+are 7 data points <span class="math">\(\left\{ {{y_i},{x_i}} \right\}\)</span>, where
+<span class="math">\(i=1,2,…,7\)</span>. The simple linear regression model is</p>
+<div class="math">
+\[y_i = \beta_0 + \beta_1 x_i +\epsilon_i, \,\]</div>
+<p>where <span class="math">\(\beta_0\)</span> is the y-intercept and <span class="math">\(\beta_1\)</span> is the
+slope of the regression line. This model can be represented in matrix
+form as</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+  =
+  \begin{bmatrix}1 &amp; x_1  \\1 &amp; x_2  \\1 &amp; x_3  \\1 &amp; x_4  \\1 &amp; x_5  \\1 &amp; x_6 \\ 1 &amp; x_7  \end{bmatrix}
+  \begin{bmatrix} \beta_0 \\ \beta_1  \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}\end{split}\]</div>
+<p>where the first column of ones in the design matrix represents the
+y-intercept term while the second column is the x-values associated with
+the y-value.</p>
+</div>
+<div class="section" id="multiple-regression">
+<h4>Multiple Regression<a class="headerlink" href="#multiple-regression" title="Permalink to this headline">¶</a></h4>
+<p>Example of <em>multiple regression</em> with covariates (i.e. independent
+variables) <span class="math">\(w_i\)</span> and <span class="math">\(x_i\)</span>. Again suppose that the data are
+7 observations, and for each observed value to be predicted
+(<span class="math">\(y_i\)</span>), there are two covariates that were also observed
+<span class="math">\(w_i\)</span> and <span class="math">\(x_i\)</span>. The model to be considered is</p>
+<div class="math">
+\[y_i = \beta_0 + \beta_1 w_i + \beta_2 x_i + \epsilon_i\]</div>
+<p>This model can be written in matrix terms as</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix} =
+    \begin{bmatrix} 1 &amp; w_1 &amp; x_1  \\1 &amp; w_2 &amp; x_2  \\1 &amp; w_3 &amp; x_3  \\1 &amp; w_4 &amp; x_4  \\1 &amp; w_5 &amp; x_5  \\1 &amp; w_6 &amp; x_6 \\ 1&amp; w_7  &amp; x_7  \end{bmatrix}
+    \begin{bmatrix} \beta_0 \\ \beta_1 \\ \beta_2  \end{bmatrix}
+    +
+    \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}\end{split}\]</div>
+</div>
+<div class="section" id="one-way-anova-cell-means-model">
+<h4>One-way ANOVA (Cell Means Model)<a class="headerlink" href="#one-way-anova-cell-means-model" title="Permalink to this headline">¶</a></h4>
+<p>Example with a one-way analysis of variance (ANOVA) with 3 groups and 7
+observations. The given data set has the first three observations
+belonging to the first group, the following two observations belong to
+the second group and the final two observations are from the third
+group. If the model to be fit is just the mean of each group, then the
+model is</p>
+<div class="math">
+\[y_{ij} = \mu_i + \epsilon_{ij}\]</div>
+<p>which can be written</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix} =
+  \begin{bmatrix}1 &amp; 0 &amp; 0 \\1 &amp;0  &amp;0 \\ 1 &amp; 0 &amp; 0 \\  0 &amp; 1 &amp; 0 \\  0 &amp; 1 &amp; 0 \\  0 &amp; 0 &amp; 1 \\  0 &amp; 0 &amp; 1\end{bmatrix}
+  \begin{bmatrix}\mu_1 \\ \mu_2 \\ \mu_3  \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}\end{split}\]</div>
+<p>It should be emphasized that in this model <span class="math">\(\mu_i\)</span> represents the
+mean of the <span class="math">\(i\)</span>th group.</p>
+</div>
+<div class="section" id="one-way-anova-offset-from-reference-group">
+<h4>One-way ANOVA (offset from reference group)<a class="headerlink" href="#one-way-anova-offset-from-reference-group" title="Permalink to this headline">¶</a></h4>
+<p>The ANOVA model could be equivalently written as each group parameter
+<span class="math">\(\tau_i\)</span> being an offset from some overall reference. Typically
+this reference point is taken to be one of the groups under
+consideration. This makes sense in the context of comparing multiple
+treatment groups to a control group and the control group is considered
+the &#8220;reference&#8221;. In this example, group 1 was chosen to be the reference
+group. As such the model to be fit is:</p>
+<div class="math">
+\[y_{ij} = \mu + \tau_i + \epsilon_{ij}\]</div>
+<p>with the constraint that <span class="math">\(\tau_1\)</span> is zero.</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix} =
+  \begin{bmatrix}1 &amp;0 &amp;0 \\1 &amp;0  &amp;0 \\ 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 1  &amp; 0 &amp; 1\end{bmatrix}
+  \begin{bmatrix}\mu \\  \tau_2 \\ \tau_3 \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}\end{split}\]</div>
+<p>In this model <span class="math">\(\mu\)</span> is the mean of the reference group and
+<span class="math">\(\tau_i\)</span> is the difference from group <span class="math">\(i\)</span> to the reference
+group. <span class="math">\(\tau_1\)</span> and is not included in the matrix because its
+difference from the reference group (itself) is necessarily zero.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="assumptions">
+<h1>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h1>
+<p>Standard linear regression models with standard estimation techniques
+make a number of assumptions about the predictor variables, the response
+variables and their relationship. Numerous extensions have been
+developed that allow each of these assumptions to be relaxed (i.e.
+reduced to a weaker form), and in some cases eliminated entirely. Some
+methods are general enough that they can relax multiple assumptions at
+once, and in other cases this can be achieved by combining different
+extensions. Generally these extensions make the estimation procedure
+more complex and time-consuming, and may also require more data in order
+to get an accurate model.</p>
+<p>The following are the major assumptions made by standard linear
+regression models with standard estimation techniques (e.g. ordinary
+least squares):</p>
+<ul class="simple">
+<li><strong>Weak exogeneity</strong>. This essentially means that the predictor
+variables <span class="math">\(x\)</span> can be treated as fixed values, rather than
+random variables. This means, for example, that the predictor
+variables are assumed to be error-free, that is they are not
+contaminated with measurement errors. Although not realistic in many
+settings, dropping this assumption leads to significantly more
+difficult errors-in-variables models.</li>
+<li><strong>Linearity</strong>. This means that the mean of the response variable is a
+linear combination of the parameters (regression coefficients) and
+the predictor variables. Note that this assumption is much less
+restrictive than it may at first seem. Because the predictor
+variables are treated as fixed values (see above), linearity is
+really only a restriction on the parameters. The predictor variables
+themselves can be arbitrarily transformed, and in fact multiple
+copies of the same underlying predictor variable can be added, each
+one transformed differently. This trick is used, for example, in
+polynomial regression, which uses linear regression to fit the
+response variable as an arbitrary polynomial function (up to a given
+rank) of a predictor variable. This makes linear regression an
+extremely powerful inference method. In fact, models such as
+polynomial regression are often &#8220;too powerful&#8221;, in that they tend to
+overfit the data. As a result, some kind of regularization must
+typically be used to prevent unreasonable solutions coming out of the
+estimation process. Common examples are ridge regression and lasso
+regression. Bayesian linear regression can also be used, which by its
+nature is more or less immune to the problem of overfitting. (In
+fact, ridge regression and lasso regression can both be viewed as
+special cases of Bayesian linear regression, with particular types of
+prior distributions placed on the regression coefficients.)</li>
+<li><strong>Constant variance</strong> (aka <em>homoscedasticity</em>). This means that
+different response variables have the same variance in their errors,
+regardless of the values of the predictor variables. In practice this
+assumption is invalid (i.e. the errors are heteroscedastic) if the
+response variables can vary over a wide scale. In order to determine
+for heterogeneous error variance, or when a pattern of residuals
+violates model assumptions of homoscedasticity (error is equally
+variable around the ’best-fitting line’ for all points of x), it is
+prudent to look for a &#8220;fanning effect&#8221; between residual error and
+predicted values. This is to say there will be a systematic change in
+the absolute or squared residuals when plotted against the predicting
+outcome. Error will not be evenly distributed across the regression
+line. Heteroscedasticity will result in the averaging over of
+distinguishable variances around the points to get a single variance
+that is inaccurately representing all the variances of the line. In
+effect, residuals appear clustered and spread apart on their
+predicted plots for larger and smaller values for points along the
+linear regression line, and the mean squared error for the model will
+be wrong. Typically, for example, a response variable whose mean is
+large will have a greater variance than one whose mean is small. For
+example, a given person whose income is predicted to be $100,000 may
+easily have an actual income of $80,000 or $120,000 (a standard
+deviation]] of around $20,000), while another person with a predicted
+income of $10,000 is unlikely to have the same $20,000 standard
+deviation, which would imply their actual income would vary anywhere
+between -$10,000 and $30,000. (In fact, as this shows, in many cases
+– often the same cases where the assumption of normally distributed
+errors fails – the variance or standard deviation should be predicted
+to be proportional to the mean, rather than constant.) Simple linear
+regression estimation methods give less precise parameter estimates
+and misleading inferential quantities such as standard errors when
+substantial heteroscedasticity is present. However, various
+estimation techniques (e.g. weighted least squares and
+heteroscedasticity-consistent standard errors) can handle
+heteroscedasticity in a quite general way. Bayesian linear regression
+techniques can also be used when the variance is assumed to be a
+function of the mean. It is also possible in some cases to fix the
+problem by applying a transformation to the response variable (e.g.
+fit the logarithm of the response variable using a linear regression
+model, which implies that the response variable has a log-normal
+distribution rather than a normal distribution).</li>
+<li><strong>Independence of errors</strong>. This assumes that the errors of the
+response variables are uncorrelated with each other. (Actual
+statistical independence is a stronger condition than mere lack of
+correlation and is often not needed, although it can be exploited if
+it is known to hold.) Some methods (e.g. generalized least squares)
+are capable of handling correlated errors, although they typically
+require significantly more data unless some sort of regularization is
+used to bias the model towards assuming uncorrelated errors. Bayesian
+linear regression is a general way of handling this issue.</li>
+<li><strong>Lack of multicollinearity in the predictors</strong>. For standard least
+squares estimation methods, the design matrix <span class="math">\(X\)</span> must have
+full column rank <span class="math">\(p\)</span>; otherwise, we have a condition known as
+multicollinearity in the predictor variables. This can be triggered
+by having two or more perfectly correlated predictor variables (e.g.
+if the same predictor variable is mistakenly given twice, either
+without transforming one of the copies or by transforming one of the
+copies linearly). It can also happen if there is too little data
+available compared to the number of parameters to be estimated (e.g.
+fewer data points than regression coefficients). In the case of
+multicollinearity, the parameter vector <span class="math">\(\beta\)</span> will be
+non-identifiable, it has no unique solution. At most we will be able
+to identify some of the parameters, i.e. narrow down its value to
+some linear subspace of <span class="math">\(R^p\)</span>. Methods for fitting linear
+models with multicollinearity have been developed. Note that the more
+computationally expensive iterated algorithms for parameter
+estimation, such as those used in generalized linear models, do not
+suffer from this problem — and in fact it’s quite normal to when
+handling categorical data|categorically-valued predictors to
+introduce a separate indicator variable predictor for each possible
+category, which inevitably introduces multicollinearity.</li>
+</ul>
+<p>Beyond these assumptions, several other statistical properties of the
+data strongly influence the performance of different estimation methods:</p>
+<ul class="simple">
+<li>The statistical relationship between the error terms and the
+regressors plays an important role in determining whether an
+estimation procedure has desirable sampling properties such as being
+unbiased and consistent.</li>
+<li>The arrangement, or probability distribution of the predictor
+variables <span class="math">\(x\)</span> has a major influence on the precision of
+estimates of <span class="math">\(\beta\)</span>. Sampling and design of experiments are
+highly-developed subfields of statistics that provide guidance for
+collecting data in such a way to achieve a precise estimate of
+<span class="math">\(\beta\)</span>.</li>
+</ul>
+<div class="section" id="interpretation">
+<h2>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h2>
+<p>A fitted linear regression model can be used to identify the
+relationship between a single predictor variable <span class="math">\(x_j\)</span> and the
+response variable <span class="math">\(y\)</span> when all the other predictor variables in
+the model are “held fixed”. Specifically, the interpretation of
+<span class="math">\(\beta_j\)</span> is the expected change in <span class="math">\(y\)</span> for a one-unit
+change in <span class="math">\(x_j\)</span> when the other covariates are held fixed—that is,
+the expected value of the partial derivative of <span class="math">\(y\)</span> with respect
+to <span class="math">\(x_j\)</span>. This is sometimes called the ”unique effect” of
+<span class="math">\(x_j\)</span> on ”y”. In contrast, the ”marginal effect” of <span class="math">\(x_j\)</span> on
+<span class="math">\(y\)</span> can be assessed using a correlation coefficient or simple
+linear regression model relating <span class="math">\(x_j\)</span> to <span class="math">\(y\)</span>; this effect
+is the total derivative of <span class="math">\(y\)</span> with respect to <span class="math">\(x_j\)</span>.</p>
+<p>Care must be taken when interpreting regression results, as some of the
+regressors may not allow for marginal changes (such as dummy variables,
+or the intercept term), while others cannot be held fixed (recall the
+example from the introduction: it would be impossible to “hold
+<span class="math">\(t_j\)</span> fixed” and at the same time change the value of
+<span class="math">\(t_i^2\)</span>.</p>
+<p>It is possible that the unique effect can be nearly zero even when the
+marginal effect is large. This may imply that some other covariate
+captures all the information in <span class="math">\(x_j\)</span>, so that once that variable
+is in the model, there is no contribution of <span class="math">\(x_j\)</span> to the
+variation in <span class="math">\(y\)</span>. Conversely, the unique effect of <span class="math">\(x_j\)</span> can
+be large while its marginal effect is nearly zero. This would happen if
+the other covariates explained a great deal of the variation of
+<span class="math">\(y\)</span>, but they mainly explain variation in a way that is
+complementary to what is captured by <span class="math">\(x_j\)</span>. In this case,
+including the other variables in the model reduces the part of the
+variability of <span class="math">\(y\)</span> that is unrelated to <span class="math">\(x_j\)</span>, thereby
+strengthening the apparent relationship with <span class="math">\(x_j\)</span>.</p>
+<p>The meaning of the expression “held fixed” may depend on how the values
+of the predictor variables arise. If the experimenter directly sets the
+values of the predictor variables according to a study design, the
+comparisons of interest may literally correspond to comparisons among
+units whose predictor variables have been “held fixed” by the
+experimenter. Alternatively, the expression “held fixed” can refer to a
+selection that takes place in the context of data analysis. In this
+case, we “hold a variable fixed” by restricting our attention to the
+subsets of the data that happen to have a common value for the given
+predictor variable. This is the only interpretation of “held fixed” that
+can be used in an observational study.</p>
+<p>The notion of a “unique effect” is appealing when studying a complex
+system where multiple interrelated components influence the response
+variable. In some cases, it can literally be interpreted as the causal
+effect of an intervention that is linked to the value of a predictor
+variable. However, it has been argued that in many cases multiple
+regression analysis fails to clarify the relationships between the
+predictor variables and the response variable when the predictors are
+correlated with each other and are not assigned following a study
+design.
+(See also the ipython notebook <a class="reference external" href="http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/modeling.ipynb">modeling.ipynb</a>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;Simple linear models.</span>
+<span class="sd">- &quot;model_formulas&quot; is based on examples in Kaplan &quot;Statistical Modeling&quot;.</span>
+<span class="sd">- &quot;polynomial_regression&quot; shows how to work with simple design matrices, like MATLAB&#39;s &quot;regress&quot; command.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author: Thomas Haslwanter</span>
+<span class="sd">Date:   Jan-2013</span>
+<span class="sd">Ver:    2.0</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">read_csv</span>
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<span class="kn">import</span> <span class="nn">statsmodels.regression.linear_model</span> <span class="kn">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.anova</span> <span class="kn">import</span> <span class="n">anova_lm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">model_formulas</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39; Define models through formulas &#39;&#39;&#39;</span>
+    <span class="c"># Get the dta</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s">r&#39;.\data_kaplan\swim100m.csv&#39;</span><span class="p">)</span>
+    
+    <span class="c"># Different models</span>
+    <span class="n">model1</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s">&quot;time ~ sex&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>  <span class="c"># one factor</span>
+    <span class="n">model2</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s">&quot;time ~ sex + year&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>   <span class="c"># two factors</span>
+    <span class="n">model3</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s">&quot;time ~ sex * year&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>   <span class="c"># two factors with interaction</span>
+    
+    <span class="c"># Model information</span>
+    <span class="k">print</span> <span class="n">model1</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+    <span class="k">print</span> <span class="n">model2</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+    <span class="k">print</span> <span class="n">model3</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+    
+    <span class="c"># ANOVAs</span>
+    <span class="k">print</span> <span class="s">&#39;-----------------------------------------------------------------&#39;</span>
+    <span class="k">print</span> <span class="n">anova_lm</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;-----------------------------------------------------------------&#39;</span>
+    <span class="k">print</span> <span class="n">anova_lm</span><span class="p">(</span><span class="n">model2</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;-----------------------------------------------------------------&#39;</span>
+    <span class="k">print</span> <span class="n">anova_lm</span><span class="p">(</span><span class="n">model3</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">polynomial_regression</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39; Define the model directly through the design matrix. Similar to MATLAB&#39;s &quot;regress&quot; command &#39;&#39;&#39;</span>
+
+    <span class="c"># Generate the data</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    
+    <span class="c"># Make the fit. Note that this is another &quot;OLS&quot; than the one in &quot;model_formulas&quot;!</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        
+    <span class="c"># Display the results</span>
+    <span class="k">print</span> <span class="s">&#39;Summary:&#39;</span>
+    <span class="k">print</span> <span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">&#39;The fit parameters are: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&#39;The confidence intervals are:&#39;</span>
+    <span class="k">print</span> <span class="n">res</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">model_formulas</span><span class="p">()</span>
+    <span class="n">polynomial_regression</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bootstrapping">
+<h1>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">¶</a></h1>
+<p>Another type of modelling is <em>bootstrapping</em>/. Sometimes you have data
+describing a distribution, but do not know what type of distribution it
+is. So what can you do if you want to find out e.g. confidence values
+for the mean?</p>
+<p>The answer is bootstrapping. Bootstrapping is a scheme of <em>resampling</em>,
+i.e. taking additional samples repeatedly from the initial sample, to
+provide estimates of its variability. In a case where the distribution
+of the initial sample is unknown, bootstrapping is of especial help in
+that it provides information about the distribution.
+(See also the ipython notebook <a class="reference external" href="http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/bootstrap.ipynb">bootstrap.ipynb</a>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39; Example of bootstrapping the confidence interval for the mean of a sample distribution</span>
+<span class="sd">Since no bootstrapping is implemented in Python, you first have to install the the</span>
+<span class="sd">scikits-bootstrapping module </span>
+<span class="sd">   pip install -e git+http://github.org/cgevans/scikits-bootstrap.git#egg=Package  </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author:  Thomas Haslwanter</span>
+<span class="sd">Date:    March-2013</span>
+<span class="sd">Version: 1.0</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">scikits.bootstrap</span> <span class="kn">as</span> <span class="nn">bootstrap</span>
+
+<span class="k">def</span> <span class="nf">generate_data</span><span class="p">():</span>
+    <span class="c"># Generate a non-normally distributed datasample</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    
+    <span class="c"># Show the data</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Non-normally distributed dataset: Press any key to continue&#39;</span><span class="p">)</span>
+    <span class="c"># plt.show()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">waitforbuttonpress</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>    
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">calc_bootstrap</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="c"># Calculate the bootstrap</span>
+    <span class="n">CIs</span> <span class="o">=</span> <span class="n">bootstrap</span><span class="o">.</span><span class="n">ci</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">statfunction</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+    
+    <span class="c"># Print the data: the &quot;*&quot; turns the array CIs into a list</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;The conficence intervals for the mean are: {0} - {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">CIs</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">()</span>
+    <span class="n">calc_bootstrap</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="StatsFH.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Model language</a><ul>
+<li><a class="reference internal" href="#design-matrix">Design Matrix</a><ul>
+<li><a class="reference internal" href="#definition">Definition</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#simple-regression">Simple Regression</a></li>
+<li><a class="reference internal" href="#multiple-regression">Multiple Regression</a></li>
+<li><a class="reference internal" href="#one-way-anova-cell-means-model">One-way ANOVA (Cell Means Model)</a></li>
+<li><a class="reference internal" href="#one-way-anova-offset-from-reference-group">One-way ANOVA (offset from reference group)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assumptions">Assumptions</a><ul>
+<li><a class="reference internal" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bootstrapping">Bootstrapping</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="statsANOVA.html"
+                        title="previous chapter">Variance Analysis</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="statsSurvival.html"
+                        title="next chapter">Survival Probabilities</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/statsModels.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="statsSurvival.html" title="Survival Probabilities"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="statsANOVA.html" title="Variance Analysis"
+             >previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright March 2013, Thomas Haslwanter.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

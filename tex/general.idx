@@ -1,0 +1,97 @@
+\indexentry{data!categorical}{15}
+\indexentry{nominal}{15}
+\indexentry{data!ordinal}{15}
+\indexentry{data!numerical}{15}
+\indexentry{plots!scatter}{16}
+\indexentry{plots!histogram}{16}
+\indexentry{cumulative frequency}{16}
+\indexentry{plots!boxplot}{17}
+\indexentry{bias}{20}
+\indexentry{randomized controlled trial}{20}
+\indexentry{control group}{20}
+\indexentry{randomization}{21}
+\indexentry{crossover studies}{21}
+\indexentry{blinding}{22}
+\indexentry{replication}{22}
+\indexentry{sample selection}{22}
+\indexentry{factor}{22}
+\indexentry{documentation}{22}
+\indexentry{clinical investigation plan (CIP)}{23}
+\indexentry{mean}{25}
+\indexentry{median}{25}
+\indexentry{mode}{25}
+\indexentry{geometric mean}{25}
+\indexentry{range}{25}
+\indexentry{centiles}{26}
+\indexentry{percentiles}{26}
+\indexentry{cumulative distribution function}{26}
+\indexentry{IQR}{26}
+\indexentry{variance}{26}
+\indexentry{standard deviation}{26}
+\indexentry{standard error}{27}
+\indexentry{skewness}{27}
+\indexentry{central limit theorem}{27}
+\indexentry{variate}{27}
+\indexentry{statistic}{27}
+\indexentry{distributions!normal}{27}
+\indexentry{probability density function}{27}
+\indexentry{distributions!continuous}{29}
+\indexentry{distributions!t-distribution}{29}
+\indexentry{distributions!chi square}{29}
+\indexentry{distributions!F distribution}{29}
+\indexentry{distributions!lognormal}{31}
+\indexentry{distributions!exponential}{32}
+\indexentry{distributions!uniform}{32}
+\indexentry{distributions!discrete}{34}
+\indexentry{distributions!binomial}{34}
+\indexentry{distributions!poisson}{35}
+\indexentry{distributions!discrete}{36}
+\indexentry{normality check}{37}
+\indexentry{plots!$Q-Q$ plot}{37}
+\indexentry{transformation}{37}
+\indexentry{confidence interval}{37}
+\indexentry{hypotheses}{39}
+\indexentry{error!Type I}{39}
+\indexentry{power}{39}
+\indexentry{error!Type II}{40}
+\indexentry{sample size}{40}
+\indexentry{sensitivity}{42}
+\indexentry{specificity}{42}
+\indexentry{positive predictive value}{42}
+\indexentry{negative predictive value}{42}
+\indexentry{prevalence}{43}
+\indexentry{test! t-test, one sample}{45}
+\indexentry{test!Wilcoxon signed rank sum}{46}
+\indexentry{test! t-test, paired}{46}
+\indexentry{test!Mann-Whitney}{49}
+\indexentry{test!ANOVA}{49}
+\indexentry{test!F test}{49}
+\indexentry{Bonferroni correction}{49}
+\indexentry{test!Kruskal-Wallis}{49}
+\indexentry{frequency tables}{53}
+\indexentry{test!chi square}{53}
+\indexentry{test!Fisher's exact}{54}
+\indexentry{correlation coefficient}{57}
+\indexentry{correlation!Pearson}{57}
+\indexentry{correlation!Spearman}{57}
+\indexentry{correlation!Kendall's $\tau$}{57}
+\indexentry{regression}{57}
+\indexentry{covariate}{60}
+\indexentry{regressand}{60}
+\indexentry{endogenous variable}{60}
+\indexentry{regressor}{60}
+\indexentry{exogenous variable}{60}
+\indexentry{regression!multilinear}{60}
+\indexentry{regression!multiple linear|see{regression!multilinear}}{60}
+\indexentry{regression!multilinear}{69}
+\indexentry{ANOVA}{69}
+\indexentry{test!ANOVA}{69}
+\indexentry{test!Levene}{69}
+\indexentry{regression!multilinear}{71}
+\indexentry{statistical modeling}{73}
+\indexentry{regression!multiple}{74}
+\indexentry{bootstrapping}{79}
+\indexentry{survival times}{81}
+\indexentry{Kaplan-Meier survival curve}{81}
+\indexentry{test!logrank}{82}
+\indexentry{Cox regression model}{82}

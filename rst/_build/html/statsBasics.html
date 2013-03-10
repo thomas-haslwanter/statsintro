@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Datatypes &mdash; Introduction to Statistics 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Introduction to Statistics 1.0 documentation" href="index.html" />
+    <link rel="next" title="Characterizing a Distribution" href="statsDistributions.html" />
+    <link rel="prev" title="Why Statistics?" href="statsIntroduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="statsDistributions.html" title="Characterizing a Distribution"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="statsIntroduction.html" title="Why Statistics?"
+             accesskey="P">previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <img alt="_images/title_basics.png" src="_images/title_basics.png" style="height: 100px;" />
+<div class="section" id="datatypes">
+<h1>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h1>
+<p>The type of your data is essential for the choice of test that you have
+to use for your data analysis. Your data can have one of the following
+datatypes:</p>
+<div class="section" id="categorical">
+<h2>Categorical<a class="headerlink" href="#categorical" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="boolean">
+<h3>boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h3>
+<p>Some data can only have two values. For example,</p>
+<ol class="arabic simple">
+<li>male/female</li>
+<li>smoker/non-smoker</li>
+</ol>
+</div>
+<div class="section" id="nominal">
+<h3>nominal<a class="headerlink" href="#nominal" title="Permalink to this headline">¶</a></h3>
+<p>Many classifications require more than two categories, e.g. <em>married /
+single / divorced</em></p>
+</div>
+<div class="section" id="ordinal">
+<h3>ordinal<a class="headerlink" href="#ordinal" title="Permalink to this headline">¶</a></h3>
+<p>These are ordered categorical data, e.g. <em>very few / few / some / many
+/ very many</em></p>
+</div>
+</div>
+<div class="section" id="numerical">
+<h2>Numerical<a class="headerlink" href="#numerical" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="numerical-discrete">
+<h3>Numerical discrete<a class="headerlink" href="#numerical-discrete" title="Permalink to this headline">¶</a></h3>
+<p>For example <em>Number of children: 0 1 2 3 4 5</em></p>
+</div>
+</div>
+<div class="section" id="continuous">
+<h2>Continuous<a class="headerlink" href="#continuous" title="Permalink to this headline">¶</a></h2>
+<p>Whenever possible, it is best to record the data in their original
+continuous format, and only with a sensible number of decimal places.
+For example, it does not make sense to record the body size with more
+than 1 mm accuracy, as there are larger changes in body height between
+the size in the morning and the size in the evening, due to compression
+of the intervertebral disks.</p>
+</div>
+</div>
+<div class="section" id="data-display">
+<h1>Data Display<a class="headerlink" href="#data-display" title="Permalink to this headline">¶</a></h1>
+<p>When working with a statistical data set, you should <em>always</em> first look
+at the raw-data. Our visual system is incredibly good at recognizing
+patterns in visually represented data.</p>
+<div class="section" id="scatter-plots">
+<h2>Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this headline">¶</a></h2>
+<p>This is the simplest way of representing your data: just plot each
+individual data point. (In cases where many data points are superposed,
+you may want to add a little bit of jitter to show each data point.)</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/scatterPlot.png"><img alt="image3" src="_images/scatterPlot.png" style="width: 407.5px; height: 307.5px;" /></a></div>
+</div>
+</div>
+<div class="section" id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h2>
+<p><em>Histograms</em> provide a first good overview of the distribution of your
+data. If you divide by the overall number of data points, you get a
+<em>relative frequency histogram</em>; and if you just connect the top center
+points of each bin, you obtain a <em>relative frequency polygon</em>.</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/Histogram.png"><img alt="image4" src="_images/Histogram.png" style="width: 407.5px; height: 307.5px;" /></a></div>
+</div>
+</div>
+<div class="section" id="cumulative-frequencies">
+<h2>Cumulative Frequencies<a class="headerlink" href="#cumulative-frequencies" title="Permalink to this headline">¶</a></h2>
+<p><em>Cumulative frequency</em> curves indicate the number (or percent) of data
+with less than a given value. This is important for the statistical
+analysis (e.g. when we want to know the data range containing 95% of all
+the values). Cumulative frequencies are also useful for comparing the
+distribution of values in two or more different groups of individuals.</p>
+<p>When you use percentage points, the cumulative frequency presentation
+has the additional advantage that it is bounded:</p>
+<div class="math">
+\[0 \leq x \leq 1\]</div>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/CumulativeFrequencyFunction.png"><img alt="image5" src="_images/CumulativeFrequencyFunction.png" style="width: 407.5px; height: 307.5px;" /></a></div>
+</div>
+</div>
+<div class="section" id="box-plots">
+<h2>Box Plots<a class="headerlink" href="#box-plots" title="Permalink to this headline">¶</a></h2>
+<p><em>Box plots</em> are frequently used in scientific publications to indicate
+values in two or more groups. The error bars typically indicate the
+<em>range</em>. However, outliers are often excluded, and plotted separately.
+There are a number of tests to check for outliers. One of them is to
+check for data which lie more than 1.5 * <em>inter-quartile-range</em> (IQR)
+above or below the first/third quartile.</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/boxplot.png"><img alt="image6" src="_images/boxplot.png" style="width: 407.5px; height: 307.5px;" /></a></div>
+<div class="line">[fig:Boxplot]</div>
+</div>
+</div>
+<div class="section" id="programs-data-display">
+<h2>Programs: Data Display<a class="headerlink" href="#programs-data-display" title="Permalink to this headline">¶</a></h2>
+<p>See also the ipython notebook <a class="reference external" href="http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/showStats.ipynb">showStats.ipynb</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39; Show different ways to present statistical data</span>
+<span class="sd">This script is written in &quot;MATLAB&quot; or &quot;ipython&quot; style, to show how</span>
+<span class="sd">best to use Python interactively.</span>
+<span class="sd">Note than in ipython, the &quot;show()&quot; commands are automatically generated.</span>
+<span class="sd">The examples contain:</span>
+<span class="sd">- scatter plots</span>
+<span class="sd">- histograms</span>
+<span class="sd">- boxplots</span>
+<span class="sd">- probplots</span>
+<span class="sd">- cumulative density functions</span>
+<span class="sd">- regression fits</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author: thomas haslwanter</span>
+<span class="sd">Date:   Dec-2012</span>
+<span class="sd">Version: 1.1</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c"># First, import the libraries that you are going to need. You could also do</span>
+<span class="c"># that later, but it is better style to do that at the beginning.</span>
+
+<span class="c"># pylab imports the numpy, scipy, and matplotlib.pyplot libraries into the</span>
+<span class="c"># current environment</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="kn">as</span> <span class="nn">stats</span>
+
+<span class="c"># Univariate data -------------------------</span>
+<span class="c"># Generate data that are normally distributed</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="c"># Scatter plot</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Scatter Plot&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">()</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="c"># Histogram</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Data Values&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Histogram, default settings&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Data Values&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Histogram, 25 bins&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="c"># Cumulative probability density</span>
+<span class="n">numbins</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">cdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">cumfreq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">numbins</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">cdf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Data Values&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Cumulative Frequency&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Cumulative probablity density function&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="c"># Boxplot</span>
+<span class="c"># The error bars indiacte the range, and the box consists of the</span>
+<span class="c"># first, second (middle) and third quartile</span>
+<span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Boxplot&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Values&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Boxplot, horizontal&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Values&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="c"># Check for normality</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">plt</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Probplot - check for normality&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="c"># Bivariate data -------------------------</span>
+
+<span class="c"># Generate data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">10</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c"># Scatter plot</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="c"># This one is quite similar to &quot;plot(x,y,&#39;.&#39;)&quot;</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Scatter plot of data&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="c"># LineFit</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">((</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">hold</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="study-design">
+<h1>Study Design<a class="headerlink" href="#study-design" title="Permalink to this headline">¶</a></h1>
+<p>To design a medical study properly is not only advisable - it is even
+required by ISO 14155-1:2003, for <em>Clinical investigations of medical
+devices for human subjects</em>. This norm specifies many aspects of your
+clinical study. It enforces the preparation of a <em>Clinical Investigation
+Plan (CIP)</em>, specifying</p>
+<ul class="simple">
+<li>The designation of a <em>monitor</em> for the investigation.</li>
+<li>The designation of a <em>clinical investigator</em>.</li>
+<li>Specification the data handling.</li>
+<li>Specification of the inclusion/exclusion criteria for the subjects.</li>
+<li>Specification of the paradigm.</li>
+<li>Specification and justification of the chosen sample numbers.</li>
+<li>Description of the data analysis.</li>
+</ul>
+<div class="section" id="types-of-studies">
+<h2>Types of Studies<a class="headerlink" href="#types-of-studies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="observational-or-experimental">
+<h3>Observational or experimental<a class="headerlink" href="#observational-or-experimental" title="Permalink to this headline">¶</a></h3>
+<p>With <em>observational</em> studies the researcher only collects information,
+but does not interact with the study population. In contrast, in
+<em>experimental</em> studies the researcher deliberately influences events
+(e.g. treats the patient with a new type of treatment) and investigates
+the effects of these interventions.</p>
+</div>
+<div class="section" id="prospective-or-retrospective">
+<h3>Prospective or retrospective<a class="headerlink" href="#prospective-or-retrospective" title="Permalink to this headline">¶</a></h3>
+<p>In <em>prospective</em> studies the data are collected, starting with the
+beginning of the study. In contrast, a <em>retrospective</em> study takes data
+acquired from previous events, e.g. routine tests taken at a hospital.</p>
+</div>
+<div class="section" id="longitudinal-or-cross-sectional">
+<h3>Longitudinal or cross-sectional<a class="headerlink" href="#longitudinal-or-cross-sectional" title="Permalink to this headline">¶</a></h3>
+<p>In <em>longitudinal</em> investigations, the researcher collects information
+over a period of time, maybe multiple times from each patient. In
+contrast, in <em>cross-sectional</em> studies individuals are observed only
+once. For example, most surveys are cross-sectional, but experiments are
+usually longitudinal.</p>
+</div>
+<div class="section" id="case-control-and-cohort-studies">
+<h3>Case control and Cohort studies<a class="headerlink" href="#case-control-and-cohort-studies" title="Permalink to this headline">¶</a></h3>
+<p>In <em>case control</em> studies, first the patients are treated, and then they
+are selected for inclusion in the study, based on some characteristic
+(e.g. if they responded to a certain medication). In contrast, in
+<em>cohort studies</em>, first subjects of interest are selected, and then
+these subjects are studied over time, e.g. for their response to a
+treatment.</p>
+</div>
+</div>
+<div class="section" id="design-of-experiments">
+<h2>Design of Experiments<a class="headerlink" href="#design-of-experiments" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bias">
+<h3>Bias<a class="headerlink" href="#bias" title="Permalink to this headline">¶</a></h3>
+<p>In general, when selecting our subject you try to make them
+representative of the population that you want to study; and you try to
+conduct your experiments in a way representative of investigations by
+other researchers. However, it is <em>very</em> easy to get a <em>bias</em> into your
+data. Bias can arise from a number of sources:</p>
+<ul class="simple">
+<li>The selection of subjects.</li>
+<li>The structure of the experiment.</li>
+<li>The measurement device.</li>
+<li>The analysis of the data.</li>
+</ul>
+<p>Care should be taken to avoid bias as much as possible.</p>
+</div>
+<div class="section" id="randomized-controlled-trial">
+<h3>Randomized controlled trial<a class="headerlink" href="#randomized-controlled-trial" title="Permalink to this headline">¶</a></h3>
+<p>The gold standard for experimental scientific clinical trials is the
+<em>randomized controlled trial</em>. Thereby bias is avoided by splitting the
+subjects to be tested into an <em>intervention group</em> and a <em>control
+group</em>. The group allocation is made <em>random</em>. By having the groups
+differ in only one aspect, i.e. is the factor <em>treatment</em>, we should be
+able to detect the effect of the treatment on the patients. Factors that
+can affect the outcome of the experiment are called <em>covariates</em> or
+<em>confoundings</em>. Through <em>randomization</em>, covariates should be balanced
+across the groups.</p>
+</div>
+<div class="section" id="randomization">
+<h3>Randomization<a class="headerlink" href="#randomization" title="Permalink to this headline">¶</a></h3>
+<p>This may be one of the most important aspects of experimental planning.
+Randomization is used to avoid bias as much as possible, and there are
+different ways to randomize an experiment. For the randomization,
+<em>random number generators</em>, which are available with most computer
+languages, can be used. To minimize the chance of bias, the randomly
+allocated numbers should be presented to the experimenter as late as
+possible.</p>
+<p>Depending on the experiment, there are different ways to randomize the
+group assingment.</p>
+<div class="section" id="simple-randomization">
+<h4>Simple randomization<a class="headerlink" href="#simple-randomization" title="Permalink to this headline">¶</a></h4>
+<p>This procedure is robust against selection and accidental bias. The
+disadvantage is that the resulting groupsize can differ significantly.</p>
+<p>For many types of data analysis it is important to have the same sample
+number in each group. To achieve this, other options are possible:</p>
+</div>
+<div class="section" id="block-randomization">
+<h4>Block randomization<a class="headerlink" href="#block-randomization" title="Permalink to this headline">¶</a></h4>
+<p>This is used to keep the number of subjects in the different groups
+closely balanced at all times. For example, if you have two types of
+treatment, A and B, you can allocate them to two subjects in the
+following blocks:</p>
+<ol class="arabic simple">
+<li>AABB</li>
+<li>ABAB</li>
+<li>ABBA</li>
+<li>BBAA</li>
+<li>BABA</li>
+<li>BAAB</li>
+</ol>
+<p>Based on this, you can use a random number generator to generate random
+integers between 1 and 6, and use the corresponding blocks to allocate
+the respective treatments. This will keep the number of subjects in each
+group always almost equal.</p>
+</div>
+<div class="section" id="minimization">
+<h4>Minimization<a class="headerlink" href="#minimization" title="Permalink to this headline">¶</a></h4>
+<p>A closely related, but not completely random way to allocate a treatment
+is <em>minimization</em>. Thereby you take whichever treatment has the smallest
+number of subjects, and allocate this treatment with a probability
+greater than 0.5 to the next patient.</p>
+</div>
+<div class="section" id="stratified-randomization">
+<h4>Stratified randomization<a class="headerlink" href="#stratified-randomization" title="Permalink to this headline">¶</a></h4>
+<p>Sometimes you may want to include a wider variety of subjects, with
+different characteristics. For example, you may choose to have younger
+as well as older subjects. In that case you should try to keep the
+number of subjects within each <em>stratum</em> balanced. For this you will
+have to keep different lists of random numbers for each group of
+subjects.</p>
+</div>
+</div>
+<div class="section" id="crossover-studies">
+<h3>Crossover studies<a class="headerlink" href="#crossover-studies" title="Permalink to this headline">¶</a></h3>
+<p>An alternative to randomization is the <em>crossover</em> design of studies. A
+crossover study is a longitudinal study in which subjects receive a
+sequence of different treatments. Every subject receives every
+treatment. To avoid causal effects, the sequence of the treatment
+allocation should be randomized.</p>
+</div>
+<div class="section" id="blinding">
+<h3>Blinding<a class="headerlink" href="#blinding" title="Permalink to this headline">¶</a></h3>
+<p>Consciously or not, the experimenter can significantly influence the
+outcome of an experiment. For example, a young researcher with a new
+&#8220;brilliant&#8221; idea for a new treatment will be bias in the execution of
+the experiment, as well in the analysis of the data, to see his
+hypothesis confirmed. To avoid such a subjective influence, ideally the
+experimenter as well as the subject should be blinded to the therapy.
+This is referred to as <em>double blinding</em>.</p>
+</div>
+<div class="section" id="replication">
+<h3>Replication<a class="headerlink" href="#replication" title="Permalink to this headline">¶</a></h3>
+<p>For variable measurements it is helpful to have a number of independent
+repetitions of each measurement.</p>
+</div>
+<div class="section" id="sample-selection">
+<h3>Sample selection<a class="headerlink" href="#sample-selection" title="Permalink to this headline">¶</a></h3>
+<p>When selecting your subjects, you should take care of two points:</p>
+<ol class="arabic simple">
+<li>Make sure that the samples are representative of the population.</li>
+<li>In comparative studies, care is needed in making groups similar with
+respect to known sources of variation.</li>
+</ol>
+<p>For example, if you select your subjects randomly from patients at a
+hospital, you automatically bias your sample towards subjects with
+health problems.</p>
+</div>
+<div class="section" id="sample-size">
+<h3>Sample size<a class="headerlink" href="#sample-size" title="Permalink to this headline">¶</a></h3>
+<p>Many studies fail, because the sample size is too small to observed an
+effect of the desired magnitude. To plan your sample size, you have to
+know</p>
+<ul class="simple">
+<li>What is the variance of the parameter in the population you are
+investigating.</li>
+<li>What is the magnitude of the effect you are interested in, relative
+to the standard deviation of the parameter.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="structure-of-experiments">
+<h2>Structure of Experiments<a class="headerlink" href="#structure-of-experiments" title="Permalink to this headline">¶</a></h2>
+<p>In a designed experiment, there may be several conditions, called
+<em>factors</em>, that are controlled by the experimenter. If each combination
+of factors is tested, we talk about a <em>factorial design</em> of the
+experiment.</p>
+<p>In planning the analysis, you have to keep the important distinction
+between <em>within subject</em> comparisons, and <em>between subjects</em>
+comparisons.</p>
+</div>
+<div class="section" id="data-management">
+<h2>Data Management<a class="headerlink" href="#data-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<p>Make sure that you document all the factors that may influence your
+results:</p>
+<ul class="simple">
+<li>The date and time of the experiment.</li>
+<li>Information about the experimenters and the subjects.</li>
+<li>The exact paradigm that you have decided on.</li>
+<li>Anything noteworthy that happens during the experiment.</li>
+</ul>
+</div>
+<div class="section" id="data-handling">
+<h3>Data Handling<a class="headerlink" href="#data-handling" title="Permalink to this headline">¶</a></h3>
+<p>You can already significantly facilitate the data handling by storing
+your data with telltale names. For example, if you execute your
+experiments in Vienna and in Linz, you can store your rawdata with the
+format &#8220;[town][year][month][day].dat&#8221;. For example, an experiment in
+Vienna on April 1, 2013 would be stored as &#8220;vi20130401.dat&#8221;.</p>
+<p>When you have finished recording the data, back up your data right away.
+Best do that into a directory that is separate from the one where you do
+your data analysis afterwards.</p>
+</div>
+</div>
+<div class="section" id="clinical-investigation-plan">
+<h2>Clinical Investigation Plan<a class="headerlink" href="#clinical-investigation-plan" title="Permalink to this headline">¶</a></h2>
+<p>The ISO norm 14155 specifies in detail the requirements for the
+<em>clinical investigation plan (CIP)</em>:</p>
+<ol class="arabic simple">
+<li>Type of study (e.g. double-blind, with or without control group
+etc.).</li>
+<li>Discussion of the control group and the allocation procedure.</li>
+<li>Description of the paradigm.</li>
+<li>Description and justification of primary endpoint of study.</li>
+<li>Description and justification of chosen measurement variable.</li>
+<li>Measurement devices and their calibration.</li>
+<li>Inclusion criteria for subjects.</li>
+<li>Exclusion criteria for subjects.</li>
+<li>Point of inclusion (&#8220;When is a subject part of the study?&#8221;)</li>
+<li>Description of the measurement procedure.</li>
+<li>Criteria and procedures for the dropout of a subject.</li>
+<li>Chosen sample number and level of significance, and their
+justification.</li>
+<li>Procedure for documentation of negative effects or side-effects.</li>
+<li>List of factors that can influence the measurement results or their
+interpretation.</li>
+<li>Procedure for documentation, also for missing data.</li>
+<li>Statistical analysis procedure.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="StatsFH.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Datatypes</a><ul>
+<li><a class="reference internal" href="#categorical">Categorical</a><ul>
+<li><a class="reference internal" href="#boolean">boolean</a></li>
+<li><a class="reference internal" href="#nominal">nominal</a></li>
+<li><a class="reference internal" href="#ordinal">ordinal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#numerical">Numerical</a><ul>
+<li><a class="reference internal" href="#numerical-discrete">Numerical discrete</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#continuous">Continuous</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-display">Data Display</a><ul>
+<li><a class="reference internal" href="#scatter-plots">Scatter Plots</a></li>
+<li><a class="reference internal" href="#histograms">Histograms</a></li>
+<li><a class="reference internal" href="#cumulative-frequencies">Cumulative Frequencies</a></li>
+<li><a class="reference internal" href="#box-plots">Box Plots</a></li>
+<li><a class="reference internal" href="#programs-data-display">Programs: Data Display</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#study-design">Study Design</a><ul>
+<li><a class="reference internal" href="#types-of-studies">Types of Studies</a><ul>
+<li><a class="reference internal" href="#observational-or-experimental">Observational or experimental</a></li>
+<li><a class="reference internal" href="#prospective-or-retrospective">Prospective or retrospective</a></li>
+<li><a class="reference internal" href="#longitudinal-or-cross-sectional">Longitudinal or cross-sectional</a></li>
+<li><a class="reference internal" href="#case-control-and-cohort-studies">Case control and Cohort studies</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#design-of-experiments">Design of Experiments</a><ul>
+<li><a class="reference internal" href="#bias">Bias</a></li>
+<li><a class="reference internal" href="#randomized-controlled-trial">Randomized controlled trial</a></li>
+<li><a class="reference internal" href="#randomization">Randomization</a><ul>
+<li><a class="reference internal" href="#simple-randomization">Simple randomization</a></li>
+<li><a class="reference internal" href="#block-randomization">Block randomization</a></li>
+<li><a class="reference internal" href="#minimization">Minimization</a></li>
+<li><a class="reference internal" href="#stratified-randomization">Stratified randomization</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#crossover-studies">Crossover studies</a></li>
+<li><a class="reference internal" href="#blinding">Blinding</a></li>
+<li><a class="reference internal" href="#replication">Replication</a></li>
+<li><a class="reference internal" href="#sample-selection">Sample selection</a></li>
+<li><a class="reference internal" href="#sample-size">Sample size</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#structure-of-experiments">Structure of Experiments</a></li>
+<li><a class="reference internal" href="#data-management">Data Management</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#data-handling">Data Handling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clinical-investigation-plan">Clinical Investigation Plan</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="statsIntroduction.html"
+                        title="previous chapter">Why Statistics?</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="statsDistributions.html"
+                        title="next chapter">Characterizing a Distribution</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/statsBasics.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="statsDistributions.html" title="Characterizing a Distribution"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="statsIntroduction.html" title="Why Statistics?"
+             >previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright March 2013, Thomas Haslwanter.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

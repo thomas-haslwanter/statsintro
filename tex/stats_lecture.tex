@@ -1,0 +1,97 @@
+% ----------------------------------------------------------------
+% Book Class (This is a LaTeX2e document)  ***********************
+% ----------------------------------------------------------------
+\documentclass[11pt,twoside,a4paper]{book}
+\usepackage{color}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+%\usepackage[nottoc]{tocbibind}
+%\usepackage{natbib}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{courier}
+%\usepackage{makeidx}
+\usepackage{multind}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\lstset{
+         basicstyle=\footnotesize\ttfamily, % Standardschrift
+         %numbers=left,               % Ort der Zeilennummern
+         numberstyle=\tiny,          % Stil der Zeilennummern
+         %stepnumber=2,               % Abstand zwischen den Zeilennummern
+         numbersep=5pt,              % Abstand der Nummern zum Text
+         tabsize=2,                  % Groesse von Tabs
+         extendedchars=true,         %
+         breaklines=true,            % Zeilen werden Umgebrochen
+         keywordstyle=\color{red},
+    		frame=b,
+ %        keywordstyle=[1]\textbf,    % Stil der Keywords
+ %        keywordstyle=[2]\textbf,    %
+ %        keywordstyle=[3]\textbf,    %
+ %        keywordstyle=[4]\textbf,   \sqrt{\sqrt{}} %
+         stringstyle=\color{blue}\ttfamily, % Farbe der String
+         showspaces=false,           % Leerzeichen anzeigen ?
+         showtabs=false,             % Tabs anzeigen ?
+         xleftmargin=17pt,
+         framexleftmargin=17pt,
+         framexrightmargin=5pt,
+         framexbottommargin=4pt,
+         %backgroundcolor=\color{lightgray},
+         showstringspaces=false      % Leerzeichen in Strings anzeigen ?
+         language=Python
+ }
+ \lstloadlanguages{ Python }
+%\DeclareCaptionFont{blue}{\color{blue}}
+%\captionsetup[lstlisting]{singlelinecheck=false, labelfont={blue}, textfont={blue}}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+
+\usepackage{xr}
+\externaldocument{Basics}
+\externaldocument{Distributions}
+\externaldocument{Relations}
+\externaldocument{Models}
+\externaldocument{Multivar}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%\newcommand{\py}[1]{\lstinputlisting[label=py_{#1},caption={#1},language=Python]{../Code/{#1}}}
+
+\makeindex{general}
+\makeindex{python}
+% \includeonly{Survival}
+% ----------------------------------------------------------------
+\begin{document}
+\input{./title.tex}
+
+\tableofcontents
+
+\include{Introduction}
+\include{Basics}
+\include{Distributions}
+\include{Tests_Intro}
+\include{Tests_Continuous}
+\include{Tests_Categorical}
+\include{Relations}
+\include{Multivar}
+\include{Models}
+\include{Survival}
+\include{Appendix}
+
+\clearpage
+
+\bibliographystyle{plainnat}
+\bibliography{thomas}
+
+\printindex{general}{Index Topics}
+\printindex{python}{Python Programs}
+
+\end{document}
+% ----------------------------------------------------------------

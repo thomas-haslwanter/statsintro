@@ -1,0 +1,155 @@
+\chapter{ Statistical Tests }
+
+\section{Hypothesis tests}\label{sec:hypotheses} \index{general}{hypotheses}
+Statistical evaluations are based on the initially often counterintuitive procedure of \emph{hypothesis tests}. A hypothesis test is a standard format for assessing statistical evidence. It is ubiquitous in scientific literature, most often appearing in the form of statements of \emph{statistical significance} and quotations like $"p<0.01"$ that pepper scientific journals. Thereby you proceed as follows: you
+
+\begin{itemize}
+  \item   state your hypothesis.
+  \item   decide which value you want to test your hypothesis on.
+  \item   calculate the \emph{probability p} that you find the given value, assuming that your hypothesis is true
+\end{itemize}
+
+The first hypothesis is referred to as \emph{null-hypothesis}, since we assume that there is \emph{null} difference between the hypothesis and the result. The found probability for a specific target value is the \emph{p-value} that you typically find in the literature. If $p<0.05$, the difference between your sample and the value that you check is \emph{significant}. If $p<0.001$, we speak of a \emph{highly significant} difference.
+
+An example for a \emph{null hypothesis}: "We assume that our population has a mean value of 7."
+
+\subsection{ Types of Error}
+In hypothesis testing, two types of errors can occur:
+
+\subsubsection{Type I errors} \index{general}{error!Type I} \index{general}{power}
+These are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and \emph{is set before you start the data analysis}.
+
+For example, assume that the population of young Austrian adults has a mean IQ of 105 (i.e. we are smarter than the rest) and a standard deviation of 15. We now want to check if the average FH student in Linz has the same IQ as the average Austrian, and we select 20 students. We set $\alpha=0.05$, i.e. we set our significance level to 95\%.
+Let us now assume that the average student has in fact the same IQ as the average Austrian. If we repeat our study 20 times, we will find one of those 20 times that our sample mean is significantly different from the Austrian average IQ. Such a finding would be a false result, despite the fact that our assumption is correct, and would constitute a \emph{type I error}.
+
+\subsubsection{Type II errors and Test Power}\index{general}{error!Type II}
+If we want to answer the question "How much chance do we have to reject the null hypothesis when the alternative is in fact true?" Or in other words, "What’s the probability of detecting a real effect?" we are faced with a different problem. To answer these questions, we need an \emph{alternative hypothesis}.
+
+For the example given above, an \emph{alternative hypothesis} could be: "We assume that our population has a mean value of 6."
+
+A \emph{Type II error} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false. The probability for this type of error is commonly indicated with $\beta$. The \emph{power} of a statistical test is defined as $(1-\beta)*100$, and is the chance of correctly accepting the alternate hypothesis. Figure \ref{fig:power1} shows the meaning of the \emph{power} of a statistical test. Note that for finding the power of a test, you need an alternative hypothesis.
+
+\subsection{Sample Size}\index{general}{sample size}
+The power of a statistical test depends on four factors:
+
+\begin{enumerate}
+  \item  $\alpha$, the probability for Type I errors
+  \item  $\beta$, the probability for Type II errors ( $\Rightarrow$ power of the test)
+  \item  $d$, the magnitude of the investigated effect relative to $\sigma$, the standard deviation of the sample
+  \item  $n$, the sample size
+\end{enumerate}
+
+Only 3 of these 4 parameters can be chosen, the $4^{th}$ is then automatically fixed.
+
+The size of the difference, $d$, between mean treatment outcomes that will answer the clinical question being posed is often called \emph{clinical significance} or \emph{clinical relevance}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{../Images/power1.png}\\
+  \caption{\emph{Power} of a statistical test, for comparing the mean value of two given distributions.}\label{fig:power1}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{../Images/power2.png}\\
+  \caption{Effect of an increase in sampling size on the power of a test.}\label{fig:power2}
+\end{figure}
+
+\subsubsection{ Examples for some special cases }
+
+For a test on one mean, this leads to a \emph{minimum sample number} of
+
+\begin{equation}
+  n = \frac{{{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{\sigma ^2}}}{{{d^2}}}
+\end{equation}
+
+Here z is the standardized normal variable (see also chapter \ref{sec:normalDistribution})
+
+\begin{equation}
+  z = \frac{x-\mu}{\sigma} .
+\end{equation}
+
+For finding a difference between two normally distributed means, the minimum number of samples we need in each group is
+
+\begin{equation}
+  {n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{d^2} .
+\end{equation}
+
+\subsubsection{ Programs: SampleSize }
+\lstinputlisting[label=py:sampleSize,caption=sampleSize.py, language=Python]{../Code/sampleSize.py}
+\index{python}{sampleSize}
+
+\section{ Sensitivity and Specificity }
+
+Some of the more confusing terms in statistical analysis are \emph{sensitivity} \index{general}{sensitivity} and \emph{specificity} \index{general}{specificity}. A related topic are \emph{positive predictive value (PPV)} \index{general}{positive predictive value} and \emph{negative predictive value (NPV)} \index{general}{negative predictive value}. The following diagram shows how the four are related:
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Sensitivity_Specificity_Diagram.png}\\
+  \caption{Relationship between sensitivity, specificity, positive predictive value and negative predictive value. (From: Wikipedia)}\label{fig:sens_spec_diagram}
+\end{figure}
+
+\begin{itemize}
+  \item \textbf{Sensitivity} = proportion of positives that are correctly identified by a test = probability of a positive test, given the patient is ill.
+  \item \textbf{Specificity} = proportion of negatives that are correctly identified by a test = probability of a negative test, given that patient is well.
+  \item \textbf{Positive predictive value} is the proportion of patients with positive test results who are correctly diagnosed.
+  \item \textbf{Negative predictive value} is the proportion of patients with negative test results who are correctly diagnosed.
+\end{itemize}
+
+While sensitivity and specificity are independent of prevalence, they do not tell us what portion of patients with abnormal test results are truly abnormal. This information is provided by the positive/negative predictive value. However, as Fig. \ref{fig:prevalence} indicates, these values are affected by the \emph{prevalence} \index{general}{prevalence} of the disease. In other words, we need to know the prevalence of the disease as well as the PPV/NPV of a test to provide a sensible interpretation of the test results.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Sensitivity_Specificity.png}\\
+  \caption{Effect of prevalence on PPV and NPV. "T" stands for "test", and "P" for "patient".} \label{fig:prevalence}
+\end{figure}
+
+Figure \ref{fig:sens_spec_example} gives a worked example:
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Sensitivity_Specificity_Example.png}\\
+  \caption{Worked example. (From: Wikipedia)}\label{fig:sens_spec_example}
+\end{figure}
+
+\paragraph{Related calculations}
+
+\begin{itemize}
+  \item False positive rate ($\alpha$) = type I error = $1-specificity$ = $\frac{FP}{FP + TN}$ = $\frac{180}{180+1820}$ = 9\%
+  \item False negative rate ($\beta$) = type II error = $1−sensitivity$ = $\frac{FN}{TP + FN}$ = $\frac{10}{20+10}$ = 33\%
+  \item Power = sensitivity = $1−\beta$
+  \item Likelihood ratio positive = $\frac{sensitivity}{1−specificity}$ = $\frac{66.67\%}{1−91\%}$ = 7.4
+  \item Likelihood ratio negative = $\frac{1−sensitivity}{specificity}$ = $\frac{1−66.67\%}{91\%}$ = 0.37
+\end{itemize}
+
+Hence with large numbers of false positives and few false negatives, a positive FOB screen test is in itself poor at confirming cancer (PPV = 10\%) and further investigations must be undertaken; it did, however, correctly identify 66.7\% of all cancers (the sensitivity). However as a screening test, a negative result is very good at reassuring that a patient does not have cancer (NPV = 99.5\%) and at this initial screen correctly identifies 91\% of those who do not have cancer (the specificity).
+
+\section{ Large Sample Tests }
+
+Here I give an overview of the most common statistical tests for different combinations of data. This overview is taken from \cite{Riffenburgh2012}.
+\begin{table}
+  \centering
+  \footnotesize{
+  \begin{tabular}{ p{2cm} p{2cm} l | p{2.5cm} p{3cm} p{2.5cm} p{3cm} }
+     \multicolumn{3}{c}{Independent Variable}  & \multicolumn{4}{c}{Dependent Variable} \\
+     & & & 2 Categories & $>2$ Categories & Ranked & Continuous \\
+     \hline
+     \multirow{2}{*}{1 or 2 Categories} & Not Matched (2 Samples) & & Fisher's exact test & Fisher's exact test or $\chi^2$ test & Mann-Whitney test & 2-Sample t test \\
+     & Matched (Repeated) or Single Sample & & Binomial(Poisson) test & $\chi^2$ Goodness-of-fit test against uniform distribution & Wilcoxon signed-rank test & Paired t test \\
+
+     \hline
+     \multirow{2}{*}{$>2$ Categories} & Not Matched& & Fisher's exact test & Fisher's exact test or $\chi^2$ test & Kruskal-Wallis test & One-way ANOVA\\
+     & Matched & & Cochran's Q test & $\chi^2$ Goodness-of-fit test against uniform distribution  & Friedman test & One-way ANOVA \\
+
+     \hline
+     \multirow{2}{*}{Ranked} & Not Matched & & Royston Ptrend test & Kruskal-Wallis test & Cusick Nptrend test & ANOVA trend test \\
+
+     & Matched & & Cochran's Q test & $\chi^2$ Goodness-of-fit test against uniform distribution  & Page's L test & ANOVA trend test \\
+     & Continuous & & Logistic regression & Multinomial regression & Ordinal regression & Common regression or correlation \\
+
+  \end{tabular}
+  }
+
+  \caption{Typical tests for statistical problems.}\label{table:tests}
+\end{table}
+

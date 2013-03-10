@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>One Proportion &mdash; Introduction to Statistics 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Introduction to Statistics 1.0 documentation" href="index.html" />
+    <link rel="next" title="Correlation" href="statsRelation.html" />
+    <link rel="prev" title="Distribution of a Sample Mean" href="statsContinuous.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="statsRelation.html" title="Correlation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="statsContinuous.html" title="Distribution of a Sample Mean"
+             accesskey="P">previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <img alt="_images/title_categorical.png" src="_images/title_categorical.png" style="height: 100px;" />
+<p>In a sample of individuals the number falling into a particular group is
+called the <em>frequency</em>, so the analysis of categorical data is the
+analysis of frequencies. When two or more groups are compared the data
+are often shown in the form of a <em>frequency table</em>, sometimes also
+called <em>contingency table</em>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="31%" />
+<col width="29%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head"><em>Right Handed</em></th>
+<th class="head"><em>Left Handed</em></th>
+<th class="head"><em>Total</em></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>Males</em></td>
+<td>43</td>
+<td>9</td>
+<td>52</td>
+</tr>
+<tr class="row-odd"><td><em>Females</em></td>
+<td>44</td>
+<td>4</td>
+<td>48</td>
+</tr>
+<tr class="row-even"><td><em>Total</em></td>
+<td>87</td>
+<td>13</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>[table:frequency]</p>
+<div class="section" id="one-proportion">
+<h1>One Proportion<a class="headerlink" href="#one-proportion" title="Permalink to this headline">¶</a></h1>
+<p>If you have one sample group of data, you can check if your sample is
+representative of the standard population. To do so, you have to know
+the proportion <span class="math">\(p\)</span> of the characteristic in the standard
+population. It can be shown that a in population with a characteristic
+with probability <span class="math">\(p\)</span>, the standard error of samples with this
+characteristic is given by</p>
+<div class="math">
+\[se(p) = \sqrt{p(1-p)/n}\]</div>
+<p>and the corresponding 95% confidence interval is</p>
+<div class="math">
+\[ci = mean \pm se * t_{n,0.95}\]</div>
+<p>If your data lie outside this confidence interval, they are <em>not</em>
+representative of the population.</p>
+</div>
+<div class="section" id="frequency-tables">
+<h1>Frequency Tables<a class="headerlink" href="#frequency-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="chi-square-test">
+<h2>Chi-square Test<a class="headerlink" href="#chi-square-test" title="Permalink to this headline">¶</a></h2>
+<p>Assume you have observed absolute frequencies <span class="math">\(o_i\)</span> and expected
+absolute frequencies <span class="math">\(e_i\)</span> under the Null hypothesis of your test
+then it holds</p>
+<div class="math">
+\[V = \sum_i \frac{(o_i-e_i)^2}{e_i} \approx \chi^2_f\]</div>
+<p>.</p>
+<p>where <span class="math">\(f\)</span> are the degrees of freedom. <span class="math">\(i\)</span> might denote a
+simple index running from <span class="math">\(1,...,I\)</span> or even a multiindex
+<span class="math">\((i_1,...,i_p)\)</span> running from <span class="math">\((1,...,1)\)</span> to
+<span class="math">\((I_1,...,I_p)\)</span>.</p>
+<p>The test statistic <span class="math">\(V\)</span> is approximately <span class="math">\(\chi^2\)</span>
+distributed, if</p>
+<ul class="simple">
+<li>for all absolute expected frequencies <span class="math">\(e_i\)</span> holds
+<span class="math">\(e_i \geq 1\)</span> and</li>
+<li>for at least 80% of the absolute expected frequencies <span class="math">\(e_i\)</span>
+holds <span class="math">\(e_i \geq 5\)</span>.</li>
+</ul>
+<p>The degrees of freedom can be computed by the numbers of absolute
+observed frequencies which can be chosen freely. We know that the sum of
+absolute expected frequencies is</p>
+<div class="math">
+\[\sum_i o_i = n\]</div>
+<p>which means that the maximum number of degrees of freedom is
+<span class="math">\(I-1\)</span>. We might have to subtract from the number of degrees of
+freedom the number of parameters we need to estimate from the sample,
+since this implies further relationships between the observed
+frequencies.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="math">\(\chi^2\)</span> test can be used to generate &#8220;quick and dirty&#8221; test,
+e.g.</p>
+<p><span class="math">\(H_0:\)</span> The random variable <span class="math">\(X\)</span> is symmetrically distributed
+versus</p>
+<p><span class="math">\(H_1:\)</span> the random variable <span class="math">\(X\)</span> is not symmetrically
+distributed.</p>
+<p>We know that in case of a symmetrical distribution the arithmetic mean
+<span class="math">\(\bar{x}\)</span> and median should be nearly the same. So a simple way to
+test this hypothesis would be to count how many observations are less
+than the mean (<span class="math">\(n_-\)</span>)and how many observations are larger than the
+arithmetic mean (<span class="math">\(n_+\)</span>). If mean and median are the same than 50%
+of the observation should smaller than the mean and 50% should be larger
+than the mean. It holds</p>
+<div class="math">
+\[V = \frac{(n_- - n/2)^2}{n/2} + \frac{(n_+ - n/2)^2}{n/2} \approx \chi^2_1\]</div>
+<p>.</p>
+</div>
+<div class="section" id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<p>The Chi-square test is a pure hypothesis test. It tells you if your
+observed frequency can be due to a random sample selection from a single
+population. A number of different expressions have been used for
+chi-square tests, which are due to the original derivation of the
+formulas (from the time before computers were pervasive). Expression
+such as <em>2x2 tables</em>, <em>r-c tables</em>, or <em>Chi-square test of contingency</em>
+all refer to frequency tables and are typically analyzed with chi-square
+tests.</p>
+</div>
+</div>
+<div class="section" id="fisher-s-exact-test">
+<h2>Fisher&#8217;s Exact Test<a class="headerlink" href="#fisher-s-exact-test" title="Permalink to this headline">¶</a></h2>
+<p>For small sample numbers, corrections should be made for some bias that
+is caused by the use of the continuous chi-squared distribution. This
+correction is referred to as <em>Yates correction</em>.</p>
+<p>If the requirement that 80% of cells should have expected values of at
+least 5 is not fulfilled, <em>Fisher’s exact test</em> should be used. This
+test is based on the observed row and column totals. The method consists
+of evaluating the probability associated with all possible 2x2 tables
+which have the same row and column totals as the observed data, making
+the assumption that the null hypothesis (i.e. that the row and column
+variables are unrelated) is true. In most cases, Fisher’s exact test is
+preferable to the chi-square test. But until the advent of powerful
+computers, it was not practical. You should use it up to approximately
+10-15 cells in the frequency tables.</p>
+</div>
+</div>
+<div class="section" id="analysis-programs">
+<h1>Analysis Programs<a class="headerlink" href="#analysis-programs" title="Permalink to this headline">¶</a></h1>
+<p>With computers, the computational steps are trivial
+(See also the ipython notebook <a class="reference external" href="http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/compGroups.ipynb">compGroups.ipynb</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39; Analysis of categorical data</span>
+<span class="sd">- Analysis of one proportion</span>
+<span class="sd">- Chi-square test</span>
+<span class="sd">- Fisher exact test</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author:  Thomas Haslwanter</span>
+<span class="sd">Date:    Jan-2013</span>
+<span class="sd">Version: 1.0</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="kn">as</span> <span class="nn">stats</span>
+
+
+<span class="k">def</span> <span class="nf">oneProportion</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;Calculate the confidence intervals of the population, based on a</span>
+<span class="sd">    given data sample.</span>
+<span class="sd">    The data are taken from Altman, chapter 10.2.1.&#39;&#39;&#39;</span>
+
+    <span class="c"># Get the data</span>
+    <span class="n">numTotal</span> <span class="o">=</span> <span class="mi">215</span>
+    <span class="n">numPositive</span> <span class="o">=</span> <span class="mi">39</span>
+
+    <span class="c"># Calculate the confidence intervals</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">numPositive</span><span class="p">)</span><span class="o">/</span><span class="n">numTotal</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="n">numTotal</span><span class="p">)</span>
+    <span class="n">td</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">numTotal</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">td</span><span class="o">.</span><span class="n">isf</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span><span class="o">*</span><span class="n">se</span>
+
+    <span class="c"># Print them</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;ONE PROPORTION&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;The confidence interval for the given sample is {0:5.3f} to {1:5.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">ci</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">chiSquare</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39; Application of a chi square test to a 2x2 table.</span>
+<span class="sd">    The calculations are done with and without Yate&#39;s continuity</span>
+<span class="sd">    correction.</span>
+<span class="sd">    Data are taken from Altman, Table 10.10:</span>
+<span class="sd">    Comparison of number of hours&#39; swimming by swimmers with or without erosion of dental enamel.</span>
+<span class="sd">    &gt;= 6h: 32 yes, 118 no</span>
+<span class="sd">    &lt;  6h: 17 yes, 127 no&#39;&#39;&#39;</span>
+
+    <span class="c"># Enter the data</span>
+    <span class="n">obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">118</span><span class="p">],</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">127</span><span class="p">]])</span>
+
+    <span class="c"># Calculate the chi-square test</span>
+    <span class="n">chi2_corrected</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">correction</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">chi2_uncorrected</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">correction</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="c"># Print the result</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;CHI SQUARE&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;The corrected chi2 value is {0:5.3f}, with p={1:5.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">chi2_corrected</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">chi2_corrected</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;The uncorrected chi2 value is {0:5.3f}, with p={1:5.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">chi2_uncorrected</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">chi2_uncorrected</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">fisherExact</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;Fisher&#39;s Exact Test:</span>
+<span class="sd">    Data are taken from Altman, Table 10.14</span>
+<span class="sd">    Spectacle wearing among juvenile delinquensts and non-delinquents who failed a vision test</span>
+<span class="sd">    Spectecle wearers: 1 delinquent, 5 non-delinquents</span>
+<span class="sd">    non-spectacle wearers: 8 delinquents, 2 non-delinquents&#39;&#39;&#39;</span>
+
+    <span class="c"># Enter the data</span>
+    <span class="n">obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+
+    <span class="c"># Calculate the Fisher Exact Test</span>
+    <span class="n">fisher_result</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">fisher_exact</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+
+    <span class="c"># Print the result</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;FISHER&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;The probability of obtaining a distribution at least as extreme &#39;</span>
+    <span class="o">+</span> <span class="s">&#39;as the one that was actually observed, assuming that the null &#39;</span> <span class="o">+</span>
+    <span class="s">&#39;hypothesis is true, is: {0:5.3f}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fisher_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">oneProportion</span><span class="p">()</span>
+    <span class="n">chiSquare</span><span class="p">()</span>
+    <span class="n">fisherExact</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="StatsFH.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">One Proportion</a></li>
+<li><a class="reference internal" href="#frequency-tables">Frequency Tables</a><ul>
+<li><a class="reference internal" href="#chi-square-test">Chi-square Test</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#comments">Comments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fisher-s-exact-test">Fisher&#8217;s Exact Test</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#analysis-programs">Analysis Programs</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="statsContinuous.html"
+                        title="previous chapter">Distribution of a Sample Mean</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="statsRelation.html"
+                        title="next chapter">Correlation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/statsCategorical.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="statsRelation.html" title="Correlation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="statsContinuous.html" title="Distribution of a Sample Mean"
+             >previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright March 2013, Thomas Haslwanter.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

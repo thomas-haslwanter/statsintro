@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Why Statistics? &mdash; Introduction to Statistics 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Introduction to Statistics 1.0 documentation" href="index.html" />
+    <link rel="next" title="Datatypes" href="statsBasics.html" />
+    <link rel="prev" title="An Introduction to Statistics" href="StatsFH.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="statsBasics.html" title="Datatypes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="StatsFH.html" title="An Introduction to Statistics"
+             accesskey="P">previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <img alt="_images/title_introduction.png" src="_images/title_introduction.png" style="height: 100px;" />
+<p><em>&#8220;Statistics ist the explanation of variance in the light of what
+remains unexplained.&#8221;</em></p>
+<p>Statistics was originally invented - as so many other things - by the
+famous mathematician C.F. Gauss, who said about his own work <em>&#8220;Ich habe
+fleissig sein müssen; wer es gleichfalls ist, wird eben so weit
+kommen&#8221;</em>. Even if your aspirations are not that high, you can get a lot
+out of statistics. In fact, if your work with real data, you probably
+won’t be able to avoid it. Statistics can</p>
+<ul class="simple">
+<li>Describe variation.</li>
+<li>Make quantitative statements about populations.</li>
+<li>Make predictions.</li>
+</ul>
+<p><strong>Books:</strong> There are a number of good books about statistics. My favorite is
+<em>Douglas G. Altman. Practical Statistics for Medical Research. Chapman &amp;
+Hall/CRC, 1999</em> : it does not talk a lot about computers and modeling, but
+gives you a terrific introduction into the field. Many formulations and
+examples in this manuscript have been taken from that book. A more
+modern book, which is more voluminous and in my opionion a bit harder to
+read, is <em>R.H. Riffenburgh. Statistics in Medicine. Academic Press, 3rd edition,
+2012</em> . If you are interested in a simple introduction to modern
+regression modeling, check out <em>Daniel Kaplan. Statistical Modeling: A Fresh Approach. Macalester College,
+2009</em></p>
+<p><strong>WWW:</strong> On the web, you find good very extensive statistics
+information in English under <a class="reference external" href="http://www.statsref.com/">http://www.statsref.com/</a>. A good German
+webpage on statistics and regulatory issues is
+<a class="reference external" href="http://www.reiter1.com/">http://www.reiter1.com/</a> .</p>
+<div class="section" id="why-statistics">
+<h1>Why Statistics?<a class="headerlink" href="#why-statistics" title="Permalink to this headline">¶</a></h1>
+<p>Statistics will help you to</p>
+<ul class="simple">
+<li>Clarify the question.</li>
+<li>Identify the variable and the measure of that variable that will
+answer that question.</li>
+<li>Determine the required sample size.</li>
+<li>Find the correct analysis for your data.</li>
+<li>Make predictions based on your data.</li>
+</ul>
+</div>
+<div class="section" id="population-and-samples">
+<h1>Population and samples<a class="headerlink" href="#population-and-samples" title="Permalink to this headline">¶</a></h1>
+<p>While the whole <em>population</em> of a group has certain characteristics, we
+can typically never measure all of them. Instead, we have to confine
+ourselves to investigate a representative <em>sample</em> of this group, and
+estimate the properties of the population. Great care should be used to
+make the sample representative for the population you study.</p>
+</div>
+<div class="section" id="programming-matters">
+<h1>Programming Matters<a class="headerlink" href="#programming-matters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python">
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p>There are three reasons why I have decided to use Python for this
+lecture.</p>
+<ol class="arabic simple">
+<li>It is the most elegant programming language that I know.</li>
+<li>It is free.</li>
+<li>It is powerful.</li>
+</ol>
+<p>I have not seen many books on Python that I really liked. My favorite
+introductory book is
+<em>D. Harms and K. McDonald. The Quick Python Book (2nd Ed).
+Manning Publications Co., 2010</em></p>
+<p>In general, I suggest that you start out by installing a Python
+distribution which includes the most important libraries. My favorites
+here are <a class="reference external" href="http://code.google.com/p/pythonxy/">Python(x,y)</a> and <a class="reference external" href="http://code.google.com/p/winpython/">WinPython</a>, which are very good starting points when you are using
+Windows. The former one has the advantage that most available
+documentation and help files also get installed locally. Mac and Unix
+users should check out the installations tips from Johansson (see below)</p>
+<p>There are also many tutorials available on the internet.
+Personally, most of the time I just google; thereby I
+stick primarily a) to the official pages, and b) to
+<a class="reference external" href="http://stackoverflow.com/">http://stackoverflow.com/</a> . Also, I have found user groups surprisingly
+active and helpful!</p>
+<p><strong>Links</strong></p>
+<ul class="simple">
+<li><a class="reference external" href="http://jrjohansson.github.com/">http://jrjohansson.github.com/</a> <em>Lectures on scientific computing with Python. Great ipython notebooks!</em></li>
+<li><a class="reference external" href="http://docs.python.org/2/tutorial/">http://docs.python.org/2/tutorial/</a> <em>The Python tutorial. The official introduction.</em></li>
+<li><a class="reference external" href="http://scipy-lectures.github.com/">http://scipy-lectures.github.com/</a> <em>Python Scientific Lecture Notes. Pretty comprehensive.</em></li>
+<li><a class="reference external" href="http://www.greenteapress.com/thinkpython/">http://www.greenteapress.com/thinkpython/</a> <em>ThinkPython: A free book on Python.</em></li>
+<li><a class="reference external" href="http://www.scipy.org/NumPy_for_Matlab_Users">http://www.scipy.org/NumPy_for_Matlab_Users</a>  <em>Start here if you have Matlab experience.</em></li>
+</ul>
+<p>If you decide to install things manually, you need the following modules
+in addition to the Python standard library:</p>
+<ul class="simple">
+<li><em>numpy</em> ... For working with vectors and arrays.</li>
+<li><em>scipy</em> ... All the essential scientific algorithms, including those
+for statistics.</li>
+<li><em>matplotlib</em> ... The de-facto standard module for plotting and
+visualization.</li>
+<li><em>pandas</em> ... Adds <em>DataFrames</em> (imagine powerful spreadsheets) to
+Python.</li>
+<li><em>statsmodels</em> ... This one is only required if you want to look more
+into statistical modeling.</li>
+</ul>
+<p>Also, make sure that you have a good programming environment! Currently,
+my favorite way of programming is similar to my old Matlab style: I
+first get the individual steps worked out interactively in <em>ipython</em>.
+And to write a program, I then go to either <em>Spyder</em> (which is free) or
+<em>Wing</em> (which is very good, but commercial).</p>
+<p>Here an example, to get you started with Python (you find a
+corresponding ipython notebook under
+<a class="reference external" href="http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/getting_started.ipynb">getting_started.ipynb</a>:</p>
+<div class="section" id="example-session">
+<h3>Example-Session<a class="headerlink" href="#example-session" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;Short demonstration of Python for scientific data analysis</span>
+
+<span class="sd">This script covers the following points:</span>
+<span class="sd">* Plotting a sine wave</span>
+<span class="sd">* Generating a column matrix of data</span>
+<span class="sd">* Writing data to a text-file, and reading data from a text-file</span>
+<span class="sd">* Waiting for a button-press to continue the program exectution</span>
+<span class="sd">* Using a dictionary, which is similar to MATLAB structures</span>
+<span class="sd">* Extracting data which fulfill a certain condition</span>
+<span class="sd">* Calculating the best-fit-line to noisy data</span>
+<span class="sd">* Formatting text-output</span>
+<span class="sd">* Waiting for a keyboard-press</span>
+<span class="sd">* Calculating confidence intervals for line-fits</span>
+<span class="sd">* Saving figures</span>
+
+<span class="sd">For such a short program, the definition of a &quot;main&quot; function, and calling</span>
+<span class="sd">it by default when the module is imported by the main program, is a bit</span>
+<span class="sd">superfluous. But it shows good Python coding style.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author: Thomas Haslwanter</span>
+<span class="sd">Version:  1.2</span>
+<span class="sd">Date:  March-2013</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c"># In contrast to MATLAB, you explicitly have to load the modules that you need.</span>
+<span class="c"># And don&#39;t worry here about not knowing the right modules: numpy, scipy, and</span>
+<span class="c"># matplotlib is almost everything you will need most of the time, and you</span>
+<span class="c"># will quickly get used to those.</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;Define the main function. &#39;&#39;&#39;</span>
+    <span class="c"># Create a sine-wave</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="c"># Save the data in a text-file, in column form</span>
+    <span class="c"># The formatting is a bit clumsy: data are by default row variables; so to</span>
+    <span class="c"># get a matrix, you stack the two rows above each other, and then transpose</span>
+    <span class="c"># the matrix</span>
+    <span class="n">outFile</span> <span class="o">=</span> <span class="s">&#39;test.txt&#39;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">outFile</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="c"># Read the data into a different variable</span>
+    <span class="n">inData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">outFile</span><span class="p">)</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">inData</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="c"># Note that Python starts at &quot;0&quot;!</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">inData</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c"># Plot the data, and wait for the user to click</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">waitforbuttonpress</span><span class="p">()</span>
+
+    <span class="c"># Generate a noisy line</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+    <span class="c"># use a Python &quot;dictionary&quot; for named variables</span>
+    <span class="n">par</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;offset&#39;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="s">&#39;slope&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s">&#39;noiseAmp&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">}</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;offset&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;slope&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;noiseAmp&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+
+    <span class="c"># Select &quot;late&quot; values, i.e. with t&gt;10</span>
+    <span class="n">xHigh</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">]</span>
+    <span class="n">tHigh</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">]</span>
+
+    <span class="c"># Plot the &quot;late&quot; data</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tHigh</span><span class="p">,</span> <span class="n">xHigh</span><span class="p">)</span>
+
+    <span class="c"># Determine the best-fit line</span>
+    <span class="c"># To do so, you have to generate a matrix with &quot;time&quot; in the first</span>
+    <span class="c"># column, and a column of &quot;1&quot; in the second column:</span>
+    <span class="n">xMat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">tHigh</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tHigh</span><span class="p">))))</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">xMat</span><span class="p">,</span> <span class="n">xHigh</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c"># Show and plot the fit, and save it to a PNG-file with a medium resolution.</span>
+    <span class="c"># The &quot;modern&quot; way of Python-formatting is used</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hold</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tHigh</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">tHigh</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;linefit.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">waitforbuttonpress</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">&#39;Fit line: intercept = {0:5.3f}, and slope = {1:5.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">)</span>
+    <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Thanks for using programs by Thomas!&#39;</span><span class="p">)</span>
+
+    <span class="c"># If you want to know confidence intervals, best switch to &quot;pandas&quot;</span>
+    <span class="c"># Note that this is an advanced topic, and requires new data structures</span>
+    <span class="c"># such ad &quot;DataFrames&quot; and &quot;ordinary-least-squares&quot; or &quot;ols-models&quot;.</span>
+    <span class="kn">import</span> <span class="nn">pandas</span>
+    <span class="n">myDict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="n">tHigh</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">:</span><span class="n">xHigh</span><span class="p">}</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">myDict</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">])</span>
+    <span class="k">print</span> <span class="n">model</span>
+    <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;These are the summary results from Pandas - Hit any key to continue&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>    <span class="c"># Execute the main function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pandas">
+<h2>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
+<p><em>Pandas</em> is a Python module which provides suitable data structures for
+statistical analysis. The following piece of code shows you how pandas
+can be used for data analysis:
+(See also the ipython notebook <a class="reference external" href="http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/pandas_intro.ipynb">pandas_intro.ipynb</a>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;Introductions into using &quot;Pandas&quot;: Simple work with two distributions</span>
+<span class="sd">Pandas is a Python framework for statistical analysis. It allows you to label</span>
+<span class="sd">and group data, etc.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author : Thomas Haslwanter</span>
+<span class="sd">Date : March 2013</span>
+<span class="sd">Ver : 1.1</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="kn">as</span> <span class="nn">stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">getdata</span> <span class="kn">import</span> <span class="n">getData</span>
+
+<span class="k">def</span> <span class="nf">simple_analysis</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;Simple statistical analysis of dummy data&#39;&#39;&#39;</span>
+    
+    <span class="c"># Generate dummy data</span>
+    <span class="c"># Since there are more rendeer than elephants, I cannot use a Python</span>
+    <span class="c"># dictionary. Instead I use &quot;Series&quot; from pandas. The other common pandas</span>
+    <span class="c"># datastructure is &quot;DataFrame&quot;.</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;rendeer&#39;</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">50</span><span class="p">)),</span>
+        <span class="s">&#39;elephants&#39;</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">))}</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="c"># Check some simple stats</span>
+    <span class="k">print</span> <span class="s">&#39;Numbers&#39;</span>
+    <span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    
+    <span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">Means&#39;</span>
+    <span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">Mins&#39;</span>
+    <span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    
+    <span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">Max&#39;</span>
+    <span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    
+    <span class="c"># Confidence intervals for the mean elephant</span>
+    <span class="n">se</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;elephants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;elephants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="mf">0.975</span>
+    <span class="n">tval</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;elephants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">cis</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;elephants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="n">tval</span><span class="o">*</span><span class="n">se</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="k">print</span> <span class="s">&#39;95% CI for the weight of elephants: {0} - {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cis</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="c"># Is the weight of elephants different from 500 kg?</span>
+    <span class="n">testWeight</span> <span class="o">=</span> <span class="mi">500</span>
+    <span class="p">(</span><span class="n">tv</span><span class="p">,</span> <span class="n">pv</span><span class="p">)</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;elephants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">testWeight</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">pv</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;Elephants don&#39;&#39;t weigh {0}kg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">testWeight</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;Elephants weigh approximately {0}kg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">testWeight</span><span class="p">)</span>
+            
+    <span class="c"># Are elephants heavier than rendeer?</span>
+    
+    <span class="p">(</span><span class="n">tv</span><span class="p">,</span> <span class="n">pv</span><span class="p">)</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;elephants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;rendeer&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">pv</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;elephants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;rendeer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">():</span>
+            <span class="k">print</span> <span class="s">&#39;Elephants are heavier than rendeer&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;Rendeer are heavier than elephants&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="s">&#39;Elephants and rendeer weigh the same&#39;</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+
+
+<span class="k">def</span> <span class="nf">simple_plots</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Make some plots &#39;&#39;&#39;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">example_altman</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;Example from Altman &quot;Practical statistics for medical research&#39;&#39;&#39;</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">getData</span><span class="p">(</span><span class="s">&#39;altman_94.txt&#39;</span><span class="p">)</span>
+    
+    <span class="n">lean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">obese</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">&#39;lean&#39;</span><span class="p">:</span><span class="n">lean</span><span class="p">,</span> <span class="s">&#39;obese&#39;</span><span class="p">:</span><span class="n">obese</span><span class="p">})</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">lean</span><span class="p">,</span> <span class="n">obese</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">simple_analysis</span><span class="p">()</span>    
+    <span class="n">simple_plots</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">example_altman</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+<p>Here is also a good place to introduce the short function that we will
+use a number of times to simplify the reading in of data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;Get data for the Python programs for statistics, FH OOe.</span>
+<span class="sd">Most are from the tables in the Altman book &quot;Practical Statistics for Medical Research.</span>
+<span class="sd">I use these data quite often, so I have put those by default in a subdirectory</span>
+<span class="sd">&quot;data_altman&quot;. This function reads them from there.&#39;&#39;&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author:  Thomas Haslwanter</span>
+<span class="sd">Date:    March-2013</span>
+<span class="sd">Version: 1.3</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">genfromtxt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">getData</span><span class="p">(</span><span class="n">inFile</span><span class="p">,</span> <span class="n">subDir</span><span class="o">=</span><span class="s">&#39;data_altman&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Data are taken from examples in D. Altman, &quot;Practical Statistics for Medical Research&quot; &#39;&#39;&#39;</span>
+    <span class="n">dataDir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&#39;..&#39;</span><span class="p">,</span><span class="s">&#39;Data&#39;</span><span class="p">,</span> <span class="n">subDir</span><span class="p">)</span>
+    <span class="n">inFile</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">dataDir</span><span class="p">,</span> <span class="n">inFile</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">genfromtxt</span><span class="p">(</span><span class="n">inFile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">inFile</span> <span class="o">+</span> <span class="s">&#39; does not exist!&#39;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span>
+    
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">getData</span><span class="p">(</span><span class="s">&#39;altman_93.txt&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="StatsFH.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Why Statistics?</a></li>
+<li><a class="reference internal" href="#population-and-samples">Population and samples</a></li>
+<li><a class="reference internal" href="#programming-matters">Programming Matters</a><ul>
+<li><a class="reference internal" href="#python">Python</a><ul>
+<li><a class="reference internal" href="#example-session">Example-Session</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pandas">Pandas</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="StatsFH.html"
+                        title="previous chapter">An Introduction to Statistics</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="statsBasics.html"
+                        title="next chapter">Datatypes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/statsIntroduction.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="statsBasics.html" title="Datatypes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="StatsFH.html" title="An Introduction to Statistics"
+             >previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright March 2013, Thomas Haslwanter.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

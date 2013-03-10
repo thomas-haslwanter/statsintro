@@ -1,0 +1,171 @@
+\chapter{Introduction}
+
+\emph{"Statistics ist the explanation of variance in the light of what remains
+unexplained."}
+
+\vspace{5 mm}
+
+Statistics was originally invented - as so many other things - by the famous mathematician C.F. Gauss, who said about his own work \emph{"Ich habe fleissig sein m\"ussen; wer es gleichfalls ist, wird eben so weit kommen"}. Even if your aspirations are not that high, you can get a lot out of statistics. In fact, if your work with real data, you probably won't be able to avoid it. Statistics can
+
+\begin{itemize}
+  \item Describe variation.
+  \item Make quantitative statements about populations.
+  \item Make predictions.
+\end{itemize}
+
+\textbf{Books: }There are a number of good books about statistics. My favorite is \cite{altman99}: it does not talk a lot about computers and modeling, but gives you a terrific introduction into the field. Many formulations and examples in this manuscript have been taken from that book. A more modern book, which is more voluminous and in my opionion a bit harder to read, is \cite{Riffenburgh2012}. If you are interested in a simple introduction to modern regression modeling, check out \cite{Kaplan2009}.
+
+\vspace{5 mm}
+
+\textbf{WWW: }On the web, you find good very extensive statistics information in English under \emph{http://www.statsref.com/}. A good German webpage on statistics and regulatory issues is \emph{http://www.reiter1.com/}.
+
+\section{Why Statistics?}
+
+Statistics will help you to
+\begin{itemize}
+  \item Clarify the question.
+  \item Identify the variable and the measure of that variable that will answer that question.
+  \item Determine the required sample size.
+  \item Find the correct analysis for your data.
+  \item Make predictions based on your data.
+\end{itemize}
+
+\section{Population and samples}
+
+While the whole \emph{population} of a group has certain characteristics,
+we can typically never measure all of them. Instead, we have to confine
+ourselves to investigate a representative \emph{sample} of this group, and
+estimate the properties of the population. Great care should be used to make the sample
+representative for the population you study.
+
+\section{Projects}
+
+For this course, you will choose a partner, and analyze one of the five projects described below. You will have to
+
+\begin{enumerate}
+  \item Read up on the problem.
+  \item Design the study:
+
+  \begin{enumerate}
+    \item Determine the parameter to analyze.
+    \item Decide on the requirements of the sample population.
+    \item Plan the randomization.
+    \item Decide which test you want to use for the analysis.
+  \end{enumerate}
+
+  \item Present your study design at the \emph{Intermediate Presentation}
+  \item Analyze dummy data provided by me.
+  \item Generate the appropriate graphs.
+  \item Present the results at the \emph{Final Presentation}.
+\end{enumerate}
+
+Two groups will independently work on each project. You can choose from one of the following projects:
+
+\begin{enumerate}
+  \item  Surgical Trainer
+  \item  Dry Eyes and Lasik
+  \item  Recovery after Stroke
+  \item  Active Office: Activity and Attention
+  \item  Pathological Heart Muscles
+\end{enumerate}
+
+\subsection{ Surgical Trainer }
+\begin{tabular}{ l p{12cm} }
+    Researcher & David Fuerst \\
+    Topic &  Development of a surgical trainer for surgeries on the spine.\\
+    Task &   Develop a study design for a test if training on a model spine has the same educational benefits as training surgeries on human cadavers.
+\end{tabular}
+
+\subsection{ Dry Eyes and Lasik }
+\begin{tabular}{ l p{12cm} }
+    Researcher & Michael Ring \\
+    Topic &  Benefits of iodine rinsing on dry eyes after Lasik surgery.\\
+    Task &   Corneal reshaping with a laser, or "Lasik"-surgery, often causes severe dry eye problems. Treatment at the "Therme Bad Hall" promises relieve for dry eye patients. Design a study that uses the device developed by Michael Ring to investigate if the benefits of such a treatment are significant.
+\end{tabular}
+
+\subsection{ Recovery after Stroke }
+\begin{tabular}{ l p{12cm} }
+    Researcher & Thomas Minarik \\
+    Topic &  Improvements due to home-training after stroke \\
+    Task &   The typical treatment after stroke consists of intensive physiotherapy during
+    the weeks in hospital, followed by intermittent treatment at the physiotherapist when
+    the patients return home. We want to improve the recovery by introducing interactive
+    home-based therapy. With this study we want to investigate if interactive home-based
+    therapy leads to an improvement, compared to classical therapy.
+\end{tabular}
+
+\subsection{ Active Office: Activity and Attention }
+\begin{tabular}{ l p{12cm} }
+    Researcher & Bernhard Schwartz \\
+    Topic &  Improvements of attention due to increased activity in an office environment. \\
+    Task &   Your ability to focus on your work depends on a lot of factors. One of them is your physical activity. We want to investigate how different working environments (e.g. working sitting vs. working standing) can affect your concentration at work.
+\end{tabular}
+
+\subsection{ Pathological Heart Muscles }
+\begin{tabular}{ l p{12cm} }
+    Researcher & Sandra Mayr \\
+    Topic &  The effects of \emph{medication} and other factors on the structure of the cardiac muscle, as investigated by atomic force microscopy (AFM) on histological samples.\\
+    Task & To distinguish between healthy and hypertrophic hearts, the lengths of the sarcomeres of the heart muscles are measured using an AFM. Samples from hearts of healthy subjects and from patients with hypertrophic hearts are supplied by the Wagner-Jauregg Hospital in Linz.
+\end{tabular}
+
+\section{Programming Matters}
+
+\subsection{Python}
+There are three reasons why I have decided to use Python for this lecture.
+
+\begin{enumerate}
+  \item It is the most elegant programming language that I know.
+  \item It is free.
+  \item It is powerful.
+\end{enumerate}
+
+I have not seen many books on Python that I really liked. My favorite introductory book is \cite{Harms2010}.
+
+In general, I suggest that you start out by installing a Python distribution which includes the most important libraries. My favorites here are \cite{pythonxy} and \cite{winpython}, which are very good starting points when you are using Windows. The former one has the advantage that most available documentation and help files also get installed locally. Mac and Unix users should check out the installations tips from Johansson (see Table \ref{table:python}).
+
+There are also many tutorials available on the internet (Table \ref{table:python}). Personally, most of the time I just google; thereby I stick primarily a) to the official pages, and b) to \emph{http://stackoverflow.com/}. Also, I have found user groups surprisingly active and helpful!
+
+\begin{table}
+
+  \footnotesize{
+  \centering
+   \begin{tabular}{|l p{10 cm}|}
+     \hline
+     http://jrjohansson.github.com/ & \emph{Lectures on scientific computing with Python.} Great ipython notebooks! \\     http://docs.python.org/2/tutorial/ & \emph{The Python tutorial.} The official introduction. \\
+     http://scipy-lectures.github.com/ & \emph{Python Scientific Lecture Notes.} Pretty comprehensive. \\
+     http://www.greenteapress.com/thinkpython/ & \emph{ThinkPython} A free book on Python. \\
+     http://www.scipy.org/NumPy\_for\_Matlab\_Users & \emph{NumPy for Matlab Users} Start here if you have Matlab experience. \\
+     \hline
+   \end{tabular}
+   }
+  \caption{Python on the WWW}\label{table:python}
+\end{table}
+
+If you decide to install things manually, you need the following modules in addition to the Python standard library:
+
+\begin{itemize}
+  \item \emph{numpy} ... For working with vectors and arrays.
+  \item \emph{scipy} ... All the essential scientific algorithms, including those for statistics.
+  \item \emph{matplotlib} ... The de-facto standard module for plotting and visualization.
+  \item \emph{pandas} ... Adds \emph{DataFrames} (imagine powerful spreadsheets) to Python.
+  \item \emph{statsmodels} ... This one is only required if you want to look more into statistical modeling.
+\end{itemize}
+
+Also, make sure that you have a good programming environment! Currently, my favorite way of programming is similar to my old Matlab style: I first get the individual steps worked out interactively in \emph{ipython}. And to write a program, I then go to either \emph{Spyder} (which is free) or \emph{Wing} (which is very good, but commercial).
+
+Here an example, to get you started with Python (you find a corresponding ipython notebook under \emph{http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/getting\_started.ipynb}):
+
+\subsubsection{Example-Session}
+\lstinputlisting[label=py_gettingStarted,caption=gettingStarted.py, language=Python]{../Code/gettingStarted.py} \index{python}{gettingStarted}
+
+\subsection{Pandas}
+\emph{Pandas} is a Python module which provides suitable data structures for
+statistical analysis. The following piece of code shows you how pandas can be used for data analysis:
+
+\lstinputlisting[label=py_pandasIntro,caption=pandasIntro.py, language=Python]{../Code/pandas_intro.py}
+\index{python}{pandasIntro}
+
+Here is also a good place to introduce the short function that we will use a number of times to simplify the reading in of data:
+
+\lstinputlisting[label=py_getData,caption=getdata.py, language=Python]{../Code/getdata.py}
+\index{python}{getdata}

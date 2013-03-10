@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Survival Probabilities &mdash; Introduction to Statistics 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Introduction to Statistics 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Model language" href="statsModels.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="statsModels.html" title="Model language"
+             accesskey="P">previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <img alt="_images/title_survival.png" src="_images/title_survival.png" style="height: 100px;" />
+<p>When analyzing survival times, different problems come up than the ones
+discussed so far. One question is how do we deal with subjects dropping
+out of a study. For example, assume that we test a new cancer drug.
+While some subjects die, others may believe that the new drug is not
+effective, and decide to drop out of the study before the study is
+finished. A similar problem would be faced when we investigate how long
+a machine lasts before it breaks down.</p>
+<div class="section" id="survival-probabilities">
+<h1>Survival Probabilities<a class="headerlink" href="#survival-probabilities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kaplan-meier-survival-curve">
+<h2>Kaplan-Meier survival curve<a class="headerlink" href="#kaplan-meier-survival-curve" title="Permalink to this headline">¶</a></h2>
+<p>A clever way to deal with these problems is described in detail in .
+First, the time is subdivided into small periods. Then the likelihood is
+calculated that a subject survives a given period. The survival
+probability is given by</p>
+<div class="math">
+\[p_k = p_{k-1} * \frac{r_k-f_k}{r_k}\]</div>
+<p>where <span class="math">\(p_k\)</span> is the probability to survive period <span class="math">\(k\)</span>;
+<span class="math">\(r_k\)</span> is the number of subjects still at risk (i.e. still being
+followed up) immediately before the <span class="math">\(k^{th}\)</span> day, and <span class="math">\(f_k\)</span>
+is the number of observed failures on the day <span class="math">\(k\)</span>. The curve
+describing the resulting survival probability is called <em>life table</em>,
+<em>survival curve</em>, or <em>Kaplan-Meier curve</em> (see Figure
+[fig:SurvivalCurve]).</p>
+<div class="line-block">
+<div class="line"><img alt="image31" src="_images/Survival.png" /></div>
+</div>
+<p>Note that the survival curve changes only when a &#8220;failure&#8221; occurs, i.e.
+when a subject dies. <em>Censored</em> entries, describing either when a
+subject drops out of the study or when the study finishes, are taken
+into consideration at the &#8220;failure&#8221; times, but otherwise do not affect
+the survival curve.</p>
+</div>
+</div>
+<div class="section" id="comparing-survival-curves-in-two-groups">
+<h1>Comparing Survival Curves in Two Groups<a class="headerlink" href="#comparing-survival-curves-in-two-groups" title="Permalink to this headline">¶</a></h1>
+<p>The most common test for comparing independent groups of survival times
+is the <em>logrank test</em>. This test is a non-parametric hypothesis test,
+testing the probability that both groups come from the same underlying
+population. Since to my knowledge this test is not yet implemented in a
+Python library, I have included an implementation based on the equations
+given by (see program [py:survival]).</p>
+<p>To explore the effect of different variables on survival, more advanced
+methods are required. The <em>Cox regression model</em> introduced by Cox in
+1972 is used widely when it is desired to investigate several variables
+at the same time. For details, check or other statistic textbooks.
+(See also the ipython notebook <a class="reference external" href="http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/survival.ipynb">survival.ipynb</a>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;Survival Analysis</span>
+<span class="sd">The first function draws the Survival Curve (Kaplan-Meier curve).</span>
+<span class="sd">The second function implements the logrank test, comparing two survival curves.</span>
+<span class="sd">The formulas and the example are taken from Altman, Chapter 13</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author : Thomas Haslwanter</span>
+<span class="sd">Date : March 2013</span>
+<span class="sd">Ver : 1.0</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">getdata</span> <span class="kn">import</span> <span class="n">getData</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">kaplanmeier</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Determine and the Kaplan-Meier curve for the given data.</span>
+<span class="sd">    Censored times are indicated with &quot;1&quot; in the second column, uncensored with &quot;0&quot;&#39;&#39;&#39;</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">censored</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">atRisk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">failures</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">censored</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">num_failures</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_failures</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c"># Calculate the numbers-at-risk, the survival probability, and the standard error</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_failures</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">failures</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">==</span> <span class="n">failures</span><span class="p">[</span><span class="n">ii</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+            <span class="n">se</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">se</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">atRisk</span><span class="p">[</span><span class="n">times</span><span class="o">==</span><span class="n">failures</span><span class="p">[</span><span class="n">ii</span><span class="p">]])</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">failures</span><span class="o">==</span><span class="n">failures</span><span class="p">[</span><span class="n">ii</span><span class="p">]))</span><span class="o">/</span><span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">se</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+            <span class="c"># confidence intervals could be calculated as ci = p +/- 1.96 se</span>
+    
+    <span class="c"># Plot survival curve (Kaplan-Meier curve)</span>
+    <span class="c"># Always start at t=0 and p=1, and make a line until the last measurement</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">failures</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">times</span><span class="p">)))</span>
+    <span class="n">sp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">atRisk</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="n">se</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">logrank</span><span class="p">(</span><span class="n">data_1</span><span class="p">,</span> <span class="n">data_2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Logrank hypothesis test, comparing the survival times for two different datasets&#39;&#39;&#39;</span>
+    
+    <span class="n">times_1</span> <span class="o">=</span> <span class="n">data_1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">censored_1</span> <span class="o">=</span> <span class="n">data_1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">atRisk_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">times_1</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">failures_1</span> <span class="o">=</span> <span class="n">times_1</span><span class="p">[</span><span class="n">censored_1</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">times_2</span> <span class="o">=</span> <span class="n">data_2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">censored_2</span> <span class="o">=</span> <span class="n">data_2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">atRisk_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">times_2</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">failures_2</span> <span class="o">=</span> <span class="n">times_2</span><span class="p">[</span><span class="n">censored_2</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">failures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">times_1</span><span class="p">[</span><span class="n">censored_1</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span> <span class="n">times_2</span><span class="p">[</span><span class="n">censored_2</span><span class="o">==</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="n">num_failures</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    <span class="n">r</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    <span class="n">f2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    <span class="n">f</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    <span class="n">e1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    <span class="n">f1me1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_failures</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_failures</span><span class="p">):</span>
+        <span class="n">r1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">times_1</span> <span class="o">&gt;=</span> <span class="n">failures</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+        <span class="n">r2</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">times_2</span> <span class="o">&gt;=</span> <span class="n">failures</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">r1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">+</span> <span class="n">r2</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        
+        <span class="n">f1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">failures_1</span><span class="o">==</span><span class="n">failures</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+        <span class="n">f2</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">failures_2</span><span class="o">==</span><span class="n">failures</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+        <span class="n">f</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">+</span> <span class="n">f2</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        
+        <span class="n">e1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">r1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">/</span><span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        <span class="n">f1me1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="n">e1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        <span class="n">v</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">r1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">*</span><span class="n">r2</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span> <span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
+    
+    <span class="n">O1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+    <span class="n">O2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
+    <span class="n">E1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span>
+    <span class="n">O1mE1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f1me1</span><span class="p">)</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    
+    <span class="n">chi2</span> <span class="o">=</span> <span class="p">(</span><span class="n">O1</span><span class="o">-</span><span class="n">E1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">V</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;X^2 = {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">chi2</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;p={0}, the two survival curves are signifcantly different.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;p={0}, the two survival curves are not signifcantly different.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+        
+    <span class="k">return</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">chi2</span><span class="p">)</span>
+    
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c"># get the data</span>
+    <span class="n">data1</span> <span class="o">=</span> <span class="n">getData</span><span class="p">(</span><span class="s">&#39;altman_13_2.txt&#39;</span><span class="p">)</span>
+    <span class="n">data2</span> <span class="o">=</span> <span class="n">getData</span><span class="p">(</span><span class="s">&#39;altman_13_3.txt&#39;</span><span class="p">)</span>
+    
+    <span class="c"># Determine the Kaplan-Meier curves</span>
+    <span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">sp1</span><span class="p">,</span><span class="n">se1</span><span class="p">)</span> <span class="o">=</span> <span class="n">kaplanmeier</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">sp2</span><span class="p">,</span><span class="n">se2</span><span class="p">)</span> <span class="o">=</span> <span class="n">kaplanmeier</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+    
+    <span class="c"># Make a combined plot for both datasets</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">sp1</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">&#39;post&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hold</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span><span class="n">sp2</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">&#39;post&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;Data1&#39;</span><span class="p">,</span> <span class="s">&#39;Data2&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Survival Probability&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="c"># Check the hypothesis that the two survival curves are the same</span>
+    <span class="n">logrank</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="StatsFH.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Survival Probabilities</a><ul>
+<li><a class="reference internal" href="#kaplan-meier-survival-curve">Kaplan-Meier survival curve</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comparing-survival-curves-in-two-groups">Comparing Survival Curves in Two Groups</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="statsModels.html"
+                        title="previous chapter">Model language</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/statsSurvival.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="statsModels.html" title="Model language"
+             >previous</a> |</li>
+        <li><a href="StatsFH.html">Introduction to Statistics 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright March 2013, Thomas Haslwanter.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
