@@ -32,6 +32,11 @@ for the correlation coefficient is symmetrical between :math:`x` and
 :math:`y`.
 
 | |image26|
+*Several sets of (x, y) points, with the correlation coecient of x and y for each set.
+Note that the correlation reects the non-linearity and direction of a linear relationship (top
+row), but not the slope of that relationship (middle), nor many aspects of nonlinear relationships
+(bottom). N.B.: the gure in the center has a slope of 0 but in that case the correlation
+coecient is undened because the variance of Y is zero. (From: Wikipedia)*
 
 Rank correlation 
 ~~~~~~~~~~~~~~~~~~
@@ -54,6 +59,7 @@ We can use the method of *regression* when we want to predict the value
 of one variable from the other.
 
 | |image27|
+*Linear regression. (From Wikipedia)*
 
 When we search for the best-fit line to a given :math:`(x_i,y_i)`
 dataset, we are looking for the parameters :math:`(k,d)` which minimize
@@ -73,6 +79,7 @@ that the :math:`x-`\ values are known exactly, and that all the
 variability lies in the residuals.
 
 | |image28|
+*Best-fit linear regression line (red) and residuals (black).*
 
 Introduction
 ~~~~~~~~~~~~
@@ -213,8 +220,11 @@ fulfilled:
 .. literalinclude:: ..\Code\multivariate.py
 
 | |image29|
+*The sets in the Anscombe's quartet have the same linear regression line but are
+themselves very different.*
 
 | |image30|
+*Regression, with condence intervals for the mean, as well as for the predicted data.*
 
 Since to my knowledge there exists no program in the Python standard
 library (or numpy, scipy) to calculate the confidence intervals for a

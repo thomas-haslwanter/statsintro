@@ -76,6 +76,12 @@ for the correlation coefficient is symmetrical between <span class="math">\(x\)<
 <div class="line-block">
 <div class="line"><a class="reference internal" href="_images/Correlation_examples2.png"><img alt="image26" src="_images/Correlation_examples2.png" style="width: 500.0px; height: 228.5px;" /></a></div>
 </div>
+<p><em>Several sets of (x, y) points, with the correlation coecient of x and y for each set.
+Note that the correlation re
+ects the non-linearity and direction of a linear relationship (top
+row), but not the slope of that relationship (middle), nor many aspects of nonlinear relationships
+(bottom). N.B.: the  gure in the center has a slope of 0 but in that case the correlation
+coecient is unde ned because the variance of Y is zero. (From: Wikipedia)</em></p>
 </div>
 <div class="section" id="rank-correlation">
 <h2>Rank correlation<a class="headerlink" href="#rank-correlation" title="Permalink to this headline">¶</a></h2>
@@ -98,6 +104,7 @@ of one variable from the other.</p>
 <div class="line-block">
 <div class="line"><a class="reference internal" href="_images/Linear_regression.png"><img alt="image27" src="_images/Linear_regression.png" style="width: 500.0px; height: 330.0px;" /></a></div>
 </div>
+<p><em>Linear regression. (From Wikipedia)</em></p>
 <p>When we search for the best-fit line to a given <span class="math">\((x_i,y_i)\)</span>
 dataset, we are looking for the parameters <span class="math">\((k,d)\)</span> which minimize
 the sum of the squared <em>residuals</em> <span class="math">\(\epsilon_i\)</span> in</p>
@@ -114,6 +121,7 @@ variability lies in the residuals.</p>
 <div class="line-block">
 <div class="line"><a class="reference internal" href="_images/residuals_linreg.png"><img alt="image28" src="_images/residuals_linreg.png" style="width: 600.0px; height: 400.0px;" /></a></div>
 </div>
+<p><em>Best-fit linear regression line (red) and residuals (black).</em></p>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -357,9 +365,12 @@ of <span class="math">\(x\)</span>.</li>
 <div class="line-block">
 <div class="line"><a class="reference internal" href="_images/Anscombes_quartet.png"><img alt="image29" src="_images/Anscombes_quartet.png" style="width: 500.0px; height: 363.5px;" /></a></div>
 </div>
+<p><em>The sets in the Anscombe&#8217;s quartet have the same linear regression line but are
+themselves very different.</em></p>
 <div class="line-block">
 <div class="line"><a class="reference internal" href="_images/regression_wLegend.png"><img alt="image30" src="_images/regression_wLegend.png" style="width: 407.5px; height: 307.5px;" /></a></div>
 </div>
+<p><em>Regression, with con dence intervals for the mean, as well as for the predicted data.</em></p>
 <p>Since to my knowledge there exists no program in the Python standard
 library (or numpy, scipy) to calculate the confidence intervals for a
 regression line, I include my corresponding program <em>lineFit.py</em>.

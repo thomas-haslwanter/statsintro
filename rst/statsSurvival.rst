@@ -34,6 +34,8 @@ describing the resulting survival probability is called *life table*,
 [fig:SurvivalCurve]).
 
 | |image31|
+*Survival curve corresponding to a motion sickness experiment, described in more
+detail in [Altman(1999)], chapter 13*
 
 Note that the survival curve changes only when a "failure" occurs, i.e.
 when a subject dies. *Censored* entries, describing either when a
