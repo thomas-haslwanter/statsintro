@@ -18,7 +18,7 @@ In the case of a linear regression model, the function f is simply the affine fu
     \label{eq:simplereg}
     Y = X \beta + \varepsilon
     
-:math: `Y` is a vector of dimension :math: `(n \times 1)` and is called the endogenous variable, :math: `X` is a matrix of dimension :math: `(n \times k)` where each colum is  an explanatory variable and :math: `\varepsilon` is the error term. :math: `\beta` is the vector of dimension :math: `(k \times 1)` and contains the parameters we want to estimate.
+:math:`Y` is a vector of dimension :math:`(n \times 1)` and is called the endogenous variable, :math:`X` is a matrix of dimension :math:`(n \times k)` where each colum is  an explanatory variable and :math:`\varepsilon` is the error term. :math:`\beta` is the vector of dimension :math:`(k \times 1)` and contains the parameters we want to estimate.
 
 Example: Program Effectiveness 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

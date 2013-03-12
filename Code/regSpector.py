@@ -5,8 +5,9 @@ Estimation of a linear regression model using the Spector and Mazzeo (1980) data
 
 '''
 Author: Bruno Rodrigues
+corr:   ThH
 Date:   March-2013
-Ver:    1.0
+Ver:    1.1
 '''
 
 # For this we only need to import statsmodels
@@ -27,10 +28,12 @@ y, x = data.endog, data.exog
 reg = sm.OLS(y, x).fit()
 
 # And here we can see the results in a very nice looking table
-reg.summary()
+print reg.summary()
 
 # We can only take a look at the parameter values though
-reg.params
+print reg.params
 
 # We can also extract the residuals
-reg.resid
+print reg.resid
+
+raw_input('Done')

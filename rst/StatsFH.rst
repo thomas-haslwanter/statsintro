@@ -100,6 +100,14 @@ Analysis of Survival Times
 
    statsSurvival
 
+Modeling - Statsmodels
+=======================
+
+.. toctree::
+   :maxdepth: 2
+
+   regAnalysis
+
 Indices and tables
 ==================
 
