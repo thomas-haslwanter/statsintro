@@ -1,4 +1,5 @@
-.. insert image here
+.. image:: ..\Images\title_RegressionAnalysis.png
+    :height: 100 px
 
 .. Regression Analysis
 .. ===================

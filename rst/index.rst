@@ -100,8 +100,8 @@ Analysis of Survival Times
 
    statsSurvival
 
-Modeling - Statsmodels
-=======================
+Regression Analysis by Example
+==============================
 
 .. toctree::
    :maxdepth: 2
