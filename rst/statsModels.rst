@@ -16,10 +16,8 @@ a and b, then we simply write
 
 .. math:: y \sim x + a + b + a:b
 
-The symbols in Table [tab:syntax] are used on the right hand side to
+The symbols in Table are used on the right hand side to
 denote different interactions.
-
-[tab:syntax]
 
 A complete set of the description is found under
 

@@ -76,9 +76,8 @@ percentile. The difference between them is sometimes referred to as
 Median, upper and lower quartile are used for the data display in box
 plots.
 
-| |i mage7|
-*Probability distribution function (top) and Cumulative distribution function (bot-
-tom) of a normal distribution.*
+| |image7|
+*Probability distribution function (top) and Cumulative distribution function (bottom) of a normal distribution.*
 
 
 Standard Deviation and Variance 
@@ -238,18 +237,45 @@ function:
 | |image10|
 *Utility functions for continuous distributions, here for the normal distribution.*
 
+::
+
+      In [33]:  from scipy import stats
+      In [34]:  mu = -2
+      In [35]:  sigma = sqrt(0.5)
+      In [36]:  myDistribution = stats.norm(mu, sigma)
+      In [37]:  significanceLevel = 0.05
+      In [38]:  myDistribution.ppf([significanceLevel/2, 1-significanceLevel/2])
+      Out[38]:  array([-3.38590382, -0.61409618]
+
+*Example of how to calculate the interval of the PDF containing 95% of the data, for the green curve in the Figure above.*
+
 Other Continuous Distributions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 t Distribution
 ^^^^^^^^^^^^^^
 
-For a small number of samples (ca.:math:`<10`) from a normal
+For a small number of samples (ca *<10*) from a normal
 distribution, the distribution of the mean deviates slightly from the
 normal distribution. The reason is that the sample mean does not
 coincide exactly with the population mean. This modified distribution is
 the *t-distribution*, and converges for larger values towards the normal
-distribution (Fig. [fig:t]).
+distribution.
+
+A very frequent application of the t-distribution is in the calculation of confidence intervals:
+
+::
+
+    In [28]: n = 20
+    In [29]: alpha = 0.05
+    In [30]: stats.t(20).ppf(1-alpha/2)
+    Out[30]: 2.0859634472658364
+
+    In [31]: stats.norm.ppf(1-alpha/2)
+    Out[31]: 1.959963984540054
+
+*Calculating the t-values for confidence intervals, for n = 20 and $\alpha=0.05$. For comparison, I also calculate the corresponding value from the normal distribution.*
+
 
 | |image11|
 *t Distribution*
@@ -334,7 +360,7 @@ Lognormal Distribution
 In some circumstances a set of data with a positively skewed
 distribution can be transformed into a symmetric distribution by taking
 logarithms. Taking logs of data with a skewed distribution will often
-give a distribution that is near to normal (see Figure [fig:lognormal]).
+give a distribution that is near to normal (see Figure below).
 
 | |image14|
 *Plotted against a linear abscissa.*
@@ -359,7 +385,7 @@ probability distribution function is:
    0, & \mbox{if } x < 0
    \end{cases}
 
-The exponential PDF is shown in Figure [fig:exponential]
+The exponential PDF is shown in the figure below
 
 | |image16|
 *Exponential Distribution*
@@ -367,14 +393,22 @@ The exponential PDF is shown in Figure [fig:exponential]
 Uniform Distribution
 ^^^^^^^^^^^^^^^^^^^^
 
-This is a simple one: an even probability for all data values (Figure
-[fig:uniform]). Not very common for real data.
+This is a simple one: an even probability for all data values (see Figure
+below). Not very common for real data.
 
 | |image17|
 *Uniform Distribution*
 
 Programs: Continuous Distribution Functions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Working with distribution functions in Python takes a bit to get used to. But once you get the concept, it is marvellously easy. In my opinion, the most logical way is first to define the function, with all the parameters that it requires; and then, to use the methods of this function, e.g. PDF or CDF:
+
+::
+
+    In [1]: from scipy import stats
+    In [2]: myDF = stats.norm(5,3)
+    In [3]: x = linspace(-5, 15, 101)
+    In [4]: y = myDF.pdf(x)
 
 See also the ipython notebook `dist_continuous.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/dist_continuous.ipynb>`_:
 
@@ -507,7 +541,7 @@ If the two distributions being compared are similar, the points in the
 :math:`Q-Q` plot will approximately lie on the line :math:`y = x`. If
 the distributions are linearly related, the points in the :math:`Q-Q`
 plot will approximately lie on a line, but not necessarily on the line
-:math:`y = x` (Figure [fig:qqplot]).
+:math:`y = x`.
 
 | |image20|
 *QQ-plot*
@@ -525,7 +559,6 @@ sometimes possible to make the distribution approximately normal by
 transforming your data. For example, data often have values that can
 only be positive (e.g. the size of persons), and that have long positive
 tail: such data can often be made normal by applying a *log transform*.
-This is demonstrated in Figure [fig:lognormal].
 
 Confidence Intervals
 ~~~~~~~~~~~~~~~~~~~~
