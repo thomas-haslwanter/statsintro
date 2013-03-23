@@ -199,6 +199,16 @@ patient does not have cancer (NPV = 99.5%) and at this initial screen
 correctly identifies 91% of those who do not have cancer (the
 specificity).
 
+ROC Curves
+-----------
+Closely related to *Sensitivity* and *Specificity* is the *receiver operating characteristic (ROC)* curve. This is a graph displaying the relationship between the true positive rate (on the vertical axis) and the false positive rate (on the horizontal axis). The technique comes from the field of engineering, where it was developed to find the predictor which best discriminates between two given distributions. In the ROC-curve (see figure below) this point is given by the value with the largest distance to the diagonal.
+
+
+.. image:: ../Images/ROC.png
+    :scale: 50 %
+
+*Top: Probability density functions for two distributions. Bottom: corresponding ROC-curve*
+
 Large Sample Tests 
 --------------------
 
