@@ -34,6 +34,7 @@ describing the resulting survival probability is called *life table*,
 [fig:SurvivalCurve]).
 
 | |image31|
+
 *Survival curve corresponding to a motion sickness experiment, described in more
 detail in [Altman(1999)], chapter 13*
 

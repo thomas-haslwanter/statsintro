@@ -24,9 +24,9 @@ data, with a mean of 7 and with a standard deviation of 3. What is the
 chance of finding a mean value at a distance of 0.5 or more from the
 mean:?
 
-See also the ipython notebook `ttest_1samp_notebook.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/ttest_1samp_notebook.ipynb>`_:
+See also the ipython notebook `oneSample.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/oneSample.ipynb>`_:
 
-.. literalinclude:: ..\Code\ttest_1samp_notebook.py
+.. literalinclude:: ..\Code\oneSample.py
 
 :math:`>>>` The probability from the t-test is 0.057, and from the
 normal distribution 0.054
@@ -37,7 +37,11 @@ Wilcoxon signed rank sum test
 If our data are not normally distributed, we cannot use the t-test
 (although this test is fairly robust against deviations from normality).
 Instead, we must use a *non-parametric* test on the mean value. We can
-do this by performing a *Wilcoxon signed rank sum test*.  [2]_  [3]_
+do this by performing a *Wilcoxon signed rank sum test*.  
+
+(The following description and example has been taken from Altman, Table
+9.2)
+
 This method has three steps:
 
 #. Calculate the difference between each observation and the value of
@@ -106,9 +110,6 @@ of the separate variances:
 where :math:`\bar{x}_i` is the mean of the i-th sample, and *se*
 indicates the *standard error*.
 
-See also the ipython notebook `univariate.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/univariate.ipynb>`_:
-
-.. literalinclude:: ..\Code\univariate.py
 
 Non-parametric Comparison of Two Groups: Mann-Whitney Test 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -117,21 +118,74 @@ If the measurement values from the two groups are not normally
 distributed we have to resort to a non-parametric test. The most common
 test for that is the *Mann-Whitney(-Wilkoxon) test*.
 
+See also the ipython notebook `twoSample.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/twoSample.ipynb>`_:
+
+.. literalinclude:: ..\Code\twoSample.py
+
 Comparison of More Groups
 -------------------------
 
 Analysis of Variance 
 ~~~~~~~~~~~~~~~~~~~~~~
 
-If we want to compare three or more groups with each other, we need to
-use a *one way analysis of variance (ANOVA)*, sometimes also called a
-*one factor ANOVA*. Because the null hypothesis is that there is no
-difference between the groups, the test is based on a comparison of the
-observed variation between the groups (i.e. between their means) with
-that expected from the observed variability between subjects. The
-comparison takes the general form of an *F test* to compare variances,
-but for two groups the t test leads to exactly the same answer. We will
-discuss ANOVAs in more detail in chapter [sec:anova].
+The idea behind the *ANalysis Of VAriance (ANOVA)* is to divide the variance into
+the variance *between* groups, and that *within* groups, and see if those
+distributions match the null hypothesis that all groups come from the same
+distribution. The variables that distinguish the dierent groups are often
+called factors. (By comparison, t-tests look at the mean values of two groups,
+and check if those are consistent with the assumption that the two groups come
+from the same distribution.)
+
+For example, if we compare a group with No treatment, another with treatment A,
+and a third with treatment B, then we perform a *one factor ANOVA*, sometimes also
+called *one-way ANOVA*, with "treatment" the one analysis factor. If we do the same
+test with men and with women, then we have a *two-factor* or *two-way ANOVA*, with
+"gender" and "treatment" as the two treatment factors. Note that with ANOVAs, it
+is quite important to have exactly the same number of samples in each analysis
+group!
+
+Because the null hypothesis is that there is no dierence between the
+groups, the test is based on a comparison of the observed variation between the
+groups (i.e. between their means) with that expected from the observed
+variability between subjects. The comparison takes the general form of an F test
+to compare variances, but for two groups the t test leads to exactly the same
+answer.
+
+The one-way ANOVA assumes all the samples are drawn from normally
+distributed popu- lations with equal variance. To test this assumption, you can
+use the *Levene test*.
+
+
+Example: one-way ANOVA 
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+As an example, let us take the red cell folate levels (:math:`\mu g/l`)
+in threee groups of cardiac bypass patients given different levels of
+nitrous oxide ventilation (Amess et al, 1978):
+
+:: 
+
+                df    sum_sq  mean_sq     F  PR(>F)
+  C(treatment)   2  15515.76  7757.88  3.71  0.043
+  Residual      19  39716.09  2090.32   NaN    NaN
+
+
+-  First the "Sums of squares (SS)" are calculated. Here the SS between
+   treatments is 15515.88, and the SS of the residuals is 39716.09 . The
+   total SS is the sum of these two values.
+
+-  The mean squares is the SS divided by the corresponding degrees of
+   freedom.
+
+-  The F-value is the larger mean squares value divided by the smaller
+   value. (If we only have two groups, the F-value is the square of the
+   corresponding t-value. See listing [py:multivariate]).
+
+-  From the F-value, we can looking up the corresponding p-value.
+
+See also the ipython notebook `anovaOneway.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/anovaOneway.ipynb>`_:
+
+.. literalinclude:: ..\Code\anovaOneway.py
 
 F Test 
 ^^^^^^^^
@@ -141,18 +195,45 @@ null hypothesis that two Normally distributed populations have equal
 variances we expect the ratio of the two sample variances to have an *F
 distribution* (see section [sec:ContinuousDistributions]).
 
+Multiple Comparisons
+~~~~~~~~~~~~~~~~~~~~~
+
+The Null hypothesis in a one-way ANOVA is that the means of all the samples are the same. So if a one-way ANOVA yields a significant result, we only know that they are
+*not* the same.
+
+However, often we are not just interested in the joint hypothesis if all samples are the same, but we would also like to know for which pairs of samples the hypothesis of equal values is rejected. In this case we conduct several tests at the same time, one test for each pair of samples. (Typically, this is done with $t-tests$.)
+
+This results, as a consequence, in a *multiple testing problem*:
+since we perform multiple comparison tests, we should compensate for the risk of getting a significant result, even if our null hypothesis is true. This can be cone by correcting the p-values to account for this. We have a number of options to do so:
+
+- Tukey HSD
+- Bonferroni correction
+- Holms correction
+- ... and others ...
+
+Tukey's Test
+^^^^^^^^^^^^
+
+*Tukey's test*, sometimes also referred to as the *Tukey Honest Significant Difference (HSD) method*, controls for the Type I error rate across multiple comparisons and is generally considered an acceptable technique. It is based on a formula very similar to that of the t-test. In fact, Tukey's test is essentially a t-test, except that it corrects for multiple comparisons.
+
+The formula for Tukey's test is:
+
+.. math::    q_s = \frac{Y_A - Y_B}{SE}
+
+where :math:`Y_A` is the larger of the two means being compared, :math:`Y_B` is the smaller of the two means being compared, and :math:`SE` is the standard error of the data in question. This :math:`q_s` value can then be compared to a q value from the \emph{studentized range distribution}, which takes into account the multiple comparisons. If the qs value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
+Note that the studentized range statistic is the same as the t-statistic except for a scaling factor (np.sqrt(2)).
+
+.. literalinclude:: ..\Code\multipleTesting.py
+
+.. image:: ..\Images\MultComp.png
+    :height: 500 px
+
+*Comparing the means of multiple groups - here three different treatment options.*
+
 Bonferroni correction 
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If an ANOVA yields a significant result, we have to test which of the
-groups are different. Typically, this is done with :math:`t-tests`.
-Since we perform multiple t tests, we should compensate for the risk of
-getting a significant result, even if our null hypothesis is true. The
-simplest - and at the same time quite conservative - approach is to
-divide the required p-value by the number of tests that we do
-(*Bonferroni correction*). For example, if you perform 4 comparisons,
-you check for significance not at :math:`p=0.05`, but at
-:math:`p=0.0125`.
+Tukey's studentized range test (HSD) is a test specific to the comparison of all pairs of k independent samples. Instead we can run t-tests on all pairs, calculate the p-values and apply one of the p-value corrections for multiple testing problems. The simplest - and at the same time quite conservative - approach is to divide the required p-value by the number of tests that we do (*Bonferroni correction*). For example, if you perform 4 comparisons, you check for significance not at *p=0.05*, but at *p=0.0125*.
 
 While multiple testing is not yet included in Python standardly, you can
 get a number of multiple-testing corrections done with the statsmodels
@@ -175,13 +256,7 @@ Just as analysis of variance is a more general form of :math:`t` test,
 so there is a more general form of the non-parametric Mann-whitney test:
 the *Kruskal-Wallis test*. When the null hypothesis is true the test
 statistic follows the *Chi squared distribution*.
-See also the ipython notebook `anovat.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/anovat.ipynb>`_:
 
-.. literalinclude:: ..\Code\anovat.py
+.. literalinclude:: ..\Code\KruskalWallis.py
 
 
-.. [2]
-   Python Example: scipy.stats.wilcoxon, in "univariate.py"
-
-.. [3]
-   The following description and example has been taken from Altman, Table 9.2

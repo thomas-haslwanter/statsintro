@@ -115,7 +115,7 @@ def check_normality():
     _ = stats.probplot(data, plot=plt)
     plt.show()
 
-    # The scipy "normaltest" is based on D’Agostino and Pearson’s test that
+    # The scipy normaltest is based on D-Agostino and Pearsons test that
     # combines skew and kurtosis to produce an omnibus test of normality.
     stats.normaltest(data)
 

@@ -102,9 +102,11 @@ that will answer the clinical question being posed is often called
 *clinical significance* or *clinical relevance*.
 
 | |image21|
+
 *Power of a statistical test, for comparing the mean value of two given distributions.*
 
 | |image22|
+
 *Eect of an increase in sampling size on the power of a test.*
 
 Examples for some special cases 
@@ -138,6 +140,7 @@ predictive value (PPV)* and *negative predictive value (NPV)* . The
 following diagram shows how the four are related:
 
 | |image23|
+
 *Relationship between sensitivity, specicity, positive predictive value and negative
 predictive value. (From: Wikipedia)*
 
@@ -164,15 +167,17 @@ we need to know the prevalence of the disease as well as the PPV/NPV of
 a test to provide a sensible interpretation of the test results.
 
 | |image24|
-*Eect of prevalence on PPV and NPV. "T" stands for "test", and "P" for "patient".*
+
+*Eect of prevalence on PPV and NPV. "T" stands for "test", and "P" for "patient".(For comparison with below: T+P+ = TP, T-P- = TN, T+P- = FP, and T-P+ = FN)*
 
 The Figure gives a worked example:
 
 | |image25|
+
 *Worked example. (From: Wikipedia)*
 
 Related calculations
-''''''''''''''''''''
+~~~~~~~~~~~~~~~~~~~~~
 
 -  False positive rate (:math:`\alpha`) = type I error =
    :math:`1-specificity` = :math:`\frac{FP}{FP + TN}` =

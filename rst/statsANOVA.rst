@@ -20,30 +20,8 @@ predict the value of one variable *many* other variables, linear
 regression has to be replaced by of *multilinear regression* , sometimes
 also referred to as *multiple linear regression*.
 
-Variance Analysis
+Two-way ANOVA
 -----------------
-
-[sec:anova] The idea behind ANOVA is to divide the variance into the
-variance *between* groups, and that *within* groups, and see if those
-distributions match the null hypothesis that all groups come from the
-same distribution. The variables that distinguish the different groups
-are often called *factors*.
-
-(By comparison, t-tests look at the mean values of two groups, and check
-if those are consistent with the assumption that the two groups come
-from the same distribution.)
-
-For example, if we compare a group with No treatment, another with
-treatment A, and a third with treatment B, then we perform a *one factor
-ANOVA*, sometimes also called *one-way ANOVA*, with "treatment" the one
-analysis factor. If we do the same test with men and with women, then we
-have a *two-factor* or *two-way ANOVA*, with "gender" and "treatment" as
-the two treatment factors. Note that with ANOVAs, it is quite important
-to have exactly the same number of samples in each analysis group!
-
-The one-way ANOVA assumes all the samples are drawn from normally
-distributed populations with equal variance. To test this assumption,
-you can use the *Levene test*.
 
 Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new
 element. We can look not only if each of the factors is significant; we
@@ -76,9 +54,18 @@ Example: two-way ANOVA
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 See the example in listing 
-`anova.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/anova.ipynb>`_:
+`anovaTwoway.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/anovaTwoway.ipynb>`_:
 
-.. literalinclude:: ..\Code\anova.py
+.. literalinclude:: ..\Code\anovaTwoway.py
+
+::
+
+                        df  sum_sq mean_sq        F    PR(>F)
+  C(fetus)               2  324.00  162.00  2113.10  1.05e-27
+  C(observer)            3    1.19    0.39     5.21  6.497-03
+  C(fetus):C(observer)   6    0.56    0.09     1.22  3.29e-01
+  Residual              24    1.84    0.07      NaN       NaN
+    
 
 Multilinear Regression 
 ------------------------
