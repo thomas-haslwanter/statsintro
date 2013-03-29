@@ -179,7 +179,7 @@ standard deviation :math:`\sigma`:
    \label{eq_normal}
         f_{\mu,\sigma} (x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-( x - \mu )^2 /2 \sigma^2}
 
-where :math:` - \infty < x < \infty `, and :math:`f_{\mu,\sigma}` is the
+where :math:`-\infty<x<\infty`, and :math:`f_{\mu,\sigma}` is the
 *probability density function (PDF)* .
 
 | |image8|

@@ -100,14 +100,6 @@ Analysis of Survival Times
 
    statsSurvival
 
-Regression Analysis by Example
-==============================
-
-.. toctree::
-   :maxdepth: 2
-
-   regAnalysis
-
 Indices and tables
 ==================
 

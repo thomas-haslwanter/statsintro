@@ -136,6 +136,14 @@ In this model :math:`\mu` is the mean of the reference group and
 group. :math:`\tau_1` and is not included in the matrix because its
 difference from the reference group (itself) is necessarily zero.
 
+Example: Program Effectiveness
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using data from Spector and Mazzeo (1980), we estimate a linear regression model with statsmodels.
+
+.. literalinclude:: ..\Code\regSpector.py
+
+
 Assumptions 
 -------------
 
