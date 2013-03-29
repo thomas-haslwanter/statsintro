@@ -8,57 +8,73 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    Jan-2013
-Version: 1.1
+Date:    March-2013
+Version: 1.2
 '''
 
-from pylab import *
+import numpy as np
 import scipy.stats as stats
+import matplotlib.pyplot as plt
 
 myMean = 0
 mySD = 3
-x = arange(-5,15,0.1)
+x = np.arange(-5,15,0.1)
 
 def simple_normal():
+    ''' Different aspects of a normal distribution'''
     # Generate the data
-    x = r_[-4:4:0.1]
-    y = stats.norm.pdf(x)
-    y_cdf = stats.norm.cdf(x)
+    x = np.r_[-4:4:0.1]
+    rv = stats.norm()   # random variate
+
+    x2 = np.r_[0:1:0.001]
     
-    # Plot the distributions
-    subplot(211)
-    plot(x,y)
-    title('Normal Distribution')
-    ylabel('pdf(x)')
+    ax = plt.subplot2grid((3,2),(0,0), colspan=2)
+    #ax = plt.subplot(321)
+    plt.plot(x,rv.pdf(x))
+    plt.xlim([-4,4])
+    plt.title('Normal Distribution - PDF')
     
-    subplot(212)
-    plot(x,y_cdf)
-    xlabel('x')
-    ylabel('cdf(x)')    
-    show()
+    plt.subplot(323)
+    plt.plot(x,rv.cdf(x))
+    plt.xlim([-4,4])
+    plt.title('CDF: cumulative distribution fct')
     
+    plt.subplot(324)
+    plt.plot(x,rv.sf(x))
+    plt.xlim([-4,4])
+    plt.title('SF: survival fct')
+    
+    plt.subplot(325)
+    plt.plot(x2,rv.ppf(x2))
+    plt.title('PPF')
+    
+    plt.subplot(326)
+    plt.plot(x2,rv.isf(x2))
+    plt.title('ISF')
+    plt.tight_layout()
+    plt.show()
+
 def shifted_normal():
     '''PDF, scatter plot, and histogram.'''
     # Generate the data
     # Plot a normal distribution: "Probability density functions"
     myMean = 5
     mySD = 2
-    y = normpdf(x, myMean, mySD)
-    # or: y = stats.norm.pdf(x, myMean, mySD)
-    plot(x,y)
-    title('Shifted Normal Distribution')
-    show()
+    y = stats.norm.pdf(x, myMean, mySD)
+    plt.plot(x,y)
+    plt.title('Shifted Normal Distribution')
+    plt.show()
     
     # Generate random numbers with a normal distribution
     numData = 500
     data = stats.norm.rvs(myMean, mySD, size = numData)
-    plot(data, '.')
-    title('Normally distributed data')
-    show()
+    plt.plot(data, '.')
+    plt.title('Normally distributed data')
+    plt.show()
     
-    hist(data)
-    title('Histogram of normally distributed data')
-    show()
+    plt.hist(data)
+    plt.title('Histogram of normally distributed data')
+    plt.show()
 
 def many_normals():
     '''Show multiple samples from the same distribution, and compare means.'''
@@ -69,31 +85,44 @@ def many_normals():
     for ii in range(numRows):
         for jj in range(numRows):
             data = stats.norm.rvs(myMean, mySD, size=numData)
-            subplot(numRows,numRows,numRows*ii+jj+1)
-            hist(data)
-            gca().set_xticklabels(())
-            gca().set_yticklabels(())
+            plt.subplot(numRows,numRows,numRows*ii+jj+1)
+            plt.hist(data)
+            plt.gca().set_xticklabels(())
+            plt.gca().set_yticklabels(())
     
-    tight_layout()
-    show()
+    plt.tight_layout()
+    plt.show()
     
     # Check out the mean of 1000 normally distributded samples
     numTrials = 1000;
     numData = 100
-    myMeans = ones(numTrials)*nan
+    myMeans = np.ones(numTrials)*np.nan
     for ii in range(numTrials):
         data = stats.norm.rvs(myMean, mySD, size=numData)
-        myMeans[ii] = mean(data)
-    print('The standard error of the mean, with {0} samples, is {1}'.format(numData, std(myMeans)))
+        myMeans[ii] = np.mean(data)
+    print('The standard error of the mean, with {0} samples, is {1}'.format(numData, np.std(myMeans)))
 
 def check_normality():
     '''Check if the distribution is normal.'''
-    # Are the data normally distributed?
+    # Generate and show a distribution
     numData = 100
     data = stats.norm.rvs(myMean, mySD, size=numData)
-    stats.normaltest(data)
+    plt.hist(data)
+    plt.show()
+
+    # Graphical test: if the data lie on a line, they are pretty much
+    # normally distributed
     _ = stats.probplot(data, plot=plt)
-    show()
+    plt.show()
+
+    # The scipy "normaltest" is based on D’Agostino and Pearson’s test that
+    # combines skew and kurtosis to produce an omnibus test of normality.
+    stats.normaltest(data)
+
+    # Or you can check for normality with Kolmogorov-Smirnov test
+    _,pVal = stats.kstest((data-np.mean(data))/np.std(data,ddof=1), 'norm')
+    if pVal > 0.05:
+        print 'Data are probably normally distributed'
 
 def values_fromCDF():
     '''Calculate an empirical cumulative distribution function, compare it with the exact one, and
@@ -107,14 +136,14 @@ def values_fromCDF():
     
     # Calculate the cumulative distribution function, CDF
     numbins = 20
-    counts, bin_edges = histogram(data, bins=numbins, normed=True)
-    cdf = cumsum(counts)
-    cdf /= max(cdf)
+    counts, bin_edges = np.histogram(data, bins=numbins, normed=True)
+    cdf = np.cumsum(counts)
+    cdf /= np.max(cdf)
     
     # compare with the exact CDF
-    step(bin_edges[1:],cdf)
-    hold(True)
-    plot(x, stats.norm.cdf(x, myMean, mySD),'r')
+    plt.step(bin_edges[1:],cdf)
+    plt.hold(True)
+    plt.plot(x, stats.norm.cdf(x, myMean, mySD),'r')
     
     # Find out the value corresponding to the x-th percentile: the
     # "cumulative distribution function"
@@ -129,6 +158,7 @@ def values_fromCDF():
     value = 0.025
     icdf = stats.norm.isf(value, myMean, mySD)
     print('To get {0}% of the data, you need a threshold of {1:4.2f}.'.format((1-value)*100, icdf))
+    plt.show()
 
 if __name__ == '__main__':
     simple_normal()
@@ -136,3 +166,4 @@ if __name__ == '__main__':
     many_normals()
     check_normality()    
     values_fromCDF()
+
