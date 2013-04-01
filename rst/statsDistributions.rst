@@ -57,28 +57,33 @@ quartile (see below).
 Centiles 
 ^^^^^^^^^^
 
-The *Cumulative distribution function (CDF) * tells you for each value
-which percentage of the data has a lower value (Figure [fig:CDF]). The
-value below which a given percentage of the values occur is called
-*centile* or *percentile*, and corresponds to a value with a specified
-cumulative frequency.
+The *Cumulative distribution function (CDF)* tells you for each value which
+percentage of the data has a lower value (Figure :ref:`fig-NormalDistribution`).
+The value below which a given percentage of the values occur is called *centile*
+or *percentile*, and corresponds to a value with a specified cumulative
+frequency.
 
 For example, when you look for the data range which includes 95% of the
 data, you have to find the :math:`2.5^{th}` and the :math:`97.5^{th}`
 percentile of your sample distribution.
 
-The 50th percentile is the *median*.
+The :math:`50^{th}` percentile is the *median*.
 
-Also important are the *quartiles*, i.e. the 25th and the 75th
+Also important are the *quartiles*, i.e. the :math:`25^{th}` and the :math:`75^{th}`
 percentile. The difference between them is sometimes referred to as
 *inter-quartile range (IQR)*.
 
 Median, upper and lower quartile are used for the data display in box
 plots.
 
-| |image7|
+.. _fig-NormalDistribution:
 
-*Probability distribution function (top) and Cumulative distribution function (bottom) of a normal distribution.*
+.. figure:: ../Images/NormalDist_PDF_CDF.png
+    :scale: 50 %
+
+    Normal Distribution
+
+    Probability distribution function (top) and Cumulative distribution function (bottom) of a normal distribution.
 
 
 Standard Deviation and Variance 
@@ -131,7 +136,7 @@ of :math:`\sigma` the variance of the sampling distribution of the mean
 is :math:`\sigma^2/n`, and so the standard error of the mean is
 :math:`\sigma/\sqrt{n}`.
 
-For the \emph{sample standard error of the mean}, which is the one you will be working with most of the time, we have
+For the *sample standard error of the mean*, which is the one you will be working with most of the time, we have
 
 .. math::  SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
 
@@ -222,7 +227,7 @@ mean :math:`\pm` 2SD 0.954                  0.046
 mean :math:`\pm` 3SD 0.9973                 0.0027
 ==================== ===================== ======================
 
-The Figure below shows a number of functions are
+The Figure :ref:`fig-DistributionFunctions` shows a number of functions are
 commonly used to select appropriate points from the normal distribution
 function:
 
@@ -243,11 +248,17 @@ function:
 
 See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/distribution_normal.ipynb>`_:
 
+.. _fig-DistributionFunctions: 
+
+.. figure:: ../Images/DistributionFunctions.png
+    :scale: 75 %
+
+    Distribution Functions
+
+    Utility functions for continuous distributions, here for the normal distribution.
+
+
 .. literalinclude:: ..\Code\distribution_normal.py
-
-| |image10|
-
-*Utility functions for continuous distributions, here for the normal distribution.*
 
 ::
 
@@ -264,6 +275,16 @@ See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipytho
 Other Continuous Distributions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The distributions you will enounter most frequently are:
+
+- **Normal distribution** - the "ideal" continuous probability distribution
+- **t-distribution** - for sample distributions (What you will probably use most often.)
+- **Chi-square distribution** - for describing  variability
+- **F-distribution** - for comparing variability
+
+In the following, we will describe these distributions in more detail.
+
+
 t Distribution
 ^^^^^^^^^^^^^^
 
@@ -274,7 +295,7 @@ coincide exactly with the population mean. This modified distribution is
 the *t-distribution*, and converges for larger values towards the normal
 distribution.
 
-A very frequent application of the t-distribution is in the calculation of confidence intervals:
+A very frequent application of the t-distribution is in the calculation of `Confidence intervals`_:
 
 ::
 
@@ -286,7 +307,7 @@ A very frequent application of the t-distribution is in the calculation of confi
     In [31]: stats.norm.ppf(1-alpha/2)
     Out[31]: 1.959963984540054
 
-*Calculating the t-values for confidence intervals, for n = 20 and $\alpha=0.05$. For comparison, I also calculate the corresponding value from the normal distribution.*
+*Calculating the t-values for confidence intervals, for n = 20 and alpha=0.05. For comparison, I also calculate the corresponding value from the normal distribution.*
 
 
 | |image11|
@@ -596,14 +617,10 @@ where :math:`se` is the standard error, and :math:`t_{n,\alpha}` the
 two-sided confidence intervals, for example, you have to set
 :math:`\alpha=0.025` and :math:`\alpha=0.975` .
 
-.. |image7| image:: ../Images/NormalDist_PDF_CDF.png
-    :scale: 50 %
 .. |image8| image:: ../Images/Normal_Distribution_PDF.png
     :scale: 50 %
 .. |image9| image:: ../Images/Normal_MultHist.png
     :scale: 50 %
-.. |image10| image:: ../Images/DistributionFunctions.png
-    :scale: 75 %
 .. |image11| image:: ../Images/Student_t_pdf.png
     :scale: 40 %
 .. |image12| image:: ../Images/ChiSquare_pdf.png

@@ -23,32 +23,12 @@ also referred to as *multiple linear regression*.
 Two-way ANOVA
 -----------------
 
-Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new
-element. We can look not only if each of the factors is significant; we
-can also check if the *interaction* of the factors has a significant
-influence on the distribution of the data. For sticking to the example
-above, if only women with treatment B get healthy, we have a significant
+Compared to one-way ANOVAs (see :ref:`one-way ANOVAs`), the analysis with
+two-way ANOVAs has a new element. We can look not only if each of the factors is
+significant; we can also check if the *interaction* of the factors has a
+significant influence on the distribution of the data. For sticking to the
+example above, if only women with treatment B get healthy, we have a significant
 interaction effect between "gender" and "treatment".
-
-Example: one-way ANOVA 
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-As an example, let us take the red cell folate levels (:math:`\mu g/l`)
-in threee groups of cardiac bypass patients given different levels of
-nitrous oxide ventilation (Amess et al, 1978):
-
--  First the "Sums of squares (SS)" are calculated. Here the SS between
-   treatments is 15515.88, and the SS of the residuals is 39716.09 . The
-   total SS is the sum of these two values.
-
--  The mean squares is the SS divided by the corresponding degrees of
-   freedom.
-
--  The F-value is the larger mean squares value divided by the smaller
-   value. (If we only have two groups, the F-value is the square of the
-   corresponding t-value. See listing [py:multivariate]).
-
--  From the F-value, we can looking up the corresponding p-value.
 
 Example: two-way ANOVA 
 ~~~~~~~~~~~~~~~~~~~~~~~~

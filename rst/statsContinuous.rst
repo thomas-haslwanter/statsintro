@@ -125,6 +125,8 @@ See also the ipython notebook `twoSample.ipynb <http://nbviewer.ipython.org/url/
 Comparison of More Groups
 -------------------------
 
+.. _`one-way ANOVAs`:
+
 Analysis of Variance 
 ~~~~~~~~~~~~~~~~~~~~~~
 
