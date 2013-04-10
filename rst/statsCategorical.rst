@@ -10,6 +10,8 @@ analysis of frequencies. When two or more groups are compared the data
 are often shown in the form of a *frequency table*, sometimes also
 called *contingency table*.
 
+
+
 +-------------+------------------+-----------------+-----------+
 |             | *Right Handed*   | *Left Handed*   | *Total*   |
 +=============+==================+=================+===========+
@@ -20,7 +22,20 @@ called *contingency table*.
 | *Total*     | 87               | 13              | 100       |
 +-------------+------------------+-----------------+-----------+
 
-[table:frequency]
+If you have only one sample group of data, the analysis options are somewhat limited. In contrast, a number of statistical tests exist for the analysis of frequency tables.
+
+Chi-square test
+    This is the most common type. It is a hypothesis test, which checks if the entries in the individual cells all come from the same distribution. In other words, it checks if the results are independent of the row or column in which they appear.
+
+Fisher's Exact Test
+    While the chi-square test is approximate, the *Fisher's Exact Test* is an exact test. As it is computationally much more expensive and intricate than the chi-square test, it was originally used only for small sample numbers. However, in general it is now the more advisable test to use.
+
+Cochran's Q Test
+    This test, for which we will not go into detail here, is used if you have *matched/paired observations*. For example, if you have exactly the same samples analyzed by 3 different laboratories, and you want to check if the results are statistically equivalent, you would use this test.
+
+McNemar's Test
+    This is a matched pair test for 2x2 tables.
+
 
 One Proportion 
 ---------------
@@ -60,6 +75,9 @@ simple index running from :math:`1,...,I` or even a multiindex
 :math:`(i_1,...,i_p)` running from :math:`(1,...,1)` to
 :math:`(I_1,...,I_p)`.
 
+Assumptions
+^^^^^^^^^^^^
+
 The test statistic :math:`V` is approximately :math:`\chi^2`
 distributed, if
 
@@ -69,9 +87,18 @@ distributed, if
 -  for at least 80% of the absolute expected frequencies :math:`e_i`
    holds :math:`e_i \geq 5`.
 
-The degrees of freedom can be computed by the numbers of absolute
-observed frequencies which can be chosen freely. We know that the sum of
-absolute expected frequencies is
+For small sample numbers, corrections should be made for some bias that
+is caused by the use of the continuous chi-squared distribution. This
+correction is referred to as *Yates correction*.
+
+Degrees of Freedom
+^^^^^^^^^^^^^^^^^^
+
+The degrees of freedom can be computed by the numbers of absolute observed
+frequencies which can be chosen freely. For example, only one cell of a 2x2 table
+with the sums at the side and bottom needs to be filled, and the others can be
+found by subtraction. In general, an *r x c* table has *df=(r-1)x(c-1)*
+degrees of freedom. We know that the sum of absolute expected frequencies is
 
 .. math:: \sum_i o_i = n
 
@@ -119,10 +146,6 @@ tests.
 
 Fisher's Exact Test
 ~~~~~~~~~~~~~~~~~~~
-
-For small sample numbers, corrections should be made for some bias that
-is caused by the use of the continuous chi-squared distribution. This
-correction is referred to as *Yates correction*.
 
 If the requirement that 80% of cells should have expected values of at
 least 5 is not fulfilled, *Fisher’s exact test* should be used. This
