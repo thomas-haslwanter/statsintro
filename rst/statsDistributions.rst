@@ -228,8 +228,7 @@ mean :math:`\pm` 3SD 0.9973                 0.0027
 ==================== ===================== ======================
 
 The Figure :ref:`fig-DistributionFunctions` shows a number of functions are
-commonly used to select appropriate points from the normal distribution
-function:
+commonly used to select appropriate points a distribution function:
 
 -  *Probability density function (PDF)*: note that to obtain the
    probability for the variable appearing in a certain interval, you
@@ -245,6 +244,14 @@ function:
    value for the CDF?"
 
 -  *Inverse survival function (ISF)*: the name says it all.
+
+**Note:**
+
+In Python, the most elegant way of working with distribution function is a two-step procedure:
+
+  - In the first step, you create your distribution (e.g. *nd = stats.norm()*). Note that is a *distribution* (in Python parlance a "frozen distribution"), not a function yet!
+  - In the second step, you decide which function you want to use from this distribution, , and calculate the function value for the desired x-input (e.g. *y = nd.cdf(x)*)
+
 
 See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/distribution_normal.ipynb>`_:
 
@@ -294,6 +301,10 @@ normal distribution. The reason is that the sample mean does not
 coincide exactly with the population mean. This modified distribution is
 the *t-distribution*, and converges for larger values towards the normal
 distribution.
+
+If :math:`\bar{x}` is the sample mean, and *s* the sample standard deviation, then
+
+.. math::  t = \frac{\bar{x}-\mu}{s/ \sqrt{n}}
 
 A very frequent application of the t-distribution is in the calculation of `Confidence intervals`_:
 
@@ -357,17 +368,14 @@ observations.
 F-Test of Equality of Variances
 '''''''''''''''''''''''''''''''
 
-One example could be if you want to compare apples that look alike but
-are from different trees and have different sizes. If you want to
-investigate whether they have the same variance of the weight on
-average, you have to calculate
+If you want to investigate whether two groups have the same variance, you have to calculate the ratio of the sample standard deviations squared:
 
 .. math:: F = \frac{S_x^2}{S_y^2}
 
-where :math:`S_x` ist he sample standard deviation of the first batch of
-apples, and :math:`S_y` the sample standard deviation for the second
-batch of apples.
+where :math:`S_x` ist he sample standard deviation of the first sample,
+and :math:`S_y` the sample standard deviation for the second sample.
 
+One example could be if you want to compare apples that look alike but are from different trees and have different sizes.
 There are three apples from the first tree that weigh 110, 121 and 143
 grams respectively, and four from the other which weigh 88, 93, 105 and
 124 grams respectively. The F statistic is :math:`F 1.05`, and has
@@ -382,9 +390,12 @@ variance.
       In [1]:  apples1 = array([110, 121, 143])
       In [2]:  apples2 = array([88, 93, 105, 124])
       In [3]:  fval = std(apples1, ddof=1)/std(apples2, ddof=1)
-      In [4]:  fd = stats.distributions.f(3,4)
-      In [5]:fd.cdf(fval)
-      Out[27]: 0.537640478466751
+      In [4]:  fd = stats.distributions.f(2,3)
+      In [5]:  p = fd.cdf(fval)
+      In [6]:  print p
+      Out[6]:  0.548708891481
+      In [7]:  if (p<0.025) or (p>0.975):
+                  print 'There is a significant difference between the two distributions.'
 
 | |image13|
 
@@ -496,6 +507,9 @@ where :math:`{n \choose k}={n! \over k!(n-k)!}`
 | |image18|
 
 *Binomial Distribution*
+
+The binomial distribution for *n = 1* is sometimes referred to as *Bernoulli
+Distribution*. 
 
 Poisson Distribution
 ^^^^^^^^^^^^^^^^^^^^

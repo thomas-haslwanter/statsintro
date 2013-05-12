@@ -31,6 +31,27 @@ Examples are given in the figure below. Note that the formula
 for the correlation coefficient is symmetrical between :math:`x` and
 :math:`y`.
 
+Coefficient of determination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The *coefficient of determination*  or :math:`R^2` is the square of the correlation.
+
+The :math:`R^2` value is the proportion of variation in the dependent variable that can be explained by the variation in the independent variable. It is easier to interpret than the correlation coefficient r: Values of :math:`R^2` close to 1 are good, values close to 0 are poor.
+
+For multiple regression, the *adjusted :math:`R^2`* value (written as :math:`\bar{R}^2`) is often used instead of :math:`R^2`:
+
+.. math::
+
+      \bar{R}^2 = 1 - (1 - R^2)\frac{n - 1}{n - p - 1}
+
+where *n* is the sample size and *p* is the number of independent variables.
+
+How large :math:`R^2` or :math:`\bar{R}^2` must be to be considered good depends on the discipline. They are usually expected to be larger in the physical sciences than it is in biology or the social sciences. In finance or marketing, it also depends on what is being modeled.
+
+Caution: the sample correlation and :math:`R^2` are misleading if there is a nonlinear relationship between the independent and dependent variables!
+
+
+
 | |image26|
 
 *Several sets of (x, y) points, with the correlation coecient of x and y for each set.

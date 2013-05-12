@@ -89,7 +89,7 @@ The power of a statistical test depends on four factors:
 #. :math:`\beta`, the probability for Type II errors (
    :math:`\Rightarrow` power of the test)
 
-#. :math:`d`, the magnitude of the investigated effect relative to
+#. :math:`d`, the *effect size*, i.e. the magnitude of the investigated effect relative to
    :math:`\sigma`, the standard deviation of the sample
 
 #. :math:`n`, the sample size
@@ -97,7 +97,7 @@ The power of a statistical test depends on four factors:
 Only 3 of these 4 parameters can be chosen, the :math:`4^{th}` is then
 automatically fixed.
 
-The size of the difference, :math:`d`, between mean treatment outcomes
+The size of the absolute difference *D* between mean treatment outcomes
 that will answer the clinical question being posed is often called
 *clinical significance* or *clinical relevance*.
 
@@ -114,15 +114,17 @@ Examples for some special cases
 
 For a test on one mean, this leads to a *minimum sample number* of
 
-.. math:: n = \frac{{{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{\sigma ^2}}}{{{d^2}}}
+.. math:: n = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{d^2}
 
 Here z is the standardized normal variable (see also chapter
-[sec:normalDistribution])
+"Normal Distribution")
 
 .. math:: z = \frac{x-\mu}{\sigma} .
 
+and :math:`d = \frac{D}{\sigma}` the effect size.
+
 For finding a difference between two normally distributed means, the
-minimum number of samples we need in each group is
+minimum number of samples we need in each group to detect an absolute difference *D* is
 
 .. math:: {n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{d^2} .
 
