@@ -7,7 +7,7 @@
 Hypothesis tests
 ----------------
 
-[sec:hypotheses] Statistical evaluations are based on the initially
+Statistical evaluations are based on the initially
 often counterintuitive procedure of *hypothesis tests*. A hypothesis
 test is a standard format for assessing statistical evidence. It is
 ubiquitous in scientific literature, most often appearing in the form of
@@ -220,9 +220,11 @@ Large Sample Tests
 --------------------
 
 Here I give an overview of the most common statistical tests for
-different combinations of data. This overview is taken from .
+different combinations of data. This overview is taken from Riffenburgh
+(2012).
 
-.. [table:tests]
+.. image:: ../Images/table_tests.png
+    :scale: 100 %
 
 
 .. |image21| image:: ../Images/power1.png
