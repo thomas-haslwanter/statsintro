@@ -240,7 +240,7 @@ fulfilled:
 -  The distribution of :math:`y` is approximately normal for all values
    of :math:`x`.
 
-(See also the ipython notebook `multivariate.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/multivariate.ipynb>`_)
+(See also the ipython notebook `multivariate.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/multivariate.ipynb>`_)
 
 .. literalinclude:: ..\Code\multivariate.py
 

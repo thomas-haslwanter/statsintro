@@ -130,7 +130,7 @@ And to write a program, I then go to either *Spyder* (which is free) or
 
 Here an example, to get you started with Python (you find a
 corresponding ipython notebook under
-`getting_started.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/getting_started.ipynb>`_:
+`getting_started.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/getting_started.ipynb>`_:
 
 Example-Session
 ^^^^^^^^^^^^^^^
@@ -143,7 +143,7 @@ Pandas
 *Pandas* is a Python module which provides suitable data structures for
 statistical analysis. The following piece of code shows you how pandas
 can be used for data analysis:
-(See also the ipython notebook `pandas_intro.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/pandas_intro.ipynb>`_)
+(See also the ipython notebook `pandas_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/pynb/pandas_intro.ipynb>`_)
 
 .. literalinclude:: ..\Code\pandas_intro.py
 

@@ -34,7 +34,7 @@ Example: two-way ANOVA
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 See the example in listing 
-`anovaTwoway.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/anovaTwoway.ipynb>`_:
+`anovaTwoway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaTwoway.ipynb>`_:
 
 .. literalinclude:: ..\Code\anovaTwoway.py
 

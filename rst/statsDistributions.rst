@@ -253,7 +253,7 @@ In Python, the most elegant way of working with distribution function is a two-s
   - In the second step, you decide which function you want to use from this distribution, , and calculate the function value for the desired x-input (e.g. *y = nd.cdf(x)*)
 
 
-See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/distribution_normal.ipynb>`_:
+See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/distribution_normal.ipynb>`_:
 
 .. _fig-DistributionFunctions: 
 
@@ -461,7 +461,7 @@ Working with distribution functions in Python takes a bit to get used to. But on
     In [3]: x = linspace(-5, 15, 101)
     In [4]: y = myDF.pdf(x)
 
-See also the ipython notebook `dist_continuous.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/dist_continuous.ipynb>`_:
+See also the ipython notebook `dist_continuous.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/dist_continuous.ipynb>`_:
 
 .. literalinclude:: ..\Code\dist_continuous.py
 
@@ -563,7 +563,7 @@ function of the Poisson is given by
 
 Programs: Discrete Distribution Functions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-See also the ipython notebook `dist_discrete.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/dist_discrete.ipynb>`_:
+See also the ipython notebook `dist_discrete.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/dist_discrete.ipynb>`_:
 
 .. literalinclude:: ..\Code\dist_discrete.py
 

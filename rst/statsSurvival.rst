@@ -58,7 +58,7 @@ To explore the effect of different variables on survival, more advanced
 methods are required. The *Cox regression model* introduced by Cox in
 1972 is used widely when it is desired to investigate several variables
 at the same time. For details, check or other statistic textbooks.
-(See also the ipython notebook `survival.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/survival.ipynb>`_)
+(See also the ipython notebook `survival.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/survival.ipynb>`_)
 
 .. literalinclude:: ..\Code\survival.py
 

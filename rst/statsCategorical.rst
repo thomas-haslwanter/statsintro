@@ -162,7 +162,7 @@ Analysis Programs
 -----------------
 
 With computers, the computational steps are trivial
-(See also the ipython notebook `compGroups.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/compGroups.ipynb>`_):
+(See also the ipython notebook `compGroups.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/ compGroups.ipynb>`_):
 
 .. literalinclude:: ..\Code\compGroups.py
 

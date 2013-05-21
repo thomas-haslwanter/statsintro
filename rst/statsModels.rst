@@ -339,7 +339,7 @@ regression analysis fails to clarify the relationships between the
 predictor variables and the response variable when the predictors are
 correlated with each other and are not assigned following a study
 design.
-(See also the ipython notebook `modeling.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/modeling.ipynb>`_)
+(See also the ipython notebook `modeling.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/modeling.ipynb>`_)
 
 .. literalinclude:: ..\Code\modeling.py
 
@@ -356,7 +356,7 @@ i.e. taking additional samples repeatedly from the initial sample, to
 provide estimates of its variability. In a case where the distribution
 of the initial sample is unknown, bootstrapping is of especial help in
 that it provides information about the distribution.
-(See also the ipython notebook `bootstrap.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/bootstrap.ipynb>`_)
+(See also the ipython notebook `bootstrap.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/bootstrap.ipynb>`_)
 
 .. literalinclude:: ..\Code\bootstrap.py
 

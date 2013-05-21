@@ -110,7 +110,7 @@ above or below the first/third quartile.
 
 Programs: Data Display 
 ~~~~~~~~~~~~~~~~~~~~~~~~
-See also the ipython notebook `showStats.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/showStats.ipynb>`_:
+See also the ipython notebook `showStats.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/showStats.ipynb>`_:
 
 .. literalinclude:: ..\Code\showStats.py
 
