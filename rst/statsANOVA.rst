@@ -58,7 +58,7 @@ prevalence of some disease correlates with age and with income: if you
 do so, you have to keep in mind that age and income are most likely
 correlated! For details, gives a good introduction to that topic. Also,
 check out the chapter on Modeling.
-(See also the ipython notebook `mult_regress.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/mult_regress.ipynb>`_)
+(See also the ipython notebook `mult_regress.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/mult_regress.ipynb>`_)
 
 .. literalinclude:: ..\Code\mult_regress.py
 

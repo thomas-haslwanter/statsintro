@@ -24,7 +24,7 @@ data, with a mean of 7 and with a standard deviation of 3. What is the
 chance of finding a mean value at a distance of 0.5 or more from the
 mean:?
 
-See also the ipython notebook `oneSample.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/oneSample.ipynb>`_:
+See also the ipython notebook `oneSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/oneSample.ipynb>`_:
 
 .. literalinclude:: ..\Code\oneSample.py
 

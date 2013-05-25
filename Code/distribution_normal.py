@@ -1,15 +1,14 @@
 ''' Simple manipulations of normal distribution functions.
 - Different displays of normally distributed data
 - Compare different samples from a normal distribution
-- Check for normality
 - Work with the cumulative distribution function (CDF)
 
 '''
 
 '''
 Author:  Thomas Haslwanter
-Date:    March-2013
-Version: 1.2
+Date:    May-2013
+Version: 1.3
 '''
 
 import numpy as np
@@ -102,28 +101,6 @@ def many_normals():
         myMeans[ii] = np.mean(data)
     print('The standard error of the mean, with {0} samples, is {1}'.format(numData, np.std(myMeans)))
 
-def check_normality():
-    '''Check if the distribution is normal.'''
-    # Generate and show a distribution
-    numData = 100
-    data = stats.norm.rvs(myMean, mySD, size=numData)
-    plt.hist(data)
-    plt.show()
-
-    # Graphical test: if the data lie on a line, they are pretty much
-    # normally distributed
-    _ = stats.probplot(data, plot=plt)
-    plt.show()
-
-    # The scipy normaltest is based on D-Agostino and Pearsons test that
-    # combines skew and kurtosis to produce an omnibus test of normality.
-    stats.normaltest(data)
-
-    # Or you can check for normality with Kolmogorov-Smirnov test
-    _,pVal = stats.kstest((data-np.mean(data))/np.std(data,ddof=1), 'norm')
-    if pVal > 0.05:
-        print 'Data are probably normally distributed'
-
 def values_fromCDF():
     '''Calculate an empirical cumulative distribution function, compare it with the exact one, and
     find the exact point for a specific data value.'''
@@ -164,6 +141,5 @@ if __name__ == '__main__':
     simple_normal()
     shifted_normal()
     many_normals()
-    check_normality()    
     values_fromCDF()
 

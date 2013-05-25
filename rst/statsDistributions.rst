@@ -140,23 +140,82 @@ For the *sample standard error of the mean*, which is the one you will be workin
 
 .. math::  SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
 
-Skewness 
-^^^^^^^^^^
 
-Distributions are *skewed* if they depart from symmetry. For example, if
-you have a measurement that cannot be negative, which is usually the
-case, then we can infer that the data have a skewed distribution if the
-standard deviation is more than half the mean. Such an asymmetry is
-referred to as *positive skewness*. The opposite, negative skewness, is
-rare.
+Parameters Describing a Distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Location
+^^^^^^^^
+
+A *location parameter* *x_0*  determines the "location" or shift of a
+distribution.
+
+.. math::  f_{x0}(x)=f(x-x_0)
+
+Examples of location parameters include the mean, the median, and the mode.
+
+Scale
+^^^^^
+
+The *scale parameter* describes the width of a probability distribution.  If
+s is large, then the distribution will be more spread out; if s is small
+then it will be more concentrated. If the probability density exists for all
+values of $s$, then the density (as a function of the scale parameter only)
+satisfies
+
+.. math::   f_s(x) = f(x/s)/s,
+
+where f is the density of a standardized version of the density.
+
+Shape Parameters
+^^^^^^^^^^^^^^^^
+
+A shape parameter is any parameter of a probability distribution that is
+neither a location parameter nor a scale parameter. If *location* and
+*shape* already completely determine the distribution (as is the case
+for e.g. the normal distribution or the exponential distribution, etc.),
+then these distributions don't have any *shape parameter*. It follows
+that the *skewness* and *kurtosis* of these distribution are
+constants.
+
+
+Skewness
+^^^^^^^^
+
+Distributions are *skewed* if they depart from symmetry. For example, if you
+have a measurement that cannot be negative, which is usually the case, then
+we can infer that the data have a skewed distribution if the standard
+deviation is more than half the mean. Such an asymmetry is referred to as
+*positive skewness*. The opposite, negative skewness, is rare.
+
+.. figure:: ../Images/SkewedDistribution.png
+    :scale: 75 % 
+
+    Skewness: Example of experimental data with non-zero (positive)
+    skewness (from Wikipedia).
+
+Kurtosis
+^^^^^^^^
+
+Kurtosis is any measure of the "peakedness" of the probability distribution.
+Distributions with negative or positive excess kurtosis are called
+platykurtic distributions or leptokurtic distributions respectively.
+
+.. figure:: ../Images/KurtosisChanges.png
+  :scale: 75 %
+
+  Kurtosis: The "Darkness" data is platykurtic (-0.194), while "Far Red
+  Light" shows leptokurtosis (0.055) (from Wikipedia)
+
 
 Central Limit Theorem 
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 The central limit theorem states that for identically distributed
 independent random variables (also referred to as *random variates*),
 the mean of a sufficiently large number of these variables will be
 approximately normally distributed.
+
 
 Distribution Functions
 ----------------------
@@ -237,7 +296,8 @@ commonly used to select appropriate points a distribution function:
 -  *Cumulative distribution function (CDF)*: gives the probability of
    obtaining a value smaller than the given value
 
--  *Survival function (SF)*: 1-CDF
+-  *Survival function (SF) = 1-CDF*: gives the probability of obtaining a
+    value larger than the given value. It can also be interpreted as the proportion of data "surviving" above a certain value.
 
 -  *Percentile point function (PPF)*: the inverse of the CDF. Answers
    the question "Given a certain probability, what is the corresponding
@@ -605,8 +665,24 @@ plot will approximately lie on a line, but not necessarily on the line
 
 In addition, there are quantitative tests for normality. The test that I
 have encountered most frequently in recent literature is the
-*Kolmogorov-Smirnov test*. Altman mainly uses the *Shapiro-Wilk W
-test* , and a number of other tests are also available.
+*Kolmogorov-Smirnov Test*. The Kolmogorov-Smirnov statistic quantifies a
+distance between the empirical distribution function of the sample and the
+cumulative distribution function of the reference distribution, or between
+the empirical distribution functions of two samples. Note that this implies
+that in a test for normality, you have to i) standardize your sample
+distribution (i.e. subtract the mean, and divide by the standard deviation),
+and specify your reference distribution (i.e. if you want to check for
+normality, the normal distribution). Altman mainly uses the *Shapiro-Wilk W
+test*, and a number of other tests are also available.
+
+
+.. image:: ../Images/KS_example.png
+    :scale: 50 %
+
+*Illustration of the Kolmogorov-Smirnoff statistic. Red line is CDF, blue
+line is an ECDF, and the black arrow is the K-S statistic(from Wikipedia).*
+
+.. literalinclude:: ..\Code\checkNormality.py
 
 Transformation
 ~~~~~~~~~~~~~~
