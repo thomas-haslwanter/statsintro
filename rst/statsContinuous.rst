@@ -118,7 +118,7 @@ If the measurement values from the two groups are not normally
 distributed we have to resort to a non-parametric test. The most common
 test for that is the *Mann-Whitney(-Wilkoxon) test*.
 
-See also the ipython notebook `twoSample.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/twoSample.ipynb>`_:
+See also the ipython notebook `twoSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/twoSample.ipynb>`_:
 
 .. literalinclude:: ..\Code\twoSample.py
 
@@ -181,11 +181,11 @@ nitrous oxide ventilation (Amess et al, 1978):
 
 -  The F-value is the larger mean squares value divided by the smaller
    value. (If we only have two groups, the F-value is the square of the
-   corresponding t-value. See listing [py:multivariate]).
+   corresponding t-value. (See listing below.)
 
 -  From the F-value, we can looking up the corresponding p-value.
 
-See also the ipython notebook `anovaOneway.ipynb <http://nbviewer.ipython.org/url/work.thaslwanter.at/Stats/ipynb/anovaOneway.ipynb>`_:
+See also the ipython notebook `anovaOneway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaOneway.ipynb>`_:
 
 .. literalinclude:: ..\Code\anovaOneway.py
 
