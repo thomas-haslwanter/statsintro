@@ -1,11 +1,13 @@
-''' Twoway Analysis of Variance (ANOVA)
+''' Two-way Analysis of Variance (ANOVA)
+The model is formulated using the "patsy" formula description. This is very similar to the way
+models are expressed in R.
 
 '''
 
 '''
 Author:  Thomas Haslwanter
-Date:    March-2013
-Version: 1.1
+Date:    May-2013
+Version: 1.2
 '''
 
 import pandas as pd
@@ -18,7 +20,7 @@ def anova_interaction():
     by four observers in three fetuses.'''
     
     # Get the data
-    data = getData('altman_12_6.txt')
+    data = getData(r'data_altman\altman_12_6.txt')
     
     # Bring them in dataframe-format
     df = pd.DataFrame(data, columns=['hs', 'fetus', 'observer'])

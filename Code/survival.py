@@ -1,14 +1,14 @@
 '''Survival Analysis
 The first function draws the Survival Curve (Kaplan-Meier curve).
 The second function implements the logrank test, comparing two survival curves.
-The formulas and the example are taken from Altman, Chapter 13
+The formulas and the example are taken from Altman, Chapter 13.
 
 '''
 
 '''
 Author : Thomas Haslwanter
-Date : March 2013
-Ver : 1.0
+Date : May 2013
+Ver : 1.1
 '''
 
 import numpy as np
@@ -106,8 +106,8 @@ def logrank(data_1, data_2):
     
 if __name__=='__main__':
     # get the data
-    data1 = getData('altman_13_2.txt')
-    data2 = getData('altman_13_3.txt')
+    data1 = getData(r'data_altman\altman_13_2.txt')
+    data2 = getData(r'data_altman\altman_13_3.txt')
     
     # Determine the Kaplan-Meier curves
     (p1, r1, t1, sp1,se1) = kaplanmeier(data1)

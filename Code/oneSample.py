@@ -9,8 +9,8 @@ This script shows how to
 
 '''
 Author: Thomas Haslwanter
-Date:   Dec-2012
-Version: 1.0
+Date:   May-2013
+Version: 1.1
 '''
 
 import numpy as np
@@ -24,7 +24,7 @@ def check_mean():
     '''
     # Get data from Altman
 
-    data = getData('altman_91.txt')
+    data = getData(r'data_altman\altman_91.txt')
 
     # Watch out: by default the SD is calculated with 1/N!
     myMean = np.mean(data)

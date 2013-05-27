@@ -148,7 +148,7 @@ Example 2: Linear Models
 
 This second set of examples is based heavily on Jonathan Taylor's class notes that use R. The following notebook introduces the use of pandas and the formula framework in statsmodels in the context of linear modeling:
 
-Ipython notebook `bootstrap.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/statsIntro_linearModels.ipynb>`_
+Ipython notebook `statsIntro_linearModels.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/statsIntro_linearModels.ipynb>`_
 
 
 Assumptions 

@@ -327,6 +327,10 @@ See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipytho
 
 .. literalinclude:: ..\Code\distribution_normal.py
 
+Since a very frequent computational steps is the calculation of the
+intervals containing 95% of the data, I give an explicit code example of
+that step:
+
 ::
 
       In [33]:  from scipy import stats
@@ -400,6 +404,8 @@ chi-square distribution with :math:`n` degrees of freedom:
 | |image12|
 
 *Chi-square Distribution*
+
+.. _`F Distribution`:
 
 F Distribution
 ^^^^^^^^^^^^^^
@@ -575,17 +581,17 @@ Poisson Distribution
 ^^^^^^^^^^^^^^^^^^^^
 
 Any French speaker will notice that "Poisson" means "fish", but really
-there’s nothing fishy about this distribution. It’s actually pretty
+there's nothing fishy about this distribution. It's actually pretty
 straightforward. The name comes from the mathematician Siméon-Denis
 Poisson (1781-1840).
 
-The Poisson Distribution is ”very similar” to the Binomial Distribution.
+The Poisson Distribution is very similar to the Binomial Distribution.
 We are examining the number of times an event happens. The difference is
 subtle. Whereas the Binomial Distribution looks at how many times we
 register a success over a fixed total number of trials, the Poisson
 Distribution measures how many times a discrete event occurs, over a
-period of continuous space or time. There isn’t a "total" value n. As
-with the previous sections, let’s examine a couple of experiments or
+period of continuous space or time. There isn't a "total" value n. As
+with the previous sections, let's examine a couple of experiments or
 questions that might have an underlying Poisson nature.
 
 -  How many pennies will I encounter on my walk home?
@@ -600,10 +606,10 @@ questions that might have an underlying Poisson nature.
 
 -  How many defects will there be per 100 metres of rope sold?
 
-What’s a little different about this distribution is that the random
+What's a little different about this distribution is that the random
 variable :math:`X` which counts the number of events can take on *any
 non-negative integer* value. In other words, I could walk home and find
-no pennies on the street. I could also find one penny. It’s also
+no pennies on the street. I could also find one penny. It's also
 possible (although unlikely, short of an armored-car exploding nearby)
 that I would find 10 or 100 or 10,000 pennies.
 
@@ -641,17 +647,23 @@ analysis.
 Normality Check
 ~~~~~~~~~~~~~~~
 
-The first way to check if your data are normally distributed, i.e. that
-they are linearly related to the standard normal distribution. In
-statistics, *:math:`Q–Q` plots* ("Q" stands for quantile) are used for
-visual assessments of distributions. They are a graphical method for
-comparing two probability distributions by plotting their quantiles
-against each other. First, the set of intervals for the quantiles are
-chosen. A point :math:`(x,y)` on the plot corresponds to one of the
-quantiles of the second distribution (y-coordinate) plotted against the
-same quantile of the first distribution (x-coordinate). Thus the line is
-a parametric curve with the parameter which is the (number of the)
-interval for the quantile.
+Many statistical tests already assume that your data are normally
+distributed, i.e. that they are linearly related to the standard normal
+distribution. If you use any of these tests, you first have to check this
+assumption.
+
+QQ-plots
+^^^^^^^^
+
+In statistics, *:math:`QQ` plots* ("Q" stands for quantile)
+are used for visual assessments of distributions. They are a graphical
+method for comparing two probability distributions by plotting their
+quantiles against each other. First, the set of intervals for the quantiles
+are chosen. A point :math:`(x,y)` on the plot corresponds to one of the
+quantiles of the second distribution (y-coordinate) plotted against the same
+quantile of the first distribution (x-coordinate). Thus the line is a
+parametric curve with the parameter which is the (number of the) interval
+for the quantile.
 
 If the two distributions being compared are similar, the points in the
 :math:`Q-Q` plot will approximately lie on the line :math:`y = x`. If
@@ -662,6 +674,9 @@ plot will approximately lie on a line, but not necessarily on the line
 | |image20|
 
 *QQ-plot*
+
+Kolmogorov-Smirnov Test
+^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition, there are quantitative tests for normality. The test that I
 have encountered most frequently in recent literature is the

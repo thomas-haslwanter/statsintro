@@ -1,15 +1,20 @@
 ''' Analysis of Variance (ANOVA)
 - Levene test
 - ANOVA - oneway
+- Do a simple one-way ANOVA, using statsmodels
+- Show how the ANOVA can be done by hand.
+- For the comparison of two groups, a one-way ANOVA is equivalent to
+  a T-test: t^2 = F
 
 '''
 
 '''
 Author:  Thomas Haslwanter
-Date:    March-2013
-Version: 1.2
+Date:    May-2013
+Version: 1.4
 '''
 
+import numpy as np
 import scipy.stats as stats
 import pandas as pd
 from getdata import getData
@@ -20,7 +25,7 @@ def anova_oneway():
     ''' One-way ANOVA: test if results from 3 groups are equal. '''
     
     # Get the data
-    data = getData('altman_910.txt')
+    data = getData('altman_910.txt', subDir='..\Data\data_altman')
     
     # Sort them into groups, according to column 1
     group1 = data[data[:,1]==1,0]
@@ -46,5 +51,61 @@ def anova_oneway():
     model = ols('value ~ C(treatment)', df).fit()
     print anova_lm(model)
     
+#----------------------------------------------------------------------
+def show_teqf():
+    """Shows the equivalence of t-test and f-test, for comparing two groups"""
+    
+    # Get the data
+    data = pd.read_csv(r'..\Data\data_kaplan\galton.csv')
+    
+    # First, calculate the F- and the T-values, ...
+    F_statistic, pVal = stats.f_oneway(data['father'], data['mother'])
+    t_val, pVal_t = stats.ttest_ind(data['father'], data['mother'])
+    
+    # ... and show that t**2 = F
+    print('From the t-test we get t^2={0:5.3f}, and from the F-test F={1:5.3f}'.format(t_val**2, F_statistic))
+
+# ---------------------------------------------------------------
+def anova_statsmodels():
+    ''' do the ANOVA with a function '''
+    
+    # Get the data
+    data = pd.read_csv(r'..\Data\data_kaplan\galton.csv')
+    
+    anova_results = anova_lm(ols('height ~ 1 + sex', data).fit())
+    print anova_results
+
+#----------------------------------------------------------------------
+def anova_byHand():
+    """Calculate the ANOVA by hand"""
+
+     # Get the data
+    data = getData('altman_910.txt', subDir='..\Data\data_altman')
+
+    # Convert them to pandas-forman and group them by their group value
+    df = pd.DataFrame(data, columns=['values', 'group'])
+    groups = df.groupby('group')
+
+    # The "total sum-square" is the squared deviation from the mean
+    ss_total = np.sum((df['values']-df['values'].mean())**2)
+    
+    # Calculate ss_treatment and  ss_error
+    (ss_treatments, ss_error) = (0, 0)
+    for val, group in groups:
+        ss_error += sum((group['values'] - group['values'].mean())**2)
+        ss_treatments += len(group) * (group['values'].mean() - df['values'].mean())**2
+
+    df_groups = len(groups)-1
+    df_residuals = len(data)-len(groups)
+    F = (ss_treatments/df_groups) / (ss_error/df_residuals)
+    df = stats.f(df_groups,df_residuals)
+    p = df.sf(F)
+
+    print 'ANOVA-Results: F = {0}, and p<{1}'.format(F, p)
+    
 if __name__ == '__main__':
     anova_oneway()
+    anova_statsmodels()    
+    anova_byHand()
+    show_teqf()
+    raw_input('Done!')

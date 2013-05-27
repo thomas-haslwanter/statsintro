@@ -5,6 +5,7 @@ This script covers the following points:
 * Generating a column matrix of data
 * Writing data to a text-file, and reading data from a text-file
 * Waiting for a button-press to continue the program exectution
+    (Note: this does NOT work in ipython, if you run it with inline figures!)
 * Using a dictionary, which is similar to MATLAB structures
 * Extracting data which fulfill a certain condition
 * Calculating the best-fit-line to noisy data

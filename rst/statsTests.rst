@@ -232,9 +232,9 @@ different combinations of data. This overview is taken from Riffenburgh
 .. |image22| image:: ../Images/power2.png
     :scale: 50 %
 .. |image23| image:: ../Images/Sensitivity_Specificity_Diagram.png
-    :scale: 50 %
-.. |image24| image:: ../Images/Sensitivity_Specificity.png
     :scale: 75 %
+.. |image24| image:: ../Images/Sensitivity_Specificity.png
+    :scale: 50 %
 .. |image25| image:: ../Images/Sensitivity_Specificity_Example.png
     :scale: 75 %
 

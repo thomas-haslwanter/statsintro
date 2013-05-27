@@ -6,8 +6,8 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    March-2013
-Version: 1.4
+Date:    May-2013
+Version: 1.5
 '''
 
 from numpy import genfromtxt, mean, std
@@ -20,7 +20,7 @@ def paired_data():
     Compare mean daily intake over 10 pre-menstrual and 10 post-menstrual days (in kJ).'''
     
     # Get the data:  daily intake of energy in kJ for 11 women
-    data = getData('altman_93.txt')
+    data = getData(r'data_altman\altman_93.txt')
     
     mean(data, axis=0)
     std(data, axis=0, ddof=1)
@@ -47,7 +47,7 @@ def unpaired_data():
     in groups of lean and obese women'''
     
     # Get the data: energy expenditure in mJ and stature (0=obese, 1=lean)
-    energ = getData('altman_94.txt')
+    energ = getData(r'data_altman\altman_94.txt')
     
     # Group them
     group1 = energ[:, 1] == 0

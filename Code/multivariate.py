@@ -1,13 +1,13 @@
 ''' Analysis of multivariate data
 - Regression line
-- Correlation
+- Correlation (Pearson-rho, Spearman-rho, and Kendall-tau)
 
 '''
 
 '''
 Author:  Thomas Haslwanter
-Date:    March-2013
-Version: 1.4
+Date:    May-2013
+Version: 1.5
 '''
 
 import pandas as pd
@@ -17,7 +17,7 @@ def regression_line():
     '''Fit a line, using the powerful "ordinary least square" method of pandas'''
     
     # Get the data
-    data = getData('altman_11_6.txt')
+    data = getData(r'data_altman\altman_11_6.txt')
     
     df = pd.DataFrame(data, columns=['glucose', 'Vcf'])
     model = pd.ols(y=df['Vcf'], x=df['glucose'])
@@ -29,7 +29,7 @@ def correlation():
     mean circumferential shortening velocity (%/sec).'''
     
     # Get the data
-    data = getData('altman_11_1.txt')
+    data = getData(r'data_altman\altman_11_1.txt')
     
     # Bring them into the dataframe-format
     df = pd.DataFrame(data, columns=['age', 'fat'])

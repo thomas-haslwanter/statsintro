@@ -6,8 +6,8 @@ and group data, etc.
 
 '''
 Author : Thomas Haslwanter
-Date : March 2013
-Ver : 1.1
+Date : May 2013
+Ver : 1.2
 '''
 
 import pandas as pd
@@ -89,7 +89,7 @@ def simple_plots(df):
 def example_altman():
     '''Example from Altman "Practical statistics for medical research'''
     
-    data = getData('altman_94.txt')
+    data = getData(r'data_altman\altman_94.txt')
     
     lean = pd.Series(data[data[:,1]==1,0])
     obese = pd.Series(data[data[:,1]==0,0])

@@ -133,8 +133,8 @@ Analysis of Variance
 The idea behind the *ANalysis Of VAriance (ANOVA)* is to divide the variance into
 the variance *between* groups, and that *within* groups, and see if those
 distributions match the null hypothesis that all groups come from the same
-distribution. The variables that distinguish the dierent groups are often
-called factors. (By comparison, t-tests look at the mean values of two groups,
+distribution. The variables that distinguish the different groups are often
+called *factors*. (By comparison, t-tests look at the mean values of two groups,
 and check if those are consistent with the assumption that the two groups come
 from the same distribution.)
 
@@ -146,7 +146,7 @@ test with men and with women, then we have a *two-factor* or *two-way ANOVA*, wi
 is quite important to have exactly the same number of samples in each analysis
 group!
 
-Because the null hypothesis is that there is no dierence between the
+Because the null hypothesis is that there is no difference between the
 groups, the test is based on a comparison of the observed variation between the
 groups (i.e. between their means) with that expected from the observed
 variability between subjects. The comparison takes the general form of an F test
@@ -154,8 +154,36 @@ to compare variances, but for two groups the t test leads to exactly the same
 answer.
 
 The one-way ANOVA assumes all the samples are drawn from normally
-distributed popu- lations with equal variance. To test this assumption, you can
+distributed populations with equal variance. To test this assumption, you can
 use the *Levene test*.
+
+ANOVA uses traditional standardized terminology. The definitional equation
+of sample variance is :math:`s^2=\textstyle\frac{1}{n-1}\sum(y_i-\bar{y})^2`,
+where
+the divisor is called the degrees of freedom (DF), the summation is called
+the sum of squares (SS), the result is called the mean square (MS) and the
+squared terms are deviations from the sample mean. ANOVA estimates 3 sample
+variances: a total variance based on all the observation deviations from the
+grand mean, an error variance based on all the observation deviations from
+their appropriate treatment means and a treatment variance. The treatment
+variance is based on the deviations of treatment means from the grand mean,
+the result being multiplied by the number of observations in each treatment
+to account for the difference between the variance of observations and the
+variance of means. If the null hypothesis is true, all three variance
+estimates are equal (within sampling error).
+
+The fundamental technique is a partitioning of the total sum of squares SS
+into components related to the effects used in the model. For example, the
+model for a simplified ANOVA with one type of treatment at different levels.
+
+.. math:: SS_\text{Total} = SS_\text{Error} + SS_\text{Treatments}
+
+The number of degrees of freedom DF can be partitioned in a similar way: one
+of these components (that for error) specifies a chi-squared distribution
+which describes the associated sum of squares, while the same is true for
+"treatments" if there is no treatment effect.
+
+.. math:: DF_\text{Total} = DF_\text{Error} + DF_\text{Treatments} 
 
 
 Example: one-way ANOVA 
@@ -163,11 +191,13 @@ Example: one-way ANOVA
 
 As an example, let us take the red cell folate levels (:math:`\mu g/l`)
 in threee groups of cardiac bypass patients given different levels of
-nitrous oxide ventilation (Amess et al, 1978):
+nitrous oxide ventilation (Amess et al, 1978), described in the Python code example
+below. I first show the result of this ANOVA test, and then explain the steps
+to get there.
 
 :: 
 
-                df    sum_sq  mean_sq     F  PR(>F)
+                DF     SS       MS       F   p(>F)
   C(treatment)   2  15515.76  7757.88  3.71  0.043
   Residual      19  39716.09  2090.32   NaN    NaN
 
@@ -176,26 +206,31 @@ nitrous oxide ventilation (Amess et al, 1978):
    treatments is 15515.88, and the SS of the residuals is 39716.09 . The
    total SS is the sum of these two values.
 
--  The mean squares is the SS divided by the corresponding degrees of
-   freedom.
+-  The mean squares ("MS") is the SS divided by the corresponding degrees of
+   freedom ("df").
 
--  The F-value is the larger mean squares value divided by the smaller
-   value. (If we only have two groups, the F-value is the square of the
-   corresponding t-value. (See listing below.)
+-  The *F-test* or *variance ratio test*  is used for comparing the factors
+   of the total deviation. The F-value is the larger mean squares value
+   divided by the smaller value. (If we only have two groups, the F-value is
+   the square of the corresponding t-value. See listing below.)
 
--  From the F-value, we can looking up the corresponding p-value.
+
+.. math:: 
+
+    F = \frac{\text{variance between treatments}}{\text{variance within treatments}}
+
+    F = \frac{MS_\text{Treatments}}{MS_\text{Error}} = {{SS_\text{Treatments} / (I-1)} \over {SS_\text{Error} / (n_T-I)}} 
+
+
+-  Under the null hypothesis that two normally distributed populations have
+   equal variances we expect the ratio of the two sample variances to have an
+   :ref:`F Distribution`. From the F-value, we can look up the corresponding p-value.
+
 
 See also the ipython notebook `anovaOneway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaOneway.ipynb>`_:
 
 .. literalinclude:: ..\Code\anovaOneway.py
 
-F Test 
-^^^^^^^^
-
-The :math:`F` test or *variance ratio test* is very simple. Under the
-null hypothesis that two Normally distributed populations have equal
-variances we expect the ratio of the two sample variances to have an *F
-distribution* (see section [sec:ContinuousDistributions]).
 
 Multiple Comparisons
 ~~~~~~~~~~~~~~~~~~~~~
@@ -203,7 +238,7 @@ Multiple Comparisons
 The Null hypothesis in a one-way ANOVA is that the means of all the samples are the same. So if a one-way ANOVA yields a significant result, we only know that they are
 *not* the same.
 
-However, often we are not just interested in the joint hypothesis if all samples are the same, but we would also like to know for which pairs of samples the hypothesis of equal values is rejected. In this case we conduct several tests at the same time, one test for each pair of samples. (Typically, this is done with $t-tests$.)
+However, often we are not just interested in the joint hypothesis if all samples are the same, but we would also like to know for which pairs of samples the hypothesis of equal values is rejected. In this case we conduct several tests at the same time, one test for each pair of samples. (Typically, this is done with *t-tests* )
 
 This results, as a consequence, in a *multiple testing problem*:
 since we perform multiple comparison tests, we should compensate for the risk of getting a significant result, even if our null hypothesis is true. This can be cone by correcting the p-values to account for this. We have a number of options to do so:

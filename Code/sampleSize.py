@@ -1,4 +1,6 @@
-'''Calculate the sample size for experiments, for normally distributed groups.
+'''Calculate the sample size for experiments, for normally distributed groups, for:
+- Experiments with one single group
+- Comparing two groups
 
 '''
 
