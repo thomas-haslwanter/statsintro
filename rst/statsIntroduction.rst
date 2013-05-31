@@ -144,14 +144,17 @@ to get up to speed with python much more quickly.
 To write a program, I then go to either `Spyder <http://code.google.com/p/spyderlib/>`_
 (which is free) or `Wing <http://wingware.com/>`_ (which is very good, but commercial).
 
-Here an example, to get you started with Python (you find a
-corresponding ipython notebook under
+Here an example, to get you started with Python. For interactive work, it is
+simplest to use the *pylab mode*, as shown in the example below. The corresponding ipython
+notebook
 `getting_started.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/getting_started.ipynb>`_:
+shows how numpy and matplotlib can be addressed directly. (This is common
+practice when writing functions.)
 
 Example-Session
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: ..\Code\gettingStarted.py
+.. literalinclude:: ..\Code\gettingStarted_ipy.py
 
 Pandas
 ~~~~~~

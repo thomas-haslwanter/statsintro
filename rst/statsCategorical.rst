@@ -22,10 +22,36 @@ called *contingency table*.
 | *Total*     | 87               | 13              | 100       |
 +-------------+------------------+-----------------+-----------+
 
+The corresponding expected values are: 
+
++-------------+------------------+-----------------+-----------+
+|             | *Right Handed*   | *Left Handed*   | *Total*   |
++=============+==================+=================+===========+
+| *Males*     | 45.2             | 6.8             | 52        |
++-------------+------------------+-----------------+-----------+
+| *Females*   | 41.8             | 6.2             | 48        |
++-------------+------------------+-----------------+-----------+
+| *Total*     | 87               | 13              | 100       |
++-------------+------------------+-----------------+-----------+
+
 If you have only one sample group of data, the analysis options are somewhat limited. In contrast, a number of statistical tests exist for the analysis of frequency tables.
 
-Chi-square test
-    This is the most common type. It is a hypothesis test, which checks if the entries in the individual cells all come from the same distribution. In other words, it checks if the results are independent of the row or column in which they appear.
+Chi-square Test
+    This is the most common type. It is a hypothesis test,
+    which checks if the entries in the individual cells all come from the same
+    distribution. In other words, it checks the null hypothesis *H_0* that the
+    results are independent of the row or column in which they appear. The
+    alternative hypothesis *H_a* does not specify the type of association, so
+    close attention to the data is required to interpret the information
+    provided by the test.
+
+    The chi-square test is based on a test statistic that measures the
+    divergence of the observed data from the values that would be expected
+    under the null hypothesis of no association. This requires calculation
+    of the expected values based on the data. The expected value for each
+    cell in a two-way table is equal to *(row total*column total)/n*, where *n*
+    is the total number of observations included in the table.
+
 
 Fisher's Exact Test
     While the chi-square test is approximate, the *Fisher's Exact Test* is an exact test. As it is computationally much more expensive and intricate than the chi-square test, it was originally used only for small sample numbers. However, in general it is now the more advisable test to use.
@@ -108,8 +134,13 @@ freedom the number of parameters we need to estimate from the sample,
 since this implies further relationships between the observed
 frequencies.
 
-Example
-^^^^^^^
+Example 1
+^^^^^^^^^
+
+The Python command *stats.chi2_contingency* returns, the chi2-value, the p-value, the degrees of freedom, and the expected values. For the example data in Table above, the results are *\chi^2=1.1, p=0.3, df=1*. In other words, there is no indication that there is a difference in left-handed people vs right-handed people between males and females.
+
+Example 2
+^^^^^^^^^
 
 The :math:`\chi^2` test can be used to generate "quick and dirty" test,
 e.g.
