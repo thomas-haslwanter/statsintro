@@ -6,8 +6,8 @@
 
 '''
 Author: Thomas Haslwanter
-Date:   Jan-2013
-Ver:    2.0
+Date:   May-2013
+Ver:    2.1
 '''
 
 from pandas import read_csv
@@ -19,7 +19,7 @@ import numpy as np
 def model_formulas():
     ''' Define models through formulas '''
     # Get the dta
-    data = read_csv(r'.\data_kaplan\swim100m.csv')
+    data = read_csv(r'..\Data\data_kaplan\swim100m.csv')
     
     # Different models
     model1 = ols("time ~ sex", data).fit()  # one factor
@@ -27,22 +27,32 @@ def model_formulas():
     model3 = ols("time ~ sex * year", data).fit()   # two factors with interaction
     
     # Model information
-    print model1.summary()
-    print model2.summary()
-    print model3.summary()
+    print(model1.summary())
+    print(model2.summary())
+    print(model3.summary())
     
     # ANOVAs
-    print '-----------------------------------------------------------------'
-    print anova_lm(model1)
-    print '-----------------------------------------------------------------'
-    print anova_lm(model2)
-    print '-----------------------------------------------------------------'
-    print anova_lm(model3)
+    print('-----------------------------------------------------------------')
+    print(anova_lm(model1))
+    
+    print('-----------------------------------------------------------------')
+    print(anova_lm(model2))
+    
+    print('-----------------------------------------------------------------')
+    model3Results = anova_lm(model3)
+    print(model3Results)
+    
+    # Just to check the correct run
+    return model3Results['F'][0] # should be 156.1407931415788
     
 def polynomial_regression():
     ''' Define the model directly through the design matrix. Similar to MATLAB's "regress" command '''
 
     # Generate the data
+    
+    # To get reproducable values, I provide a seed value
+    np.random.seed(987654321)       
+    
     t = np.arange(0,10,0.1)
     y = 4 + 3*t + 2*t**2 + 5*np.random.randn(len(t))
     
@@ -56,6 +66,8 @@ def polynomial_regression():
     print 'The fit parameters are: {0}'.format(str(res.params))
     print 'The confidence intervals are:'
     print res.conf_int()
+    
+    return res.params # should be [ 4.74244177,  2.60675788,  2.03793634]
 
 if __name__ == '__main__':
     model_formulas()

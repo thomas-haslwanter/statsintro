@@ -7,8 +7,8 @@ Also shows how to make 3d plots.
 
 '''
 Author: Thomas Haslwanter
-Date:   March-2013
-Ver:    1.0
+Date:   May-2013
+Ver:    1.1
 '''
 
 # The standard imports
@@ -27,6 +27,10 @@ def generatedata():
     ''' Generate and show the data '''
     x = np.linspace(-5,5,101)
     (X,Y) = np.meshgrid(x,x)
+    
+    # To get reproducable values, I provide a seed value
+    np.random.seed(987654321)   
+    
     Z = -5 + 3*X-0.5*Y+np.random.randn(np.shape(X)[0], np.shape(X)[1])
     
     # Plot the figure
@@ -52,14 +56,18 @@ def regressionmodel(X,Y,Z):
     model = ols("z ~ x + y", df).fit()
     
     # Print the summary
-    print model.summary()
+    print(model.summary())
+    
+    return model._results.params  # should be array([-4.99754526,  3.00250049, -0.50514907])
 
 def linearmodel(X,Y,Z):
     '''Just fit the plane'''
     
     M = np.vstack((np.ones(len(X)), X, Y)).T
     bestfit = np.linalg.lstsq(M,Z)
-    print 'Best fit plane:', bestfit
+    print('Best fit plane:', bestfit)
+    
+    return bestfit
                   
 if __name__ == '__main__':
     (X,Y,Z) = generatedata()    

@@ -80,7 +80,7 @@ def main():
     # Show the plot, and create a figure
     outFile = r'C:\Temp\ROC.png'
     plt.savefig(outFile, dpi=200)
-    print 'ROC-figure saved to {0}.'.format(outFile)
+    print('ROC-figure saved to {0}.'.format(outFile))
     
     plt.show()
 

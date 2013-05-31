@@ -24,23 +24,23 @@ def check_mean():
     '''
     # Get data from Altman
 
-    data = getData(r'data_altman\altman_91.txt')
+    data = getData(r'data_altman/altman_91.txt')
 
     # Watch out: by default the SD is calculated with 1/N!
     myMean = np.mean(data)
     mySD = np.std(data, ddof=1)
-    print 'Mean and SD: {0:4.2f} and {1:4.2f}'.format(myMean, mySD)
+    print('Mean and SD: {0:4.2f} and {1:4.2f}'.format(myMean, mySD))
 
     # Confidence intervals
     tf = stats.t(len(data)-1)
     ci = np.mean(data) + stats.sem(data)*np.array([-1,1])*tf.isf(0.025)
-    print 'The confidence intervals are {0:4.2f} to {1:4.2f}.'.format(ci[0], ci[1])
+    print('The confidence intervals are {0:4.2f} to {1:4.2f}.'.format(ci[0], ci[1]))
 
     # Check for significance
     checkValue = 7725
     t, prob = stats.ttest_1samp(data, checkValue)
     if prob < 0.05:
-        print '{0:4.2f} is significantly different from the mean (p={1:5.3f}).'.format(checkValue, prob)
+        print('{0:4.2f} is significantly different from the mean (p={1:5.3f}).'.format(checkValue, prob))
 
     # For not normally distributed data, use the Wilcoxon signed rank test
     (rank, pVal) = stats.wilcoxon(data-checkValue)
@@ -49,7 +49,9 @@ def check_mean():
     else:
       issignificant = 'likely'
       
-    print 'It is ' + issignificant + ' that the value is {0:d}'.format(checkValue)
+    print('It is ' + issignificant + ' that the value is {0:d}'.format(checkValue))
+    
+    return prob # should be 0.018137235176105802
  
 def compareWithNormal():
     # generate the data
@@ -69,6 +71,8 @@ def compareWithNormal():
 
     # compare
     print('The probability from the t-test is ' + '{0:4.3f}, and from the normal distribution {1:4.3f}'.format(tProb, normProb))
+    
+    return normProb # should be 0.054201154690070759
            
 if __name__ == '__main__':
     check_mean()

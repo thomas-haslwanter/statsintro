@@ -7,7 +7,7 @@ models are expressed in R.
 '''
 Author:  Thomas Haslwanter
 Date:    May-2013
-Version: 1.2
+Version: 1.3
 '''
 
 import pandas as pd
@@ -20,7 +20,7 @@ def anova_interaction():
     by four observers in three fetuses.'''
     
     # Get the data
-    data = getData(r'data_altman\altman_12_6.txt')
+    data = getData(r'data_altman/altman_12_6.txt')
     
     # Bring them in dataframe-format
     df = pd.DataFrame(data, columns=['hs', 'fetus', 'observer'])
@@ -28,7 +28,10 @@ def anova_interaction():
     # Determine the ANOVA with interaction
     formula = 'hs ~ C(fetus) + C(observer) + C(fetus):C(observer)'
     lm = ols(formula, df).fit()
-    print anova_lm(lm)
+    anovaResults = anova_lm(lm)
+    print(anovaResults)
 
+    return  anovaResults['F'][0]
+                              
 if __name__ == '__main__':
     anova_interaction()

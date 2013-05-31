@@ -8,7 +8,7 @@ The formulas and the example are taken from Altman, Chapter 13.
 '''
 Author : Thomas Haslwanter
 Date : May 2013
-Ver : 1.1
+Ver : 1.2
 '''
 
 import numpy as np
@@ -104,10 +104,10 @@ def logrank(data_1, data_2):
         
     return(p, chi2)
     
-if __name__=='__main__':
+def main():
     # get the data
-    data1 = getData(r'data_altman\altman_13_2.txt')
-    data2 = getData(r'data_altman\altman_13_3.txt')
+    data1 = getData('altman_13_2.txt', subDir='..\Data\data_altman')
+    data2 = getData('altman_13_3.txt', subDir='..\Data\data_altman')
     
     # Determine the Kaplan-Meier curves
     (p1, r1, t1, sp1,se1) = kaplanmeier(data1)
@@ -125,5 +125,11 @@ if __name__=='__main__':
     plt.show()
     
     # Check the hypothesis that the two survival curves are the same
-    logrank(data1, data2)
+    (p, X2) = logrank(data1, data2)
+    
+    return p    # supposed to be 0.073326322306832212
+    
+if __name__=='__main__':
+    main()
+    
     

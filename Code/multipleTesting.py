@@ -68,54 +68,57 @@ def main():
     model = ols('StressReduction ~ C(Treatment)',df).fit()
     
     anovaResults =  anova_lm(model)
-    print anovaResults
+    print(anovaResults)
     if anovaResults['PR(>F)'][0] < 0.05:
         print('One of the groups is different.')
     
     #Then, do the multiple testing
     mod = MultiComparison(dta2['StressReduction'], dta2['Treatment'])
-    print mod.tukeyhsd()[0]
+    print(mod.tukeyhsd().summary())
     
     # The following code produces the same printout
     res2 = pairwise_tukeyhsd(dta2['StressReduction'], dta2['Treatment'])
     #print res2[0]
     
     # Show the group names
-    print mod.groupsunique
+    print(mod.groupsunique)
     
     # Generate a print
     import matplotlib.pyplot as plt
-    plt.plot([0,1,2], res2[1][2], 'o')
-    plt.errorbar([0,1,2], res2[1][2], yerr=np.abs(res2[1][4].T-res2[1][2]), ls='o')
+    xvals = np.arange(3)
+    plt.plot(xvals, res2.meandiffs, 'o')
+    #plt.errorbar(xvals, res2.meandiffs, yerr=np.abs(res2[1][4].T-res2[1][2]), ls='o')
+    errors = np.ravel(np.diff(res2.confint)/2)
+    plt.errorbar(xvals, res2.meandiffs, yerr=errors, ls='o')
     xlim = -0.5, 2.5
     plt.hlines(0, *xlim)
     plt.xlim(*xlim)
-    pair_labels = mod.groupsunique[np.column_stack(res2[1][0])]
-    plt.xticks([0,1,2], pair_labels)
+    pair_labels = mod.groupsunique[np.column_stack(res2._multicomp.pairindices)]
+    plt.xticks(xvals, pair_labels)
     plt.title('Multiple Comparison of Means - Tukey HSD, FWER=0.05' +
               '\n Pairwise Mean Differences')          
     
     # Save to outfile
     outFile = 'MultComp.png'
     plt.savefig('MultComp.png', dpi=200)
-    print 'Figure written to {0}'.format(outFile)
+    print('Figure written to {0}'.format(outFile))
     
     plt.show()
     
     # Instead of the Tukey's test, we can do pairwise t-test
     # First, with the "Holm" correction
     rtp = mod.allpairtest(stats.ttest_rel, method='Holm')
-    print rtp[0]
+    print(rtp[0])
     
     # and then with the Bonferroni correction
-    print mod.allpairtest(stats.ttest_rel, method='b')[0]
+    print(mod.allpairtest(stats.ttest_rel, method='b')[0])
     
     # Done this way, the variance is calculated at each comparison.
     # If you want the joint variance across all samples, you have to 
     # use a few tricks:(http://jpktd.blogspot.co.at/2013/03/multiple-comparison-and-tukey-hsd-or_25.html)
     res2 = pairwise_tukeyhsd(dta2['StressReduction'], dta2['Treatment'])
-    studentized_mean = res2[1][2]
-    studentized_variance = res2[1][3]
+    studentized_mean = res2.meandiffs
+    studentized_variance = res2.variance
     
     t_stat = (studentized_mean / studentized_variance) / np.sqrt(2)
     dof = len(dta2) - len(mod.groupsunique)
@@ -124,6 +127,8 @@ def main():
     # Now with the Bonferroni correction
     from statsmodels.stats.multitest import multipletests
     res_b = multipletests(my_pvalues, method='b')
+    
+    return res2.variance
 
 if __name__ == '__main__':
     main()

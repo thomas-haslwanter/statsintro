@@ -7,7 +7,7 @@ and group data, etc.
 '''
 Author : Thomas Haslwanter
 Date : May 2013
-Ver : 1.2
+Ver : 1.3
 '''
 
 import pandas as pd
@@ -24,51 +24,55 @@ def simple_analysis():
     # Since there are more rendeer than elephants, I cannot use a Python
     # dictionary. Instead I use "Series" from pandas. The other common pandas
     # datastructure is "DataFrame".
+    
+    # To get reproducable values, I provide a seed value
+    np.random.seed(987654321)   
+    
     data = {'rendeer' : pd.Series(stats.norm.rvs(size=70, loc=300, scale=50)),
         'elephants' : pd.Series(stats.norm.rvs(size=50, loc=500, scale=100))}
     df = pd.DataFrame(data)
     
     # Check some simple stats
-    print 'Numbers'
-    print df.count()
+    print('Numbers')
+    print(df.count())
     
-    print '\nMeans'
-    print df.mean()
+    print('\nMeans')
+    print(df.mean())
     
-    print '\nMins'
-    print df.min()
+    print('\nMins')
+    print(df.min())
     
-    print '\nMax'
-    print df.max()
+    print('\nMax')
+    print(df.max())
     
     # Confidence intervals for the mean elephant
     se =df['elephants'].std()/np.sqrt(df['elephants'].count())
     level = 0.975
     tval = stats.t.ppf(level, df['elephants'].count()-1)
     cis = df['elephants'].mean() + tval*se*np.array([-1., 1])
-    print '95% CI for the weight of elephants: {0} - {1}'.format(cis[0], cis[1])
+    print('95% CI for the weight of elephants: {0} - {1}'.format(cis[0], cis[1]))
     
     # Is the weight of elephants different from 500 kg?
     testWeight = 500
     (tv, pv) = stats.ttest_1samp(df['elephants'].dropna(), testWeight)
     
     if pv < 0.05:
-        print 'Elephants don''t weigh {0}kg'.format(testWeight)
+        print('Elephants don''t weigh {0}kg'.format(testWeight))
     else:
-        print 'Elephants weigh approximately {0}kg'.format(testWeight)
+        print('Elephants weigh approximately {0}kg'.format(testWeight))
             
     # Are elephants heavier than rendeer?
     
     (tv, pv) = stats.ttest_ind(df['elephants'].dropna(), df['rendeer'])
     if pv < 0.05:
         if df['elephants'].mean() > df['rendeer'].mean():
-            print 'Elephants are heavier than rendeer'
+            print('Elephants are heavier than rendeer')
         else:
-            print 'Rendeer are heavier than elephants'
+            print('Rendeer are heavier than elephants')
     else:
         'Elephants and rendeer weigh the same'
 
-    return df
+    return (df, pv)
 
 
 def simple_plots(df):
@@ -89,7 +93,7 @@ def simple_plots(df):
 def example_altman():
     '''Example from Altman "Practical statistics for medical research'''
     
-    data = getData(r'data_altman\altman_94.txt')
+    data = getData(r'altman_94.txt', subDir='..\Data\data_altman')
     
     lean = pd.Series(data[data[:,1]==1,0])
     obese = pd.Series(data[data[:,1]==0,0])
@@ -102,10 +106,16 @@ def example_altman():
     df.boxplot()
     plt.show()
     
-    stats.ttest_ind(lean, obese)
+    (tVal, p) = stats.ttest_ind(lean, obese)
+    if p < 0.05:
+        print('"lean" significantly different from "obese": p={0}'.format(p))
+    else:
+        print('No difference between "lean" and "obese"')
+    
+    return p    # supposed to be 0.00079899821117005397
 
 if __name__ == '__main__':
-    df = simple_analysis()    
+    (df,_) = simple_analysis()    
     simple_plots(df)
     example_altman()
     

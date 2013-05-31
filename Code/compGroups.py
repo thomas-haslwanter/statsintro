@@ -7,8 +7,8 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    Jan-2013
-Version: 1.0
+Date:    May-2013
+Version: 1.1
 '''
 
 import numpy as np
@@ -31,10 +31,11 @@ def oneProportion():
     ci = p + np.array([-1,1])*td.isf(0.025)*se
 
     # Print them
-    print('ONE PROPORTION')
+    print('ONE PROPORTION ----------------------------------------')
     print('The confidence interval for the given sample is {0:5.3f} to {1:5.3f}'.format(
         ci[0], ci[1]))
-    return
+    
+    return ci
 
 def chiSquare():
     ''' Application of a chi square test to a 2x2 table.
@@ -53,12 +54,13 @@ def chiSquare():
     chi2_uncorrected = stats.chi2_contingency(obs, correction=False)
 
     # Print the result
-    print('CHI SQUARE')
+    print('\nCHI SQUARE --------------------------------------------------')
     print('The corrected chi2 value is {0:5.3f}, with p={1:5.3f}'.format(
         chi2_corrected[0], chi2_corrected[1]))
     print('The uncorrected chi2 value is {0:5.3f}, with p={1:5.3f}'.format(
         chi2_uncorrected[0], chi2_uncorrected[1]))
-    return
+    
+    return chi2_corrected
 
 def fisherExact():
     '''Fisher's Exact Test:
@@ -74,10 +76,12 @@ def fisherExact():
     fisher_result = stats.fisher_exact(obs)
 
     # Print the result
-    print('FISHER')
+    print('\nFISHER --------------------------------------------------------')
     print('The probability of obtaining a distribution at least as extreme '
     + 'as the one that was actually observed, assuming that the null ' +
     'hypothesis is true, is: {0:5.3f}.'.format(fisher_result[1]))
+    
+    return fisher_result
 
 if __name__ == '__main__':
     oneProportion()

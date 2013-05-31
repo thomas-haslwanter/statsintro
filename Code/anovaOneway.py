@@ -11,7 +11,7 @@
 '''
 Author:  Thomas Haslwanter
 Date:    May-2013
-Version: 1.4
+Version: 1.5
 '''
 
 import numpy as np
@@ -25,6 +25,7 @@ def anova_oneway():
     ''' One-way ANOVA: test if results from 3 groups are equal. '''
     
     # Get the data
+    print('One-way ANOVA: -----------------')
     data = getData('altman_910.txt', subDir='..\Data\data_altman')
     
     # Sort them into groups, according to column 1
@@ -41,16 +42,21 @@ def anova_oneway():
     F_statistic, pVal = stats.f_oneway(group1, group2, group3)
     
     # Print the results
-    print 'Altman 910:'
-    print (F_statistic, pVal)
+    print('Data form Altman 910:')
+    print((F_statistic, pVal))
     if pVal < 0.05:
         print('One of the groups is significantly different.')
         
     # Elegant alternative implementation, with pandas & statsmodels
     df = pd.DataFrame(data, columns=['value', 'treatment'])    
     model = ols('value ~ C(treatment)', df).fit()
-    print anova_lm(model)
+    anovaResults = anova_lm(model)
+    print(anovaResults)
     
+    # Check if the two results are equal. If they are, there is no output
+    np.testing.assert_almost_equal(F_statistic, anovaResults['F'][0])
+    
+    return (F_statistic, pVal) # should be (3.711335988266943, 0.043589334959179327)
 #----------------------------------------------------------------------
 def show_teqf():
     """Shows the equivalence of t-test and f-test, for comparing two groups"""
@@ -63,7 +69,13 @@ def show_teqf():
     t_val, pVal_t = stats.ttest_ind(data['father'], data['mother'])
     
     # ... and show that t**2 = F
+    print('\nT^2 == F: ------------------------------------------')
     print('From the t-test we get t^2={0:5.3f}, and from the F-test F={1:5.3f}'.format(t_val**2, F_statistic))
+    
+    # numeric test
+    np.testing.assert_almost_equal(t_val**2, F_statistic)
+    
+    return F_statistic
 
 # ---------------------------------------------------------------
 def anova_statsmodels():
@@ -73,7 +85,10 @@ def anova_statsmodels():
     data = pd.read_csv(r'..\Data\data_kaplan\galton.csv')
     
     anova_results = anova_lm(ols('height ~ 1 + sex', data).fit())
-    print anova_results
+    print('\nANOVA with "statsmodels" ------------------------------')
+    print(anova_results)
+    
+    return anova_results['F'][0]
 
 #----------------------------------------------------------------------
 def anova_byHand():
@@ -101,11 +116,13 @@ def anova_byHand():
     df = stats.f(df_groups,df_residuals)
     p = df.sf(F)
 
-    print 'ANOVA-Results: F = {0}, and p<{1}'.format(F, p)
+    print('ANOVA-Results: F = {0}, and p<{1}'.format(F, p))
+    
+    return (F, p)
     
 if __name__ == '__main__':
     anova_oneway()
-    anova_statsmodels()    
     anova_byHand()
     show_teqf()
-    raw_input('Done!')
+    anova_statsmodels()    
+    #raw_input('Done!')

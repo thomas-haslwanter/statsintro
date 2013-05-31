@@ -5,8 +5,8 @@ Taken from http://www.brightstat.com/index.php?option=com_content&task=view&id=4
 
 '''
 Author: Thomas Haslwanter
-Date:   April-2013
-Ver:    1.1
+Date:   May-2013
+Ver:    1.2
 '''
 
 from scipy.stats.mstats import kruskalwallis
@@ -27,6 +27,8 @@ def main():
         print('There is a significant difference between the cities.')
     else:
         print('No significant difference between the cities.')
+        
+    return h
 
 if __name__ == '__main__':
-    main()
+    main()    

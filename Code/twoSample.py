@@ -20,7 +20,7 @@ def paired_data():
     Compare mean daily intake over 10 pre-menstrual and 10 post-menstrual days (in kJ).'''
     
     # Get the data:  daily intake of energy in kJ for 11 women
-    data = getData(r'data_altman\altman_93.txt')
+    data = getData('altman_93.txt', subDir=r'..\Data\data_altman')
     
     mean(data, axis=0)
     std(data, axis=0, ddof=1)
@@ -40,6 +40,8 @@ def paired_data():
     # normally distributed
     z_statistic, p_value = stats.wilcoxon(post - pre)
     print("paired wilcoxon-test", p_value)
+    
+    return p_value # should be 0.0046360889354534881
 
 
 def unpaired_data():
@@ -47,7 +49,7 @@ def unpaired_data():
     in groups of lean and obese women'''
     
     # Get the data: energy expenditure in mJ and stature (0=obese, 1=lean)
-    energ = getData(r'data_altman\altman_94.txt')
+    energ = getData('altman_94.txt', subDir=r'..\Data\data_altman')
     
     # Group them
     group1 = energ[:, 1] == 0
@@ -81,6 +83,8 @@ def unpaired_data():
     plt.plot(group2, 'ro', label='lean')
     plt.legend(loc=0)
     plt.show()
+    
+    return p_value  # should be 0.0010608066929400244
 
 if __name__ == '__main__':
     paired_data()    
