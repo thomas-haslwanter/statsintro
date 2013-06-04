@@ -48,9 +48,13 @@ Chi-square Test
     The chi-square test is based on a test statistic that measures the
     divergence of the observed data from the values that would be expected
     under the null hypothesis of no association. This requires calculation
-    of the expected values based on the data. The expected value for each
-    cell in a two-way table is equal to *(row total*column total)/n*, where *n*
-    is the total number of observations included in the table.
+    of the expected values based on the data.
+    With *n* is the total number of observations included in the table,
+    the expected value :math:`e_i`` for each cell in a two-way table is
+
+.. math::
+    
+    expected = \frac{row total*column total}{n}
 
 
 Fisher's Exact Test

@@ -114,6 +114,8 @@ users should check out the installations tips from Johansson (see above).
 If you decide to install things manually, you need the following modules
 in addition to the Python standard library:
 
+-  *ipython* ... For interactive work.
+  
 -  *numpy* ... For working with vectors and arrays.
 
 -  *scipy* ... All the essential scientific algorithms, including those
@@ -128,10 +130,14 @@ in addition to the Python standard library:
 -  *statsmodels* ... This one is only required if you want to look more
    into statistical modeling.
 
-Also, make sure that you have a good programming environment! Currently, my
+IPython
+^^^^^^^
+
+Make sure that you have a good programming environment! Currently, my
 favorite way of programming is similar to my old Matlab style: I first get
-the individual steps worked out interactively in *ipython*. `ipython
-<http://ipython.org/>`_ has made enormous progess over the last few years.
+the individual steps worked out interactively in `ipython
+<http://ipython.org/>`_ . Ipython has made enormous progess over the last few years.
+Ipython provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code.
 When ipython is started in *pylab mode* (which is the typical
 configuration), it automatically loads numpy and matplotlib.pyplot into the
 active workspace, and provides a very convenient, Matlab-like programing
@@ -141,8 +147,84 @@ plots and other rich media. Please check out the links to the ipython
 notebooks in this statistics introduction. I believe that it will  help you
 to get up to speed with python much more quickly.
 
+
 To write a program, I then go to either `Spyder <http://code.google.com/p/spyderlib/>`_
 (which is free) or `Wing <http://wingware.com/>`_ (which is very good, but commercial).
+
+The flexibility of Python has the "disadvantage" that it can come in
+differnt flavors or coding styles. When you know the different approaches,
+they are great to use. But when you get started, it can be a bit confusing.
+The following section from the Matplotlib documentation may help to clarify
+these things:
+
+Matplotlib, pylab, and pyplot: how are they related?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Matplotlib** is the whole package; *pylab* is a module in matplotlib that gets installed alongside matplotlib; and *matplotlib.pyplot* is a module in matplotlib.
+
+**Pyplot** provides the state-machine interface to the underlying plotting library in matplotlib. This means that figures and axes are implicitly and automatically created to achieve the desired plot. For example, calling plot from pyplot will automatically create the necessary figure and axes to achieve the desired plot. Setting a title will then automatically set that title to the current axes object:
+
+::
+
+    import matplotlib.pyplot as plt
+
+    plt.plot(range(10), range(10))
+    plt.title("Simple Plot")
+    plt.show()
+
+**Pylab** combines the pyplot functionality (for plotting) with the numpy functionality (for mathematics and for working with arrays) in a single namespace, making that namespace (or environment) even more MATLAB-like. For example, one can call the sin and cos functions just like you could in MATLAB, as well as having all the features of pyplot.
+
+The pyplot interface is generally preferred for non-interactive plotting (i.e., scripting). The pylab interface is convenient for interactive calculations and plotting, as it minimizes typing. Note that this is what you get if you use the ipython shell with the -pylab option, which imports everything from pylab and makes plotting fully interactive.
+
+
+Coding Styles in Python
+^^^^^^^^^^^^^^^^^^^^^^^
+In Python you will find different coding styles and usage patterns. These styles are perfectly valid and have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.
+
+Of the different styles, there are two that are officially supported. Therefore, these are the preferred ways to use matplotlib.
+
+For the preferred pyplot style, the imports at the top of your scripts will typically be:
+
+::
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+Then one calls, for example, np.arange, np.zeros, np.pi, plt.figure, plt.plot, plt.show, etc. So, a simple example in this style would be:
+
+::
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+    x = np.arange(0, 10, 0.2)
+    y = np.sin(x)
+    plt.plot(x, y)
+    plt.show()
+
+Note that this example used pyplot's state-machine to automatically and implicitly create a figure and an axes. For full control of your plots and more advanced usage, use the pyplot interface for creating figures, and then use the object methods for the rest:
+
+::
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+    x = np.arange(0, 10, 0.2)
+    y = np.sin(x)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x, y)
+    plt.show()
+
+Next, the same example using a pure MATLAB-style:
+
+::
+
+    from pylab import *
+    x = arange(0, 10, 0.2)
+    y = sin(x)
+    plot(x, y)
+    show()
+
+So, why all the extra typing as one moves away from the pure MATLAB-style? For very simple things like this example, the only advantage is academic: the wordier styles are more explicit, more clear as to where things come from and what is going on. For more complicated applications, this explicitness and clarity becomes increasingly valuable, and the richer and more complete object-oriented interface will likely make the program easier to write and maintain.
 
 Here an example, to get you started with Python. For interactive work, it is
 simplest to use the *pylab mode*, as shown in the example below. The corresponding ipython
@@ -158,13 +240,74 @@ Example-Session
 
 Pandas
 ~~~~~~
+`pandas <http://pandas.pydata.org/>`_ is a Python module which provides suitable data structures for
+statistical analysis. It significantly enhances the abilities of Python for
+data input, data organization, and data manipulation. In the following, I assume
+that pandas has been imported with
 
-*Pandas* is a Python module which provides suitable data structures for
-statistical analysis. The following piece of code shows you how pandas
-can be used for data analysis:
+::
+    import pandas as pd
+
+Data Input
+^^^^^^^^^^
+
+Pandas offers tools for reading and writing data between in-memory data structures and different
+formats, e.g. CSV and text files, Microsoft Excel, and SQL databases. For example, if you have data
+in your clipboard, you can import them directly with
+
+::
+    data = pd.io.parsers.read_clipboard()
+
+Or data from "Sheet1" in an Excel-file "data.xls" can be read in easily with
+
+::
+    xls = pd.io.parsers.ExcelFile('data.xls')
+    data = xls.parse('Sheet1')
+
+
+Data Handling and Manipulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Pandas offers powerful functions to handle missing data and "nans", and other kinds of data manipulation like pivoting.
+
+To handle labeled data, pandas introduces *DataFrame* objects. A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table. It is generally the most commonly used pandas object. For example, you can use data-frames to efficiently group objects, and do a statistical evaluation of each group:
+
+::
+
+    x = tile([1,2,3], 4)
+    y = randn(len(x))
+    df = pd.DataFrame({'treatment':x, 'result':y})
+    groups = df.groupby('treatment')
+    print groups.mean()
+
+produces
+
+::
+
+    .            result
+    treatment
+    1         -0.624521
+    2          0.074425
+    3         -0.806102
+
+For statistical analysis, pandas becomes really powerful if you combine it with *statsmodels* (see below).
+
+The following piece of code shows you how pandas can be used for data analysis:
+
 (See also the ipython notebook `pandas_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/pynb/pandas_intro.ipynb>`_)
 
 .. literalinclude:: ..\Code\pandas_intro.py
+
+
+Statsmodels
+~~~~~~~~~~~
+
+`statsmodels <http://statsmodels.sourceforge.net/>`_ is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. In its latest release (version 0.5), statsmodels also allows the formulation of models with the popular formula language also used by $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model *'success ~ intelligence * diligence'*, which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
+
+While for complex statistical models R still has an edge, python has a much clearer and more readable syntax, and is arguably more powerful for the data manipulation often required for statistical analysis.
+
+General Routines
+~~~~~~~~~~~~~~~~
 
 Here is also a good place to introduce the short function that we will
 use a number of times to simplify the reading in of data:

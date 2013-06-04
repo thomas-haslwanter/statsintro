@@ -190,7 +190,7 @@ Example: one-way ANOVA
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 As an example, let us take the red cell folate levels (:math:`\mu g/l`)
-in threee groups of cardiac bypass patients given different levels of
+in three groups of cardiac bypass patients given different levels of
 nitrous oxide ventilation (Amess et al, 1978), described in the Python code example
 below. I first show the result of this ANOVA test, and then explain the steps
 to get there.
@@ -257,7 +257,7 @@ The formula for Tukey's test is:
 
 .. math::    q_s = \frac{Y_A - Y_B}{SE}
 
-where :math:`Y_A` is the larger of the two means being compared, :math:`Y_B` is the smaller of the two means being compared, and :math:`SE` is the standard error of the data in question. This :math:`q_s` value can then be compared to a q value from the \emph{studentized range distribution}, which takes into account the multiple comparisons. If the qs value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
+where :math:`Y_A` is the larger of the two means being compared, :math:`Y_B` is the smaller of the two means being compared, and :math:`SE` is the standard error of the data in question. This :math:`q_s` value can then be compared to a q value from the *studentized range distribution*, which takes into account the multiple comparisons. If the qs value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
 Note that the studentized range statistic is the same as the t-statistic except for a scaling factor (np.sqrt(2)).
 
 .. literalinclude:: ..\Code\multipleTesting.py
