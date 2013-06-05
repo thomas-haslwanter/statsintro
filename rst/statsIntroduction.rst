@@ -41,6 +41,11 @@ information in English under `http://www.statsref.com/ <http://www.statsref.com/
 webpage on statistics and regulatory issues is
 `http://www.reiter1.com/ <http://www.reiter1.com/>`_ .
 
+**Exercises:** Many examples are already solved in the text. For the use in
+lectures (or for self-test), additional exercises are provided at the end of
+most chapters. For lecturers, solutions to these exercises can be provided
+on demand. Please contact me directly for that via email.
+
 Why Statistics?
 ---------------
 

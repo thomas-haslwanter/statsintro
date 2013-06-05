@@ -260,6 +260,25 @@ The output of this program is shown in the figure below.
 This program also shows how Python programs intended for
 distribution should be documented.
 
+Exercises
+---------
+
+#. **Correlation**
+
+    Read in the data for the average yearly temperature at the Sonnblick, from     *https://github.com/thomas-haslwanter/statsintro/blob/master/Data/data\_others/AvgTemp.xls*
+    Calculate the Pearson and Spearman correlation, and Kendall's tau, for the temperature vs. year.
+
+#. **Regression**
+
+    For the same data, calculate the yearly increase in temperature, assuming a linear increase with time.
+    Is this increase significant?
+
+#. **Normality Check**
+
+    For the data from the regression model, check if the model is ok by testing if the residuals are normally distributed (e.g. by using the Komogorov-Smirnov test)
+
+
+
 .. literalinclude:: ..\Code\fitLine.py
 
 .. [4]

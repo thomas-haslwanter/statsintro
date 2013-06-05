@@ -722,6 +722,61 @@ where :math:`se` is the standard error, and :math:`t_{n,\alpha}` the
 two-sided confidence intervals, for example, you have to set
 :math:`\alpha=0.025` and :math:`\alpha=0.975` .
 
+
+Exercises
+---------
+
+Numpy
+~~~~~
+
+#. Create an numpy-array, containing the data 1,2,3,...,10.
+
+#. Calculate mean and sample(!)-standard deviation.
+    (Correct answer: 3.03)
+
+
+Distributions
+~~~~~~~~~~~~~
+
+
+#.  Generate and plot the Probability Density Function (PDF) of a normal distribution, with a mean of 5 and a standard deviation of 3.
+#.  Generate 1000 random data from this distribution.
+#.  Calculate the standard error of the mean of these data.
+    (Correct answer: ca. 0.096)
+
+#.  Plot the histogram of these data.
+#.  From the PDF, calculate the interval containing 95% of these data.
+     (Correct answer: [ -0.88, 10.88])
+
+
+Reading and Writing of Datafiles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#.  Read in the data from the file *https://github.com/thomas-haslwanter/statsintro/blob/master/Data/data\_others/sinc.txt* (you may want to download it onto your computer first), and plot them on graph (first column contains the x-data, the second column the y-data). Label the axes with "X-data" and "Y-data".
+#.  Write the data to the new outFile 'outFile.txt'
+
+Continuous Distributions Distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#.  **T-Distribution:** Measuring the weight of your collegues, you have obtained the following weights: 52, 70, 65, 85, 62, 83, 59 kg.
+    Calculate the corresponding mean, and the 99% confidence interval for the mean. Note: with n values you have n-1 DOF for the t-distribution.
+     (Correct answer: 68.0 +/- 17.2 kg)
+
+#.  **Chi-square Distribution** Create 3 normally distributed datasets (mean = 1, SD = 1), with 1000 samples each. Then square them, sum them (so that you have 1000 data-points), and create a histogram with 100 bins. This should be similar to the curve for the Chi-square distribution, with 3 DOF (i.e. it should come down at the left).
+
+#.  **F Distribution** You have two apple trees. There are three apples from the first tree that weigh 110, 121 and 143 grams respectively, and four from the other which weigh 88, 93, 105 and 124 grams respectively. Are the variances from the two trees different?
+    Note: calculate the corresponding F-value, and check if the CDF for the corresponding F-distribution is <0.025.
+    (Correct answer: no)
+
+#.  **Binomial Distribution** "According to research, pure blue eyes in Europe approach greatest frequency in Finland, Sweden and Norway(at 72\%), followed by Estonia, Denmark(69\%); Latvia, Ireland(66\%); Scotland(63\%); Lithuania(61\%); The Netherlands(58\%); Belarus, England(55\%); Germany(53\%); Poland, Wales(50\%); Russia, The Czech Republic(48\%); Slovakia(46\%); Belgium(43\%); Austria, Switzerland, Ukraine(37\%); France, Slovenia(34\%); Hungary(28\%); Croatia(26\%); Bosnia and Herzegovina(24\%); Romania(20\%); Italy(18\%); Serbia, Bulgaria(17\%); Spain(15\%); Georgia, Portugal(13\%); Albania(11\%); Turkey and Greece(10\%). Further analysis shows that the average occurrence of blue eyes in Europe is 34\%, with 50\% in Northern Europe and 18\% in Southern Europe."
+
+    If we have 15 Austrian students in the class-room, what ist the chance of finding 3, 6, or 10 students with blue eyes?
+     (Correct answer: 9%, 20.1%, and 6.4%)
+
+#.  **Poisson Distribution** On the streets of Austria there were 62 fatal accidents in 2012. Assuming that those are evenly distributed, we have on average
+    62 /(365/7)=1.19 fatal accidents per week. How big is the chance that in a given week there are no, 2, or 5 accidents?
+     (Correct answer: 30.5%, 21.5%, 0.6%)
+
+
 .. |image8| image:: ../Images/Normal_Distribution_PDF.png
     :scale: 50 %
 .. |image9| image:: ../Images/Normal_MultHist.png
