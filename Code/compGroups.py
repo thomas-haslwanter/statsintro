@@ -7,8 +7,8 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    May-2013
-Version: 1.1
+Date:    June-2013
+Version: 1.2
 '''
 
 import numpy as np
@@ -73,6 +73,8 @@ def fisherExact():
     obs = np.array([[1,5], [8,2]])
 
     # Calculate the Fisher Exact Test
+    # Note that by default, the option "alternative='two-sided'" is set;
+    # other options are 'less' or 'greater'.
     fisher_result = stats.fisher_exact(obs)
 
     # Print the result

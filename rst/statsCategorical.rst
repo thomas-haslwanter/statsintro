@@ -182,16 +182,43 @@ tests.
 Fisher's Exact Test
 ~~~~~~~~~~~~~~~~~~~
 
-If the requirement that 80% of cells should have expected values of at
-least 5 is not fulfilled, *Fisher’s exact test* should be used. This
-test is based on the observed row and column totals. The method consists
-of evaluating the probability associated with all possible 2x2 tables
-which have the same row and column totals as the observed data, making
-the assumption that the null hypothesis (i.e. that the row and column
-variables are unrelated) is true. In most cases, Fisher’s exact test is
-preferable to the chi-square test. But until the advent of powerful
-computers, it was not practical. You should use it up to approximately
-10-15 cells in the frequency tables.
+If the requirement that 80% of cells should have expected values of at least
+5 is not fulfilled, *Fisher's exact test* should be used. This test is based
+on the observed row and column totals. The method consists of evaluating the
+probability associated with all possible 2x2 tables which have the same row
+and column totals as the observed data, making the assumption that the null
+hypothesis (i.e. that the row and column variables are unrelated) is true.
+In most cases, Fisher's exact test is preferable to the chi-square test. But
+until the advent of powerful computers, it was not practical. You should use
+it up to approximately 10-15 cells in the frequency tables. It is called
+"exact" because the significance of the deviation from a null hypothesis can
+be calculated exactly, rather than relying on an approximation that becomes
+exact in the limit as the sample size grows to infinity, as with many
+statistical tests.
+
+Fisher is said to have devised the test following a comment from Dr Muriel
+Bristol, who claimed to be able to detect whether the tea or the milk was
+added first to her cup. The test is useful for categorical data that result
+from classifying objects in two different ways; it is used to examine the
+significance of the association (contingency) between the two kinds of
+classification. So in Fisher's original example, one criterion of
+classification could be whether milk or tea was put in the cup first; the
+other could be whether Dr Bristol thinks that the milk or tea was put in
+first. We want to know whether these two classifications are associated -
+that is, whether Dr Bristol really can tell whether milk or tea was poured
+in first. Most uses of the Fisher test involve, like this example, a 2 � 2
+contingency table. The p-value from the test is computed as if the margins
+of the table are fixed, i.e. as if, in the tea-tasting example, Dr Bristol
+knows the number of cups with each treatment (milk or tea first) and will
+therefore provide guesses with the correct number in each category. As
+pointed out by Fisher, this leads under a null hypothesis of independence to
+a hypergeometric distribution of the numbers in the cells of the table.
+
+In using the test, you have to decide if you want to use a one-tailed test
+or a two-tailed test. The former one looks for the probability to find a
+distribution as extreme or more extreme as the observed one. The latter one
+(which is the default in python) also considers tables as extreme in the
+opposite direction.
 
 Analysis Programs
 -----------------
