@@ -46,6 +46,9 @@ lectures (or for self-test), additional exercises are provided at the end of
 most chapters. For lecturers, solutions to these exercises can be provided
 on demand. Please contact me directly for that via email.
 
+**PDF-Version:** A complete PDF-version of this introduction is available
+from `here <https://github.com/thomas-haslwanter/statsintro/blob/master/Data/StatsIntro.pdf>`_
+
 Why Statistics?
 ---------------
 
