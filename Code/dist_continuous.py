@@ -35,6 +35,7 @@ def showDistribution(x, d1, d2, tTxt, xTxt, yTxt, legendTxt, xmin=-10, xmax=10):
     xlabel(xTxt)
     ylabel(yTxt)
     show()
+    close()
     
 
 #----------------------------------------------------------------------
