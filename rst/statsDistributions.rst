@@ -484,6 +484,38 @@ give a distribution that is near to normal (see Figure below).
 Plotted against a logarithmic abscissa.
 *Plotted against a logarithmic abscissa.*
 
+Weibull Distribution
+^^^^^^^^^^^^^^^^^^^^
+
+The Weibull distribution is the most commonly used distribution for modeling reliability data or "survival" data. It has two parameters, which allow it to handle increasing, decreasing or constant failure-rates (see Figure below).
+It is defined as
+
+.. math::
+
+    \label{eq_weibull}
+    f_x (x) =
+  \begin{cases}
+    k \frac{x^{k-1}}{\lambda^k} e^{-(x/\lambda)^{k}} & x\geq0 \\
+    0 & x<0 ,
+    \end{cases}
+
+where *k > 0* is the *shape parameter* and :math:`\lambda > 0` is the *scale parameter* of the distribution. Its complementary cumulative distribution function is a stretched exponential function.
+
+If the quantity x is a "time-to-failure", the Weibull distribution gives a distribution for which the failure rate is proportional to a power of time. The shape parameter, k, is that power plus one, and so this parameter can be interpreted directly as follows:
+
+
+-  A value of k < 1 indicates that the failure rate decreases over time. This happens if there is significant "infant mortality", or defective items failing early and the failure rate decreasing over time as the defective items are weeded out of the population.
+
+-  A value of k = 1 indicates that the failure rate is constant over time. This might suggest random external events are causing mortality, or failure.
+
+-  A value of k > 1 indicates that the failure rate increases with time. This happens if there is an "aging" process, or parts that are more likely to fail as time goes on.
+
+In the field of materials science, the shape parameter k of a distribution of strengths is known as the Weibull modulus.
+
+.. image:: ../Images/Weibull_PDF.png
+    :scale: 75 %
+
+*Weibull Distribution*
 
 Exponential Distribution
 ^^^^^^^^^^^^^^^^^^^^^^^^

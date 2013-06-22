@@ -6,12 +6,14 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    May-2013
-Version: 1.6
+Date:    June-2013
+Version: 2.0
 '''
 
 import pandas as pd
 from getdata import getData
+from scipy import stats
+from numpy import testing
 
 def regression_line():
     '''Fit a line, using the powerful "ordinary least square" method of pandas'''
@@ -32,17 +34,19 @@ def correlation():
     
     # Get the data
     data = getData('altman_11_1.txt', subDir='..\Data\data_altman')
-    
-    # Bring them into the dataframe-format
-    df = pd.DataFrame(data, columns=['age', 'fat'])
+    x = data[:,0]
+    y = data[:,1]
     
     # Calculate correlations
     corr = {}
-    corr['pearson'] = df['age'].corr(df['fat'], method = 'pearson')
-    corr['spearman'] = df['age'].corr(df['fat'], method = 'spearman')
-    corr['kendall'] = df['age'].corr(df['fat'], method = 'kendall')
+    corr['pearson'], _ = stats.pearsonr(x,y)
+    corr['spearman'], _ = stats.spearmanr(x,y)
+    corr['kendall'], _ = stats.kendalltau(x,y)
     
     print(corr)    
+    
+    # Assert that Spearman's rho is just the correlation of the ranksorted data
+    testing.assert_almost_equal(corr['spearman'], stats.pearsonr(stats.rankdata(x), stats.rankdata(y))[0])
     
     return corr['pearson']  # should be 0.79208623217849117
     

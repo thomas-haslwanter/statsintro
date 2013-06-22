@@ -25,26 +25,69 @@ is
    \label{eq:pearson}
      r = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum\limits_{i=1}^n (X_i - \bar{X})^2} \sqrt{\sum\limits_{i=1}^n (Y_i - \bar{Y})^2}}
 
-Pearson’s correlation coefficient, sometimes also referred to as
-*population correlation coefficient*, can take any value from -1 to +1.
-Examples are given in the figure below. Note that the formula
-for the correlation coefficient is symmetrical between :math:`x` and
-:math:`y`.
+With
+
+.. math::
+  s_{xy} = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}
+
+and :math:`s_x, s_y` the sample standard deviations of the *x* and *y* values, respectively, this can also be written as
+
+.. math::
+
+  r = \frac{s_{xy}}{s_x \cdot s_y}.
+
+Pearson's correlation coefficient, sometimes also referred to as *population correlation coefficient* or *sample correlation*, can take any value from -1 to +1. Examples are given in the Figure below. Note that the formula for the correlation coefficient is symmetrical between *x* and *y*.
+
 
 Coefficient of determination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *coefficient of determination*  or :math:`R^2` is the square of the correlation.
+The *coefficient of determination*  or :math:`R^2` is the square of the correlation. It is easier to interpret than the correlation coefficient r: Values of :math:`R^2` close to 1 are good, values close to 0 are poor. To explain the interpretation of :math:`R^2`, let us look at the math more formally:
 
-The :math:`R^2` value is the proportion of variation in the dependent variable that can be explained by the variation in the independent variable. It is easier to interpret than the correlation coefficient r: Values of :math:`R^2` close to 1 are good, values close to 0 are poor.
+.. image:: ../Images/Coefficient_of_Determination.png
+    :scale: 75 %
 
-For multiple regression, the *adjusted :math:`R^2`* value (written as :math:`\bar{R}^2`) is often used instead of :math:`R^2`:
+*The better the linear regression (on the right) fits the data in comparison to the simple average (on the left graph), the closer the value of* :math:`R^2` *is to one. The areas of the blue squares represent the squared residuals with respect to the linear regression. The areas of the red squares represent the squared residuals with respect to the average value (from Wikipedia)*
+
+A data set has values :math:`y_i`, each of which has an associated modelled value :math:`f_i` (also sometimes referred to as :math:`\hat{y}_i`). Here, the values :math:`y_i` are called the *observed values* and the modelled values :math:`f_i` are sometimes called the *predicted values*.
+
+In the following :math:`\bar{y}` is the mean of the observed data:
+
+.. math::
+    \bar{y}=\frac{1}{n}\sum_{i=1}^n y_i 
+
+where n is the number of observations.
+
+The "variability" of the data set is measured through different sums of squares:
+
+    :math:`SS_\text{tot}=\sum_i (y_i-\bar{y})^2`, the total sum of squares (proportional to the sample variance);
+
+    :math:`SS_\text{reg}=\sum_i (f_i -\bar{y})^2`, the regression sum of squares, also called the explained sum of squares.
+
+    :math:`SS_\text{res}=\sum_i (y_i - f_i)^2\,`, the sum of squares of residuals, also called the residual sum of squares.
+
+The notations :math:`SS_{R}` and :math:`SS_{E}` should be avoided, since in some texts their meaning is reversed to "Residual sum of squares" and "Explained sum of squares", respectively.
+
+The most general definition of the coefficient of determination is
+
+.. math::
+    R^2 \equiv 1 - {SS_{\rm res}\over SS_{\rm tot}}.\,
+
+**Relation to unexplained variance**
+
+In a general form, :math:`R^2` can be seen to be related to the unexplained variance, since the second term compares the unexplained variance (variance of the model's errors) with the total variance (of the data). See fraction of variance unexplained.
+
+**Adjusted** :math:`R^2`
+
+For multiple regression, the *adjusted* :math:`R^2` value (written as :math:`\bar{R}^2`) is often used instead of :math:`R^2`:
 
 .. math::
 
       \bar{R}^2 = 1 - (1 - R^2)\frac{n - 1}{n - p - 1}
 
 where *n* is the sample size and *p* is the number of independent variables.
+
+**Examples**
 
 How large :math:`R^2` or :math:`\bar{R}^2` must be to be considered good depends on the discipline. They are usually expected to be larger in the physical sciences than it is in biology or the social sciences. In finance or marketing, it also depends on what is being modeled.
 
@@ -68,11 +111,11 @@ necessary. In that case one can rank the set of subjects for each
 variable and compare the orderings. There are two commonly used methods
 of calculating the rank correlation.
 
--  *Spearman's :math:`\rho`*, which is exactly the same as the Pearson
+-  *Spearman's* :math:`\rho`, which is exactly the same as the Pearson
    correlation coefficient :math:`r` calculated on the ranks of the
    observations.
 
--  *Kendall's :math:`\tau`*.
+-  *Kendall's* :math:`\tau`.
 
 Regression
 ----------
@@ -226,18 +269,18 @@ Assumptions
 To use the technique of linear regression, five assumptions should be
 fulfilled:
 
--  The errors in the data values (i.e. the deviations from average) are
+1. The errors in the data values (i.e. the deviations from average) are
    independent from one another.
 
--  The model must be appropriate. (A linear regression does not properly
+2. The model must be appropriate. (A linear regression does not properly
    describe a quadratic curve.)
 
--  The *independent variables* (i.e. :math:`x`) are exactly known.
+3. The *independent variables* (i.e. :math:`x`) are exactly known.
 
--  The variance of the *dependent variable* (i.e. :math:`y`) is the same
+4. The variance of the *dependent variable* (i.e. :math:`y`) is the same
    for all values of :math:`x`.
 
--  The distribution of :math:`y` is approximately normal for all values
+5. The distribution of :math:`y` is approximately normal for all values
    of :math:`x`.
 
 (See also the ipython notebook `multivariate.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/multivariate.ipynb>`_)

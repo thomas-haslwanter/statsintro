@@ -4,6 +4,7 @@
 - T-distribution
 - F-distribution
 - Logistic distribution
+- Weibull distribution
 - Lognormal distribution
 - Uniform distribution
 
@@ -11,8 +12,8 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    April-2013
-Version: 1.4
+Date:    June-2013
+Version: 1.5
 '''
 
 # Note: here I use the iPython approach, which is best suited for interactive work
@@ -61,6 +62,13 @@ def show_continuous():
     # ... with (3,4) and (10,15) DOF
     showDistribution(x, stats.f(3,4), stats.f(10,15),
                      'F-Distribution', 'F', 'P(F)',['(3,4) DOF', '(10,15) DOF'])
+    
+    # Weibull distribution
+    # ... with the shape parameter set to 1 and 2
+    # Don't worry that in Python it is called "weibull_min": the "weibull_max" is
+    # simply mirrored about the origin.
+    showDistribution(arange(0,5,0.02), stats.weibull_min(1), stats.weibull_min(2),
+                     'Weibull Distribution', 'X', 'P(X)',['k=1', 'k=2'], xmin=0, xmax=4)
     
     # Uniform distribution
     showDistribution(x, stats.uniform,'' ,
