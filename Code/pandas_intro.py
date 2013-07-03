@@ -1,121 +1,65 @@
-'''Introductions into using "Pandas": Simple work with two distributions
+'''Introductions into using "Pandas"
 Pandas is a Python framework for statistical analysis. It allows you to label
 and group data, etc.
+The example here shows you
+- how to group data, and analyze each group
+- how to combine Pandas with statsmodels for elegant modeling
 
 '''
 
 '''
 Author : Thomas Haslwanter
-Date : May 2013
-Ver : 1.3
+Date : June 2013
+Ver : 2.0
 '''
-
-import pandas as pd
-import scipy.stats as stats
-import matplotlib.pyplot as plt
 import numpy as np
-from os.path import join
-from getdata import getData
+import pandas as pd
+import statsmodels.formula.api as sm
 
-def simple_analysis():
-    '''Simple statistical analysis of dummy data'''
-    
-    # Generate dummy data
-    # Since there are more rendeer than elephants, I cannot use a Python
-    # dictionary. Instead I use "Series" from pandas. The other common pandas
-    # datastructure is "DataFrame".
-    
+def labelled_data():
+    ''' Analyzed labelled data '''
     # To get reproducable values, I provide a seed value
     np.random.seed(987654321)   
-    
-    data = {'rendeer' : pd.Series(stats.norm.rvs(size=70, loc=300, scale=50)),
-        'elephants' : pd.Series(stats.norm.rvs(size=50, loc=500, scale=100))}
-    df = pd.DataFrame(data)
-    
-    # Check some simple stats
-    print('Numbers')
-    print(df.count())
-    
-    print('\nMeans')
-    print(df.mean())
-    
-    print('\nMins')
-    print(df.min())
-    
-    print('\nMax')
-    print(df.max())
-    
-    # Confidence intervals for the mean elephant
-    se =df['elephants'].std()/np.sqrt(df['elephants'].count())
-    level = 0.975
-    tval = stats.t.ppf(level, df['elephants'].count()-1)
-    cis = df['elephants'].mean() + tval*se*np.array([-1., 1])
-    print('95% CI for the weight of elephants: {0} - {1}'.format(cis[0], cis[1]))
-    
-    # Is the weight of elephants different from 500 kg?
-    testWeight = 500
-    (tv, pv) = stats.ttest_1samp(df['elephants'].dropna(), testWeight)
-    
-    if pv < 0.05:
-        print('Elephants don''t weigh {0}kg'.format(testWeight))
-    else:
-        print('Elephants weigh approximately {0}kg'.format(testWeight))
-            
-    # Are elephants heavier than rendeer?
-    
-    (tv, pv) = stats.ttest_ind(df['elephants'].dropna(), df['rendeer'])
-    if pv < 0.05:
-        if df['elephants'].mean() > df['rendeer'].mean():
-            print('Elephants are heavier than rendeer')
-        else:
-            print('Rendeer are heavier than elephants')
-    else:
-        'Elephants and rendeer weigh the same'
 
-    return (df, pv)
+    # Generate three groups of normally distributed data, with different means
+    data = np.random.randn(100,3)+np.array([2.5, 3.5, 2])
 
+    # ... and the corresponding labels
+    labels = np.tile([1,2,3], (100,1))
 
-def simple_plots(df):
-    ''' Make some plots '''
-    df.plot()
-    plt.show()
-    
-    df.hist()
-    plt.show()
-    
-    df.boxplot()
-    plt.show()
-    
-    df.plot(style=['x','o'])
-    plt.show()
+    # Flatten them, so you have them just as if you read them in from a file
+    dataList = data.flatten()
+    typeList = labels.flatten()
 
+    # For simple data handling, put them into a Pandas "DataFrame"
+    df = pd.DataFrame({'values': dataList, 'type': typeList})
 
-def example_altman():
-    '''Example from Altman "Practical statistics for medical research'''
-    
-    data = getData(r'altman_94.txt', subDir='..\Data\data_altman')
-    
-    lean = pd.Series(data[data[:,1]==1,0])
-    obese = pd.Series(data[data[:,1]==0,0])
-    
-    df = pd.DataFrame({'lean':lean, 'obese':obese})
-    
-    print(df.mean())
-    plt.show()
-    
-    df.boxplot()
-    plt.show()
-    
-    (tVal, p) = stats.ttest_ind(lean, obese)
-    if p < 0.05:
-        print('"lean" significantly different from "obese": p={0}'.format(p))
-    else:
-        print('No difference between "lean" and "obese"')
-    
-    return p    # supposed to be 0.00079899821117005397
+    # Calculate mean, standard deviation, and size of each group
+    grouped = df.groupby('type')
+
+    grouped.mean()
+    grouped.std()
+    grouped.size()
+
+    # Then, generate a boxplot
+    df.boxplot(by='type')
+
+    return df
+
+def simple_fit(df):
+    ''' Example 2: Linear regression fit '''
+    # Generate a noisy line
+    x = np.arange(100)
+    y = 0.5*x - 20 + np.random.randn(len(x))
+
+    # Fit a linear model ...
+    model = sm.ols('y~x', data=df).fit()
+
+    # ... and print the summary
+    print model.summary()
+
+    return model.params
 
 if __name__ == '__main__':
-    (df,_) = simple_analysis()    
-    simple_plots(df)
-    example_altman()
-    
+    df = labelled_data()
+    simple_fit(df)

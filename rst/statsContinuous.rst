@@ -289,10 +289,13 @@ package:
 Kruskal-Wallis test 
 ~~~~~~~~~~~~~~~~~~~~~
 
-Just as analysis of variance is a more general form of :math:`t` test,
-so there is a more general form of the non-parametric Mann-whitney test:
-the *Kruskal-Wallis test*. When the null hypothesis is true the test
-statistic follows the *Chi squared distribution*.
+When we compare two groups to each other, we use the *t-test* when the
+data are normally distributed and the non-parametric *Mann-Whitney
+test* otherwise. For three or more groups, the test for normally distributed
+data is the *ANOVA-test*; for not-normally distributed data, the
+corresponding test is the *Kruskal-Wallis test*. When the null
+hypothesis is true the test statistic for the Kruskal-Wallis test follows
+the *Chi squared distribution*.
 
 .. literalinclude:: ..\Code\KruskalWallis.py
 

@@ -350,6 +350,238 @@ design.
 
 .. literalinclude:: ..\Code\modeling.py
 
+Evaluation of for Linear Regression Models
+------------------------------------------
+
+One of the things that intimidated me about statistical modeling is the
+deluge of expressions that appear when you run a modeling command. In the
+following I will try to explain the most common parameters that you are
+going to encounter when working with Linear Regression Models.
+
+Definitions for Regression with Intercept
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:math:`n` is the number of observations, :math:`p` is the number of
+regression parameters. For example, if you fit a straight line,
+:math:`p=2`. In the following :math:`\hat{y}_i` will indicate the fitted
+model values, and :math:`\bar{y}` will indicate the mean.
+
+-  :math:`SSM = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2` is the *Sum of
+   Square for Model*, or the sum of squares for the regression.
+
+-  :math:`SSE = \sum_{i=1}^n (y_i-\hat{y}_i)^2` is the *sum of Squares
+   for Error*, or the sum of squares for the residuals.
+
+-  :math:`SST = \sum_{i=1}^n (y_i-\bar{y})^2` is the *Sum of Squares
+   Total*, and is equivalent to the sample variance multiplied by
+   :math:`n-1`.
+
+For multiple regression models, :math:`SSM + SSE = SST`
+
+-  :math:`DFM = p - 1` is the *(Corrected) Degrees of Freedom for
+   Model*. (The "-1" comes from the fact that we are only interested in
+   the correlation, not in the absolute offset of the data.
+
+-  :math:`DFE = n - p` is the *Degrees of Freedom for Error*
+
+-  :math:`DFT = n - 1` is the *(Corrected) Degrees of Freedom Total*.
+   The Horizontal line regression is the null hypothesis model.
+
+For multiple regression models with intercept, DFM + DFE = DFT.
+
+-  :math:`MSM = SSM / DFM` : *Mean of Squares for Model*
+
+-  :math:`MSE = SSE / DFE` : *Mean of Squares for Error*. MSE is an
+   unbiased estimate for :math:`\sigma^2` for multiple regression
+   models.
+
+-  :math:`MST = SST / DFT` : *Mean of Squares Total*, which is the
+   sample variance of the y-variable.
+
+The :math:`R^2` Value
+~~~~~~~~~~~~~~~~~~~~~
+
+The :math:`R^2` value indicates the proportion of variation in the
+y-variable that is due to variation in the x-variables. For simple
+linear regression, the :math:`R^2` value is the square of the sample
+correlation :math:`r_{xy}`. For multiple linear regression with
+intercept (which includes simple linear regression), the :math:`R^2`
+value is defined as
+
+.. math:: R^2 = \frac{SSM}{SST}
+
+Many researchers prefer the adjusted :math:`\bar{R}^2` value (Eq
+[eq:adjustedR2]), which is penalized for having a large number of
+parameters in the model:
+
+Here is the logic behind the definition of :math:`\bar{R}^2`:
+:math:`R^2` is defined as :math:`R^2 = 1 - SSE/SST` or
+:math:`1 - R^2 = SSE/SST`. To take into account the number of regression
+parameters :math:`p`, define the adjusted R-squared value as
+
+.. math:: 1- \bar{R}^2 = \frac{Variance for Error}{Variance Total}
+
+where *Variance for Error* is estimated by :math:`SSE/DFE = SSE/(n-p)`, and *Variance Total* is estimated by :math:`SST/DFT = SST/(n-1)`. Thus,
+
+.. math::
+
+   \begin{aligned}
+       1 - \bar{R}^2 &=& \frac{SSE/(n - p)}{SST/(n - 1)} \\
+             	&=& \frac{SSE}{SST}\frac{n - 1}{n - p}\end{aligned}
+
+so
+
+.. math::
+
+   \begin{aligned}
+     \bar{R}^2 &=& 1 - \frac{SSE}{SST} \frac{n - 1}{(n - p} \\
+       &=& 1 - (1 - R^2)\frac{n - 1}{n - p}\end{aligned}
+
+The F-test
+~~~~~~~~~~
+
+If :math:`t_1, t_2, ... , t_m` are independent, :math:`N(0, \sigma^2)`
+random variables, then :math:`\sum_{i=1}^m t_i^2` is a :math:`\chi^2`
+(chi-squared) random variable with :math:`m` degrees of freedom.
+
+For a multiple regression model with intercept,
+
+.. math:: Y_j = \alpha + \beta_1 X_{1j} + ... + \beta_n X_{nj} + \epsilon_i = \alpha + \sum_{i=1}^n \beta_i X_{ij} + \epsilon_j = E(Y_j | X) + \epsilon_j
+
+we want to test the following null hypothesis and alternative
+hypothesis:
+
+:math:`H_0`: :math:`\beta_1` = :math:`\beta_2` = , ... , =
+:math:`\beta_n` = 0
+
+:math:`H_1`: :math:`\beta_j \neq 0`, for at least one value of j
+
+This test is known as the overall *F-test for regression*.
+
+It can be shown that if :math:`H_0` is true and the residuals are
+unbiased, homoscedastic, independent, and normal:
+
+#. :math:`SSE / \sigma^2` has a :math:`\chi^2` distribution with DFE
+   degrees of freedom.
+
+#. :math:`SSM / \sigma^2` has a :math:`\chi^2` distribution with DFM
+   degrees of freedom.
+
+#. SSE and SSM are independent random variables.
+
+If :math:`u` is a :math:`\chi^2` random variable with :math:`n` degrees
+of freedom, :math:`v` is a :math:`\chi^2` random variable with :math:`m`
+degrees of freedom, and :math:`u` and :math:`v` are independent, then if
+:math:`F = \frac{u/n}{v/m}` has an F distribution with :math:`(n,m)`
+degrees of freedom.
+
+If H0 is true,
+
+.. math:: F = \frac{(SSM/\sigma^2)/DFM}{(SSE/\sigma^2)/DFE} = \frac{SSM/DFM}{SSE/DFE} = \frac{MSM}{MSE},
+
+has an F distribution with :math:`(DFM, DFE)` degrees of freedom, and is
+independent of :math:`\sigma`.
+
+Log-Likelihood Function
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A very common approach in statistics is the idea of *Maximum Likelihood*
+estimation. The basic idea is quite different from the *minimum square*
+approach: there, the model is constant, and the errors of the response
+are variable; in contrast, in the maximum likelihood approach, the data
+response values are regarded as constant, and the likelihood of the
+model is maximised.
+
+For the Classical Linear Regression Model (with normal errors) we have
+
+.. math:: \epsilon = y_i - \sum_{k=1}^n \beta_k x_{ik} = y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta \; in \; N(0, \sigma^2)
+
+so the probability density is given by
+
+.. math:: p(\epsilon_i) =  \Phi (\frac{y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta}{\sigma})
+
+where :math:`\Phi(z)` is the standard normal probability distribution
+function. The probability of independent samples is the product of the
+individual probabilities
+
+.. math:: \Pi_{total} = \prod_{i=1}^n p(\epsilon_i)
+
+The *Log Likelihood function* is defined as
+
+.. math::
+
+   \begin{aligned}
+     Log L &=& log(\Pi_{total}) \\
+     &=& log\left[\prod_{i=1}^n \frac{1}{\sigma\sqrt{2 \pi}} \exp \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta)^2}{2 \sigma^2}\right)\right] \\
+     &=& \sum_{i=1}^n\left[log\left(\frac{1}{\sigma \sqrt{2 \pi}}\right)- \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta)^2}{2 \sigma^2}\right)\right] \\
+    &=& n log(\sigma) - n log \sqrt{2 \pi} - \frac{SSE}{2 \sigma^2}\end{aligned}
+
+It can be shown that the maximum likelihood estimator of
+:math:`\sigma^2` is
+
+.. math:: E(\sigma^2) = \frac{SEE}{n}
+
+With this, the maximised log likelihood is
+
+.. math:: Max(Log L) = -\frac{n}{2} log \left(\frac{2 \pi}{n} \right) - \frac{n}{2} - \frac{n}{2} log(SSE)
+
+and the maximised likelihood is
+
+.. math:: Max(L) = \left( \frac{2 \pi}{n} \right)^{n/2} \cdot exp(- \frac{n}{2}) \cdot (SSE)^{-n/2}
+
+Information Content of Statistical Models
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To judge the quality of your model, you should first visually inspect
+the residuals. In addition, you can also use a number of numerical
+criteria to assess the quality of a statistical model. These criteria
+represent various approaches for balancing model accuracy with
+parsimony.
+
+We have already encountered the :math:`adjusted R^2` value (in the section on *Correlation*), which - in contrast to the :math:`R^2` value -
+decreases if there are too many regressors in the model.
+
+The *Akaike Information Criterion AIC*
+
+.. math:: AIC = n * ln(SSE / n) + 2p
+
+and the Schwartz or *Baysian Information Criterion BIC*
+
+.. math:: BIC = n * ln(SSE/n) + p * ln(n)
+
+are other commonly encountered criteria.
+
+Analysis of Residuals
+^^^^^^^^^^^^^^^^^^^^^
+
+The command from provides some additional information about the
+residuals of the model:
+
+Omnibus
+    In Multiple Regression the omnibus test is an ANOVA F test on all the
+    coefficients, that is equivalent to the multiple correlations R Square
+    F test. The omnibus F test is an overall test that examines model fit,
+    thus rejecting the null hypothesis implies that the suggested linear
+    model is not significally suitable to the data.
+
+Skewness
+    Sample skewness of the residuals, i.e. if they have a tail to the
+    left or to the right. Equivalent to *stats.skew(model.resid, bias=True)*.
+
+Kurtosis
+    Sample kurtosis of the residuals, i.e. the pointedness of the data
+    distribution. For normally distributed data approximately 3.
+    (Equivalent to *stats.kurtosis(model.resid, fisher=False, bias=True)*)
+
+Durbin-Watson
+    A test statistic used to detect the presence of autocorrelation (a
+    relationship between values separated from each other by a given
+    time lag) in the residuals.
+
+Jarque-Bera
+    A goodness-of-fit test of whether sample data have the skewness and
+    kurtosis matching a normal distribution.
+
 Bootstrapping
 -------------
 

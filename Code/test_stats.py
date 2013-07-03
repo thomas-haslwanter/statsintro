@@ -1,7 +1,18 @@
+''' Test routine for Statsintro
+
+Author: Thomas Haslwanter
+Date:   July-2013
+Version: 1.1
+
+'''
+
+import pandas as pd
+
 import unittest
 import numpy as np
 import anovaOneway
 import anovaTwoway
+import binomialTest
 import bootstrap
 import checkNormality
 import compGroups
@@ -33,6 +44,7 @@ class TestSequenceFunctions(unittest.TestCase):
         x = np.sin(t)
         self.data = x
         
+        '''
     def test_anovaOneway(self):
         (F,p) = anovaOneway.anova_oneway()
         self.assertAlmostEqual(F, 3.711335988266943)
@@ -51,6 +63,11 @@ class TestSequenceFunctions(unittest.TestCase):
     def test_anovaTwoway(self):
         F = anovaTwoway.anova_interaction()
         self.assertAlmostEqual(F, 2113.101449275357)
+        
+    def test_binomialTest(self):
+        p1,p2 = binomialTest.binomial_test(51)
+        self.assertAlmostEqual(p1, 0.0265442457117)
+        self.assertAlmostEqual(p2, 0.0437479701824)
         
     def test_bootstrap(self):
         data = bootstrap.generate_data()
@@ -150,12 +167,11 @@ class TestSequenceFunctions(unittest.TestCase):
         self.assertAlmostEqual(p2, 0.054201154690070759)
         
     def test_pandas_intro(self):
-        (df,p) = pandas_intro.simple_analysis()    
-        self.assertAlmostEqual(p, 5.7460348697355847e-27)
+        df = pandas_intro.labelled_data()
+        self.assertAlmostEqual(df['values'][0], 4.7465508100784524)
         
-        pandas_intro.simple_plots(df)
-        p2 = pandas_intro.example_altman()
-        self.assertAlmostEqual(p2, 0.00079899821117005397)
+        parameters = pandas_intro.simple_fit(df)
+        self.assertAlmostEqual(parameters['x'], 0.50516249093121246)
         
     def test_residuals(self):
         execfile('residuals.py', {})
@@ -174,6 +190,7 @@ class TestSequenceFunctions(unittest.TestCase):
         p = survival.main()
         self.assertAlmostEqual(p, 0.073326322306832212)
         
+        '''
     def test_twoSample(self):
         p1 = twoSample.paired_data()
         self.assertAlmostEqual(p1,0.0046360889354534881) 

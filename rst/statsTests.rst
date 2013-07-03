@@ -30,8 +30,17 @@ the difference between your sample and the value that you check is
 *significant*. If :math:`p<0.001`, we speak of a *highly significant*
 difference.
 
-An example for a *null hypothesis*: "We assume that our population has a
-mean value of 7."
+**Example 1:**  Let us compare the weight of two groups of subject. Then the
+*null hypothesis* is that there is *null* difference in the weight
+between the two groups. If a statistical comparison of the weight produces a
+p-value of 0.03, this means that "the probability that the null hypothesis
+is correct is 0.03, or 3\%". Since this probability is quite low, we say that
+"there is a significant difference between the weight of the two groups".
+
+**Example 2:** If we want to check the assumption that the mean value of a group
+is 7, then the null hypothesis would be: "We assume that there is null
+difference between the mean value in our poulation and the value 7."
+
 
 Types of Error
 ~~~~~~~~~~~~~~~

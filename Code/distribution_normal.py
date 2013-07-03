@@ -7,8 +7,8 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    May-2013
-Version: 1.3
+Date:    July-2013
+Version: 1.4
 '''
 
 import numpy as np
@@ -22,33 +22,37 @@ x = np.arange(-5,15,0.1)
 def simple_normal():
     ''' Different aspects of a normal distribution'''
     # Generate the data
-    x = np.r_[-4:4:0.1]
-    rv = stats.norm()   # random variate
+    x = np.arange(-4,4,0.1) # generate the desirded x-values
+    x2 = np.arange(0,1,0.001)
 
-    x2 = np.r_[0:1:0.001]
+    nd = stats.norm()   # First simply define the normal distribution;
+                        # don't calculate any values yet
+
     
+    # This is a more complex plot-layout: the first row
+    # is taken up completely by the PDF
     ax = plt.subplot2grid((3,2),(0,0), colspan=2)
-    #ax = plt.subplot(321)
-    plt.plot(x,rv.pdf(x))
+
+    plt.plot(x,nd.pdf(x))
     plt.xlim([-4,4])
     plt.title('Normal Distribution - PDF')
     
     plt.subplot(323)
-    plt.plot(x,rv.cdf(x))
+    plt.plot(x,nd.cdf(x))
     plt.xlim([-4,4])
     plt.title('CDF: cumulative distribution fct')
     
     plt.subplot(324)
-    plt.plot(x,rv.sf(x))
+    plt.plot(x,nd.sf(x))
     plt.xlim([-4,4])
     plt.title('SF: survival fct')
     
     plt.subplot(325)
-    plt.plot(x2,rv.ppf(x2))
+    plt.plot(x2,nd.ppf(x2))
     plt.title('PPF')
-    
+
     plt.subplot(326)
-    plt.plot(x2,rv.isf(x2))
+    plt.plot(x2,nd.isf(x2))
     plt.title('ISF')
     plt.tight_layout()
     plt.show()
