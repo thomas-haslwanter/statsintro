@@ -17,7 +17,11 @@ Statistics was originally invented - as so many other things - by the famous mat
 
 \vspace{5 mm}
 
-\textbf{WWW: }On the web, you find good very extensive statistics information in English under \emph{http://www.statsref.com/}. A good German webpage on statistics and regulatory issues is \emph{http://www.reiter1.com/}.
+\textbf{WWW: }On the web, you find good very extensive statistics information in English under \emph{http://www.statsref.com/}; I also often find \emph{http://www.vassarstats.net/} very helpful. A good German webpage on statistics and regulatory issues is \emph{http://www.reiter1.com/}.
+
+\vspace{5 mm}
+
+\textbf{Exercises: }Many examples are already solved in the text. For the use in lectures (or for self-test), additional exercises are provided at the end of most chapters. For lecturers, solutions to these exercises can be provided on demand. Please contact me directly for that via email.
 
 \section{Why Statistics?}
 
@@ -59,53 +63,19 @@ For this course, you will choose a partner, and analyze one of the five projects
   \item Present the results at the \emph{Final Presentation}.
 \end{enumerate}
 
-Two groups will independently work on each project. You can choose from one of the following projects:
+You can choose from one of the following projects:
 
 \begin{enumerate}
-  \item  Surgical Trainer
-  \item  Dry Eyes and Lasik
-  \item  Recovery after Stroke
-  \item  Active Office: Activity and Attention
-  \item  Pathological Heart Muscles
+  \item  Project 1
+  \item  Project 2
+  \item  ...
 \end{enumerate}
 
-\subsection{ Surgical Trainer }
+\subsection{Project 1}
 \begin{tabular}{ l p{12cm} }
-    Researcher & David Fuerst \\
-    Topic &  Development of a surgical trainer for surgeries on the spine.\\
-    Task &   Develop a study design for a test if training on a model spine has the same educational benefits as training surgeries on human cadavers.
-\end{tabular}
-
-\subsection{ Dry Eyes and Lasik }
-\begin{tabular}{ l p{12cm} }
-    Researcher & Michael Ring \\
-    Topic &  Benefits of iodine rinsing on dry eyes after Lasik surgery.\\
-    Task &   Corneal reshaping with a laser, or "Lasik"-surgery, often causes severe dry eye problems. Treatment at the "Therme Bad Hall" promises relieve for dry eye patients. Design a study that uses the device developed by Michael Ring to investigate if the benefits of such a treatment are significant.
-\end{tabular}
-
-\subsection{ Recovery after Stroke }
-\begin{tabular}{ l p{12cm} }
-    Researcher & Thomas Minarik \\
-    Topic &  Improvements due to home-training after stroke \\
-    Task &   The typical treatment after stroke consists of intensive physiotherapy during
-    the weeks in hospital, followed by intermittent treatment at the physiotherapist when
-    the patients return home. We want to improve the recovery by introducing interactive
-    home-based therapy. With this study we want to investigate if interactive home-based
-    therapy leads to an improvement, compared to classical therapy.
-\end{tabular}
-
-\subsection{ Active Office: Activity and Attention }
-\begin{tabular}{ l p{12cm} }
-    Researcher & Bernhard Schwartz \\
-    Topic &  Improvements of attention due to increased activity in an office environment. \\
-    Task &   Your ability to focus on your work depends on a lot of factors. One of them is your physical activity. We want to investigate how different working environments (e.g. working sitting vs. working standing) can affect your concentration at work.
-\end{tabular}
-
-\subsection{ Pathological Heart Muscles }
-\begin{tabular}{ l p{12cm} }
-    Researcher & Sandra Mayr \\
-    Topic &  The effects of \emph{medication} and other factors on the structure of the cardiac muscle, as investigated by atomic force microscopy (AFM) on histological samples.\\
-    Task & To distinguish between healthy and hypertrophic hearts, the lengths of the sarcomeres of the heart muscles are measured using an AFM. Samples from hearts of healthy subjects and from patients with hypertrophic hearts are supplied by the Wagner-Jauregg Hospital in Linz.
+    Researcher & John Doe \\
+    Topic &  Short description... \\
+    Task &   Longer description...
 \end{tabular}
 
 \section{Programming Matters}
@@ -131,10 +101,9 @@ There are also many tutorials available on the internet (Table \ref{table:python
   \centering
    \begin{tabular}{|l p{10 cm}|}
      \hline
+     http://scipy-lectures.github.com/ & \emph{Python Scientific Lecture Notes.} Pretty comprehensive. \\     http://www.scipy.org/NumPy\_for\_Matlab\_Users & \emph{NumPy for Matlab Users} Start here if you have Matlab experience. \\
      http://jrjohansson.github.com/ & \emph{Lectures on scientific computing with Python.} Great ipython notebooks! \\     http://docs.python.org/2/tutorial/ & \emph{The Python tutorial.} The official introduction. \\
-     http://scipy-lectures.github.com/ & \emph{Python Scientific Lecture Notes.} Pretty comprehensive. \\
      http://www.greenteapress.com/thinkpython/ & \emph{ThinkPython} A free book on Python. \\
-     http://www.scipy.org/NumPy\_for\_Matlab\_Users & \emph{NumPy for Matlab Users} Start here if you have Matlab experience. \\
      \hline
    \end{tabular}
    }
@@ -144,6 +113,7 @@ There are also many tutorials available on the internet (Table \ref{table:python
 If you decide to install things manually, you need the following modules in addition to the Python standard library:
 
 \begin{itemize}
+  \item \emph{ipython} ... For interactive work.
   \item \emph{numpy} ... For working with vectors and arrays.
   \item \emph{scipy} ... All the essential scientific algorithms, including those for statistics.
   \item \emph{matplotlib} ... The de-facto standard module for plotting and visualization.
@@ -151,21 +121,172 @@ If you decide to install things manually, you need the following modules in addi
   \item \emph{statsmodels} ... This one is only required if you want to look more into statistical modeling.
 \end{itemize}
 
-Also, make sure that you have a good programming environment! Currently, my favorite way of programming is similar to my old Matlab style: I first get the individual steps worked out interactively in \emph{ipython}. And to write a program, I then go to either \emph{Spyder} (which is free) or \emph{Wing} (which is very good, but commercial).
+\subsubsection{Ipython}
 
-Here an example, to get you started with Python (you find a corresponding ipython notebook under \emph{http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/getting\_started.ipynb}):
+Make sure that you have a good programming environment! Currently, my favorite way of programming is similar to my old Matlab style: I first get the individual steps worked out interactively in \cite{ipython}. Ipython \index{general}{Python!ipython} provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code.
+When ipython is started in \emph{pylab mode} (which is the typical
+configuration), it automatically loads numpy and matplotlib.pyplot into the
+active workspace, and provides a very convenient, Matlab-like programing
+environment. A very helpful new addition is the browser-based \emph{ipython
+notebook}, with support for code, text, mathematical expressions, inline
+plots and other rich media. Please check out the links to the ipython
+notebooks in this statistics introduction. I believe that it will  help you
+to get up to speed with python much more quickly.
+
+And to write a program, I then go to either \emph{Spyder} (which is free) or \emph{Wing} (which is very good, but commercial).
+
+The flexibility of Python has the "disadvantage" that it can come in
+different flavors or coding styles. When you know the different approaches,
+they are great to use. But when you get started, it can be a bit confusing.
+The following section from the Matplotlib documentation may help to clarify
+these things:
+
+\subsubsection{Matplotlib, pylab, and pyplot: how are they related?}
+
+\textbf{Matplotlib}\index{general}{Python!Matplotlib} is the whole package; \emph{pylab} is a module in matplotlib that gets installed alongside matplotlib; and \emph{matplotlib.pyplot} is a module in matplotlib.
+
+\textbf{Pyplot}\index{general}{Python!pyplot} provides the state-machine interface to the underlying plotting library in matplotlib. This means that figures and axes are implicitly and automatically created to achieve the desired plot. For example, calling plot from pyplot will automatically create the necessary figure and axes to achieve the desired plot. Setting a title will then automatically set that title to the current axes object:
+
+\begin{lstlisting}
+    import matplotlib.pyplot as plt
+
+    plt.plot(range(10), range(10))
+    plt.title("Simple Plot")
+    plt.show()
+\end{lstlisting}
+
+\textbf{Pylab}\index{general}{Python!pylab} combines the pyplot functionality (for plotting) with the numpy functionality (for mathematics and for working with arrays) in a single namespace, making that namespace (or environment) even more MATLAB-like. For example, one can call the sin and cos functions just like you could in MATLAB, as well as having all the features of pyplot.
+
+The pyplot interface is generally preferred for non-interactive plotting (i.e., scripting). The pylab interface is convenient for interactive calculations and plotting, as it minimizes typing. Note that this is what you get if you use the ipython shell with the -pylab option, which imports everything from pylab and makes plotting fully interactive.
+
+
+\subsubsection{Coding Styles in Python}
+
+In Python you will find different coding styles and usage patterns. These styles are perfectly valid and have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.
+
+Of the different styles, there are two that are officially supported. Therefore, these are the preferred ways to use matplotlib.
+
+For the preferred pyplot style, the imports at the top of your scripts will typically be:
+
+\begin{lstlisting}
+    import matplotlib.pyplot as plt
+    import numpy as np
+\end{lstlisting}
+
+Then one calls, for example, np.arange, np.zeros, np.pi, plt.figure, plt.plot, plt.show, etc. So, a simple example in this style would be:
+
+\begin{lstlisting}
+    import matplotlib.pyplot as plt
+    import numpy as np
+    x = np.arange(0, 10, 0.2)
+    y = np.sin(x)
+    plt.plot(x, y)
+    plt.show()
+\end{lstlisting}
+
+Note that this example used pyplot's state-machine to automatically and implicitly create a figure and an axes. For full control of your plots and more advanced usage, use the pyplot interface for creating figures, and then use the object methods for the rest:
+
+\begin{lstlisting}
+    import matplotlib.pyplot as plt
+    import numpy as np
+    x = np.arange(0, 10, 0.2)
+    y = np.sin(x)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x, y)
+    plt.show()
+\end{lstlisting}
+
+Next, the same example using a pure MATLAB-style:
+
+\begin{lstlisting}
+    from pylab import *
+    x = arange(0, 10, 0.2)
+    y = sin(x)
+    plot(x, y)
+    show()
+\end{lstlisting}
+
+So, why all the extra typing as one moves away from the pure MATLAB-style? For very simple things like this example, the only advantage is academic: the wordier styles are more explicit, more clear as to where things come from and what is going on. For more complicated applications, this explicitness and clarity becomes increasingly valuable, and the richer and more complete object-oriented interface will likely make the program easier to write and maintain.
+
+Here an example, to get you started with Python. For interactive work, it is
+simplest to use the \emph{pylab mode}, as shown in the example below. The corresponding ipython
+notebook
+ \emph{http://nbviewer.ipython.org/url/work.thaslwanter.at/CSS/Code/getting\_started.ipynb})
+shows how numpy and matplotlib can be addressed directly. (This is common
+practice when writing functions.)
 
 \subsubsection{Example-Session}
-\lstinputlisting[label=py_gettingStarted,caption=gettingStarted.py, language=Python]{../Code/gettingStarted.py} \index{python}{gettingStarted}
+\lstinputlisting[label=py_gettingStarted_ipy,caption=gettingStarted\_ipy.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/gettingStarted_ipy.py} \index{python}{gettingStarted}
 
 \subsection{Pandas}
-\emph{Pandas} is a Python module which provides suitable data structures for
-statistical analysis. The following piece of code shows you how pandas can be used for data analysis:
 
-\lstinputlisting[label=py_pandasIntro,caption=pandasIntro.py, language=Python]{../Code/pandas_intro.py}
+\cite{pandas} is a Python module which provides suitable data structures for
+statistical analysis. It significantly enhances the abilities of Python for
+data input, data organization, and data manipulation. In the following, I assume
+that pandas has been imported with
+
+\begin{lstlisting}
+    import pandas as pd
+\end{lstlisting}
+
+
+\subsubsection{Data Input}
+Pandas offers tools for reading and writing data between in-memory data structures and different
+formats, e.g. CSV and text files, Microsoft Excel, and SQL databases. For example, if you have data
+in your clipboard, you can import them directly with
+
+\begin{lstlisting}
+    data = pd.io.parsers.read_clipboard()
+\end{lstlisting}
+
+Or data from "Sheet1" in an Excel-file "data.xls" can be read in easily with
+
+\begin{lstlisting}
+    xls = pd.io.parsers.ExcelFile('data.xls')
+    data = xls.parse('Sheet1')
+\end{lstlisting}
+
+
+\subsubsection{Data Handling and Manipulation}
+Pandas offers powerful functions to handle missing data and "nans", and other kinds of data manipulation like pivoting.
+
+To handle labeled data, pandas introduces \emph{DataFrame} objects. A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table. It is generally the most commonly used pandas object. For example, you can use data-frames to efficiently group objects, and do a statistical evaluation of each group:
+
+\begin{lstlisting}
+    x = tile([1,2,3], 4)
+    y = randn(len(x))
+    df = pd.DataFrame({'treatment':x, 'result':y})
+    groups = df.groupby('treatment')
+    print groups.mean()
+\end{lstlisting}
+
+produces
+
+\begin{lstlisting}
+                 result
+    treatment
+    1         -0.624521
+    2          0.074425
+    3         -0.806102
+\end{lstlisting}
+
+For statistical analysis, pandas becomes really powerful if you combine it with \emph{statsmodels} (see below).
+
+The following piece of code shows you how pandas can be used for data analysis:
+
+\lstinputlisting[label=py_pandasIntro,caption=pandasIntro.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/pandas_intro.py}
 \index{python}{pandasIntro}
+
+\subsection{Statsmodels}
+
+\cite{statsmodels} is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. In its latest release (version 0.5), statsmodels also allows the formulation of models with the popular formula language also used by $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model \emph{'success ~ intelligence * diligence'}, which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
+
+While for complex statistical models R still has an edge, python has a much clearer and more readable syntax, and is arguably more powerful for the data manipulation often required for statistical analysis.
+
+\subsection{General Routines}
 
 Here is also a good place to introduce the short function that we will use a number of times to simplify the reading in of data:
 
-\lstinputlisting[label=py_getData,caption=getdata.py, language=Python]{../Code/getdata.py}
+\lstinputlisting[label=py_getData,caption=getdata.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/getdata.py}
 \index{python}{getdata}

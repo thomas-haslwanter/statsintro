@@ -17,8 +17,32 @@ In a sample of individuals the number falling into a particular group is called 
   \caption{Example of a frequency table}\label{table:frequency}
 \end{table}
 
+\begin{table}
+  \centering
+  \begin{tabular}{|c|l l l|}
+  \hline
+  & \emph{Right Handed} & \emph{Left Handed} & \emph{Total} \\
+  \hline
+  \emph{Males} & 45.2 & 6.8 & 52 \\
+  \emph{Females} & 41.8 & 6.2 & 48 \\
+  \emph{Total} & 87 & 13 & 100 \\
+  \hline
+  \end{tabular}
 
-\section{One Proportion }
+  \caption{Corresponding expected values for Table \ref{table:frequency}\label{table:expectedValues}}
+\end{table}
+
+If you have only one sample group of data, the analysis options are somewhat limited. In contrast, a number of statistical tests exist for the analysis of frequency tables.
+
+\begin{description}
+  \item[Chi-square test] This is the most common type. It is a hypothesis test, which checks if the entries in the individual cells all come from the same distribution. In other words, it checks the null hypothesis $H_0$ that the results are independent of the row or column in which they appear. The alternative hypothesis $H_a$ does not specify the type of association, so close attention to the data is required to interpret the information provided by the test.
+  \item[Fisher's Exact Test] While the chi-square test is approximate, the \emph{Fisher's Exact Test} is an exact test. As it is computationally much more expensive and intricate than the chi-square test, it was originally used only for small sample numbers. However, in general it is now the more advisable test to use.
+  \item[Cochran's Q Test] \index{general}{test!Cochran's Q} This test, for which we will not go into detail here, is used if you have \emph{matched/paired observations}. For example, if you have exactly the same samples analyzed by 3 different laboratories, and you want to check if the results are statistically equivalent, you would use this test.
+  \item[McNemar's Test]  This is a \emph{matched pair test }for 2x2 tables.
+\end{description}
+
+
+\section{One Proportion}
 
 If you have one sample group of data, you can check if your sample is representative of the standard population. To do so, you have to know the proportion $p$ of the characteristic in the standard population. It can be shown that a in population with a characteristic with probability $p$, the standard error of samples with this characteristic is given by
 
@@ -37,6 +61,12 @@ If your data lie outside this confidence interval, they are \emph{not} represent
 
 \subsection{Chi-square Test} \index{general}{test!chi square}
 
+The chi-square test is based on a test statistic that measures the divergence of the observed data from the values that would be expected under the null hypothesis of no association. This requires calculation of the expected values based on the data. When $n$ is the total number of observations included in the table, the expected value for each cell in a two-way table is
+
+\begin{equation}
+  expectedFrequency = \frac{RowTotal * ColumnTotal}{n}
+\end{equation}
+
 Assume you have observed absolute frequencies $o_i$ and expected absolute frequencies $e_i$ under the Null hypothesis of your test then it holds
 
 \begin{equation}
@@ -45,6 +75,7 @@ Assume you have observed absolute frequencies $o_i$ and expected absolute freque
 
 where $f$ are the degrees of freedom. $i$ might denote a simple index running from $1,...,I$ or even a multiindex $(i_1,...,i_p)$ running from $(1,...,1)$ to $(I_1,...,I_p)$.
 
+\subsubsection{Assumptions}
 The test statistic $V$ is approximately $\chi^2$ distributed, if
 
 \begin{itemize}
@@ -52,7 +83,11 @@ The test statistic $V$ is approximately $\chi^2$ distributed, if
   \item for at least 80\% of the absolute expected frequencies $e_i$ holds $e_i \geq 5$.
 \end{itemize}
 
-The degrees of freedom can be computed by the numbers of absolute observed frequencies which can be chosen freely. We know that the sum of absolute expected frequencies is
+For small sample numbers, corrections should be made for some bias that is caused by the use of the continuous chi-squared distribution, while the frequencies are by definition integers. This correction is referred to as \emph{Yates correction}.
+
+\subsubsection{Degrees of Freedom}
+The degrees of freedom can be computed by the numbers of absolute observed frequencies which can be chosen freely. For example, only one cell of a 2x2 table with the sums at the side and bottom needs to be filled, and the others can be found by subtraction. In general, an $r \times c$ table has $df=(r-1)\times(c-1)$ degrees of freedom.
+ We know that the sum of absolute expected frequencies is
 
 \begin{equation}
   \sum_i o_i = n
@@ -60,7 +95,11 @@ The degrees of freedom can be computed by the numbers of absolute observed frequ
 
 which means that the maximum number of degrees of freedom is $I-1$. We might have to subtract from the number of degrees of freedom the number of parameters we need to estimate from the sample, since this implies further relationships between the observed frequencies.
 
-\subsubsection{Example}
+\subsubsection{Example 1}
+
+The Python command \emph{stats.chi2\_contingency} returns, the $\chi^2$-value, the p-value, the degrees of freedom, and the expected values. For the example data in Table \ref{table:frequency}, the results are $\chi^2=1.1, p=0.3, df=1$. In other words, there is no indication that there is a difference in left-handed people vs right-handed people between males and females.
+
+\subsubsection{Example 2}
 
 The $\chi^2$ test can be used to generate "quick and dirty" test, e.g.
 
@@ -78,15 +117,77 @@ We know that in case of a symmetrical distribution the arithmetic mean $\bar{x}$
 \subsubsection{Comments}
 The Chi-square test is a pure hypothesis test. It tells you if your observed frequency can be due to a random sample selection from a single population. A number of different expressions have been used for chi-square tests, which are due to the original derivation of the formulas (from the time before computers were pervasive). Expression such as \emph{2x2 tables}, \emph{r-c tables}, or \emph{Chi-square test of contingency} all refer to frequency tables and are typically analyzed with chi-square tests.
 
-\subsection{Fisher's Exact Test} \index{general}{test!Fisher's exact}
-For small sample numbers, corrections should be made for some bias that is caused by the use of the continuous chi-squared distribution. This correction is referred to as \emph{Yates correction}.
 
-If the requirement that 80\% of cells should have expected values of at least 5 is not fulfilled, \emph{Fisher's exact test} should be used. This test is based on the observed row and column totals. The method consists of evaluating the probability associated with all possible 2x2 tables which have the same row and column totals as the observed data, making the assumption that the null hypothesis (i.e. that the row and column variables are unrelated) is true.
-In most cases, Fisher's exact test is preferable to the chi-square test. But until the advent of powerful computers, it was not practical. You should use it up to approximately 10-15 cells in the frequency tables.
+\subsection{Fisher's Exact Test} \index{general}{test!Fisher's exact}
+
+\begin{table}
+  \centering
+  \begin{tabular}{|c|l l| l|}
+  \hline
+  &  & B &  \\
+  & 1 & 0 & \emph{Totals} \\
+  \hline
+  A 1 & a & b & a+b \\
+    0 & c & d & c+d \\
+  \hline
+  \emph{Totals} & a+c & b+d & N=a+b+c+d \\
+  \hline
+  \end{tabular}
+
+  \caption{General Structure of 2x2 Frequency Tables}\label{table:frequencyGeneral}
+\end{table}
+
+
+If the requirement that 80\% of cells should have expected values of at least 5 is not fulfilled, \emph{Fisher's exact test} should be used. This test is based on the observed row and column totals. The method consists of evaluating the probability associated with all possible 2x2 tables which have the same row and column totals as the observed data, making the assumption that the null hypothesis (i.e. that the row and column variables are unrelated) is true.  In most cases, Fisher's exact test is preferable to the chi-square test. But until the advent of powerful computers, it was not practical. You should use it up to approximately 10-15 cells in the frequency tables. It is called "exact" because the significance of the deviation from a null hypothesis can be calculated exactly, rather than relying on an approximation that becomes exact in the limit as the sample size grows to infinity, as with many statistical tests.
+
+Fisher is said to have devised the test following a comment from Dr Muriel Bristol, who claimed to be able to detect whether the tea or the milk was added first to her cup. The test is useful for categorical data that result from classifying objects in two different ways; it is used to examine the significance of the association (contingency) between the two kinds of classification. So in Fisher's original example, one criterion of classification could be whether milk or tea was put in the cup first; the other could be whether Dr Bristol thinks that the milk or tea was put in first. We want to know whether these two classifications are associated - that is, whether Dr Bristol really can tell whether milk or tea was poured in first. Most uses of the Fisher test involve, like this example, a 2 × 2 contingency table. The p-value from the test is computed as if the margins of the table are fixed, i.e. as if, in the tea-tasting example, Dr Bristol knows the number of cups with each treatment (milk or tea first) and will therefore provide guesses with the correct number in each category. As pointed out by Fisher, this leads under a null hypothesis of independence to a hypergeometric distribution of the numbers in the cells of the table.
+
+In using the test, you have to decide if you want to use a one-tailed test or a two-tailed test. The former one looks for the probability to find a distribution as extreme or more extreme as the observed one. The latter one (which is the default in python) also considers tables as extreme in the opposite direction.
+
+\subsection{McNemar's Test}\index{general}{test!McNemar's}
+
+Although the McNemar test bears a superficial resemblance to a test of categorical association, as might be performed by a 2x2 chi-square test or a 2x2 Fisher exact probability test, it is doing something quite different. The test of association examines the relationship that exists among the cells of the table. The McNemar test examines the difference between the proportions that derive from the marginal sums of the table (see Table \ref{table:frequencyGeneral}): $p_A=(a+b)/N$ and $p_B=(a+c)/N$. The question in the McNemar test is: do these two proportions, $p_A$ and $p_B$, significantly differ? And the answer it receives must take into account the fact that the two proportions are not independent. The correlation of $p_A$ and $p_B$ is occasioned by the fact that both include the quantity a in the upper left cell of the table.
+
+\subsubsection{Example}
+
+In the following example, a researcher attempts to determine if a drug has an effect on a particular disease. Counts of individuals are given in the table, with the diagnosis (disease: present or absent) before treatment given in the rows, and the diagnosis after treatment in the columns. The test requires the same subjects to be included in the before-and-after measurements (matched pairs).
+
+\begin{table}
+  \centering
+  \begin{tabular}{|c|l l l|}
+  \hline
+  & \emph{After: present} & \emph{After: absent} & \emph{Row total} \\
+  \hline
+  \emph{Before: present} & 101 & 121 & 222 \\
+  \emph{Before: absent} & 59 & 33 & 92 \\
+  \emph{Column total} & 160 & 154 & 314 \\
+  \hline
+  \end{tabular}
+
+  \caption{McNemar's Test: example}\label{table:McNemarExample}
+\end{table}
+
+
+In this example, the null hypothesis of "marginal homogeneity" would mean there was no effect of the treatment. From the above data, the McNemar test statistic with Yates's continuity correction is
+
+The general solution for the McNemar's test is
+
+\begin{equation}
+    \chi^2 = {(|b-c|-correctionFactor)^2 \over b+c}.
+\end{equation}
+
+For small number of sample numbers the \emph{correctionFactor} should be 0.5 (\emph{Yates's correction}) or 1.0 (\emph{Edward's correction}). (In fact, for small numbers an exact calculation is typically done for the probabilities, based on a binomial test.) Using Yates's correction, we get
+
+\begin{equation}
+    \chi^2 = {(|121 - 59| - 0.5)^2 \over {121 + 59}}
+\end{equation}
+
+has the value 21.01, which is extremely unlikely from the distribution implied by the null hypothesis. Thus the test provides strong evidence to reject the null hypothesis of no treatment effect.
+
 
 \section{Analysis Programs}
 
 With computers, the computational steps are trivial:
 
-\lstinputlisting[label=py_compGroups,caption=compGroups.py, language=Python]{../Code/compGroups.py}
+\lstinputlisting[label=py_compGroups,caption=compGroups.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/compGroups.py}
 \index{python}{compGroups}

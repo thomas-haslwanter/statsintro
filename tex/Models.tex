@@ -1,6 +1,6 @@
 \chapter{ Statistical Models } \index{general}{statistical modeling}
 
-\section{ Model language }
+\section{Model language}
 The mini-language commonly used now in statistics to describe formulas was first used in the languages $R$ and $S$, but is now also available in Python through the module \emph{patsy}.
 
 For instance, if we have some variable $y$, and we want to regress it against some other variables $x, a, b$, and the interaction of a and b, then we simply write
@@ -32,14 +32,19 @@ The symbols in Table \ref{tab:syntax} are used on the right hand side to denote 
 
 A complete set of the description is found under \cite{patsy}
 
-\subsection{ Design Matrix }
+\subsection{Design Matrix}
 
 \subsubsection{Definition}
-In a regression model, written in matrix-vector form as
+A very general definition of a regression model is the following:
+
+\begin{equation}
+  y =f(x,\epsilon)
+\end{equation}
+In the case of a linear regression model, the function f is simply the affine function, and the model can be rewritten as:
 \begin{equation}
     y=X\beta+ \epsilon,
 \end{equation}
-the matrix $X$ is the \emph{design matrix}.
+$Y$ is a vector of dimension $(n \times 1)$ and is called the \emph{endogenous variable}, the \emph{Design matrix} $X$ is a matrix of dimension $(n \times k)$ where each column is an explanatory variable, and $\epsilon$ is the error term. $\beta$ is the vector of dimension $(k \times 1)$ and contains the parameters we want to estimate.
 
 \subsubsection{Examples}
 \paragraph{Simple Regression}
@@ -112,8 +117,14 @@ with the constraint that $\tau_1$ is zero.
   \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
 \end{equation}
 In this model $\mu$ is the mean of the reference group and $\tau_i$ is the difference from group $i$ to the reference group. $\tau_1$ and is not included in the matrix because its difference from the reference group (itself) is necessarily zero.
+\subsection{Example: Program Effectiveness}
 
-\section{ Assumptions }
+Using data from Spector and Mazzeo (1980), we estimate a linear regression model with statsmodels.
+
+\lstinputlisting[label=py:regSpector,caption=regSpector.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/regSpector.py}
+\index{python}{linear regression model}
+
+\section{Assumptions}
 Standard linear regression models with standard estimation techniques make a number of assumptions about the predictor variables, the response variables and their relationship.  Numerous extensions have been developed that allow each of these assumptions to be relaxed (i.e. reduced to a weaker form), and in some cases eliminated entirely.  Some methods are general enough that they can relax multiple assumptions at once, and in other cases this can be achieved by combining different extensions.  Generally these extensions make the estimation procedure more complex and time-consuming, and may also require more data in order to get an accurate model.
 
 The following are the major assumptions made by standard linear regression models with standard estimation techniques (e.g. ordinary least squares):
@@ -148,8 +159,189 @@ The meaning of the expression “held fixed” may depend on how the values of t
 
 The notion of a “unique effect” is appealing when studying a complex system where multiple interrelated components influence the response variable. In some cases, it can literally be interpreted as the causal effect of an intervention that is linked to the value of a predictor variable. However, it has been argued that in many cases multiple regression analysis fails to clarify the relationships between the predictor variables and the response variable when the predictors are correlated with each other and are not assigned following a study design.
 
-\lstinputlisting[label=py:modeling,caption=modeling.py, language=Python]{../Code/modeling.py}
+
+\lstinputlisting[label=py:modeling,caption=modeling.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/modeling.py}
 \index{python}{modeling}
+
+
+\section{Evaluation of for Linear Regression Models}
+
+One of the things that intimidated me about statistical modeling is the
+deluge of expressions that appear when you run a modeling command. In the
+following I will try to explain the most common parameters that you are
+going to encounter when working with Linear Regression Models.
+
+
+\subsection{Definitions for Regression with Intercept}
+
+$n$ is the number of observations, $p$ is the number of regression parameters. For example, if you fit a straight line, $p=2$.
+In the following $\hat{y}_i$ will indicate the fitted model values, and $\bar{y}$ will indicate the mean.
+
+\begin{itemize}
+  \item $SSM = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2$ is the \emph{Sum of Square for Model}, or the sum of squares for the regression.
+  \item $SSE = \sum_{i=1}^n (y_i-\hat{y}_i)^2$ is the \emph{sum of Squares for Error}, or the sum of squares for the residuals.
+  \item $SST = \sum_{i=1}^n (y_i-\bar{y})^2$ is the \emph{Sum of Squares Total}, and is equivalent to the sample variance multiplied by $n-1$.
+\end{itemize}
+
+For multiple regression models, $SSM + SSE = SST$
+
+\begin{itemize}
+  \item $DFM = p - 1$ is the \emph{(Corrected) Degrees of Freedom for Model}. (The "-1" comes from the fact that we are only interested in the correlation, not in the absolute offset of the data.
+  \item $DFE = n - p$ is the \emph{Degrees of Freedom for Error}
+  \item $DFT = n - 1$ is the \emph{(Corrected) Degrees of Freedom Total}. The Horizontal line regression is the null hypothesis model.
+\end{itemize}
+
+For multiple regression models with intercept, DFM + DFE = DFT.
+
+\begin{itemize}
+  \item $MSM = SSM / DFM$ : \emph{Mean of Squares for Model}
+  \item $MSE = SSE / DFE$ : \emph{Mean of Squares for Error}. MSE is an unbiased estimate for $\sigma^2$ for multiple regression models.
+  \item $MST = SST / DFT$ : \emph{Mean of Squares Total}, which is the sample variance of the y-variable.
+\end{itemize}
+
+\subsection{The $R^2$ Value}
+
+The $R^2$ value indicates the proportion of variation in the y-variable that is due to variation in the x-variables. For simple linear regression, the $R^2$ value is the square of the sample correlation $r_{xy}$. For multiple linear regression with intercept (which includes simple linear regression), the $R^2$ value is defined as
+
+\begin{equation}
+  R^2 = \frac{SSM}{SST}
+\end{equation}
+
+Many researchers prefer the adjusted $\bar{R}^2$ value (Eq \ref{eq:adjustedR2}), which is penalized for having a large number of parameters in the model:
+
+Here is the logic behind the definition of $\bar{R}^2$:
+$R^2$ is defined as $R^2 = 1 - SSE/SST$ or $1 - R^2 = SSE/SST$. To take into account the number of regression parameters $p$, define the adjusted R-squared value as
+\begin{equation}
+  1- \bar{R}^2 = \frac{Variance for Error}{Variance Total}
+\end{equation}
+
+where \emph{Variance for Error }is estimated by $SSE/DFE = SSE/(n-p)$, and \emph{Variance Total }is estimated by $SST/DFT = SST/(n-1)$. Thus,
+\begin{eqnarray}
+    1 - \bar{R}^2 &=& \frac{SSE/(n - p)}{SST/(n - 1)} \\
+          	&=& \frac{SSE}{SST}\frac{n - 1}{n - p}
+\end{eqnarray}
+
+    so
+\begin{eqnarray}
+  \bar{R}^2 &=& 1 - \frac{SSE}{SST} \frac{n - 1}{(n - p} \\
+    &=& 1 - (1 - R^2)\frac{n - 1}{n - p}
+\end{eqnarray}
+
+
+\subsection{The F-test}
+
+If $t_1, t_2, ... , t_m$ are independent, $N(0, \sigma^2)$ random variables, then $\sum_{i=1}^m t_i^2$ is a $\chi^2$ (chi-squared) random variable with $m$ degrees of freedom.
+
+For a multiple regression model with intercept,
+\begin{equation}
+  Y_j = \alpha + \beta_1 X_{1j} + ... + \beta_n X_{nj} + \epsilon_i = \alpha + \sum_{i=1}^n \beta_i X_{ij} + \epsilon_j = E(Y_j | X) + \epsilon_j
+\end{equation}
+
+we want to test the following null hypothesis and alternative hypothesis:
+
+        $H_0$:   $\beta_1$ = $\beta_2$ = , ... , = $\beta_n$ = 0
+
+        $H_1$:   $\beta_j \neq 0$, for at least one value of j
+
+This test is known as the overall \emph{F-test for regression}.
+
+It can be shown that if $H_0$ is true and the residuals are unbiased, homoscedastic, independent, and normal:
+
+\begin{enumerate}
+  \item $SSE / \sigma^2$ has a $\chi^2$ distribution with DFE degrees of freedom.
+  \item $SSM / \sigma^2$ has a $\chi^2$ distribution with DFM degrees of freedom.
+  \item SSE and SSM are independent random variables.
+\end{enumerate}
+
+If $u$ is a $\chi^2$ random variable with $n$ degrees of freedom, $v$ is a $\chi^2$ random variable with $m$ degrees of freedom, and $u$ and $v$ are independent, then if $F = \frac{u/n}{v/m}$ has an F distribution with $(n,m)$ degrees of freedom.
+
+If H0 is true,
+
+\begin{equation}
+  F = \frac{(SSM/\sigma^2)/DFM}{(SSE/\sigma^2)/DFE} = \frac{SSM/DFM}{SSE/DFE} = \frac{MSM}{MSE},
+\end{equation}
+
+has an F distribution with $(DFM, DFE)$ degrees of freedom, and is independent of $\sigma$.
+
+
+\subsection{Log-Likelihood Function}
+
+A very common approach in statistics is the idea of \emph{Maximum Likelihood} estimation. \index{general}{Maximum likelihood} The basic idea is quite different from the \emph{minimum square} approach: there, the model is constant, and the errors of the response are variable; in contrast, in the maximum likelihood approach, the data response values are regarded as constant, and the likelihood of the model is maximised.
+
+For the Classical Linear Regression Model (with normal errors) we have
+
+\begin{equation}
+  \epsilon = y_i - \sum_{k=1}^n \beta_k x_{ik} = y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta \; in \; N(0, \sigma^2)
+\end{equation}
+
+so the probability density is given by
+
+\begin{equation}
+  p(\epsilon_i) =  \Phi (\frac{y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta}{\sigma})
+\end{equation}
+
+where $\Phi(z)$ is the standard normal probability distribution function. The probability of independent samples is the product of the individual probabilities
+
+\begin{equation}
+  \Pi_{total} = \prod_{i=1}^n p(\epsilon_i)
+\end{equation}
+
+The \emph{Log Likelihood function} \index{general}{log likelihood function} is defined as
+
+\begin{eqnarray*}
+  Log L &=& log(\Pi_{total}) \\
+  &=& log\left[\prod_{i=1}^n \frac{1}{\sigma\sqrt{2 \pi}} \exp \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta)^2}{2 \sigma^2}\right)\right] \\
+  &=& \sum_{i=1}^n\left[log\left(\frac{1}{\sigma \sqrt{2 \pi}}\right)- \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta)^2}{2 \sigma^2}\right)\right] \\
+ &=& n log(\sigma) - n log \sqrt{2 \pi} - \frac{SSE}{2 \sigma^2}
+\end{eqnarray*}
+
+It can be shown that the maximum likelihood estimator of $\sigma^2$ is
+
+\begin{equation}
+  E(\sigma^2) = \frac{SEE}{n}
+\end{equation}
+
+With this, the maximised log likelihood is
+\begin{equation}
+  Max(Log L) = -\frac{n}{2} log \left(\frac{2 \pi}{n} \right) - \frac{n}{2} - \frac{n}{2} log(SSE)
+\end{equation}
+
+and the maximised likelihood is
+
+\begin{equation}
+  Max(L) = \left( \frac{2 \pi}{n} \right)^{n/2} \cdot exp(- \frac{n}{2}) \cdot (SSE)^{-n/2}
+\end{equation}
+
+\subsection{Information Content of Statistical Models}
+
+To judge the quality of your model, you should first visually inspect the residuals. In addition, you can also use a number of numerical criteria to assess the quality of a statistical model. These criteria represent various approaches for balancing model accuracy with parsimony.
+
+We have already encountered the $adjusted R^2$ value (Eq \ref{eq:adjustedR2}), which - in contrast to the $R^2$ value - decreases if there are too many regressors in the model.
+
+The \emph{Akaike Information Criterion AIC} \index{general}{Akaike Information Criterion AIC}
+
+\begin{equation}
+  AIC = n * ln(SSE / n) + 2p
+\end{equation}
+
+and the Schwartz or \emph{Baysian Information Criterion BIC} \index{general}{Baysian Information Criterion BIC}
+
+\begin{equation}
+  BIC = n * ln(SSE/n) + p ln(n)
+\end{equation}
+
+are other commonly encountered criteria.
+
+\subsubsection{Analysis of Residuals}
+
+The \textsf{OLS} command from \textsf{statsmodels.formula.api} provides some additional information about the residuals of the model:
+\begin{description}
+  \item[Omnibus]     In Multiple Regression the omnibus test is an ANOVA F test on all the coefficients, that is equivalent to the multiple correlations R Square F test. The omnibus F test is an overall test that examines model fit, thus rejecting the null hypothesis implies that the suggested linear model is not significally suitable to the data.
+  \item[Skewness] Sample skewness of the residuals, i.e. if they have a tail to the left or to the right. Equivalent to \textsf{stats.skew(model.resid, bias=True)}.
+  \item[Kurtosis] Sample kurtosis of the residuals, i.e. the pointedness of the data distribution. For normally distributed data approximately 3. (Equivalent to \textsf{stats.kurtosis(model.resid, fisher=False, bias=True)})
+  \item[Durbin-Watson] A test statistic used to detect the presence of autocorrelation (a relationship between values separated from each other by a given time lag) in the residuals.
+  \item[Jarque-Bera] A goodness-of-fit test of whether sample data have the skewness and kurtosis matching a normal distribution.
+\end{description}
 
 \section{Bootstrapping} \index{general}{bootstrapping}
 
@@ -157,5 +349,5 @@ Another type of modelling is \emph{bootstrapping}/. Sometimes you have data desc
 
 The answer is bootstrapping. Bootstrapping is a scheme of \emph{resampling}, i.e. taking additional samples repeatedly from the initial sample, to provide estimates of its variability. In a case where the distribution of the initial sample is unknown, bootstrapping is of especial help in that it provides information about the distribution.
 
-\lstinputlisting[label=py:bootstrappin,caption=bootstrap.py, language=Python]{../Code/bootstrap.py}
+\lstinputlisting[label=py:bootstrappin,caption=bootstrap.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/bootstrap.py}
 \index{python}{bootstrap}

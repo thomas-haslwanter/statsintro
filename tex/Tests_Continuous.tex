@@ -9,7 +9,7 @@ If we knew the mean and the standard deviation of a normally distributed populat
 Let us look at a specific example: we take 100 normally distributed data, with a mean of 7 and with a standard deviation of 3.
 What is the chance of finding a mean value at a distance of 0.5 or more from the mean:?
 
-\lstinputlisting[label=py_ttest1,caption=ttest\_1samp\_notebook.py, language=Python]{../Code/ttest_1samp_notebook.py}
+\lstinputlisting[label=py:oneSample,caption=oneSample.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/oneSample.py}
 
 $>>>$ The probability from the t-test is 0.057, and from the normal distribution 0.054
 
@@ -67,24 +67,130 @@ If we have two independent samples the variance of the difference between their 
 
 where $\bar{x}_i$ is the mean of the i-th sample, and \emph{se} indicates the \emph{standard error}.
 
-\lstinputlisting[label=py:univariate,caption=univariate.py, language=Python]{../Code/univariate.py}
-
-\subsection{ Non-parametric Comparison of Two Groups: Mann-Whitney Test } \index{general}{test!Mann-Whitney}
+\subsection{Non-parametric Comparison of Two Groups: Mann-Whitney Test} \index{general}{test!Mann-Whitney}\label{test:Mann-Whitney}
 
 If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilkoxon) test}.
 
+\lstinputlisting[label=py:twoSample,caption=twoSample.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/twoSample.py}
+
+
 \section{Comparison of More Groups}
 
-\subsection{ Analysis of Variance } \index{general}{test!ANOVA}
+\subsection{Analysis of Variance - ANOVA} \label{sec:anova} \index{general}{ANOVA} \index{general}{test!ANOVA}
 
-If we want to compare three or more groups with each other, we need to use a \emph{one way analysis of variance (ANOVA)}, sometimes also called a \emph{one factor ANOVA}. Because the null hypothesis is that there is no difference between the groups, the test is based on a comparison of the observed variation between the groups (i.e. between their means) with that expected from the observed variability between subjects. The comparison takes the general form of an \emph{F test} to compare variances, but for two groups the t test leads to exactly the same answer.
-We will discuss ANOVAs in more detail in chapter \ref{sec:anova}.
+The idea behind the \emph{ANalysis Of VAriance (ANOVA)} is to divide the variance into the variance \emph{between} groups, and that \emph{within} groups, and see if those distributions match the null hypothesis that all groups come from the same distribution. The variables that distinguish the different groups are often called \emph{factors}.
 
-\subsubsection{ F Test }\index{general}{test!F test}
-The $F$ test or \emph{variance ratio test} is very simple. Under the null hypothesis that two Normally distributed populations have equal variances we expect the ratio of the two sample variances to have an \emph{F distribution} (see section \ref{sec:ContinuousDistributions}).
+(By comparison, t-tests look at the mean values of two groups, and check if those are consistent with the assumption that the two groups come from the same distribution.)
 
-\subsubsection{ Bonferroni correction }\index{general}{Bonferroni correction}
-If an ANOVA yields a significant result, we have to test which of the groups are different. Typically, this is done with $t-tests$. Since we perform multiple t tests, we should compensate for the risk of getting a significant result, even if our null hypothesis is true. The simplest - and at the same time quite conservative - approach is to divide the required p-value by the number of tests that we do (\emph{Bonferroni correction}). For example, if you perform 4 comparisons, you check for significance not at $p=0.05$, but at $p=0.0125$.
+For example, if we compare a group with No treatment, another with treatment A, and a third with treatment B, then we perform a \emph{one factor ANOVA}, sometimes also called \emph{one-way ANOVA}, with "treatment" the one analysis factor. If we do the same test with men and with women, then we have a \emph{two-factor} or \emph{two-way ANOVA}, with "gender" and "treatment" as the two treatment factors. Note that with ANOVAs, it is quite important to have exactly the same number of samples in each analysis group!
+
+Because the null hypothesis is that there is no difference between the groups, the test is based on a comparison of the observed variation between the groups (i.e. between their means) with that expected from the observed variability between subjects. The comparison takes the general form of an \emph{F test} to compare variances, but for two groups the t test leads to exactly the same answer.
+
+The one-way ANOVA assumes all the samples are drawn from normally distributed populations with equal variance. To test this assumption, you can use the \emph{Levene test}\index{general}{test!Levene}.
+
+ANOVA uses traditional standardized terminology. The definitional equation
+of sample variance is $s^2=\textstyle\frac{1}{n-1}\sum(y_i-\bar{y})^2$,
+where
+the divisor is called the degrees of freedom (DF), the summation is called
+the sum of squares (SS), the result is called the mean square (MS) and the
+squared terms are deviations from the sample mean. ANOVA estimates 3 sample
+variances: a total variance based on all the observation deviations from the
+grand mean, an error variance based on all the observation deviations from
+their appropriate treatment means and a treatment variance. The treatment
+variance is based on the deviations of treatment means from the grand mean,
+the result being multiplied by the number of observations in each treatment
+to account for the difference between the variance of observations and the
+variance of means. If the null hypothesis is true, all three variance
+estimates are equal (within sampling error).
+
+The fundamental technique is a partitioning of the total sum of squares SS
+into components related to the effects used in the model. For example, the
+model for a simplified ANOVA with one type of treatment at different levels.
+
+\begin{equation}
+  SS_\text{Total} = SS_\text{Error} + SS_\text{Treatments}
+\end{equation}
+
+
+The number of degrees of freedom DF can be partitioned in a similar way: one
+of these components (that for error) specifies a chi-squared distribution
+which describes the associated sum of squares, while the same is true for
+"treatments" if there is no treatment effect.
+
+\begin{equation}
+  DF_\text{Total} = DF_\text{Error} + DF_\text{Treatments}
+\end{equation}
+
+
+\subsubsection{Example: one-way ANOVA}
+As an example, let us take the red cell folate levels ($\mu g/l$) in three groups of cardiac bypass patients given different levels of nitrous oxide ventilation (Amess et al, 1978), described in the Python code example
+below. I first show the result of this ANOVA test, and then explain the steps
+to get there.
+
+\begin{verbatim}
+                DF    SS          MS     F    p(>F)
+  C(treatment)   2  15515.76  7757.88  3.71  0.043
+  Residual      19  39716.09  2090.32   NaN    NaN
+\end{verbatim}
+
+\begin{itemize}
+  \item First the "Sums of squares (SS)" are calculated. Here the SS between treatments is 15515.88, and the SS of the residuals is 39716.09 . The total SS is the sum of these two values.
+  \item The mean squares (MS) is the SS divided by the corresponding degrees of freedom (DF).
+  \item The \emph{F-test}\index{general}{test!F-test} or \emph{variance ratio test}\index{general}{test!variance ratio} is used for comparing the factors of the total deviation. The F-value is the larger mean squares value divided by the smaller value. (If we only have two groups, the F-value is the square of the corresponding t-value. See listing \ref{py:anovaOneway}).
+
+      \begin{eqnarray}
+        F &=& \frac{\text{variance between treatments}}{\text{variance within treatments}} \\
+        F &=& \frac{MS_\text{Treatments}}{MS_\text{Error}} = {{SS_\text{Treatments} / (I-1)} \over {SS_\text{Error} / (n_T-I)}}
+      \end{eqnarray}
+
+  \item Under the null hypothesis that two normally distributed populations have equal variances we expect the ratio of the two sample variances to have an \emph{F Distribution} (see section \ref{sec:ContinuousDistributions}). From the F-value, we can look up the corresponding p-value.
+\end{itemize}
+
+\lstinputlisting[label=py:anovaOneway,caption=anovaOneway.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/anovaOneway.py}
+\index{python}{anovaOneway}
+
+\subsection{Multiple Comparisons}\index{general}{Multiple Comparisons}
+
+The Null hypothesis in a one-way ANOVA is that the means of all the samples are the same. So if a one-way ANOVA yields a significant result, we only know that they are \emph{not} the same.
+
+However, often we are not just interested in the joint hypothesis if all samples are the same, but we would also like to know for which pairs of samples the hypothesis of equal values is rejected. In this case we conduct several tests at the same time, one test for each pair of samples. (Typically, this is done with $t-tests$.)
+
+This results, as a consequence, in a \emph{multiple testing problem}:
+since we perform multiple comparison tests, we should compensate for the risk of getting a significant result, even if our null hypothesis is true. This can be cone by correcting the p-values to account for this. We have a number of options to do so:
+
+\begin{itemize}
+  \item Tukey HSD
+  \item Bonferroni correction
+  \item Holms correction
+  \item ... and others ...
+\end{itemize}
+
+
+\subsubsection{Tukey's Test}\index{general}{test!Tukey's}
+
+\emph{Tukey's test}, sometimes also referred to as the \emph{Tukey Honest Significant Difference (HSD) method }, controls for the Type I error rate across multiple comparisons and is generally considered an acceptable technique. It is based on a formula very similar to that of the t-test. In fact, Tukey's test is essentially a t-test, except that it corrects for multiple comparisons.
+
+The formula for Tukey's test is:
+
+\begin{equation}
+    q_s = \frac{Y_A - Y_B}{SE}
+\end{equation}
+
+where $Y_A$ is the larger of the two means being compared, $Y_B$ is the smaller of the two means being compared, and $SE$ is the standard error of the data in question. This $q_s$ value can then be compared to a q value from the \emph{studentized range distribution}, which takes into account the multiple comparisons. If the qs value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
+Note that the studentized range statistic is the same as the t-statistic except for a scaling factor (np.sqrt(2)).
+
+\lstinputlisting[label=py:multipleTesting,caption=multipleTesting.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/multipleTesting.py}
+\index{python}{multipleTesting}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{../Images/MultComp.png}\\
+  \caption{Comparing the means of multiple groups - here three different treatment options.}
+\end{figure}
+
+\subsubsection{Bonferroni correction}\index{general}{Bonferroni correction}
+
+Tukey's studentized range test (HSD) is a test specific to the comparison of all pairs of k independent samples. Instead we can run t-tests on all pairs, calculate the p-values and apply one of the p-value corrections for multiple testing problems. The simplest - and at the same time quite conservative - approach is to divide the required p-value by the number of tests that we do (\emph{Bonferroni correction}). For example, if you perform 4 comparisons, you check for significance not at $p=0.05$, but at $p=0.0125$.
 
 While multiple testing is not yet included in Python standardly, you can get a number of multiple-testing corrections done with the statsmodels package:
 
@@ -98,9 +204,70 @@ Out[8]:
   0.016666666666666666)
 \end{lstlisting}
 
-\subsection{ Kruskal-Wallis test }\index{general}{test!Kruskal-Wallis}
+\subsubsection{Holms correction}\index{general}{Holms correction}
 
-Just as analysis of variance is a more general form of $t$ test, so there is a more general form of the non-parametric Mann-whitney test: the \emph{Kruskal-Wallis test}. When the null hypothesis is true the test statistic follows the \emph{Chi squared distribution}.
+The Holm adjustment sequentially compares the lowest p-value with a Type I error rate that is reduced for each consecutive test. For example, if you have three groups (and thus three comparisons), this means that the first p-value is tested at the .05/3 level (.017), the second at the .05/2 level (.025), and third at the .05/1 level (.05). This method is generally considered superior to the Bonferroni adjustment.
 
-\lstinputlisting[label=py:anovat,caption=anovat.py, language=Python]{../Code/anovat.py}
-\index{python}{anovat}
+\subsection{Kruskal-Wallis test}\index{general}{test!Kruskal-Wallis}\label{test:Kruskal-Wallis}
+
+When we compare two groups to each other, we use the \emph{t-test} when the data are normally distributed and the non-parametric \emph{Mann-Whitney test} otherwise. For three or more groups, the test for normally distributed data is the \emph{ANOVA-test}; for not-normally distributed data, the corresponding test is the \emph{Kruskal-Wallis test}. When the null hypothesis is true the test statistic for the Kruskal-Wallis test follows the \emph{Chi squared distribution}.
+
+\lstinputlisting[label=py:KruskalWallis,caption=KruskalWallis.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/KruskalWallis.py}
+\index{python}{KruskalWallis}
+
+\section{Exercises}
+
+\subsection{One or Two Groups}
+
+\begin{enumerate}
+  \item \textbf{Wilcoxon signed rank sum test}
+
+The daily energy intake from 11 healthy women is [5260., 5470., 5640., 6180., 6390., 6515., 6805., 7515., 7515., 8230., 8770.] kJ. The data are clearly not normally distributed.
+
+    Is this value significantly different from the recommended value of 7725?
+    (Correct answer: yes, p=0.018)
+
+  \item \textbf{t-test of independent samples}
+
+In a clinic, 15 lacy patients weight [76., 101., 66., 72., 88., 82., 79., 73., 76., 85., 75., 64., 76., 81., 86.] kg, and 15 sporty patients weigh [ 64., 65., 56., 62., 59., 76., 66., 82., 91., 57., 92., 80., 82., 67., 54.] kg.
+
+    Are the lacy patients significantly heavier?
+    (Correct answer: yes, p=0.045)
+
+  \item \textbf{Kolmogoriv-Smirnov test}
+
+    Are the two datasets normally distributed?
+    (Correct answer: yes, they are)
+
+  \item \textbf{Mann-Whitney test}
+
+    Are the lacy patients still heavier, if you check with the Mann-Whitney test?
+    (Correct answer: yes, p=0.039)
+\end{enumerate}
+
+\subsection{Multiple Groups}
+
+(The following example is taken from the really good, but somewhat advanced book by AJ Dobson: "An Introduction to Generalized Linear Models")
+
+\begin{enumerate}
+  \item \textbf{Get the data}
+
+    The file   \emph{https://github.com/thomas-haslwanter/statsintro/blob/master/Data/data\_others/Table 6.6 Plant experiment.xls} contains data from an experiment with plants in three different growing conditions. Get the data into Python.
+    Hint: use the module xlrd
+
+  \item \textbf{Perform an ANOVA}
+
+    Are the three groups different?
+    (Correct answer: yes, they are.)
+
+  \item \textbf{Multiple Comparisons}
+
+    Using the Tukey test, which of the pairs are different?
+    (Correct answer: only TreamtmentA and TreatmentB differ)
+
+  \item \textbf{Kruskal-Wallis}
+
+    Would a non-parametric comparison lead to a different result?
+    (Correct answer: no)
+
+\end{enumerate}

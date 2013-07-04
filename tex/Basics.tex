@@ -4,34 +4,34 @@
 
 The type of your data is essential for the choice of test that you have to use for your data analysis. Your data can have one of the following datatypes:
 
-\subsection{ Categorical } \index{general}{data!categorical}
+\subsection{Categorical} \index{general}{data!categorical}
 
-\subsubsection{ boolean }
+\subsubsection{boolean}
 Some data can only have two values. For example,
 \begin{enumerate}
   \item male/female
   \item smoker/non-smoker
 \end{enumerate}
 
-\subsubsection{ nominal }\index{general}{nominal}
-Many classifications require more than two categories, e.g. \emph{ married / single / divorced }
+\subsubsection{nominal}\index{general}{nominal}
+Many classifications require more than two categories, e.g. \emph{married / single / divorced}
 
-\subsubsection{ ordinal }\index{general}{data!ordinal}
-These are ordered categorical data, e.g. \emph{ very few / few / some / many / very many }
+\subsubsection{ordinal}\index{general}{data!ordinal}
+These are ordered categorical data, e.g. \emph{very few / few / some / many / very many}
 
-\subsection{ Numerical }\index{general}{data!numerical}
+\subsection{Numerical}\index{general}{data!numerical}
 
-\subsubsection{ Numerical discrete }
-For example \emph{ Number of children: 0 1 2 3 4 5 }
+\subsubsection{Numerical discrete}
+For example \emph{Number of children: 0 1 2 3 4 5}
 
-\subsection{ Continuous }
+\subsection{Continuous}
 Whenever possible, it is best to record the data in their original continuous format, and only with a sensible number of decimal places. For example, it does not make sense to record the body size with more than 1 mm accuracy, as there are larger changes in body height between the size in the morning and the size in the evening, due to compression of the intervertebral disks.
 
 \section{Data Display}
 
 When working with a statistical data set, you should \emph{always} first look at the raw-data. Our visual system is incredibly good at recognizing patterns in visually represented data.
 
-\subsection{ Scatter Plots }\index{general}{plots!scatter}
+\subsection{Scatter Plots}\index{general}{plots!scatter}
 
 This is the simplest way of representing your data: just plot each individual data point. (In cases where many data points are superposed, you may want to add a little bit of jitter to show each data point.)
 
@@ -41,7 +41,7 @@ This is the simplest way of representing your data: just plot each individual da
   \caption{Scatter plot}
 \end{figure}
 
-\subsection{ Histograms }\index{general}{plots!histogram}
+\subsection{Histograms}\index{general}{plots!histogram}
 
 \emph{Histograms} provide a first good overview of the distribution of your data.
 If you divide by the overall number of data points, you get a \emph{relative frequency
@@ -54,7 +54,7 @@ histogram}; and if you just connect the top center points of each bin, you obtai
   \caption{Histogram}
 \end{figure}
 
-\subsection{ Cumulative Frequencies }\index{general}{cumulative frequency}
+\subsection{Cumulative Frequencies}\index{general}{cumulative frequency}
 
 \emph{Cumulative frequency} curves indicate the number (or percent) of data with less than a given value. This is important for the statistical analysis (e.g. when we want to know the data range containing 95\% of all the values). Cumulative frequencies
 are also useful for comparing the distribution of values in two or more different groups of individuals.
@@ -71,7 +71,7 @@ When you use percentage points, the cumulative frequency presentation has the ad
   \caption{Cumulative frequency function}
 \end{figure}
 
-\subsection{ Box Plots }\index{general}{plots!boxplot}
+\subsection{Box Plots}\index{general}{plots!boxplot}
 
 \emph{Box plots} are frequently used in scientific publications to indicate values in two or more groups. The error bars typically indicate the \emph{range}. However, outliers are often excluded, and plotted separately. There are a number of tests to check for outliers. One of them is to check for data which lie more than 1.5 * \emph{inter-quartile-range} (IQR) above or below the first/third quartile (see Section \ref{sec:centiles}).
 
@@ -81,11 +81,11 @@ When you use percentage points, the cumulative frequency presentation has the ad
   \caption{Box plot}\label{fig:Boxplot}
 \end{figure}
 
-\subsection{ Programs: Data Display }
-\lstinputlisting[label=py_showStats,caption=showStats.py, language=Python]{../Code/showStats.py}
+\subsection{Programs: Data Display}
+\lstinputlisting[label=py_showStats,caption=showStats.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/showStats.py}
 \index{python}{showStats}
 
-\section{ Study Design }
+\section{Study Design}
 
 To design a medical study properly is not only advisable - it is even required by ISO 14155-1:2003, for \emph{Clinical investigations of medical devices for human subjects}. This norm specifies many aspects of your clinical study. It enforces the preparation of a \emph{Clinical Investigation Plan (CIP)}, specifying
 
@@ -101,21 +101,21 @@ To design a medical study properly is not only advisable - it is even required b
 
 \subsection{Types of Studies}
 
-\subsubsection{ Observational or experimental }
+\subsubsection{Observational or experimental}
 With \emph{observational} studies the researcher only collects information, but does not interact with the study population. In contrast, in \emph{experimental} studies the researcher deliberately influences events (e.g. treats the patient with a new type of treatment) and investigates the effects of these interventions.
 
-\subsubsection{ Prospective or retrospective }
+\subsubsection{Prospective or retrospective}
 In \emph{prospective} studies the data are collected, starting with the beginning of the study. In contrast, a \emph{retrospective} study takes data acquired from previous events, e.g. routine tests taken at a hospital.
 
-\subsubsection{ Longitudinal or cross-sectional }
+\subsubsection{Longitudinal or cross-sectional}
 In \emph{longitudinal} investigations, the researcher collects information over a period of time, maybe multiple times from each patient. In contrast, in \emph{cross-sectional} studies individuals are observed only once. For example, most surveys are cross-sectional, but experiments are usually longitudinal.
 
-\subsubsection{ Case control and Cohort studies }
+\subsubsection{Case control and Cohort studies}
 In \emph{case control} studies, first the patients are treated, and then they are selected for inclusion in the study, based on some characteristic (e.g. if they responded to a certain medication). In contrast, in \emph{cohort studies}, first subjects of interest are selected, and then these subjects are studied over time, e.g. for their response to a treatment.
 
-\subsection{ Design of Experiments }
+\subsection{Design of Experiments}
 
-\subsubsection{ Bias } \index{general}{bias}
+\subsubsection{Bias} \index{general}{bias}
 In general, when selecting our subject you try to make them representative of the population that you want to study; and you try to conduct your experiments in a way representative of investigations by other researchers. However, it is \emph{very} easy to get a \emph{bias} into your data. Bias can arise from a number of sources:
 \begin{itemize}
   \item The selection of subjects.
@@ -125,11 +125,11 @@ In general, when selecting our subject you try to make them representative of th
 \end{itemize}
 Care should be taken to avoid bias as much as possible.
 
-\subsubsection{ Randomized controlled trial } \index{general}{randomized controlled trial}
+\subsubsection{Randomized controlled trial} \index{general}{randomized controlled trial}
 The gold standard for experimental scientific clinical trials is the \emph{randomized controlled trial}. Thereby bias is avoided by splitting the subjects to be tested into an \emph{intervention group} and a \emph{control group}\index{general}{control group}. The group allocation is made \emph{random}. By having the groups differ in only one aspect, i.e. is the factor \emph{treatment}, we should be able to detect the effect of the treatment on the patients.
 Factors that can affect the outcome of the experiment are called \emph{covariates} or \emph{confoundings}. Through \emph{randomization}, covariates should be balanced across the groups.
 
-\subsubsection{ Randomization } \index{general}{randomization}
+\subsubsection{Randomization} \index{general}{randomization}
 This may be one of the most important aspects of experimental planning. Randomization is used to avoid bias as much as possible, and there are different ways to randomize an experiment. For the randomization, \emph{random number generators}, which are available with most computer languages, can be used. To minimize the chance of bias, the randomly allocated numbers should be presented to the experimenter as late as possible.
 
 Depending on the experiment, there are different ways to randomize the group assingment.
@@ -159,16 +159,16 @@ A closely related, but not completely random way to allocate a treatment is \emp
 \paragraph{Stratified randomization}
 Sometimes you may want to include a wider variety of subjects, with different characteristics. For example, you may choose to have younger as well as older subjects. In that case you should try to keep the number of subjects within each \emph{stratum} balanced. For this you will have to keep different lists of random numbers for each group of subjects.
 
-\subsubsection{ Crossover studies } \index{general}{crossover studies}
+\subsubsection{Crossover studies} \index{general}{crossover studies}
 An alternative to randomization is the \emph{crossover} design of studies. A crossover study is a longitudinal study in which subjects receive a sequence of different treatments. Every subject receives every treatment. To avoid causal effects, the sequence of the treatment allocation should be randomized.
 
-\subsubsection{ Blinding } \index{general}{blinding}
+\subsubsection{Blinding} \index{general}{blinding}
 Consciously or not, the experimenter can significantly influence the outcome of an experiment. For example, a young researcher with a new "brilliant" idea for a new treatment will be bias in the execution of the experiment, as well in the analysis of the data, to see his hypothesis confirmed. To avoid such a subjective influence, ideally the experimenter as well as the subject should be blinded to the therapy. This is referred to as \emph{double blinding}.
 
-\subsubsection{ Replication } \index{general}{replication}
+\subsubsection{Replication} \index{general}{replication}
 For variable measurements it is helpful to have a number of independent repetitions of each measurement.
 
-\subsubsection{ Sample selection } \index{general}{sample selection}
+\subsubsection{Sample selection} \index{general}{sample selection}
 When selecting your subjects, you should take care of two points:
 
 \begin{enumerate}
@@ -178,7 +178,7 @@ When selecting your subjects, you should take care of two points:
 
 For example, if you select your subjects randomly from patients at a hospital, you automatically bias your sample towards subjects with health problems.
 
-\subsubsection{ Sample size }
+\subsubsection{Sample size}
 Many studies fail, because the sample size is too small to observed an effect of the desired magnitude. To plan your sample size, you have to know
 \begin{itemize}
   \item What is the variance of the parameter in the population you are investigating.
@@ -195,7 +195,7 @@ In planning the analysis, you have to keep the important distinction between \em
 
 \subsection{Data Management}
 
-\subsubsection{ Documentation } \index{general}{documentation}
+\subsubsection{Documentation} \index{general}{documentation}
 Make sure that you document all the factors that may influence your results:
 
 \begin{itemize}
@@ -205,12 +205,12 @@ Make sure that you document all the factors that may influence your results:
   \item Anything noteworthy that happens during the experiment.
 \end{itemize}
 
-\subsubsection{ Data Handling }
+\subsubsection{Data Handling}
 You can already significantly facilitate the data handling by storing your data with telltale names. For example, if you execute your experiments in Vienna and in Linz, you can store your rawdata with the format "[town][year][month][day].dat". For example, an experiment in Vienna on April 1, 2013 would be stored as "vi20130401.dat".
 
 When you have finished recording the data, back up your data right away. Best do that into a directory that is separate from the one where you do your data analysis afterwards.
 
-\subsection{ Clinical Investigation Plan }
+\subsection{Clinical Investigation Plan}
 
 The ISO norm 14155 specifies in detail the requirements for the \emph{clinical investigation plan (CIP)}\index{general}{clinical investigation plan (CIP)}:
 

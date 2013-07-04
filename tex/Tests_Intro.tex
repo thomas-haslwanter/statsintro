@@ -1,4 +1,4 @@
-\chapter{ Statistical Tests }
+\chapter{Statistical Tests}
 
 \section{Hypothesis tests}\label{sec:hypotheses} \index{general}{hypotheses}
 Statistical evaluations are based on the initially often counterintuitive procedure of \emph{hypothesis tests}. A hypothesis test is a standard format for assessing statistical evidence. It is ubiquitous in scientific literature, most often appearing in the form of statements of \emph{statistical significance} and quotations like $"p<0.01"$ that pepper scientific journals. Thereby you proceed as follows: you
@@ -11,9 +11,11 @@ Statistical evaluations are based on the initially often counterintuitive proced
 
 The first hypothesis is referred to as \emph{null-hypothesis}, since we assume that there is \emph{null} difference between the hypothesis and the result. The found probability for a specific target value is the \emph{p-value} that you typically find in the literature. If $p<0.05$, the difference between your sample and the value that you check is \emph{significant}. If $p<0.001$, we speak of a \emph{highly significant} difference.
 
-An example for a \emph{null hypothesis}: "We assume that our population has a mean value of 7."
+\textbf{Example 1: } Let us compare the weight of two groups of subject. Then the \emph{null hypothesis} is that there is \emph{null} difference in the weight between the two groups. If a statistical comparison of the weight produces a p-value of 0.03, this means that \emph{the probability that the null hypothesis is correct is 0.03, or 3\%}. Since this probability is quite low, we say that \emph{there is a significant difference between the weight of the two groups}.
 
-\subsection{ Types of Error}
+\textbf{Example 2: } If we want to check the assumption that the mean value of a group is 7, then the null hypothesis would be: \emph{"We assume that there is null difference between the mean value in our poulation and the value 7."}
+
+\subsection{Types of Error}
 In hypothesis testing, two types of errors can occur:
 
 \subsubsection{Type I errors} \index{general}{error!Type I} \index{general}{power}
@@ -35,13 +37,13 @@ The power of a statistical test depends on four factors:
 \begin{enumerate}
   \item  $\alpha$, the probability for Type I errors
   \item  $\beta$, the probability for Type II errors ( $\Rightarrow$ power of the test)
-  \item  $d$, the magnitude of the investigated effect relative to $\sigma$, the standard deviation of the sample
+  \item  $d$, the \emph{effect size}, i.e. the magnitude of the investigated effect relative to $\sigma$, the standard deviation of the sample
   \item  $n$, the sample size
 \end{enumerate}
 
 Only 3 of these 4 parameters can be chosen, the $4^{th}$ is then automatically fixed.
 
-The size of the difference, $d$, between mean treatment outcomes that will answer the clinical question being posed is often called \emph{clinical significance} or \emph{clinical relevance}.
+The absolute size of the difference $D$ between mean treatment outcomes that will answer the clinical question being posed is often called \emph{clinical significance} or \emph{clinical relevance}.
 
 \begin{figure}[!ht]
   \centering
@@ -55,12 +57,12 @@ The size of the difference, $d$, between mean treatment outcomes that will answe
   \caption{Effect of an increase in sampling size on the power of a test.}\label{fig:power2}
 \end{figure}
 
-\subsubsection{ Examples for some special cases }
+\subsubsection{Examples for some special cases}
 
 For a test on one mean, this leads to a \emph{minimum sample number} of
 
 \begin{equation}
-  n = \frac{{{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{\sigma ^2}}}{{{d^2}}}
+  n = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{d^2}
 \end{equation}
 
 Here z is the standardized normal variable (see also chapter \ref{sec:normalDistribution})
@@ -69,17 +71,19 @@ Here z is the standardized normal variable (see also chapter \ref{sec:normalDist
   z = \frac{x-\mu}{\sigma} .
 \end{equation}
 
-For finding a difference between two normally distributed means, the minimum number of samples we need in each group is
+and $d = \frac{D}{\sigma}$ the effect size.
+
+For finding a difference between two normally distributed means, the minimum number of samples we need in each group to detect an absolute difference $D$ is
 
 \begin{equation}
-  {n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{d^2} .
+  {n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{D^2} .
 \end{equation}
 
-\subsubsection{ Programs: SampleSize }
-\lstinputlisting[label=py:sampleSize,caption=sampleSize.py, language=Python]{../Code/sampleSize.py}
+\subsubsection{Programs: SampleSize}
+\lstinputlisting[label=py:sampleSize,caption=sampleSize.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/sampleSize.py}
 \index{python}{sampleSize}
 
-\section{ Sensitivity and Specificity }
+\section{Sensitivity and Specificity}
 
 Some of the more confusing terms in statistical analysis are \emph{sensitivity} \index{general}{sensitivity} and \emph{specificity} \index{general}{specificity}. A related topic are \emph{positive predictive value (PPV)} \index{general}{positive predictive value} and \emph{negative predictive value (NPV)} \index{general}{negative predictive value}. The following diagram shows how the four are related:
 
@@ -92,8 +96,8 @@ Some of the more confusing terms in statistical analysis are \emph{sensitivity} 
 \begin{itemize}
   \item \textbf{Sensitivity} = proportion of positives that are correctly identified by a test = probability of a positive test, given the patient is ill.
   \item \textbf{Specificity} = proportion of negatives that are correctly identified by a test = probability of a negative test, given that patient is well.
-  \item \textbf{Positive predictive value} is the proportion of patients with positive test results who are correctly diagnosed.
-  \item \textbf{Negative predictive value} is the proportion of patients with negative test results who are correctly diagnosed.
+  \item \textbf{Positive predictive value} = proportion of patients with positive test results who are correctly diagnosed.
+  \item \textbf{Negative predictive value} = proportion of patients with negative test results who are correctly diagnosed.
 \end{itemize}
 
 While sensitivity and specificity are independent of prevalence, they do not tell us what portion of patients with abnormal test results are truly abnormal. This information is provided by the positive/negative predictive value. However, as Fig. \ref{fig:prevalence} indicates, these values are affected by the \emph{prevalence} \index{general}{prevalence} of the disease. In other words, we need to know the prevalence of the disease as well as the PPV/NPV of a test to provide a sensible interpretation of the test results.
@@ -101,7 +105,7 @@ While sensitivity and specificity are independent of prevalence, they do not tel
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/Sensitivity_Specificity.png}\\
-  \caption{Effect of prevalence on PPV and NPV. "T" stands for "test", and "P" for "patient".} \label{fig:prevalence}
+  \caption{Effect of prevalence on PPV and NPV. "T" stands for "test", and "P" for "patient". (For comparison with below: T+P+ = TP, T-P- = TN, T+P- = FP, and T-P+ = FN)} \label{fig:prevalence}
 \end{figure}
 
 Figure \ref{fig:sens_spec_example} gives a worked example:
@@ -124,7 +128,17 @@ Figure \ref{fig:sens_spec_example} gives a worked example:
 
 Hence with large numbers of false positives and few false negatives, a positive FOB screen test is in itself poor at confirming cancer (PPV = 10\%) and further investigations must be undertaken; it did, however, correctly identify 66.7\% of all cancers (the sensitivity). However as a screening test, a negative result is very good at reassuring that a patient does not have cancer (NPV = 99.5\%) and at this initial screen correctly identifies 91\% of those who do not have cancer (the specificity).
 
-\section{ Large Sample Tests }
+\section{ROC Curve}\index{general}{ROC curve}
+
+Closely related to \emph{Sensitivity} and \emph{Specificity} is the \emph{receiver operating characteristic (ROC)} curve. This is a graph displaying the relationship between the true positive rate (on the vertical axis) and the false positive rate (on the horizontal axis). The technique comes from the field of engineering, where it was developed to find the predictor which best discriminates between two given distributions. In the ROC-curve (Figure \ref{fig:ROC}) this point is given by the value with the largest distance to the diagonal.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/ROC.png}\\
+  \caption{Top: Probability density functions for two distributions. Bottom: corresponding \emph{ROC-curve}.}\label{fig:ROC}
+\end{figure}
+
+\section{Large Sample Tests}
 
 Here I give an overview of the most common statistical tests for different combinations of data. This overview is taken from \cite{Riffenburgh2012}.
 \begin{table}
@@ -140,12 +154,6 @@ Here I give an overview of the most common statistical tests for different combi
      \hline
      \multirow{2}{*}{$>2$ Categories} & Not Matched& & Fisher's exact test & Fisher's exact test or $\chi^2$ test & Kruskal-Wallis test & One-way ANOVA\\
      & Matched & & Cochran's Q test & $\chi^2$ Goodness-of-fit test against uniform distribution  & Friedman test & One-way ANOVA \\
-
-     \hline
-     \multirow{2}{*}{Ranked} & Not Matched & & Royston Ptrend test & Kruskal-Wallis test & Cusick Nptrend test & ANOVA trend test \\
-
-     & Matched & & Cochran's Q test & $\chi^2$ Goodness-of-fit test against uniform distribution  & Page's L test & ANOVA trend test \\
-     & Continuous & & Logistic regression & Multinomial regression & Ordinal regression & Common regression or correlation \\
 
   \end{tabular}
   }
