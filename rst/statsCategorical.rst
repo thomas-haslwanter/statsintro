@@ -45,17 +45,6 @@ Chi-square Test
     close attention to the data is required to interpret the information
     provided by the test.
 
-    The chi-square test is based on a test statistic that measures the
-    divergence of the observed data from the values that would be expected
-    under the null hypothesis of no association. This requires calculation
-    of the expected values based on the data.
-    With *n* is the total number of observations included in the table,
-    the expected value :math:`e_i`` for each cell in a two-way table is
-
-.. math::
-    
-    expected = \frac{row total*column total}{n}
-
 
 Fisher's Exact Test
     While the chi-square test is approximate, the *Fisher's Exact Test* is an exact test. As it is computationally much more expensive and intricate than the chi-square test, it was originally used only for small sample numbers. However, in general it is now the more advisable test to use.
@@ -91,6 +80,17 @@ Frequency Tables
 
 Chi-square Test
 ~~~~~~~~~~~~~~~
+
+The chi-square test is based on a test statistic that measures the
+divergence of the observed data from the values that would be expected
+under the null hypothesis of no association. This requires calculation
+of the expected values based on the data.
+With *n* is the total number of observations included in the table,
+the expected value :math:`e_i`` for each cell in a two-way table is
+
+.. math::
+    
+    expected = \frac{row total*column total}{n}
 
 Assume you have observed absolute frequencies :math:`o_i` and expected
 absolute frequencies :math:`e_i` under the Null hypothesis of your test
@@ -206,7 +206,7 @@ classification could be whether milk or tea was put in the cup first; the
 other could be whether Dr Bristol thinks that the milk or tea was put in
 first. We want to know whether these two classifications are associated -
 that is, whether Dr Bristol really can tell whether milk or tea was poured
-in first. Most uses of the Fisher test involve, like this example, a 2 × 2
+in first. Most uses of the Fisher test involve, like this example, a 2 x 2
 contingency table. The p-value from the test is computed as if the margins
 of the table are fixed, i.e. as if, in the tea-tasting example, Dr Bristol
 knows the number of cups with each treatment (milk or tea first) and will
@@ -219,6 +219,73 @@ or a two-tailed test. The former one looks for the probability to find a
 distribution as extreme or more extreme as the observed one. The latter one
 (which is the default in python) also considers tables as extreme in the
 opposite direction.
+
+
++--------+-------+-------+-----------+
+|        | B     | B     |           |
+|        | 1     | 0     | *Totals*  |
++========+=======+=======+===========+
+| A   1  | a     | b     | a+b       |
++--------+-------+-------+-----------+
+| A   0  | c     | d     | c+d       |
++--------+-------+-------+-----------+
+| Totals | a+c   | b+d   | a+b+c+d=N |
++--------+-------+-------+-----------+
+
+*General Structure of 2x2 Frequency Tables*
+
+McNemar's Test
+~~~~~~~~~~~~~~
+
+Although the McNemar test bears a superficial resemblance to a test of
+categorical association, as might be performed by a 2x2 chi-square test or
+a 2x2 Fisher exact probability test, it is doing something quite different.
+The test of association examines the relationship that exists among the
+cells of the table. The McNemar test examines the difference between the
+proportions that derive from the marginal sums of the table (see Table):
+:math:`p_A=(a+b)/N` and :math:`p_B=(a+c)/N`. The question in the McNemar
+test is: do these two proportions, :math:`p_A` and :math:`p_B`,
+significantly differ? And the answer it receives must take into account the
+fact that the two proportions are not independent. The correlation of
+:math:`p_A` and :math:`p_B` is occasioned by the fact that both include the
+quantity a in the upper left cell of the table.
+
+Example
+^^^^^^^
+
+In the following example, a researcher attempts to determine if a drug has an effect on a particular disease. Counts of individuals are given in the table, with the diagnosis (disease: present or absent) before treatment given in the rows, and the diagnosis after treatment in the columns. The test requires the same subjects to be included in the before-and-after measurements (matched pairs).
+
++-----------------+------------------+-----------------+-----------+
+|                 | After: present   | After: absent   | Row total |
++=================+==================+=================+===========+
+| Before: present | 101              | 121             | 222       |
++-----------------+------------------+-----------------+-----------+
+| Before: absent  |  59              |  33             |  92       |
++-----------------+------------------+-----------------+-----------+
+| Column total    | 160              | 154             | 314       |
++-----------------+------------------+-----------------+-----------+
+
+*McNemar's Test: example*
+
+
+In this example, the null hypothesis of "marginal homogeneity" would mean there
+was no effect of the treatment. From the above data, the McNemar test statistic
+with Yates's continuity correction is
+
+The general solution for the McNemar's test is
+
+.. math::    \chi^2 = {(|b-c|-correctionFactor)^2 \over b+c}.
+
+For small number of sample numbers the \emph{correctionFactor} should be 0.5
+(*Yates's correction*) or 1.0 (*Edward's correction*). (In fact, for
+small numbers an exact calculation is typically done for the probabilities, based
+on a binomial test.) Using Yates's correction, we get
+
+.. math::     \chi^2 = {(|121 - 59| - 0.5)^2 \over {121 + 59}}
+
+has the value 21.01, which is extremely unlikely from the distribution implied by
+the null hypothesis. Thus the test provides strong evidence to reject the null
+hypothesis of no treatment effect.
 
 Analysis Programs
 -----------------

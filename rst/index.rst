@@ -13,7 +13,7 @@
 
 | *email:*  thomas.haslwanter@fh-linz.at
 
-| *Version:*  1.66
+| *Version:*  1.7
 
 .. image:: ../Images/cc_licence.png
    :scale: 100 %
@@ -59,6 +59,14 @@ Test of Means of Continuous Data
    :maxdepth: 2
 
    statsContinuous
+
+Tests on Discrete Data
+======================
+
+.. toctree::
+   :maxdepth: 2
+
+   statsDiscrete
 
 Tests on Categorical Data
 =========================

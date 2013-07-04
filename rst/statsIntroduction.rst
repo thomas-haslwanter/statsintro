@@ -37,7 +37,8 @@ won’t be able to avoid it. Statistics can
     modeling.
 
 **WWW:** On the web, you find good very extensive statistics
-information in English under `http://www.statsref.com/ <http://www.statsref.com/>`_. A good German
+information in English under `http://www.statsref.com/ <http://www.statsref.com/>`_;
+I also often find `http://www.vassarstats.net/ <http://www.vassarstats.net/>`_ very helpful. A good German
 webpage on statistics and regulatory issues is
 `http://www.reiter1.com/ <http://www.reiter1.com/>`_ .
 
@@ -254,6 +255,7 @@ data input, data organization, and data manipulation. In the following, I assume
 that pandas has been imported with
 
 ::
+
     import pandas as pd
 
 Data Input
@@ -264,11 +266,13 @@ formats, e.g. CSV and text files, Microsoft Excel, and SQL databases. For exampl
 in your clipboard, you can import them directly with
 
 ::
+
     data = pd.io.parsers.read_clipboard()
 
 Or data from "Sheet1" in an Excel-file "data.xls" can be read in easily with
 
 ::
+
     xls = pd.io.parsers.ExcelFile('data.xls')
     data = xls.parse('Sheet1')
 

@@ -791,7 +791,7 @@ Continuous Distributions Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #.  **T-Distribution:** Measuring the weight of your collegues, you have obtained the following weights: 52, 70, 65, 85, 62, 83, 59 kg.
     Calculate the corresponding mean, and the 99% confidence interval for the mean. Note: with n values you have n-1 DOF for the t-distribution.
-     (Correct answer: 68.0 +/- 17.2 kg)
+    (Correct answer: 68.0 +/- 17.2 kg)
 
 #.  **Chi-square Distribution** Create 3 normally distributed datasets (mean = 1, SD = 1), with 1000 samples each. Then square them, sum them (so that you have 1000 data-points), and create a histogram with 100 bins. This should be similar to the curve for the Chi-square distribution, with 3 DOF (i.e. it should come down at the left).
 
@@ -806,7 +806,7 @@ Continuous Distributions Distribution
 
 #.  **Poisson Distribution** On the streets of Austria there were 62 fatal accidents in 2012. Assuming that those are evenly distributed, we have on average
     62 /(365/7)=1.19 fatal accidents per week. How big is the chance that in a given week there are no, 2, or 5 accidents?
-     (Correct answer: 30.5%, 21.5%, 0.6%)
+    (Correct answer: 30.5%, 21.5%, 0.6%)
 
 
 .. |image8| image:: ../Images/Normal_Distribution_PDF.png

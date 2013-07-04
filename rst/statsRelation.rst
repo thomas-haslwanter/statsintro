@@ -82,7 +82,6 @@ In a general form, :math:`R^2` can be seen to be related to the unexplained vari
 For multiple regression, the *adjusted* :math:`R^2` value (written as :math:`\bar{R}^2`) is often used instead of :math:`R^2`:
 
 .. math::
-
       \bar{R}^2 = 1 - (1 - R^2)\frac{n - 1}{n - p - 1}
 
 where *n* is the sample size and *p* is the number of independent variables.
@@ -97,11 +96,11 @@ Caution: the sample correlation and :math:`R^2` are misleading if there is a non
 
 | |image26|
 
-*Several sets of (x, y) points, with the correlation coecient of x and y for each set.
-Note that the correlation reects the non-linearity and direction of a linear relationship (top
+*Several sets of (x, y) points, with the correlation coefficient of x and y for each set.
+Note that the correlation reflects the non-linearity and direction of a linear relationship (top
 row), but not the slope of that relationship (middle), nor many aspects of nonlinear relationships
-(bottom). N.B.: the gure in the center has a slope of 0 but in that case the correlation
-coecient is undened because the variance of Y is zero. (From: Wikipedia)*
+(bottom). N.B.: the Fiure in the center has a slope of 0 but in that case the correlation
+coefficient is undefied because the variance of Y is zero. (From: Wikipedia)*
 
 Rank correlation 
 ~~~~~~~~~~~~~~~~~~
@@ -111,11 +110,15 @@ necessary. In that case one can rank the set of subjects for each
 variable and compare the orderings. There are two commonly used methods
 of calculating the rank correlation.
 
--  *Spearman's* :math:`\rho`, which is exactly the same as the Pearson
+- *Spearman's* :math:`\rho`, which is exactly the same as the Pearson
    correlation coefficient :math:`r` calculated on the ranks of the
    observations.
 
--  *Kendall's* :math:`\tau`.
+- *Kendall's* :math:`\tau`. is also a rank correlation coefficient,
+  measuring the association between two measured quantities. It is
+  harder to calculate than Spearman's rho, but it has been argued that
+  confidence intervals for Spearman's rho are less reliable and less
+  interpretable than confidence intervals for Kendall's tau-parameters.
 
 Regression
 ----------
@@ -294,7 +297,10 @@ themselves very different.*
 
 | |image30|
 
-*Regression, with condence intervals for the mean, as well as for the predicted data.*
+*Regression, with confidence intervals for the mean, as well as for the
+predicted data. The red dotted line shows the confidence interval for the mean;
+and the green dotted line the confidence interval for predicted data. (This can
+be compared to the standard error and the standard deviation for a population.)*
 
 Since to my knowledge there exists no program in the Python standard
 library (or numpy, scipy) to calculate the confidence intervals for a
