@@ -44,7 +44,6 @@ class TestSequenceFunctions(unittest.TestCase):
         x = np.sin(t)
         self.data = x
         
-        '''
     def test_anovaOneway(self):
         (F,p) = anovaOneway.anova_oneway()
         self.assertAlmostEqual(F, 3.711335988266943)
@@ -190,10 +189,9 @@ class TestSequenceFunctions(unittest.TestCase):
         p = survival.main()
         self.assertAlmostEqual(p, 0.073326322306832212)
         
-        '''
     def test_twoSample(self):
         p1 = twoSample.paired_data()
-        self.assertAlmostEqual(p1,0.0046360889354534881) 
+        self.assertAlmostEqual(p1, 0.0033300139117459797) 
         
         p2 = twoSample.unpaired_data()
         self.assertAlmostEqual(p2, 0.0010608066929400244)

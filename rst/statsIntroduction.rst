@@ -306,7 +306,7 @@ For statistical analysis, pandas becomes really powerful if you combine it with 
 
 The following piece of code shows you how pandas can be used for data analysis:
 
-(See also the ipython notebook `pandas_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/pynb/pandas_intro.ipynb>`_)
+(See also the ipython notebook `pandas_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/pandas_intro.ipynb>`_)
 
 .. literalinclude:: ..\Code\pandas_intro.py
 

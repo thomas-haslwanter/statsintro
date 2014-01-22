@@ -7,8 +7,8 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    July-2013
-Version: 1.4
+Date:    Sept-2013
+Version: 1.5
 '''
 
 import numpy as np
@@ -78,6 +78,7 @@ def shifted_normal():
     plt.hist(data)
     plt.title('Histogram of normally distributed data')
     plt.show()
+    plt.close()
 
 def many_normals():
     '''Show multiple samples from the same distribution, and compare means.'''
@@ -85,6 +86,7 @@ def many_normals():
     numRows = 5
     numData = 50
     numData = 100
+    plt.figure()
     for ii in range(numRows):
         for jj in range(numRows):
             data = stats.norm.rvs(myMean, mySD, size=numData)
@@ -95,6 +97,7 @@ def many_normals():
     
     plt.tight_layout()
     plt.show()
+    plt.close()
     
     # Check out the mean of 1000 normally distributded samples
     numTrials = 1000;

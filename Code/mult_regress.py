@@ -7,8 +7,8 @@ Also shows how to make 3d plots.
 
 '''
 Author: Thomas Haslwanter
-Date:   May-2013
-Ver:    1.1
+Date:   Nov-2013
+Ver:    1.2
 '''
 
 # The standard imports
@@ -64,7 +64,7 @@ def linearmodel(X,Y,Z):
     '''Just fit the plane'''
     
     M = np.vstack((np.ones(len(X)), X, Y)).T
-    bestfit = np.linalg.lstsq(M,Z)
+    bestfit = np.linalg.lstsq(M,Z)[0]
     print('Best fit plane:', bestfit)
     
     return bestfit

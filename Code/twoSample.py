@@ -6,8 +6,8 @@
 
 '''
 Author:  Thomas Haslwanter
-Date:    May-2013
-Version: 1.5
+Date:    July-2013
+Version: 1.6
 '''
 
 from numpy import genfromtxt, mean, std
@@ -38,10 +38,10 @@ def paired_data():
     
     # alternative to paired t-test when data has an ordinary scale or when not
     # normally distributed
-    z_statistic, p_value = stats.wilcoxon(post - pre)
+    rankSum, p_value = stats.wilcoxon(post - pre)
     print("paired wilcoxon-test", p_value)
     
-    return p_value # should be 0.0046360889354534881
+    return p_value # should be 0.0033300139117459797
 
 
 def unpaired_data():
