@@ -1,4 +1,4 @@
-\indexentry{Python!ipython}{9}
+\indexentry{Python!ipython}{10}
 \indexentry{Python!Matplotlib}{10}
 \indexentry{Python!pyplot}{10}
 \indexentry{Python!pylab}{10}
@@ -66,12 +66,12 @@
 \indexentry{power}{41}
 \indexentry{error!Type II}{42}
 \indexentry{sample size}{42}
-\indexentry{sensitivity}{43}
-\indexentry{specificity}{43}
-\indexentry{positive predictive value}{43}
-\indexentry{negative predictive value}{43}
+\indexentry{sensitivity}{44}
+\indexentry{specificity}{44}
+\indexentry{positive predictive value}{44}
+\indexentry{negative predictive value}{44}
 \indexentry{prevalence}{44}
-\indexentry{ROC curve}{45}
+\indexentry{ROC curve}{46}
 \indexentry{test! t-test, one sample}{47}
 \indexentry{test!Wilcoxon signed rank sum}{47}
 \indexentry{test! t-test, paired}{48}

@@ -13,7 +13,7 @@ Statistics was originally invented - as so many other things - by the famous mat
   \item Make predictions.
 \end{itemize}
 
-\textbf{Books: }There are a number of good books about statistics. My favorite is \cite{altman99}: it does not talk a lot about computers and modeling, but gives you a terrific introduction into the field. Many formulations and examples in this manuscript have been taken from that book. A more modern book, which is more voluminous and in my opionion a bit harder to read, is \cite{Riffenburgh2012}. If you are interested in a simple introduction to modern regression modeling, check out \cite{Kaplan2009}.
+\textbf{Books: }There are a number of good books about statistics. My favorite is \cite{altman99}: it does not talk a lot about computers and modeling, but gives you a terrific introduction into the field. Many formulations and examples in this manuscript have been taken from that book. A more modern book, which is more voluminous and in my opionion a bit harder to read, is \cite{Riffenburgh2012}. If you are interested in a simple introduction to modern regression modeling, check out \cite{Kaplan2009}. A very good introduction to “Generalized Linear Models” is \cite{Dobson2008}. If you know your basic statistics, this is a good, advanced starter into statistical modeling.
 
 \vspace{5 mm}
 
@@ -40,6 +40,24 @@ Statistics will help you to
   \item Determine the required sample size.
   \item Find the correct analysis for your data.
   \item Make predictions based on your data.
+\end{itemize}
+
+Without statistics, your interpretation of your data can be massively flawed. Take for example the estimated number of German tanks during World War II, also known as the \emph{German tank problem} (\url{http://en.wikipedia.org/wiki/German_tank_problem}): from standard intelligence data, the estimate for the number of German tanks produced per month was $1550$; in contrast, the statistical estimate from the tanks observed led to a number of $327$, which was very close to the actual production number of $342$.
+
+\section{What you should already know}
+
+From previous courses on math, quality control, signal analysis, etc., you are probably already familiar with a number of statistical concepts. While they will be dealt with in detail later on, let me list them here to make sure we start at the same level:
+
+\begin{itemize}
+  \item mean
+  \item median
+  \item mode
+  \item standard deviation
+  \item variance
+  \item confidence intervals
+  \item t-test
+  \item boxplot
+  \item normal distribution
 \end{itemize}
 
 \section{Projects}
@@ -98,7 +116,7 @@ There are also many tutorials available on the internet (Table \ref{table:python
    \begin{tabular}{|l p{8 cm}|}
      \hline
      \url{http://scipy-lectures.github.com} & \emph{Python Scientific Lecture Notes.} Pretty comprehensive. \\     \url{http://www.scipy.org/NumPy\_for\_Matlab\_Users} & \emph{NumPy for Matlab Users} Start here if you have Matlab experience. \\
-     \url{http://jrjohansson.github.com} & \emph{Lectures on scientific computing with Python.} Great ipython notebooks! \\     \url{http://docs.python.org/2/tutorial} & \emph{The Python tutorial.} The official introduction. \\
+     \url {http://jrjohansson.github.com} & \emph{Lectures on scientific computing with Python.} Great ipython notebooks! \\     \url{http://docs.python.org/2/tutorial} & \emph{The Python tutorial.} The official introduction. \\
      \url{http://swaroopch.com/notes/python} & \emph{A Byte of Python.} Free book, very good at the introductory level. \\
      \url{http://www.greenteapress.com/thinkpython} & \emph{ThinkPython.} Free book, for advanced programers. \\
 
@@ -124,15 +142,11 @@ If you decide to install things manually, you need the following modules in addi
 \subsubsection{Ipython}
 
 
-Make sure that you have a good programming environment! Currently, my favorite way of programming is similar to my old Matlab style: I first get the individual steps worked out interactively in \cite{ipython}. Ipython \index{general}{Python!ipython} provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code.
-When ipython is started in \emph{pylab mode} (which is the typical
-configuration), it automatically loads numpy and matplotlib.pyplot into the
-active workspace, and provides a very convenient, Matlab-like programing
-environment. A very helpful new addition is the browser-based \emph{ipython
-notebook}, with support for code, text, mathematical expressions, inline
-plots and other rich media. Please check out the links to the ipython
-notebooks in this statistics introduction. I believe that it will  help you
-to get up to speed with python much more quickly.
+Make sure that you have a good programming environment! Currently, my favorite way of programming is similar to my old Matlab style: I first get the individual steps worked out interactively in an \cite{ipython} \emph{qtconsole}. Ipython \index{general}{Python!ipython} provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code.
+When ipython is started in \emph{pylab mode} (which is the typical configuration), it automatically loads numpy and matplotlib.pyplot into the
+active workspace, and provides a very convenient, Matlab-like programing environment. A very helpful new addition is the browser-based \emph{ipython
+notebook}, with support for code, text, mathematical expressions, inline plots and other rich media. Please check out the links to the ipython
+notebooks in this statistics introduction. I believe that it will  help you to get up to speed with python much more quickly.
 
 And to write a program, I then go to either \emph{Spyder} (which is free) or \emph{Wing} (which is very good, but commercial). \emph{PyCharm} is another IDE with a good debugger, and has very good vim-emulation.
 

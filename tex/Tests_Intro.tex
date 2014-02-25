@@ -86,6 +86,20 @@ For finding a difference between two normally distributed means, the minimum num
 \index{python}{sampleSize}
 
 
+\subsection{The "p-value fallacy"}
+
+p values are often used to measure evidence against a hypothesis. Unfortunately, they are often incorrectly viewed as an error probability for rejection of the hypothesis, or, even worse, as the posterior probability (i.e. after the data have been collected) that the hypothesis is true. As an example, take the case where the alternative hypothesis is that the mean is just a fraction of one standard deviation larger than the mean under the null hypothesis: in that case, a sample that produces a p-value of 0.05 may just as likely be produced if the the alternative hypothesis is true as if the null hypothesis is true!
+
+\cite{sellke2001} have investigated this question in detail, and recommend to use a "calibrated p-value" to estimate the probability of making a mistake when rejecting the null hypothesis, when the data produce a p-value $p$:
+
+\begin{equation}\label{eq:pFallacy}
+    \alpha(p)= \frac{1}{1 + \frac{1}{-e \; p \; log(p)}}
+\end{equation}
+
+with $e=exp(1)$, and $log$ the natural logarithm. For example, $p=0.05$ leads to $\alpha=0.29$, and $p=0.01$ to $\alpha=0.11$.
+
+Remember, p only indicates the likelihood of obtaining a certain value for the test statistic of the null hypothesis is true - nothing else!
+
 \section{Sensitivity and Specificity}
 
 Some of the more confusing terms in statistical analysis are \emph{sensitivity} \index{general}{sensitivity} and \emph{specificity} \index{general}{specificity}. A related topic are \emph{positive predictive value (PPV)} \index{general}{positive predictive value} and \emph{negative predictive value (NPV)} \index{general}{negative predictive value}. The following diagram shows how the four are related:
@@ -143,12 +157,12 @@ Closely related to \emph{Sensitivity} and \emph{Specificity} is the \emph{receiv
 
 \section{Common Statistical Tests for Comparing Groups of Independent and Paired Samples}
 
-Here I give an overview of the most common statistical tests for different combinations of data. 
+Table \ref{table:tests} gives an overview of the most common statistical tests for different combinations of data.
 \begin{table}
   \centering
   \footnotesize{
   \begin{tabular}{ | p{5cm} || p{5cm} | p{5cm} | }
-     \hline 
+     \hline
      No. of Groups Compared  & \textbf{Independent Samples} & \textbf{Paired Samples} \\ \hline
      \textbf{Groups of Nominal Data} & & \\ \hline
      2 or more & Fisher's exact test or Chi-Square test & McNemar's test \\ \hline
