@@ -4,6 +4,15 @@
 .. Basic Principles
 .. ================
 
+Population and samples
+----------------------
+
+While the whole *population* of a group has certain characteristics, we
+can typically never measure all of them. Instead, we have to confine
+ourselves to investigate a representative *sample* of this group, and
+estimate the properties of the population. Great care should be used to
+make the sample representative for the population you study.
+
 Datatypes
 ---------
 
@@ -112,7 +121,7 @@ Programs: Data Display
 ~~~~~~~~~~~~~~~~~~~~~~~~
 See also the ipython notebook `showStats.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/showStats.ipynb>`_:
 
-.. literalinclude:: ..\Code\showStats.py
+.. literalinclude:: ..\Code3\showStats.py
 
 Study Design 
 --------------
@@ -288,13 +297,14 @@ allocation should be randomized.
 Blinding 
 ^^^^^^^^^^
 
-Consciously or not, the experimenter can significantly influence the
-outcome of an experiment. For example, a young researcher with a new
-"brilliant" idea for a new treatment will be bias in the execution of
-the experiment, as well in the analysis of the data, to see his
-hypothesis confirmed. To avoid such a subjective influence, ideally the
-experimenter as well as the subject should be blinded to the therapy.
-This is referred to as *double blinding*.
+Consciously or not, the experimenter can significantly influence the outcome
+of an experiment. For example, a young researcher with a new "brilliant"
+idea for a new treatment will be bias in the execution of the experiment, as
+well in the analysis of the data, to see his hypothesis confirmed. To avoid
+such a subjective influence, ideally the experimenter as well as the subject
+should be blinded to the therapy. This is referred to as *double blinding*.
+If also the person who does the analysis does not know which group the
+subject has been allocated to, we speak about *triple blinding*.
 
 Replication 
 ^^^^^^^^^^^^^
@@ -374,8 +384,11 @@ your data analysis afterwards.
 Clinical Investigation Plan 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ISO norm 14155 specifies in detail the requirements for the
-*clinical investigation plan (CIP)*:
+To design a medical study properly is not only advisable - it is even
+required by ISO 14155-1:2003, for *Clinical investigations of medical
+devices for human subjects*. This norm specifies many aspects of your
+clinical study. It enforces the preparation of a *Clinical Investigation
+Plan (CIP)*, specifying
 
 #. Type of study (e.g. double-blind, with or without control group
    etc.).
@@ -411,6 +424,28 @@ The ISO norm 14155 specifies in detail the requirements for the
 #. Procedure for documentation, also for missing data.
 
 #. Statistical analysis procedure.
+
+#. The designation of a *monitor* for the investigation.
+
+#. The designation of a *clinical investigator*.
+
+#. Specification the data handling.
+
+Exercises
+---------
+
+#. 
+
+   #. Read in the data from ’Data\\amst\\babyboom.dat.txt’.
+
+   #. Inspect them visually, and give a numerical description of the
+      data.
+
+   #. Are the data normally distributed?
+
+   #. How would you design the corresponding study?
+
+
 
 .. |image3| image:: ../Images/scatterPlot.png
     :scale: 50 %

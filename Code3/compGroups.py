@@ -18,17 +18,22 @@ import scipy.stats as stats
 def oneProportion():
     '''Calculate the confidence intervals of the population, based on a
     given data sample.
-    The data are taken from Altman, chapter 10.2.1.'''
+    The data are taken from Altman, chapter 10.2.1.
+    Suppose a general practitioner chooses a random sample of 215 women from
+    the patient register for her general practice, and fins that 39 of them
+    have a history of suffering from asthma. '''
 
     # Get the data
     numTotal = 215
     numPositive = 39
 
+    # --- >>> START stats <<< ---
     # Calculate the confidence intervals
     p = float(numPositive)/numTotal
     se = np.sqrt(p*(1-p)/numTotal)
     td = stats.t(numTotal-1)
     ci = p + np.array([-1,1])*td.isf(0.025)*se
+    # --- >>> STOP stats <<< ---
 
     # Print them
     print('ONE PROPORTION ----------------------------------------')
@@ -49,9 +54,11 @@ def chiSquare():
     # Enter the data
     obs = np.array([[32, 118], [17, 127]])
 
+    # --- >>> START stats <<< ---
     # Calculate the chi-square test
     chi2_corrected = stats.chi2_contingency(obs, correction=True)
     chi2_uncorrected = stats.chi2_contingency(obs, correction=False)
+    # --- >>> STOP stats <<< ---
 
     # Print the result
     print('\nCHI SQUARE --------------------------------------------------')
@@ -72,10 +79,12 @@ def fisherExact():
     # Enter the data
     obs = np.array([[1,5], [8,2]])
 
+    # --- >>> START stats <<< ---
     # Calculate the Fisher Exact Test
     # Note that by default, the option "alternative='two-sided'" is set;
     # other options are 'less' or 'greater'.
     fisher_result = stats.fisher_exact(obs)
+    # --- >>> STOP stats <<< ---
 
     # Print the result
     print('\nFISHER --------------------------------------------------------')

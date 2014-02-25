@@ -140,7 +140,37 @@ minimum number of samples we need in each group to detect an absolute difference
 Programs: SampleSize 
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: ..\Code\sampleSize.py
+.. literalinclude:: ..\Code3\sampleSize.py
+
+The "p-value fallacy"
+~~~~~~~~~~~~~~~~~~~~~
+
+p values are often used to measure evidence against a hypothesis.
+Unfortunately, they are often incorrectly viewed as an error probability
+for rejection of the hypothesis, or, even worse, as the posterior
+probability (i.e. after the data have been collected) that the
+hypothesis is true. As an example, take the case where the alternative
+hypothesis is that the mean is just a fraction of one standard deviation
+larger than the mean under the null hypothesis: in that case, a sample
+that produces a p-value of 0.05 may just as likely be produced if the
+the alternative hypothesis is true as if the null hypothesis is true!
+
+ have investigated this question in detail, and recommend to use a
+"calibrated p-value" to estimate the probability of making a mistake
+when rejecting the null hypothesis, when the data produce a p-value
+:math:`p`:
+
+.. math::
+
+   \label{eq:pFallacy}
+       \alpha(p)= \frac{1}{1 + \frac{1}{-e \; p \; log(p)}}
+
+with :math:`e=exp(1)`, and :math:`log` the natural logarithm. For
+example, :math:`p=0.05` leads to :math:`\alpha=0.29`, and :math:`p=0.01`
+to :math:`\alpha=0.11`.
+
+Remember, p only indicates the likelihood of obtaining a certain value
+for the test statistic of the null hypothesis is true - nothing else!
 
 Sensitivity and Specificity 
 -----------------------------
@@ -225,14 +255,13 @@ Closely related to *Sensitivity* and *Specificity* is the *receiver operating ch
 
 *Top: Probability density functions for two distributions. Bottom: corresponding ROC-curve*
 
-Large Sample Tests 
---------------------
+Common Statistical Tests for Comparing Groups of Independent and Paired Samples
+-------------------------------------------------------------------------------
 
-Here I give an overview of the most common statistical tests for
-different combinations of data. This overview is taken from Riffenburgh
-(2012).
+The table below gives an overview of the most common statistical
+tests for different combinations of data.
 
-.. image:: ../Images/table_tests.png
+.. image:: ../Images/CommonTests.png
     :scale: 100 %
 
 

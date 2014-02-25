@@ -29,7 +29,13 @@ The only thing that you have to watch out for: after you have acquired your data
 
 
 \subsubsection{Centiles}\index{general}{centiles}\index{general}{percentiles}
-The \emph{Cumulative distribution function (CDF) } \index{general}{cumulative distribution function} tells you for each value which percentage of the data has a lower value (Figure \ref{fig:CDF}). The value below which a given percentage of the values occur is called \emph{centile} or \emph{percentile}, and corresponds to a value with a specified cumulative frequency.
+While you won't often hear the expression \emph{centiles}, you will frequently encounter specific centiles, e.g. \emph{quartiles}, or the \emph{median value}. 
+
+\begin{description}
+  \item[Probability Density Function (PDF)]\index{general}{probability density function} The PDF, or density of a continuous random variable, is a function that describes the relative likelihood for this random variable to take on a given value.
+  \item[Cumulative Density Function (CDF)]\index{general}{cumulative density function} Tells you for each value which percentage of the data has a lower value (Figure \ref{fig:CDF}).
+  \item[Centile] Also called \emph{percentile}: The value below which a given percentage of the values occur. It corresponds to a value with a specified cumulative frequency.
+\end{description}
 
 For example, when you look for the data range which includes 95\% of the data, you have to find the $2.5^{th}$ and the $97.5^{th}$ percentile of your sample distribution.
 
@@ -42,7 +48,7 @@ Median, upper and lower quartile are used for the data display in box plots (Fig
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/NormalDist_PDF_CDF.png}\\
-  \caption{\emph{Probability distribution function} (top) and \emph{Cumulative distribution function} (bottom) of a normal distribution.}\label{fig:CDF}
+  \caption{\emph{Probability density function} (top) and \emph{Cumulative density function} (bottom) of a normal distribution.}\label{fig:CDF}
 \end{figure}
 
 
@@ -219,8 +225,8 @@ In Python, the most elegant way of working with distribution function is a two-s
   \item In the second step, you decide which function you want to use from this distribution, and calculate the function value for the desired x-input (e.g. \textsf{y = nd.cdf(x)})
 \end{itemize}
 
-
-\lstinputlisting[label=py:distributionNormal,caption=distributionNormal.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/distribution_normal.py}
+\PyImg "distributionNormal.py" (p \pageref{py:distributionNormal}) shows simple manipulations of normal distribution functions.
+\index{python}{distributionNormal}
 
 \begin{figure}[h]
   \centering
@@ -324,7 +330,7 @@ If you want to investigate whether two groups have the same variance, you have t
 
 where $S_x$ ist he sample standard deviation of the first sample, and $S_y$ the sample standard deviation for the second sample.
 
-One example could be if you want to compare apples that look alike but are from different trees and have different sizes. There are three apples from the first tree that weigh 110, 121 and 143 grams respectively, and four from the other which weigh 88, 93, 105 and 124 grams respectively. The F statistic is $F 1.05$, and has $n-1$ and $m-1$ degrees of freedom, where $n$ and $m$ are the number of apples in each batch. The code sample below shots what the F statistic is close to the center of the distribution, so we cannot reject the hypothesis that the two batches have the same variance.
+One example could be if you want to compare apples that look alike but are from different trees and have different sizes. There are three apples from the first tree that weigh 110, 121 and 143 grams respectively, and four from the other which weigh 88, 93, 105 and 124 grams respectively. The F statistic is $F = 1.05$, and has $n-1$ and $m-1$ degrees of freedom, where $n$ and $m$ are the number of apples in each batch. The code sample below shots what the F statistic is close to the center of the distribution, so we cannot reject the hypothesis that the two batches have the same variance.
 
 \begin{lstlisting}
   In [1]:  apples1 = array([110, 121, 143])
@@ -440,12 +446,12 @@ Working with distribution functions in Python takes a bit to get used to. But on
   In [4]: y = myDF.pdf(x)
 \end{lstlisting}
 
-\lstinputlisting[label=py:continuous,caption=Continuous,language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/dist_continuous.py}
-\index{python}{distContinuous}
+\PyImg "distributionContinuous.py" (p \pageref{py:continuous}) shows different continuous distribution functions.
+\index{python}{distributionContinuous}
 
 \subsection{Discrete Distributions}\index{general}{distributions!discrete}
 
-While the functions describing continuous distributions are referred to as \emph{probability distribution functions}, discrete distributions are described by \emph{probability mass functions}.
+While the functions describing continuous distributions are referred to as \emph{probability density functions}, discrete distributions are described by \emph{probability mass functions}.
 
 \subsubsection{Binomial Distribution}\index{general}{distributions!binomial}
 The Binomial is associated with the question "Out of a given number of trials, how many will succeed?" Some example questions that are modeled with a Binomial distribution are:
@@ -504,9 +510,9 @@ Instead of having a parameter p that represents a component probability like in 
 \end{figure}
 
 \subsubsection{Programs: Discrete Distribution Functions} \index{general}{distributions!discrete}
-\lstinputlisting[label=py:discrete,caption=Discrete,language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/dist_discrete.py}
-\index{python}{distDiscrete}
 
+\PyImg "distributionDiscrete.py" (p \pageref{py:discrete}) shows different continuous distribution functions.
+\index{python}{distributionDiscrete}
 %(Lecture 7)
 
 \section{Data Analysis}
@@ -535,16 +541,20 @@ If the two distributions being compared are similar, the points in the $Q-Q$ plo
 
 \subsubsection{Kolmogorov-Smirnov Test}\index{general}{test!Kolmogorov-Smirnov}
 
-In addition, there are quantitative tests for normality. The test that I have encountered most frequently in recent literature is the \emph{Kolmogorov-Smirnov test}. The Kolmogorov–Smirnov statistic quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. Note that this implies that in a test for normality, you have to i) standardize your sample distribution (i.e. subtract the mean, and divide by the standard deviation), and specify your reference distribution (i.e. if you want to check for normality, the normal distribution). Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}{test!Shapiro-Wilk}, and a number of other tests are also available.
+In addition, there are quantitative tests for normality. The test that I have encountered most frequently in recent literature is the \emph{Kolmogorov-Smirnov test}. The Kolmogorov-Smirnov statistic quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. Note that this implies that in a test for normality, you have to i) standardize your sample distribution (i.e. subtract the mean, and divide by the standard deviation), and specify your reference distribution (i.e. if you want to check for normality, the normal distribution).
 
-\lstinputlisting[label=py:checkNormality,caption=checkNormality.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/checkNormality.py}
+Another thest for normality is the \emph{Lilliefors test}\index{general}{test!Lilliefors}. It is a normality test based on the Kolmogorov–Smirnov test, and is used to test the null hypothesis that data come from a normally distributed population, when the null hypothesis does not specify which normal distribution; i.e., it does not specify the expected value and variance of the distribution.
+
+Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}{test!Shapiro-Wilk}, and a number of other tests are also available.
+
+\PyImg "checkNormality.py" (p \pageref{py:checkNormality}) shows graphical and quantitative check, if a given distribution is normal.
 \index{python}{checkNormality}
 
 \begin{figure}
   \centering
   % Requires \usepackage{graphicx}
   \includegraphics[width=0.5\textwidth]{../Images/KS_Example.png}\\
-  \caption{Illustration of the Kolmogorov-Smirnoff statistic. Red line is CDF, blue line is an ECDF, and the black arrow is the K-S statistic(from Wikipedia).}\label{fig:ksplot}
+  \caption{Illustration of the Kolmogorov-Smirnoff statistic. Red line is CDF, blue line is an ECDF, and the black arrow is the K-S statistic (from Wikipedia).}\label{fig:ksplot}
 \end{figure}
 
 
@@ -562,14 +572,11 @@ where $se$ is the standard error, and $t_{n,\alpha}$ the $t$ statistic for $n$ d
 
 \section{Exercises}
 
-\subsection{Numpy}
-
+\subsection{Python}
 \begin{enumerate}
-  \item  Create an numpy-array, containing the data 1,2,3,...,10.
-  \item Calculate mean and sample(!)-standard deviation.
+  \item Create an numpy-array, containing the data 1,2,3,...,10. Calculate mean and sample(!)-standard deviation.
     (Correct answer: 3.03)
 \end{enumerate}
-
 
 \subsection{Distributions}
 
@@ -581,30 +588,41 @@ where $se$ is the standard error, and $t_{n,\alpha}$ the $t$ statistic for $n$ d
     (Correct answer: ca. 0.096)
 
   \item  Plot the histogram of these data.
-  \item  From the PDF, calculate the interval containing 95% of these data.
+  \item  From the PDF, calculate the interval containing 95\% of these data.
     (Correct answer: [ -0.88, 10.88])
 \end{enumerate}
 
-
-\subsection{Reading and Writing of Datafiles}
-
+\subsection{Analysis}
 \begin{enumerate}
-  \item Read in the data from the file \emph{https://github.com/thomas-haslwanter/statsintro/blob/master/Data/data\_others/sinc.txt} (you may want to download it onto your computer first), and plot them on graph (first column contains the x-data, the second column the y-data). Label the axes with "X-data" and "Y-data".
-  \item Write the data to the new outFile 'outFile.txt'
+  \item
+  \begin{enumerate}
+    \item Read in the data from 'Data\textbackslash amstat\textbackslash calcium.dat.txt'.
+    \item Check for erroneous entries.
+    \item Check the Alkaline Phosphatase levels for normality. Use a log-transform on the data, and re-check.
+  \end{enumerate}
+
 \end{enumerate}
 
 \subsection{Continuous Distributions }
 \begin{enumerate}
     \item \textbf{T-Distribution:} Measuring the weight of your collegues, you have obtained the following weights: 52, 70, 65, 85, 62, 83, 59 kg.
-    Calculate the corresponding mean, and the 99% confidence interval for the mean. Note: with n values you have n-1 DOF for the t-distribution.
+    Calculate the corresponding mean, and the 99\% confidence interval for the mean. Note: with n values you have n-1 DOF for the t-distribution.
     (Correct answer: 68.0 +/- 17.2 kg)
 
-    \item \textbf{Chi-square Distribution} Create 3 normally distributed datasets (mean = 1, SD = 1), with 1000 samples each. Then square them, sum them (so that you have 1000 data-points), and create a histogram with 100 bins. This should be similar to the curve for the Chi-square distribution, with 3 DOF (i.e. it should come down at the left).
+    \item \textbf{Chi-square Distribution:} Create 3 normally distributed datasets (mean = 1, SD = 1), with 1000 samples each. Then square them, sum them (so that you have 1000 data-points), and create a histogram with 100 bins. This should be similar to the curve for the Chi-square distribution, with 3 DOF (i.e. it should come down at the left, see figure below).
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.5\textwidth]{../Images/chi2_3dof.png}\\
+      \caption{chi2 distribution with 3 degrees of freedom.}\label{fig:chi23dof}
+    \end{figure}
 
-    \item \textbf{F Distribution} You have two apple trees. There are three apples from the first tree that weigh 110, 121 and 143 grams respectively, and four from the other which weigh 88, 93, 105 and 124 grams respectively. Are the variances from the two trees different?
-    Note: calculate the corresponding F-value, and check if the CDF for the corresponding F-distribution is <0.025.
+    \item \textbf{F Distribution:} You have two apple trees. There are three apples from the first tree that weigh 110, 121 and 143 grams respectively, and four from the other which weigh 88, 93, 105 and 124 grams respectively. Are the variances from the two trees different?
+    Note: calculate the corresponding F-value, and check if the CDF for the corresponding F-distribution is $<0.025$.
     (Correct answer: no)
+\end{enumerate}
+\subsection{Discrete Distributions }
 
+\begin{enumerate}
     \item \textbf{Binomial Distribution} "According to research, pure blue eyes in Europe approach greatest frequency in Finland, Sweden and Norway(at 72\%), followed by Estonia, Denmark(69\%); Latvia, Ireland(66\%); Scotland(63\%); Lithuania(61\%); The Netherlands(58\%); Belarus, England(55\%); Germany(53\%); Poland, Wales(50\%); Russia, The Czech Republic(48\%); Slovakia(46\%); Belgium(43\%); Austria, Switzerland, Ukraine(37\%); France, Slovenia(34\%); Hungary(28\%); Croatia(26\%); Bosnia and Herzegovina(24\%); Romania(20\%); Italy(18\%); Serbia, Bulgaria(17\%); Spain(15\%); Georgia, Portugal(13\%); Albania(11\%); Turkey and Greece(10\%). Further analysis shows that the average occurrence of blue eyes in Europe is 34\%, with 50\% in Northern Europe and 18\% in Southern Europe."
 
     If we have 15 Austrian students in the class-room, what ist the chance of finding 3, 6, or 10 students with blue eyes?
@@ -612,6 +630,5 @@ where $se$ is the standard error, and $t_{n,\alpha}$ the $t$ statistic for $n$ d
 
     \item \textbf{Poisson Distribution} On the streets of Austria there were 62 fatal accidents in 2012. Assuming that those are evenly distributed, we have on average
     62 /(365/7)=1.19 fatal accidents per week. How big is the chance that in a given week there are no, 2, or 5 accidents?
-    (Correct answer: 30.5\%, 21.5\%, 0.6\% ) 
-
-  \end{enumerate}
+    (Correct answer: 30.5\%, 21.5\%, 0.6\% )
+\end{enumerate}

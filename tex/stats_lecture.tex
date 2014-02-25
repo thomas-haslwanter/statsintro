@@ -7,8 +7,6 @@
 \usepackage{amsmath,amsthm}
 \usepackage{amsfonts}
 \usepackage{hyperref}
-%\usepackage[nottoc]{tocbibind}
-%\usepackage{natbib}
 \usepackage[pdftex]{graphicx}
 \usepackage[margin=1.0in]{geometry}
 \usepackage{multirow}
@@ -29,11 +27,7 @@
          extendedchars=true,         %
          breaklines=true,            % Zeilen werden Umgebrochen
          keywordstyle=\color{red},
-    		frame=b,
- %        keywordstyle=[1]\textbf,    % Stil der Keywords
- %        keywordstyle=[2]\textbf,    %
- %        keywordstyle=[3]\textbf,    %
- %        keywordstyle=[4]\textbf,   \sqrt{\sqrt{}} %
+    	 frame=n,                     % "b" = bottom, "n" = none
          stringstyle=\color{blue}\ttfamily, % Farbe der String
          showspaces=false,           % Leerzeichen anzeigen ?
          showtabs=false,             % Tabs anzeigen ?
@@ -44,10 +38,8 @@
          %backgroundcolor=\color{lightgray},
          showstringspaces=false      % Leerzeichen in Strings anzeigen ?
          language=Python
- }
- \lstloadlanguages{ Python }
-%\DeclareCaptionFont{blue}{\color{blue}}
-%\captionsetup[lstlisting]{singlelinecheck=false, labelfont={blue}, textfont={blue}}
+}
+\lstloadlanguages{ Python }
 
 \usepackage{caption}
 \DeclareCaptionFont{white}{\color{white}}
@@ -63,11 +55,14 @@
 \externaldocument{Multivar}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand*{\PyImg}{\raisebox{-0.35\height}{\includegraphics[scale=0.25]{../Images/python.jpg}} \textbf{Code:} }%
 %\newcommand{\py}[1]{\lstinputlisting[label=py_{#1},caption={#1},language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/{#1}}}
 
 \makeindex{general}
 \makeindex{python}
-% \includeonly{Distributions}
+
+%\includeonly{Basics}
+
 % ----------------------------------------------------------------
 \begin{document}
 \input{./title.tex}

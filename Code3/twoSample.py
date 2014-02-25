@@ -28,6 +28,7 @@ def paired_data():
     pre = data[:,0]
     post = data[:,1]
     
+    # --- >>> START stats <<< ---
     # paired t-test: doing two measurments on the same experimental unit
     # e.g., before and after a treatment
     t_statistic, p_value = stats.ttest_1samp(post - pre, 0)
@@ -39,6 +40,7 @@ def paired_data():
     # alternative to paired t-test when data has an ordinary scale or when not
     # normally distributed
     rankSum, p_value = stats.wilcoxon(post - pre)
+    # --- >>> STOP stats <<< ---
     print(("paired wilcoxon-test", p_value))
     
     return p_value # should be 0.0033300139117459797
@@ -60,6 +62,7 @@ def unpaired_data():
     mean(group1)
     mean(group2)
     
+    # --- >>> START stats <<< ---
     # two-sample t-test
     # null hypothesis: the two groups have the same mean
     # this test assumes the two groups have the same variance...
@@ -76,6 +79,7 @@ def unpaired_data():
     # a.k.a Mann Whitney U
     u, p_value = stats.mannwhitneyu(group1, group2)
     print(("two-sample wilcoxon-test", p_value))
+    # --- >>> STOP stats <<< ---
     
     # Plot the data
     plt.plot(group1, 'bx', label='obese')

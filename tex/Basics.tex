@@ -1,5 +1,13 @@
 \chapter{Basic Principles}
 
+\section{Population and samples}
+
+While the whole \emph{population} of a group has certain characteristics,
+we can typically never measure all of them. Instead, we have to confine
+ourselves to investigate a representative \emph{sample} of this group, and
+estimate the properties of the population. Great care should be used to make the sample
+representative for the population you study.
+
 \section{Datatypes}
 
 The type of your data is essential for the choice of test that you have to use for your data analysis. Your data can have one of the following datatypes:
@@ -24,12 +32,12 @@ These are ordered categorical data, e.g. \emph{very few / few / some / many / ve
 \subsubsection{Numerical discrete}
 For example \emph{Number of children: 0 1 2 3 4 5}
 
-\subsection{Continuous}
+\subsubsection{Numerical continuous}
 Whenever possible, it is best to record the data in their original continuous format, and only with a sensible number of decimal places. For example, it does not make sense to record the body size with more than 1 mm accuracy, as there are larger changes in body height between the size in the morning and the size in the evening, due to compression of the intervertebral disks.
 
 \section{Data Display}
 
-When working with a statistical data set, you should \emph{always} first look at the raw-data. Our visual system is incredibly good at recognizing patterns in visually represented data.
+When working with a statistical data set, you should \emph{always} first look at the raw-data. Our visual system is incredibly good at recognizing patterns in visually represented data. The programs used for making the plots presented here can be found in "showStats.py" (p \pageref{py:showStats}). For data visualization, check out the Python package \href{http://www.stanford.edu/~mwaskom/software/seaborn/} {seaborn}, which aims to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive.
 
 \subsection{Scatter Plots}\index{general}{plots!scatter}
 
@@ -43,10 +51,13 @@ This is the simplest way of representing your data: just plot each individual da
 
 \subsection{Histograms}\index{general}{plots!histogram}
 
+
 \emph{Histograms} provide a first good overview of the distribution of your data.
 If you divide by the overall number of data points, you get a \emph{relative frequency
 histogram}; and if you just connect the top center points of each bin, you obtain a
 \emph{relative frequency polygon}.
+
+You can also smooth histograms with \emph{kernel-density-estimations (kde-plots)}. Those are nicely implemented and described in \emph{seaborn}.
 
 \begin{figure}[ht]
   \centering
@@ -82,22 +93,11 @@ When you use percentage points, the cumulative frequency presentation has the ad
 \end{figure}
 
 \subsection{Programs: Data Display}
-\lstinputlisting[label=py_showStats,caption=showStats.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/showStats.py}
+\PyImg "showStats.py" (p \pageref{py:showStats}) shows how the plots in this section have been generated.
 \index{python}{showStats}
 
 \section{Study Design}
 
-To design a medical study properly is not only advisable - it is even required by ISO 14155-1:2003, for \emph{Clinical investigations of medical devices for human subjects}. This norm specifies many aspects of your clinical study. It enforces the preparation of a \emph{Clinical Investigation Plan (CIP)}, specifying
-
-\begin{itemize}
-  \item The designation of a \emph{monitor} for the investigation.
-  \item The designation of a \emph{clinical investigator}.
-  \item Specification the data handling.
-  \item Specification of the inclusion/exclusion criteria for the subjects.
-  \item Specification of the paradigm.
-  \item Specification and justification of the chosen sample numbers.
-  \item Description of the data analysis.
-\end{itemize}
 
 \subsection{Types of Studies}
 
@@ -163,7 +163,7 @@ Sometimes you may want to include a wider variety of subjects, with different ch
 An alternative to randomization is the \emph{crossover} design of studies. A crossover study is a longitudinal study in which subjects receive a sequence of different treatments. Every subject receives every treatment. To avoid causal effects, the sequence of the treatment allocation should be randomized.
 
 \subsubsection{Blinding} \index{general}{blinding}
-Consciously or not, the experimenter can significantly influence the outcome of an experiment. For example, a young researcher with a new "brilliant" idea for a new treatment will be bias in the execution of the experiment, as well in the analysis of the data, to see his hypothesis confirmed. To avoid such a subjective influence, ideally the experimenter as well as the subject should be blinded to the therapy. This is referred to as \emph{double blinding}.
+Consciously or not, the experimenter can significantly influence the outcome of an experiment. For example, a young researcher with a new "brilliant" idea for a new treatment will be bias in the execution of the experiment, as well in the analysis of the data, to see his hypothesis confirmed. To avoid such a subjective influence, ideally the experimenter as well as the subject should be blinded to the therapy. This is referred to as \emph{double blinding}. If also the person who does the analysis does not know which group the subject has been allocated to, we speak about \emph{triple blinding}.
 
 \subsubsection{Replication} \index{general}{replication}
 For variable measurements it is helpful to have a number of independent repetitions of each measurement.
@@ -186,6 +186,7 @@ Many studies fail, because the sample size is too small to observed an effect of
 \end{itemize}
 
 \subsection{Structure of Experiments}
+
 
 In a designed experiment, there may be several conditions, called \emph{factors}\index{general}{factor}, that are controlled by the experimenter. If each combination of factors is tested, we talk about a \emph{factorial design} of the experiment.
 
@@ -212,7 +213,7 @@ When you have finished recording the data, back up your data right away. Best do
 
 \subsection{Clinical Investigation Plan}
 
-The ISO norm 14155 specifies in detail the requirements for the \emph{clinical investigation plan (CIP)}\index{general}{clinical investigation plan (CIP)}:
+To design a medical study properly is not only advisable - it is even required by ISO 14155-1:2003, for \emph{Clinical investigations of medical devices for human subjects}. This norm specifies many aspects of your clinical study. It enforces the preparation of a \emph{Clinical Investigation Plan (CIP)}, specifying
 
 \begin{enumerate}
   \item Type of study (e.g. double-blind, with or without control group etc.).
@@ -231,5 +232,22 @@ The ISO norm 14155 specifies in detail the requirements for the \emph{clinical i
   \item List of factors that can influence the measurement results or their interpretation.
   \item Procedure for documentation, also for missing data.
   \item Statistical analysis procedure.
+  \item The designation of a \emph{monitor} for the investigation.
+  \item The designation of a \emph{clinical investigator}.
+  \item Specification the data handling.
 \end{enumerate}
+
+\section{Exercises}
+
+\begin{enumerate}
+  \item
+  \begin{enumerate}
+    \item Read in the data from 'Data\textbackslash amst\textbackslash babyboom.dat.txt'.
+    \item Inspect them visually, and give a numerical description of the data.
+    \item Are the data normally distributed?
+    \item How would you design the corresponding study?
+  \end{enumerate}
+
+\end{enumerate}
+
 

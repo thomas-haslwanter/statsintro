@@ -52,19 +52,24 @@ def regressionmodel(X,Y,Z):
     # Convert the data into a Pandas DataFrame
     df = pd.DataFrame({'x':X, 'y':Y, 'z':Z})
     
+    # --- >>> START stats <<< ---
     # Fit the model
     model = ols("z ~ x + y", df).fit()
     
     # Print the summary
     print((model.summary()))
+    # --- >>> STOP stats <<< ---
     
     return model._results.params  # should be array([-4.99754526,  3.00250049, -0.50514907])
 
 def linearmodel(X,Y,Z):
     '''Just fit the plane'''
     
+    # --- >>> START stats <<< ---
     M = np.vstack((np.ones(len(X)), X, Y)).T
     bestfit = np.linalg.lstsq(M,Z)
+    # --- >>> STOP stats <<< ---
+
     print(('Best fit plane:', bestfit))
     
     return bestfit

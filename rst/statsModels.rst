@@ -494,11 +494,11 @@ model is maximised.
 
 For the Classical Linear Regression Model (with normal errors) we have
 
-.. math:: \epsilon = y_i - \sum_{k=1}^n \beta_k x_{ik} = y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta \; in \; N(0, \sigma^2)
+.. math:: \epsilon = y_i - \sum_{k=1}^n \beta_k x_{ik} = y_i - \mathbf{x_i^{'}} \cdot \beta \; in \; N(0, \sigma^2)
 
 so the probability density is given by
 
-.. math:: p(\epsilon_i) =  \Phi (\frac{y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta}{\sigma})
+.. math:: p(\epsilon_i) =  \Phi (\frac{y_i - \mathbf{x_i^{'}} \cdot \beta}{\sigma})
 
 where :math:`\Phi(z)` is the standard normal probability distribution
 function. The probability of independent samples is the product of the
@@ -512,8 +512,8 @@ The *Log Likelihood function* is defined as
 
    \begin{aligned}
      Log L &=& log(\Pi_{total}) \\
-     &=& log\left[\prod_{i=1}^n \frac{1}{\sigma\sqrt{2 \pi}} \exp \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta)^2}{2 \sigma^2}\right)\right] \\
-     &=& \sum_{i=1}^n\left[log\left(\frac{1}{\sigma \sqrt{2 \pi}}\right)- \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \boldsymbol\beta)^2}{2 \sigma^2}\right)\right] \\
+     &=& log\left[\prod_{i=1}^n \frac{1}{\sigma\sqrt{2 \pi}} \exp \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \beta)^2}{2 \sigma^2}\right)\right] \\
+     &=& \sum_{i=1}^n\left[log\left(\frac{1}{\sigma \sqrt{2 \pi}}\right)- \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \beta)^2}{2 \sigma^2}\right)\right] \\
     &=& n log(\sigma) - n log \sqrt{2 \pi} - \frac{SSE}{2 \sigma^2}\end{aligned}
 
 It can be shown that the maximum likelihood estimator of

@@ -17,7 +17,8 @@ from statsmodels.stats.anova import anova_lm
 
 def anova_interaction():
     '''ANOVA with interaction: Measurement of fetal head circumference,
-    by four observers in three fetuses.'''
+    by four observers in three fetuses, from a study investigating the
+    reproducibility of ultrasonic fetal head circumference data.'''
     
     # Get the data
     data = getData('altman_12_6.txt', subDir='..\Data\data_altman')
@@ -25,10 +26,12 @@ def anova_interaction():
     # Bring them in dataframe-format
     df = pd.DataFrame(data, columns=['hs', 'fetus', 'observer'])
     
+    # --- >>> START stats <<< ---
     # Determine the ANOVA with interaction
     formula = 'hs ~ C(fetus) + C(observer) + C(fetus):C(observer)'
     lm = ols(formula, df).fit()
     anovaResults = anova_lm(lm)
+    # --- >>> STOP stats <<< ---
     print(anovaResults)
 
     return  anovaResults['F'][0]

@@ -9,7 +9,8 @@ If we knew the mean and the standard deviation of a normally distributed populat
 Let us look at a specific example: we take 100 normally distributed data, with a mean of 7 and with a standard deviation of 3.
 What is the chance of finding a mean value at a distance of 0.5 or more from the mean:?
 
-\lstinputlisting[label=py:oneSample,caption=oneSample.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/oneSample.py}
+\PyImg "oneSample.py" (p \pageref{py:oneSample}): analysis for one group of continuous data.
+\index{python}{oneSample}
 
 $>>>$ The probability from the t-test is 0.057, and from the normal distribution 0.054
 
@@ -69,9 +70,44 @@ where $\bar{x}_i$ is the mean of the i-th sample, and \emph{se} indicates the \e
 
 \subsection{Non-parametric Comparison of Two Groups: Mann-Whitney Test} \index{general}{test!Mann-Whitney}\label{test:Mann-Whitney}
 
-If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilkoxon) test}.
+If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilkoxon) test}. Watch out, because this test is sometimes also referred to as \emph{Wilcoxon rank-sum test}. This is different than the \emph{Wilcoxon signed rank sum test}!
 
-\lstinputlisting[label=py:twoSample,caption=twoSample.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/twoSample.py}
+\PyImg "twoSample.py" (p \pageref{py:twoSample}): Comparison of two groups, paired and unpaired.
+\index{python}{twoSample}
+
+\subsection{Statistical Tests vs Statistical Modeling}
+
+With the advent of cheap computing power, statistical modeling has been a booming field. This has also affected classical statistical analysis, as most problems can be viewed from two perspectives: you can either make a statistical hypothesis, and verify or falsify that hypothesis; or you can make a statistical model, and analyse the significance of the model parameters.
+
+Let me use a classical t-test as an example.
+
+\subsubsection{Classical t-test}
+
+Let us take performance measurements from a racing team, on two different occasions. During Race\_1, the members of the team achieve a score of [ 79.,  100.,   93.,   75.,   84.,  107.,   66.,   86.,  103.,
+         81.,   83.,   89.,  105.,   84.,   86.,   86.,  112.,  112.,
+        100.,   94.], and during Race\_2 [  92.,  100.,   76.,   97.,   72.,   79.,   94.,   71.,   84.,
+         76.,   82.,   57.,   67.,   78.,   94.,   83.,   85.,   92.,
+         76.,   88.].
+
+These numbers can be generated, and a t-test comparing the two groups can be done, with the following Python commands:
+
+\begin{lstlisting}
+    from scipy import stats
+    random.seed(123)
+    race_1 = np.round(randn(20)*10+90)
+    race_2 = np.round(randn(20)*10+85)
+    stats.ttest_rel(race_1, race_2)
+\end{lstlisting}
+
+\subsubsection{Statistical Modeling}
+
+\begin{lstlisting}
+    import pandas as pd
+    import statsmodels.formula.api as sm
+    df = pd.DataFrame({'Race1': race_1, 'Race2':race_2})
+    result = sm.ols(formula='I(Race2-Race1) ~ 1', data=df).fit()
+    print result.summary()
+\end{lstlisting}
 
 
 \section{Comparison of More Groups}
@@ -136,7 +172,7 @@ to get there.
 \begin{itemize}
   \item First the "Sums of squares (SS)" are calculated. Here the SS between treatments is 15515.88, and the SS of the residuals is 39716.09 . The total SS is the sum of these two values.
   \item The mean squares (MS) is the SS divided by the corresponding degrees of freedom (DF).
-  \item The \emph{F-test}\index{general}{test!F-test} or \emph{variance ratio test}\index{general}{test!variance ratio} is used for comparing the factors of the total deviation. The F-value is the larger mean squares value divided by the smaller value. (If we only have two groups, the F-value is the square of the corresponding t-value. See listing \ref{py:anovaOneway}).
+  \item The \emph{F-test}\index{general}{test!F-test} or \emph{variance ratio test}\index{general}{test!variance ratio} is used for comparing the factors of the total deviation. The F-value is the larger mean squares value divided by the smaller value. (If we only have two groups, the F-value is the square of the corresponding t-value. See \ref{py:anovaOneway}).
 
       \begin{eqnarray}
         F &=& \frac{\text{variance between treatments}}{\text{variance within treatments}} \\
@@ -146,7 +182,7 @@ to get there.
   \item Under the null hypothesis that two normally distributed populations have equal variances we expect the ratio of the two sample variances to have an \emph{F Distribution} (see section \ref{sec:ContinuousDistributions}). From the F-value, we can look up the corresponding p-value.
 \end{itemize}
 
-\lstinputlisting[label=py:anovaOneway,caption=anovaOneway.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/anovaOneway.py}
+\PyImg "anovaOneway.py" (p \pageref{py:anovaOneway}): different aspects of one-way ANOVAs.
 \index{python}{anovaOneway}
 
 \subsection{Multiple Comparisons}\index{general}{Multiple Comparisons}
@@ -179,7 +215,7 @@ The formula for Tukey's test is:
 where $Y_A$ is the larger of the two means being compared, $Y_B$ is the smaller of the two means being compared, and $SE$ is the standard error of the data in question. This $q_s$ value can then be compared to a q value from the \emph{studentized range distribution}, which takes into account the multiple comparisons. If the qs value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
 Note that the studentized range statistic is the same as the t-statistic except for a scaling factor (np.sqrt(2)).
 
-\lstinputlisting[label=py:multipleTesting,caption=multipleTesting.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/multipleTesting.py}
+\PyImg "multipleTesting.py" (p \pageref{py:multipleTesting}): this script provides an example where three treatments are compared.
 \index{python}{multipleTesting}
 
 \begin{figure}[h]
@@ -212,7 +248,7 @@ The Holm adjustment sequentially compares the lowest p-value with a Type I error
 
 When we compare two groups to each other, we use the \emph{t-test} when the data are normally distributed and the non-parametric \emph{Mann-Whitney test} otherwise. For three or more groups, the test for normally distributed data is the \emph{ANOVA-test}; for not-normally distributed data, the corresponding test is the \emph{Kruskal-Wallis test}. When the null hypothesis is true the test statistic for the Kruskal-Wallis test follows the \emph{Chi squared distribution}.
 
-\lstinputlisting[label=py:KruskalWallis,caption=KruskalWallis.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/KruskalWallis.py}
+\PyImg "KruskalWallis.py" (p \pageref{py:KruskalWallis}): Example of a Kruskal-Wallis test (for not normally distributed data).
 \index{python}{KruskalWallis}
 
 \section{Exercises}

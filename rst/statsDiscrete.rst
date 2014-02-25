@@ -47,4 +47,4 @@ Clearly a die could roll too few sixes as easily as too many and we would be
 just as suspicious, so we should use the two-tailed test which (for example)
 splits the 5\% probability across the two tails.
 
-.. literalinclude:: ..\Code\binomialTest.py
+.. literalinclude:: ..\Code3\binomialTest.py

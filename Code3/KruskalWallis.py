@@ -13,14 +13,18 @@ from scipy.stats.mstats import kruskalwallis
 from numpy import array
 
 def main():
+    '''These data could be a comparison of the smog levels in four different cities. '''
+    
     # Get the data
     city1 = array([68, 93, 123, 83, 108, 122])
     city2 = array([119, 116, 101, 103, 113, 84])
     city3 = array([70, 68, 54, 73, 81, 68])
     city4 = array([61, 54, 59, 67, 59, 70])
     
+    # --- >>> START stats <<< ---
     # Perform the Kruskal-Wallis test
     h, p = kruskalwallis(city1, city2, city3, city4)
+    # --- >>> STOP stats <<< ---
     
     # Print the results
     if p<0.05:

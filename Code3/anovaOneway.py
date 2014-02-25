@@ -21,8 +21,19 @@ from getdata import getData
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm
 
+
 def anova_oneway():
-    ''' One-way ANOVA: test if results from 3 groups are equal. '''
+    ''' One-way ANOVA: test if results from 3 groups are equal.
+    
+    Twenty-two patients undergoing cardiac bypass surgery were randomized to one of three ventilation groups:
+    
+    Group I: Patients received 50% nitrous oxide and 50% oxygen mixture continuously for 24 h.
+    Group II: Patients received a 50% nitrous oxide and 50% oxygen mixture only dirng the operation.
+    Group III: Patients received no nitrous oxide but received 35-50% oxygen for 24 h.
+    
+    The data show red cell folate levels for the three groups after 24h' ventilation.
+    
+    '''
     
     # Get the data
     print('One-way ANOVA: -----------------')
@@ -33,6 +44,7 @@ def anova_oneway():
     group2 = data[data[:,1]==2,0]
     group3 = data[data[:,1]==3,0]
     
+    # --- >>> START stats <<< ---
     # First, check if the variances are equal, with the "Levene"-test
     (W,p) = stats.levene(group1, group2, group3)
     if p<0.05:
@@ -40,6 +52,7 @@ def anova_oneway():
     
     # Do the one-way ANOVA
     F_statistic, pVal = stats.f_oneway(group1, group2, group3)
+    # --- >>> STOP stats <<< ---
     
     # Print the results
     print('Data form Altman 910:')
@@ -57,6 +70,8 @@ def anova_oneway():
     np.testing.assert_almost_equal(F_statistic, anovaResults['F'][0])
     
     return (F_statistic, pVal) # should be (3.711335988266943, 0.043589334959179327)
+
+
 #----------------------------------------------------------------------
 def show_teqf():
     """Shows the equivalence of t-test and f-test, for comparing two groups"""
@@ -77,6 +92,7 @@ def show_teqf():
     
     return F_statistic
 
+
 # ---------------------------------------------------------------
 def anova_statsmodels():
     ''' do the ANOVA with a function '''
@@ -90,9 +106,12 @@ def anova_statsmodels():
     
     return anova_results['F'][0]
 
+
 #----------------------------------------------------------------------
 def anova_byHand():
-    """Calculate the ANOVA by hand"""
+    """ Calculate the ANOVA by hand. While you would normally not do that, this function shows
+    how the underlying values can be calculated.
+    """
 
      # Get the data
     data = getData('altman_910.txt', subDir='..\Data\data_altman')
@@ -120,6 +139,7 @@ def anova_byHand():
     
     return (F, p)
     
+
 if __name__ == '__main__':
     anova_oneway()
     anova_byHand()

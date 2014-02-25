@@ -26,7 +26,7 @@ mean:?
 
 See also the ipython notebook `oneSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/oneSample.ipynb>`_:
 
-.. literalinclude:: ..\Code\oneSample.py
+.. literalinclude:: ..\Code3\oneSample.py
 
 :math:`>>>` The probability from the t-test is 0.057, and from the
 normal distribution 0.054
@@ -120,7 +120,7 @@ test for that is the *Mann-Whitney(-Wilkoxon) test*.
 
 See also the ipython notebook `twoSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/twoSample.ipynb>`_:
 
-.. literalinclude:: ..\Code\twoSample.py
+.. literalinclude:: ..\Code3\twoSample.py
 
 Comparison of More Groups
 -------------------------
@@ -229,7 +229,7 @@ to get there.
 
 See also the ipython notebook `anovaOneway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaOneway.ipynb>`_:
 
-.. literalinclude:: ..\Code\anovaOneway.py
+.. literalinclude:: ..\Code3\anovaOneway.py
 
 
 Multiple Comparisons
@@ -260,7 +260,7 @@ The formula for Tukey's test is:
 where :math:`Y_A` is the larger of the two means being compared, :math:`Y_B` is the smaller of the two means being compared, and :math:`SE` is the standard error of the data in question. This :math:`q_s` value can then be compared to a q value from the *studentized range distribution*, which takes into account the multiple comparisons. If the qs value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
 Note that the studentized range statistic is the same as the t-statistic except for a scaling factor (np.sqrt(2)).
 
-.. literalinclude:: ..\Code\multipleTesting.py
+.. literalinclude:: ..\Code3\multipleTesting.py
 
 .. image:: ..\Images\MultComp.png
     :height: 500 px
@@ -297,7 +297,7 @@ corresponding test is the *Kruskal-Wallis test*. When the null
 hypothesis is true the test statistic for the Kruskal-Wallis test follows
 the *Chi squared distribution*.
 
-.. literalinclude:: ..\Code\KruskalWallis.py
+.. literalinclude:: ..\Code3\KruskalWallis.py
 
 
 Exercises

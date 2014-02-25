@@ -28,6 +28,7 @@ def check_normality():
     plt.hist(data)
     plt.show()
 
+    # --- >>> START stats <<< ---
     # Graphical test: if the data lie on a line, they are pretty much
     # normally distributed
     _ = stats.probplot(data, plot=plt)
@@ -41,6 +42,7 @@ def check_normality():
     _,pVal = stats.kstest((data-np.mean(data))/np.std(data,ddof=1), 'norm')
     if pVal > 0.05:
         print('Data are normally distributed')
+    # --- >>> STOP stats <<< ---
     
     return pVal
 

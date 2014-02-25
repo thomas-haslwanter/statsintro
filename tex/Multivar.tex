@@ -4,7 +4,7 @@ When we have two groups, we can ask the question: "Are they different?" The answ
 
 So what happens when we have more than two groups?
 
-To answer the question "Are they different?" for more than two groups, we have to use the \emph{Analysis of Variance (ANOVA)-test} for data where the residuals are normally distributed. If this condition is not fulfilled, the \emph{Kruskal-Wallis Test} has to be used. 
+To answer the question "Are they different?" for more than two groups, we have to use the \emph{Analysis of Variance (ANOVA)-test} for data where the residuals are normally distributed. If this condition is not fulfilled, the \emph{Kruskal-Wallis Test} has to be used.
 
 What should we do if we have paired data?
 
@@ -14,13 +14,11 @@ An example for the application of the Friedman test: Ten professional piano play
 
 And if we want to and predict the value of one variable \emph{many} other variables, linear regression has to be replaced by of \emph{multilinear regression} \index{general}{regression!multilinear}, sometimes also referred to as \emph{multiple linear regression}.
 
-\section{Two-way ANOVA} \label{sec:anova} \index{general}{ANOVA, two-way} \index{general}{test!ANOVA}
+\section{Two-way ANOVA} \label{sec:anovaTwoWay} \index{general}{ANOVA, two-way} \index{general}{test!ANOVA}
 
 Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new element. We can look not only if each of the factors is significant; we can also check if the \emph{interaction} of the factors has a significant influence on the distribution of the data. For sticking to the example above, if only women with treatment B get healthy, we have a significant interaction effect between "gender" and "treatment".
 
-See the example in listing \ref{py:modeling}
-
-\lstinputlisting[label=py:anovaTwoway,caption=anovaTwoway.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/anovaTwoway.py}
+\PyImg "anovaTwoway.py" (p \pageref{py:anovaTwoway}): Two-way Analysis of Variance (ANOVA).
 \index{python}{anovaTwoway}
 
 \begin{verbatim}
@@ -35,5 +33,5 @@ See the example in listing \ref{py:modeling}
 
 If you have truly independent variables, \emph{multilinear regression} is a straitforward extension of the simple linear regression. However, if your variables may be related to each other, you have to proceed much more carefully. For example, you may want to investigate how the prevalence of some disease correlates with age and with income: if you do so, you have to keep in mind that age and income are most likely correlated! For details, \cite{Kaplan2009} gives a good introduction to that topic. Also, check out the chapter on Modeling.
 
-\lstinputlisting[label=py:mult_regress,caption=mult\_regress.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/mult_regress.py}
-\index{python}{regress}
+\PyImg "mult\_regress.py" (p \pageref{py:mult_regress}): Multiple regression example.
+\index{python}{multipleRegression}

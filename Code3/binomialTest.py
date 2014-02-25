@@ -19,12 +19,14 @@ def binomial_test(checkVal):
     p = 1/6.
     
     
+    # --- >>> START stats <<< ---
     # Calculate the on-sided test, i.e. the likelihood that you get the same or more times of "6"
     bd = stats.binom(n,p)
     p_oneTail = bd.sf(checkVal-1)   # how many values are "higher than" checkVal-1
     
     # Calculate the two-sided test, i.e. how many cases "as extreme or more" than the given case are likely to occur by chance:
     p_twoTail = stats.binom_test(checkVal, n, p)
+    # --- >>> STOP stats <<< ---
     
     return (p_oneTail, p_twoTail)
 

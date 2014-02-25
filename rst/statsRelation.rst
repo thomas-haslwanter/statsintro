@@ -167,7 +167,7 @@ the model takes the form
 
    \label{eq:regression}
       y_i = \beta_1   x_{i1} + \cdots + \beta_p x_{ip} + \varepsilon_i
-      = \mathbf{x}^{\rm T}_i\boldsymbol\beta + \varepsilon_i,
+      = \mathbf{x}^{\rm T}_i \beta + \varepsilon_i,
       \qquad i = 1, \ldots, n,
 
 where :math:`^T` denotes the transpose, so that :math:`x_i^T\beta` is
@@ -176,7 +176,7 @@ the inner product between vectors :math:`x_i` :math:`\beta`.
 Often these :math:`n` equations are stacked together and written in
 vector form as
 
-.. math:: \mathbf{y} = \mathbf{X}\boldsymbol\beta + \boldsymbol\varepsilon, \,
+.. math:: \mathbf{y} = \mathbf{X}\beta + \varepsilon, \,
 
 where
 
@@ -189,8 +189,8 @@ where
       \vdots & \ddots & \vdots \\
       x_{n1} & \cdots & x_{np}
       \end{pmatrix}, \quad
-      \boldsymbol\beta = \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_p \end{pmatrix}, \quad
-      \boldsymbol\varepsilon = \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}.
+      \beta = \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_p \end{pmatrix}, \quad
+      \varepsilon = \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}.
 
 Some remarks on terminology and general use:
 
@@ -230,7 +230,7 @@ Some remarks on terminology and general use:
       different approaches to asymptotic analysis are used in these two
       situations.
 
--  :math:`\boldsymbol\beta\,` is a :math:`p`-dimensional *parameter
+-  :math:`\beta\,` is a :math:`p`-dimensional *parameter
    vector*. Its elements are also called *effects*, or *regression
    coefficients*. Statistical estimation and inference in linear
    regression focuses on :math:`\beta`.
@@ -264,7 +264,7 @@ but it is linear in the parameters :math:`\beta_1` and :math:`\beta_2`;
 if we take regressors
 :math:`\mathbf{x}_i = (x_{i1},x_{i2}) = (t_i,t_i^2)`, the model takes on
 the standard form :
-:math:`h_i = \mathbf{x}^{\rm T}_i\boldsymbol\beta + \varepsilon_i.`
+:math:`h_i = \mathbf{x}^{\rm T}_i\beta + \varepsilon_i.`
 
 Assumptions
 ~~~~~~~~~~~

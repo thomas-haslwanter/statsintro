@@ -325,7 +325,7 @@ See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipytho
     Utility functions for continuous distributions, here for the normal distribution.
 
 
-.. literalinclude:: ..\Code\distribution_normal.py
+.. literalinclude:: ..\Code3\distribution_normal.py
 
 Since a very frequent computational steps is the calculation of the
 intervals containing 95% of the data, I give an explicit code example of
@@ -561,7 +561,7 @@ Working with distribution functions in Python takes a bit to get used to. But on
 
 See also the ipython notebook `dist_continuous.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/dist_continuous.ipynb>`_:
 
-.. literalinclude:: ..\Code\dist_continuous.py
+.. literalinclude:: ..\Code3\dist_continuous.py
 
 Discrete Distributions
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -663,7 +663,7 @@ Programs: Discrete Distribution Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 See also the ipython notebook `dist_discrete.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/dist_discrete.ipynb>`_:
 
-.. literalinclude:: ..\Code\dist_discrete.py
+.. literalinclude:: ..\Code3\dist_discrete.py
 
 Data Analysis
 -------------
@@ -687,7 +687,7 @@ assumption.
 QQ-plots
 ^^^^^^^^
 
-In statistics, *:math:`QQ` plots* ("Q" stands for quantile)
+In statistics, *QQ`plots* ("Q" stands for quantile)
 are used for visual assessments of distributions. They are a graphical
 method for comparing two probability distributions by plotting their
 quantiles against each other. First, the set of intervals for the quantiles
@@ -709,19 +709,25 @@ plot will approximately lie on a line, but not necessarily on the line
 
 Kolmogorov-Smirnov Test
 ^^^^^^^^^^^^^^^^^^^^^^^
-
 In addition, there are quantitative tests for normality. The test that I
 have encountered most frequently in recent literature is the
-*Kolmogorov-Smirnov Test*. The Kolmogorov-Smirnov statistic quantifies a
-distance between the empirical distribution function of the sample and the
-cumulative distribution function of the reference distribution, or between
-the empirical distribution functions of two samples. Note that this implies
-that in a test for normality, you have to i) standardize your sample
-distribution (i.e. subtract the mean, and divide by the standard deviation),
-and specify your reference distribution (i.e. if you want to check for
-normality, the normal distribution). Altman mainly uses the *Shapiro-Wilk W
-test*, and a number of other tests are also available.
+*Kolmogorov-Smirnov test*. The Kolmogorov-Smirnov statistic quantifies a
+distance between the empirical distribution function of the sample and
+the cumulative distribution function of the reference distribution, or
+between the empirical distribution functions of two samples. Note that
+this implies that in a test for normality, you have to i) standardize
+your sample distribution (i.e. subtract the mean, and divide by the
+standard deviation), and specify your reference distribution (i.e. if
+you want to check for normality, the normal distribution).
 
+Another thest for normality is the *Lilliefors test*. It is a normality
+test based on the Kolmogorov–Smirnov test, and is used to test the null
+hypothesis that data come from a normally distributed population, when
+the null hypothesis does not specify which normal distribution; i.e., it
+does not specify the expected value and variance of the distribution.
+
+Altman mainly uses the *Shapiro-Wilk W test* , and a number of other
+tests are also available.
 
 .. image:: ../Images/KS_example.png
     :scale: 50 %
@@ -729,7 +735,7 @@ test*, and a number of other tests are also available.
 *Illustration of the Kolmogorov-Smirnoff statistic. Red line is CDF, blue
 line is an ECDF, and the black arrow is the K-S statistic(from Wikipedia).*
 
-.. literalinclude:: ..\Code\checkNormality.py
+.. literalinclude:: ..\Code3\checkNormality.py
 
 Transformation
 ~~~~~~~~~~~~~~
@@ -781,11 +787,17 @@ Distributions
      (Correct answer: [ -0.88, 10.88])
 
 
-Reading and Writing of Datafiles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Analysis
+~~~~~~~~
 
-#.  Read in the data from the file *https://github.com/thomas-haslwanter/statsintro/blob/master/Data/data\_others/sinc.txt* (you may want to download it onto your computer first), and plot them on graph (first column contains the x-data, the second column the y-data). Label the axes with "X-data" and "Y-data".
-#.  Write the data to the new outFile 'outFile.txt'
+#. 
+
+   #. Read in the data from ’Data\\amstat\\calcium.dat.txt’.
+
+   #. Check for erroneous entries.
+
+   #. Check the Alkaline Phosphatase levels for normality. Use a
+      log-transform on the data, and re-check.
 
 Continuous Distributions Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

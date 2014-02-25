@@ -121,7 +121,7 @@ In this model $\mu$ is the mean of the reference group and $\tau_i$ is the diffe
 
 Using data from Spector and Mazzeo (1980), we estimate a linear regression model with statsmodels.
 
-\lstinputlisting[label=py:regSpector,caption=regSpector.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/regSpector.py}
+\PyImg "regSpector.py" (p \pageref{py:regSpector}): Estimation of a linear regression model using the Spector and Mazzeo (1980) data set.
 \index{python}{linear regression model}
 
 \section{Assumptions}
@@ -159,10 +159,8 @@ The meaning of the expression “held fixed” may depend on how the values of t
 
 The notion of a “unique effect” is appealing when studying a complex system where multiple interrelated components influence the response variable. In some cases, it can literally be interpreted as the causal effect of an intervention that is linked to the value of a predictor variable. However, it has been argued that in many cases multiple regression analysis fails to clarify the relationships between the predictor variables and the response variable when the predictors are correlated with each other and are not assigned following a study design.
 
-
-\lstinputlisting[label=py:modeling,caption=modeling.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/modeling.py}
+\PyImg "modeling.py" (p \pageref{py:modeling}) shows an example.
 \index{python}{modeling}
-
 
 \section{Evaluation of for Linear Regression Models}
 
@@ -349,5 +347,5 @@ Another type of modelling is \emph{bootstrapping}/. Sometimes you have data desc
 
 The answer is bootstrapping. Bootstrapping is a scheme of \emph{resampling}, i.e. taking additional samples repeatedly from the initial sample, to provide estimates of its variability. In a case where the distribution of the initial sample is unknown, bootstrapping is of especial help in that it provides information about the distribution.
 
-\lstinputlisting[label=py:bootstrappin,caption=bootstrap.py, language=Python]{C:/Users/p20529/Documents/Teaching/Master_FH/Stats/dist/Code/bootstrap.py}
-\index{python}{bootstrap}
+\PyImg "bootstrapDemo.py" (p \pageref{py:bootstrapDemo}): Example of bootstrapping the confidence interval for the mean of a sample distribution.
+\index{python}{bootstrapDemo}

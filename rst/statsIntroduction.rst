@@ -26,7 +26,7 @@ won’t be able to avoid it. Statistics can
     that book.
 
 *R.H. Riffenburgh. Statistics in Medicine. Academic Press, 3rd edition, 2012* .
-    A more modern book, which is more voluminous and in my opionion a bit harder to read, is
+    A more modern book, which is more voluminous and in my opionion a bit harder to read.
 
 *Daniel Kaplan. Statistical Modeling: A Fresh Approach. Macalester College, 2009*
     If you are interested in a simple introduction to modern regression modeling, check out
@@ -37,10 +37,18 @@ won’t be able to avoid it. Statistics can
     modeling.
 
 **WWW:** On the web, you find good very extensive statistics
-information in English under `http://www.statsref.com/ <http://www.statsref.com/>`_;
-I also often find `http://www.vassarstats.net/ <http://www.vassarstats.net/>`_ very helpful. A good German
-webpage on statistics and regulatory issues is
-`http://www.reiter1.com/ <http://www.reiter1.com/>`_ .
+information in English under
+
+-  http://www.statsref.com/
+
+-  http://www.vassarstats.net/
+
+-  http://udel.edu/~mcdonald/statintro.html
+
+-  http://onlinestatbook.com/2/index.html
+
+A good German webpage on statistics and regulatory issues is
+http://www.reiter1.com/.
 
 **Exercises:** Many examples are already solved in the text. For the use in
 lectures (or for self-test), additional exercises are provided at the end of
@@ -66,14 +74,66 @@ Statistics will help you to
 
 -  Make predictions based on your data.
 
-Population and samples
-----------------------
+Without statistics, your interpretation of your data can be massively
+flawed. Take for example the estimated number of German tanks during
+World War II, also known as the *German tank problem*
+(http://en.wikipedia.org/wiki/German_tank_problem): from standard
+intelligence data, the estimate for the number of German tanks produced
+per month was :math:`1550`; in contrast, the statistical estimate from
+the tanks observed led to a number of :math:`327`, which was very close
+to the actual production number of :math:`342`.
 
-While the whole *population* of a group has certain characteristics, we
-can typically never measure all of them. Instead, we have to confine
-ourselves to investigate a representative *sample* of this group, and
-estimate the properties of the population. Great care should be used to
-make the sample representative for the population you study.
+What you should already know
+----------------------------
+
+From previous courses on math, quality control, signal analysis, etc.,
+you are probably already familiar with a number of statistical concepts.
+While they will be dealt with in detail later on, let me list them here
+to make sure we start at the same level:
+
+-  mean
+
+-  median
+
+-  mode
+
+-  standard deviation
+
+-  variance
+
+-  confidence intervals
+
+-  t-test
+
+-  boxplot
+
+-  normal distribution
+
+Projects
+--------
+
+The biggest problems in statistics do *not* arise from a faulty
+analysis, but from a faulty experimental design. If you have a suitable
+topic of interest, you can select to do a project instead of the final
+exam. For this you will have to
+
+#. Read up on the problem.
+
+#. Design the study:
+
+   #. Determine the parameter to analyze.
+
+   #. Decide on the requirements of the sample population.
+
+   #. Plan the randomization.
+
+   #. Decide which test you want to use for the analysis.
+
+#. Analyze some data.
+
+#. Generate the appropriate graphs.
+
+#. Write up a summary of your project.
 
 Programming Matters
 -------------------
@@ -90,15 +150,33 @@ lecture.
 
 #. It is powerful.
 
-There is a lot of good starting material on the web (see also the links
-below). If you are looking for an introductory book, check out 
-*D. Harms and K. McDonald. The Quick Python Book (2nd Ed).
-Manning Publications Co., 2010*
+I have not seen many books on Python that I really liked. My favorite
+introductory book is . A good free book, which introduces Python with a
+focus on statistics, is `Introduction to Python for Econometrics,
+Statistics and Data Analysis, by Kevin Sheppard, Oxford
+University <http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf>`__.
 
-Once you start programing, the internet is the best source for
-documentation and for help. Personally, most of the time I just google;
-thereby I stick primarily a) to the official pages, and b) to
-`http://stackoverflow.com/ <http://stackoverflow.com/>`_ . Also, I have found user groups surprisingly
+In general, I suggest that you start out by installing a Python
+distribution which includes the most important libraries. I
+suggest that you use Python :math:`>3.3` for this course, All the Python packages required for this
+course are now available for Python 3, so I don't see a good reason to
+stay with Python 2.7 . My favorites Python 3.3 distributions are
+
+#.  http://winpython.sourceforge.net/  No admin-rights required.
+
+#.  https://store.continuum.io/cshop/anaconda/  From Continuum.
+
+which are very good starting points when you are using Windows.
+*winpython* does not require administrator rights, and *anaconda* is a
+more recent distribution, which is free for educational purposes.
+
+Mac and Unix users should check out the installations tips from
+Johansson (see Table [table:python]).
+
+There are also many tutorials available on the internet (Table
+[table:python]). Personally, most of the time I just google; thereby I
+stick primarily a) to the official pages, and b) to
+http://stackoverflow.com/. Also, I have found user groups surprisingly
 active and helpful!
 
 **Links**
@@ -113,18 +191,12 @@ active and helpful!
 
 * http://www.scipy.org/NumPy_for_Matlab_Users  *Start here if you have Matlab experience.*
 
-In general, I suggest that you start out by installing a Python
-distribution which includes the most important libraries. My favorites
-here are `Python(x,y) <http://code.google.com/p/pythonxy/>`_ and `WinPython <http://code.google.com/p/winpython/>`_, which are very good starting points when you are using
-Windows. The former one has the advantage that most available
-documentation and help files also get installed locally. Mac and Unix
-users should check out the installations tips from Johansson (see above).
 
 If you decide to install things manually, you need the following modules
 in addition to the Python standard library:
 
 -  *ipython* ... For interactive work.
-  
+
 -  *numpy* ... For working with vectors and arrays.
 
 -  *scipy* ... All the essential scientific algorithms, including those
@@ -136,8 +208,12 @@ in addition to the Python standard library:
 -  *pandas* ... Adds *DataFrames* (imagine powerful spreadsheets) to
    Python.
 
--  *statsmodels* ... This one is only required if you want to look more
-   into statistical modeling.
+-  *patsy* ... For working with statistical formulas.
+
+-  *statsmodels* ... For statistical modeling and advanced analysis.
+
+-  *seaborn* ... For visualization of statistical data.
+
 
 IPython
 ^^^^^^^
@@ -145,16 +221,18 @@ IPython
 Make sure that you have a good programming environment! Currently, my
 favorite way of programming is similar to my old Matlab style: I first get
 the individual steps worked out interactively in `ipython
-<http://ipython.org/>`_ . Ipython has made enormous progess over the last few years.
-Ipython provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code.
-When ipython is started in *pylab mode* (which is the typical
-configuration), it automatically loads numpy and matplotlib.pyplot into the
-active workspace, and provides a very convenient, Matlab-like programing
-environment. A very helpful new addition is the browser-based *ipython
-notebook*, with support for code, text, mathematical expressions, inline
-plots and other rich media. Please check out the links to the ipython
-notebooks in this statistics introduction. I believe that it will  help you
-to get up to speed with python much more quickly.
+<http://ipython.org/>`_ *qtconsole*. Ipython provides interactive computing
+with Python, similar to the commandline in Matlab. It comes with a command
+history, interactive data visualization, command completion, and a lot of
+features that make it quick and easy to try out code. When ipython is
+started in *pylab mode* (which is the typical configuration), it
+automatically loads numpy and matplotlib.pyplot into the active workspace,
+and provides a very convenient, Matlab-like programing environment. A very
+helpful new addition is the browser-based *ipython notebook*, with support
+for code, text, mathematical expressions, inline plots and other rich media.
+Please check out the links to the ipython notebooks in this statistics
+introduction. I believe that it will  help you to get up to speed with
+python much more quickly.
 
 
 To write a program, I then go to either `Spyder <http://code.google.com/p/spyderlib/>`_
@@ -245,7 +323,7 @@ practice when writing functions.)
 Example-Session
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: ..\Code\gettingStarted_ipy.py
+.. literalinclude:: ..\Code3\gettingStarted.py
 
 Pandas
 ~~~~~~
@@ -257,6 +335,9 @@ that pandas has been imported with
 ::
 
     import pandas as pd
+
+A good introduction to pandas can be found under
+http://www.randalolson.com/2012/08/06/statistical-analysis-made-easy-in-python/
 
 Data Input
 ^^^^^^^^^^
@@ -282,33 +363,60 @@ Data Handling and Manipulation
 
 Pandas offers powerful functions to handle missing data and "nans", and other kinds of data manipulation like pivoting.
 
-To handle labeled data, pandas introduces *DataFrame* objects. A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table. It is generally the most commonly used pandas object. For example, you can use data-frames to efficiently group objects, and do a statistical evaluation of each group:
+To handle labeled data, pandas introduces *DataFrame* objects. A
+DataFrame is a 2-dimensional labeled data structure with columns of
+potentially different types. You can think of it like a spreadsheet or
+SQL table. It is generally the most commonly used pandas object. For
+example, you can use data-frames to efficiently group objects, and do a
+statistical evaluation of each group:
 
 ::
 
-    x = tile([1,2,3], 4)
-    y = randn(len(x))
-    df = pd.DataFrame({'treatment':x, 'result':y})
-    groups = df.groupby('treatment')
-    print groups.mean()
+        x = tile([1,2,3], 4)
+        y = randn(len(x))
+        df = pd.DataFrame({'treatment':x, 'result':y})
+        groups = df.groupby('treatment')
+        print(groups['result'].describe())
 
 produces
 
 ::
 
-    .            result
-    treatment
-    1         -0.624521
-    2          0.074425
-    3         -0.806102
+         treatment
+        1          count    4.000000
+                   mean    -1.693818
+                   std      1.559007
+                   min     -3.857303
+                   25%     -2.293582
+                   50%     -1.279452
+                   75%     -0.679688
+                   max     -0.359065
+        2          count    4.000000
+                   mean    -0.240799
+                   std      0.610826
+                   min     -0.780429
+                   25%     -0.563200
+                   50%     -0.406580
+                   75%     -0.084178
+                   max      0.630393
+        3          count    4.000000
+                   mean     0.177045
+                   std      0.703775
+                   min     -0.298325
+                   25%     -0.255564
+                   50%     -0.101432
+                   75%      0.331177
+                   max      1.209367
+        dtype: float64
 
-For statistical analysis, pandas becomes really powerful if you combine it with *statsmodels* (see below).
+For statistical analysis, pandas becomes really powerful if you combine
+it with *statsmodels* (see below).
 
 The following piece of code shows you how pandas can be used for data analysis:
 
 (See also the ipython notebook `pandas_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/pandas_intro.ipynb>`_)
 
-.. literalinclude:: ..\Code\pandas_intro.py
+.. literalinclude:: ..\Code3\pandas_intro.py
 
 
 Statsmodels
@@ -317,6 +425,24 @@ Statsmodels
 `statsmodels <http://statsmodels.sourceforge.net/>`_ is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. In its latest release (version 0.5), statsmodels also allows the formulation of models with the popular formula language also used by $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model *'success ~ intelligence * diligence'*, which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
 
 While for complex statistical models R still has an edge, python has a much clearer and more readable syntax, and is arguably more powerful for the data manipulation often required for statistical analysis.
+
+Seaborn
+~~~~~~~
+
+is a Python visualization library based on matplotlib. Its primary goal
+is to provide a concise, high-level interface for drawing statistical
+graphics that are both informative and attractive.
+
+::
+
+            x = linspace(1, 7, 50)
+            y = 3 + 2*x + 1.5*randn(len(x))
+            sns.regplot(x,y)
+
+already produces a nice and informative regression plot
+
+.. image:: ../Images/regplot.png
+    :scale: 75%
 
 General Routines
 ~~~~~~~~~~~~~~~~
@@ -327,3 +453,27 @@ use a number of times to simplify the reading in of data:
 .. literalinclude:: ..\Code\getdata.py
 
 
+Exercises
+---------
+
+-  Read in data from different sources:
+
+   -  A CVS-file with a header ('Data\\Swimming\\swimming\_100m.csv')
+
+   -  An MS-Excel file ("Data\\data\_dobson\\GLM\_data\\Table 2.8 Waist
+      loss.xls")
+
+   -  Data from the WWW (see "readZip.py")
+
+-  
+
+   -  Generate a pandas dataframe, with the x-column time stamps from 0
+      to 10 sec, at a rate of 10 Hz, the y-column data values with a
+      sine with 1.5 Hz, and the z-column the corresponding cosine
+      values. Label the x-column "Xvals" and the y-column "YVals" and
+      the z-column "ZVals"
+
+   -  Show the head of this dataframe
+
+   -  Extract the data in lines 10-15 from "Yvals" and "ZVals", and
+      write them to the file "out.txt".

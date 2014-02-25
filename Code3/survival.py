@@ -105,6 +105,12 @@ def logrank(data_1, data_2):
     return(p, chi2)
     
 def main():
+    '''The data in this example give the life talbe for motion sickness data
+    from an experiment with vertical movement at a frequency of 0.167 Hz and
+    acceleration 0.111 g, and of a second experiment with 0.333 Hz and acceleration
+    of 0.222 g.
+    '''
+    
     # get the data
     data1 = getData('altman_13_2.txt', subDir='..\Data\data_altman')
     data2 = getData('altman_13_3.txt', subDir='..\Data\data_altman')
@@ -125,7 +131,9 @@ def main():
     plt.show()
     
     # Check the hypothesis that the two survival curves are the same
+    # --- >>> START stats <<< ---
     (p, X2) = logrank(data1, data2)
+    # --- >>> STOP stats <<< ---
     
     return p    # supposed to be 0.073326322306832212
     

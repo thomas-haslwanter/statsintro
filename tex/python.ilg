@@ -1,6 +1,6 @@
-This is makeindex, version 2.15 [MiKTeX 2.9] (kpathsea + Thai support).
-Scanning input file python.idx....done (21 entries accepted, 0 rejected).
-Sorting entries....done (93 comparisons).
-Generating output file python.ind....done (58 lines written, 0 warnings).
+This is makeindex, version 2.15 [MiKTeX 2.9 64-bit] (kpathsea + Thai support).
+Scanning input file python.idx....done (25 entries accepted, 0 rejected).
+Sorting entries....done (127 comparisons).
+Generating output file python.ind....done (68 lines written, 0 warnings).
 Output written in python.ind.
 Transcript written in python.ilg.

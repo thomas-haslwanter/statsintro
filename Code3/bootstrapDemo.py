@@ -35,8 +35,10 @@ def generate_data():
     return(data)
     
 def calc_bootstrap(data):
+    # --- >>> START stats <<< ---
     # Calculate the bootstrap
     CIs = bootstrap.ci(data=data, statfunction=sp.mean)
+    # --- >>> STOP stats <<< ---
     
     # Print the data: the "*" turns the array CIs into a list
     print(('The conficence intervals for the mean are: {0} - {1}'.format(*CIs)))
@@ -46,3 +48,4 @@ def calc_bootstrap(data):
 if __name__ == '__main__':
     data = generate_data()
     calc_bootstrap(data)
+    input('Done')

@@ -293,5 +293,30 @@ Analysis Programs
 With computers, the computational steps are trivial
 (See also the ipython notebook `compGroups.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/ compGroups.ipynb>`_):
 
-.. literalinclude:: ..\Code\compGroups.py
+.. literalinclude:: ..\Code3\compGroups.py
 
+
+Exercises
+---------
+
+Fisher's Exact Test - The Tea Experiment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+At a party, a lady claimed to be able to tell whether the tea or the
+milk was added first to a cup. Fisher proposed to give her eight cups,
+four of each variety, in random order. One could then ask what the
+probability was for her getting the number she got correct, but just by
+chance.
+
+The experiment provided the Lady with 8 randomly ordered cups of tea - 4
+prepared by first adding milk, 4 prepared by first adding the tea. She
+was to select the 4 cups prepared by one method. (This offered the Lady
+the advantage of judging cups by comparison.)
+
+The null hypothesis was that the Lady had no such ability.
+
+Calculate if the claim of the lady is supported if she gets three out of
+the four pairs correct. (Correct answer: No. If she gets three correct,
+that chance that a selection of "three or greater" was random is 0.243.
+She needs to get all four correct, if we set the rejection threshold at
+0.05)

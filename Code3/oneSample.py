@@ -37,6 +37,7 @@ def check_mean():
 
     # Check for significance
     checkValue = 7725
+    # --- >>> START stats <<< ---
     t, prob = stats.ttest_1samp(data, checkValue)
     if prob < 0.05:
         print(('{0:4.2f} is significantly different from the mean (p={1:5.3f}).'.format(checkValue, prob)))
@@ -47,6 +48,7 @@ def check_mean():
       issignificant = 'unlikely'
     else:
       issignificant = 'likely'
+    # --- >>> STOP stats <<< ---
       
     print(('It is ' + issignificant + ' that the value is {0:d}'.format(checkValue)))
     

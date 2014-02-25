@@ -56,9 +56,11 @@ def polynomial_regression():
     t = np.arange(0,10,0.1)
     y = 4 + 3*t + 2*t**2 + 5*np.random.randn(len(t))
     
+    # --- >>> START stats <<< ---
     # Make the fit. Note that this is another "OLS" than the one in "model_formulas"!
     M = np.column_stack((np.ones(len(t)), t, t**2))
     res = sm.OLS(y, M).fit()
+    # --- >>> STOP stats <<< ---
         
     # Display the results
     print('Summary:')
