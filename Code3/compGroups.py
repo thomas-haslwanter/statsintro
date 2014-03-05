@@ -2,17 +2,20 @@
 - Analysis of one proportion
 - Chi-square test
 - Fisher exact test
+- Cochran's Q test
 
 '''
 
 '''
 Author:  Thomas Haslwanter
-Date:    June-2013
-Version: 1.2
+Date:    March-2014
+Version: 1.3
 '''
 
 import numpy as np
 import scipy.stats as stats
+import pandas as pd
+from statsmodels.sandbox.stats.runs import cochrans_q
 
 
 def oneProportion():
@@ -94,8 +97,30 @@ def fisherExact():
     
     return fisher_result
 
+def cochranQ():
+    '''Cochran's Q test: 12 subjects are asked to perform 3 tasks. The outcome of each task is "success" or 
+    "failure". The results are coded 0 for failure and 1 for success. In the example, subject 1 was successful
+    in task 2, but failed tasks 1 and 3.
+    '''
+    
+    tasks = np.array([[0,1,1,0,1,0,0,1,0,0,0,0],
+                      [1,1,1,0,0,1,0,1,1,1,1,1],
+                      [0,0,1,0,0,1,0,0,0,0,0,0]])
+    
+    # I prefer a DataFrame here, as it indicates directly what the values mean
+    df = pd.DataFrame(tasks.T, columns = ['Task1', 'Task2', 'Task3'])
+    
+    # --- >>> START stats <<< ---
+    (Q, pVal) = cochrans_q(df)
+    # --- >>> STOP stats <<< ---
+    print('\nCOCHRAN\'S Q -----------------------------------------------------')
+    print('Q = {0:5.3f}, p = {1:5.3f}'.format(Q, pVal))
+    if pVal < 0.05:
+        print("There is a significant difference between the three tasks.")
+    
 if __name__ == '__main__':
     oneProportion()
     chiSquare()
     fisherExact()
+    cochranQ()
 

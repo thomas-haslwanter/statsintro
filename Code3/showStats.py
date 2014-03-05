@@ -6,6 +6,7 @@ The examples contain:
 - scatter plots
 - histograms
 - boxplots
+- violinplots
 - probplots
 - cumulative density functions
 - regression fits
@@ -14,8 +15,8 @@ The examples contain:
 
 '''
 Author: thomas haslwanter
-Date:   April-2013
-Version: 1.2
+Date:   March-2014
+Version: 1.3
 '''
 
 # First, import the libraries that you are going to need. You could also do
@@ -26,6 +27,8 @@ Version: 1.2
 from pylab import *
 
 import scipy.stats as stats
+import seaborn as sns
+import pandas as pd
 
 def main():
     # Univariate data -------------------------
@@ -73,6 +76,18 @@ def main():
     boxplot(x, vert=False)
     title('Boxplot, horizontal')
     xlabel('Values')
+    show()
+    
+    # Violinplot
+    nd = stats.norm
+    data = nd.rvs(size=(100))
+    nd2 = stats.norm(loc = 0.5, scale = 1.2)
+    data2 = nd2.rvs(size=(100))
+    
+    # Use the seaborn package for the violin plot, and set the context for "poster"
+    sns.set(context='poster')
+    df = pd.DataFrame({'Girls':data, 'Boys':data2})
+    sns.violinplot(df)
     show()
     
     # Check for normality

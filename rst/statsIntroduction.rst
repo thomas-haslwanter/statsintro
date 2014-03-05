@@ -109,6 +109,11 @@ to make sure we start at the same level:
 
 -  normal distribution
 
+-  regression coefficient
+
+-  correlation coefficient
+
+
 Projects
 --------
 
@@ -181,15 +186,17 @@ active and helpful!
 
 **Links**
 
-* http://jrjohansson.github.com/ *Lectures on scientific computing with Python. Great ipython notebooks!*
+* http://scipy-lectures.github.com/ *Python Scientific Lecture Notes. Pretty comprehensive.*
+
+* http://www.scipy.org/NumPy_for_Matlab_Users  *Start here if you have Matlab experience.*
 
 * http://docs.python.org/2/tutorial/ *The Python tutorial. The official introduction.*
 
-* http://scipy-lectures.github.com/ *Python Scientific Lecture Notes. Pretty comprehensive.*
+* https://github.com/jrjohansson/scientific-python-lectures/  *Lectures on scientific computing with Python. Great ipython notebooks!*
+
+* http://learnpythonthehardway.org/book/  *Learn Python the Hard Way, 3rd Ed. A popular, free book that you can work through*
 
 * http://www.greenteapress.com/thinkpython/ *ThinkPython: A free book on Python.*
-
-* http://www.scipy.org/NumPy_for_Matlab_Users  *Start here if you have Matlab experience.*
 
 
 If you decide to install things manually, you need the following modules

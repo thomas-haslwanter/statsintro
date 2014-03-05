@@ -37,8 +37,8 @@ If you have only one sample group of data, the analysis options are somewhat lim
 \begin{description}
   \item[Chi-square test] This is the most common type. It is a hypothesis test, which checks if the entries in the individual cells all come from the same distribution. In other words, it checks the null hypothesis $H_0$ that the results are independent of the row or column in which they appear. The alternative hypothesis $H_a$ does not specify the type of association, so close attention to the data is required to interpret the information provided by the test.
   \item[Fisher's Exact Test] While the chi-square test is approximate, the \emph{Fisher's Exact Test} is an exact test. As it is computationally much more expensive and intricate than the chi-square test, it was originally used only for small sample numbers. However, in general it is now the more advisable test to use.
-  \item[Cochran's Q Test] \index{general}{test!Cochran's Q} This test, for which we will not go into detail here, is used if you have \emph{matched/paired observations}. For example, if you have exactly the same samples analyzed by 3 different laboratories, and you want to check if the results are statistically equivalent, you would use this test.
   \item[McNemar's Test]  This is a \emph{matched pair test }for 2x2 tables.
+  \item[Cochran's Q Test] \index{general}{test!Cochran's Q} Cochran's Q test is an extension to the McNemar's test for related samples that provides a method for testing for differences between three or more \emph{matched/paired} sets of frequencies or proportions. For example, if you have exactly the same samples analyzed by 3 different laboratories, and you want to check if the results are statistically equivalent, you would use this test.
 \end{description}
 
 
@@ -184,6 +184,41 @@ For small number of sample numbers the \emph{correctionFactor} should be 0.5 (\e
 
 has the value 21.01, which is extremely unlikely from the distribution implied by the null hypothesis. Thus the test provides strong evidence to reject the null hypothesis of no treatment effect.
 
+
+\subsection{Cochran's Q Test}\index{general}{test!Cochran's Q}
+
+Cochran's Q test is a hypothesis test where the response variable can take only two possible outcomes (coded as 0 and 1). It is a non-parametric statistical test to verify if k treatments have identical effects. Cochran's Q test should not be confused with \emph{Cochran's C test}, which is a variance outlier test.
+
+\subsubsection{Example}
+
+12 subjects are asked to perform 3 tasks. The outcome of each task is \emph{success} or \emph{failure}. The results are coded $0$ for \emph{failure} and $1$ for \emph{success}. In the example, subject 1 was successful in task 2, but failed tasks 1 and 3 (see Table \ref{table: CochransQ}).
+
+\begin{table}
+  \centering
+  \begin{tabular}{|r|r r r|}
+  \hline
+  \emph{Subject}& \emph{Task 1} & \emph{Task 2} & \emph{Task 3} \\
+  \hline
+  1  & 0 & 1 & 0 \\
+  2  & 1 & 1 & 0 \\
+  3  & 1 & 1 & 1 \\
+  4  & 0 & 0 & 0 \\
+  5  & 1 & 0 & 0 \\
+  6  & 0 & 1 & 1 \\
+  7  & 0 & 0 & 0 \\
+  8  & 1 & 1 & 0 \\
+  9  & 0 & 1 & 0 \\
+  9  & 0 & 1 & 0 \\
+  10 & 0 & 1 & 0 \\
+  11 & 0 & 1 & 0 \\
+  12 & 0 & 1 & 0 \\
+  \hline
+  \end{tabular}
+
+  \caption{Cochran's Q Test: Success or failure for 12 subjects on 3 tasks.}\label{table:CochransQ}
+\end{table}
+
+The null hypothesis for the Cochran's Q test is that there are no differences between the variables. If the calculated probability $p$ is below the selected significance level, the null-hypothesis is rejected, and it can be concluded that the proportions in at least 2 of the variables are significantly different from each other. For our example (Table \ref{table: CochransQ}), the analysis of the data provides $Cochran's Q = 8.6667$ and a significance of $p = 0.013$. In other words, at least one of the three Tasks is easier or harder than the others.
 
 \section{Analysis Programs}
 

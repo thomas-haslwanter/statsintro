@@ -1,68 +1,68 @@
 \begin{theindex}
 
-  \item anovaOneway, 50
-  \item anovaTwoway, 71
+  \item anovaOneway, 52
+  \item anovaTwoway, 73
 
   \indexspace
 
-  \item binomialTest, 55
-  \item bootstrapDemo, 81
+  \item binomialTest, 57
+  \item bootstrapDemo, 83
 
   \indexspace
 
-  \item checkNormality, 37
-  \item compGroups, 61
+  \item checkNormality, 39
+  \item compGroups, 63
 
   \indexspace
 
-  \item distributionContinuous, 34
-  \item distributionDiscrete, 35
-  \item distributionNormal, 28
+  \item distributionContinuous, 36
+  \item distributionDiscrete, 37
+  \item distributionNormal, 30
 
   \indexspace
 
-  \item fitLine, 69
+  \item fitLine, 71
 
   \indexspace
 
-  \item getData, 13
-  \item gettingStarted, 11
+  \item getData, 14
+  \item gettingStarted, 12
 
   \indexspace
 
-  \item KruskalWallis, 52
+  \item KruskalWallis, 54
 
   \indexspace
 
-  \item linear regression model, 75
+  \item linear regression model, 77
 
   \indexspace
 
-  \item modeling, 78
-  \item multipleRegression, 72
-  \item multipleTesting, 51
-  \item multivariate, 68
+  \item modeling, 80
+  \item multipleRegression, 74
+  \item multipleTesting, 53
+  \item multivariate, 70
 
   \indexspace
 
-  \item oneSample, 47
+  \item oneSample, 49
 
   \indexspace
 
-  \item pandasIntro, 12
+  \item pandasIntro, 13
 
   \indexspace
 
-  \item readZip, 11
+  \item readZip, 12
 
   \indexspace
 
-  \item sampleSize, 43
-  \item showStats, 17
-  \item survival, 84
+  \item sampleSize, 45
+  \item showStats, 19
+  \item survival, 86
 
   \indexspace
 
-  \item twoSample, 48
+  \item twoSample, 50
 
 \end{theindex}

@@ -1,9 +1,9 @@
 This is makeindex, version 2.15 [MiKTeX 2.9 64-bit] (kpathsea + Thai support).
 Scanning input file general.idx....
-!! Input index error (file = general.idx, line = 108):
+!! Input index error (file = general.idx, line = 110):
    -- Extra `!' at position 42 of first argument.
-done (123 entries accepted, 1 rejected).
-Sorting entries....done (868 comparisons).
-Generating output file general.ind....done (180 lines written, 0 warnings).
+done (125 entries accepted, 1 rejected).
+Sorting entries....done (896 comparisons).
+Generating output file general.ind....done (182 lines written, 0 warnings).
 Output written in general.ind.
 Transcript written in general.ilg.

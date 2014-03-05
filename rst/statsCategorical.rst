@@ -49,12 +49,11 @@ Chi-square Test
 Fisher's Exact Test
     While the chi-square test is approximate, the *Fisher's Exact Test* is an exact test. As it is computationally much more expensive and intricate than the chi-square test, it was originally used only for small sample numbers. However, in general it is now the more advisable test to use.
 
-Cochran's Q Test
-    This test, for which we will not go into detail here, is used if you have *matched/paired observations*. For example, if you have exactly the same samples analyzed by 3 different laboratories, and you want to check if the results are statistically equivalent, you would use this test.
-
 McNemar's Test
     This is a matched pair test for 2x2 tables.
 
+Cochran's Q Test
+    Cochran's Q test is an extension to the McNemar's test for related samples that provides a method for testing for differences between three or more *matched/paired* sets of frequencies or proportions. For example, if you have exactly the same samples analyzed by 3 different laboratories, and you want to check if the results are statistically equivalent, you would use this test.
 
 One Proportion 
 ---------------
@@ -286,6 +285,64 @@ on a binomial test.) Using Yates's correction, we get
 has the value 21.01, which is extremely unlikely from the distribution implied by
 the null hypothesis. Thus the test provides strong evidence to reject the null
 hypothesis of no treatment effect.
+
+
+Cochran's Q Test
+~~~~~~~~~~~~~~~~
+
+Cochran's Q test is a hypothesis test where the response variable can take
+only two possible outcomes (coded as 0 and 1). It is a non-parametric
+statistical test to verify if k treatments have identical effects. Cochran's
+Q test should not be confused with *Cochran's C test*, which is a variance
+outlier test.
+
+Example
+^^^^^^^
+
+12 subjects are asked to perform 3 tasks. The outcome of each task is
+*success* or *failure*. The results are coded *0* for *failure* and *1* for
+*success*. In the example, subject 1 was successful in task 2, but failed
+tasks 1 and 3 (see Table).
+
+
++--------+--------+--------+--------+
+| Subject| Task 1 | Task 2 | Task 3 |
++========+========+========+========+
+| 1      | 0      | 1      | 0      |
++--------+--------+--------+--------+
+| 2      | 1      | 1      | 0      |
++--------+--------+--------+--------+
+| 3      | 1      | 1      | 1      |
++--------+--------+--------+--------+
+| 4      | 0      | 0      | 0      |
++--------+--------+--------+--------+
+| 5      | 1      | 0      | 0      |
++--------+--------+--------+--------+
+| 6      | 0      | 1      | 1      |
++--------+--------+--------+--------+
+| 7      | 0      | 0      | 0      |
++--------+--------+--------+--------+
+| 8      | 1      | 1      | 0      |
++--------+--------+--------+--------+
+| 9      | 0      | 1      | 0      |
++--------+--------+--------+--------+
+| 10     | 0      | 1      | 0      |
++--------+--------+--------+--------+
+| 11     | 0      | 1      | 0      |
++--------+--------+--------+--------+
+| 12     | 0      | 1      | 0      |
++--------+--------+--------+--------+
+
+*Cochran's Q Test: Success or failure for 12 subjects on 3 tasks*
+
+The null hypothesis for the Cochran's Q test is that there are no
+differences between the variables. If the calculated probability *p* is
+below the selected significance level, the null-hypothesis is rejected, and
+it can be concluded that the proportions in at least 2 of the variables are
+significantly different from each other. For our example, the analysis of
+the data provides *Cochran's Q = 8.6667* and a significance of *p = 0.013*.
+In other words, at least one of the three Tasks is easier or harder than the
+others.
 
 Analysis Programs
 -----------------

@@ -29,7 +29,7 @@ The only thing that you have to watch out for: after you have acquired your data
 
 
 \subsubsection{Centiles}\index{general}{centiles}\index{general}{percentiles}
-While you won't often hear the expression \emph{centiles}, you will frequently encounter specific centiles, e.g. \emph{quartiles}, or the \emph{median value}. 
+While you won't often hear the expression \emph{centiles}, you will frequently encounter specific centiles, e.g. \emph{quartiles}, or the \emph{median value}.
 
 \begin{description}
   \item[Probability Density Function (PDF)]\index{general}{probability density function} The PDF, or density of a continuous random variable, is a function that describes the relative likelihood for this random variable to take on a given value.
@@ -218,12 +218,19 @@ Figure \ref{fig:DistributionUtilities} shows a number of functions are commonly 
   \item \emph{Inverse survival function (ISF)}: the name says it all.
 \end{itemize}
 
+\vspace{5 mm}
+\fbox{%
+\begin{minipage}{15 cm}
+
 \textbf{Note:}
 In Python, the most elegant way of working with distribution function is a two-step procedure:
 \begin{itemize}
   \item In the first step, you create your distribution (e.g. \textsf{nd = stats.norm()}). Note that is a \emph{distribution} (in Python parlance a "frozen distribution"), not a function yet!
   \item In the second step, you decide which function you want to use from this distribution, and calculate the function value for the desired x-input (e.g. \textsf{y = nd.cdf(x)})
 \end{itemize}
+
+\end{minipage}}
+\vspace{10 mm}
 
 \PyImg "distributionNormal.py" (p \pageref{py:distributionNormal}) shows simple manipulations of normal distribution functions.
 \index{python}{distributionNormal}

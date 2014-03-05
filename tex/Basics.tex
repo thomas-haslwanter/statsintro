@@ -65,6 +65,35 @@ You can also smooth histograms with \emph{kernel-density-estimations (kde-plots)
   \caption{Histogram}
 \end{figure}
 
+\subsection{KDE-plots}\index{general}{plots!kde}
+
+\footnote{This paragraph is taken from Wikipedia, "Kernel density estimation".} Kernel density estimates are closely related to histograms, but can be endowed with properties such as smoothness or continuity by using a suitable kernel. To see this, we compare the construction of histogram and kernel density estimators, using these 6 data points: x1 = −2.1, x2 = −1.3, x3 = −0.4, x4 = 1.9, x5 = 5.1, x6 = 6.2. For the histogram, first the horizontal axis is divided into sub-intervals or bins which cover the range of the data. In this case, we have 6 bins each of width 2. Whenever a data point falls inside this interval, we place a box of height 1/12. If more than one data point falls inside the same bin, we stack the boxes on top of each other.
+
+For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident compared to the discreteness of the histogram, as kernel density estimates converge faster to the true underlying density for continuous random variables.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Comparison_of_1D_histogram_and_KDE.png}\\
+  \caption{Comparison of the histogram (left) and kernel density estimate (right) constructed using the same data. The 6 individual kernels are the red dashed curves, the kernel density estimate the blue curves. The data points are the rug plot on the horizontal axis. (from Wikipedia)}
+\end{figure}
+
+The bandwidth of the kernel is a free parameter which exhibits a strong influence on the resulting estimate. To illustrate its effect, we take a simulated random sample from the standard normal distribution (plotted at the blue spikes in the rug plot on the horizontal axis). The grey curve is the true density (a normal density with mean 0 and variance 1). In comparison, the red curve is undersmoothed since it contains too many spurious data artifacts arising from using a bandwidth h = 0.05 which is too small. The green curve is oversmoothed since using the bandwidth h = 2 obscures much of the underlying structure. The black curve with a bandwidth of h = 0.337 is considered to be optimally smoothed since its density estimate is close to the true density.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{../Images/Comparison_of_1D_bandwidth_selectors.png}\\
+  \caption{Kernel density estimate (KDE) with different bandwidths of a random sample of 100 points from a standard normal distribution. Grey: true density (standard normal). Red: KDE with h=0.05. Green: KDE with h=2. Black: KDE with h=0.337. (from Wikipedia)}
+\end{figure}
+
+It can be shown that under certain conditions the optimal choice for h is
+\begin{equation}
+  h = \left(\frac{4\hat{\sigma}^5}{3n}\right)^{\frac{1}{5}} \approx 1.06 \hat{\sigma} n^{-1/5},
+\end{equation}
+
+
+where $\hat{\sigma}$ is the standard deviation of the samples.
+
+
 \subsection{Cumulative Frequencies}\index{general}{cumulative frequency}
 
 \emph{Cumulative frequency} curves indicate the number (or percent) of data with less than a given value. This is important for the statistical analysis (e.g. when we want to know the data range containing 95\% of all the values). Cumulative frequencies
@@ -90,6 +119,15 @@ When you use percentage points, the cumulative frequency presentation has the ad
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/boxplot.png}\\
   \caption{Box plot}\label{fig:Boxplot}
+\end{figure}
+
+Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plots} \index{general}{plots!violinplot}, as shown in Figure \ref{fig:violin}.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.75\textwidth]{../Images/violinplot.png}\\
+  \caption{Violinplot, produced with \emph{seaborn}.}\label{fig:violin}
 \end{figure}
 
 \subsection{Programs: Data Display}

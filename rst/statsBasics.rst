@@ -88,6 +88,30 @@ points of each bin, you obtain a *relative frequency polygon*.
 
 | |image4|
 
+KDE Plots
+~~~~~~~~~
+
+For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident compared to the discreteness of the histogram, as kernel density estimates converge faster to the true underlying density for continuous random variables.
+
+.. image:: ../Images/Comparison_of_1D_histogram_and_KDE.png
+    :scale: 70 %
+
+*Comparison of the histogram (left) and kernel density estimate (right) constructed using the same data. The 6 individual kernels are the red dashed curves, the kernel density estimate the blue curves. The data points are the rug plot on the horizontal axis. (from Wikipedia)*
+
+The bandwidth of the kernel is a free parameter which exhibits a strong influence on the resulting estimate. To illustrate its effect, we take a simulated random sample from the standard normal distribution (plotted at the blue spikes in the rug plot on the horizontal axis). The grey curve is the true density (a normal density with mean 0 and variance 1). In comparison, the red curve is undersmoothed since it contains too many spurious data artifacts arising from using a bandwidth h = 0.05 which is too small. The green curve is oversmoothed since using the bandwidth h = 2 obscures much of the underlying structure. The black curve with a bandwidth of h = 0.337 is considered to be optimally smoothed since its density estimate is close to the true density.
+
+.. image:: ../Images/Comparison_of_1D_bandwidth_selectors.png
+    :scale: 50 %
+
+*Kernel density estimate (KDE) with different bandwidths of a random sample of 100 points from a standard normal distribution. Grey: true density (standard normal). Red: KDE with h=0.05. Green: KDE with h=2. Black: KDE with h=0.337. (from Wikipedia)*
+
+It can be shown that under certain conditions the optimal choice for h is
+
+.. math:: h = \left(\frac{4\hat{\sigma}^5}{3n}\right)^{\frac{1}{5}} \approx 1.06 \hat{\sigma} n^{-1/5},
+
+where :math:`\hat{\sigma}` is the standard deviation of the samples.
+
+
 Cumulative Frequencies 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -116,6 +140,13 @@ above or below the first/third quartile.
 
 | |image6|
 | [fig:Boxplot]
+
+Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plots} \index{general}{plots!violinplot}, as shown in the Figure below.
+
+.. image:: ..\Images\violinplot.png
+    :scale: 75 %
+
+*Violinplot, produced with the Python package "seaborn".*
 
 Programs: Data Display 
 ~~~~~~~~~~~~~~~~~~~~~~~~
