@@ -9,7 +9,7 @@ famous mathematician C.F. Gauss, who said about his own work *"Ich habe
 fleissig sein müssen; wer es gleichfalls ist, wird eben so weit
 kommen"*. Even if your aspirations are not that high, you can get a lot
 out of statistics. In fact, if your work with real data, you probably
-won’t be able to avoid it. Statistics can
+won't be able to avoid it. Statistics can
 
 -  Describe variation.
 
@@ -56,7 +56,7 @@ most chapters. For lecturers, solutions to these exercises can be provided
 on demand. Please contact me directly for that via email.
 
 **PDF-Version:** A complete PDF-version of this introduction is available
-from `here <https://github.com/thomas-haslwanter/statsintro/blob/master/Data/StatsIntro.pdf>`_
+from `here <http://work.thaslwanter.at/Stats/StatsIntro.pdf>`_
 
 Why Statistics?
 ---------------

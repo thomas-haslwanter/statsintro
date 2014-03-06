@@ -19,7 +19,7 @@ a and b, then we simply write
 The symbols in Table are used on the right hand side to
 denote different interactions.
 
-A complete set of the description is found under
+A complete set of the description is found under http://patsy.readthedocs.org/
 
 Design Matrix 
 ~~~~~~~~~~~~~~~
@@ -545,7 +545,7 @@ The *Akaike Information Criterion AIC*
 
 .. math:: AIC = n * ln(SSE / n) + 2p
 
-and the Schwartz or *Baysian Information Criterion BIC*
+and the Schwartz or *Bayesian Information Criterion BIC*
 
 .. math:: BIC = n * ln(SSE/n) + p * ln(n)
 

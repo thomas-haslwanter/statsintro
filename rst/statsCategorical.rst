@@ -249,6 +249,9 @@ fact that the two proportions are not independent. The correlation of
 :math:`p_A` and :math:`p_B` is occasioned by the fact that both include the
 quantity a in the upper left cell of the table.
 
+McNemar's test can be used for example in studies in which patients serve as
+their own control, or in studies with "before and after" design.
+
 Example
 ^^^^^^^
 
@@ -276,9 +279,11 @@ The general solution for the McNemar's test is
 .. math::    \chi^2 = {(|b-c|-correctionFactor)^2 \over b+c}.
 
 For small number of sample numbers the \emph{correctionFactor} should be 0.5
-(*Yates's correction*) or 1.0 (*Edward's correction*). (In fact, for
-small numbers an exact calculation is typically done for the probabilities, based
-on a binomial test.) Using Yates's correction, we get
+(*Yates's correction*) or 1.0 (*Edward's correction*). (For :math:`b + c < 25`,
+the binomial calculation should be performed, and indeed, most software
+packages simply perform the binomial calculation in all cases, since the
+result then is an exact test in all cases.) Using Yates's correction, we
+get
 
 .. math::     \chi^2 = {(|121 - 59| - 0.5)^2 \over {121 + 59}}
 

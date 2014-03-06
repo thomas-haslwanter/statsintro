@@ -2,6 +2,7 @@
 - Analysis of one proportion
 - Chi-square test
 - Fisher exact test
+- McNemar's test
 - Cochran's Q test
 
 '''
@@ -9,13 +10,13 @@
 '''
 Author:  Thomas Haslwanter
 Date:    March-2014
-Version: 1.3
+Version: 1.4
 '''
 
 import numpy as np
 import scipy.stats as stats
 import pandas as pd
-from statsmodels.sandbox.stats.runs import cochrans_q
+from statsmodels.sandbox.stats.runs import cochrans_q, mcnemar
 
 
 def oneProportion():
@@ -118,9 +119,30 @@ def cochranQ():
     if pVal < 0.05:
         print("There is a significant difference between the three tasks.")
     
+def tryMcnemar():
+    '''McNemars Test should be run in the "exact" version, even though approximate formulas are
+    typically given in the lecture scripts. Just ignore the statistic that is returned, because
+    it is different for the two options.
+    
+    In the following example, a researcher attempts to determine if a drug has an effect on a
+    particular disease. Counts of individuals are given in the table, with the diagnosis
+    (disease: present or absent) before treatment given in the rows, and the diagnosis
+    after treatment in the columns. The test requires the same subjects to be included in
+    the before-and-after measurements (matched pairs).
+    '''
+    
+    
+    f_obs = np.array([[101, 121],[59, 33]])
+    (statistic, pVal) = mcnemar(f_obs)
+    print('\nMCNEMAR\'S TEST -----------------------------------------------------')
+    print('p = {0:5.3f}'.format(pVal))
+    if pVal < 0.05:
+        print("There was a significant change in the disease by the treatment.")    
+    
 if __name__ == '__main__':
     oneProportion()
     chiSquare()
     fisherExact()
+    tryMcnemar()
     cochranQ()
 
