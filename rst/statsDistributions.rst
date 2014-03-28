@@ -216,6 +216,17 @@ independent random variables (also referred to as *random variates*),
 the mean of a sufficiently large number of these variables will be
 approximately normally distributed.
 
+The figure below shows that averaging over 10 uniformly distributed data
+already produces a smooth, almost Gaussian distribution.
+
+.. figure:: ../Images/centralLimitTheorem.png
+  :scale: 40 %
+
+*Demonstration of the "Central Limit Theorem": Left) Histogram of random
+data between 0 and 1. Center) Histogram of average over two datapoints.)
+Right) Histogram of average over 10 datapoints.*
+
+.. literalinclude:: ..\Code3\centralLimitTheorem.py
 
 Distribution Functions
 ----------------------

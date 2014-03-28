@@ -139,9 +139,11 @@ check for data which lie more than 1.5 \* *inter-quartile-range* (IQR)
 above or below the first/third quartile.
 
 | |image6|
-| [fig:Boxplot]
 
-Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plots} \index{general}{plots!violinplot}, as shown in the Figure below.
+*Boxplot, with outliers indicated by "\*"*
+
+Boxplots are often combined with KDE-plots to produce so-called
+*violin-plots* as shown in the Figure below.
 
 .. image:: ..\Images\violinplot.png
     :scale: 75 %
@@ -474,7 +476,10 @@ Exercises
 
    #. Are the data normally distributed?
 
-   #. How would you design the corresponding study?
+   #. How would you design the corresponding study? 
+         * How do you make sure you have enough younge/middle aged/older women?
+         * Which information do you need from the women?
+         * What are useful inclusion/exclusion criteria?
 
 
 

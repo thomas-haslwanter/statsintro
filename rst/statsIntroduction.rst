@@ -157,8 +157,8 @@ lecture.
 
 I have not seen many books on Python that I really liked. My favorite
 introductory book is . A good free book, which introduces Python with a
-focus on statistics, is `Introduction to Python for Econometrics,
-Statistics and Data Analysis, by Kevin Sheppard, Oxford
+focus on statistics, is `"Introduction to Python for Econometrics,
+Statistics and Data Analysis", by Kevin Sheppard, Oxford
 University <http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf>`__.
 
 In general, I suggest that you start out by installing a Python
@@ -167,9 +167,9 @@ suggest that you use Python :math:`>3.3` for this course, All the Python package
 course are now available for Python 3, so I don't see a good reason to
 stay with Python 2.7 . My favorites Python 3.3 distributions are
 
-#.  http://winpython.sourceforge.net/  No admin-rights required.
+#.  http://winpython.sourceforge.net/  No admin-rights required. Recommended for Windows users.
 
-#.  https://store.continuum.io/cshop/anaconda/  From Continuum.
+#.  https://store.continuum.io/cshop/anaconda/  From Continuum. For Windows, Mac, and Linux. By default installs to Python 2.7.x, but can upgrade to Python 3.x.
 
 which are very good starting points when you are using Windows.
 *winpython* does not require administrator rights, and *anaconda* is a
@@ -254,15 +254,15 @@ these things:
 Matplotlib, pylab, and pyplot: how are they related?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Matplotlib** is the whole package; *pylab* is a module in matplotlib that gets installed alongside matplotlib; and *matplotlib.pyplot* is a module in matplotlib.
+**Matplotlib** is the whole package; *pylab* is a Matlab-like module in matplotlib that gets installed alongside matplotlib; and *matplotlib.pyplot* is a module in matplotlib.
 
-**Pyplot** provides the state-machine interface to the underlying plotting library in matplotlib. This means that figures and axes are implicitly and automatically created to achieve the desired plot. For example, calling plot from pyplot will automatically create the necessary figure and axes to achieve the desired plot. Setting a title will then automatically set that title to the current axes object:
+**Pyplot** provides the state-machine interface to the underlying plotting library in matplotlib. This means that figures and axes are implicitly and automatically created to achieve the desired plot. For example, calling *plot* from pyplot will automatically create the necessary figure and axes to achieve the desired plot. Setting a *title* will then automatically set that title to the current axes object:
 
 ::
 
     import matplotlib.pyplot as plt
 
-    plt.plot(range(10), range(10))
+    plt.plot(np.range(10))
     plt.title("Simple Plot")
     plt.show()
 
@@ -273,7 +273,7 @@ The pyplot interface is generally preferred for non-interactive plotting (i.e., 
 
 Coding Styles in Python
 ^^^^^^^^^^^^^^^^^^^^^^^
-In Python you will find different coding styles and usage patterns. These styles are perfectly valid and have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.
+In Python you will find different coding styles and usage patterns. These styles are all perfectly valid, and each have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.
 
 Of the different styles, there are two that are officially supported. Therefore, these are the preferred ways to use matplotlib.
 
@@ -316,7 +316,6 @@ Next, the same example using a pure MATLAB-style:
     x = arange(0, 10, 0.2)
     y = sin(x)
     plot(x, y)
-    show()
 
 So, why all the extra typing as one moves away from the pure MATLAB-style? For very simple things like this example, the only advantage is academic: the wordier styles are more explicit, more clear as to where things come from and what is going on. For more complicated applications, this explicitness and clarity becomes increasingly valuable, and the richer and more complete object-oriented interface will likely make the program easier to write and maintain.
 
@@ -349,13 +348,14 @@ http://www.randalolson.com/2012/08/06/statistical-analysis-made-easy-in-python/
 Data Input
 ^^^^^^^^^^
 
-Pandas offers tools for reading and writing data between in-memory data structures and different
-formats, e.g. CSV and text files, Microsoft Excel, and SQL databases. For example, if you have data
-in your clipboard, you can import them directly with
+Pandas offers tools for reading and writing data between in-memory data
+structures and different formats, e.g. CSV and text files, Microsoft Excel,
+and SQL databases. For example, if you have data in your clipboard, you can
+import them directly with
 
 ::
 
-    data = pd.io.parsers.read_clipboard()
+    data = pd.read_clipboard()
 
 Or data from "Sheet1" in an Excel-file "data.xls" can be read in easily with
 
@@ -368,70 +368,156 @@ Or data from "Sheet1" in an Excel-file "data.xls" can be read in easily with
 Data Handling and Manipulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pandas offers powerful functions to handle missing data and "nans", and other kinds of data manipulation like pivoting.
-
-To handle labeled data, pandas introduces *DataFrame* objects. A
+To handle labeled data, pandas introduces \emph{DataFrame} objects. A
 DataFrame is a 2-dimensional labeled data structure with columns of
-potentially different types. You can think of it like a spreadsheet or
-SQL table. It is generally the most commonly used pandas object. For
-example, you can use data-frames to efficiently group objects, and do a
-statistical evaluation of each group:
+potentially different types. You can think of it like a spreadsheet or SQL
+table. It is generally the most commonly used pandas object. At first,
+handling data with Pandas feels a bit unusual. To get you started, let me
+give you a specific example:
 
 ::
 
-        x = tile([1,2,3], 4)
-        y = randn(len(x))
-        df = pd.DataFrame({'treatment':x, 'result':y})
-        groups = df.groupby('treatment')
-        print(groups['result'].describe())
+    import numpy as np
+    import pandas as pd
+    
+    t = np.arange(0,10,0.1)
+    x = np.sin(t)
+    y = np.cos(t)
+
+    df = pd.DataFrame({'Time':t, 'x':x, 'y':y})
+
+In Pandas, rows are addressed through "indices", and columns through their "column" name.
+To address the first column only, you have two options:
+
+::
+
+    df.Time
+    df['Time']
+
+If you want to extract two columns at the same time, you have to use a Python-list:
+
+::
+
+    data = df[['Time', 'y']]
+
+To display the first or last rows, use
+
+::
+
+    data.head()
+    data.tail()
+
+For e.g. rows 5-10 (note that this are 6 numbers), use
+
+::
+
+    data[4:10]
+
+as *10-4=6*. (I know, the array indexing takes some time to get used to.
+Just keep in mind that Python addresses the *locations between*
+entries, not the entries, and that it starts at *0*!!) To do this in one go,
+use
+
+::
+
+    df[['Time', 'y']][4:10]
+
+You can also apply the standard row/column notation, by using the method "ix":
+
+::
+
+    df.ix[[0,2],4:10]
+
+Finally, sometimes you want to have direct access to the data, not to the DataFrame. You can do this with
+
+::
+
+    data.values
+
+Pandas offers powerful functions to handle missing data and "nans", and
+other kinds of data manipulation like pivoting. For example, you can use
+data-frames to efficiently group objects, and do a statistical evaluation of
+each group. The following data are simulated (but realistic) data of a
+survey on how many hours a day people watch on the TV, grouped into "m"ale
+and "f"emale responses:
+
+::
+
+    data = pd.DataFrame({
+        'Gender': ['f', 'f', 'm', 'f', 'm', 'm', 'f', 'm', 'f', 'm'],
+        'TV': [3.4, 3.5, 2.6, 4.7, 4.1, 4.0, 5.1, 4.0, 3.7, 2.1]
+        })
+    
+    # Group the data
+    grouped = data.groupby('Gender')
+    
+    # Get the groups as DataFrames
+    df_female = grouped.get_group('f')
+    
+    # Get the corresponding numpy-array
+    values_female = grouped.get_group('f').values
+
+    # or equivalently
+    groups = grouped.groups
+    values_female = groups['f']
+    
+    # Do some overview statistics
+    print(grouped.describe())
 
 produces
 
 ::
 
-         treatment
-        1          count    4.000000
-                   mean    -1.693818
-                   std      1.559007
-                   min     -3.857303
-                   25%     -2.293582
-                   50%     -1.279452
-                   75%     -0.679688
-                   max     -0.359065
-        2          count    4.000000
-                   mean    -0.240799
-                   std      0.610826
-                   min     -0.780429
-                   25%     -0.563200
-                   50%     -0.406580
-                   75%     -0.084178
-                   max      0.630393
-        3          count    4.000000
-                   mean     0.177045
-                   std      0.703775
-                   min     -0.298325
-                   25%     -0.255564
-                   50%     -0.101432
-                   75%      0.331177
-                   max      1.209367
-        dtype: float64
+    .                   TV
+    Gender
+    f      count  5.000000
+           mean   4.080000
+           std    0.769415
+           min    3.400000
+           25%    3.500000
+           50%    3.700000
+           75%    4.700000
+           max    5.100000
+    m      count  5.000000
+           mean   3.360000
+           std    0.939681
+           min    2.100000
+           25%    2.600000
+           50%    4.000000
+           75%    4.000000
+           max    4.100000
+
 
 For statistical analysis, pandas becomes really powerful if you combine
 it with *statsmodels* (see below).
-
-The following piece of code shows you how pandas can be used for data analysis:
-
-(See also the ipython notebook `pandas_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/pandas_intro.ipynb>`_)
-
-.. literalinclude:: ..\Code3\pandas_intro.py
 
 
 Statsmodels
 ~~~~~~~~~~~
 
-`statsmodels <http://statsmodels.sourceforge.net/>`_ is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. In its latest release (version 0.5), statsmodels also allows the formulation of models with the popular formula language also used by $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model *'success ~ intelligence * diligence'*, which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
+`statsmodels <http://statsmodels.sourceforge.net/>`_ is a Python module that
+provides classes and functions for the estimation of many different
+statistical models, as well as for conducting statistical tests, and
+statistical data exploration. An extensive list of result statistics are
+available for each estimator. In its latest release (version 0.5),
+statsmodels also allows the formulation of models with the popular formula
+language also used by *R*, the leading statistics package. For example, data
+on the connection between academic "success", "intelligence" and "diligence"
+can be described with the model *'success ~ intelligence * diligence'*,
+which would capture the direct effect of "intelligence" and "diligence", as
+well as the interaction. You find more information on that topic in the
+section "Statistical Models".
 
-While for complex statistical models R still has an edge, python has a much clearer and more readable syntax, and is arguably more powerful for the data manipulation often required for statistical analysis.
+While for complex statistical models R still has an edge, python has a much clearer and more
+readable syntax, and is arguably more powerful for the data manipulation often required for
+statistical analysis.
+
+The following piece of code shows you how shows you how the combination of pandas and
+statsmodels can be used for data analysis.
+
+(See also the ipython notebook `statsmodels_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/statsmodels_intro.ipynb>`_)
+
+.. literalinclude:: ..\Code3\statsmodels_intro.py
 
 Seaborn
 ~~~~~~~
