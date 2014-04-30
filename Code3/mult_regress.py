@@ -1,6 +1,5 @@
 '''Multiple Regression
-Shows how to calculate just the best fit, or - using "statsmodels" - all the
-corresponding statistical parameters.
+Shows how to calculate just the best fit, or - using "statsmodels" - all the corresponding statistical parameters.
 Also shows how to make 3d plots.
 
 '''

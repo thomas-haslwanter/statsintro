@@ -7,12 +7,27 @@
 If we knew the mean and the standard deviation of a normally distributed population, we would know exactly the standard error, and use values from the normal distribution to determine how likely it is to find a certain mean value, given the population mean and standard deviation. However, in practice we have to \emph{estimate} the mean and standard deviation from the sample, and the resulting distribution for the mean value deviates slightly from a normal distribution. Such distributions are called \emph{t-distributions}, and were first described by a researcher working under the pseudonym of "Student".
 
 Let us look at a specific example: we take 100 normally distributed data, with a mean of 7 and with a standard deviation of 3.
-What is the chance of finding a mean value at a distance of 0.5 or more from the mean:?
+What is the chance of finding a mean value at a distance of 0.5 or more from the mean?
 
-\PyImg "oneSample.py" (p \pageref{py:oneSample}): analysis for one group of continuous data.
+\emph{Answer: The probability from the t-test is 0.057, and from the normal distribution 0.054}
+
+\PyImg "oneSample.py" (p \pageref{py:oneSample}): Sample analysis for one group of continuous data.
 \index{python}{oneSample}
 
-$>>>$ The probability from the t-test is 0.057, and from the normal distribution 0.054
+%To illustrate the ideas behind the use of distribution functions, let us go step-by-step through the analysis of the following problem:
+%Being 50 years old, 175 cm tall, and moderately active, my daily nutritional requirement is 2460 cal/day. On 10 subsequent days, I have carefully listed my food intake, and obtained the following numbers of calories for each day: [2784, 2632, 2771, 2495, 2435, 2513, 2633, 2737, 2687, 2647]. My question now: is this too much - do I have to cut back on my chocolate??
+%
+%\begin{itemize}
+%  \item Find the mean and standard deviation of the best-fit normal distribution (mean = 2633.4, std = 113.3).
+%  \item Calculate the CDF at the interesting value (2460 cal/day) (CDF(2460) = 0.06).
+%  \item Interpret the result (\emph{"not significant"}).
+%\end{itemize}
+%
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=0.85\textwidth]{../Images/pdf_checkMean.png}\\
+%  \caption{Check if the mean of the fitted curve is significantly different from the value to be checked.}\label{fig:pdf_checkValue}
+%\end{figure}
 
 
 \subsection{Wilcoxon signed rank sum test}\index{general}{test!Wilcoxon signed rank sum}

@@ -2,15 +2,20 @@
 
 \section{Hypothesis tests}\label{sec:hypotheses} \index{general}{hypotheses}
 
-Statistical evaluations are based on the initially often counterintuitive procedure of \emph{hypothesis tests}. A hypothesis test is a standard format for assessing statistical evidence. It is ubiquitous in scientific literature, most often appearing in the form of statements of \emph{statistical significance} and quotations like $"p<0.01"$ that pepper scientific journals. Thereby you proceed as follows: you
+A statistical hypothesis test is a method of statistical inference using data from a scientific study. In statistics, a result is called \emph{statistically significant} if it has been predicted as unlikely to have occurred by chance alone, according to a pre-determined threshold probability, the \emph{significance level}. These tests are used in determining what outcomes of a study would lead to a rejection of the \emph{null hypothesis} for a pre-specified \emph{level of significance}. The critical region of a hypothesis test is the set of all outcomes which cause the null hypothesis to be rejected in favor of the \emph{alternative hypothesis}.
+
+A typical approach is as follows: you
 
 \begin{itemize}
   \item   state your hypothesis.
-  \item   decide which value you want to test your hypothesis on.
-  \item   calculate the \emph{probability p} that you find the given value, assuming that your hypothesis is true
+  \item   decide which value you want to test your hypothesis on, which is called the \emph{test statistic T}.
+  \item   compute from the observations the observed value $t_{obs}$ of the test statistic.
+  \item   Calculate the \emph{p-value}. This is the probability, under the null hypothesis, of sampling a test statistic at least as extreme as that which was observed.
+  \item   Reject the null hypothesis, in favor of the alternative hypothesis, if and only if the p-value is less than the significance level (the selected probability) threshold. If $p<0.05$, the difference between your sample and the value that you check is \emph{significant}. If $p<0.001$, we speak of a \emph{highly significant} difference.
 \end{itemize}
 
-The first hypothesis is referred to as \emph{null-hypothesis}, since we assume that there is \emph{null} difference between the hypothesis and the result. The found probability for a specific target value is the \emph{p-value} that you typically find in the literature. If $p<0.05$, the difference between your sample and the value that you check is \emph{significant}. If $p<0.001$, we speak of a \emph{highly significant} difference.
+Keep in mind that unlikely events \emph{do} happen: In 1980, for example, a woman named Maureen Wilcox played the Rhode Island and the Massachusetts lotteries at the same time. And she hit the correct numbers for both. Unfortunately, she picked all the correct numbers for Massachusetts on her Rhode Island ticket, and all the right Rhode Island numbers on her Massachusetts ticket. Such events are unlikely - but they do happen!
+
 
 \textbf{Example 1: } Let us compare the weight of two groups of subject. Then the \emph{null hypothesis} is that there is \emph{null} difference in the weight between the two groups. If a statistical comparison of the weight produces a p-value of 0.03, this means that \emph{the probability that the null hypothesis is correct is 0.03, or 3\%}. Since this probability is quite low, we say that \emph{there is a significant difference between the weight of the two groups}.
 
@@ -20,7 +25,7 @@ The first hypothesis is referred to as \emph{null-hypothesis}, since we assume t
 In hypothesis testing, two types of errors can occur:
 
 \subsubsection{Type I errors} \index{general}{error!Type I} \index{general}{power}
-These are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and \emph{is set before you start the data analysis}.
+These are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and \emph{is set before you start the data analysis}. In quality control, a Type I error is called \emph{producer risk}, because you keep a produced item despite the fact that it meets the regulatory requirements.
 
 For example, assume that the population of young Austrian adults has a mean IQ of 105 (i.e. we are smarter than the rest) and a standard deviation of 15. We now want to check if the average FH student in Linz has the same IQ as the average Austrian, and we select 20 students. We set $\alpha=0.05$, i.e. we set our significance level to 95\%.
 Let us now assume that the average student has in fact the same IQ as the average Austrian. If we repeat our study 20 times, we will find one of those 20 times that our sample mean is significantly different from the Austrian average IQ. Such a finding would be a false result, despite the fact that our assumption is correct, and would constitute a \emph{type I error}.
@@ -30,7 +35,9 @@ If we want to answer the question "How much chance do we have to reject the null
 
 For the example given above, an \emph{alternative hypothesis} could be: "We assume that our population has a mean value of 6."
 
-A \emph{Type II error} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false. The probability for this type of error is commonly indicated with $\beta$. The \emph{power} of a statistical test is defined as $(1-\beta)*100$, and is the chance of correctly accepting the alternate hypothesis. Figure \ref{fig:power1} shows the meaning of the \emph{power} of a statistical test. Note that for finding the power of a test, you need an alternative hypothesis.
+A \emph{Type II error} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false.  In quality control, a Type II error is called a \emph{consumer risk}, because the consumer obtains an item that does not meet the regulatory requirements.
+
+The probability for this type of error is commonly indicated with $\beta$. The \emph{power} of a statistical test is defined as $(1-\beta)*100$, and is the chance of correctly accepting the alternate hypothesis. Figure \ref{fig:power1} shows the meaning of the \emph{power} of a statistical test. Note that for finding the power of a test, you need an alternative hypothesis.
 
 \subsection{Sample Size}\index{general}{sample size}
 The power of a statistical test depends on four factors:
@@ -155,7 +162,7 @@ Closely related to \emph{Sensitivity} and \emph{Specificity} is the \emph{receiv
   \caption{Top: Probability density functions for two distributions. Bottom: corresponding \emph{ROC-curve}.}\label{fig:ROC}
 \end{figure}
 
-\section{Common Statistical Tests for Comparing Groups of Independent and Paired Samples}
+\section{Common Statistical Tests for Comparing Groups}
 
 Table \ref{table:tests} gives an overview of the most common statistical tests for different combinations of data.
 \begin{table}

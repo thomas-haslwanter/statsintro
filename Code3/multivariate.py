@@ -18,8 +18,7 @@ from numpy import testing
 def regression_line():
     '''Fit a line, using the powerful "ordinary least square" method of pandas.
     
-    Data from 24 type 1 diabetic patients, relating Fasting blood glucose (mmol/l) to
-    mean circumferential shortening velocity (%/sec), derived form echocardiography .
+    Data from 24 type 1 diabetic patients, relating Fasting blood glucose (mmol/l) to mean circumferential shortening velocity (%/sec), derived form echocardiography .
     
     '''
     

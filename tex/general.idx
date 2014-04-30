@@ -2,126 +2,133 @@
 \indexentry{Python!Matplotlib}{10}
 \indexentry{Python!pyplot}{10}
 \indexentry{Python!pylab}{11}
-\indexentry{data!categorical}{15}
-\indexentry{nominal}{15}
-\indexentry{data!ordinal}{15}
-\indexentry{data!numerical}{15}
-\indexentry{plots!scatter}{16}
-\indexentry{plots!histogram}{16}
-\indexentry{plots!kde}{16}
-\indexentry{cumulative frequency}{18}
-\indexentry{plots!boxplot}{18}
-\indexentry{plots!violinplot}{18}
-\indexentry{bias}{20}
-\indexentry{randomized controlled trial}{21}
-\indexentry{control group}{21}
-\indexentry{randomization}{21}
-\indexentry{crossover studies}{22}
-\indexentry{blinding}{22}
-\indexentry{replication}{22}
-\indexentry{sample selection}{22}
-\indexentry{factor}{22}
-\indexentry{documentation}{23}
-\indexentry{mean}{25}
-\indexentry{median}{25}
-\indexentry{mode}{25}
-\indexentry{geometric mean}{25}
-\indexentry{range}{25}
-\indexentry{centiles}{25}
-\indexentry{percentiles}{25}
-\indexentry{probability density function}{26}
-\indexentry{cumulative density function}{26}
-\indexentry{IQR}{26}
-\indexentry{variance}{26}
-\indexentry{standard deviation}{26}
-\indexentry{standard error}{27}
-\indexentry{shape parameters}{27}
-\indexentry{skewness}{28}
-\indexentry{kurtosis}{28}
-\indexentry{central limit theorem}{28}
-\indexentry{variate}{28}
-\indexentry{statistic}{28}
-\indexentry{distributions!normal}{28}
-\indexentry{probability density function}{29}
-\indexentry{distributions!continuous}{31}
-\indexentry{distributions!t-distribution}{31}
-\indexentry{distributions!chi square}{32}
-\indexentry{distributions!F distribution}{33}
-\indexentry{distributions!lognormal}{33}
-\indexentry{distributions!weibull}{35}
-\indexentry{distributions!exponential}{35}
-\indexentry{distributions!uniform}{36}
-\indexentry{distributions!discrete}{37}
-\indexentry{distributions!binomial}{37}
-\indexentry{distributions!Bernoulli}{37}
-\indexentry{distributions!poisson}{37}
-\indexentry{distributions!discrete}{38}
-\indexentry{normality check}{39}
-\indexentry{plots!$Q-Q$ plot}{39}
-\indexentry{test!Kolmogorov-Smirnov}{39}
-\indexentry{test!Lilliefors}{40}
-\indexentry{test!Shapiro-Wilk}{40}
-\indexentry{transformation}{40}
-\indexentry{confidence interval}{40}
-\indexentry{hypotheses}{43}
-\indexentry{error!Type I}{43}
-\indexentry{power}{43}
-\indexentry{error!Type II}{44}
-\indexentry{sample size}{44}
-\indexentry{sensitivity}{46}
-\indexentry{specificity}{46}
-\indexentry{positive predictive value}{46}
-\indexentry{negative predictive value}{46}
-\indexentry{prevalence}{46}
-\indexentry{ROC curve}{48}
-\indexentry{test! t-test, one sample}{49}
-\indexentry{test!Wilcoxon signed rank sum}{49}
-\indexentry{test! t-test, paired}{50}
-\indexentry{test!Mann-Whitney}{50}
-\indexentry{ANOVA}{51}
-\indexentry{test!ANOVA}{51}
-\indexentry{test!Levene}{51}
-\indexentry{test!F-test}{52}
-\indexentry{test!variance ratio}{52}
-\indexentry{Multiple Comparisons}{53}
-\indexentry{test!Tukey's}{53}
-\indexentry{Bonferroni correction}{53}
-\indexentry{Holms correction}{54}
-\indexentry{test!Kruskal-Wallis}{54}
-\indexentry{test!binomial}{57}
-\indexentry{test!Cochran's Q}{59}
-\indexentry{frequency tables}{60}
-\indexentry{test!chi square}{60}
-\indexentry{test!Fisher's exact}{61}
-\indexentry{test!McNemar's}{62}
-\indexentry{test!Cochran's Q}{63}
-\indexentry{correlation coefficient}{65}
-\indexentry{correlation!Pearson}{65}
-\indexentry{coefficient of determination}{65}
-\indexentry{coefficient of determination!adjusted}{66}
-\indexentry{correlation!Spearman}{67}
-\indexentry{correlation!Kendall's $\tau$}{67}
-\indexentry{regression}{67}
-\indexentry{covariate}{68}
-\indexentry{regressand}{68}
-\indexentry{endogenous variable}{68}
-\indexentry{regressor}{68}
-\indexentry{exogenous variable}{68}
-\indexentry{regression!multilinear}{69}
-\indexentry{regression!multiple linear|see{regression!multilinear}}{69}
-\indexentry{test!Friedman}{73}
-\indexentry{regression!multilinear}{73}
-\indexentry{ANOVA, two-way}{73}
-\indexentry{test!ANOVA}{73}
-\indexentry{regression!multilinear}{74}
-\indexentry{statistical modeling}{75}
-\indexentry{regression!multiple}{76}
-\indexentry{Maximum likelihood}{82}
-\indexentry{log likelihood function}{82}
-\indexentry{Akaike Information Criterion AIC}{83}
-\indexentry{Bayesian Information Criterion BIC}{83}
-\indexentry{bootstrapping}{83}
-\indexentry{survival times}{85}
-\indexentry{Kaplan-Meier survival curve}{85}
-\indexentry{test!logrank}{86}
-\indexentry{Cox regression model}{86}
+\indexentry{data!categorical}{17}
+\indexentry{nominal}{17}
+\indexentry{data!ordinal}{17}
+\indexentry{data!numerical}{17}
+\indexentry{plots!scatter}{18}
+\indexentry{plots!histogram}{18}
+\indexentry{plots!kde}{19}
+\indexentry{cumulative frequency}{20}
+\indexentry{plots!boxplot}{21}
+\indexentry{plots!violinplot}{21}
+\indexentry{bias}{22}
+\indexentry{randomized controlled trial}{22}
+\indexentry{control group}{22}
+\indexentry{randomization}{23}
+\indexentry{crossover studies}{23}
+\indexentry{blinding}{24}
+\indexentry{replication}{24}
+\indexentry{sample selection}{24}
+\indexentry{factor}{24}
+\indexentry{documentation}{24}
+\indexentry{probability density function}{27}
+\indexentry{random variate}{27}
+\indexentry{cumulative density function}{27}
+\indexentry{cumulative density function}{28}
+\indexentry{mean}{29}
+\indexentry{median}{29}
+\indexentry{mode}{29}
+\indexentry{geometric mean}{29}
+\indexentry{range}{30}
+\indexentry{centiles}{30}
+\indexentry{percentiles}{30}
+\indexentry{IQR}{30}
+\indexentry{variance}{30}
+\indexentry{standard deviation}{30}
+\indexentry{standard error}{31}
+\indexentry{shape parameters}{32}
+\indexentry{skewness}{32}
+\indexentry{kurtosis}{32}
+\indexentry{statistic}{32}
+\indexentry{distributions!normal}{32}
+\indexentry{probability density function}{33}
+\indexentry{central limit theorem}{35}
+\indexentry{variate}{35}
+\indexentry{distributions!continuous}{36}
+\indexentry{distributions!t-distribution}{36}
+\indexentry{distributions!chi square}{37}
+\indexentry{distributions!F distribution}{39}
+\indexentry{distributions!lognormal}{40}
+\indexentry{distributions!weibull}{41}
+\indexentry{distributions!exponential}{41}
+\indexentry{distributions!uniform}{42}
+\indexentry{distributions!discrete}{43}
+\indexentry{distributions!binomial}{43}
+\indexentry{distributions!Bernoulli}{43}
+\indexentry{distributions!poisson}{43}
+\indexentry{distributions!discrete}{44}
+\indexentry{normality check}{45}
+\indexentry{plots!$Q-Q$ plot}{45}
+\indexentry{test!Kolmogorov-Smirnov}{45}
+\indexentry{test!Lilliefors}{45}
+\indexentry{test!Shapiro-Wilk}{46}
+\indexentry{transformation}{46}
+\indexentry{confidence interval}{46}
+\indexentry{hypotheses}{49}
+\indexentry{error!Type I}{50}
+\indexentry{power}{50}
+\indexentry{error!Type II}{50}
+\indexentry{sample size}{50}
+\indexentry{sensitivity}{52}
+\indexentry{specificity}{52}
+\indexentry{positive predictive value}{52}
+\indexentry{negative predictive value}{52}
+\indexentry{prevalence}{53}
+\indexentry{ROC curve}{54}
+\indexentry{test! t-test, one sample}{57}
+\indexentry{test!Wilcoxon signed rank sum}{57}
+\indexentry{test! t-test, paired}{58}
+\indexentry{test!Mann-Whitney}{58}
+\indexentry{ANOVA}{59}
+\indexentry{test!ANOVA}{59}
+\indexentry{test!Levene}{59}
+\indexentry{test!F-test}{60}
+\indexentry{test!variance ratio}{60}
+\indexentry{Multiple Comparisons}{61}
+\indexentry{test!Tukey's}{61}
+\indexentry{Bonferroni correction}{61}
+\indexentry{Holms correction}{62}
+\indexentry{test!Kruskal-Wallis}{62}
+\indexentry{test!binomial}{65}
+\indexentry{test!Cochran's Q}{67}
+\indexentry{frequency tables}{68}
+\indexentry{test!chi square}{68}
+\indexentry{test!Fisher's exact}{69}
+\indexentry{test!McNemar's}{70}
+\indexentry{test!Cochran's Q}{71}
+\indexentry{correlation coefficient}{73}
+\indexentry{correlation!Pearson}{73}
+\indexentry{coefficient of determination}{73}
+\indexentry{coefficient of determination!adjusted}{74}
+\indexentry{correlation!Spearman}{75}
+\indexentry{correlation!Kendall's $\tau$}{75}
+\indexentry{regression}{75}
+\indexentry{covariate}{76}
+\indexentry{regressand}{76}
+\indexentry{endogenous variable}{76}
+\indexentry{regressor}{76}
+\indexentry{exogenous variable}{76}
+\indexentry{regression!multilinear}{77}
+\indexentry{regression!multiple linear|see{regression!multilinear}}{77}
+\indexentry{test!Friedman}{81}
+\indexentry{regression!multilinear}{81}
+\indexentry{ANOVA, two-way}{81}
+\indexentry{test!ANOVA}{81}
+\indexentry{regression!multilinear}{82}
+\indexentry{statistical modeling}{83}
+\indexentry{design matrix}{83}
+\indexentry{regression!multiple}{84}
+\indexentry{Maximum likelihood}{89}
+\indexentry{log likelihood function}{89}
+\indexentry{Akaike Information Criterion AIC}{90}
+\indexentry{Bayesian Information Criterion BIC}{90}
+\indexentry{Akaike Information Criterion AIC}{90}
+\indexentry{Bayesian Information Criterion BIC}{90}
+\indexentry{condition number}{94}
+\indexentry{scikit-learn}{95}
+\indexentry{bootstrapping}{100}
+\indexentry{survival times}{101}
+\indexentry{Kaplan-Meier survival curve}{101}
+\indexentry{test!logrank}{102}
+\indexentry{Cox regression model}{102}

@@ -54,8 +54,8 @@ check for outliers. One of them is to check for data which lie more than
 1.5\*\ *inter-quartile-range* (IQR) above or below the first/third
 quartile (see below).
 
-Centiles 
-^^^^^^^^^^
+Percentiles 
+^^^^^^^^^^^^
 
 The *Cumulative distribution function (CDF)* tells you for each value which
 percentage of the data has a lower value (Figure :ref:`fig-NormalDistribution`).
@@ -100,6 +100,18 @@ population and wish to use the sample data to estimate the variability
 in the population. Dividing by :math:`n-1` gives us a better estimate of
 the population variance.
 
+The Figure below indicates why the sample standard deviation underestimates
+the standard deviation of the underlying distribution.
+
+.. figure:: ../Images/mean_std.png
+    :scale: 50 %
+
+*Gaussian distributions fitted to selections of data from the underlying
+distribution: While the average mean of a number of samples converges to
+the real mean, the sample standard deviation underestimates the standard
+deviation from the distribution.*
+
+Since the t-distribution has longer tails than the normal distribution, it is much less sensitive to outliers (see Figure Since the t-distribution has longer tails than the normal distribution, it is much less sensitive to outliers (see FigureSince the t-distribution has longer tails than the normal distribution, it is much less sensitive to outliers (see Figure Since the t-distribution has longer tails than the normal distribution, it is much less sensitive to outliers (see Figure  
 The *standard deviation* is simply given by the square root of the
 variance:
 
@@ -271,15 +283,15 @@ sampling 100 numbers from a normal distribution:
 
 Some examples of applications are:
 
--  If the average man is 175 cm tall with a variance of 6 cm, what is
+-  If the average man is 175 cm tall with a standard deviation of 6 cm, what is
    the probability that a man found at random will be 183 cm tall?
 
--  If the average man is 175 cm tall with a variance of 6 cm and the
-   average woman is 168 cm tall with a variance of 3 cm, what is the
+-  If the average man is 175 cm tall with a standard deviation of 6 cm and the
+   average woman is 168 cm tall with a standard deviation of 3 cm, what is the
    probability that the average man from a given sample will be shorter
    than the average woman from a given sample?
 
--  If cans are assumed to have a variance of 4 grams, what does the
+-  If cans are assumed to have a standard deviation of 4 grams, what does the
    average weight need to be in order to ensure that the 99% of all cans
    have a weight of at least 250 grams?
 
@@ -395,10 +407,19 @@ A very frequent application of the t-distribution is in the calculation of `Conf
 
 *Calculating the t-values for confidence intervals, for n = 20 and alpha=0.05. For comparison, I also calculate the corresponding value from the normal distribution.*
 
-
 | |image11|
 
 *t Distribution*
+
+Since the t-distribution has longer tails than the normal distribution, it
+is much less sensitive to outliers (see Figure below).
+
+.. image:: ..\Images\ttest_stability.png
+    :scale: 40 %
+
+*The t-distribution is much more robust against outliers than the normal
+distribution.*
+
 
 Chi-square Distribution
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -718,27 +739,29 @@ plot will approximately lie on a line, but not necessarily on the line
 
 *QQ-plot*
 
-Kolmogorov-Smirnov Test
-^^^^^^^^^^^^^^^^^^^^^^^
-In addition, there are quantitative tests for normality. The test that I
-have encountered most frequently in recent literature is the
-*Kolmogorov-Smirnov test*. The Kolmogorov-Smirnov statistic quantifies a
-distance between the empirical distribution function of the sample and
-the cumulative distribution function of the reference distribution, or
-between the empirical distribution functions of two samples. Note that
-this implies that in a test for normality, you have to i) standardize
-your sample distribution (i.e. subtract the mean, and divide by the
-standard deviation), and specify your reference distribution (i.e. if
-you want to check for normality, the normal distribution).
+Kolmogorov-Smirnov Test and Lilliefors Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Another thest for normality is the *Lilliefors test*. It is a normality
-test based on the Kolmogorov–Smirnov test, and is used to test the null
-hypothesis that data come from a normally distributed population, when
-the null hypothesis does not specify which normal distribution; i.e., it
-does not specify the expected value and variance of the distribution.
+To test the null hypothesis that data come from a normally distributed
+population, when the null hypothesis does not specify which normal distribution
+i.e., it does not specify the expected value and variance of the distribution,
+you can use the *Lilliefors test*. It is a
+normality test based on the *Kolmogorov--Smirnov test*, which quantifies a
+distance between the empirical distribution function of the sample and the
+cumulative distribution function of the reference distribution, or between the
+empirical distribution functions of two samples. Note that for the original
+Kolmogorov-Smirnov test this implies that in a test for normality, you have to 
+standardize your sample distribution (i.e. subtract the mean, and divide by the
+standard deviation), and specify your reference distribution (i.e. if you want to
+check for normality, the normal distribution).
 
-Altman mainly uses the *Shapiro-Wilk W test* , and a number of other
-tests are also available.
+
+Altman mainly uses the *Shapiro-Wilk W test*, the Python command
+*stats.normaltest(x)* uses a method by D'Agostino and Pearson,  and a
+number of other tests are also available.
+
+The program listed below, "checkNormality.py", shows how to check graphically
+and quantitatively if a given distribution is normal.
 
 .. image:: ../Images/KS_example.png
     :scale: 50 %
@@ -810,8 +833,8 @@ Analysis
    #. Check the Alkaline Phosphatase levels for normality. Use a
       log-transform on the data, and re-check.
 
-Continuous Distributions Distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Continuous Distributions 
+~~~~~~~~~~~~~~~~~~~~~~~~~
 #.  **T-Distribution:** Measuring the weight of your collegues, you have obtained the following weights: 52, 70, 65, 85, 62, 83, 59 kg.
     Calculate the corresponding mean, and the 99% confidence interval for the mean. Note: with n values you have n-1 DOF for the t-distribution.
     (Correct answer: 68.0 +/- 17.2 kg)

@@ -96,13 +96,13 @@ There are three reasons why I have decided to use Python for this lecture.
 \end{enumerate}
 
 I have not seen many books on Python that I really liked. My favorite introductory book is \cite{Harms2010}.
-A good free book, which introduces Python with a focus on statistics, is \href{http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf} {Introduction to Python for Econometrics, Statistics and Data Analysis, by Kevin Sheppard, Oxford University}.
+A good free book, which introduces Python with a focus on statistics, is \href{http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf} {"Introduction to Python for Econometrics, Statistics and Data Analysis", by Kevin Sheppard, Oxford University}.
 
 In general, I suggest that you start out by installing a Python distribution which includes the most important libraries. Since I suggest that you use Python $>3.3$ for this course, \cite{pythonxy} (which comes complete with help) is currently not an option, since it is only available for Python 2.7. All the Python packages required for this course are now available for Python 3, so I don't see a good reason to stay with Python 2.7 . My favorites Python 3.3 distributions  are
 
 \begin{enumerate}
-    \item \cite{winpython} No admin-rights required.
-    \item \cite{anaconda} From Continuum.
+    \item \cite{winpython} No admin-rights required. Recommended for Windows users.
+    \item \cite{anaconda} From Continuum. For Windows, Mac, and Linux. By default installs to Python 2.7.x, but can upgrade to Python 3.x.
 \end{enumerate}
 
 which are very good starting points when you are using Windows. \emph{winpython} does not require administrator rights, and \emph{anaconda} is a more recent distribution, which is free for educational purposes.
@@ -115,7 +115,7 @@ There are also many tutorials available on the internet (Table \ref{table:python
 
   \footnotesize{
   \centering
-   \begin{tabular}{|l p{8 cm}|}
+   \begin{tabular}{|p{8 cm}|p{8 cm}|}
      \hline
      \url{http://scipy-lectures.github.com} & \emph{Python Scientific Lecture Notes.} Pretty comprehensive. \\     \url{http://www.scipy.org/NumPy\_for\_Matlab\_Users} & \emph{NumPy for Matlab Users} Start here if you have Matlab experience. \\
      \url {https://github.com/jrjohansson/scientific-python-lectures} & \emph{Lectures on scientific computing with Python.} Great ipython notebooks! \\     \url{http://docs.python.org/2/tutorial} & \emph{The Python tutorial.} The official introduction. \\
@@ -161,14 +161,14 @@ these things:
 
 \subsubsection{Matplotlib, pylab, and pyplot: how are they related?}
 
-\textbf{Matplotlib}\index{general}{Python!Matplotlib} is the whole package; \emph{pylab} is a module in matplotlib that gets installed alongside matplotlib; and \emph{matplotlib.pyplot} is a module in matplotlib.
+\textbf{Matplotlib}\index{general}{Python!Matplotlib} is the whole package; \emph{pylab} is a Matlab-like module in matplotlib that gets installed alongside matplotlib; and \emph{matplotlib.pyplot} is a module in matplotlib.
 
-\textbf{Pyplot}\index{general}{Python!pyplot} provides the state-machine interface to the underlying plotting library in matplotlib. This means that figures and axes are implicitly and automatically created to achieve the desired plot. For example, calling plot from pyplot will automatically create the necessary figure and axes to achieve the desired plot. Setting a title will then automatically set that title to the current axes object:
+\textbf{Pyplot}\index{general}{Python!pyplot} provides the state-machine interface to the underlying plotting library in matplotlib. This means that figures and axes are implicitly and automatically created to achieve the desired plot. For example, calling \emph{plot }from pyplot will automatically create the necessary figure and axes to achieve the desired plot. Setting a \emph{title }will then automatically set that title to the current axes object:
 
 \begin{lstlisting}
     import matplotlib.pyplot as plt
 
-    plt.plot(arange(10))
+    plt.plot(np.arange(10))
     plt.title("Simple Plot")
     plt.show()
 \end{lstlisting}
@@ -180,7 +180,7 @@ The pyplot interface is generally preferred for non-interactive plotting (i.e., 
 
 \subsubsection{Coding Styles in Python}
 
-In Python you will find different coding styles and usage patterns. These styles are perfectly valid and have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.
+In Python you will find different coding styles and usage patterns. These styles are all perfectly valid, and each have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.
 
 Of the different styles, there are two that are officially supported. Therefore, these are the preferred ways to use matplotlib.
 
@@ -222,7 +222,6 @@ Next, the same example using a pure MATLAB-style:
     x = arange(0, 10, 0.2)
     y = sin(x)
     plot(x, y)
-    show()
 \end{lstlisting}
 
 So, why all the extra typing as one moves away from the pure MATLAB-style? For very simple things like this example, the only advantage is academic: the wordier styles are more explicit, more clear as to where things come from and what is going on. For more complicated applications, this explicitness and clarity becomes increasingly valuable, and the richer and more complete object-oriented interface will likely make the program easier to write and maintain.
@@ -236,12 +235,11 @@ practice when writing functions.)
 
 \subsubsection{Example-Session}
 
-\PyImg "gettingStarted.py" (p \pageref{py:gettingStarted_ipy}) gives a short demonstration of Python for scientific data analysis
+\PyImg "gettingStarted.py" (p \pageref{py:gettingStarted_ipy}) gives a short demonstration of Python for scientific data analysis.
 \index{python}{gettingStarted}
 
 
 \subsection{Pandas}
-
 
 \cite{pandas} is a Python module which provides suitable data structures for
 statistical analysis. It significantly enhances the abilities of Python for
@@ -262,7 +260,7 @@ formats, e.g. CSV and text files, Microsoft Excel, and SQL databases. For exampl
 in your clipboard, you can import them directly with
 
 \begin{lstlisting}
-    data = pd.io.parsers.read_clipboard()
+    data = pd.read_clipboard()
 \end{lstlisting}
 
 Or data from "Sheet1" in an Excel-file "data.xls" can be read in easily with
@@ -277,63 +275,132 @@ Or data from "Sheet1" in an Excel-file "data.xls" can be read in easily with
 \index{python}{readZip}
 
 \subsubsection{Data Handling and Manipulation}
-Pandas offers powerful functions to handle missing data and "nans", and other kinds of data manipulation like pivoting.
 
-To handle labeled data, pandas introduces \emph{DataFrame} objects. A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table. It is generally the most commonly used pandas object. For example, you can use data-frames to efficiently group objects, and do a statistical evaluation of each group:
+
+To handle labeled data, pandas introduces \emph{DataFrame} objects. A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table. It is generally the most commonly used pandas object.
+At first, handling data with Pandas feels a bit unusual. To get you started, let me give you a specific example:
 
 \begin{lstlisting}
-    x = tile([1,2,3], 4)
-    y = randn(len(x))
-    df = pd.DataFrame({'treatment':x, 'result':y})
-    groups = df.groupby('treatment')
-    print(groups['result'].describe())
+    import numpy as np
+    import pandas as pd
+
+    t = np.arange(0,10,0.1)
+    x = np.sin(t)
+    y = np.cos(t)
+
+    df = pd.DataFrame({'Time':t, 'x':x, 'y':y})
+\end{lstlisting}
+
+In Pandas, rows are addressed through "indices", and columns through their "column" name.
+To address the first column only, you have two options:
+
+\begin{lstlisting}
+    df.Time
+    df['Time']
+\end{lstlisting}
+
+If you want to extract two columns at the same time, you have to use a Python-list:
+
+\begin{lstlisting}
+    data = df[['Time', 'y']]
+\end{lstlisting}
+
+To display the first or last rows, use
+
+\begin{lstlisting}
+    data.head()
+    data.tail()
+\end{lstlisting}
+
+For e.g. rows 5-10 (note that this are 6 numbers), use
+
+\begin{lstlisting}
+    data[4:10]
+\end{lstlisting}
+
+as $10-4=6$. (I know, the array indexing takes some time to get used to. Just keep in mind that Python addresses the \emph{locations between} entries, not the entries, and that it starts at $0$!!) To do this in one go, use
+
+\begin{lstlisting}
+    df[['Time', 'y']][4:10]
+\end{lstlisting}
+
+You can also apply the standard row/column notation, by using the method "ix":
+
+\begin{lstlisting}
+    df.ix[[0,2],4:10]
+\end{lstlisting}
+
+Finally, sometimes you want to have direct access to the data, not to the DataFrame. You can do this with
+
+\begin{lstlisting}
+    data.values
+\end{lstlisting}
+
+Pandas offers powerful functions to handle missing data and "nans", and other kinds of data manipulation like pivoting.
+For example, you can use data-frames to efficiently group objects, and do a statistical evaluation of each group. The following data are simulated (but realistic) data of a survey on how many hours a day people watch on the TV, grouped into "m"ale and "f"emale responses:
+
+\begin{lstlisting}
+    data = pd.DataFrame({
+        'Gender': ['f', 'f', 'm', 'f', 'm', 'm', 'f', 'm', 'f', 'm'],
+        'TV': [3.4, 3.5, 2.6, 4.7, 4.1, 4.0, 5.1, 4.0, 3.7, 2.1]
+        })
+
+    # Group the data
+    grouped = data.groupby('Gender')
+
+    # Get the groups as DataFrames
+    df_female = grouped.get_group('f')
+
+    # Get the corresponding numpy-array
+    values_female = grouped.get_group('f').values
+
+    # or equivalently
+    groups = grouped.groups
+    values_female = groups['f']
+
+    # Do some overview statistics
+    print(grouped.describe())
 \end{lstlisting}
 
 produces
 
 \begin{lstlisting}
-     treatment
-    1          count    4.000000
-               mean    -1.693818
-               std      1.559007
-               min     -3.857303
-               25%     -2.293582
-               50%     -1.279452
-               75%     -0.679688
-               max     -0.359065
-    2          count    4.000000
-               mean    -0.240799
-               std      0.610826
-               min     -0.780429
-               25%     -0.563200
-               50%     -0.406580
-               75%     -0.084178
-               max      0.630393
-    3          count    4.000000
-               mean     0.177045
-               std      0.703775
-               min     -0.298325
-               25%     -0.255564
-               50%     -0.101432
-               75%      0.331177
-               max      1.209367
-    dtype: float64
+                        TV
+    Gender
+    f      count  5.000000
+           mean   4.080000
+           std    0.769415
+           min    3.400000
+           25%    3.500000
+           50%    3.700000
+           75%    4.700000
+           max    5.100000
+    m      count  5.000000
+           mean   3.360000
+           std    0.939681
+           min    2.100000
+           25%    2.600000
+           50%    4.000000
+           75%    4.000000
+           max    4.100000
 \end{lstlisting}
 
 For statistical analysis, pandas becomes really powerful if you combine it with \emph{statsmodels} (see below).
 
-\PyImg "pandasIntro.py" (p \pageref{py:pandasIntro}) shows you how pandas can be used for data analysis.
-\index{python}{pandasIntro}
 
 \subsection{Statsmodels}
 
-\cite{statsmodels} is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. In its latest release (version 0.5), statsmodels also allows the formulation of models with the popular formula language also used by $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model $success ~ intelligence * diligence$, which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
+\cite{statsmodels} is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. In its latest release (version 0.5), statsmodels also allows the formulation of models with the popular formula language also used by $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model
+$success \sim intelligence * diligence$, which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
 
 While for complex statistical models R still has an edge, python has a much clearer and more readable syntax, and is arguably more powerful for the data manipulation often required for statistical analysis.
 
+\PyImg "statsmodelsIntro.py" (p \pageref{py:statsmodelsIntro}) shows you how the combination of pandas and statsmodels can be used for data analysis.
+\index{python}{statsmodelsIntro}
+
 \subsection{Seaborn}
 
-\cite{seaborn} is a Python visualization library based on matplotlib. Its primary goal is to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive.
+\cite{seaborn} is a Python visualization library based on matplotlib. Its primary goal is to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive. Seaborn can be installed easily by opening up a \emph{WinPython Command Prompt}, and then typing \lstinline{pip install seaborn}.
 
 \begin{lstlisting}
         x = linspace(1, 7, 50)
@@ -352,7 +419,7 @@ already produces a nice and informative regression plot
 \subsection{General Routines}
 Here is also a good place to introduce the short function that we will use a number of times to simplify the reading in of data:
 
-\PyImg "getData.py" (p \pageref{py:getData}) Gets the input data for the Python programs in this script.
+\PyImg "getData.py" (p \pageref{py:getData}) Gets the input data for many Python programs in this script.
 \index{python}{getData}
 
 \section{Exercises}

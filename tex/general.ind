@@ -1,121 +1,123 @@
 \begin{theindex}
 
-  \item Akaike Information Criterion AIC, 83
-  \item ANOVA, 51
-  \item ANOVA, two-way, 73
+  \item Akaike Information Criterion AIC, 90
+  \item ANOVA, 59
+  \item ANOVA, two-way, 81
 
   \indexspace
 
-  \item Baysian Information Criterion BIC, 83
-  \item bias, 20
-  \item blinding, 22
-  \item Bonferroni correction, 53
-  \item bootstrapping, 83
+  \item Bayesian Information Criterion BIC, 90
+  \item bias, 22
+  \item blinding, 24
+  \item Bonferroni correction, 61
+  \item bootstrapping, 100
 
   \indexspace
 
-  \item centiles, 25
-  \item central limit theorem, 28
-  \item coefficient of determination, 65
-    \subitem adjusted, 66
-  \item confidence interval, 39
-  \item control group, 21
+  \item centiles, 30
+  \item central limit theorem, 35
+  \item coefficient of determination, 73
+    \subitem adjusted, 74
+  \item condition number, 94
+  \item confidence interval, 46
+  \item control group, 22
   \item correlation
-    \subitem Kendall's $\tau$, 67
-    \subitem Pearson, 65
-    \subitem Spearman, 67
-  \item correlation coefficient, 65
-  \item covariate, 68
-  \item Cox regression model, 86
-  \item crossover studies, 22
-  \item cumulative density function, 26
-  \item cumulative frequency, 18
+    \subitem Kendall's $\tau$, 75
+    \subitem Pearson, 73
+    \subitem Spearman, 75
+  \item correlation coefficient, 73
+  \item covariate, 76
+  \item Cox regression model, 102
+  \item crossover studies, 23
+  \item cumulative density function, 27, 28
+  \item cumulative frequency, 20
 
   \indexspace
 
   \item data
-    \subitem categorical, 15
-    \subitem numerical, 15
-    \subitem ordinal, 15
+    \subitem categorical, 17
+    \subitem numerical, 17
+    \subitem ordinal, 17
+  \item design matrix, 83
   \item distributions
-    \subitem Bernoulli, 36
-    \subitem binomial, 36
-    \subitem chi square, 32
-    \subitem continuous, 31
-    \subitem discrete, 36, 37
-    \subitem exponential, 34
-    \subitem F distribution, 32
-    \subitem lognormal, 34
-    \subitem normal, 28
-    \subitem poisson, 36
-    \subitem t-distribution, 31
-    \subitem uniform, 35
-    \subitem weibull, 34
-  \item documentation, 23
+    \subitem Bernoulli, 43
+    \subitem binomial, 43
+    \subitem chi square, 37
+    \subitem continuous, 36
+    \subitem discrete, 43, 44
+    \subitem exponential, 41
+    \subitem F distribution, 39
+    \subitem lognormal, 40
+    \subitem normal, 32
+    \subitem poisson, 43
+    \subitem t-distribution, 36
+    \subitem uniform, 42
+    \subitem weibull, 41
+  \item documentation, 24
 
   \indexspace
 
-  \item endogenous variable, 68
+  \item endogenous variable, 76
   \item error
-    \subitem Type I, 43
-    \subitem Type II, 44
-  \item exogenous variable, 68
+    \subitem Type I, 50
+    \subitem Type II, 50
+  \item exogenous variable, 76
 
   \indexspace
 
-  \item factor, 22
-  \item frequency tables, 60
+  \item factor, 24
+  \item frequency tables, 68
 
   \indexspace
 
-  \item geometric mean, 25
+  \item geometric mean, 29
 
   \indexspace
 
-  \item Holms correction, 54
-  \item hypotheses, 43
+  \item Holms correction, 62
+  \item hypotheses, 49
 
   \indexspace
 
-  \item IQR, 26
+  \item IQR, 30
 
   \indexspace
 
-  \item Kaplan-Meier survival curve, 85
-  \item kurtosis, 28
+  \item Kaplan-Meier survival curve, 101
+  \item kurtosis, 32
 
   \indexspace
 
-  \item log likelihood function, 82
+  \item log likelihood function, 89
 
   \indexspace
 
-  \item Maximum likelihood, 82
-  \item mean, 25
-  \item median, 25
-  \item mode, 25
-  \item Multiple Comparisons, 53
+  \item Maximum likelihood, 89
+  \item mean, 29
+  \item median, 29
+  \item mode, 29
+  \item Multiple Comparisons, 61
 
   \indexspace
 
-  \item negative predictive value, 46
-  \item nominal, 15
-  \item normality check, 38
+  \item negative predictive value, 52
+  \item nominal, 17
+  \item normality check, 45
 
   \indexspace
 
-  \item percentiles, 25
+  \item percentiles, 30
   \item plots
-    \subitem $Q-Q$ plot, 38
-    \subitem boxplot, 18
-    \subitem histogram, 16
-    \subitem kde, 16
-    \subitem scatter, 16
-    \subitem violinplot, 18
-  \item positive predictive value, 46
-  \item power, 43
-  \item prevalence, 46
-  \item probability density function, 26, 29
+    \subitem $Q-Q$ plot, 45
+    \subitem boxplot, 21
+    \subitem histogram, 18
+    \subitem kde, 19
+    \subitem scatter, 18
+    \subitem violinplot, 21
+  \item positive predictive value, 52
+  \item power, 50
+  \item prevalence, 53
+  \item probability density function, 27, 33
   \item Python
     \subitem ipython, 10
     \subitem Matplotlib, 10
@@ -124,59 +126,61 @@
 
   \indexspace
 
-  \item randomization, 21
-  \item randomized controlled trial, 21
-  \item range, 25
-  \item regressand, 68
-  \item regression, 67
-    \subitem multilinear, 69, 73, 74
-    \subitem multiple, 76
-  \item regressor, 68
-  \item replication, 22
-  \item ROC curve, 48
+  \item random variate, 27
+  \item randomization, 23
+  \item randomized controlled trial, 22
+  \item range, 30
+  \item regressand, 76
+  \item regression, 75
+    \subitem multilinear, 77, 81, 82
+    \subitem multiple, 84
+  \item regressor, 76
+  \item replication, 24
+  \item ROC curve, 54
 
   \indexspace
 
-  \item sample selection, 22
-  \item sample size, 44
-  \item sensitivity, 46
-  \item shape parameters, 27
-  \item skewness, 28
-  \item specificity, 46
-  \item standard deviation, 26
-  \item standard error, 27
-  \item statistic, 28
-  \item statistical modeling, 75
-  \item survival times, 85
+  \item sample selection, 24
+  \item sample size, 50
+  \item scikit-learn, 96
+  \item sensitivity, 52
+  \item shape parameters, 32
+  \item skewness, 32
+  \item specificity, 52
+  \item standard deviation, 30
+  \item standard error, 31
+  \item statistic, 32
+  \item statistical modeling, 83
+  \item survival times, 101
 
   \indexspace
 
   \item test
-    \subitem  t-test, one sample, 49
-    \subitem  t-test, paired, 50
-    \subitem ANOVA, 51, 73
-    \subitem binomial, 57
-    \subitem chi square, 60
-    \subitem Cochran's Q, 59
-    \subitem F-test, 52
-    \subitem Fisher's exact, 61
-    \subitem Friedman, 73
-    \subitem Kolmogorov-Smirnov, 38
-    \subitem Kruskal-Wallis, 54
-    \subitem Levene, 51
-    \subitem Lilliefors, 39
-    \subitem logrank, 86
-    \subitem Mann-Whitney, 50
-    \subitem McNemar's, 62
-    \subitem Shapiro-Wilk, 39
-    \subitem Tukey's, 53
-    \subitem variance ratio, 52
-    \subitem Wilcoxon signed rank sum, 49
-  \item transformation, 39
+    \subitem  t-test, one sample, 57
+    \subitem  t-test, paired, 58
+    \subitem ANOVA, 59, 81
+    \subitem binomial, 65
+    \subitem chi square, 68
+    \subitem Cochran's Q, 67, 71
+    \subitem F-test, 60
+    \subitem Fisher's exact, 69
+    \subitem Friedman, 81
+    \subitem Kolmogorov-Smirnov, 45
+    \subitem Kruskal-Wallis, 62
+    \subitem Levene, 59
+    \subitem Lilliefors, 45
+    \subitem logrank, 102
+    \subitem Mann-Whitney, 58
+    \subitem McNemar's, 70
+    \subitem Shapiro-Wilk, 46
+    \subitem Tukey's, 61
+    \subitem variance ratio, 60
+    \subitem Wilcoxon signed rank sum, 57
+  \item transformation, 46
 
   \indexspace
 
-  \item variance, 26
-  \item variate, 28
+  \item variance, 30
+  \item variate, 35
 
 \end{theindex}

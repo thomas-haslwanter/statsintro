@@ -1,15 +1,20 @@
-''' Graphical and quantitative check, if a given distribution is normal.
+'''
+Graphical and quantitative check, if a given distribution is normal.
+The Kolmogorov-Smirnov(KS) test has been replaced with the Lilliefors-test,
+since the original KS-test is unreliable when mean and std of the distribution
+are not known.
 
 '''
 
 '''
 Author:  Thomas Haslwanter
-Date:    May-2013
-Version: 1.1
+Date:    April-2014
+Version: 1.2
 '''
 
 import numpy as np
 import scipy.stats as stats
+from statsmodels.stats.diagnostic import kstest_normal
 import matplotlib.pyplot as plt
 
 myMean = 0
@@ -38,8 +43,12 @@ def check_normality():
     # combines skew and kurtosis to produce an omnibus test of normality.
     stats.normaltest(data)
 
-    # Or you can check for normality with Kolmogorov-Smirnov test
-    _,pVal = stats.kstest((data-np.mean(data))/np.std(data,ddof=1), 'norm')
+    # Or you can check for normality with Lilliefors-test
+    ksStats, pVal = kstest_normal(data)
+    
+    # Alternatively with original Kolmogorov-Smirnov test
+    #_,pVal = stats.kstest((data-np.mean(data))/np.std(data,ddof=1), 'norm')
+    
     if pVal > 0.05:
         print('Data are normally distributed')
     # --- >>> STOP stats <<< ---

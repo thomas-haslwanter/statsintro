@@ -1,8 +1,5 @@
 '''Multiple testing
-This script provides an example, where three treatments are compared.
-It first performs a one-way ANOVA, to see if there is a difference between
-the groups. Then it performs multiple comparisons, to check which of the
-groups are different.
+This script provides an example, where three treatments are compared. It first performs a one-way ANOVA, to see if there is a difference between the groups. Then it performs multiple comparisons, to check which of the groups are different.
 
 Taken from an example by Josef Perktold (http://jpktd.blogspot.co.at/)
 

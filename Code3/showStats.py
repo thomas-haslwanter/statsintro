@@ -1,6 +1,5 @@
 ''' Show different ways to present statistical data
-This script is written in "MATLAB" or "ipython" style, to show how
-best to use Python interactively.
+This script is written in "MATLAB" or "ipython" style, to show how best to use Python interactively.
 Note than in ipython, the "show()" commands are automatically generated.
 The examples contain:
 - scatter plots

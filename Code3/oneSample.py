@@ -19,8 +19,7 @@ from getdata import getData
 
 def check_mean():        
     '''Data from Altman, check for significance of mean value.
-    Compare average daily energy intake (kJ) over 10 days of 11 healthy women, and
-    compare it to the recommended level of 7725 kJ.
+    Compare average daily energy intake (kJ) over 10 days of 11 healthy women, and compare it to the recommended level of 7725 kJ.
     '''
     # Get data from Altman
     data = getData('altman_91.txt', subDir='..\Data\data_altman')
