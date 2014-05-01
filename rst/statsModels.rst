@@ -150,6 +150,828 @@ This second set of examples is based heavily on Jonathan Taylor's class notes th
 
 Ipython notebook `statsIntro_linearModels.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/statsIntro_linearModels.ipynb>`_
 
+Linear Regression Analysis with Python
+--------------------------------------
+
+The following is based on the `blog of Connor
+Johnson <http://connor-johnson.com/2014/02/18/linear-regression-with-python/>`__.
+
+We will use Python to explore measures of fit for linear regression: the
+coefficient of determination (:math:`R^2`), hypothesis tests (F, t,
+Omnibus), AIC, BIC, and other measures.
+
+First we will look at a small data set from `DASL
+library <http://lib.stat.cmu.edu/DASL/Stories/AlcoholandTobacco.html>`__,
+regarding the correlation between tobacco and alcohol purchases in
+different regions of the United Kingdom. The interesting feature of this
+data set is that Northern Ireland is reported as an outlier.
+Notwithstanding, we will use this data set to describe two tools for
+calculating a linear regression. We will alternatively use the
+*statsmodels* and *sklearn* modules for calculating the linear
+regression, while using *pandas* for data management, and *matplotlib*
+for plotting. To begin, we will import the modules, get the data into
+Python, and have a look at them:
+
+::
+
+        import numpy as np
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        import statsmodels.formula.api as sm
+        from sklearn.linear_model import LinearRegression
+        from scipy import stats
+
+        data_str = '''Region Alcohol Tobacco
+        North 6.47 4.03
+        Yorkshire 6.13 3.76
+        Northeast 6.19 3.77
+        East_Midlands 4.89 3.34
+        West_Midlands 5.63 3.47
+        East_Anglia 4.52 2.92
+        Southeast 5.89 3.20
+        Southwest 4.79 2.71
+        Wales 5.27 3.53
+        Scotland 6.08 4.51
+        Northern_Ireland 4.02 4.56'''
+
+        # Read in the data. Note that for Python 2.x, you have to change the "import" statement
+        from io import StringIO
+        df = pd.read_csv(StringIO(data_str), sep=r'\s+')
+
+        # Plot the data
+        df.plot('Tobacco', 'Alcohol', style='o')
+        plt.ylabel('Alcohol')
+        plt.title('Sales in Several UK Regions')
+        plt.show()
+
+
+.. figure:: ../Images/Alc_vs_Tobacco.png
+    :scale: 33 %
+
+    Sales of Alcohol vs Tobacco in the UK. We notice that there seems to be a linear trend, and one outlier, which corresponds to North Ireland.
+
+Fitting the model, leaving the outlier for the moment away is then very
+easy:
+
+::
+
+        result = smf.ols('Alcohol ~ Tobacco', df[:-1]).fit()
+        print(result.summary())
+
+Note that using the formula API from statsmodels, an intercept is
+automatically added. This gives us
+
+::
+
+
+                                OLS Regression Results
+    ==============================================================================
+    Dep. Variable:                Alcohol   R-squared:                       0.615
+    Model:                            OLS   Adj. R-squared:                  0.567
+    Method:                 Least Squares   F-statistic:                     12.78
+    Date:                Sun, 27 Apr 2014   Prob (F-statistic):            0.00723
+    Time:                        13:19:51   Log-Likelihood:                -4.9998
+    No. Observations:                  10   AIC:                             14.00
+    Df Residuals:                       8   BIC:                             14.60
+    Df Model:                           1
+    ==============================================================================
+                     coef    std err          t      P>|t|      [95.0% Conf. Int.]
+    ------------------------------------------------------------------------------
+    Intercept      2.0412      1.001      2.038      0.076        -0.268     4.350
+    Tobacco        1.0059      0.281      3.576      0.007         0.357     1.655
+    ==============================================================================
+    Omnibus:                        2.542   Durbin-Watson:                   1.975
+    Prob(Omnibus):                  0.281   Jarque-Bera (JB):                0.904
+    Skew:                          -0.014   Prob(JB):                        0.636
+    Kurtosis:                       1.527   Cond. No.                         27.2
+    ==============================================================================
+
+And now we have a very nice table of mostly meaningless numbers. I will
+go through and explain each one. The left column of the first table is
+mostly self explanatory. The degrees of freedom of the model are the
+number of predictor, or explanatory variables. The degrees of freedom of
+the residuals is the number of observations minus the degrees of freedom
+of the model, minus one (for the offset).
+
+Most of the values listed in the summary are available via the
+*result* object. For instance, the :math:`R^2` value is obtained by
+*result.rsquared*. If you are using IPython, you may type
+*result.* and hit the TAB key, and a list of attributes for the
+*result* object will drop down.
+
+Model Results
+~~~~~~~~~~~~~
+
+Definitions for Regression with Intercept
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:math:`n` is the number of observations, :math:`p` is the number of
+regression parameters. For example, if you fit a straight line,
+:math:`k=2`. In the following :math:`\hat{y}_i` will indicate the fitted
+model values, and :math:`\bar{y}` will indicate the mean.
+
+-  :math:`SSM = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2` is the *Sum of
+   Square for Model*, or the sum of squares for the regression.
+
+-  :math:`SSE = \sum_{i=1}^n (y_i-\hat{y}_i)^2` is the *sum of Squares
+   for Error*, or the sum of squares for the residuals.
+
+-  :math:`SST = \sum_{i=1}^n (y_i-\bar{y})^2` is the *Sum of Squares
+   Total*, and is equivalent to the sample variance multiplied by
+   :math:`n-1`.
+
+For multiple regression models, :math:`SSM + SSE = SST`
+
+-  :math:`DFM = k - 1` is the *(Corrected) Degrees of Freedom for
+   Model*. (The “-1” comes from the fact that we are only interested in
+   the correlation, not in the absolute offset of the data.)
+
+-  :math:`DFE = n - k` is the *Degrees of Freedom for Error*
+
+-  :math:`DFT = n - 1` is the *(Corrected) Degrees of Freedom Total*.
+   The Horizontal line regression is the null hypothesis model.
+
+For multiple regression models with intercept, DFM + DFE = DFT.
+
+-  :math:`MSM = SSM / DFM` : *Mean of Squares for Model*
+
+-  :math:`MSE = SSE / DFE` : *Mean of Squares for Error*. MSE is an
+   unbiased estimate for :math:`\sigma^2` for multiple regression
+   models.
+
+-  :math:`MST = SST / DFT` : *Mean of Squares Total*, which is the
+   sample variance of the y-variable.
+
+The :math:`R^2` Value
+^^^^^^^^^^^^^^^^^^^^^
+
+The :math:`R^2` value indicates the proportion of variation in the
+y-variable that is due to variation in the x-variables. For simple
+linear regression, the :math:`R^2` value is the square of the sample
+correlation :math:`r_{xy}`. For multiple linear regression with
+intercept (which includes simple linear regression), the :math:`R^2`
+value is defined as
+
+.. math:: R^2 = \frac{SSM}{SST}
+
+The *adjusted* :math:`R^2` Value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Many researchers prefer the adjusted :math:`\bar{R}^2` value (Eq
+[eq:adjustedR2]), which is penalized for having a large number of
+parameters in the model:
+
+Here is the logic behind the definition of :math:`\bar{R}^2`:
+:math:`R^2` is defined as :math:`R^2 = 1 - SSE/SST` or
+:math:`1 - R^2 = SSE/SST`. To take into account the number of regression
+parameters :math:`p`, define the *adjusted R-squared* value as
+
+.. math:: 1- \bar{R}^2 = \frac{Variance for Error}{Variance Total}
+
+where *(Sample) Variance for Error* is estimated by
+:math:`SSE/DFE = SSE/(n-k)`, and *(Sample) Variance Total* is estimated
+by :math:`SST/DFT = SST/(n-1)`. Thus,
+
+.. math::
+
+   \begin{aligned}
+       1 - \bar{R}^2 &=& \frac{SSE/(n - k)}{SST/(n - 1)} \\
+             	&=& \frac{SSE}{SST}\frac{n - 1}{n - k}\end{aligned}
+
+so
+
+.. math::
+
+   \begin{aligned}
+     \bar{R}^2 &=& 1 - \frac{SSE}{SST} \frac{n - 1}{(n - k} \\
+       &=& 1 - (1 - R^2)\frac{n - 1}{n - k}\end{aligned}
+
+The F-test
+^^^^^^^^^^
+
+If :math:`t_1, t_2, ... , t_m` are independent, :math:`N(0, \sigma^2)`
+random variables, then :math:`\sum_{i=1}^m \frac{t_i^2}{\sigma^2}` is a
+:math:`\chi^2` (chi-squared) random variable with :math:`m` degrees of
+freedom.
+
+For a multiple regression model with intercept,
+
+.. math:: Y_j = \alpha + \beta_1 X_{1j} + ... + \beta_n X_{nj} + \epsilon_i = \alpha + \sum_{i=1}^n \beta_i X_{ij} + \epsilon_j = E(Y_j | X) + \epsilon_j
+
+we want to test the following null hypothesis and alternative
+hypothesis:
+
+:math:`H_0`: :math:`\beta_1` = :math:`\beta_2` = , ... , =
+:math:`\beta_n` = 0
+
+:math:`H_1`: :math:`\beta_j \neq 0`, for at least one value of j
+
+This test is known as the overall *F-test for regression*.
+
+It can be shown that if :math:`H_0` is true and the residuals are
+unbiased, homoscedastic, independent, and normal (see section
+[sec:Assumptions] ):
+
+#. :math:`SSE / \sigma^2` has a :math:`\chi^2` distribution with DFE
+   degrees of freedom.
+
+#. :math:`SSM / \sigma^2` has a :math:`\chi^2` distribution with DFM
+   degrees of freedom.
+
+#. SSE and SSM are independent random variables.
+
+If :math:`u` is a :math:`\chi^2` random variable with :math:`n` degrees
+of freedom, :math:`v` is a :math:`\chi^2` random variable with :math:`m`
+degrees of freedom, and :math:`u` and :math:`v` are independent, then if
+:math:`F = \frac{u/n}{v/m}` has an F distribution with :math:`(n,m)`
+degrees of freedom.
+
+If H0 is true,
+
+.. math:: F = \frac{(SSM/\sigma^2)/DFM}{(SSE/\sigma^2)/DFE} = \frac{SSM/DFM}{SSE/DFE} = \frac{MSM}{MSE},
+
+has an F distribution with :math:`(DFM, DFE)` degrees of freedom, and is
+independent of :math:`\sigma`.
+
+We can test this directly in Python with
+
+::
+
+        N = result.nobs
+        k = result.df_model+1
+        dfm, dfe = k-1, N - k
+        F = result.mse_model / result.mse_resid
+        p = 1.0 - stats.f.cdf(F,dfm,dfe)
+        print('F-statistic: {:.3f},  p-value: {:.5f}'.format( F, p ))
+
+which gives us
+
+::
+
+        F-statistic: 12.785,  p-value: 0.00723
+
+Here, *stats.f.cdf( F, m, n )* returns the cumulative sum of the
+F-distribution with shape parameters *m = k-1 = 1*, and *n = N - k
+= 8*, up to the F-statistic :math:`F`. Subtracting this quantity from
+one, we obtain the probability in the tail, which represents the
+probability of observing F-statistics more extreme than the one
+observed.
+
+Log-Likelihood Function
+^^^^^^^^^^^^^^^^^^^^^^^
+
+A very common approach in statistics is the idea of *Maximum Likelihood*
+estimation. The basic idea is quite different from the *minimum square*
+approach: there, the model is constant, and the errors of the response
+are variable; in contrast, in the maximum likelihood approach, the data
+response values are regarded as constant, and the likelihood of the
+model is maximised.
+
+For the Classical Linear Regression Model (with normal errors) we have
+
+.. math:: \epsilon = y_i - \sum_{k=1}^n \beta_k x_{ik} = y_i - \hat{y}_i \; in \; N(0, \sigma^2)
+
+so the probability density is given by
+
+.. math:: p(\epsilon_i) =  \Phi (\frac{y_i - \hat{y}_i}{\sigma})
+
+where :math:`\Phi(z)` is the standard normal probability distribution
+function. The probability of independent samples is the product of the
+individual probabilities
+
+.. math:: \Pi_{total} = \prod_{i=1}^n p(\epsilon_i)
+
+The *Log Likelihood function* is defined as
+
+.. math::
+
+   \begin{aligned}
+     ln(\mathfrak{L}) &=& ln(\Pi_{total}) \\
+     &=& ln\left[\prod_{i=1}^n \frac{1}{\sigma\sqrt{2 \pi}} \exp \left(\frac{(y_i - \hat{y}_i)^2}{2 \sigma^2}\right)\right] \\
+     &=& \sum_{i=1}^n\left[log\left(\frac{1}{\sigma \sqrt{2 \pi}}\right)- \left(\frac{(y_i - \hat{y}_i)^2}{2 \sigma^2}\right)\right]\end{aligned}
+
+It can be shown that the maximum likelihood estimator of
+:math:`\sigma^2` is
+
+.. math:: E(\sigma^2) = \frac{SSE}{n}
+
+We can calculate this in Python as follows:
+
+::
+
+        N = result.nobs
+        SSR = result.ssr
+        s2 = SSR / N
+        L = ( 1.0/np.sqrt(2*np.pi*s2) ) ** N * np.exp( -SSR/(s2*2.0) )
+        print('ln(L) =', np.log( L ))
+
+        >>> ln(L) = -4.99975869739
+
+Information Content of Statistical Models - AIC and BIC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To judge the quality of your model, you should first visually inspect
+the residuals. In addition, you can also use a number of numerical
+criteria to assess the quality of a statistical model. These criteria
+represent various approaches for balancing model accuracy with
+parsimony.
+
+We have already encountered the :math:`adjusted\; R^2` value (Eq
+[eq:adjustedR2]), which - in contrast to the :math:`R^2` value -
+decreases if there are too many regressors in the model.
+
+Other commonly encountered criteria are the *Akaike Information
+Criterion (AIC)* and the Schwartz or *Bayesian Information Criterion
+(BIC)* , which are based on the log-likelihood described in the previous
+section. Both measures introduce a penalty for model complexity, but the
+AIC penalizes complexity less severely than the BIC. The *Akaike
+Information Criterion AIC* is given by
+
+.. math:: AIC = 2*k - 2*ln(\mathfrak{L})
+
+and the Schwartz or *Bayesian Information Criterion BIC* by
+
+.. math:: BIC = k*ln(N) - 2*ln(\mathfrak{L})
+
+are other commonly encountered criteria. Here, :math:`N` is the number
+of observations, :math:`k` is the number of parameters, and
+:math:`\mathcal{L}` is the likelihood. We have two parameters in this
+example, the slope and intercept. The AIC is a relative estimate of
+information loss between different models. The BIC was initially
+proposed using a Bayesian argument, and does not related to ideas of
+information. Both measures are only used when trying to decide between
+different models. So, if you have one regression for alcohol sales based
+on cigarette sales, and another model for alcohol consumption that
+incorporated cigarette sales and lighter sales, then you would be
+inclined to choose the model that had the lower AIC or BIC value.
+
+Model Coefficients and Their Interpretation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Coefficients
+^^^^^^^^^^^^
+
+The *coefficients* or weights of the linear regression are contained in
+*result.params*, and returned as a pandas Series object, since we
+used a pandas DataFrame as input. This is nice, because the coefficients
+are named for convenience.
+
+::
+
+        result.params
+        >>> Intercept    2.041223
+        >>> Tobacco      1.005896
+        >>> dtype: float64
+
+We can obtain this directly by computing
+
+.. math:: \beta = (X^{T}X)^{-1}X^{T}y.
+
+Here, :math:`X` is the matrix of predictor variables as columns, with an
+extra column of ones for the constant term, :math:`y` is the column
+vector of the response variable, and :math:`\beta` is the column vector
+of coefficients corresponding to the columns of :math:`X`. In Python:
+
+::
+
+        df['Eins'] = np.ones(( len(df), ))
+        Y = df.Alcohol[:-1]
+        X = df[['Tobacco','Eins']][:-1]
+
+Standard Error
+^^^^^^^^^^^^^^
+
+To obtain the *standard errors of the coefficients* we will calculate
+the covariance-variance matrix, also called the covariance matrix, for
+the estimated coefficients :math:`\beta` of the predictor variables
+using
+
+.. math:: C = cov(\beta) = \sigma^{2} ( X X^{T} )^{-1}.
+
+Here, :math:`\sigma^{2}` is the variance, or the MSE (mean squared
+error) of the residuals. The standard errors are the square roots of the
+elements on the main diagonal of this covariance matrix. We can perform
+the operation above, and calculate the element-wise square root using
+the following Python code,
+
+::
+
+        X = df.Tobacco[:-1]
+
+        # add a column of ones for the constant intercept term
+        X = np.vstack(( np.ones(X.size), X ))
+
+        # convert the NumPy arrray to matrix
+        X = np.matrix( X )
+
+        # perform the matrix multiplication,
+        # and then take the inverse
+        C = np.linalg.inv( X * X.T )
+
+        # multiply by the MSE of the residual
+        C *= result.mse_resid
+
+        # take the square root
+        SE = np.sqrt(C)
+
+        print(SE)
+
+        >>> [[ 0.28132158         nan]
+        >>> [        nan  1.00136021]]
+
+t-statistic
+^^^^^^^^^^^
+
+We use the t-test to test the null hypothesis that the coefficient of a
+given predictor variable is zero, implying that a given predictor has no
+appreciable effect on the response variable. The alternative hypothesis
+is that the predictor does contribute to the response. In testing we set
+some threshold, :math:`\alpha = 0.05,\;or\; 0.01`, and if
+:math:`\Pr(T \ge \vert t \vert) < \alpha`, then we reject the
+null hypothesis at our threshold :math:`\alpha`, otherwise we fail to
+reject the null hypothesis. The t-test generally allows us to evaluate
+the importance of different predictors, *assuming that the residuals of
+the model are normally distributed about zero*. If the residuals do not
+behave in this manner, then that suggests that there is some
+non-linearity between the variables, and that their t-tests should not
+be used to assess the importance of individual predictors. Furthermore,
+it might be best to try to modify the model so that the residuals do
+tend the cluster normally about zero.
+
+The t statistic is given by the ratio of the coefficient (or factor) of
+the predictor variable of interest, and its corresponding standard
+error. If :math:`\beta` is the vector of coefficients or factors of our
+predictor variables, and SE is our standard error, then the t statistic
+is given by,
+
+.. math:: t_{i} = \beta_{i} / SE_{i,i}
+
+So, for the first factor, corresponding to the slope in our example, we
+have the following code,
+
+::
+
+        i = 1
+        beta = result.params[i]
+        se = SE[i,i]
+        t = beta / se
+        print('t =', t)
+
+        >>> t = 3.5756084542390316
+
+Once we have a t statistic, we can (sort of) calculate the probability
+of observing a statistic at least as extreme as what we’ve already
+observed, given our assumptions about the normality of our errors by
+using the code,
+
+::
+
+        N = result.nobs
+        k = result.df_model + 1
+        dof = N - k
+        p_onesided = 1.0 - stats.t( dof ).cdf( t )
+        p = p_onesided * 2.0
+        print('p = {0:.3f}'.format(p))
+
+        >>> p = 0.007
+
+Here, *dof* are the degrees of freedom, which should be eight, which
+is the number of observations, N, minus the number of parameters, which
+is two. The CDF is the cumulative sum of the PDF. We are interested in
+the area under the right hand tail, beyond our t statistic, t, so we
+subtract the cumulative sum up to that statistic from one in order to
+obtain the tail probability on the other side. We then multiply this
+tail probability by two to obtain a two-tailed probability.
+
+Confidence Interval
+^^^^^^^^^^^^^^^^^^^
+
+The confidence interval is built using the standard error, the p-value
+from our T-test, and a critical value from a T-test having :math:`N-k`
+degrees of freedom, where :math:`k` is the number of observations and
+:math:`P` is the number of model parameters, i.e., the number of
+predictor variables. The confidence interval is the the range of values
+we would expect to find the parameter of interest, based on what we have
+observed. You will note that we have a confidence interval for the
+predictor variable coefficient, and for the constant term. A smaller
+confidence interval suggests that we are confident about the value of
+the estimated coefficient, or constant term. A larger confidence
+interval suggests that there is more uncertainty or variance in the
+estimated term. Again, let me reiterate that hypothesis testing is only
+one perspective. Furthermore, it is a perspective that was developed in
+the late nineteenth and early twentieth centuries when data sets were
+generally smaller and more expensive to gather, and data scientists were
+using books of logarithm tables for arithmetic.
+
+The confidence interval is given by,
+
+.. math:: CI =  \beta_{i} \pm z \cdot SE_{i,i}
+
+Here, :math:`\beta` is one of the estimated coefficients, :math:`z` is a
+*critical-value*, which is the t-statistic required to obtain a
+probability less than the alpha significance level, and :math:`SE_{i,i}`
+is the standard error. The critical value is calculated using the
+inverse of the cumulative distribution function. (The cumulative
+distribution function is the cumulative sum of the probability
+distribution.) In code, the confidence interval using a t-distribution
+looks like,
+
+::
+
+        i = 0
+
+        # the estimated coefficient, and its variance
+        beta, c = result.params[i], SE[i,i]
+
+        # critical value of the t-statistic
+        N = result.nobs
+        P = result.df_model
+        dof = N - P - 1
+        z = stats.t( dof ).ppf(0.975)
+
+        # the confidence interval
+        print(beta - z * c, beta + z * c)
+
+Analysis of Residuals
+~~~~~~~~~~~~~~~~~~~~~
+
+The command from provides some additional information about the
+residuals of the model: Omnibus, Skewness, Kurtosis, Durbin-Watson,
+Jarque-Bera, and the Condition number. In the following we will briefly
+describe these parameters.
+
+Skewness and Kurtosis
+^^^^^^^^^^^^^^^^^^^^^
+
+Skew and kurtosis refer to the shape of a distribution. *Skewness* is a
+measure of the asymmetry of a distribution, and *kurtosis* is a measure
+of its curvature, specifically how pointed the curve is. (For normally
+distributed data approximately 3.) These values are calculated by hand
+as
+
+.. math::
+
+   \begin{aligned}
+       S &= \dfrac{\hat{\mu}_{3}}{\hat{\sigma}^{3}} = \dfrac{ \frac{1}{N} \displaystyle \sum_{i=1}^{N} ( y_{i} - \hat{y}_{i} )^{3} }{ \biggl( \frac{1}{N} \displaystyle \sum_{i=1}^{N} ( y_{i} - \hat{y}_{i} )^{2} \biggr)^{3/2}}, \\
+       K &= \dfrac{\hat{\mu}_{4}}{\hat{\sigma}^{4}} = \dfrac{ \frac{1}{N} \displaystyle \sum_{i=1}^{N} ( y_{i} - \hat{y}_{i} )^{4} }{ \biggl( \frac{1}{N} \displaystyle \sum_{i=1}^{N} ( y_{i} - \hat{y}_{i} )^{2} \biggr)^{2}}\end{aligned}
+
+As you see, the :math:`\hat{\mu}_3` and :math:`\hat{\mu}_4` are the
+third and fourth central moments of a distribution. One possible Python
+implementation would be,
+
+::
+
+        d = Y - result.fittedvalues
+
+        S = np.mean( d**3.0 ) / np.mean( d**2.0 )**(3.0/2.0)
+        # equivalent to:
+        # S = stats.skew(result.resid, bias=True)
+
+        K = np.mean( d**4.0 ) / np.mean( d**2.0 )**(4.0/2.0)
+        # equivalent to:
+        # K = stats.kurtosis(result.resid, fisher=False, bias=True)
+        print('Skewness: {:.3f},  Kurtosis: {:.3f}'.format( S, K ))
+
+        >>> Skewness: -0.014,  Kurtosis: 1.527
+
+Omnibus Test
+^^^^^^^^^^^^
+
+The Omnibus test uses skewness and kurtosis to test the null hypothesis
+that a distribution is normal. In this case, we’re looking at the
+distribution of the residual. If we obtain a very small value for
+:math:`\Pr( \mbox{ Omnibus } )`, then the residuals are not normally
+distributed about zero, and we should maybe look at our model more
+closely. The *statsmodels* OLS function uses the
+*stats.normaltest()* function:
+
+::
+
+        (K2, p) = stats.normaltest(result.resid)
+        print('Omnibus: {0}, p = {1}'.format(K2, p))
+
+        >>> Omnibus: 2.5418981690649174, p = 0.28056521527106976
+
+Thus, if either the skewness or kurtosis suggests non-normality, this
+test should pick it up.
+
+Durbin-Watson
+^^^^^^^^^^^^^
+
+The Durbin-Watson test is used to detect the presence of autocorrelation
+(a relationship between values separated from each other by a given time
+lag) in the residuals. Here the lag is one.
+
+.. math:: DW = \dfrac{ \displaystyle \sum_{i=2}^{N} ( ( y_{i} - \hat{y}_i ) - ( y_{i-1} - \hat{y}_{i-1} ) )^{2} }{ \displaystyle \sum_{i=1}^{N} ( y_{i} - \hat{y}_{i} )^{2}}
+
+::
+
+        DW = np.sum( np.diff( result.resid.values )**2.0 ) / result.ssr
+        print('Durbin-Watson: {:.5f}'.format( DW ))
+
+        >>> Durbin-Watson: 1.97535
+
+Jarque-Bera Test
+^^^^^^^^^^^^^^^^
+
+The Jarque-Bera test is another test that considers skewness (S), and
+kurtosis (K). The null hypothesis is that the distribution is normal,
+that both the skewness and excess kurtosis equal zero, or alternatively,
+that the skewness is zero and the regular run-of-the-mill kurtosis is
+three. Unfortunately, with small samples the Jarque-Bera test is prone
+rejecting the null hypothesis -– that the distribution is normal–when it
+is in fact true.
+
+.. math:: JB = \dfrac{N}{6} \biggl( S^{2} + \dfrac{1}{4}(K-3)^{2} \biggr)
+
+Calculating the JB-statistic using the :math:`\chi^{2}` distribution
+with two degrees of freedom we have,
+
+::
+
+        JB = (N/6.0) * ( S**2.0 + (1.0/4.0)*( K - 3.0 )**2.0 )
+        p = 1.0 - stats.chi2(2).cdf(JB)
+        print('JB-statistic: {:.5f},  p-value: {:.5f}'.format( JB, p ))
+
+        >>> JB-statistic: 0.90421,  p-value: 0.63629
+
+Condition Number
+^^^^^^^^^^^^^^^^
+
+The *condition number* measures the sensitivity of a function’s output
+to its input. When two predictor variables are highly correlated, which
+is called multicollinearity, the coefficients or factors of those
+predictor variables can fluctuate erratically for small changes in the
+data, or the model. Ideally, similar models should be similar, i.e.,
+have approximately equal coefficients. Multicollinearity can cause
+numerical matrix inversion to crap out, or produce inaccurate results.
+One approach to this problem in regression is the technique of *ridge
+regression*, which is available in the *sklearn* Python module.
+
+We calculate the condition number by taking the eigenvalues of the
+product of the predictor variables (including the constant vector of
+ones) and then taking the square root of the ratio of the largest
+eigenvalue to the least eigenvalue. If the condition number is greater
+than thirty, then the regression may have multicollinearity.
+
+::
+
+        X = np.matrix( X )
+        EV = np.linalg.eig( X * X.T )
+        print(EV)
+
+        >>> (array([   0.18412885,  136.51527115]), matrix([[-0.96332746, -0.26832855],
+        >>> [ 0.26832855, -0.96332746]]))
+
+Note that :math:`X.T * X` should be :math:`( P + 1 ) \times ( P + 1 )`,
+where :math:`P` is the number of degrees of freedom of the model (the
+number of predictors) and the +1 represents the addition of the constant
+vector of ones for the intercept term. In our case, the product should
+be a :math:`2 \times 2` matrix, so we’ll have two eigenvalues. Then our
+condition number is given by,
+
+::
+
+        CN = np.sqrt( EV[0].max() / EV[0].min() )
+        print('Condition No.: {:.5f}'.format( CN ))
+
+        >>> Condition No.: 27.22887
+
+Our condition number is juuust below 30, so we can sort of sleep okay.
+
+Comparison
+~~~~~~~~~~
+
+Now that we have seen an example of linear regression with a reasonable
+degree of linearity, compare that with an example of one with a
+significant outlier. In practice, outliers should be understood before
+they are discarded, because they might turn out to be very important.
+They might signify a new trend, or some possibly catastrophic event.
+
+::
+
+        X = df[['Tobacco','Eins']]
+        Y = df.Alcohol
+        result = sm.OLS( Y, X ).fit()
+        result.summary()
+
+::
+
+                                OLS Regression Results
+    ==============================================================================
+    Dep. Variable:                Alcohol   R-squared:                       0.050
+    Model:                            OLS   Adj. R-squared:                 -0.056
+    Method:                 Least Squares   F-statistic:                    0.4735
+    Date:                Sun, 27 Apr 2014   Prob (F-statistic):              0.509
+    Time:                        12:58:27   Log-Likelihood:                -12.317
+    No. Observations:                  11   AIC:                             28.63
+    Df Residuals:                       9   BIC:                             29.43
+    Df Model:                           1
+    ==============================================================================
+                     coef    std err          t      P>|t|      [95.0% Conf. Int.]
+    ------------------------------------------------------------------------------
+    Intercept      4.3512      1.607      2.708      0.024         0.717     7.986
+    Tobacco        0.3019      0.439      0.688      0.509        -0.691     1.295
+    ==============================================================================
+    Omnibus:                        3.123   Durbin-Watson:                   1.655
+    Prob(Omnibus):                  0.210   Jarque-Bera (JB):                1.397
+    Skew:                          -0.873   Prob(JB):                        0.497
+    Kurtosis:                       3.022   Cond. No.                         25.5
+    ==============================================================================
+
+Regression Using Sklearn
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+`*Scikit-learn (sklearn)* <http://scikit-learn.org/>`__ is an open
+source machine learning library for the Python programming language. It
+features various classification, regression and clustering algorithms.
+
+In order to use *sklearn*, we need to input our data in the form of
+vertical vectors. Whenever one slices off a column from a NumPy array,
+NumPy stops worrying whether it is a vertical or horizontal vector.
+MATLAB works differently, as it is primarily concerned with matrix
+operations. NumPy, however has a matrix class for whenever the
+verticallness or horizontalness of an array is important. Therefore, in
+our case, we’ll cast the DataFrame as Numpy matrix so that vertical
+arrays stay vertical once they are sliced off the data set.
+
+::
+
+        data = np.matrix( df )
+
+Next, we create the regression objects, and fit the data to them. In
+this case, we’ll consider a clean set, which will fit a linear
+regression better, which consists of the data for all of the regions
+except Northern Ireland, and an original set consisting of the original
+data
+
+::
+
+        cln = LinearRegression()
+        org = LinearRegression()
+
+        X, Y = data[:,2], data[:,1]
+        cln.fit( X[:-1], Y[:-1] )
+        org.fit( X, Y )
+
+        clean_score = '{0:.3f}'.format( cln.score( X[:-1], Y[:-1] ) )
+        original_score = '{0:.3f}'.format( org.score( X, Y ) )
+
+The next piece of code produces a scatter plot of the regions, with all
+of the regions plotted as empty blue circles, except for Northern
+Ireland, which is depicted as a red star.
+
+::
+
+        mpl.rcParams['font.size']=16
+
+        plt.plot( df.Tobacco[:-1], df.Alcohol[:-1], 'bo', markersize=10,
+            label='All other regions, $Rˆ2$ = '+clean_score )
+
+        plt.hold(True)
+        plt.plot( df.Tobacco[-1:], df.Alcohol[-1:], 'r*', ms=20, lw=10,
+            label='N. Ireland, outlier, $Rˆ2$ = '+original_score)
+
+The next part generates a set of points from 2.5 to 4.85, and then
+predicts the response of those points using the linear regression object
+trained on the clean and original sets, respectively.
+
+::
+
+        test = np.arange( 2.5, 4.85, 0.1 )
+        test = np.array( np.matrix( test ).T )
+
+        plot( test, cln.predict( test ), 'k' )
+        plot( test, org.predict( test ), 'k--' )
+
+Finally, we limit and label the axes, add a title, overlay a grid, place
+the lengend at the bottom, and then save the figure.
+
+::
+
+        xlabel('Tobacco') ; xlim(2.5,4.75)
+        ylabel('Alcohol') ; ylim(2.75,7.0)
+        title('Regression of Alcohol from Tobacco')
+        grid()
+        legend(loc='lower center')
+
+.. figure:: ../Images/alcohol_regressed_over_tobacco.png
+    :scale: 33 %
+
+Conclusion
+~~~~~~~~~~
+
+Before you do anything, visualize your data. If your data is highly
+dimensional, then at least examine a few slices using boxplots. At the
+end of the day, use your own judgement about a model based on your
+knowledge of your domain. Statistical tests should guide your reasoning,
+but they shouldn’t dominate it. In most cases, your data will not align
+itself with the assumptions made by most of the available tests.
+`Here <http://www.nature.com/news/scientific-method-statistical-errors-1.14700>`__
+is a very interesting article from Nature on classical hypothesis
+testing. A more intuitive approach to hypothesis testing is Bayesian
+analysis.
+
 
 Assumptions 
 -------------
@@ -349,238 +1171,6 @@ design.
 (See also the ipython notebook `modeling.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/modeling.ipynb>`_)
 
 .. literalinclude:: ..\Code\modeling.py
-
-Evaluation of for Linear Regression Models
-------------------------------------------
-
-One of the things that intimidated me about statistical modeling is the
-deluge of expressions that appear when you run a modeling command. In the
-following I will try to explain the most common parameters that you are
-going to encounter when working with Linear Regression Models.
-
-Definitions for Regression with Intercept
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-:math:`n` is the number of observations, :math:`p` is the number of
-regression parameters. For example, if you fit a straight line,
-:math:`p=2`. In the following :math:`\hat{y}_i` will indicate the fitted
-model values, and :math:`\bar{y}` will indicate the mean.
-
--  :math:`SSM = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2` is the *Sum of
-   Square for Model*, or the sum of squares for the regression.
-
--  :math:`SSE = \sum_{i=1}^n (y_i-\hat{y}_i)^2` is the *sum of Squares
-   for Error*, or the sum of squares for the residuals.
-
--  :math:`SST = \sum_{i=1}^n (y_i-\bar{y})^2` is the *Sum of Squares
-   Total*, and is equivalent to the sample variance multiplied by
-   :math:`n-1`.
-
-For multiple regression models, :math:`SSM + SSE = SST`
-
--  :math:`DFM = p - 1` is the *(Corrected) Degrees of Freedom for
-   Model*. (The "-1" comes from the fact that we are only interested in
-   the correlation, not in the absolute offset of the data.
-
--  :math:`DFE = n - p` is the *Degrees of Freedom for Error*
-
--  :math:`DFT = n - 1` is the *(Corrected) Degrees of Freedom Total*.
-   The Horizontal line regression is the null hypothesis model.
-
-For multiple regression models with intercept, DFM + DFE = DFT.
-
--  :math:`MSM = SSM / DFM` : *Mean of Squares for Model*
-
--  :math:`MSE = SSE / DFE` : *Mean of Squares for Error*. MSE is an
-   unbiased estimate for :math:`\sigma^2` for multiple regression
-   models.
-
--  :math:`MST = SST / DFT` : *Mean of Squares Total*, which is the
-   sample variance of the y-variable.
-
-The :math:`R^2` Value
-~~~~~~~~~~~~~~~~~~~~~
-
-The :math:`R^2` value indicates the proportion of variation in the
-y-variable that is due to variation in the x-variables. For simple
-linear regression, the :math:`R^2` value is the square of the sample
-correlation :math:`r_{xy}`. For multiple linear regression with
-intercept (which includes simple linear regression), the :math:`R^2`
-value is defined as
-
-.. math:: R^2 = \frac{SSM}{SST}
-
-Many researchers prefer the adjusted :math:`\bar{R}^2` value (Eq
-[eq:adjustedR2]), which is penalized for having a large number of
-parameters in the model:
-
-Here is the logic behind the definition of :math:`\bar{R}^2`:
-:math:`R^2` is defined as :math:`R^2 = 1 - SSE/SST` or
-:math:`1 - R^2 = SSE/SST`. To take into account the number of regression
-parameters :math:`p`, define the adjusted R-squared value as
-
-.. math:: 1- \bar{R}^2 = \frac{Variance for Error}{Variance Total}
-
-where *Variance for Error* is estimated by :math:`SSE/DFE = SSE/(n-p)`, and *Variance Total* is estimated by :math:`SST/DFT = SST/(n-1)`. Thus,
-
-.. math::
-
-   \begin{aligned}
-       1 - \bar{R}^2 &=& \frac{SSE/(n - p)}{SST/(n - 1)} \\
-             	&=& \frac{SSE}{SST}\frac{n - 1}{n - p}\end{aligned}
-
-so
-
-.. math::
-
-   \begin{aligned}
-     \bar{R}^2 &=& 1 - \frac{SSE}{SST} \frac{n - 1}{(n - p} \\
-       &=& 1 - (1 - R^2)\frac{n - 1}{n - p}\end{aligned}
-
-The F-test
-~~~~~~~~~~
-
-If :math:`t_1, t_2, ... , t_m` are independent, :math:`N(0, \sigma^2)`
-random variables, then :math:`\sum_{i=1}^m t_i^2` is a :math:`\chi^2`
-(chi-squared) random variable with :math:`m` degrees of freedom.
-
-For a multiple regression model with intercept,
-
-.. math:: Y_j = \alpha + \beta_1 X_{1j} + ... + \beta_n X_{nj} + \epsilon_i = \alpha + \sum_{i=1}^n \beta_i X_{ij} + \epsilon_j = E(Y_j | X) + \epsilon_j
-
-we want to test the following null hypothesis and alternative
-hypothesis:
-
-:math:`H_0`: :math:`\beta_1` = :math:`\beta_2` = , ... , =
-:math:`\beta_n` = 0
-
-:math:`H_1`: :math:`\beta_j \neq 0`, for at least one value of j
-
-This test is known as the overall *F-test for regression*.
-
-It can be shown that if :math:`H_0` is true and the residuals are
-unbiased, homoscedastic, independent, and normal:
-
-#. :math:`SSE / \sigma^2` has a :math:`\chi^2` distribution with DFE
-   degrees of freedom.
-
-#. :math:`SSM / \sigma^2` has a :math:`\chi^2` distribution with DFM
-   degrees of freedom.
-
-#. SSE and SSM are independent random variables.
-
-If :math:`u` is a :math:`\chi^2` random variable with :math:`n` degrees
-of freedom, :math:`v` is a :math:`\chi^2` random variable with :math:`m`
-degrees of freedom, and :math:`u` and :math:`v` are independent, then if
-:math:`F = \frac{u/n}{v/m}` has an F distribution with :math:`(n,m)`
-degrees of freedom.
-
-If H0 is true,
-
-.. math:: F = \frac{(SSM/\sigma^2)/DFM}{(SSE/\sigma^2)/DFE} = \frac{SSM/DFM}{SSE/DFE} = \frac{MSM}{MSE},
-
-has an F distribution with :math:`(DFM, DFE)` degrees of freedom, and is
-independent of :math:`\sigma`.
-
-Log-Likelihood Function
-~~~~~~~~~~~~~~~~~~~~~~~
-
-A very common approach in statistics is the idea of *Maximum Likelihood*
-estimation. The basic idea is quite different from the *minimum square*
-approach: there, the model is constant, and the errors of the response
-are variable; in contrast, in the maximum likelihood approach, the data
-response values are regarded as constant, and the likelihood of the
-model is maximised.
-
-For the Classical Linear Regression Model (with normal errors) we have
-
-.. math:: \epsilon = y_i - \sum_{k=1}^n \beta_k x_{ik} = y_i - \mathbf{x_i^{'}} \cdot \beta \; in \; N(0, \sigma^2)
-
-so the probability density is given by
-
-.. math:: p(\epsilon_i) =  \Phi (\frac{y_i - \mathbf{x_i^{'}} \cdot \beta}{\sigma})
-
-where :math:`\Phi(z)` is the standard normal probability distribution
-function. The probability of independent samples is the product of the
-individual probabilities
-
-.. math:: \Pi_{total} = \prod_{i=1}^n p(\epsilon_i)
-
-The *Log Likelihood function* is defined as
-
-.. math::
-
-   \begin{aligned}
-     Log L &=& log(\Pi_{total}) \\
-     &=& log\left[\prod_{i=1}^n \frac{1}{\sigma\sqrt{2 \pi}} \exp \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \beta)^2}{2 \sigma^2}\right)\right] \\
-     &=& \sum_{i=1}^n\left[log\left(\frac{1}{\sigma \sqrt{2 \pi}}\right)- \left(\frac{(y_i - \mathbf{x_i^{'}} \cdot \beta)^2}{2 \sigma^2}\right)\right] \\
-    &=& n log(\sigma) - n log \sqrt{2 \pi} - \frac{SSE}{2 \sigma^2}\end{aligned}
-
-It can be shown that the maximum likelihood estimator of
-:math:`\sigma^2` is
-
-.. math:: E(\sigma^2) = \frac{SEE}{n}
-
-With this, the maximised log likelihood is
-
-.. math:: Max(Log L) = -\frac{n}{2} log \left(\frac{2 \pi}{n} \right) - \frac{n}{2} - \frac{n}{2} log(SSE)
-
-and the maximised likelihood is
-
-.. math:: Max(L) = \left( \frac{2 \pi}{n} \right)^{n/2} \cdot exp(- \frac{n}{2}) \cdot (SSE)^{-n/2}
-
-Information Content of Statistical Models
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To judge the quality of your model, you should first visually inspect
-the residuals. In addition, you can also use a number of numerical
-criteria to assess the quality of a statistical model. These criteria
-represent various approaches for balancing model accuracy with
-parsimony.
-
-We have already encountered the :math:`adjusted R^2` value (in the section on *Correlation*), which - in contrast to the :math:`R^2` value -
-decreases if there are too many regressors in the model.
-
-The *Akaike Information Criterion AIC*
-
-.. math:: AIC = n * ln(SSE / n) + 2p
-
-and the Schwartz or *Bayesian Information Criterion BIC*
-
-.. math:: BIC = n * ln(SSE/n) + p * ln(n)
-
-are other commonly encountered criteria.
-
-Analysis of Residuals
-^^^^^^^^^^^^^^^^^^^^^
-
-The command from provides some additional information about the
-residuals of the model:
-
-Omnibus
-    In Multiple Regression the omnibus test is an ANOVA F test on all the
-    coefficients, that is equivalent to the multiple correlations R Square
-    F test. The omnibus F test is an overall test that examines model fit,
-    thus rejecting the null hypothesis implies that the suggested linear
-    model is not significally suitable to the data.
-
-Skewness
-    Sample skewness of the residuals, i.e. if they have a tail to the
-    left or to the right. Equivalent to *stats.skew(model.resid, bias=True)*.
-
-Kurtosis
-    Sample kurtosis of the residuals, i.e. the pointedness of the data
-    distribution. For normally distributed data approximately 3.
-    (Equivalent to *stats.kurtosis(model.resid, fisher=False, bias=True)*)
-
-Durbin-Watson
-    A test statistic used to detect the presence of autocorrelation (a
-    relationship between values separated from each other by a given
-    time lag) in the residuals.
-
-Jarque-Bera
-    A goodness-of-fit test of whether sample data have the skewness and
-    kurtosis matching a normal distribution.
 
 Bootstrapping
 -------------

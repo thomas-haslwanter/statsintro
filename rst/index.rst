@@ -13,12 +13,20 @@
 
 | *email:*  thomas.haslwanter@fh-linz.at
 
-| *Version:*  2.8
+| *Version:*  3.0
 
 .. image:: ../Images/cc_licence.png
    :scale: 100 %
 
 This work is licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License.
+
+Preface
+=======
+
+.. toctree::
+   :maxdepth: 2
+
+   statsPreface
 
 Introduction
 ============

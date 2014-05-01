@@ -7,6 +7,95 @@
 Characterizing a Distribution
 -----------------------------
 
+Population and samples
+~~~~~~~~~~~~~~~~~~~~~~
+
+While the whole *population* of a group has certain characteristics, we
+can typically never measure all of them. In many cases, the population
+distribution is described by an idealized, continuous distribution
+function.
+
+In the analysis of measured data, in contrast, we have to confine
+ourselves to investigate a (hopefully representative) *sample* of this
+group, and estimate the properties of the population from this sample.
+
+Continuous Distribution Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A continuous distribution function describes the distribution of a
+population, and can be represented in several equivalent ways:
+
+Probability Density Function (PDF)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The PDF, or density of a continuous random variable, is a function that
+describes the relative likelihood for a random variable :math:`X` to
+take on a given value :math:`x`. In the mathematical fields of
+probability and statistics, a *random variate x* is a particular outcome
+of a *random variable X*: the random variates which are other outcomes
+of the same random variable might have different values.
+
+Since the likelihood to find any given value cannot be less than zero,
+and since the variable has to have some value, the PDF has the following
+properties:
+
+-  :math:`PDF(x) \geq 0\,\forall \,x \in \mathbb{R}`
+
+-  :math:`\int\limits_{ - \infty }^\infty  {PDF(x)dx = 1}`
+
+.. figure:: ../Images/PDF.png
+    :scale: 35 % 
+
+    *Probability Density Function (PDF) of a value x. The integral over the PDF between a and b gives the likelihood of finding the value of x in that range.*
+
+Cumulative Density Function (CDF)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The probability to find a value between :math:`a` and :math:`b` is given
+by the integral over the PDF in that range (see Fig. [fig:PDF]), and the
+*Cumulative Density Function* tells you for each value which percentage
+of the data has a lower value (Figure [fig:CDF]). Together, this gives
+us
+
+.. math:: \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
+
+.. figure:: ../Images/PDF_CDF.png
+    :scale: 35 % 
+
+    *Probability Density Function* (left) and *Cumulative density function* (right) of a normal distribution. 
+
+Other important presentations of Probability Densities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Figure :ref:`fig-DistributionFunctions` shows a number of functions are
+commonly used to select appropriate points a distribution function:
+
+-  *Probability density function (PDF)*: note that to obtain the
+   probability for the variable appearing in a certain interval, you
+   have to *integrate* the PDF over that range.
+
+-  *Cumulative distribution function (CDF)*: gives the probability of
+   obtaining a value smaller than the given value
+
+-  *Survival function (SF) = 1-CDF*: gives the probability of obtaining a
+    value larger than the given value. It can also be interpreted as the proportion of data "surviving" above a certain value.
+
+-  *Percentile point function (PPF)*: the inverse of the CDF. Answers
+   the question "Given a certain probability, what is the corresponding
+   value for the CDF?"
+
+-  *Inverse survival function (ISF)*: the name says it all.
+
+.. _fig-DistributionFunctions: 
+
+.. figure:: ../Images/DistributionFunctions.png
+    :scale: 75 %
+
+    Distribution Functions
+
+    Utility functions for continuous distributions, here for the normal distribution.
+
+
 Distribution Center 
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -75,15 +164,6 @@ percentile. The difference between them is sometimes referred to as
 
 Median, upper and lower quartile are used for the data display in box
 plots.
-
-.. _fig-NormalDistribution:
-
-.. figure:: ../Images/NormalDist_PDF_CDF.png
-    :scale: 50 %
-
-    Normal Distribution
-
-    Probability distribution function (top) and Cumulative distribution function (bottom) of a normal distribution.
 
 
 Standard Deviation and Variance 
@@ -220,26 +300,6 @@ platykurtic distributions or leptokurtic distributions respectively.
   Light" shows leptokurtosis (0.055) (from Wikipedia)
 
 
-Central Limit Theorem 
-~~~~~~~~~~~~~~~~~~~~~~
-
-The central limit theorem states that for identically distributed
-independent random variables (also referred to as *random variates*),
-the mean of a sufficiently large number of these variables will be
-approximately normally distributed.
-
-The figure below shows that averaging over 10 uniformly distributed data
-already produces a smooth, almost Gaussian distribution.
-
-.. figure:: ../Images/centralLimitTheorem.png
-  :scale: 40 %
-
-*Demonstration of the "Central Limit Theorem": Left) Histogram of random
-data between 0 and 1. Center) Histogram of average over two datapoints.)
-Right) Histogram of average over 10 datapoints.*
-
-.. literalinclude:: ..\Code3\centralLimitTheorem.py
-
 Distribution Functions
 ----------------------
 
@@ -301,32 +361,6 @@ normally distributed with expectation :math:`\mu` and standard deviation
 :math:`\sigma`, one denotes: :math:`\,X \sim N(\mu,\sigma)` or
 :math:`\,X \in N(\mu,\sigma)`.
 
-==================== ===================== ======================
-Range                Prob. of being within Prob. of being outside 
-==================== ===================== ======================
-mean :math:`\pm` 1SD 0.683                  0.317
-mean :math:`\pm` 2SD 0.954                  0.046
-mean :math:`\pm` 3SD 0.9973                 0.0027
-==================== ===================== ======================
-
-The Figure :ref:`fig-DistributionFunctions` shows a number of functions are
-commonly used to select appropriate points a distribution function:
-
--  *Probability density function (PDF)*: note that to obtain the
-   probability for the variable appearing in a certain interval, you
-   have to *integrate* the PDF over that range.
-
--  *Cumulative distribution function (CDF)*: gives the probability of
-   obtaining a value smaller than the given value
-
--  *Survival function (SF) = 1-CDF*: gives the probability of obtaining a
-    value larger than the given value. It can also be interpreted as the proportion of data "surviving" above a certain value.
-
--  *Percentile point function (PPF)*: the inverse of the CDF. Answers
-   the question "Given a certain probability, what is the corresponding
-   value for the CDF?"
-
--  *Inverse survival function (ISF)*: the name says it all.
 
 **Note:**
 
@@ -338,14 +372,19 @@ In Python, the most elegant way of working with distribution function is a two-s
 
 See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/distribution_normal.ipynb>`_:
 
-.. _fig-DistributionFunctions: 
+.. figure:: ../Images/area_SDs.png
+    :scale: 33 %
 
-.. figure:: ../Images/DistributionFunctions.png
-    :scale: 75 %
+    Area under +/- 1, 2, and 3 standard deviations of a normal distribution.
 
-    Distribution Functions
+==================== ===================== ======================
+Range                Prob. of being within Prob. of being outside 
+==================== ===================== ======================
+mean :math:`\pm` 1SD 0.683                  0.317
+mean :math:`\pm` 2SD 0.954                  0.046
+mean :math:`\pm` 3SD 0.9973                 0.0027
+==================== ===================== ======================
 
-    Utility functions for continuous distributions, here for the normal distribution.
 
 
 .. literalinclude:: ..\Code3\distribution_normal.py
@@ -365,6 +404,51 @@ that step:
       Out[38]:  array([-3.38590382, -0.61409618]
 
 *Example of how to calculate the interval of the PDF containing 95% of the data, for the green curve in the Figure above.*
+
+Central Limit Theorem 
+~~~~~~~~~~~~~~~~~~~~~~
+
+The central limit theorem states that for identically distributed
+independent random variables (also referred to as *random variates*),
+the mean of a sufficiently large number of these variables will be
+approximately normally distributed.
+
+The figure below shows that averaging over 10 uniformly distributed data
+already produces a smooth, almost Gaussian distribution.
+
+.. figure:: ../Images/centralLimitTheorem.png
+  :scale: 40 %
+
+*Demonstration of the "Central Limit Theorem": Left) Histogram of random
+data between 0 and 1. Center) Histogram of average over two datapoints.)
+Right) Histogram of average over 10 datapoints.*
+
+.. literalinclude:: ..\Code3\centralLimitTheorem.py
+
+Application Example
+~~~~~~~~~~~~~~~~~~~
+
+To illustrate the ideas behind the use of distribution functions, let us
+go step-by-step through the analysis of the following problem:
+
+The average weight of a newborn child in the US is 3.5 kg, with a
+standard deviation of 0.76 kg. If we want to check all children that are
+*significantly different* from the typical baby, what should we do with
+a child that is born with a weight of 2.6 kg?
+
+-  Find the distribution that characterizes healthy babies.
+
+-  Calculate the CDF at the interesting value (*CDF(2.6 kg) = 0.118*).
+
+-  Interpret the result (*“If the baby is healthy, the chance that its
+   weight deviates by at least the observed value from the mean is
+   2\*11.8% = 23.6% - This is not significant”*).
+
+
+.. figure:: ../Images/pdf_checkValue.png
+    :scale: 25 %
+
+    *The chance that a healthy baby weighs 2.6 kg or less is 11.8\% (darker blue area). The chance that the difference from the mean is that much is twice that much, as the lighter blue area must be added.*
 
 Other Continuous Distributions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -437,6 +521,31 @@ chi-square distribution with :math:`n` degrees of freedom:
 
 *Chi-square Distribution*
 
+**Application Example**
+
+A pill producer is ordered to deliver pills with a standard deviation of
+:math:`\sigma=0.05`. From the next batch of pills you pick :math:`n=13`
+random samples. These samples :math:`x_1, x_2, . . . , x_n` have a
+weight of 3.04, 2.94, 3.01, 3.00, 2.94, 2.91, 3.02, 3.04, 3.09, 2.95,
+2.99, 3.10, 3.02 g.
+
+*Question:* is the standard deviation larger than allowed?
+
+*Answer:*
+
+Since the Chi-square distribution describes the distribution of the
+summed squares of random variates from a *standard normal distribution*,
+we have to normalize our data before we calculate the corresponding
+CDF-value:
+
+.. math:: 1 - CD{F_{{\chi ^2}_{(n - 1)}}}\left( {\sum {(\frac{{x - \bar x}}{\sigma }} {)^2}} \right) = 0.1929
+
+*Interpretation:* if the batch of pills is from a distribution with a
+standard deviation of :math:`\sigma=0.05`, the likelihood of obtaining a
+chi-square value as large or larger than the one observed is about 19%,
+so it is not atypical. In other words, the batch matches the expected
+standard deviation.
+
 .. _`F Distribution`:
 
 F Distribution
@@ -473,25 +582,37 @@ If you want to investigate whether two groups have the same variance, you have t
 where :math:`S_x` ist he sample standard deviation of the first sample,
 and :math:`S_y` the sample standard deviation for the second sample.
 
-One example could be if you want to compare apples that look alike but are from different trees and have different sizes.
-There are three apples from the first tree that weigh 110, 121 and 143
-grams respectively, and four from the other which weigh 88, 93, 105 and
-124 grams respectively. The F statistic is :math:`F 1.05`, and has
-:math:`n-1` and :math:`m-1` degrees of freedom, where :math:`n` and
-:math:`m` are the number of apples in each batch. The code sample below
-shots what the F statistic is close to the center of the distribution,
-so we cannot reject the hypthesis that the two batches have the same
-variance.
+Take for example the case that you want to compare two methods to
+measure eye movements. The two methods can have different accuracy and
+different precision. With your test you want to determine if the
+precision of the two methods is equivalent, or if one method is more
+precise than the other.
+
+.. figure:: ../Images/Accuracy_and_precision.png
+    :scale: 75 %
+
+    Accuracy and precision of a measurement are two different characteristics!
+
+When you look 20 deg to the right, you get the following results: Method
+1: [20.7, 20.3, 20.3, 20.3, 20.7, 19.9, 19.9, 19.9, 20.3, 20.3, 19.7,
+20.3] Method 2: [ 19.7, 19.4, 20.1, 18.6, 18.8, 20.2, 18.7, 19. ]
+
+The F statistic is :math:`F = 0.494`, and has :math:`n-1` and
+:math:`m-1` degrees of freedom, where :math:`n` and :math:`m` are the
+number of recordings with each method. The code sample below shows that
+the F statistic is close to the center of the distribution, so we cannot
+reject the hypothesis that the two methods have the same precision.
 
 ::
 
-      In [1]:  apples1 = array([110, 121, 143])
-      In [2]:  apples2 = array([88, 93, 105, 124])
-      In [3]:  fval = std(apples1, ddof=1)/std(apples2, ddof=1)
-      In [4]:  fd = stats.distributions.f(2,3)
+      In [1]:  method1 = array([20.7,  20.3,  20.3,  20.3,  20.7,  19.9,  19.9,  19.9,  20.3,
+            20.3,  19.7,  20.3])
+      In [2]:  method2 = array([ 19.7,  19.4,  20.1,  18.6,  18.8,  20.2,  18.7,  19. ])
+      In [3]:  fval = std(method1, ddof=1)/std(method2, ddof=1)
+      In [4]:  fd = stats.f(len(method2)-1,len(method2)-1)
       In [5]:  p = fd.cdf(fval)
       In [6]:  print p
-      Out[6]:  0.548708891481
+      Out[6]:  0.14
       In [7]:  if (p<0.025) or (p>0.975):
                   print 'There is a significant difference between the two distributions.'
 
