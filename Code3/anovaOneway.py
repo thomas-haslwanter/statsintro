@@ -11,7 +11,7 @@
 '''
 Author:  Thomas Haslwanter
 Date:    May-2013
-Version: 1.50
+Version: 1.5
 '''
 
 import numpy as np
