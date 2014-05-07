@@ -12,11 +12,7 @@ The examples contain:
 
 '''
 
-'''
-Author: thomas haslwanter
-Date:   March-2014
-Version: 1.3
-'''
+# Author=Thomas Haslwanter, Date=May-2013, Ver=1.3
 
 # First, import the libraries that you are going to need. You could also do
 # that later, but it is better style to do that at the beginning.

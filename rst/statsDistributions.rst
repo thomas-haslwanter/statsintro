@@ -387,7 +387,7 @@ mean :math:`\pm` 3SD 0.9973                 0.0027
 
 
 
-.. literalinclude:: ..\Code3\distribution_normal.py
+.. literalinclude:: ..\Code3\figs_DistributionNormal.py
 
 Since a very frequent computational steps is the calculation of the
 intervals containing 95% of the data, I give an explicit code example of
@@ -714,7 +714,7 @@ Working with distribution functions in Python takes a bit to get used to. But on
 
 See also the ipython notebook `dist_continuous.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/dist_continuous.ipynb>`_:
 
-.. literalinclude:: ..\Code3\dist_continuous.py
+.. literalinclude:: ..\Code3\figs_DistContinuous.py
 
 Discrete Distributions
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -816,7 +816,7 @@ Programs: Discrete Distribution Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 See also the ipython notebook `dist_discrete.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/dist_discrete.ipynb>`_:
 
-.. literalinclude:: ..\Code3\dist_discrete.py
+.. literalinclude:: ..\Code3\figs_DistDiscrete.py
 
 Data Analysis
 -------------
