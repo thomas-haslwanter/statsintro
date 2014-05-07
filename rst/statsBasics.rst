@@ -152,9 +152,9 @@ Boxplots are often combined with KDE-plots to produce so-called
 
 Programs: Data Display 
 ~~~~~~~~~~~~~~~~~~~~~~~~
-See also the ipython notebook `showStats.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/showStats.ipynb>`_:
+See also the ipython notebook `figs_BasicPrinciples.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_BasicPrinciples.ipynb>`_:
 
-.. literalinclude:: ..\Code3\showStats.py
+.. literalinclude:: ..\Code3\figs_BasicPrinciples.py
 
 Study Design 
 --------------

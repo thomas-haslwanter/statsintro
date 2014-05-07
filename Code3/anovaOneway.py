@@ -8,11 +8,7 @@
 
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    May-2013
-Version: 1.5
-'''
+# Author=Thomas Haslwanter, Date=May-2013, Ver=1.5
 
 import numpy as np
 import scipy.stats as stats
