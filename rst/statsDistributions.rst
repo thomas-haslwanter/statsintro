@@ -370,10 +370,10 @@ In Python, the most elegant way of working with distribution function is a two-s
   - In the second step, you decide which function you want to use from this distribution, , and calculate the function value for the desired x-input (e.g. *y = nd.cdf(x)*)
 
 
-See also the ipython notebook `distribution_normal.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/distribution_normal.ipynb>`_:
+See also the ipython notebook `figs_DistributionNormal.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistributionNormal.ipynb>`_:
 
 .. figure:: ../Images/area_SDs.png
-    :scale: 33 %
+    :scale: 25 %
 
     Area under +/- 1, 2, and 3 standard deviations of a normal distribution.
 
@@ -417,7 +417,7 @@ The figure below shows that averaging over 10 uniformly distributed data
 already produces a smooth, almost Gaussian distribution.
 
 .. figure:: ../Images/centralLimitTheorem.png
-  :scale: 40 %
+  :scale: 33 %
 
 *Demonstration of the "Central Limit Theorem": Left) Histogram of random
 data between 0 and 1. Center) Histogram of average over two datapoints.)
@@ -446,7 +446,7 @@ a child that is born with a weight of 2.6 kg?
 
 
 .. figure:: ../Images/pdf_checkValue.png
-    :scale: 25 %
+    :scale: 20 %
 
     *The chance that a healthy baby weighs 2.6 kg or less is 11.8\% (darker blue area). The chance that the difference from the mean is that much is twice that much, as the lighter blue area must be added.*
 
@@ -499,7 +499,7 @@ Since the t-distribution has longer tails than the normal distribution, it
 is much less sensitive to outliers (see Figure below).
 
 .. image:: ..\Images\ttest_stability.png
-    :scale: 40 %
+    :scale: 33 %
 
 *The t-distribution is much more robust against outliers than the normal
 distribution.*
@@ -589,7 +589,7 @@ precision of the two methods is equivalent, or if one method is more
 precise than the other.
 
 .. figure:: ../Images/Accuracy_and_precision.png
-    :scale: 75 %
+    :scale: 50 %
 
     Accuracy and precision of a measurement are two different characteristics!
 
@@ -666,7 +666,7 @@ If the quantity x is a "time-to-failure", the Weibull distribution gives a distr
 In the field of materials science, the shape parameter k of a distribution of strengths is known as the Weibull modulus.
 
 .. image:: ../Images/Weibull_PDF.png
-    :scale: 75 %
+    :scale: 66 %
 
 *Weibull Distribution*
 
@@ -712,7 +712,7 @@ Working with distribution functions in Python takes a bit to get used to. But on
     In [3]: x = linspace(-5, 15, 101)
     In [4]: y = myDF.pdf(x)
 
-See also the ipython notebook `dist_continuous.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/dist_continuous.ipynb>`_:
+See also the ipython notebook `figs_DistContinuous.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistContinuous.ipynb>`_:
 
 .. literalinclude:: ..\Code3\figs_DistContinuous.py
 
@@ -814,7 +814,7 @@ function of the Poisson is given by
 
 Programs: Discrete Distribution Functions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-See also the ipython notebook `dist_discrete.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/dist_discrete.ipynb>`_:
+See also the ipython notebook `figs_DistDiscrete.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistDiscrete.ipynb>`_:
 
 .. literalinclude:: ..\Code3\figs_DistDiscrete.py
 
