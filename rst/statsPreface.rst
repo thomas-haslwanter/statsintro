@@ -35,6 +35,13 @@ How to use this book
 -  If you just want to look something up, simply go to the `HTML-version
    of the book <http://work.thaslwanter.at/Stats/html>`__.
 
+   In the online version, code samples are marked as follows
+
+   |ipynb| ... refers to *IPython notebooks*
+
+   |python| ... refers to plain Python code 
+
+
 -  If you want to go through it systematically, or if you prefer to read
    printed material, you may want to download the `PDF-version of the
    book <http://work.thaslwanter.at/Stats/StatsIntro.pdf>`__.
@@ -65,3 +72,8 @@ but not as easy to work with. Thanks!
 - Connor Johnson wrote a very nice blog explaining the results of
   statsmodels OLS command, which formed the basis of a large part of the
   section on *Statistical Models*
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 

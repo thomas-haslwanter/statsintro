@@ -319,17 +319,11 @@ Next, the same example using a pure MATLAB-style:
 
 So, why all the extra typing as one moves away from the pure MATLAB-style? For very simple things like this example, the only advantage is academic: the wordier styles are more explicit, more clear as to where things come from and what is going on. For more complicated applications, this explicitness and clarity becomes increasingly valuable, and the richer and more complete object-oriented interface will likely make the program easier to write and maintain.
 
-Here an example, to get you started with Python. For interactive work, it is
-simplest to use the *pylab mode*, as shown in the example below. The corresponding ipython
-notebook
-`getting_started.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/getting_started.ipynb>`_:
-shows how numpy and matplotlib can be addressed directly. (This is common
-practice when writing functions.)
+For interactive work, it is simplest to use the *pylab mode*.
 
-Example-Session
-^^^^^^^^^^^^^^^
+|ipynb| `getting_started.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/getting_started.ipynb>`_
+shows you how to get started with the Python.
 
-.. literalinclude:: ..\Code3\gettingStarted.py
 
 Pandas
 ~~~~~~
@@ -512,12 +506,10 @@ While for complex statistical models R still has an edge, python has a much clea
 readable syntax, and is arguably more powerful for the data manipulation often required for
 statistical analysis.
 
-The following piece of code shows you how shows you how the combination of pandas and
-statsmodels can be used for data analysis.
+The following piece of code shows you how shows you how the combination of pandas and statsmodels can be used for data analysis.
 
-(See also the ipython notebook `statsmodels_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/statsmodels_intro.ipynb>`_)
+|ipynb| `statsmodels_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/statsmodels_intro.ipynb>`_
 
-.. literalinclude:: ..\Code3\statsmodels_intro.py
 
 Seaborn
 ~~~~~~~
@@ -543,7 +535,7 @@ General Routines
 Here is also a good place to introduce the short function that we will
 use a number of times to simplify the reading in of data:
 
-.. literalinclude:: ..\Code\getdata.py
+|python| `getdata.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/getdata.py>`_
 
 
 Exercises
@@ -570,3 +562,9 @@ Exercises
 
    -  Extract the data in lines 10-15 from "Yvals" and "ZVals", and
       write them to the file "out.txt".
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 
+

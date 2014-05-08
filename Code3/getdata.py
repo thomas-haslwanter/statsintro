@@ -6,22 +6,17 @@ I use these data quite often, so I have put those by default in a subdirectory
 If the data are not found locally, they are retrieved from the WWW.
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    May-2013
-Version: 1.4
-'''
+#Author:  Thomas Haslwanter, May-2014
 
 from os.path import join
 from numpy import genfromtxt
 import os
-try:
+if sys.version_info[0] == 3:
     from urllib.request import urlopen
     from urllib.parse import urlparse
-except ImportError:
+else:
     from urlparse import urlparse
     from urllib import urlopen
-
 
 def getData(inFile, subDir=r'.\Data'):
     '''Data are taken from examples in D. Altman, "Practical Statistics for Medical Research" '''

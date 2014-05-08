@@ -44,7 +44,7 @@ properties:
 -  :math:`\int\limits_{ - \infty }^\infty  {PDF(x)dx = 1}`
 
 .. figure:: ../Images/PDF.png
-    :scale: 35 % 
+    :scale: 25 % 
 
     *Probability Density Function (PDF) of a value x. The integral over the PDF between a and b gives the likelihood of finding the value of x in that range.*
 
@@ -60,7 +60,7 @@ us
 .. math:: \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
 
 .. figure:: ../Images/PDF_CDF.png
-    :scale: 35 % 
+    :scale: 25 % 
 
     *Probability Density Function* (left) and *Cumulative density function* (right) of a normal distribution. 
 
@@ -370,7 +370,7 @@ In Python, the most elegant way of working with distribution function is a two-s
   - In the second step, you decide which function you want to use from this distribution, , and calculate the function value for the desired x-input (e.g. *y = nd.cdf(x)*)
 
 
-See also the ipython notebook `figs_DistributionNormal.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistributionNormal.ipynb>`_:
+|ipynb| `figs_DistributionNormal.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistributionNormal.ipynb>`_
 
 .. figure:: ../Images/area_SDs.png
     :scale: 25 %
@@ -384,10 +384,6 @@ mean :math:`\pm` 1SD 0.683                  0.317
 mean :math:`\pm` 2SD 0.954                  0.046
 mean :math:`\pm` 3SD 0.9973                 0.0027
 ==================== ===================== ======================
-
-
-
-.. literalinclude:: ..\Code3\figs_DistributionNormal.py
 
 Since a very frequent computational steps is the calculation of the
 intervals containing 95% of the data, I give an explicit code example of
@@ -712,9 +708,7 @@ Working with distribution functions in Python takes a bit to get used to. But on
     In [3]: x = linspace(-5, 15, 101)
     In [4]: y = myDF.pdf(x)
 
-See also the ipython notebook `figs_DistContinuous.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistContinuous.ipynb>`_:
-
-.. literalinclude:: ..\Code3\figs_DistContinuous.py
+|ipynb| `figs_DistContinuous.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistContinuous.ipynb>`_
 
 Discrete Distributions
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -814,9 +808,7 @@ function of the Poisson is given by
 
 Programs: Discrete Distribution Functions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-See also the ipython notebook `figs_DistDiscrete.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistDiscrete.ipynb>`_:
-
-.. literalinclude:: ..\Code3\figs_DistDiscrete.py
+|ipynb| `figs_DistDiscrete.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_DistDiscrete.ipynb>`_
 
 Data Analysis
 -------------
@@ -881,16 +873,14 @@ Altman mainly uses the *Shapiro-Wilk W test*, the Python command
 *stats.normaltest(x)* uses a method by D'Agostino and Pearson,  and a
 number of other tests are also available.
 
-The program listed below, "checkNormality.py", shows how to check graphically
-and quantitatively if a given distribution is normal.
-
 .. image:: ../Images/KS_example.png
     :scale: 50 %
 
 *Illustration of the Kolmogorov-Smirnoff statistic. Red line is CDF, blue
 line is an ECDF, and the black arrow is the K-S statistic(from Wikipedia).*
 
-.. literalinclude:: ..\Code3\checkNormality.py
+|python| `checkNormality.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/checkNormality.py>`_
+shows how to check graphically and quantitatively if a given distribution is normal.
 
 Transformation
 ~~~~~~~~~~~~~~
@@ -1000,4 +990,9 @@ Continuous Distributions
     :scale: 40 %
 .. |image20| image:: ../Images/ProbPlot.png
     :scale: 50 %
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 
 

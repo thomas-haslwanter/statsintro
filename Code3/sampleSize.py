@@ -4,11 +4,7 @@
 
 '''
 
-'''
-Author : Thomas Haslwanter
-Date : May 2013
-Ver : 1.1
-'''
+# author: Thomas Haslwanter, May 2013
 
 from scipy.stats import norm
 from numpy import round

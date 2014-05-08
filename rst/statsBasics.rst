@@ -152,9 +152,8 @@ Boxplots are often combined with KDE-plots to produce so-called
 
 Programs: Data Display 
 ~~~~~~~~~~~~~~~~~~~~~~~~
-See also the ipython notebook `figs_BasicPrinciples.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_BasicPrinciples.ipynb>`_:
+|ipynb| `figs_BasicPrinciples.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_BasicPrinciples.ipynb>`_
 
-.. literalinclude:: ..\Code3\figs_BasicPrinciples.py
 
 Study Design 
 --------------
@@ -491,4 +490,10 @@ Exercises
     :scale: 50 %
 .. |image6| image:: ../Images/boxplot.png
     :scale: 50 %
+
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 
 

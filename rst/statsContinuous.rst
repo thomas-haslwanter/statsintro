@@ -24,13 +24,6 @@ data, with a mean of 7 and with a standard deviation of 3. What is the
 chance of finding a mean value at a distance of 0.5 or more from the
 mean:?
 
-See also the ipython notebook `oneSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/oneSample.ipynb>`_:
-
-.. literalinclude:: ..\Code3\oneSample.py
-
-:math:`>>>` The probability from the t-test is 0.057, and from the
-normal distribution 0.054
-
 Wilcoxon signed rank sum test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -78,6 +71,12 @@ Subject Daily energy intake (kJ) Difference from 7725 kJ Ranks of differences
  11      8770                    -1045                   5
 ======= ======================== ======================= =====================
 
+|ipynb| `oneSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/oneSample.ipynb>`_
+
+|python| `oneSample.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/oneSample.py>`_
+
+.. .. literalinclude:: ..\Code3\oneSample.py
+
 Comparison of Two Groups
 ------------------------
 
@@ -118,9 +117,11 @@ If the measurement values from the two groups are not normally
 distributed we have to resort to a non-parametric test. The most common
 test for that is the *Mann-Whitney(-Wilkoxon) test*.
 
-See also the ipython notebook `twoSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/twoSample.ipynb>`_:
+|ipynb| `twoSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/twoSample.ipynb>`_
 
-.. literalinclude:: ..\Code3\twoSample.py
+|python| `twoSample.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/twoSample.py>`_
+
+.. .. literalinclude:: ..\Code3\twoSample.py
 
 Comparison of More Groups
 -------------------------
@@ -227,9 +228,11 @@ to get there.
    :ref:`F Distribution`. From the F-value, we can look up the corresponding p-value.
 
 
-See also the ipython notebook `anovaOneway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaOneway.ipynb>`_:
+|ipynb| `anovaOneway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaOneway.ipynb>`_
 
-.. literalinclude:: ..\Code3\anovaOneway.py
+|python| `anovaOneway.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/anovaOneway.py>`_
+
+.. .. literalinclude:: ..\Code3\anovaOneway.py
 
 
 Multiple Comparisons
@@ -260,7 +263,9 @@ The formula for Tukey's test is:
 where :math:`Y_A` is the larger of the two means being compared, :math:`Y_B` is the smaller of the two means being compared, and :math:`SE` is the standard error of the data in question. This :math:`q_s` value can then be compared to a q value from the *studentized range distribution*, which takes into account the multiple comparisons. If the qs value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
 Note that the studentized range statistic is the same as the t-statistic except for a scaling factor (np.sqrt(2)).
 
-.. literalinclude:: ..\Code3\multipleTesting.py
+|python| `multipleTesting.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/multipleTesting.py>`_
+
+.. .. literalinclude:: ..\Code3\multipleTesting.py
 
 .. image:: ..\Images\MultComp.png
     :height: 500 px
@@ -297,7 +302,9 @@ corresponding test is the *Kruskal-Wallis test*. When the null
 hypothesis is true the test statistic for the Kruskal-Wallis test follows
 the *Chi squared distribution*.
 
-.. literalinclude:: ..\Code3\KruskalWallis.py
+|python| `KruskalWallis.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/KruskalWallis.py>`_
+
+.. .. literalinclude:: ..\Code3\KruskalWallis.py
 
 
 Exercises
@@ -355,4 +362,9 @@ Multiple Groups
     Would a non-parametric comparison lead to a different result?
      (Correct answer: no)
 
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 
 
