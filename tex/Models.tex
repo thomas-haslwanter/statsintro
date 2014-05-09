@@ -27,7 +27,7 @@ The symbols in Table \ref{tab:syntax} are used on the right hand side to denote 
      \hline
   \end{tabular}
   }
-  \caption{Formula sytax}
+  \caption{Formula syntax}
 \end{table}\label{tab:syntax}
 
 A complete set of the description is found under \cite{patsy}.
@@ -438,7 +438,7 @@ Here, $\sigma^{2}$ is the variance, or the MSE (mean squared error) of the resid
     # add a column of ones for the constant intercept term
     X = np.vstack(( np.ones(X.size), X ))
 
-    # convert the NumPy arrray to matrix
+    # convert the NumPy array to matrix
     X = np.matrix( X )
 
     # perform the matrix multiplication,
@@ -497,7 +497,7 @@ Here, \lstinline{dof} are the degrees of freedom, which should be eight, which i
 
 \subsubsection{Confidence Interval}
 
-The confidence interval is built using the standard error, the p-value from our T-test, and a critical value from a T-test having $N-k$ degrees of freedom, where $k$ is the number of observations and $P$ is the number of model parameters, i.e., the number of predictor variables. The confidence interval is the the range of values we would expect to find the parameter of interest, based on what we have observed. You will note that we have a confidence interval for the predictor variable coefficient, and for the constant term. A smaller confidence interval suggests that we are confident about the value of the estimated coefficient, or constant term. A larger confidence interval suggests that there is more uncertainty or variance in the estimated term. Again, let me reiterate that hypothesis testing is only one perspective. Furthermore, it is a perspective that was developed in the late nineteenth and early twentieth centuries when data sets were generally smaller and more expensive to gather, and data scientists were using books of logarithm tables for arithmetic.
+The confidence interval is built using the standard error, the p-value from our T-test, and a critical value from a T-test having $N-k$ degrees of freedom, where $k$ is the number of observations and $P$ is the number of model parameters, i.e., the number of predictor variables. The confidence interval is the range of values we would expect to find the parameter of interest, based on what we have observed. You will note that we have a confidence interval for the predictor variable coefficient, and for the constant term. A smaller confidence interval suggests that we are confident about the value of the estimated coefficient, or constant term. A larger confidence interval suggests that there is more uncertainty or variance in the estimated term. Again, let me reiterate that hypothesis testing is only one perspective. Furthermore, it is a perspective that was developed in the late nineteenth and early twentieth centuries when data sets were generally smaller and more expensive to gather, and data scientists were using books of logarithm tables for arithmetic.
 
 The confidence interval is given by,
 
@@ -672,7 +672,7 @@ Kurtosis:                       3.022   Cond. No.                         25.5
 
 \href{http://scikit-learn.org/}{\emph{Scikit-learn (sklearn)}} \index{general}{scikit-learn} is an open source machine learning library for the Python programming language. It features various classification, regression and clustering algorithms.
 
-In order to use \emph{sklearn}, we need to input our data in the form of vertical vectors. Whenever one slices off a column from a NumPy array, NumPy stops worrying whether it is a vertical or horizontal vector. MATLAB works differently, as it is primarily concerned with matrix operations. NumPy, however has a matrix class for whenever the verticallness or horizontalness of an array is important. Therefore, in our case, we’ll cast the DataFrame as Numpy matrix so that vertical arrays stay vertical once they are sliced off the data set.
+In order to use \emph{sklearn}, we need to input our data in the form of vertical vectors. Whenever one slices off a column from a NumPy array, NumPy stops worrying whether it is a vertical or horizontal vector. MATLAB works differently, as it is primarily concerned with matrix operations. NumPy, however has a matrix class for whenever the verticalness or horizontalness of an array is important. Therefore, in our case, we’ll cast the DataFrame as Numpy matrix so that vertical arrays stay vertical once they are sliced off the data set.
 
 \begin{lstlisting}	
     data = np.matrix( df )
@@ -715,7 +715,7 @@ The next part generates a set of points from 2.5 to 4.85, and then predicts the 
     plot( test, org.predict( test ), 'k--' )
 \end{lstlisting}
 
-Finally, we limit and label the axes, add a title, overlay a grid, place the lengend at the bottom, and then save the figure.
+Finally, we limit and label the axes, add a title, overlay a grid, place the legend at the bottom, and then save the figure.
 
 \begin{lstlisting}
     xlabel('Tobacco') ; xlim(2.5,4.75)

@@ -286,9 +286,9 @@ fulfilled:
 5. The distribution of :math:`y` is approximately normal for all values
    of :math:`x`.
 
-(See also the ipython notebook `multivariate.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/multivariate.ipynb>`_)
+|ipynb| `multivariate.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/multivariate.ipynb>`_
 
-.. literalinclude:: ..\Code\multivariate.py
+|python| `multivariate.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/multivariate.py>`_
 
 | |image29|
 
@@ -304,7 +304,7 @@ be compared to the standard error and the standard deviation for a population.)*
 
 Since to my knowledge there exists no program in the Python standard
 library (or numpy, scipy) to calculate the confidence intervals for a
-regression line, I include my corresponding program *lineFit.py*.
+regression line, I include my corresponding program *fitLine.py*.
 The output of this program is shown in the figure below.
 This program also shows how Python programs intended for
 distribution should be documented.
@@ -327,8 +327,7 @@ Exercises
     For the data from the regression model, check if the model is ok by testing if the residuals are normally distributed (e.g. by using the Komogorov-Smirnov test)
 
 
-
-.. literalinclude:: ..\Code\fitLine.py
+|python| `fitLine.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/fitLine.py>`_
 
 .. [4]
    This section has been taken from Wikipedia
@@ -347,3 +346,8 @@ Exercises
     :scale: 50 %
 .. |image30| image:: ../Images/regression_wLegend.png
     :scale: 50 %
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 

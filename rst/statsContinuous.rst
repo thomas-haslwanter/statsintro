@@ -115,7 +115,7 @@ Non-parametric Comparison of Two Groups: Mann-Whitney Test
 
 If the measurement values from the two groups are not normally
 distributed we have to resort to a non-parametric test. The most common
-test for that is the *Mann-Whitney(-Wilkoxon) test*.
+test for that is the *Mann-Whitney(-Wilcoxon) test*.
 
 |ipynb| `twoSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/twoSample.ipynb>`_
 

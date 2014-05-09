@@ -263,7 +263,7 @@ allocated numbers should be presented to the experimenter as late as
 possible.
 
 Depending on the experiment, there are different ways to randomize the
-group assingment.
+group assignment.
 
 Simple randomization
 ''''''''''''''''''''

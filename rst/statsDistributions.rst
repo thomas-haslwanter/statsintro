@@ -449,7 +449,7 @@ a child that is born with a weight of 2.6 kg?
 Other Continuous Distributions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The distributions you will enounter most frequently are:
+The distributions you will encounter most frequently are:
 
 - **Normal distribution** - the "ideal" continuous probability distribution
 - **t-distribution** - for sample distributions (What you will probably use most often.)
@@ -946,7 +946,12 @@ Analysis
 
 Continuous Distributions 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-#.  **T-Distribution:** Measuring the weight of your collegues, you have obtained the following weights: 52, 70, 65, 85, 62, 83, 59 kg.
+#.  **Normal Distribution:** Your doctor tells you that he can use hip implants for surgery even if they are 1 mm bigger or smaller than the specified size. And your financial officer tells you that you can discard 1 out of 1000 hip implants, and still make a profit.
+
+    What is the required standard deviation for the producer of the hip implants, to simultaneously satisfy both requirements?
+    (Correct answer: SD = 0.304 mm)
+
+#.  **T-Distribution:** Measuring the weight of your collogues, you have obtained the following weights: 52, 70, 65, 85, 62, 83, 59 kg.
     Calculate the corresponding mean, and the 99% confidence interval for the mean. Note: with n values you have n-1 DOF for the t-distribution.
     (Correct answer: 68.0 +/- 17.2 kg)
 

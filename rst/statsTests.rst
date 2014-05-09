@@ -39,7 +39,7 @@ is correct is 0.03, or 3\%". Since this probability is quite low, we say that
 
 **Example 2:** If we want to check the assumption that the mean value of a group
 is 7, then the null hypothesis would be: "We assume that there is null
-difference between the mean value in our poulation and the value 7."
+difference between the mean value in our population and the value 7."
 
 
 Types of Error
@@ -120,27 +120,38 @@ that will answer the clinical question being posed is often called
 
 Examples for some special cases 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For a test on one mean, this leads to a *minimum sample number* of
+ 
+**Test on one mean:** if we have the hypothesis that the data population has
+a mean value of :math:`x_1` and a standard deviation of :math:`\sigma`, and the actual
+population has a mean value of :math:`x_1+D` and the same standard deviation, we
+can find such a difference with a *minimum sample number* of
 
 .. math:: n = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{d^2}
 
 Here z is the standardized normal variable (see also chapter
 "Normal Distribution")
 
-.. math:: z = \frac{x-\mu}{\sigma} .
+.. Math:: z = \frac{x-\mu}{\sigma} .
 
 and :math:`d = \frac{D}{\sigma}` the effect size.
+
+In words, if the real mean has a value of :math:`x_1`, we want to detect this
+correctly in at least :math:`1-\alpha\%` of all tests; and if the real mean is
+shifted by :math:`D` or more, we want to detect this with a likelihood of at least
+:math:`1-\beta\%`.
+
+**Test between two different populations:**
 
 For finding a difference between two normally distributed means, the
 minimum number of samples we need in each group to detect an absolute difference *D* is
 
-.. math:: {n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{d^2} .
+.. math:: {n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{D^2} .
 
 Programs: SampleSize 
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: ..\Code3\sampleSize.py
+|python| `sampleSize.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/sampleSize.py>`_
+
 
 The "p-value fallacy"
 ~~~~~~~~~~~~~~~~~~~~~
@@ -170,7 +181,16 @@ example, :math:`p=0.05` leads to :math:`\alpha=0.29`, and :math:`p=0.01`
 to :math:`\alpha=0.11`.
 
 Remember, p only indicates the likelihood of obtaining a certain value
-for the test statistic of the null hypothesis is true - nothing else!
+for the test statistic if the null hypothesis is true - nothing else!
+
+And keep in mind that improbable events do happen, even if not very
+frequently. For example, back in 1980 a woman named Maureen Wilcox bought
+tickets for both the Rhode Island lottery and the Massachusetts lottery. And
+she got the correct numbers for both lotteries. Unfortunately for her, she
+picked all the correct numbers for Massachusetts on her Rhode Island ticket,
+and all the  right numbers for Rhode island on her Massachusetts ticket :(
+Seen statistically, the p-value for such an event would be extremely small -
+but it did happen anyway.
 
 Sensitivity and Specificity 
 -----------------------------
@@ -276,3 +296,7 @@ tests for different combinations of data.
 .. |image25| image:: ../Images/Sensitivity_Specificity_Example.png
     :scale: 75 %
 
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 

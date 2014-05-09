@@ -1,29 +1,7 @@
-\chapter*{Preface}
-\addcontentsline{toc}{chapter}{Preface}
-
-This is a free book. It should a) help you to get up to speed with Python, for b) the statistical analysis of data.
-
-For most of my coding life I have worked with Matlab, as my work was confined to academic research. When I started to look at real life applications (i.e. things that you might want to really sell), I realized how expensive Matlab licenses are. At the same time, I discovered the (coding) beauty of Python. Put the two together, and add the fact that around 2010 Python and its documentation had matured to the point where you could use it without being a hacker. And you get a free, beautiful package that allows you to do all the statistics that at least 95\% of all researchers need to do in their lifetime. OK, for really serious statistical modeling $R$ still sets the standard. But most of us will be more than happy with the tools that the Python ecosystem offers today.
-
-The idea of this book is to give you all (or at least most of) the tools that you will need for your statistical data analysis. Thereby I try to provide all the background required to understand what you are doing. I will not proof any theorems, and won't indulge in mathematics where it is unnecessary. This approach explains why so much code is included: in principle, you have to define our problem, select the corresponding program, and adapt it to your needs. This should allow you to get going quickly, even if you have little Python experience. This is also the reason why I have not provided the software as a Python module, since I expect that you have to tailor each program to your specific setup (data format, etc).
-
-\section{How to use this book}
-\begin{itemize}
-  \item If you just want to look something up, simply go to the \href{http://work.thaslwanter.at/Stats/html}{HTML-version of the book}.
-  \item If you want to go through it systematically, or if you prefer to read printed material, you may want to download the \href{http://work.thaslwanter.at/Stats/StatsIntro.pdf}{PDF-version of the book}.
-  \item If you want to get the whole package, and/or if you want to contribute to the book, clone the \href{https://github.com/thomas-haslwanter/statsintro}{github repository of the book}, which includes all the Python programs, the sample data used in the book, the TEX-files, RST-files, and all the images.
-
-      If you have never used github, you might want to check out \href{https://help.github.com/articles/set-up-git}{this introduction to github}. But don't be scared off, you can download individual files easily from your web-browser.
-\end{itemize}
-
-\section{Contributor List}
-If you have a suggestion or correction, please send email to thomas.haslwanter@fh-linz.at. If I make a change based on your feedback, I will add you to the contributor list (unless you ask to be omitted).
-
-If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not as easy to work with. Thanks!
-
 \chapter{Introduction}
 
-\emph{"Statistics ist the explanation of variance in the light of what remains unexplained."}
+\emph{"Statistics ist the explanation of variance in the light of what remains
+unexplained."}
 
 \vspace{5 mm}
 
@@ -35,7 +13,7 @@ Statistics was originally invented - as so many other things - by the famous mat
   \item Make predictions.
 \end{itemize}
 
-\textbf{Books: }There are a number of good books about statistics. My favorite is \cite{altman99}: it does not talk a lot about computers and modeling, but gives you a terrific introduction into the field. Many formulations and examples in this manuscript have been taken from that book. A more modern book, which is more voluminous and in my opionion a bit harder to read, is \cite{Riffenburgh2012}. If you are interested in a simple introduction to modern regression modeling, check out \cite{Kaplan2009}. A very good introduction to “Generalized Linear Models” is \cite{Dobson2008}. If you know your basic statistics, this is a good, advanced starter into statistical modeling.
+\textbf{Books: }There are a number of good books about statistics. My favorite is \cite{altman99}: it does not talk a lot about computers and modeling, but gives you a terrific introduction into the field. Many formulations and examples in this manuscript have been taken from that book. A more modern book, which is more voluminous and in my opinion a bit harder to read, is \cite{Riffenburgh2012}. If you are interested in a simple introduction to modern regression modeling, check out \cite{Kaplan2009}. A very good introduction to “Generalized Linear Models” is \cite{Dobson2008}. If you know your basic statistics, this is a good, advanced starter into statistical modeling.
 
 \vspace{5 mm}
 
@@ -140,10 +118,10 @@ There are also many tutorials available on the internet (Table \ref{table:python
    \begin{tabular}{|p{8 cm}|p{8 cm}|}
      \hline
      \url{http://scipy-lectures.github.com} & \emph{Python Scientific Lecture Notes.} Pretty comprehensive. \\     \url{http://www.scipy.org/NumPy\_for\_Matlab\_Users} & \emph{NumPy for Matlab Users} Start here if you have Matlab experience. \\
-     \url {https://github.com/jrjohansson/scientific-python-lectures} & \emph{Lectures on scientific computing with Python.} Great ipython notebooks! \\     \url{http://docs.python.org/2/tutorial} & \emph{The Python tutorial.} The official introduction. \\
+     \url {https://github.com/jrjohansson/scientific-python-lectures} & \emph{Lectures on scientific computing with Python.} Great IPython notebooks! \\     \url{http://docs.python.org/2/tutorial} & \emph{The Python tutorial.} The official introduction. \\
      \url{http://swaroopch.com/notes/python} & \emph{A Byte of Python.} Free book, very good at the introductory level. \\
      \url{http://learnpythonthehardway.org/book/} & \emph{Learn Python the Hard Way, 3rd Ed} A popular, free book that you can work through. \\
-     \url{http://www.greenteapress.com/thinkpython} & \emph{ThinkPython.} Free book, for advanced programers. \\
+     \url{http://www.greenteapress.com/thinkpython} & \emph{ThinkPython.} Free book, for advanced programmers. \\
 
      \hline
    \end{tabular}
@@ -169,7 +147,7 @@ If you decide to install things manually, you need the following modules in addi
 
 Make sure that you have a good programming environment! Currently, my favorite way of programming is similar to my old Matlab style: I first get the individual steps worked out interactively in an \cite{ipython} \emph{qtconsole}. Ipython \index{general}{Python!ipython} provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code.
 When ipython is started in \emph{pylab mode} (which is the typical configuration), it automatically loads numpy and matplotlib.pyplot into the
-active workspace, and provides a very convenient, Matlab-like programing environment. A very helpful new addition is the browser-based \emph{ipython
+active workspace, and provides a very convenient, Matlab-like programming environment. A very helpful new addition is the browser-based \emph{ipython
 notebook}, with support for code, text, mathematical expressions, inline plots and other rich media. Please check out the links to the ipython
 notebooks in this statistics introduction. I believe that it will  help you to get up to speed with python much more quickly.
 

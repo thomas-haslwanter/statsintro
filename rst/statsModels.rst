@@ -650,7 +650,7 @@ The confidence interval is built using the standard error, the p-value
 from our T-test, and a critical value from a T-test having :math:`N-k`
 degrees of freedom, where :math:`k` is the number of observations and
 :math:`P` is the number of model parameters, i.e., the number of
-predictor variables. The confidence interval is the the range of values
+predictor variables. The confidence interval is the range of values
 we would expect to find the parameter of interest, based on what we have
 observed. You will note that we have a confidence interval for the
 predictor variable coefficient, and for the constant term. A smaller
@@ -945,7 +945,7 @@ trained on the clean and original sets, respectively.
         plot( test, org.predict( test ), 'k--' )
 
 Finally, we limit and label the axes, add a title, overlay a grid, place
-the lengend at the bottom, and then save the figure.
+the legend at the bottom, and then save the figure.
 
 ::
 
@@ -1168,9 +1168,10 @@ regression analysis fails to clarify the relationships between the
 predictor variables and the response variable when the predictors are
 correlated with each other and are not assigned following a study
 design.
-(See also the ipython notebook `modeling.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/modeling.ipynb>`_)
 
-.. literalinclude:: ..\Code\modeling.py
+|ipynb| `modeling.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/modeling.ipynb>`_
+
+|python| `modeling.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/modeling.py>`_
 
 Bootstrapping
 -------------
@@ -1185,7 +1186,12 @@ i.e. taking additional samples repeatedly from the initial sample, to
 provide estimates of its variability. In a case where the distribution
 of the initial sample is unknown, bootstrapping is of especial help in
 that it provides information about the distribution.
-(See also the ipython notebook `bootstrap.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/bootstrap.ipynb>`_)
 
-.. literalinclude:: ..\Code\bootstrap.py
+|ipynb| `bootstrap.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/bootstrap.ipynb>`_
 
+|python| `bootstrap.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/bootstrap.py>`_
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 

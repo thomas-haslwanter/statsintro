@@ -8,7 +8,7 @@
 \indexentry{data!numerical}{17}
 \indexentry{plots!scatter}{18}
 \indexentry{plots!histogram}{18}
-\indexentry{plots!kde}{19}
+\indexentry{plots!kde}{18}
 \indexentry{cumulative frequency}{20}
 \indexentry{plots!boxplot}{21}
 \indexentry{plots!violinplot}{21}
@@ -60,8 +60,8 @@
 \indexentry{distributions!discrete}{44}
 \indexentry{normality check}{45}
 \indexentry{plots!$Q-Q$ plot}{45}
-\indexentry{test!Kolmogorov-Smirnov}{45}
 \indexentry{test!Lilliefors}{45}
+\indexentry{test!Kolmogorov-Smirnov}{46}
 \indexentry{test!Shapiro-Wilk}{46}
 \indexentry{transformation}{46}
 \indexentry{confidence interval}{46}

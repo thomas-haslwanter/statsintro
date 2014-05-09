@@ -63,7 +63,7 @@ In Table \ref{tab:wilcoxon} you see an example, where the significance to a devi
      11 & 8770 & -1045 & 5 \\
      \hline
    \end{tabular}
-  \caption{Eaily energy intake of 11 healthy women with rank order of differences (ignoring their signs) from the recommended intake of 7725 kJ.}\label{tab:wilcoxon}
+  \caption{Daily energy intake of 11 healthy women with rank order of differences (ignoring their signs) from the recommended intake of 7725 kJ.}\label{tab:wilcoxon}
 \end{table}
 
 
@@ -85,7 +85,7 @@ where $\bar{x}_i$ is the mean of the i-th sample, and \emph{se} indicates the \e
 
 \subsection{Non-parametric Comparison of Two Groups: Mann-Whitney Test} \index{general}{test!Mann-Whitney}\label{test:Mann-Whitney}
 
-If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilkoxon) test}. Watch out, because this test is sometimes also referred to as \emph{Wilcoxon rank-sum test}. This is different than the \emph{Wilcoxon signed rank sum test}!
+If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilcoxon) test}. Watch out, because this test is sometimes also referred to as \emph{Wilcoxon rank-sum test}. This is different than the \emph{Wilcoxon signed rank sum test}!
 
 \PyImg "twoSample.py" (p \pageref{py:twoSample}): Comparison of two groups, paired and unpaired.
 \index{python}{twoSample}
@@ -227,7 +227,7 @@ The formula for Tukey's test is:
     q_s = \frac{Y_A - Y_B}{SE}
 \end{equation}
 
-where $Y_A$ is the larger of the two means being compared, $Y_B$ is the smaller of the two means being compared, and $SE$ is the standard error of the data in question. This $q_s$ value can then be compared to a q value from the \emph{studentized range distribution}, which takes into account the multiple comparisons. If the qs value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
+where $Y_A$ is the larger of the two means being compared, $Y_B$ is the smaller of the two means being compared, and $SE$ is the standard error of the data in question. This $q_s$ value can then be compared to a q value from the \emph{studentized range distribution}, which takes into account the multiple comparisons. If the q value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
 Note that the studentized range statistic is the same as the t-statistic except for a scaling factor (np.sqrt(2)).
 
 \PyImg "multipleTesting.py" (p \pageref{py:multipleTesting}): this script provides an example where three treatments are compared.
@@ -285,7 +285,7 @@ In a clinic, 15 lacy patients weight [76., 101., 66., 72., 88., 82., 79., 73., 7
     Are the lacy patients significantly heavier?
     (Correct answer: yes, p=0.045)
 
-  \item \textbf{Kolmogoriv-Smirnov test}
+  \item \textbf{Kolmogorov-Smirnov test}
 
     Are the two datasets normally distributed?
     (Correct answer: yes, they are)

@@ -291,8 +291,8 @@ In Python, the most elegant way of working with distribution function is a two-s
 \end{minipage}}
 \vspace{10 mm}
 
-\PyImg "figs\_DistributionNormal.py" (p \pageref{py:distributionNormal}) shows simple manipulations of normal distribution functions.
-\index{python}{figs_DistributionNormal}
+\PyImg "distributionNormal.py" (p \pageref{py:distributionNormal}) shows simple manipulations of normal distribution functions.
+\index{python}{distributionNormal}
 
 \begin{lstlisting}
   In [33]:  from scipy import stats
@@ -339,7 +339,7 @@ The average weight of a newborn child in the US is 3.5 kg, with a standard devia
 
 \subsection{Other Continuous Distributions}\label{sec:ContinuousDistributions} \index{general}{distributions!continuous}
 
-The distributions you will enounter most frequently are:
+The distributions you will encounter most frequently are:
 
 \begin{itemize}
   \item \textbf{Normal distribution} - the "ideal" continuous probability distribution
@@ -444,6 +444,8 @@ If you want to investigate whether two groups have the same variance, you have t
 \end{equation}
 
 where $S_x$ ist he sample standard deviation of the first sample, and $S_y$ the sample standard deviation for the second sample.
+
+\textbf{Application Example}
 
 Take for example the case that you want to compare two methods to measure eye movements. The two methods
 can have different accuracy and different precision. With your test you want to
@@ -578,8 +580,8 @@ Working with distribution functions in Python takes a bit to get used to. But on
   In [4]: y = myDF.pdf(x)
 \end{lstlisting}
 
-\PyImg "figs\_DistributionContinuous.py" (p \pageref{py:continuous}) shows different continuous distribution functions.
-\index{python}{figs_DistributionContinuous}
+\PyImg "distributionContinuous.py" (p \pageref{py:continuous}) shows different continuous distribution functions.
+\index{python}{distributionContinuous}
 
 \subsection{Discrete Distributions}\index{general}{distributions!discrete}
 
@@ -643,8 +645,8 @@ Instead of having a parameter p that represents a component probability like in 
 
 \subsubsection{Programs: Discrete Distribution Functions} \index{general}{distributions!discrete}
 
-\PyImg "figs\_DistributionDiscrete.py" (p \pageref{py:discrete}) shows different continuous distribution functions.
-\index{python}{figs_DistributionDiscrete}
+\PyImg "distributionDiscrete.py" (p \pageref{py:discrete}) shows different continuous distribution functions.
+\index{python}{distributionDiscrete}
 %(Lecture 7)
 
 \section{Data Analysis}
@@ -671,12 +673,11 @@ If the two distributions being compared are similar, the points in the $Q-Q$ plo
   \caption{QQ-Plot, to check for normality of distribution.}\label{fig:qqplot}
 \end{figure}
 
-\subsubsection{Kolmogorov-Smirnov Test and Lilliefors Test}\index{general}{test!Kolmogorov-Smirnov}
+\subsubsection{Hypothesis Tests for Normality}
 
-To test the null hypothesis that data come from a normally distributed population, when the null hypothesis does not specify which normal distribution i.e., it does not specify the expected value and variance of the distribution, you can use the \emph{Lilliefors test}\index{general}{test!Lilliefors}. It is a normality test based on the \emph{Kolmogorov--Smirnov test}, which quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. Note that for the original Kolmogorov-Smirnov test this implies that in a test for normality, you have to standardize your sample distribution (i.e. subtract the mean, and divide by the standard deviation), and specify your reference distribution (i.e. if you want to check for normality, the normal distribution).
+To test the null hypothesis that data come from a normally distributed population, when the null hypothesis does not specify which normal distribution i.e., it does not specify the expected value and variance of the distribution, you can use the \emph{Lilliefors test}\index{general}{test!Lilliefors}. It is a normality test based on the \emph{Kolmogorov--Smirnov test} \index{general}{test!Kolmogorov-Smirnov}, which quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. Note that for the original Kolmogorov-Smirnov test this implies that in a test for normality, you have to standardize your sample distribution (i.e. subtract the mean, and divide by the standard deviation), and specify your reference distribution (i.e. if you want to check for normality, the normal distribution).
 
-
-Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}{test!Shapiro-Wilk}, the Python command \lstinline{stats.normaltest(x)} uses a method by D'Agostino and Pearson,  and a number of other tests are also available.
+The Python command \lstinline{stats.normaltest(x)} uses a method by D'Agostino and Pearson, which compares skew and kurtosis to that of a normal distribution; Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}{test!Shapiro-Wilk}; and a number of other tests are also available.
 
 \PyImg "checkNormality.py" (p \pageref{py:checkNormality}) shows how to check graphically and quantitatively if a given distribution is normal.
 \index{python}{checkNormality}
@@ -685,7 +686,7 @@ Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}
   \centering
   % Requires \usepackage{graphicx}
   \includegraphics[width=0.5\textwidth]{../Images/KS_Example.png}\\
-  \caption{Illustration of the Kolmogorov-Smirnoff statistic. Red line is CDF, blue line is an ECDF, and the black arrow is the K-S statistic (from Wikipedia).}\label{fig:ksplot}
+  \caption{Illustration of the Kolmogorov-Smirnov statistic. Red line is CDF, blue line is an ECDF, and the black arrow is the K-S statistic (from Wikipedia).}\label{fig:ksplot}
 \end{figure}
 
 
@@ -736,7 +737,11 @@ where $se$ is the standard error, and $t_{n,\alpha}$ the $t$ statistic for $n$ d
 
 \subsection{Continuous Distributions }
 \begin{enumerate}
-    \item \textbf{T-Distribution:} Measuring the weight of your collegues, you have obtained the following weights: 52, 70, 65, 85, 62, 83, 59 kg.
+    \item \textbf{Normal Distribution:} Your doctor tells you that he can use hip implants for surgery even if they are 1 mm bigger or smaller than the specified size. And your financial officer tells you that you can discard 1 out of 1000 hip implants, and still make a profit.
+
+        What is the required standard deviation for the producer of the hip implants, to simultaneously satisfy both requirements?
+        (Correct answer: $\sigma=0.304 mm$)
+    \item \textbf{T-Distribution:} Measuring the weight of your colleagues, you have obtained the following weights: 52, 70, 65, 85, 62, 83, 59 kg.
     Calculate the corresponding mean, and the 99\% confidence interval for the mean. Note: with n values you have n-1 DOF for the t-distribution.
     (Correct answer: 68.0 +/- 17.2 kg)
 

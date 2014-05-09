@@ -33,10 +33,9 @@ interaction effect between "gender" and "treatment".
 Example: two-way ANOVA 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-See the example in listing 
-`anovaTwoway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaTwoway.ipynb>`_:
+|ipynb| `anovaTwoway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaTwoway.ipynb>`_
 
-.. literalinclude:: ..\Code\anovaTwoway.py
+|python| `anovaTwoway.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/anovaTwoway.py>`_
 
 ::
 
@@ -51,14 +50,19 @@ Multilinear Regression
 ------------------------
 
 If you have truly independent variables, *multilinear regression* is a
-straitforward extension of the simple linear regression. However, if
+straightforward extension of the simple linear regression. However, if
 your variables may be related to each other, you have to proceed much
 more carefully. For example, you may want to investigate how the
 prevalence of some disease correlates with age and with income: if you
 do so, you have to keep in mind that age and income are most likely
 correlated! For details, gives a good introduction to that topic. Also,
 check out the chapter on Modeling.
-(See also the ipython notebook `mult_regress.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/mult_regress.ipynb>`_)
 
-.. literalinclude:: ..\Code\mult_regress.py
+|ipynb| `mult_regress.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/mult_regress.ipynb>`_
 
+|python| `mult_regress.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/mult_regress.py>`_
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 

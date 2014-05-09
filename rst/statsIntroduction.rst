@@ -26,7 +26,7 @@ won't be able to avoid it. Statistics can
     that book.
 
 *R.H. Riffenburgh. Statistics in Medicine. Academic Press, 3rd edition, 2012* .
-    A more modern book, which is more voluminous and in my opionion a bit harder to read.
+    A more modern book, which is more voluminous and in my opinion a bit harder to read.
 
 *Daniel Kaplan. Statistical Modeling: A Fresh Approach. Macalester College, 2009*
     If you are interested in a simple introduction to modern regression modeling, check out
@@ -196,7 +196,7 @@ active and helpful!
 
 * http://learnpythonthehardway.org/book/  *Learn Python the Hard Way, 3rd Ed. A popular, free book that you can work through*
 
-* http://www.greenteapress.com/thinkpython/ *ThinkPython: A free book on Python.*
+* http://www.greenteapress.com/thinkpython/ *ThinkPython: A free book on Python, for advanced programmers.*
 
 
 If you decide to install things manually, you need the following modules
@@ -234,7 +234,7 @@ history, interactive data visualization, command completion, and a lot of
 features that make it quick and easy to try out code. When ipython is
 started in *pylab mode* (which is the typical configuration), it
 automatically loads numpy and matplotlib.pyplot into the active workspace,
-and provides a very convenient, Matlab-like programing environment. A very
+and provides a very convenient, Matlab-like programming environment. A very
 helpful new addition is the browser-based *ipython notebook*, with support
 for code, text, mathematical expressions, inline plots and other rich media.
 Please check out the links to the ipython notebooks in this statistics

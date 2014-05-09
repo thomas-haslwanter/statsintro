@@ -19,7 +19,7 @@ Keep in mind that unlikely events \emph{do} happen: In 1980, for example, a woma
 
 \textbf{Example 1: } Let us compare the weight of two groups of subject. Then the \emph{null hypothesis} is that there is \emph{null} difference in the weight between the two groups. If a statistical comparison of the weight produces a p-value of 0.03, this means that \emph{the probability that the null hypothesis is correct is 0.03, or 3\%}. Since this probability is quite low, we say that \emph{there is a significant difference between the weight of the two groups}.
 
-\textbf{Example 2: } If we want to check the assumption that the mean value of a group is 7, then the null hypothesis would be: \emph{"We assume that there is null difference between the mean value in our poulation and the value 7."}
+\textbf{Example 2: } If we want to check the assumption that the mean value of a group is 7, then the null hypothesis would be: \emph{"We assume that there is null difference between the mean value in our population and the value 7."}
 
 \subsection{Types of Error}
 In hypothesis testing, two types of errors can occur:
@@ -67,7 +67,7 @@ The absolute size of the difference $D$ between mean treatment outcomes that wil
 
 \subsubsection{Examples for some special cases}
 
-For a test on one mean, this leads to a \emph{minimum sample number} of
+\textbf{Test on one mean:} if we have the hypothesis that the data population has a mean value of $x_1$ and a standard deviation of $\sigma$, and the actual population has a mean value of $x_1+D$ and the same standard deviation, we can find such a difference with a \emph{minimum sample number} of
 
 \begin{equation}
   n = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{d^2}
@@ -81,7 +81,10 @@ Here z is the standardized normal variable (see also chapter \ref{sec:normalDist
 
 and $d = \frac{D}{\sigma}$ the effect size.
 
-For finding a difference between two normally distributed means, the minimum number of samples we need in each group to detect an absolute difference $D$ is
+In words, if the real mean has a value of $x_1$, we want to detect this correctly in at least $1-\alpha\%$ of all tests; and if the real mean is shifted by $D$ or more, we want to detect this with a likelihood of at least $1-\beta\%$.
+
+\textbf{Test between two different populations:}
+For finding a difference between two normally distributed means, with standard deviations of $\sigma_1$ and $\sigma_2$, the minimum number of samples we need in each group to detect an absolute difference $D$ is
 
 \begin{equation}
   {n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{D^2} .
@@ -95,7 +98,7 @@ For finding a difference between two normally distributed means, the minimum num
 
 \subsection{The "p-value fallacy"}
 
-p values are often used to measure evidence against a hypothesis. Unfortunately, they are often incorrectly viewed as an error probability for rejection of the hypothesis, or, even worse, as the posterior probability (i.e. after the data have been collected) that the hypothesis is true. As an example, take the case where the alternative hypothesis is that the mean is just a fraction of one standard deviation larger than the mean under the null hypothesis: in that case, a sample that produces a p-value of 0.05 may just as likely be produced if the the alternative hypothesis is true as if the null hypothesis is true!
+p values are often used to measure evidence against a hypothesis. Unfortunately, they are often incorrectly viewed as an error probability for rejection of the hypothesis, or, even worse, as the posterior probability (i.e. after the data have been collected) that the hypothesis is true. As an example, take the case where the alternative hypothesis is that the mean is just a fraction of one standard deviation larger than the mean under the null hypothesis: in that case, a sample that produces a p-value of 0.05 may just as likely be produced if the alternative hypothesis is true as if the null hypothesis is true!
 
 \cite{sellke2001} have investigated this question in detail, and recommend to use a "calibrated p-value" to estimate the probability of making a mistake when rejecting the null hypothesis, when the data produce a p-value $p$:
 
@@ -105,7 +108,9 @@ p values are often used to measure evidence against a hypothesis. Unfortunately,
 
 with $e=exp(1)$, and $log$ the natural logarithm. For example, $p=0.05$ leads to $\alpha=0.29$, and $p=0.01$ to $\alpha=0.11$.
 
-Remember, p only indicates the likelihood of obtaining a certain value for the test statistic of the null hypothesis is true - nothing else!
+Remember, p only indicates the likelihood of obtaining a certain value for the test statistic if the null hypothesis is true - nothing else!
+
+And keep in mind that improbable events do happen, even if not very frequently. For example, back in 1980 a woman named Maureen Wilcox bought tickets for both the Rhode Island lottery and the Massachusetts lottery. And she got the correct numbers for both lotteries. Unfortunately for her, she picked all the correct numbers for Massachusetts on her Rhode Island ticket, and all the  right numbers for Rhode island on her Massachusetts ticket :(  Seen statistically, the p-value for such an event would be extremely small - but it did happen anyway.
 
 \section{Sensitivity and Specificity}
 

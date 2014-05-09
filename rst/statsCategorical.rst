@@ -353,9 +353,10 @@ Analysis Programs
 -----------------
 
 With computers, the computational steps are trivial
-(See also the ipython notebook `compGroups.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/ compGroups.ipynb>`_):
 
-.. literalinclude:: ..\Code3\compGroups.py
+|ipynb| `compGroups.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/compGroups.ipynb>`_
+
+|python| `compGroups.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/compGroups.py>`_
 
 
 Exercises
@@ -382,3 +383,8 @@ the four pairs correct. (Correct answer: No. If she gets three correct,
 that chance that a selection of "three or greater" was random is 0.243.
 She needs to get all four correct, if we set the rejection threshold at
 0.05)
+
+.. |ipynb| image:: ../Images/IPython.jpg
+    :scale: 50 % 
+.. |python| image:: ../Images/python.jpg
+    :scale: 50 % 
