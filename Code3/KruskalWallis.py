@@ -3,11 +3,7 @@ Taken from http://www.brightstat.com/index.php?option=com_content&task=view&id=4
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   May-2013
-Ver:    1.2
-'''
+# author: Thomas Haslwanter, date: May-2013
 
 from scipy.stats.mstats import kruskalwallis
 from numpy import array
