@@ -2,11 +2,7 @@
 
 '''
 
-'''
-Author : Thomas Haslwanter
-Date : April 2013
-Ver : 2.1
-'''
+# author: Thomas Haslwanter, date: April-2013
 
 import numpy as np
 import pandas as pd

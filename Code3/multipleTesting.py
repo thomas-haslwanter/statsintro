@@ -5,11 +5,7 @@ Taken from an example by Josef Perktold (http://jpktd.blogspot.co.at/)
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   April 2013
-Ver:    1.1
-'''
+# author: Thomas Haslwanter, date: April-2013
 
 import numpy as np
 from scipy import stats

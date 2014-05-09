@@ -3,11 +3,7 @@ Example of a one-and two-sided binomial test. Taken from Wikipedia
 http://en.wikipedia.org/wiki/Binomial_test
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   July 2013
-Ver:    1.0
-'''
+# author: Thomas Haslwanter, date: July-2013
 
 from scipy import stats
 

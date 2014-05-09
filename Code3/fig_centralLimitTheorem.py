@@ -1,11 +1,9 @@
 '''
 Practical demonstration of the central limit theorem
 
-Author: Thomas Haslwanter
-Date:   March-2014
-Ver:    0.1
-
 '''
+
+# author: Thomas Haslwanter, date: March-2014
 
 import numpy as np
 import matplotlib.pyplot as plt

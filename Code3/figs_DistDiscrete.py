@@ -4,11 +4,7 @@
 
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    April-2013
-Version: 1.2
-'''
+# author: Thomas Haslwanter, date: April-2013
 
 # Note: here I use the modular approach, which is more appropriate for scripts
 import matplotlib.pyplot as plt

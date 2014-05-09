@@ -1,10 +1,8 @@
 ''' Test routine for Statsintro
 
-Author: Thomas Haslwanter
-Date:   July-2013
-Version: 1.1
-
 '''
+
+# author: Thomas Haslwanter, date: Jan-2014
 
 import pandas as pd
 

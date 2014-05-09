@@ -4,11 +4,7 @@
 
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    June-2013
-Version: 2.0
-'''
+# author: Thomas Haslwanter, date: Jun-2013
 
 import pandas as pd
 from getdata import getData

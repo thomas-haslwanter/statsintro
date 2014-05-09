@@ -4,11 +4,7 @@
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   May-2013
-Ver:    2.1
-'''
+# author: Thomas Haslwanter, date: May-2013
 
 from pandas import read_csv
 from statsmodels.formula.api import ols

@@ -20,11 +20,7 @@ superfluous. But it shows good Python coding style.
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Version:  1.4
-Date:  May-2013
-'''
+# author: Thomas Haslwanter, date: May-2013
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
 # And don't worry here about not knowing the right modules: numpy, scipy, and

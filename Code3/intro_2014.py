@@ -4,11 +4,8 @@ http://www.amstat.org/publications/jse/jse_data_archive.htm
 
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    Jan-2014
-Version: 1.1
-'''
+# author: Thomas Haslwanter, date: Jan-2014
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd

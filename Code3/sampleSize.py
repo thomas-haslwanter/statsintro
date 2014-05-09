@@ -20,10 +20,10 @@ def sampleSize_oneGroup(d, alpha=0.05, beta=0.2, sigma=1):
     
     return n
 
-def sampleSize_twoGroups(d, alpha=0.05, beta=0.2, sigma1=1, sigma2=1):
+def sampleSize_twoGroups(D, alpha=0.05, beta=0.2, sigma1=1, sigma2=1):
     '''Sample size for two groups.'''
     
-    n = round((norm.ppf(1-alpha/2.) + norm.ppf(1-beta))**2 * (sigma1**2 + sigma2**2) / d**2)
+    n = round((norm.ppf(1-alpha/2.) + norm.ppf(1-beta))**2 * (sigma1**2 + sigma2**2) / D**2)
     
     print(('In order to detect a change of {0} between groups with an SD of {1} and {2},'.format(d, sigma1, sigma2)))
     print(('with significance {0} and test-power {1}, you need in each group at least {2:d} subjects.'.format(alpha, 100*(1-beta), int(n))))

@@ -2,11 +2,7 @@
 Graphical display of PDF (probability density function) and CDF (cumulative density function)
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   April-2014
-Ver:    1.0
-'''
+# author: Thomas Haslwanter, date: April-2014
 
 import numpy as np
 import matplotlib.pyplot as plt

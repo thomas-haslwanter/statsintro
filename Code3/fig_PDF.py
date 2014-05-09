@@ -3,6 +3,8 @@ Plot demonstrating the integral as the area under a curve of a PDF.
 
 """
 
+# author: Thomas Haslwanter, date: Jan-2014
+
 import numpy as np
 import matplotlib.pyplot as plt
 import os

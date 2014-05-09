@@ -5,11 +5,7 @@ respectively, and a standard deviation of 2.
 
 '''
 
-'''
-Author: thomas haslwanter
-Date:   23-march 2013
-Ver:    0.1
-'''
+# author: Thomas Haslwanter, date: March-2013
 
 import numpy as np
 import matplotlib.pyplot as plt

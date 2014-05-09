@@ -7,11 +7,7 @@ Python 2, is available from http://github.org/cgevans/scikits-bootstrap
    
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    Jan-2014
-Version: 1.2
-'''
+# author: Thomas Haslwanter, date: Jan-2014
 
 import scipy as sp
 import matplotlib.pyplot as plt

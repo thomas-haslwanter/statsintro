@@ -3,11 +3,7 @@ Stability of the T-distribution against outliers, compared to the normal distrib
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   March-2014
-Ver:    1.0
-'''
+# author: Thomas Haslwanter, date: March-2014
 
 import numpy as np
 import scipy.stats as ss

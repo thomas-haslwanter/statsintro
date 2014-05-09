@@ -4,11 +4,7 @@ Also shows how to make 3d plots.
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   May-2013
-Ver:    1.1
-'''
+# author: Thomas Haslwanter, date: May-2013
 
 # The standard imports
 import numpy as np

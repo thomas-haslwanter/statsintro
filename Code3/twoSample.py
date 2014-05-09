@@ -4,11 +4,7 @@
 
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    July-2013
-Version: 1.6
-'''
+# author: Thomas Haslwanter, date: July-2013
 
 from numpy import genfromtxt, mean, std
 import scipy.stats as stats

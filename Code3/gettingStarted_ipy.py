@@ -20,11 +20,7 @@ superfluous. But it shows good Python coding style.
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Version:  1.0
-Date:  May-2013
-'''
+# author: Thomas Haslwanter, date: May-2013
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
 # for interactive work, there is a shotcut: "pylab", which loads numpy and

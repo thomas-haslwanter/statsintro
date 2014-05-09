@@ -2,11 +2,7 @@
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   April-2013
-Version: 1.0
-'''
+# author: Thomas Haslwanter, date: April-2014
 
 from pylab import *
 

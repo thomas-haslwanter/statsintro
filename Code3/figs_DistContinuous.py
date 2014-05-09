@@ -10,11 +10,7 @@
 
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    June-2013
-Version: 1.5
-'''
+# author: Thomas Haslwanter, date: Jun-2013
 
 # Note: here I use the iPython approach, which is best suited for interactive work
 from pylab import *

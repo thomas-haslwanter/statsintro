@@ -1,11 +1,7 @@
 '''Get data from MS-Excel files, which are stored zipped on the Web.
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    Jan-2014
-Version: 0.9
-'''
+# author: Thomas Haslwanter, date: Jan-2014
 
 import urllib
 import io

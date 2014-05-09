@@ -5,11 +5,8 @@ Strongly based on a blog by Connor Johnson.
 http://connor-johnson.com/2014/02/18/linear-regression-with-python/
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    April-2014
-Version: 1.0
-'''
+# author: Thomas Haslwanter, date: Jan-2014
+
 import numpy as np
 import pandas as pd
 import os

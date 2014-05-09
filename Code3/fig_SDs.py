@@ -2,11 +2,7 @@
 Graphical display of data within 1,2,3 SD.
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   April-2014
-Ver:    1.0
-'''
+# author: Thomas Haslwanter, date: April-2014
 
 import numpy as np
 import os

@@ -2,11 +2,8 @@
 Short demo of how to check for the significance of an individual value.
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   April-2014
-Ver:    0.1
-'''
+# author: Thomas Haslwanter, date: April-2014
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats

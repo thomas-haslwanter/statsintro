@@ -10,11 +10,7 @@
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   Jan-2014
-Ver:    0.5
-'''
+# author: Thomas Haslwanter, date: Jan-2014
 
 import os
 import scipy as sp

@@ -6,11 +6,7 @@ are not known.
 
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    April-2014
-Version: 1.2
-'''
+# author: Thomas Haslwanter, date: April-2014
 
 import numpy as np
 import scipy.stats as stats

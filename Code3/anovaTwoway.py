@@ -4,11 +4,7 @@ models are expressed in R.
 
 '''
 
-'''
-Author:  Thomas Haslwanter
-Date:    Jan-2014
-Version: 1.4
-'''
+# author: Thomas Haslwanter, date: Jan-2014
 
 import pandas as pd
 from getdata import getData

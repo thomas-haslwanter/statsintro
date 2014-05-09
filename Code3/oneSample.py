@@ -7,11 +7,7 @@ This script shows how to
 
 '''
 
-'''
-Author: Thomas Haslwanter
-Date:   Jan-2014
-Version: 1.2
-'''
+# author: Thomas Haslwanter, date: Jan-2014
 
 import numpy as np
 import scipy.stats as stats
