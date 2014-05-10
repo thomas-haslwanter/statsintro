@@ -71,7 +71,7 @@ Subject Daily energy intake (kJ) Difference from 7725 kJ Ranks of differences
  11      8770                    -1045                   5
 ======= ======================== ======================= =====================
 
-|ipynb| `oneSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/oneSample.ipynb>`_
+|ipynb| `50_oneSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/50_oneSample.ipynb>`_
 
 |python| `oneSample.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/oneSample.py>`_
 
@@ -117,7 +117,7 @@ If the measurement values from the two groups are not normally
 distributed we have to resort to a non-parametric test. The most common
 test for that is the *Mann-Whitney(-Wilcoxon) test*.
 
-|ipynb| `twoSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/twoSample.ipynb>`_
+|ipynb| `51_twoSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/51_twoSample.ipynb>`_
 
 |python| `twoSample.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/twoSample.py>`_
 
@@ -228,7 +228,7 @@ to get there.
    :ref:`F Distribution`. From the F-value, we can look up the corresponding p-value.
 
 
-|ipynb| `anovaOneway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaOneway.ipynb>`_
+|ipynb| `52_anovaOneway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/52_anovaOneway.ipynb>`_
 
 |python| `anovaOneway.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/anovaOneway.py>`_
 

@@ -33,7 +33,7 @@ interaction effect between "gender" and "treatment".
 Example: two-way ANOVA 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-|ipynb| `anovaTwoway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/anovaTwoway.ipynb>`_
+|ipynb| `90_anovaTwoway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/90_anovaTwoway.ipynb>`_
 
 |python| `anovaTwoway.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/anovaTwoway.py>`_
 
@@ -58,7 +58,7 @@ do so, you have to keep in mind that age and income are most likely
 correlated! For details, gives a good introduction to that topic. Also,
 check out the chapter on Modeling.
 
-|ipynb| `mult_regress.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/mult_regress.ipynb>`_
+|ipynb| `91_mult_regress.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/91_mult_regress.ipynb>`_
 
 |python| `mult_regress.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/mult_regress.py>`_
 

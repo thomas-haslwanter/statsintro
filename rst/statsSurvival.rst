@@ -59,7 +59,7 @@ methods are required. The *Cox regression model* introduced by Cox in
 1972 is used widely when it is desired to investigate several variables
 at the same time. For details, check or other statistic textbooks.
 
-|ipynb| `survival.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/survival.ipynb>`_
+|ipynb| `110_survival.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/110_survival.ipynb>`_
 
 |python| `survival.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/survival.py>`_
 

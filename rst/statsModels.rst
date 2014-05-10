@@ -148,7 +148,7 @@ Example 2: Linear Models
 
 This second set of examples is based heavily on Jonathan Taylor's class notes that use R. The following notebook introduces the use of pandas and the formula framework in statsmodels in the context of linear modeling:
 
-Ipython notebook `statsIntro_linearModels.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/statsIntro_linearModels.ipynb>`_
+Ipython notebook `100_statsIntro_linearModels.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/100_statsIntro_linearModels.ipynb>`_
 
 Linear Regression Analysis with Python
 --------------------------------------
@@ -1169,7 +1169,7 @@ predictor variables and the response variable when the predictors are
 correlated with each other and are not assigned following a study
 design.
 
-|ipynb| `modeling.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/modeling.ipynb>`_
+|ipynb| `101_modeling.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/101_modeling.ipynb>`_
 
 |python| `modeling.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/modeling.py>`_
 
@@ -1187,7 +1187,7 @@ provide estimates of its variability. In a case where the distribution
 of the initial sample is unknown, bootstrapping is of especial help in
 that it provides information about the distribution.
 
-|ipynb| `bootstrap.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/bootstrap.ipynb>`_
+|ipynb| `102_bootstrap.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/102_bootstrap.ipynb>`_
 
 |python| `bootstrap.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/bootstrap.py>`_
 
