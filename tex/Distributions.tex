@@ -469,11 +469,11 @@ The F statistic is $F = 0.494$, and has $n-1$ and $m-1$ degrees of freedom, wher
   In [1]:  method1 = array([20.7,  20.3,  20.3,  20.3,  20.7,  19.9,  19.9,  19.9,  20.3,
         20.3,  19.7,  20.3])
   In [2]:  method2 = array([ 19.7,  19.4,  20.1,  18.6,  18.8,  20.2,  18.7,  19. ])
-  In [3]:  fval = std(method1, ddof=1)/std(method2, ddof=1)
+  In [3]:  fval = var(method1, ddof=1)/var(method2, ddof=1)
   In [4]:  fd = stats.f(len(method2)-1,len(method2)-1)
   In [5]:  p = fd.cdf(fval)
   In [6]:  print p
-  Out[6]:  0.14
+  Out[6]:  0.041
   In [7]:  if (p<0.025) or (p>0.975):
               print 'There is a significant difference between the two distributions.'
 \end{lstlisting}
@@ -762,7 +762,7 @@ where $se$ is the standard error, and $t_{n,\alpha}$ the $t$ statistic for $n$ d
     \item \textbf{Binomial Distribution} "According to research, pure blue eyes in Europe approach greatest frequency in Finland, Sweden and Norway(at 72\%), followed by Estonia, Denmark(69\%); Latvia, Ireland(66\%); Scotland(63\%); Lithuania(61\%); The Netherlands(58\%); Belarus, England(55\%); Germany(53\%); Poland, Wales(50\%); Russia, The Czech Republic(48\%); Slovakia(46\%); Belgium(43\%); Austria, Switzerland, Ukraine(37\%); France, Slovenia(34\%); Hungary(28\%); Croatia(26\%); Bosnia and Herzegovina(24\%); Romania(20\%); Italy(18\%); Serbia, Bulgaria(17\%); Spain(15\%); Georgia, Portugal(13\%); Albania(11\%); Turkey and Greece(10\%). Further analysis shows that the average occurrence of blue eyes in Europe is 34\%, with 50\% in Northern Europe and 18\% in Southern Europe."
 
     If we have 15 Austrian students in the class-room, what ist the chance of finding 3, 6, or 10 students with blue eyes?
-    (Correct answer: 9\%, 20.1\%, and 6.4\%)
+    (Correct answer: 9\%, 20.1\%, and 1.4\%)
 
     \item \textbf{Poisson Distribution} On the streets of Austria there were 62 fatal accidents in 2012. Assuming that those are evenly distributed, we have on average
     62 /(365/7)=1.19 fatal accidents per week. How big is the chance that in a given week there are no, 2, or 5 accidents?
