@@ -1,4 +1,4 @@
-.. image:: ..\Images\title_basics.png
+﻿.. image:: ..\Images\title_basics.png
     :height: 100 px
 
 .. Basic Principles
@@ -152,7 +152,7 @@ Boxplots are often combined with KDE-plots to produce so-called
 
 Programs: Data Display 
 ~~~~~~~~~~~~~~~~~~~~~~~~
-|ipynb| `figs_BasicPrinciples.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/figs_BasicPrinciples.ipynb>`_
+|ipynb| `20_figs_BasicPrinciples.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/20_figs_BasicPrinciples.ipynb>`_
 
 
 Study Design 

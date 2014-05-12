@@ -321,7 +321,7 @@ So, why all the extra typing as one moves away from the pure MATLAB-style? For v
 
 For interactive work, it is simplest to use the *pylab mode*.
 
-|ipynb| `getting_started.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/getting_started.ipynb>`_
+|ipynb| `10_getting_started.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/10_getting_started.ipynb>`_
 shows you how to get started with the Python.
 
 
@@ -508,7 +508,7 @@ statistical analysis.
 
 The following piece of code shows you how shows you how the combination of pandas and statsmodels can be used for data analysis.
 
-|ipynb| `statsmodels_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/statsmodels_intro.ipynb>`_
+|ipynb| `11_statsmodels_intro.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/11_statsmodels_intro.ipynb>`_
 
 
 Seaborn

@@ -354,7 +354,7 @@ Analysis Programs
 
 With computers, the computational steps are trivial
 
-|ipynb| `compGroups.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/compGroups.ipynb>`_
+|ipynb| `70_compGroups.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/70_compGroups.ipynb>`_
 
 |python| `compGroups.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/compGroups.py>`_
 
