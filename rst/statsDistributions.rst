@@ -54,7 +54,7 @@ Cumulative Density Function (CDF)
 The probability to find a value between :math:`a` and :math:`b` is given
 by the integral over the PDF in that range (see Fig. [fig:PDF]), and the
 *Cumulative Density Function* tells you for each value which percentage
-of the data has a lower value (Figure [fig:CDF]). Together, this gives
+of the data has a lower value (see Figure below). Together, this gives
 us
 
 .. math:: \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
@@ -147,10 +147,8 @@ Percentiles
 ^^^^^^^^^^^^
 
 The *Cumulative distribution function (CDF)* tells you for each value which
-percentage of the data has a lower value (Figure :ref:`fig-NormalDistribution`).
-The value below which a given percentage of the values occur is called *centile*
-or *percentile*, and corresponds to a value with a specified cumulative
-frequency.
+percentage of the data has a lower value (Figure :ref:`fig-lDistributionFunctions`).
+The value below which a given percentage of the values occur is called *centile* or *percentile*, and corresponds to a value with a specified cumulative frequency.
 
 For example, when you look for the data range which includes 95% of the
 data, you have to find the :math:`2.5^{th}` and the :math:`97.5^{th}`
@@ -232,6 +230,25 @@ For the *sample standard error of the mean*, which is the one you will be workin
 
 .. math::  SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
 
+Confidence Intervals
+^^^^^^^^^^^^^^^^^^^^
+
+The most informative parameter that you can give for a statistical variable is arguably its \emph{confidence interval}. The confidence interval reports the range that contains the true value for your parameter with a likelihood of :math:`\alpha`\%.
+
+Most of the time you want to determine the confidence interval for normally distributed data, which is given by
+
+.. math::  ci = mean \pm std * t_{df,\alpha}
+
+where *std* is the sample standard deviation, and :math:`t_{df,\alpha}` the *t* statistic (which will be covered later in this chapter) for *df* degrees of freedom. For the 95\% two-sided confidence intervals, for example, you have to set :math:`\alpha=0.025` and :math:`\alpha=0.975` .
+
+**Note:** If you want to know the confidence interval for the mean value, you have to replace the *standard deviation* by the *standard error*! In Python, the 95\% confidence interval for the mean can be obtained with a one-liner:
+
+::
+
+    alpha = 0.95
+    df = len(data)-1
+    ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
+
 
 Parameters Describing a Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -252,7 +269,7 @@ Scale
 The *scale parameter* describes the width of a probability distribution.  If
 s is large, then the distribution will be more spread out; if s is small
 then it will be more concentrated. If the probability density exists for all
-values of $s$, then the density (as a function of the scale parameter only)
+values of *s*, then the density (as a function of the scale parameter only)
 satisfies
 
 .. math::   f_s(x) = f(x/s)/s,
@@ -419,7 +436,7 @@ already produces a smooth, almost Gaussian distribution.
 data between 0 and 1. Center) Histogram of average over two datapoints.)
 Right) Histogram of average over 10 datapoints.*
 
-.. literalinclude:: ..\Code3\centralLimitTheorem.py
+.. literalinclude:: ..\Code3\fig_centralLimitTheorem.py
 
 Application Example
 ~~~~~~~~~~~~~~~~~~~
@@ -810,101 +827,6 @@ Programs: Discrete Distribution Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |ipynb| `32_figs_DistDiscrete.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/32_figs_DistDiscrete.ipynb>`_
 
-Data Analysis
--------------
-
-Data Screening
-~~~~~~~~~~~~~~
-
-The first thing you have to do for your data analysis is simply *look at
-your data*. You should check for *missing data* in your data set, and
-*outliers* which can significantly influence the result of your
-analysis.
-
-Normality Check
-~~~~~~~~~~~~~~~
-
-Many statistical tests already assume that your data are normally
-distributed, i.e. that they are linearly related to the standard normal
-distribution. If you use any of these tests, you first have to check this
-assumption.
-
-QQ-plots
-^^^^^^^^
-
-In statistics, *QQ`plots* ("Q" stands for quantile)
-are used for visual assessments of distributions. They are a graphical
-method for comparing two probability distributions by plotting their
-quantiles against each other. First, the set of intervals for the quantiles
-are chosen. A point :math:`(x,y)` on the plot corresponds to one of the
-quantiles of the second distribution (y-coordinate) plotted against the same
-quantile of the first distribution (x-coordinate). Thus the line is a
-parametric curve with the parameter which is the (number of the) interval
-for the quantile.
-
-If the two distributions being compared are similar, the points in the
-:math:`Q-Q` plot will approximately lie on the line :math:`y = x`. If
-the distributions are linearly related, the points in the :math:`Q-Q`
-plot will approximately lie on a line, but not necessarily on the line
-:math:`y = x`.
-
-| |image20|
-
-*QQ-plot*
-
-Kolmogorov-Smirnov Test and Lilliefors Test
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To test the null hypothesis that data come from a normally distributed
-population, when the null hypothesis does not specify which normal distribution
-i.e., it does not specify the expected value and variance of the distribution,
-you can use the *Lilliefors test*. It is a
-normality test based on the *Kolmogorov--Smirnov test*, which quantifies a
-distance between the empirical distribution function of the sample and the
-cumulative distribution function of the reference distribution, or between the
-empirical distribution functions of two samples. Note that for the original
-Kolmogorov-Smirnov test this implies that in a test for normality, you have to 
-standardize your sample distribution (i.e. subtract the mean, and divide by the
-standard deviation), and specify your reference distribution (i.e. if you want to
-check for normality, the normal distribution).
-
-
-Altman mainly uses the *Shapiro-Wilk W test*, the Python command
-*stats.normaltest(x)* uses a method by D'Agostino and Pearson,  and a
-number of other tests are also available.
-
-.. image:: ../Images/KS_example.png
-    :scale: 50 %
-
-*Illustration of the Kolmogorov-Smirnoff statistic. Red line is CDF, blue
-line is an ECDF, and the black arrow is the K-S statistic(from Wikipedia).*
-
-|python| `checkNormality.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/checkNormality.py>`_
-shows how to check graphically and quantitatively if a given distribution is normal.
-
-Transformation
-~~~~~~~~~~~~~~
-
-If your data deviate significantly from a normal distribution, it is
-sometimes possible to make the distribution approximately normal by
-transforming your data. For example, data often have values that can
-only be positive (e.g. the size of persons), and that have long positive
-tail: such data can often be made normal by applying a *log transform*.
-
-Confidence Intervals
-~~~~~~~~~~~~~~~~~~~~
-
-Although it is common to concentrate the analysis on the p-values, it is
-often much more informative to report the *confidence intervals* for
-your data. The confidence intervals are given by
-
-.. math:: ci = mean \pm se * t_{n,\alpha}
-
-where :math:`se` is the standard error, and :math:`t_{n,\alpha}` the
-:math:`t` statistic for :math:`n` degrees of freedom. For the 95%
-two-sided confidence intervals, for example, you have to set
-:math:`\alpha=0.025` and :math:`\alpha=0.975` .
-
 
 Exercises
 ---------
@@ -993,8 +915,6 @@ Continuous Distributions
     :scale: 40 %
 .. |image19| image:: ../Images/Poisson_pmf.png
     :scale: 40 %
-.. |image20| image:: ../Images/ProbPlot.png
-    :scale: 50 %
 
 .. |ipynb| image:: ../Images/IPython.jpg
     :scale: 50 % 

@@ -81,59 +81,59 @@
 \indexentry{negative predictive value}{53}
 \indexentry{prevalence}{54}
 \indexentry{ROC curve}{55}
-\indexentry{test! t-test, one sample}{57}
-\indexentry{test!Wilcoxon signed rank sum}{57}
-\indexentry{test! t-test, paired}{58}
-\indexentry{test!Mann-Whitney}{58}
-\indexentry{ANOVA}{59}
-\indexentry{test!ANOVA}{59}
-\indexentry{test!Levene}{59}
-\indexentry{test!F-test}{60}
-\indexentry{test!variance ratio}{60}
-\indexentry{Multiple Comparisons}{61}
-\indexentry{test!Tukey's}{61}
-\indexentry{Bonferroni correction}{61}
-\indexentry{Holms correction}{62}
-\indexentry{test!Kruskal-Wallis}{62}
-\indexentry{test!binomial}{65}
-\indexentry{test!Cochran's Q}{67}
-\indexentry{frequency tables}{68}
-\indexentry{test!chi square}{68}
-\indexentry{test!Fisher's exact}{69}
-\indexentry{test!McNemar's}{70}
-\indexentry{test!Cochran's Q}{71}
-\indexentry{correlation coefficient}{73}
-\indexentry{correlation!Pearson}{73}
-\indexentry{coefficient of determination}{73}
-\indexentry{coefficient of determination!adjusted}{74}
-\indexentry{correlation!Spearman}{75}
-\indexentry{correlation!Kendall's $\tau$}{75}
-\indexentry{regression}{75}
-\indexentry{covariate}{76}
-\indexentry{regressand}{76}
-\indexentry{endogenous variable}{76}
-\indexentry{regressor}{76}
-\indexentry{exogenous variable}{76}
-\indexentry{regression!multilinear}{77}
-\indexentry{regression!multiple linear|see{regression!multilinear}}{77}
-\indexentry{test!Friedman}{81}
-\indexentry{regression!multilinear}{81}
-\indexentry{ANOVA, two-way}{81}
-\indexentry{test!ANOVA}{81}
-\indexentry{regression!multilinear}{82}
-\indexentry{statistical modeling}{83}
-\indexentry{design matrix}{83}
-\indexentry{regression!multiple}{84}
-\indexentry{Maximum likelihood}{89}
-\indexentry{log likelihood function}{89}
-\indexentry{Akaike Information Criterion AIC}{90}
-\indexentry{Bayesian Information Criterion BIC}{90}
-\indexentry{Akaike Information Criterion AIC}{90}
-\indexentry{Bayesian Information Criterion BIC}{90}
-\indexentry{condition number}{94}
-\indexentry{scikit-learn}{95}
-\indexentry{bootstrapping}{100}
-\indexentry{survival times}{101}
-\indexentry{Kaplan-Meier survival curve}{101}
-\indexentry{test!logrank}{102}
-\indexentry{Cox regression model}{102}
+\indexentry{test! t-test, one sample}{59}
+\indexentry{test!Wilcoxon signed rank sum}{59}
+\indexentry{test! t-test, paired}{60}
+\indexentry{test!Mann-Whitney}{60}
+\indexentry{ANOVA}{61}
+\indexentry{test!ANOVA}{61}
+\indexentry{test!Levene}{61}
+\indexentry{test!F-test}{62}
+\indexentry{test!variance ratio}{62}
+\indexentry{Multiple Comparisons}{63}
+\indexentry{test!Tukey's}{63}
+\indexentry{Bonferroni correction}{63}
+\indexentry{Holms correction}{64}
+\indexentry{test!Kruskal-Wallis}{64}
+\indexentry{test!binomial}{67}
+\indexentry{test!Cochran's Q}{69}
+\indexentry{frequency tables}{70}
+\indexentry{test!chi square}{70}
+\indexentry{test!Fisher's exact}{71}
+\indexentry{test!McNemar's}{72}
+\indexentry{test!Cochran's Q}{73}
+\indexentry{correlation coefficient}{75}
+\indexentry{correlation!Pearson}{75}
+\indexentry{coefficient of determination}{75}
+\indexentry{coefficient of determination!adjusted}{76}
+\indexentry{correlation!Spearman}{77}
+\indexentry{correlation!Kendall's $\tau$}{77}
+\indexentry{regression}{77}
+\indexentry{covariate}{78}
+\indexentry{regressand}{78}
+\indexentry{endogenous variable}{78}
+\indexentry{regressor}{78}
+\indexentry{exogenous variable}{78}
+\indexentry{regression!multilinear}{79}
+\indexentry{regression!multiple linear|see{regression!multilinear}}{79}
+\indexentry{test!Friedman}{83}
+\indexentry{regression!multilinear}{83}
+\indexentry{ANOVA, two-way}{83}
+\indexentry{test!ANOVA}{83}
+\indexentry{regression!multilinear}{84}
+\indexentry{statistical modeling}{85}
+\indexentry{design matrix}{85}
+\indexentry{regression!multiple}{86}
+\indexentry{Maximum likelihood}{91}
+\indexentry{log likelihood function}{91}
+\indexentry{Akaike Information Criterion AIC}{92}
+\indexentry{Bayesian Information Criterion BIC}{92}
+\indexentry{Akaike Information Criterion AIC}{92}
+\indexentry{Bayesian Information Criterion BIC}{92}
+\indexentry{condition number}{96}
+\indexentry{scikit-learn}{97}
+\indexentry{bootstrapping}{102}
+\indexentry{survival times}{103}
+\indexentry{Kaplan-Meier survival curve}{103}
+\indexentry{test!logrank}{104}
+\indexentry{Cox regression model}{104}

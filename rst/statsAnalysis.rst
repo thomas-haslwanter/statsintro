@@ -1,8 +1,109 @@
 .. image:: ..\Images\title_tests.png
     :height: 100 px
 
-.. Statistical Tests 
-.. ===================
+.. Statistical Data Analysis
+.. =========================
+
+Typical Analysis Procedure
+--------------------------
+
+In "the old days" (before computers with almost unlimited computational power were available), the statistical analysis of data was typically restricted to hypothesis tests: you formulate a hypothesis, collect your data, and then accept or reject the hypothesis. The resulting hypothesis tests form the basic framework for by far most analyses in  medicine and life sciences, and the most important hypotheses tests will be described in the following chapters.
+
+The advent of powerful computers changed the game. Nowadays, the analysis of statistical data is (or at least should be) a highly interactive process: you look at the data, generate hypotheses and models, check these models, modify them to improve the correspondence between models and data; when you are happy, you calculate the confidence interval for your model parameters, and form your interpretation based on these values. An introduction into this type of statistical analysis is provided in chapter \ref{chapter:Models}.
+
+In either case, you should start off with the following steps:
+
+  - Visually inspect your data.
+  - Find outliers, and check them carefully.
+  - Determine the data-type of your values.
+  - If you have continuous data, check whether or not they are normally distributed.
+  - Select and apply the appropriate test, or start with the model-based analysis of your data.
+
+Data Screening
+~~~~~~~~~~~~~~
+
+The first thing you have to do in your data analysis is simply *inspect your data visually*. Our visual system is enormously powerful, and if your data are properly displayed, you will often be able to see trends that may characterize the data. You should check for *missing data* in your data set, and *outliers* which can significantly influence the result of your analysis.
+
+Outliers
+^^^^^^^^
+
+While there is no unique definition of *outliers*, they are often defined as data that lie either more than 1.5*IQR (inter-quartile range), or more than 2 standard deviations, from the mean corresponding data value. Outliers often fall in one of two groups: they are either caused by mistakes in the recording, in which case they should be excluded; or they constitute very important and valuable data points, in which case they have to be included in the data analysis. To decide which of the two is the case, you have to check the underlying raw data (for saturation or invalid data values), and the protocols from your experiments (for mistakes that may have occurred during the recording). If you find an underlying problem, then - and only then - may you eliminate the outliers from the analysis. In every other case, you have to keep them!
+
+Normality Check
+~~~~~~~~~~~~~~~
+
+Statistical hypothesis tests can be grouped into *parametric tests* and *non-parametric tests*. Parametric tests assume that the data can be well described by a distribution that is defined by one or more parameters, in most cases by a normal distribution. For the given data set, the best-fit parameters for this distribution are then determined, together with their confidence intervals, and interpreted.
+
+However, this approach only works if the given data set is in fact well approximated by the chosen distribution. If not, the results of the parametric test can be completely wrong. In that case non-parametric tests have to be used which are less sensitive, but therefore do not depend on the data following a specific distribution.
+
+Here we will focus on tests for normality. Again, you should start out with a visual inspection of the data, here with a *QQ-plot*, sometimes also referred to as *probplot*. For a quantitative evaluation one of the many existing normality tests should then be applied.
+
+.. figure:: ../Images/ProbPlot.png
+    :scale: 50 % 
+
+    *QQ-Plot, to check for normality of distribution.*
+
+QQ-plots
+^^^^^^^^
+
+In statistics, *QQ`plots* ("Q" stands for quantile)
+are used for visual assessments of distributions. They are a graphical
+method for comparing two probability distributions by plotting their
+quantiles against each other. First, the set of intervals for the quantiles
+are chosen. A point :math:`(x,y)` on the plot corresponds to one of the
+quantiles of the second distribution (y-coordinate) plotted against the same
+quantile of the first distribution (x-coordinate). Thus the line is a
+parametric curve with the parameter which is the (number of the) interval
+for the quantile.
+
+If the two distributions being compared are similar, the points in the
+:math:`Q-Q` plot will approximately lie on the line :math:`y = x`. If
+the distributions are linearly related, the points in the :math:`Q-Q`
+plot will approximately lie on a line, but not necessarily on the line
+:math:`y = x`.
+
+In Python, the plot can be generated with the command
+
+::
+
+    stats.probplot(data, plot=plt)
+
+.. figure:: ../Images/chi2pp.png
+    :scale: 50 % 
+
+    *QQ-Plot for chi2-distribution (k=3), which is clearly non-normal.*
+
+Hypothesis Tests for Normality
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Tests to evaluate normality or a specific distribution can be broadly divided into two categories:
+
+  - Tests based on comparison ("best fit") with a given distribution, often specified in terms of its CDF. Examples are the Kolmogorov-Smirnov test, the Lilliefors test, the Anderson-Darling test, the Cramer-von Mises criterion, as well as the Shapiro-Wilk and Shapiro-Francia tests.
+  - Tests based on descriptive statistics of the sample. Examples are the skewness test, the kurtosis test, the D'Agostino-Pearson omnibus test, or the Jarque-Bera test.
+
+For example, the *Lilliefors test*, which is based on the *Kolmogorov--Smirnov test* , quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is ca. :math:`\leq 50`).
+
+Altman mainly uses the *Shapiro-Wilk W test*, which depends on the covariance matrix between the order statistics of the observations.
+
+The Python command *stats.normaltest(x)* uses the D'Agostino-Pearson *omnibus test* . This test combines a skewness and kurtosis test to produce a single, global, "omnibus" statistic.
+
+.. image:: ../Images/KS_example.png
+    :scale: 50 %
+
+*Illustration of the Kolmogorov-Smirnoff statistic. Red line is CDF, blue
+line is an ECDF, and the black arrow is the K-S statistic(from Wikipedia).*
+
+|python| `checkNormality.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/checkNormality.py>`_
+shows how to check graphically and quantitatively if a given distribution is normal.
+
+Transformation
+~~~~~~~~~~~~~~
+
+If your data deviate significantly from a normal distribution, it is
+sometimes possible to make the distribution approximately normal by
+transforming your data. For example, data often have values that can
+only be positive (e.g. the size of persons), and that have long positive
+tail: such data can often be made normal by applying a *log transform*.
 
 Hypothesis tests
 ----------------
@@ -283,6 +384,21 @@ tests for different combinations of data.
 
 .. image:: ../Images/CommonTests.png
     :scale: 100 %
+
+
+Examples
+~~~~~~~~
+
+  - **2 groups, nominal** male/female, blond-hair/black-hair. E.g. "Are females more blond than males?"
+  - **2 groups, nominal, paired** 2 labs, analysis of blood samples. E.g. "Does the blood analysis from Lab1 indicate more infections than the analysis from Lab2?"
+  - **2 groups, ordinal** black/white, ranking 100m sprint. E.g. "Are black sprinters more successful than white sprinters?"
+  - **2 groups, ordinal, paired** sprinters, before/after diet. E.g. "Does a chocolate diet make sprinters more successful?"
+  - **3 groups, ordinal** black/white/chinese, ranking 100m sprint. E.g. "Does ethnicity have an effect on the success of sprinters?"
+  - **3 groups, ordinal, paired** sprinters, before/after diet. E.g. "Does a rice diet make Chinese sprinters more successful?"
+  - **2 groups, continuous** male/female, IQ. E.g. "Are women more intelligent than men?"
+  - **2 groups, continuous, paired** male/female, looking at diamonds. E.g. "Does looking at diamonds raise the female heart-beat more than the male?
+  - **3 groups, continuous** Tyrolians, Viennese, Styrians; IQ. E.g. "Are Tyrolians smarter than people from other Austrian federal states?"
+  - **3 groups, continuous, paired** Tyrolians, Viennese, Styrians; looking at mountains. E.g. "Does looking at mountains raise the heartbeat of Tyrolians more than those of other people?"
 
 
 .. |image21| image:: ../Images/power1.png

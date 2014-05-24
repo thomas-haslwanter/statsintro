@@ -52,13 +52,13 @@ Distributions of one Variable
 
    statsDistributions
 
-Statistical Tests
-=================
+Statistical Data Analysis
+=========================
 
 .. toctree::
    :maxdepth: 2
 
-   statsTests
+   statsAnalysis
 
 Test of Means of Continuous Data
 ================================

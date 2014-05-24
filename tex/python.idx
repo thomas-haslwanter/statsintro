@@ -9,18 +9,18 @@
 \indexentry{distributionDiscrete}{44}
 \indexentry{checkNormality}{49}
 \indexentry{sampleSize}{53}
-\indexentry{oneSample}{57}
-\indexentry{twoSample}{58}
-\indexentry{anovaOneway}{60}
-\indexentry{multipleTesting}{61}
-\indexentry{KruskalWallis}{62}
-\indexentry{binomialTest}{65}
-\indexentry{compGroups}{71}
-\indexentry{multivariate}{78}
-\indexentry{fitLine}{79}
-\indexentry{anovaTwoway}{81}
-\indexentry{multipleRegression}{82}
-\indexentry{linear regression model}{85}
-\indexentry{modeling}{99}
-\indexentry{bootstrapDemo}{100}
-\indexentry{survival}{102}
+\indexentry{oneSample}{59}
+\indexentry{twoSample}{60}
+\indexentry{anovaOneway}{62}
+\indexentry{multipleTesting}{63}
+\indexentry{KruskalWallis}{64}
+\indexentry{binomialTest}{67}
+\indexentry{compGroups}{73}
+\indexentry{multivariate}{80}
+\indexentry{fitLine}{81}
+\indexentry{anovaTwoway}{83}
+\indexentry{multipleRegression}{84}
+\indexentry{linear regression model}{87}
+\indexentry{modeling}{101}
+\indexentry{bootstrapDemo}{102}
+\indexentry{survival}{104}
