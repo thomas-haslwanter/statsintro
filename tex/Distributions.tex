@@ -156,6 +156,25 @@ For the \emph{sample standard error of the mean}, which is the one you will be w
   SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
 \end{equation}
 
+\subsubsection{Confidence Intervals}\index{general}{confidence interval}
+The most informative parameter that you can give for a statistical variable is arguably its \emph{confidence interval}. The confidence interval reports the range that contains the true value for your parameter with a likelihood of $\alpha$\%.
+
+Most of the time you want to determine the confidence interval for normally distributed data, which is given by
+
+\begin{equation}
+  ci = mean \pm std * t_{df,\alpha}
+\end{equation}\label{eq:ci}
+
+where $std$ is the sample standard deviation, and $t_{df,\alpha}$ the $t$ statistic (which will be covered later in this chapter) for $df$ degrees of freedom. For the 95\% two-sided confidence intervals, for example, you have to set $\alpha=0.025$ and $\alpha=0.975$ .
+
+\textbf{Note:} If you want to know the confidence interval for the mean value, you have to replace the \emph{standard deviation} by the \emph{standard error}! In Python, the 95\% confidence interval for the mean can be obtained with a one-liner:
+
+\begin{lstlisting}
+    alpha = 0.95
+    df = len(data)-1
+    ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
+\end{lstlisting}
+
 \subsection{Parameters Describing the Form of a Distribution}
 
 \subsubsection{Location}
@@ -648,59 +667,6 @@ Instead of having a parameter p that represents a component probability like in 
 \PyImg "distributionDiscrete.py" (p \pageref{py:discrete}) shows different continuous distribution functions.
 \index{python}{distributionDiscrete}
 %(Lecture 7)
-
-\section{Data Analysis}
-
-\subsection{Data Screening}
-
-The first thing you have to do for your data analysis is simply \emph{look at your data}. You should check for \emph{missing data} in your data set, and \emph{outliers} which can significantly influence the result of your analysis.
-
-\subsection{Normality Check} \index{general}{normality check}
-
-Many statistical tests already assume that your data are normally
-distributed, i.e. that they are linearly related to the standard normal
-distribution. If you use any of these tests, you first have to check this assumption.
-
-\subsubsection{QQ-Plots}\index{general}{plots!$Q-Q$ plot}
-
- In statistics, \emph{$Q–Q$ plots} ("Q" stands for quantile) are used for visual assessments of distributions. They are a graphical method for comparing two probability distributions by plotting their quantiles against each other. First, the set of intervals for the quantiles are chosen. A point $(x,y)$ on the plot corresponds to one of the quantiles of the second distribution (y-coordinate) plotted against the same quantile of the first distribution (x-coordinate). Thus the line is a parametric curve with the parameter which is the (number of the) interval for the quantile.
-
-If the two distributions being compared are similar, the points in the $Q-Q$ plot will approximately lie on the line $y = x$. If the distributions are linearly related, the points in the $Q-Q$ plot will approximately lie on a line, but not necessarily on the line $y = x$ (Figure \ref{fig:qqplot}).
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.75\textwidth]{../Images/ProbPlot.png}\\
-  \caption{QQ-Plot, to check for normality of distribution.}\label{fig:qqplot}
-\end{figure}
-
-\subsubsection{Hypothesis Tests for Normality}
-
-To test the null hypothesis that data come from a normally distributed population, when the null hypothesis does not specify which normal distribution i.e., it does not specify the expected value and variance of the distribution, you can use the \emph{Lilliefors test}\index{general}{test!Lilliefors}. It is a normality test based on the \emph{Kolmogorov--Smirnov test} \index{general}{test!Kolmogorov-Smirnov}, which quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. Note that for the original Kolmogorov-Smirnov test this implies that in a test for normality, you have to standardize your sample distribution (i.e. subtract the mean, and divide by the standard deviation), and specify your reference distribution (i.e. if you want to check for normality, the normal distribution).
-
-The Python command \lstinline{stats.normaltest(x)} uses a method by D'Agostino and Pearson, which compares skew and kurtosis to that of a normal distribution; Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}{test!Shapiro-Wilk}; and a number of other tests are also available.
-
-\PyImg "checkNormality.py" (p \pageref{py:checkNormality}) shows how to check graphically and quantitatively if a given distribution is normal.
-\index{python}{checkNormality}
-
-\begin{figure}
-  \centering
-  % Requires \usepackage{graphicx}
-  \includegraphics[width=0.5\textwidth]{../Images/KS_Example.png}\\
-  \caption{Illustration of the Kolmogorov-Smirnov statistic. Red line is CDF, blue line is an ECDF, and the black arrow is the K-S statistic (from Wikipedia).}\label{fig:ksplot}
-\end{figure}
-
-
-\subsection{Transformation} \index{general}{transformation}
-If your data deviate significantly from a normal distribution, it is sometimes possible to make the distribution approximately normal by transforming your data. For example, data often have values that can only be positive (e.g. the size of persons), and that have  long positive tail: such data can often be made normal by applying a \emph{log transform}. This is demonstrated in Figure \ref{fig:lognormal}.
-
-\subsection{Confidence Intervals}\index{general}{confidence interval}
-Although it is common to concentrate the analysis on the p-values, it is often much more informative to report the \emph{confidence intervals} for your data. The confidence intervals are given by
-
-\begin{equation}
-  ci = mean \pm se * t_{n,\alpha}
-\end{equation}\label{eq:ci}
-
-where $se$ is the standard error, and $t_{n,\alpha}$ the $t$ statistic for $n$ degrees of freedom. For the 95\% two-sided confidence intervals, for example, you have to set $\alpha=0.025$ and $\alpha=0.975$ .
 
 \section{Exercises}
 

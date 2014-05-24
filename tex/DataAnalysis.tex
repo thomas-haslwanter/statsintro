@@ -25,11 +25,18 @@ While there is no unique definition of \emph{outliers}, they are often defined a
 
 \subsection{Normality Check} \index{general}{normality check}
 
-Statistical hypothesis tests can be grouped into \emph{parametric tests} \index{general}{parametric tests} and \emph{non-parametric tests} \index{general}{non-parametric tests}. Parametric tests assume that the data can be well described by a distribution that is defined by one or more parameters, in most cases by a normal distribution. For the given data set, the best-fit parameters for this distribution are then determined, together with their confidence intervals, and interpreted. 
+Statistical hypothesis tests can be grouped into \emph{parametric tests} \index{general}{parametric tests} and \emph{non-parametric tests} \index{general}{non-parametric tests}. Parametric tests assume that the data can be well described by a distribution that is defined by one or more parameters, in most cases by a normal distribution. For the given data set, the best-fit parameters for this distribution are then determined, together with their confidence intervals, and interpreted.
 
 However, this approach only works if the given data set is in fact well approximated by the chosen distribution. If not, the results of the parametric test can be completely wrong. In that case non-parametric tests have to be used which are less sensitive, but therefore do not depend on the data following a specific distribution.
 
 Here we will focus on tests for normality. Again, you should start out with a visual inspection of the data, here with a QQ-plot, sometimes also referred to as \emph{probplot}. For a quantitative evaluation one of the many existing normality tests should then be applied.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/ProbPlot.png}\\
+  \caption{QQ-Plot, to check for normality of distribution.}\label{fig:qqplot}
+\end{figure}
+
 
 \subsubsection{QQ-Plots}\index{general}{plots!$Q-Q$ plot} \index{general}{plots!probplot}
 
@@ -43,8 +50,8 @@ If the two distributions being compared are similar, the points in the $Q-Q$ plo
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.75\textwidth]{../Images/ProbPlot.png}\\
-  \caption{QQ-Plot, to check for normality of distribution.}\label{fig:qqplot}
+  \includegraphics[width=1.0\textwidth]{../Images/chi2pp.png}\\
+  \caption{QQ-Plot for chi2-distribution (k=3), which is clearly non-normal.}\label{fig:qqplot}
 \end{figure}
 
 \subsubsection{Hypothesis Tests for Normality}
@@ -55,21 +62,18 @@ Tests to evaluate normality or a specific distribution can be broadly divided in
   \item Tests based on comparison (“best fit”) with a given distribution, often specified in terms of its CDF. Examples are the Kolmogorov-Smirnov test, the Lilliefors test, the Anderson-Darling test, the Cramér-von Mises criterion, as well as the Shapiro-Wilk and Shapiro-Francia tests.
   \item Tests based on descriptive statistics of the sample. Examples are the skewness test, the kurtosis test, the D’Agostino-Pearson omnibus test, or the Jarque-Bera test.
 \end{enumerate}
-    
 
-For example, the \emph{Lilliefors test}\index{general}{test!Lilliefors}, which is based on the \emph{Kolmogorov--Smirnov test} \index{general}{test!Kolmogorov-Smirnov}, quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is $\lesssim50$).
+For example, the \emph{Lilliefors test}\index{general}{test!Lilliefors}, which is based on the \emph{Kolmogorov--Smirnov test} \index{general}{test!Kolmogorov-Smirnov}, quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is ca. $\leq 50$).
 
 Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}{test!Shapiro-Wilk}, which depends on the covariance matrix between the order statistics of the observations.
 
 The Python command \lstinline{stats.normaltest(x)} uses the D’Agostino-Pearson \emph{omnibus test} \index{general}{test!omnibus}. This test combines a skewness and kurtosis test to produce a single, global, "omnibus" statistic.
-
 
 \PyImg "checkNormality.py" (p \pageref{py:checkNormality}) shows how to check graphically and quantitatively if a given distribution is normal.
 \index{python}{checkNormality}
 
 \begin{figure}
   \centering
-  % Requires \usepackage{graphicx}
   \includegraphics[width=0.5\textwidth]{../Images/KS_Example.png}\\
   \caption{Illustration of the Kolmogorov-Smirnov statistic. Red line is CDF, blue line is an ECDF, and the black arrow is the K-S statistic (from Wikipedia).}\label{fig:ksplot}
 \end{figure}
@@ -77,15 +81,6 @@ The Python command \lstinline{stats.normaltest(x)} uses the D’Agostino-Pearson
 
 \subsection{Transformation} \index{general}{transformation}
 If your data deviate significantly from a normal distribution, it is sometimes possible to make the distribution approximately normal by transforming your data. For example, data often have values that can only be positive (e.g. the size of persons), and that have  long positive tail: such data can often be made normal by applying a \emph{log transform}. This is demonstrated in Figure \ref{fig:lognormal}.
-
-\subsection{Confidence Intervals}\index{general}{confidence interval}
-Although it is common to concentrate the analysis on the p-values, it is often much more informative to report the \emph{confidence intervals} for your data. The confidence intervals are given by
-
-\begin{equation}
-  ci = mean \pm se * t_{n,\alpha}
-\end{equation}\label{eq:ci}
-
-where $se$ is the standard error, and $t_{n,\alpha}$ the $t$ statistic for $n$ degrees of freedom. For the 95\% two-sided confidence intervals, for example, you have to set $\alpha=0.025$ and $\alpha=0.975$ .
 
 
 \section{Hypothesis tests}\label{sec:hypotheses} \index{general}{hypotheses}

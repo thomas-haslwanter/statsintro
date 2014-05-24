@@ -3,12 +3,12 @@
 \indexentry{statsmodelsIntro}{14}
 \indexentry{getData}{14}
 \indexentry{figsBasicPrinciples}{21}
-\indexentry{distributionNormal}{35}
+\indexentry{distributionNormal}{34}
 \indexentry{distributionDiscrete}{35}
 \indexentry{distributionContinuous}{42}
 \indexentry{distributionDiscrete}{44}
-\indexentry{checkNormality}{46}
-\indexentry{sampleSize}{52}
+\indexentry{checkNormality}{49}
+\indexentry{sampleSize}{53}
 \indexentry{oneSample}{57}
 \indexentry{twoSample}{58}
 \indexentry{anovaOneway}{60}

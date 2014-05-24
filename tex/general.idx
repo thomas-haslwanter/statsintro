@@ -37,11 +37,12 @@
 \indexentry{variance}{30}
 \indexentry{standard deviation}{30}
 \indexentry{standard error}{31}
+\indexentry{confidence interval}{31}
 \indexentry{shape parameters}{32}
 \indexentry{skewness}{32}
-\indexentry{kurtosis}{32}
-\indexentry{statistic}{32}
-\indexentry{distributions!normal}{32}
+\indexentry{kurtosis}{33}
+\indexentry{statistic}{33}
+\indexentry{distributions!normal}{33}
 \indexentry{probability density function}{33}
 \indexentry{central limit theorem}{35}
 \indexentry{variate}{35}
@@ -58,24 +59,28 @@
 \indexentry{distributions!Bernoulli}{43}
 \indexentry{distributions!poisson}{43}
 \indexentry{distributions!discrete}{44}
-\indexentry{normality check}{45}
-\indexentry{plots!$Q-Q$ plot}{45}
-\indexentry{test!Lilliefors}{45}
-\indexentry{test!Kolmogorov-Smirnov}{46}
-\indexentry{test!Shapiro-Wilk}{46}
-\indexentry{transformation}{46}
-\indexentry{confidence interval}{46}
-\indexentry{hypotheses}{49}
-\indexentry{error!Type I}{50}
-\indexentry{power}{50}
-\indexentry{error!Type II}{50}
-\indexentry{sample size}{50}
-\indexentry{sensitivity}{52}
-\indexentry{specificity}{52}
-\indexentry{positive predictive value}{52}
-\indexentry{negative predictive value}{52}
-\indexentry{prevalence}{53}
-\indexentry{ROC curve}{54}
+\indexentry{outliers}{47}
+\indexentry{normality check}{48}
+\indexentry{parametric tests}{48}
+\indexentry{non-parametric tests}{48}
+\indexentry{plots!$Q-Q$ plot}{48}
+\indexentry{plots!probplot}{48}
+\indexentry{test!Lilliefors}{49}
+\indexentry{test!Kolmogorov-Smirnov}{49}
+\indexentry{test!Shapiro-Wilk}{49}
+\indexentry{test!omnibus}{49}
+\indexentry{transformation}{49}
+\indexentry{hypotheses}{50}
+\indexentry{error!Type I}{51}
+\indexentry{power}{51}
+\indexentry{error!Type II}{51}
+\indexentry{sample size}{51}
+\indexentry{sensitivity}{53}
+\indexentry{specificity}{53}
+\indexentry{positive predictive value}{53}
+\indexentry{negative predictive value}{53}
+\indexentry{prevalence}{54}
+\indexentry{ROC curve}{55}
 \indexentry{test! t-test, one sample}{57}
 \indexentry{test!Wilcoxon signed rank sum}{57}
 \indexentry{test! t-test, paired}{58}
