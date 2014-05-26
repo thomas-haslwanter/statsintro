@@ -176,11 +176,11 @@ which are very good starting points when you are using Windows.
 more recent distribution, which is free for educational purposes.
 
 Mac and Unix users should check out the installations tips from
-Johansson (see Table [table:python]).
+Johansson (see Table below).
 
-There are also many tutorials available on the internet (Table
-[table:python]). Personally, most of the time I just google; thereby I
-stick primarily a) to the official pages, and b) to
+There are also many tutorials available on the internet. Personally,
+most of the time I just google; thereby I stick primarily a) to the official
+pages, and b) to
 http://stackoverflow.com/. Also, I have found user groups surprisingly
 active and helpful!
 

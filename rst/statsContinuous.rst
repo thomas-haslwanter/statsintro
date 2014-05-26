@@ -47,7 +47,7 @@ This method has three steps:
    ranks, corresponding to the observations below (or above) the chosen
    hypothetical value.
 
-In Table [tab:wilcoxon] you see an example, where the significance to a
+In the Table below you see an example, where the significance to a
 deviation from the value of 7725 is tested. The rank sum of the negative
 values gives :math:`3+5=8`, and can be looked up in the corresponding
 tables to be significant. In practice, your computer program will
@@ -322,9 +322,9 @@ One or Two Groups
 
 #. **t-test of independent samples**
 
-    In a clinic, 15 lacy patients weight [76., 101., 66., 72., 88., 82., 79., 73., 76., 85., 75., 64., 76., 81., 86.] kg, and 15 sporty patients weigh [ 64., 65., 56., 62., 59., 76., 66., 82., 91., 57., 92., 80., 82., 67., 54.] kg.
+    In a clinic, 15 lazy patients weight [76., 101., 66., 72., 88., 82., 79., 73., 76., 85., 75., 64., 76., 81., 86.] kg, and 15 sporty patients weigh [ 64., 65., 56., 62., 59., 76., 66., 82., 91., 57., 92., 80., 82., 67., 54.] kg.
 
-    Are the lacy patients significantly heavier?
+    Are the lazy patients significantly heavier?
      (Correct answer: yes, p=0.045)
 
 #. **Kolmogoriv-Smirnov test**
@@ -334,7 +334,7 @@ One or Two Groups
 
 #. **Mann-Whitney test**
 
-    Are the lacy patients still heavier, if you check with the Mann-Whitney test?
+    Are the lazy patients still heavier, if you check with the Mann-Whitney test?
      (Correct answer: yes, p=0.039)
 
 Multiple Groups
