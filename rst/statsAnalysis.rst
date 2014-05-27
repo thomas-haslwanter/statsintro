@@ -81,9 +81,9 @@ Tests to evaluate normality or a specific distribution can be broadly divided in
   - Tests based on comparison ("best fit") with a given distribution, often specified in terms of its CDF. Examples are the Kolmogorov-Smirnov test, the Lilliefors test, the Anderson-Darling test, the Cramer-von Mises criterion, as well as the Shapiro-Wilk and Shapiro-Francia tests.
   - Tests based on descriptive statistics of the sample. Examples are the skewness test, the kurtosis test, the D'Agostino-Pearson omnibus test, or the Jarque-Bera test.
 
-For example, the *Lilliefors test*, which is based on the *Kolmogorov--Smirnov test* , quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is ca. :math:`\leq 50`).
+For example, the *Lilliefors test*, which is based on the *Kolmogorov--Smirnov test* , quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is ca. :math:`\leq 300`).
 
-Altman mainly uses the *Shapiro-Wilk W test*, which depends on the covariance matrix between the order statistics of the observations.
+Altman mainly uses the *Shapiro-Wilk W test*, , which can also be used with :math:`\leq 50` samples, and which depends on the covariance matrix between the order statistics of the observations.
 
 The Python command *stats.normaltest(x)* uses the D'Agostino-Pearson *omnibus test* . This test combines a skewness and kurtosis test to produce a single, global, "omnibus" statistic.
 

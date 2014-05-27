@@ -486,6 +486,10 @@ coincide exactly with the population mean. This modified distribution is
 the *t-distribution*, and converges for larger values towards the normal
 distribution.
 
+The t-distribution was first described by a researcher working under the
+pseudonym of "Student", and the corresponding test is therefore sometimes
+referred to as *Student's t-test*.
+
 If :math:`\bar{x}` is the sample mean, and *s* the sample standard deviation, then
 
 .. math::  t = \frac{\bar{x}-\mu}{s/ \sqrt{n}}

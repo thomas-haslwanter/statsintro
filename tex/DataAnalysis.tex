@@ -63,9 +63,9 @@ Tests to evaluate normality or a specific distribution can be broadly divided in
   \item Tests based on descriptive statistics of the sample. Examples are the skewness test, the kurtosis test, the D’Agostino-Pearson omnibus test, or the Jarque-Bera test.
 \end{enumerate}
 
-For example, the \emph{Lilliefors test}\index{general}{test!Lilliefors}, which is based on the \emph{Kolmogorov--Smirnov test} \index{general}{test!Kolmogorov-Smirnov}, quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is ca. $\leq 50$).
+For example, the \emph{Lilliefors test}\index{general}{test!Lilliefors}, which is based on the \emph{Kolmogorov--Smirnov test} \index{general}{test!Kolmogorov-Smirnov}, quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is ca. $\leq 300$).
 
-Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}{test!Shapiro-Wilk}, which depends on the covariance matrix between the order statistics of the observations.
+Altman mainly uses the \emph{Shapiro-Wilk W test} \cite{altman99}\index{general}{test!Shapiro-Wilk}, which can also be used with $\leq 50$ samples, and which depends on the covariance matrix between the order statistics of the observations.
 
 The Python command \lstinline{stats.normaltest(x)} uses the D’Agostino-Pearson \emph{omnibus test} \index{general}{test!omnibus}. This test combines a skewness and kurtosis test to produce a single, global, "omnibus" statistic.
 

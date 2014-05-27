@@ -9,20 +9,25 @@ Distribution of a Sample Mean
 One sample t-test for a mean value
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To check the mean value of normally distributed data against a reference
+value, we typically use the *one sample t-test*, which is based on the
+*t-distribution*.
+
 If we knew the mean and the standard deviation of a normally distributed
 population, we would know exactly the standard error, and use values
 from the normal distribution to determine how likely it is to find a
 certain mean value, given the population mean and standard deviation.
 However, in practice we have to *estimate* the mean and standard
 deviation from the sample, and the resulting distribution for the mean
-value deviates slightly from a normal distribution. Such distributions
-are called *t-distributions*, and were first described by a researcher
-working under the pseudonym of "Student".
+value deviates slightly from a normal distribution.
 
 Let us look at a specific example: we take 100 normally distributed
 data, with a mean of 7 and with a standard deviation of 3. What is the
 chance of finding a mean value at a distance of 0.5 or more from the
-mean:?
+mean?
+
+*Answer: The probability from the t-test is 0.057, and from the normal
+distribution 0.054* (see attached .py and .ipynb-file)
 
 Wilcoxon signed rank sum test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
