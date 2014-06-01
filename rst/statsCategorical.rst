@@ -61,9 +61,10 @@ One Proportion
 If you have one sample group of data, you can check if your sample is
 representative of the standard population. To do so, you have to know
 the proportion :math:`p` of the characteristic in the standard
-population. It can be shown that a in population with a characteristic
-with probability :math:`p`, the standard error of samples with this
-characteristic is given by
+population.
+The occurrence of a characteristic in a group of *n* people is described
+by the binomial distribution, with :math:`mean = p*n`. The standard error
+of samples with this characteristic is given by
 
 .. math:: se(p) = \sqrt{p(1-p)/n}
 
@@ -73,6 +74,34 @@ and the corresponding 95% confidence interval is
 
 If your data lie outside this confidence interval, they are *not*
 representative of the population.
+
+Example
+~~~~~~~
+
+For example, let us look at incidence and mortality for breast cancer, and try to
+answer the following two questions: among the FH-students, how many occurrences
+of breast cancer should we expect per year? And how many of the female
+FH-students will probably die from breast cancer at the end of their life?
+
+We know that:
+
+  - the FH OOe has about 5'000 students, about half of which are female.
+  - breast cancer hits predominantly women.
+  - the *incidence* of breast cancer in the age group 20-30 is about 10
+  - 3.8\% of all women die of cancer.
+
+From these points of information, we can obtain the following parameters for our
+calculations
+
+  - n = 2'500
+  - :math:`p_{incidence} = 10 / 100'000`, as *incidence* is typically defined as
+    the new occurrences of a disease per year per 100'000 people.
+  - :math:`p_{mortality} = 3.8/100`.
+
+The 95\% confidence interval for the incidence is -0.7 - 1.2, and for the number
+of deaths 76 - 114. So we expect that every year most likely none or one of the
+FH-students will be diagnosed with breast cancer; but between 76 and 114 of the
+female students will eventually die from this disease.
 
 Frequency Tables
 ----------------

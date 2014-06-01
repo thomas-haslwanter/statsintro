@@ -7,7 +7,7 @@ This script shows how to
 
 '''
 
-# author: Thomas Haslwanter, date: Jan-2014
+# author: Thomas Haslwanter, date: Jun-2014
 
 import numpy as np
 import scipy.stats as stats
@@ -27,7 +27,7 @@ def check_mean():
 
     # Confidence intervals
     tf = stats.t(len(data)-1)
-    ci = np.mean(data) + stats.sem(data)*np.array([-1,1])*tf.isf(0.025)
+    ci = np.mean(data) + stats.sem(data)*np.array([-1,1])*tf.ppf(0.975)
     print(('The confidence intervals are {0:4.2f} to {1:4.2f}.'.format(ci[0], ci[1])))
 
     # Check for significance

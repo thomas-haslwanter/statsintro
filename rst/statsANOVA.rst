@@ -33,7 +33,7 @@ interaction effect between "gender" and "treatment".
 Example: two-way ANOVA 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-|ipynb| `90_anovaTwoway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/90_anovaTwoway.ipynb>`_
+|ipynb| `80_anovaTwoway.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/80_anovaTwoway.ipynb>`_
 
 |python| `anovaTwoway.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/anovaTwoway.py>`_
 

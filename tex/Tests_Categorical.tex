@@ -44,7 +44,7 @@ If you have only one sample group of data, the analysis options are somewhat lim
 
 \section{One Proportion}
 
-If you have one sample group of data, you can check if your sample is representative of the standard population. To do so, you have to know the proportion $p$ of the characteristic in the standard population. It can be shown that a in population with a characteristic with probability $p$, the standard error of samples with this characteristic is given by
+If you have one sample group of data, you can check if your sample is representative of the standard population. To do so, you have to know the proportion $p$ of the characteristic in the standard population. The occurrence of a characteristic in a group of $n$ people is described by the binomial distribution, with $mean = p*n$. The standard error of samples with this characteristic is given by
 
 \begin{equation}
   se(p) = \sqrt{p(1-p)/n}
@@ -56,6 +56,29 @@ and the corresponding 95\% confidence interval is
 \end{equation*}
 
 If your data lie outside this confidence interval, they are \emph{not} representative of the population.
+
+\subsection{Example}
+
+For example, let us look at incidence and mortality for breast cancer, and try to answer the following two questions: among the FH-students, how many occurrences of breast cancer should we expect per year? And how many of the female FH-students will probably die from breast cancer at the end of their life?
+
+We know that:
+
+\begin{itemize}
+  \item the FH OOe has about 5'000 students, about half of which are female.
+  \item breast cancer hits predominantly women.
+  \item the \emph{incidence} of breast cancer in the age group 20-30 is about 10
+  \item 3.8\% of all women die of cancer.
+\end{itemize}
+
+From these points of information, we can obtain the following parameters for our calculations
+
+\begin{itemize}
+  \item n = 2'500
+  \item $p_{incidence} = 10 / 100'000$, as \emph{incidence} is typically defined as the new occurrences of a disease per year per 100'000 people.
+  \item $p_{mortality} = 3.8/100$.
+\end{itemize}
+
+The 95\% confidence interval for the incidence is -0.7 - 1.2, and for the number of deaths 76 - 114. So we expect that every year most likely none or one of the FH-students will be diagnosed with breast cancer; but between 76 and 114 of the female students will eventually die from this disease.
 
 \section{Frequency Tables} \index{general}{frequency tables}
 

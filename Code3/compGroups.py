@@ -20,8 +20,9 @@ def oneProportion():
     given data sample.
     The data are taken from Altman, chapter 10.2.1.
     Suppose a general practitioner chooses a random sample of 215 women from
-    the patient register for her general practice, and fins that 39 of them
-    have a history of suffering from asthma. '''
+    the patient register for her general practice, and finds that 39 of them
+    have a history of suffering from asthma. What is the confidence interval
+    for the prevalence of asthma?'''
 
     # Get the data
     numTotal = 215
@@ -98,6 +99,7 @@ def cochranQ():
     '''Cochran's Q test: 12 subjects are asked to perform 3 tasks. The outcome of each task is "success" or 
     "failure". The results are coded 0 for failure and 1 for success. In the example, subject 1 was successful
     in task 2, but failed tasks 1 and 3.
+    Is there a difference between the performance on the three tasks?
     '''
     
     tasks = np.array([[0,1,1,0,1,0,0,1,0,0,0,0],

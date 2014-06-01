@@ -23,11 +23,29 @@ value deviates slightly from a normal distribution.
 
 Let us look at a specific example: we take 100 normally distributed
 data, with a mean of 7 and with a standard deviation of 3. What is the
-chance of finding a mean value at a distance of 0.5 or more from the
+chance of finding a mean value at a distance of 1.0 or more from the
 mean?
 
-*Answer: The probability from the t-test is 0.057, and from the normal
-distribution 0.054* (see attached .py and .ipynb-file)
+*Answer: The probability from the t-test is 0.0006, and from the normal
+distribution 0.0004* (see attached .py and .ipynb-file)
+
+Example
+^^^^^^^
+
+Let us look at a specific example: we take 100 normally distributed data, with a mean of 7 and with a standard deviation of 3.
+What is the chance of finding a mean value at a distance of 1.0 or more from the mean? *Answer: The probability from the t-test in the example is 0.0006, and from the normal distribution 0.0004*
+
+Since it is very important to understand the basic principles of how we arrive at the t-statistic and the corresponding p-value for this test, let me illustrate the underlying statistics by going step-by-step through the analysis:
+
+.. image:: ..\Images\ttestExplained.png
+    :scale: 35%
+
+*Left: Frequency histogram of the sample data, together with a normal fit. The sample mean, which is very close to the population mean, is indicated with a yellow triangle; the value to be checked with a red triangle. Right: t-distribution for n-1 degrees of freedom. At the bottom the normalized value of sample mean (yellow triangle) and value to be checked (red triangle).*
+
+  - We have a population, with a mean value of 7 and a standard deviation of 3.
+  - The observer knows that the distribution of the real mean follows a t-distribution, and that the *standard error of the mean* characterizes the width of that distribution.
+  - How likely it is that the real mean has a value of :math:`x_0` (e.g. 6, indicated by the red triangle in the Figure above, left)? To find that out, this value has to be transformed, by subtracting the sample mean, and dividing by the standard error. (Figure above, right). This provides the *t-statistic* for this test (-3.53).
+  - The corresponding *p-value*, which tells us how likely it is that the real mean has a value of 6 or more extreme relative to the sample mean, is given by *2*CDF(t-statistic)*. (The factor "2" comes from the fact that we have to check in both tails.)
 
 Wilcoxon signed rank sum test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -225,7 +243,7 @@ to get there.
 
     F = \frac{\text{variance between treatments}}{\text{variance within treatments}}
 
-    F = \frac{MS_\text{Treatments}}{MS_\text{Error}} = {{SS_\text{Treatments} / (I-1)} \over {SS_\text{Error} / (n_T-I)}} 
+    F = \frac{MS_\text{Treatments}}{MS_\text{Error}} = {{SS_\text{Treatments} / (n_{groups}-1)} \over {SS_\text{Error} / (n_{total}-n_{groups})}} 
 
 
 -  Under the null hypothesis that two normally distributed populations have
