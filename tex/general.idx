@@ -75,12 +75,12 @@
 \indexentry{power}{53}
 \indexentry{error!Type II}{53}
 \indexentry{sample size}{53}
-\indexentry{sensitivity}{55}
-\indexentry{specificity}{55}
-\indexentry{positive predictive value}{55}
-\indexentry{negative predictive value}{55}
-\indexentry{prevalence}{56}
-\indexentry{ROC curve}{57}
+\indexentry{sensitivity}{56}
+\indexentry{specificity}{56}
+\indexentry{positive predictive value}{56}
+\indexentry{negative predictive value}{56}
+\indexentry{prevalence}{57}
+\indexentry{ROC curve}{58}
 \indexentry{test! t-test, one sample}{61}
 \indexentry{test!Wilcoxon signed rank sum}{62}
 \indexentry{test! t-test, paired}{63}

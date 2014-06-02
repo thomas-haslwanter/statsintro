@@ -286,7 +286,7 @@ fulfilled:
 5. The distribution of :math:`y` is approximately normal for all values
    of :math:`x`.
 
-|ipynb| `90_multivariate.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/90_multivariate.ipynb>`_
+|ipynb| `80_multivariate.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/80_multivariate.ipynb>`_
 
 |python| `multivariate.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/multivariate.py>`_
 

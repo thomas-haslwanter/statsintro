@@ -248,10 +248,46 @@ minimum number of samples we need in each group to detect an absolute difference
 
 .. math:: {n_1} = {n_2} = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2(\sigma _1^2 + \sigma _2^2)}{D^2} .
 
+Python Solution
+^^^^^^^^^^^^^^^
+
+*statsmodels* makes clever use of the fact that 3 of the 4 factors mentioned
+above are independent, and combines it with the Python feature of
+*named parameters* to provide a program that takes 3 of those
+parameters as input, and calculates the remaining 4th parameter.
+
+For example, 
+
+::
+
+    from statsmodels.stats import power
+    print(power.tt_ind_solve_power(effect_size = 0.5, alpha =0.05, power=0.8))
+    # Result: 63.77
+
+tells us that if we compare two groups with the same number of subjects and
+the same standard deviation, require an :math:`\alpha=0.05` a test power of
+*80%*, and we want to detect a difference between the groups that is half
+the standard deviation, we need to test 64 subjects.
+
+Similarly, 
+
+::
+
+    effect_size = power.tt_ind_solve_power(alpha =0.05, power=0.8, nobs1=25)
+    # Result: 0.81
+
+tells us that if we have an :math:`\alpha=0.05`, a test power of *80\%*, and
+25 subjects in each group, then the smallest difference between the groups
+is 81\% of the sample standard deviation.
+
+The corresponding command for one sample t-tests is *tt_solve_power*.
+
+
 Programs: SampleSize 
 ^^^^^^^^^^^^^^^^^^^^^^
 
 |python| `sampleSize.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/sampleSize.py>`_
+*Sample size calculation for normally distributed groups with arbitrary standard deviations.*
 
 
 The "p-value fallacy"

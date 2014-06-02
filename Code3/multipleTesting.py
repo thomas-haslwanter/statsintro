@@ -1,11 +1,25 @@
 '''Multiple testing
-This script provides an example, where three treatments are compared. It first performs a one-way ANOVA, to see if there is a difference between the groups. Then it performs multiple comparisons, to check which of the groups are different.
+
+This script provides an example, where three treatments are compared. It
+first performs a one-way ANOVA, to see if there is a difference between the
+groups. Then it performs multiple comparisons, to check which of the groups
+are different.
+
+This dataset is taken from an R-tutorial, and contains a hypothetical sample
+of 30 participants who are divided into three stress reduction treatment
+groups (mental, physical, and medical). The values are represented on a
+scale that ranges from 1 to 5. This dataset can be conceptualized as a
+comparison between three stress treatment programs, one using mental
+methods, one using physical training, and one using medication. The values
+represent how effective the treatment programs were at reducing
+participant's stress levels, with higher numbers indicating higher
+effectiveness.
 
 Taken from an example by Josef Perktold (http://jpktd.blogspot.co.at/)
 
 '''
 
-# author: Thomas Haslwanter, date: April-2013
+# author: Thomas Haslwanter, date: June-2014
 
 import numpy as np
 from scipy import stats
