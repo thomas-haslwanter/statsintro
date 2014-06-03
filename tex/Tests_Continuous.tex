@@ -11,22 +11,22 @@ If we knew the mean and the standard deviation of a normally distributed populat
 \subsubsection{Example}
 
 Let us look at a specific example: we take 100 normally distributed data, with a mean of 7 and with a standard deviation of 3.
-What is the chance of finding a mean value at a distance of 1.0 or more from the mean? \emph{Answer: The probability from the t-test in the example is 0.0006, and from the normal distribution 0.0004}
+What is the chance of finding a mean value at a distance of 0.5 or more from the mean? \emph{Answer: The probability from the t-test in the example is 0.057, and from the normal distribution 0.054}
 
 Since it is very important to understand the basic principles of how we arrive at the t-statistic and the corresponding p-value for this test, let me illustrate the underlying statistics by going step-by-step through the analysis:
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/ttestExplained.png}\\
-  \caption{Left: Frequency histogram of the sample data, together with a normal fit. The sample mean, which is very close to the population mean, is indicated with a yellow triangle; the value to be checked with a red triangle. Right: t-distribution for n-1 degrees of freedom. At the bottom the normalized value of sample mean (yellow triangle) and value to be checked (red triangle).}\label{fig:ttestExplained}
+  \caption{Left: Frequency histogram of the sample data, together with a normal fit. The sample mean, which is very close to the population mean, is indicated with a yellow triangle; the value to be checked with a red triangle. Right: t-distribution for n-1 degrees of freedom. At the bottom the normalized value of sample mean (yellow triangle) and value to be checked (red triangle). The red shaded area corresponds to the p-value.}\label{fig:ttestExplained}
 \end{figure}
 
 \begin{itemize}
   \item We have a population, with a mean value of 7 and a standard deviation of 3.
-  \item From that population an observer takes 100 random samples. The sample mean is 7.10, close to but different from the real mean. The sample standard deviation is 3.12, and gives the observer an idea about the variability of the population.
+  \item From that population an observer takes 100 random samples. The sample mean is 7.10, close to but different from the real mean. The sample standard deviation is 3.12, and the standard error of the mean 0.312. This gives the observer an idea about the variability of the population.
   \item The observer knows that the distribution of the real mean follows a t-distribution, and that the \emph{standard error of the mean} characterizes the width of that distribution.
-  \item How likely it is that the real mean has a value of $x_0$ (e.g. 6, indicated by the red triangle in Fig. \ref{fig:ttestExplained}, left)? To find that out, this value has to be transformed, by subtracting the sample mean, and dividing by the standard error. (Fig. \ref{fig:ttestExplained}, right). This provides the \emph{t-statistic} for this test (-3.53).
-  \item The corresponding \emph{p-value}, which tells us how likely it is that the real mean has a value of 6 or more extreme relative to the sample mean, is given by \emph{2*CDF(t-statistic)}. (The factor "2" comes from the fact that we have to check in both tails.)
+  \item How likely it is that the real mean has a value of $x_0$ (e.g. 6.5, indicated by the red triangle in Fig. \ref{fig:ttestExplained}, left)? To find that out, this value has to be transformed, by subtracting the sample mean, and dividing by the standard error. (Fig. \ref{fig:ttestExplained}, right). This provides the \emph{t-statistic} for this test (-1.93).
+  \item The corresponding \emph{p-value}, which tells us how likely it is that the real mean has a value of 6.5 or more extreme relative to the sample mean, is given by the red shaded area under the curve-wings: \emph{2*CDF(t-statistic) = 0.057}, which means that the difference to 6.5 is just not significant. (The factor "2" comes from the fact that we have to check in both tails.)
 \end{itemize}
 
 \PyImg "oneSample.py" (p \pageref{py:oneSample}): Sample analysis for one group of continuous data.
@@ -291,7 +291,7 @@ When we compare two groups to each other, we use the \emph{t-test} when the data
 \begin{enumerate}
   \item \textbf{Paired T-Test} and \textbf{Wilcoxon signed rank sum test}
 
-The daily energy intake from 11 healthy women is [5260., 5470., 5640., 6180., 6390., 6515., 6805., 7515., 7515., 8230., 8770.] kJ. 
+The daily energy intake from 11 healthy women is [5260., 5470., 5640., 6180., 6390., 6515., 6805., 7515., 7515., 8230., 8770.] kJ.
 
     Is this value significantly different from the recommended value of 7725?
     (Correct answer: yes, $p_{ttest}=0.018$, and $p_{Wilcoxon}=0.026$)

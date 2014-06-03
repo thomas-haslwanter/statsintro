@@ -62,11 +62,11 @@ def compareWithNormal():
     # Comparison with corresponding normal distribution
     mmean = np.mean(data)
     mstd = np.std(data, ddof=1)
-    normProb = stats.norm.cdf(6.5, loc=mmean,
+    normProb = stats.norm.cdf(checkVal, loc=mmean,
             scale=mstd/np.sqrt(len(data)))*2
 
     # compare
-    print(('The probability from the t-test is ' + '{0:4.3f}, and from the normal distribution {1:4.3f}'.format(tProb, normProb)))
+    print(('The probability from the t-test is ' + '{0:5.4f}, and from the normal distribution {1:5.4f}'.format(tProb, normProb)))
     
     return normProb # should be 0.054201154690070759
            

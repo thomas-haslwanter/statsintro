@@ -23,7 +23,7 @@ value deviates slightly from a normal distribution.
 
 Let us look at a specific example: we take 100 normally distributed
 data, with a mean of 7 and with a standard deviation of 3. What is the
-chance of finding a mean value at a distance of 1.0 or more from the
+chance of finding a mean value at a distance of 0.5 or more from the
 mean?
 
 *Answer: The probability from the t-test is 0.0006, and from the normal
@@ -33,19 +33,20 @@ Example
 ^^^^^^^
 
 Let us look at a specific example: we take 100 normally distributed data, with a mean of 7 and with a standard deviation of 3.
-What is the chance of finding a mean value at a distance of 1.0 or more from the mean? *Answer: The probability from the t-test in the example is 0.0006, and from the normal distribution 0.0004*
+What is the chance of finding a mean value at a distance of 0.5 or more from the mean? *Answer: The probability from the t-test in the example is 0.057, and from the normal distribution 0.054*
 
 Since it is very important to understand the basic principles of how we arrive at the t-statistic and the corresponding p-value for this test, let me illustrate the underlying statistics by going step-by-step through the analysis:
 
 .. image:: ..\Images\ttestExplained.png
-    :scale: 35%
+    :scale: 30%
 
-*Left: Frequency histogram of the sample data, together with a normal fit. The sample mean, which is very close to the population mean, is indicated with a yellow triangle; the value to be checked with a red triangle. Right: t-distribution for n-1 degrees of freedom. At the bottom the normalized value of sample mean (yellow triangle) and value to be checked (red triangle).*
+*Left: Frequency histogram of the sample data, together with a normal fit. The sample mean, which is very close to the population mean, is indicated with a yellow triangle; the value to be checked with a red triangle. Right: t-distribution for n-1 degrees of freedom. At the bottom the normalized value of sample mean (yellow triangle) and value to be checked (red triangle). The red shaded area corresponds to the p-value.*
 
   - We have a population, with a mean value of 7 and a standard deviation of 3.
+  - From that population an observer takes 100 random samples. The sample mean is 7.10, close to but different from the real mean. The sample standard deviation is 3.12, and the standard error of the mean 0.312. This gives the observer an idea about the variability of the population.
   - The observer knows that the distribution of the real mean follows a t-distribution, and that the *standard error of the mean* characterizes the width of that distribution.
-  - How likely it is that the real mean has a value of :math:`x_0` (e.g. 6, indicated by the red triangle in the Figure above, left)? To find that out, this value has to be transformed, by subtracting the sample mean, and dividing by the standard error. (Figure above, right). This provides the *t-statistic* for this test (-3.53).
-  - The corresponding *p-value*, which tells us how likely it is that the real mean has a value of 6 or more extreme relative to the sample mean, is given by *2*CDF(t-statistic)*. (The factor "2" comes from the fact that we have to check in both tails.)
+  - How likely it is that the real mean has a value of :math:`x_0` (e.g. 6.5, indicated by the red triangle in the Figure above, left)? To find that out, this value has to be transformed, by subtracting the sample mean, and dividing by the standard error. (Figure above, right). This provides the *t-statistic* for this test (-1.93).
+  - The corresponding *p-value*, which tells us how likely it is that the real mean has a value of 6 or more extreme relative to the sample mean, is given by the red shaded area under the curve-wings:  *2*CDF(t-statistic)=0.057*, which means that the difference to 6.5 is just not significant. (The factor "2" comes from the fact that we have to check in both tails.)
 
 Wilcoxon signed rank sum test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
