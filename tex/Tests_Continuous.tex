@@ -289,12 +289,12 @@ When we compare two groups to each other, we use the \emph{t-test} when the data
 \subsection{One or Two Groups}
 
 \begin{enumerate}
-  \item \textbf{Wilcoxon signed rank sum test}
+  \item \textbf{Paired T-Test} and \textbf{Wilcoxon signed rank sum test}
 
-The daily energy intake from 11 healthy women is [5260., 5470., 5640., 6180., 6390., 6515., 6805., 7515., 7515., 8230., 8770.] kJ. The data are clearly not normally distributed.
+The daily energy intake from 11 healthy women is [5260., 5470., 5640., 6180., 6390., 6515., 6805., 7515., 7515., 8230., 8770.] kJ. 
 
     Is this value significantly different from the recommended value of 7725?
-    (Correct answer: yes, p=0.018)
+    (Correct answer: yes, $p_{ttest}=0.018$, and $p_{Wilcoxon}=0.026$)
 
   \item \textbf{t-test of independent samples}
 
@@ -303,7 +303,7 @@ In a clinic, 15 lazy patients weight [76., 101., 66., 72., 88., 82., 79., 73., 7
     Are the lazy patients significantly heavier?
     (Correct answer: yes, p=0.045)
 
-  \item \textbf{Kolmogorov-Smirnov test}
+  \item \textbf{Normality test}
 
     Are the two datasets normally distributed?
     (Correct answer: yes, they are)

@@ -336,29 +336,30 @@ Exercises
 One or Two Groups
 ~~~~~~~~~~~~~~~~~
 
-#. **Wilcoxon signed rank sum test**
+#. **Paired T-test** and **Wilcoxon signed rank sum test**
 
-    The daily energy intake from 11 healthy women is [5260., 5470., 5640., 6180., 6390., 6515., 6805., 7515., 7515., 8230., 8770.] kJ. The data are clearly not normally distributed.
+    The daily energy intake from 11 healthy women is [5260., 5470., 5640.,
+    6180., 6390., 6515., 6805., 7515., 7515., 8230., 8770.] kJ.
 
     Is this value significantly different from the recommended value of 7725?
-     (Correct answer: yes, p=0.018)
+     *(Correct answer: yes, p_ttest=0.018, p_Wilcoxon=0.026)*
 
 #. **t-test of independent samples**
 
     In a clinic, 15 lazy patients weight [76., 101., 66., 72., 88., 82., 79., 73., 76., 85., 75., 64., 76., 81., 86.] kg, and 15 sporty patients weigh [ 64., 65., 56., 62., 59., 76., 66., 82., 91., 57., 92., 80., 82., 67., 54.] kg.
 
     Are the lazy patients significantly heavier?
-     (Correct answer: yes, p=0.045)
+     *(Correct answer: yes, p=0.045)*
 
-#. **Kolmogoriv-Smirnov test**
+#. **Normality test**
 
     Are the two datasets normally distributed?
-     (Correct answer: yes, they are)
+     *(Correct answer: yes, they are)*
 
 #. **Mann-Whitney test**
 
     Are the lazy patients still heavier, if you check with the Mann-Whitney test?
-     (Correct answer: yes, p=0.039)
+     *(Correct answer: yes, p=0.039)*
 
 Multiple Groups
 ~~~~~~~~~~~~~~~
@@ -373,17 +374,17 @@ Multiple Groups
 #. **Perform an ANOVA**
 
     Are the three groups different?
-     (Correct answer: yes, they are.)
+     *(Correct answer: yes, they are.)*
 
 #. **Multiple Comparisons**
 
     Using the Tukey test, which of the pairs are different?
-     (Correct answer: only TreamtmentA and TreatmentB differ)
+     *(Correct answer: only TreamtmentA and TreatmentB differ)*
 
 #. **Kruskal-Wallis**
 
     Would a non-parametric comparison lead to a different result?
-     (Correct answer: no)
+     *(Correct answer: no)*
 
 
 .. |ipynb| image:: ../Images/IPython.jpg

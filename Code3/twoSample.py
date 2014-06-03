@@ -37,7 +37,7 @@ def paired_data():
     # normally distributed
     rankSum, p_value = stats.wilcoxon(post - pre)
     # --- >>> STOP stats <<< ---
-    print(("paired wilcoxon-test", p_value))
+    print(("Wilcoxon-Signed-Rank-Sum test", p_value))
     
     return p_value # should be 0.0033300139117459797
 
@@ -74,7 +74,7 @@ def unpaired_data():
     # For non-normally distributed data, perform the two-sample wilcoxon test
     # a.k.a Mann Whitney U
     u, p_value = stats.mannwhitneyu(group1, group2)
-    print(("two-sample wilcoxon-test", p_value))
+    print(("Mann-Whitney test", p_value))
     # --- >>> STOP stats <<< ---
     
     # Plot the data
