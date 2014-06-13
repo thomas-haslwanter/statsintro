@@ -190,14 +190,15 @@ where $\beta_1$ determines the initial velocity of the ball, $\beta_2$ is propor
 
 \subsection{Assumptions}
 
-To use the technique of linear regression, five assumptions should be fulfilled:
+To use the technique of linear regression, the following assumptions should be fulfilled:
 
 \begin{enumerate}
-  \item The errors in the data values (i.e. the deviations from average) are independent from one another.
-  \item The model must be appropriate. (A linear regression does not properly describe a quadratic curve.)
   \item The \emph{independent variables} (i.e. $x$) are exactly known.
-  \item The variance of the \emph{dependent variable} (i.e. $y$) is the same for all values of $x$.
-  \item The distribution of $y$ is approximately normal for all values of $x$.
+  \item Validity. Most importantly, the data you are analyzing should map to the research question you are trying to answer. This sounds obvious but is often overlooked or ignored because it can be inconvenient. For example, a linear regression does not properly describe a quadratic curve.
+  \item Additivity and linearity. The most important mathematical assumption of the regression model is that its deterministic component is a linear function of the separate predictors.
+  \item Independence of errors.
+  \item Equal variance of errors.
+  \item Normality of errors.
 \end{enumerate}
 
 \begin{figure}

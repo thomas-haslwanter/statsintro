@@ -106,32 +106,61 @@ female students will eventually die from this disease.
 Frequency Tables
 ----------------
 
-Chi-square Test
-~~~~~~~~~~~~~~~
+If your data can be organized in a set of categories, and they are given as *frequencies*, i.e. the total number of samples in each category (not as percentages), the tests described in this section are appropriate for your data analysis.
 
-The chi-square test is based on a test statistic that measures the
-divergence of the observed data from the values that would be expected
-under the null hypothesis of no association. This requires calculation
-of the expected values based on the data.
-With *n* is the total number of observations included in the table,
-the expected value :math:`e_i`` for each cell in a two-way table is
-
-.. math::
-    
-    expected = \frac{row total*column total}{n}
+Many of these tests analyze the *deviation from an expected value*. Since the chi-square distribution characterizes the variability of data (in other words, their deviation from a mean value), many of these tests refer to this distribution, and are accordingly termed *chi-square tests*.
 
 Assume you have observed absolute frequencies :math:`o_i` and expected
-absolute frequencies :math:`e_i` under the Null hypothesis of your test
-then it holds
+absolute frequencies :math:`e_i`. Under the Null hypothesis all your data come from the same
+population, and the test statistic
 
 .. math:: V = \sum_i \frac{(o_i-e_i)^2}{e_i} \approx \chi^2_f
 
 .
 
-where :math:`f` are the degrees of freedom. :math:`i` might denote a
+follows a chi square distribution with :math:`f` degrees of freedom. :math:`i` might denote a
 simple index running from :math:`1,...,I` or even a multiindex
 :math:`(i_1,...,i_p)` running from :math:`(1,...,1)` to
 :math:`(I_1,...,I_p)`.
+
+
+One-way Chi-square Test
+~~~~~~~~~~~~~~~~~~~~~~~
+
+For example, assume that you go hiking with your friends. Every evening, you draw lots who has to do the washing up.
+But at the end of the trip, you seem to have done most of the work:
+
++--------+----------+-----------+----------+-----------+---------+
+| *You*  | *Peter*  |  *Hans*   |  *Paul*  |  *Mary*   |  *Joe*  |
++========+==========+===========+==========+===========+=========+
+|  *10*  |  *6*     |   *5*     |  *4*     |   *5*     |  *3*    |
++--------+----------+-----------+----------+-----------+---------+
+
+You expect that there has been some foul play, and calculate how likely it is that this distribution came up by chance. The
+
+.. math::   expectedFrequency = \frac{n_{total}}{n_{people}}
+
+is *5.5*. The likelihood that this distribution came up by chance is
+
+::
+
+    V, p = stats.chisquare(data)
+    print(p)
+    >>> 0.373130385949
+
+In other words, you doing a lot of the washing up really could have been by chance!
+
+Chi-square Contingency Test
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you can arrange your data in rows and columns, you can check if the numbers in the individual columns are contingent on the row value. For this reason, this test is sometimes called *contingency test*.
+
+The chi-square contingency test is based on a test statistic that measures the divergence of the observed data from the values that would be expected under the null hypothesis of no association. When $n$ is the total number of observations included in the table, the expected value for each cell in a two-way table is
+
+
+.. math::
+    
+    expected = \frac{row total*column total}{n}
 
 Assumptions
 ^^^^^^^^^^^^
@@ -152,7 +181,7 @@ correction is referred to as *Yates correction*.
 Degrees of Freedom
 ^^^^^^^^^^^^^^^^^^
 
-The degrees of freedom can be computed by the numbers of absolute observed
+The degrees of freedom (DOF) can be computed by the numbers of absolute observed
 frequencies which can be chosen freely. For example, only one cell of a 2x2 table
 with the sums at the side and bottom needs to be filled, and the others can be
 found by subtraction. In general, an *r x c* table has *df=(r-1)x(c-1)*
@@ -169,7 +198,18 @@ frequencies.
 Example 1
 ^^^^^^^^^
 
-The Python command *stats.chi2_contingency* returns, the chi2-value, the p-value, the degrees of freedom, and the expected values. For the example data in Table above, the results are *\chi^2=1.1, p=0.3, df=1*. In other words, there is no indication that there is a difference in left-handed people vs right-handed people between males and females.
+The Python command *stats.chi2\_contingency* returns the following list: :math:`(\chi^2, p, dof, e_i)`.
+
+::
+
+    V, p, dof, expected = stats.chi2_contingency(data)
+    print(p)
+    >>> 0.300384770391
+
+For the example data in the Table above, the results are :math:`\chi^2=1.1, p=0.3, df=1`). In other words, there is no indication that there is a difference in left-handed people vs right-handed people between males and females.
+
+**Note:** These values assume the default setting, which uses the *Yates correction*. Without this correction, the results are :math:`\chi^2=1.8, p=0.18`.
+
 
 Example 2
 ^^^^^^^^^
@@ -248,6 +288,22 @@ distribution as extreme or more extreme as the observed one. The latter one
 (which is the default in python) also considers tables as extreme in the
 opposite direction.
 
+McNemar's Test
+~~~~~~~~~~~~~~
+
+Although the McNemar test bears a superficial resemblance to a test of
+categorical association, as might be performed by a 2x2 chi-square test or
+a 2x2 Fisher exact probability test, it is doing something quite different.
+The test of association examines the relationship that exists among the
+cells of the table. The McNemar test examines the difference between the
+proportions that derive from the marginal sums of the table (see Table below):
+:math:`p_A=(a+b)/N` and :math:`p_B=(a+c)/N`. The question in the McNemar
+test is: do these two proportions, :math:`p_A` and :math:`p_B`,
+significantly differ? And the answer it receives must take into account the
+fact that the two proportions are not independent. The correlation of
+:math:`p_A` and :math:`p_B` is occasioned by the fact that both include the
+quantity a in the upper left cell of the table.
+
 
 +--------+-------+-------+-----------+
 |        | B     | B     |           |
@@ -261,22 +317,6 @@ opposite direction.
 +--------+-------+-------+-----------+
 
 *General Structure of 2x2 Frequency Tables*
-
-McNemar's Test
-~~~~~~~~~~~~~~
-
-Although the McNemar test bears a superficial resemblance to a test of
-categorical association, as might be performed by a 2x2 chi-square test or
-a 2x2 Fisher exact probability test, it is doing something quite different.
-The test of association examines the relationship that exists among the
-cells of the table. The McNemar test examines the difference between the
-proportions that derive from the marginal sums of the table (see Table):
-:math:`p_A=(a+b)/N` and :math:`p_B=(a+c)/N`. The question in the McNemar
-test is: do these two proportions, :math:`p_A` and :math:`p_B`,
-significantly differ? And the answer it receives must take into account the
-fact that the two proportions are not independent. The correlation of
-:math:`p_A` and :math:`p_B` is occasioned by the fact that both include the
-quantity a in the upper left cell of the table.
 
 McNemar's test can be used for example in studies in which patients serve as
 their own control, or in studies with "before and after" design.
@@ -407,11 +447,93 @@ the advantage of judging cups by comparison.)
 
 The null hypothesis was that the Lady had no such ability.
 
-Calculate if the claim of the lady is supported if she gets three out of
-the four pairs correct. (Correct answer: No. If she gets three correct,
-that chance that a selection of "three or greater" was random is 0.243.
-She needs to get all four correct, if we set the rejection threshold at
-0.05)
+ * Calculate if the claim of the lady is supported if she gets three out of
+    the four pairs correct. (Correct answer: No. If she gets three correct,
+    that chance that a selection of "three or greater" was random is 0.243.
+    She needs to get all four correct, if we set the rejection threshold at
+    0.05)
+
+
+Chi2 Contingency Test (1 DOF)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A test of the effect of a new drug on the heart rate has yielded the following results for
+the heart rate (HR):
+
++---------------+------------------+---------------------+-----------+
+|               | *HR increased*   | *HR not increased*  | *Total*   |
++===============+==================+=====================+===========+
+| *treated*     | 36               | 14                  | 50        |
++---------------+------------------+---------------------+-----------+
+| *not treated* | 30               | 25                  | 55        |
++---------------+------------------+---------------------+-----------+
+| *Total*       | 66               | 39                  | 105       |
++---------------+------------------+---------------------+-----------+
+
+  * Does the drug affect the heart rate?
+    (Correct answer: no)
+  * What would be the result if the response in one of the not-treated persons would have been different? Perform this test with and without the Yates-correction.
+      (Correct anwer: without Yates correction: yes, p=0.042; with Yates correction: no, p=0.067)
+
++---------------+------------------+---------------------+-----------+
+|               | *HR increased*   | *HR not increased*  | *Total*   |
++===============+==================+=====================+===========+
+| *treated*     | 36               | 14                  | 50        |
++---------------+------------------+---------------------+-----------+
+| *not treated* | 29               | 26                  | 55        |
++---------------+------------------+---------------------+-----------+
+| *Total*       | 65               | 40                  | 105       |
++---------------+------------------+---------------------+-----------+
+
+One way Chi2-Test (>1 DOF)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The city of Linz wants to know if people want to build a long beach along the Danube. They interview local people, and decide to collect 20 responses from each of the five age groups: (<15, 15-30, 30-45, 45-60, >60)
+
+The questionnaire states: *"A beachside development will benefit Linz."*
+
+and the possible answers are
+
+      * Strongly agree 
+      * Agree 
+      * Disagree 
+      * Strongly Disagree 
+
+The city council wants to find out if the age of people influenced feelings about the development, particularly of those who felt negatively (i.e. "disagreed" or "strongly disagreed") about the planned development.
+
+    * <15:  4
+    * 15-30:    6
+    * 30-45:    14
+    * 45-60:    10
+    * >60:  16
+
+The categories seem to show large differences of opinion between the groups.
+
+  * Are these differences significant?
+    (Correct answer: no)
+  * How many degrees of freedom does the resulting analysis have?
+    (Correct answer: 4)
+
+
+McNemar's Test
+~~~~~~~~~~~~~~
+
+In a lawsuit regarding a murder the defense uses a questionnaire to show that the defendant is insane. As a result of the questionnaire, the accused claims "not guilty by reason of insanity".
+
+In return, the state attorney wants to show that the questionnaire does not work. He hires an experienced neurologist, and presents him with 40 patients, 20 of whom have completed the questionnaire with an "insane" result, and 20 with a "sane" result. When examined by the neurologist, the result is mixed: 19 of the "sane" people are found sane, but 6 of the 20 "insane" people are labelled as sane by the expert.
+
++-----------+------------------+---------------------+-----------+
+|           | *sane by expert* | *insane by epxpert* | *Total*   |
++===========+==================+=====================+===========+
+| *sane*    | 19               | 1                   | 20        |
++-----------+------------------+---------------------+-----------+
+| *insane*  | 6                | 14                  | 20        |
++-----------+------------------+---------------------+-----------+
+| *Total*   | 22               | 18                  | 40        |
++-----------+------------------+---------------------+-----------+
+
+  * Is this result significantly different from the questionnaire? (Correct answer: no)
+  *  Would the result be significantly different, if the expert had diagnosed all "sane" people as sane? (Correct answer: yes)
 
 .. |ipynb| image:: ../Images/IPython.jpg
     :scale: 50 % 

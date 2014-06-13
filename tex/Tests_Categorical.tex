@@ -17,21 +17,6 @@ In a sample of individuals the number falling into a particular group is called 
   \caption{Example of a frequency table}\label{table:frequency}
 \end{table}
 
-\begin{table}
-  \centering
-  \begin{tabular}{|c|l l l|}
-  \hline
-  & \emph{Right Handed} & \emph{Left Handed} & \emph{Total} \\
-  \hline
-  \emph{Males} & 45.2 & 6.8 & 52 \\
-  \emph{Females} & 41.8 & 6.2 & 48 \\
-  \emph{Total} & 87 & 13 & 100 \\
-  \hline
-  \end{tabular}
-
-  \caption{Corresponding expected values for Table \ref{table:frequency}\label{table:expectedValues}}
-\end{table}
-
 If you have only one sample group of data, the analysis options are somewhat limited. In contrast, a number of statistical tests exist for the analysis of frequency tables.
 
 \begin{description}
@@ -74,7 +59,7 @@ From these points of information, we can obtain the following parameters for our
 
 \begin{itemize}
   \item n = 2'500
-  \item $p_{incidence} = 10 / 100'000$, as \emph{incidence} is typically defined as the new occurrences of a disease per year per 100'000 people.
+  \item $p_{incidence} = 10 / 100'000$, as \emph{incidence}\index{general}{incidence} is typically defined as the new occurrences of a disease per year per 100'000 people.
   \item $p_{mortality} = 3.8/100$.
 \end{itemize}
 
@@ -82,21 +67,74 @@ The 95\% confidence interval for the incidence is -0.7 - 1.2, and for the number
 
 \section{Frequency Tables} \index{general}{frequency tables}
 
-\subsection{Chi-square Test} \index{general}{test!chi square}
+If your data can be organized in a set of categories, and they are given as \emph{frequencies}, i.e. the total number of samples in each category (not as percentages), the tests described in this section are appropriate for your data analysis.
 
-The chi-square test is based on a test statistic that measures the divergence of the observed data from the values that would be expected under the null hypothesis of no association. This requires calculation of the expected values based on the data. When $n$ is the total number of observations included in the table, the expected value for each cell in a two-way table is
+Many of these tests analyze the \emph{deviation from an expected value}. Since the chi-square distribution characterizes the variability of data (in other words, their deviation from a mean value), many of these tests refer to this distribution, and are accordingly termed \emph{chi-square tests}.
+
+\begin{table}
+  \centering
+  \begin{tabular}{|c|l l l|}
+  \hline
+  & \emph{Right Handed} & \emph{Left Handed} & \emph{Total} \\
+  \hline
+  \emph{Males} & 45.2 & 6.8 & 52 \\
+  \emph{Females} & 41.8 & 6.2 & 48 \\
+  \emph{Total} & 87 & 13 & 100 \\
+  \hline
+  \end{tabular}
+
+  \caption{Corresponding expected values for Table \ref{table:frequency}\label{table:expectedValues}}
+\end{table}
+
+
+Assume you have observed absolute frequencies $o_i$ and expected absolute frequencies $e_i$. Under the Null hypothesis all your data come from the same population, and the test statistic
+
+\begin{equation}\label{eq:chi2}
+  V = \sum_i \frac{(o_i-e_i)^2}{e_i} \approx \chi^2_f
+\end{equation}.
+
+follows a chi square distribution with $f$ degrees of freedom. $i$ might denote a simple index running from $1,...,I$ or a multiindex $(i_1,...,i_p)$ running from $(1,...,1)$ to $(I_1,...,I_p)$.
+
+\subsection{One-way Chi-square Test}\index{general}{test!chi square, one way}
+
+For example, assume that you go hiking with your friends. Every evening, you draw lots who has to do the washing up.
+But at the end of the trip, you seem to have done most of the work:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c}
+      You & Peter & Hans & Paul & Mary & Joe \\
+      \hline
+      10 & 6 & 5 & 4 & 5 & 3 \\
+    \end{tabular}
+\end{table}
+
+You expect that there has been some foul play, and calculate how likely it is that this distribution came up by chance. The
+
+\begin{equation}
+  expectedFrequency = \frac{n_{total}}{n_{people}}
+\end{equation}
+
+is 5.5. The likelihood that this distribution came up by chance is
+
+\begin{lstlisting}
+    V, p = stats.chisquare(data)
+    print(p)
+    >>> 0.373130385949
+\end{lstlisting}
+
+In other words, you doing a lot of the washing up really could have been by chance!
+
+\subsection{Chi-square Contingency Test} \index{general}{test!chi square}
+
+If you can arrange your data in rows and columns, you can check if the numbers in the individual columns are contingent on the row value. For this reason, this test is sometimes called \emph{contingency test}.
+
+The chi-square contingency test is based on a test statistic that measures the divergence of the observed data from the values that would be expected under the null hypothesis of no association. When $n$ is the total number of observations included in the table, the expected value for each cell in a two-way table is
 
 \begin{equation}
   expectedFrequency = \frac{RowTotal * ColumnTotal}{n}
 \end{equation}
 
-Assume you have observed absolute frequencies $o_i$ and expected absolute frequencies $e_i$ under the Null hypothesis of your test then it holds
-
-\begin{equation}
-  V = \sum_i \frac{(o_i-e_i)^2}{e_i} \approx \chi^2_f
-\end{equation}.
-
-where $f$ are the degrees of freedom. $i$ might denote a simple index running from $1,...,I$ or even a multiindex $(i_1,...,i_p)$ running from $(1,...,1)$ to $(I_1,...,I_p)$.
 
 \subsubsection{Assumptions}
 The test statistic $V$ is approximately $\chi^2$ distributed, if
@@ -109,18 +147,28 @@ The test statistic $V$ is approximately $\chi^2$ distributed, if
 For small sample numbers, corrections should be made for some bias that is caused by the use of the continuous chi-squared distribution, while the frequencies are by definition integers. This correction is referred to as \emph{Yates correction}.
 
 \subsubsection{Degrees of Freedom}
-The degrees of freedom can be computed by the numbers of absolute observed frequencies which can be chosen freely. For example, only one cell of a 2x2 table with the sums at the side and bottom needs to be filled, and the others can be found by subtraction. In general, an $r \times c$ table has $df=(r-1)\times(c-1)$ degrees of freedom.
+The degrees of freedom (DOF) can be computed by the numbers of absolute observed frequencies which can be chosen freely. For example, only one cell of a 2x2 table with the sums at the side and bottom needs to be filled, and the others can be found by subtraction. In general, an $r \times c$ table has $df=(r-1)\times(c-1)$ degrees of freedom.
  We know that the sum of absolute expected frequencies is
 
 \begin{equation}
   \sum_i o_i = n
 \end{equation}
 
-which means that the maximum number of degrees of freedom is $I-1$. We might have to subtract from the number of degrees of freedom the number of parameters we need to estimate from the sample, since this implies further relationships between the observed frequencies.
+We might have to subtract from the number of degrees of freedom the number of parameters we need to estimate from the sample, since this implies further relationships between the observed frequencies.
 
 \subsubsection{Example 1}
 
-The Python command \emph{stats.chi2\_contingency} returns, the $\chi^2$-value, the p-value, the degrees of freedom, and the expected values. For the example data in Table \ref{table:frequency}, the results are $\chi^2=1.1, p=0.3, df=1$. In other words, there is no indication that there is a difference in left-handed people vs right-handed people between males and females.
+The Python command \emph{stats.chi2\_contingency} returns the following list: ($\chi^2$-value, p-value, degrees-of-freedom, expected values).
+
+\begin{lstlisting}
+    V, p, dof, expected = stats.chi2_contingency(data)
+    print(p)
+    >>> 0.300384770391
+\end{lstlisting}
+
+For the example data in Table \ref{table:frequency}, the results are ($\chi^2=1.1, p=0.3, df=1$). In other words, there is no indication that there is a difference in left-handed people vs right-handed people between males and females.
+
+\textbf{Note:} These values assume the default setting, which uses the \emph{Yates correction}. Without this correction, i.e. using Eq. \ref{eq:chi2}, the results are$\chi^2=1.8, p=0.18$.
 
 \subsubsection{Example 2}
 
@@ -243,7 +291,7 @@ Cochran's Q test is a hypothesis test where the response variable can take only 
   \caption{Cochran's Q Test: Success or failure for 12 subjects on 3 tasks.}\label{table:CochransQ}
 \end{table}
 
-The null hypothesis for the Cochran's Q test is that there are no differences between the variables. If the calculated probability $p$ is below the selected significance level, the null-hypothesis is rejected, and it can be concluded that the proportions in at least 2 of the variables are significantly different from each other. For our example (Table \ref{table: CochransQ}), the analysis of the data provides $Cochran's Q = 8.6667$ and a significance of $p = 0.013$. In other words, at least one of the three Tasks is easier or harder than the others.
+The null hypothesis for the Cochran's Q test is that there are no differences between the variables. If the calculated probability $p$ is below the selected significance level, the null-hypothesis is rejected, and it can be concluded that the proportions in at least 2 of the variables are significantly different from each other. For our example (Table \ref{table:CochransQ}), the analysis of the data provides $Cochran's Q = 8.6667$ and a significance of $p = 0.013$. In other words, at least one of the three Tasks is easier or harder than the others.
 
 \section{Analysis Programs}
 
@@ -262,6 +310,125 @@ The experiment provided the Lady with 8 randomly ordered cups of tea - 4 prepare
 
 The null hypothesis was that the Lady had no such ability.
 
-Calculate if the claim of the lady is supported if she gets three out of the four pairs correct.
-(Correct answer: No. If she gets three correct, that chance that a selection of "three or greater" was random is 0.243. She needs to get all four correct, if we set the rejection threshold at 0.05)
+\begin{itemize}
+  \item Calculate if the claim of the lady is supported if she gets three out of the four pairs correct.\\
+  (Correct answer: No. If she gets three correct, that chance that a selection of "three or greater" was random is 0.243. She needs to get all four correct, if we set the rejection threshold at 0.05)
 
+\end{itemize}
+
+
+\subsection{Chi2 Contingency Test (1 DOF)}
+
+A test of the effect of a new drug on the heart rate has yielded the following results:
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|l l | l|}
+  \hline
+  & \emph{Heart rate increased} & \emph{Heart rate NOT increased} & \emph{Row total} \\
+  \hline
+  \emph{Treated} & 36 & 14 & 50 \\
+  \emph{Not treated} & 30 & 25 & 55 \\
+  \hline
+  \emph{Column total} & 66 & 39 & 105 \\
+  \hline
+  \end{tabular}
+\end{table}
+
+\begin{itemize}
+  \item     Does the drug affect the heart rate?
+    (Correct answer: no)
+
+  \item     What would be the result if the response in one of the not-treated persons would have been different? Perform this test with and without the Yates-correction.
+      (Correct anwer:
+        without Yates correction: yes, p=0.042\\
+        with Yates correction: no, p=0.067)
+
+\end{itemize}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|l l | l|}
+  \hline
+  & \emph{Heart rate increased} & \emph{Heart rate NOT increased} & \emph{Row total} \\
+  \hline
+  \emph{Treated} & 36 & 14 & 50 \\
+  \emph{Not treated} & 29 & 26 & 55 \\
+  \hline
+  \emph{Column total} & 65 & 40 & 105 \\
+  \hline
+  \end{tabular}
+\end{table}
+
+
+\subsection{One way Chi2-Test ($>1$ DOF)}
+
+The city of Linz wants to know if people want to build a long beach along the Danube. They interview local people, and decide to collect 20 responses from each of the five age groups: ($<15$, 15-30, 30-45, 45-60, $>60$)
+
+The questionnaire states: \emph{"A beachside development will benefit Linz."}
+
+and the possible answers are
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c}
+      1 & 2 & 3 & 4 \\
+      \hline
+      Strongly agree & Agree & Disagree & Strongly Disagree \\
+    \end{tabular}
+\end{table}
+
+The city council wants to find out if the age of people influenced feelings about the development, particularly of those who felt negatively (i.e. "disagreed" or "strongly disagreed") about the planned development.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c}
+      Age group (type) &	Frequency of negative responses (Observed values)\\
+      \hline
+      $<15$ & 4 \\
+      15-30 & 6 \\
+      30-45 & 14 \\
+      45-60 & 10 \\
+      $>60$ & 16
+    \end{tabular}
+\end{table}
+
+The categories seem to show large differences of opinion between the groups.
+
+\begin{itemize}
+  \item     Are these differences significant?
+    (Correct answer: no)
+
+  \item     How many degrees of freedom does the resulting analysis have?
+    (Correct answer: 4)
+
+\end{itemize}
+
+\subsection{McNemar's Test}
+
+In a lawsuit regarding a murder the defense uses a questionnaire to show that the defendant is insane. As a result of the questionnaire, the accused claims "not guilty by reason of insanity".
+
+In return, the state attorney wants to show that the questionnaire does not work. He hires an experienced neurologist, and presents him with 40 patients, 20 of whom have completed the questionnaire with an "insane" result, and 20 with a "sane" result. When examined by the neurologist, the result is mixed: 19 of the "sane" people are found sane, but 6 of the 20 "insane" people are labelled as sane by the expert.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|l l | l|}
+  \hline
+  & \emph{sane by expert} & \emph{insane by expert} & \emph{Total} \\
+  \hline
+  \emph{sane} & 19 & 1 & 20 \\
+  \emph{insane} & 6 & 14 & 20 \\
+  \hline
+  \emph{Total} & 22 & 18 & 40 \\
+  \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{itemize}
+  \item     Is this result significantly different from the questionnaire?
+    (Correct answer: no)
+
+  \item     Would the result be significantly different, if the expert had diagnosed all "sane" people as sane?
+    (Correct answer: yes)
+\end{itemize} 

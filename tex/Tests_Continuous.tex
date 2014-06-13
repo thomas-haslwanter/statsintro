@@ -15,7 +15,7 @@ What is the chance of finding a mean value at a distance of 0.5 or more from the
 
 Since it is very important to understand the basic principles of how we arrive at the t-statistic and the corresponding p-value for this test, let me illustrate the underlying statistics by going step-by-step through the analysis:
 
-\begin{figure}[h]
+\begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/ttestExplained.png}\\
   \caption{Left: Frequency histogram of the sample data, together with a normal fit. The sample mean, which is very close to the population mean, is indicated with a yellow triangle; the value to be checked with a red triangle. Right: t-distribution for n-1 degrees of freedom. At the bottom the normalized value of sample mean (yellow triangle) and value to be checked (red triangle). The red shaded area corresponds to the p-value.}\label{fig:ttestExplained}
@@ -41,7 +41,7 @@ Since it is very important to understand the basic principles of how we arrive a
 %  \item Interpret the result (\emph{"not significant"}).
 %\end{itemize}
 %
-%\begin{figure}[h]
+%\begin{figure}
 %  \centering
 %  \includegraphics[width=0.85\textwidth]{../Images/pdf_checkMean.png}\\
 %  \caption{Check if the mean of the fitted curve is significantly different from the value to be checked.}\label{fig:pdf_checkValue}
@@ -251,7 +251,7 @@ Note that the studentized range statistic is the same as the t-statistic except 
 \PyImg "multipleTesting.py" (p \pageref{py:multipleTesting}): this script provides an example where three treatments are compared.
 \index{python}{multipleTesting}
 
-\begin{figure}[h]
+\begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/MultComp.png}\\
   \caption{Comparing the means of multiple groups - here three different treatment options.}

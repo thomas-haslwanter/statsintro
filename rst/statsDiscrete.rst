@@ -26,6 +26,9 @@ ordered data* we can use rank order methods for the analysis:
 Binomial Test
 ~~~~~~~~~~~~~
 
+Example
+^^^^^^^
+
 Suppose we have a board game that depends on the roll of a die and attaches
 special importance to rolling a 6. In a particular game, the die is rolled 235
 times, and 6 comes up 51 times. If the die is fair, we would expect 6 to come up
@@ -49,7 +52,16 @@ splits the 5\% probability across the two tails.
 
 |python| `binomialTest.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/binomialTest.py>`_
 
+Exercises
+---------
+
+#. Under which conditions do you use the *binomial distribution* to
+   evaluate the likelihood of a discrete number of events? And under which
+   do you use the *Poisson distribution* ?
+
+
 .. |ipynb| image:: ../Images/IPython.jpg
     :scale: 50 % 
+
 .. |python| image:: ../Images/python.jpg
     :scale: 50 % 

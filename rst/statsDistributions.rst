@@ -775,7 +775,12 @@ where :math:`{n \choose k}={n! \over k!(n-k)!}`
 *Binomial Distribution*
 
 The binomial distribution for *n = 1* is sometimes referred to as *Bernoulli
-Distribution*. 
+Distribution*.
+
+For *n* trials, we have the following properties:
+
+   * mean: *np*
+   * variance: *n p (1-p)*
 
 Poisson Distribution
 ^^^^^^^^^^^^^^^^^^^^
@@ -821,7 +826,10 @@ function of the Poisson is given by
 
 .. math:: P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}
 
-.
+The Poisson distribution has the following properties:
+
+   * mean: :math:`\lambda`
+   * variance: :math:`\lambda`
 
 | |image19|
 

@@ -269,22 +269,16 @@ the standard form :
 Assumptions
 ~~~~~~~~~~~
 
-To use the technique of linear regression, five assumptions should be
+To use the technique of linear regression, the following assumptions should be
 fulfilled:
 
-1. The errors in the data values (i.e. the deviations from average) are
-   independent from one another.
+1. The \emph{independent variables} (i.e. $x$) are exactly known.
+2. Validity. Most importantly, the data you are analyzing should map to the research question you are trying to answer. This sounds obvious but is often overlooked or ignored because it can be inconvenient. For example, a linear regression does not properly describe a quadratic curve.
+3. Additivity and linearity. The most important mathematical assumption of the regression model is that its deterministic component is a linear function of the separate predictors.
+4. Independence of errors.
+5. Equal variance of errors.
+6. Normality of errors.
 
-2. The model must be appropriate. (A linear regression does not properly
-   describe a quadratic curve.)
-
-3. The *independent variables* (i.e. :math:`x`) are exactly known.
-
-4. The variance of the *dependent variable* (i.e. :math:`y`) is the same
-   for all values of :math:`x`.
-
-5. The distribution of :math:`y` is approximately normal for all values
-   of :math:`x`.
 
 |ipynb| `80_multivariate.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/80_multivariate.ipynb>`_
 

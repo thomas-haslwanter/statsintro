@@ -390,6 +390,7 @@ Multiple Groups
 
 .. |ipynb| image:: ../Images/IPython.jpg
     :scale: 50 % 
+
 .. |python| image:: ../Images/python.jpg
     :scale: 50 % 
 
