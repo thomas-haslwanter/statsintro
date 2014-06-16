@@ -235,7 +235,7 @@ Some remarks on terminology and general use:
    coefficients*. Statistical estimation and inference in linear
    regression focuses on :math:`\beta`.
 
--  :math:`\varepsilon_i\,` is called the *error term*, *disturbance
+-  :math:`\varepsilon_i\,` is called the *residuals*, *error term*, *disturbance
    term*, or *noise*. This variable captures all other factors which
    influence the dependent variable :math:`y_i` other than the
    regressors :math:`x_i`. The relationship between the error term and

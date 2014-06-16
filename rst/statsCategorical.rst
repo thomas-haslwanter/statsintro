@@ -288,6 +288,11 @@ distribution as extreme or more extreme as the observed one. The latter one
 (which is the default in python) also considers tables as extreme in the
 opposite direction.
 
+**Note:** The python command *stats.fisher_exact* returns by default the
+p-value for *finding a value as extreme or more extreme than the
+observed one*. According to Altman, this is a reasonable approach, although
+not all statisticians agree on that point.
+
 McNemar's Test
 ~~~~~~~~~~~~~~
 
@@ -510,7 +515,7 @@ The city council wants to find out if the age of people influenced feelings abou
 The categories seem to show large differences of opinion between the groups.
 
   * Are these differences significant?
-    (Correct answer: no)
+    (Correct answer: yes, p=0.034)
   * How many degrees of freedom does the resulting analysis have?
     (Correct answer: 4)
 

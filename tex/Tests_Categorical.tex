@@ -215,6 +215,8 @@ Fisher is said to have devised the test following a comment from Dr Muriel Brist
 
 In using the test, you have to decide if you want to use a one-tailed test or a two-tailed test. The former one looks for the probability to find a distribution as extreme or more extreme as the observed one. The latter one (which is the default in python) also considers tables as extreme in the opposite direction.
 
+\textbf{Note:} The python command $stats.fisher_exact$ returns by default the p-value for \emph{finding a value as extreme or more extreme than the observed one}. According to Altman, this is a reasonable approach, although not all statisticians agree on that point.
+
 \subsection{McNemar's Test}\index{general}{test!McNemar's}
 
 Although the McNemar test bears a superficial resemblance to a test of categorical association, as might be performed by a 2x2 chi-square test or a 2x2 Fisher exact probability test, it is doing something quite different. The test of association examines the relationship that exists among the cells of the table. The McNemar test examines the difference between the proportions that derive from the marginal sums of the table (see Table \ref{table:frequencyGeneral}): $p_A=(a+b)/N$ and $p_B=(a+c)/N$. The question in the McNemar test is: do these two proportions, $p_A$ and $p_B$, significantly differ? And the answer it receives must take into account the fact that the two proportions are not independent. The correlation of $p_A$ and $p_B$ is occasioned by the fact that both include the quantity a in the upper left cell of the table.
@@ -397,7 +399,7 @@ The categories seem to show large differences of opinion between the groups.
 
 \begin{itemize}
   \item     Are these differences significant?
-    (Correct answer: no)
+    (Correct answer: yes, p=0.034)
 
   \item     How many degrees of freedom does the resulting analysis have?
     (Correct answer: 4)
