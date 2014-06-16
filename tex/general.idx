@@ -102,40 +102,40 @@
 \indexentry{test!chi square, one way}{75}
 \indexentry{test!chi square}{75}
 \indexentry{test!Fisher's exact}{77}
-\indexentry{test!McNemar's}{77}
-\indexentry{test!Cochran's Q}{78}
-\indexentry{correlation coefficient}{83}
-\indexentry{correlation!Pearson}{83}
-\indexentry{coefficient of determination}{83}
-\indexentry{coefficient of determination!adjusted}{84}
-\indexentry{correlation!Spearman}{85}
-\indexentry{correlation!Kendall's $\tau$}{85}
-\indexentry{regression}{85}
-\indexentry{covariate}{86}
-\indexentry{regressand}{86}
-\indexentry{endogenous variable}{86}
-\indexentry{regressor}{86}
-\indexentry{exogenous variable}{86}
-\indexentry{regression!multilinear}{87}
-\indexentry{regression!multiple linear|see{regression!multilinear}}{87}
-\indexentry{test!Friedman}{91}
-\indexentry{regression!multilinear}{91}
-\indexentry{ANOVA, two-way}{91}
-\indexentry{test!ANOVA}{91}
-\indexentry{regression!multilinear}{92}
-\indexentry{statistical modeling}{93}
-\indexentry{design matrix}{93}
-\indexentry{regression!multiple}{94}
-\indexentry{Maximum likelihood}{99}
-\indexentry{log likelihood function}{99}
-\indexentry{Akaike Information Criterion AIC}{100}
-\indexentry{Bayesian Information Criterion BIC}{100}
-\indexentry{Akaike Information Criterion AIC}{100}
-\indexentry{Bayesian Information Criterion BIC}{100}
-\indexentry{condition number}{104}
-\indexentry{scikit-learn}{105}
-\indexentry{bootstrapping}{110}
-\indexentry{survival times}{111}
-\indexentry{Kaplan-Meier survival curve}{111}
-\indexentry{test!logrank}{112}
-\indexentry{Cox regression model}{112}
+\indexentry{test!McNemar's}{79}
+\indexentry{test!Cochran's Q}{80}
+\indexentry{correlation coefficient}{85}
+\indexentry{correlation!Pearson}{85}
+\indexentry{coefficient of determination}{85}
+\indexentry{coefficient of determination!adjusted}{86}
+\indexentry{correlation!Spearman}{87}
+\indexentry{correlation!Kendall's $\tau$}{87}
+\indexentry{regression}{87}
+\indexentry{covariate}{88}
+\indexentry{regressand}{88}
+\indexentry{endogenous variable}{88}
+\indexentry{regressor}{88}
+\indexentry{exogenous variable}{88}
+\indexentry{regression!multilinear}{89}
+\indexentry{regression!multiple linear|see{regression!multilinear}}{89}
+\indexentry{test!Friedman}{93}
+\indexentry{regression!multilinear}{93}
+\indexentry{ANOVA, two-way}{93}
+\indexentry{test!ANOVA}{93}
+\indexentry{regression!multilinear}{94}
+\indexentry{statistical modeling}{95}
+\indexentry{design matrix}{95}
+\indexentry{regression!multiple}{96}
+\indexentry{Maximum likelihood}{101}
+\indexentry{log likelihood function}{101}
+\indexentry{Akaike Information Criterion AIC}{102}
+\indexentry{Bayesian Information Criterion BIC}{102}
+\indexentry{Akaike Information Criterion AIC}{102}
+\indexentry{Bayesian Information Criterion BIC}{102}
+\indexentry{condition number}{106}
+\indexentry{scikit-learn}{107}
+\indexentry{bootstrapping}{112}
+\indexentry{survival times}{113}
+\indexentry{Kaplan-Meier survival curve}{113}
+\indexentry{test!logrank}{114}
+\indexentry{Cox regression model}{114}

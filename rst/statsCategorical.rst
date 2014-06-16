@@ -155,7 +155,7 @@ Chi-square Contingency Test
 
 If you can arrange your data in rows and columns, you can check if the numbers in the individual columns are contingent on the row value. For this reason, this test is sometimes called *contingency test*.
 
-The chi-square contingency test is based on a test statistic that measures the divergence of the observed data from the values that would be expected under the null hypothesis of no association. When $n$ is the total number of observations included in the table, the expected value for each cell in a two-way table is
+The chi-square contingency test is based on a test statistic that measures the divergence of the observed data from the values that would be expected under the null hypothesis of no association. When *n* is the total number of observations included in the table, the expected value for each cell in a two-way table is
 
 
 .. math::
@@ -264,24 +264,6 @@ be calculated exactly, rather than relying on an approximation that becomes
 exact in the limit as the sample size grows to infinity, as with many
 statistical tests.
 
-Fisher is said to have devised the test following a comment from Dr Muriel
-Bristol, who claimed to be able to detect whether the tea or the milk was
-added first to her cup. The test is useful for categorical data that result
-from classifying objects in two different ways; it is used to examine the
-significance of the association (contingency) between the two kinds of
-classification. So in Fisher's original example, one criterion of
-classification could be whether milk or tea was put in the cup first; the
-other could be whether Dr Bristol thinks that the milk or tea was put in
-first. We want to know whether these two classifications are associated -
-that is, whether Dr Bristol really can tell whether milk or tea was poured
-in first. Most uses of the Fisher test involve, like this example, a 2 x 2
-contingency table. The p-value from the test is computed as if the margins
-of the table are fixed, i.e. as if, in the tea-tasting example, Dr Bristol
-knows the number of cups with each treatment (milk or tea first) and will
-therefore provide guesses with the correct number in each category. As
-pointed out by Fisher, this leads under a null hypothesis of independence to
-a hypergeometric distribution of the numbers in the cells of the table.
-
 In using the test, you have to decide if you want to use a one-tailed test
 or a two-tailed test. The former one looks for the probability to find a
 distribution as extreme or more extreme as the observed one. The latter one
@@ -292,6 +274,81 @@ opposite direction.
 p-value for *finding a value as extreme or more extreme than the
 observed one*. According to Altman, this is a reasonable approach, although
 not all statisticians agree on that point.
+
+Example: "A Lady Tasting Tea"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+R.A. Fisher was one of the founding fathers of modern statistics. One of his early, and perhaps the most famous, experiments was to test an English lady's claim that she could tell whether milk was poured before tea or not. Here is an account of the seemingly trivial event that had the most profound impact on the history of modern statistics, and hence, arguably, modern quantitative science (J.F. Box : "R.A. Fisher: The Life of a Scientist". John Wiley and Sons, New York 1978).
+
+    *Already, quite soon after he had come to Rothamstead, his presence had transformed one commonplace tea time to an historic event. It happened one afternoon when he drew a cup of tea from the urn and offered it to the lady beside him, Dr. B. Muriel Bristol, an algologist. She declined it, stating that she preferred a cup into which the milk had been poured first. "Nonsense," returned Fisher, smiling, "Surely it makes no difference." But she maintained, with emphasis, that of course it did. From just behind, a voice suggested, "Let's test her." It was William Roach who was not long afterward to marry Miss Bristol. Immediately, they embarked on the preliminaries of the experiment, Roach assisting with the cups and exulting that Miss Bristol divined correctly more than enough of those cups into which tea had been poured first to prove her case.*
+
+    *Miss Bristol's personal triumph was never recorded, and perhaps Fisher was not satisfied at that moment with the extempore experimental procedure. One can be sure, however, that even as he conceived and carried out the experiment beside the trestle table, and the onlookers, no doubt, took sides as to its outcome, he was thinking through the questions it raised: How many cups should be used in the test? Should they be paired? In what order should the cups be presented? What should be done about chance variations in the temperature, sweetness, and so on? What conclusion could be drawn from a perfect score or from one with one or more errors?*
+
+The real scientific significance of this experiment is in these questions. These are, allowing incidental particulars, the questions one has to consider before designing an experiment. We will look at these questions as pertaining to the "lady tasting tea", but you can imagine how these questions should be adapted to different situations.
+
+  * *What should be done about chance variations in the temperature, sweetness, and so on?*
+    Ideally, one would like to make all cups of tea identical except for the order of pouring milk first or tea first. But it is never possible to control all of the ways in which the cups of tea can differ from each other. If we cannot control these variations, then the best we can do - we do mean the "best" - is by randomization.
+
+  * *How many cups should be used in the test? Should they be paired? In what order should the cups be presented?* The key idea here is that the number and ordering of the cups should allow a subject ample opportunity to prove his or her abilities and keep a fraud from easily succeeding at correctly discriminating the the order of pouring in all the cups of tea served.
+
+  * *What conclusion could be drawn from a perfect score or from one with one or more errors?* If the lady is unable to discriminate between the different orders of pouring, then by guessing alone, it should be highly unlikely for that person to determine correctly which cups are which for all of the cups tested. Similarly, if she indeed possesses some skill at differentiating between the orders of pouring, then it may be unreasonable to require her to make no mistakes so as to distinguish her ability from a pure guesser.
+
+An actual scenario described by Fisher and told by many others as the "lady tasting tea" experiment is as follows.
+
+  * For each cup, we record the order of actual pouring and what the lady says the order is. We can summarize the result by a table like this:
+
++-------------------+-----------+------------+-----+
+|                   | Tea first | Milk first |     |
+|                   | poured    | poured     |     |
++===================+===========+============+=====+
+| Lady  "Tea first" | a         | b          | a+b |
++-------------------+-----------+------------+-----+
+| says "Milk first" | c         | d          | c+d |
++-------------------+-----------+------------+-----+
+|                   | a+c       | b+d        | n   |
++-------------------+-----------+------------+-----+
+
+Here *n* is the total number of cups of tea made. The number of cups where tea is poured first is *a+c* and the lady classifies *a+b* of them as tea first. Ideally, if she can taste the difference, the counts *b* and *c* should be small. On the other hand, if she can't really tell, we would expect *a* and *c* to be about the same.
+
+  * Suppose now that to test the lady, 8 cups of tea are prepared, 4 tea first, 4 milk first, and she is informed of the design (that there are 4 cups milk first and 4 cups tea first). Suppose also that the cups are presented to her in random order. Her task then is to identify the 4 cups milk first and 4 cups tea first.
+
+    This design fixes the row and column totals in the table above to be 4 each. That is,
+
+    .. math::
+
+      a + b = a + c = c + d = b + d =4.
+
+    With these constraints, when any one of *a, b, c, d* is specified, the remaining three are uniquely determined:
+
+    .. math::
+
+      b =4 - a,\, c =4 - a, \textrm{ and } d = a
+
+    In general, for this design, no matter how many cups (*n*) are served, the row total *a + b* will equal *a + c* because the subject knows how many of the cups are "tea first" (or one kind as supposed to the other). So once *a* is given, the other three counts are specified.
+
+  * We can test the discriminating skill of the lady, if any, by randomizing the order of the cups served. If we take the position that she has no discriminating skill, then the randomization of the order makes the 4 cups chosen by her as tea first equally likely to be any 4 of the 8 cups served. There are :math:`\left( {\begin{array}{*{20}{c}} 8\\ 4 \end{array}} \right) = 70` (in Python, choose *scipy.misc.comb(8,4,exact=True)*) possible ways to classify 4 of the 8 cups as "tea first". If the subject has no ability to discriminate between two preparations, then by the randomization, each of these 70 ways is equally likely. Only one of 70 ways leads to a completely correct classification. So someone with no discriminating skill has 1/70 chance of making no errors.
+
+  \item It turns out that, if we assume that she has no discriminating skill, the number of correct classifications of tea first ("a" in the table) has a "hypergeometric" probability distribution (\lstinline{hd=stats.hypergeom(8,4,4)} in Python). There are 5 possibilities: 0, 1, 2, 3, 4 for *a* and the corresponding probabilities (and Python commands for computing the probabilities) are tabulated below.
+
++---------------+------------+-------------+
+| Number of     | Python     | Probability |
+| correct calls | command    | 0           |
++===============+============+=============+
+|     0         | hd.pmf(0)  | 1/70        |
++---------------+------------+-------------+
+|     1         | hd.pmf(1)  | 16/70       |
++---------------+------------+-------------+
+|     2         | hd.pmf(2)  | 36/70       |
++---------------+------------+-------------+
+|     3         | hd.pmf(3)  | 16/70       |
++---------------+------------+-------------+
+|     4         | hd.pmf(4)  | 1/70        |
++---------------+------------+-------------+
+
+  * With these probabilities, we can compute the p-value for the test of the hypothesis that the lady cannot tell between the two preparations. Recall that the p-value is the probability of observing a result as extreme or more extreme than the observed result assuming the null hypothesis. If she makes all correct calls,the p-value is 1/70 and if she makes one error (3 correct calls) then the p-value is 1/70 + 16/70 ~ 0.24.
+
+  	
+The test described above is known as "Fisher's exact test."
 
 McNemar's Test
 ~~~~~~~~~~~~~~
