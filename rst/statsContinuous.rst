@@ -163,6 +163,14 @@ called *factors*. (By comparison, t-tests look at the mean values of two groups,
 and check if those are consistent with the assumption that the two groups come
 from the same distribution.)
 
+.. image:: ..\Images\ANOVA_oneway.png
+    :scale: 50%
+
+*In both cases, the difference between the two groups is the same. But
+left, he difference within the groups is smaller than the differences
+between the groups, whereas right, the difference within the groups is
+larger than the difference between.*
+
 For example, if we compare a group with No treatment, another with treatment A,
 and a third with treatment B, then we perform a *one factor ANOVA*, sometimes also
 called *one-way ANOVA*, with "treatment" the one analysis factor. If we do the same

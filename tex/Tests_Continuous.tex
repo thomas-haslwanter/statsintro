@@ -149,6 +149,12 @@ These numbers can be generated, and a t-test comparing the two groups can be don
 
 The idea behind the \emph{ANalysis Of VAriance (ANOVA)} is to divide the variance into the variance \emph{between} groups, and that \emph{within} groups, and see if those distributions match the null hypothesis that all groups come from the same distribution. The variables that distinguish the different groups are often called \emph{factors}.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/ANOVA_oneway.png}\\
+  \caption{In both cases, the difference between the two groups is the same. But left, he difference within the groups is smaller than the differences between the groups, whereas right, the difference within the groups is larger than the difference between.}\label{fig:ANOVA_oneway}
+\end{figure}
+
 (By comparison, t-tests look at the mean values of two groups, and check if those are consistent with the assumption that the two groups come from the same distribution.)
 
 For example, if we compare a group with No treatment, another with treatment A, and a third with treatment B, then we perform a \emph{one factor ANOVA}, sometimes also called \emph{one-way ANOVA}, with "treatment" the one analysis factor. If we do the same test with men and with women, then we have a \emph{two-factor} or \emph{two-way ANOVA}, with "gender" and "treatment" as the two treatment factors. Note that with ANOVAs, it is quite important to have exactly the same number of samples in each analysis group!

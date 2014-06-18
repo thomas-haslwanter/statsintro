@@ -243,10 +243,7 @@ Some remarks on terminology and general use:
    step in formulating a linear regression model, as it will determine
    the method to use for estimation.
 
--  If :math:`i=1` and :math:`p=1` in Eq.[eq:regression], we have a
-   *simple linear regression*, corresponding to
-   Eq.[eq:simpleRegression]. If :math:`i>1` we talk about *multilinear
-   regression* or *multiple linear regression* .
+-  If :math:`i=1` and :math:`p=1` in the equation above, we have a *simple linear regression*, corresponding to :math:`y = k*x + d + \epsilon` . If :math:`i>1` we talk about *multilinear regression* or *multiple linear regression* .
 
 *Example*. Consider a situation where a small ball is being tossed up in
 the air and then we measure its heights of ascent :math:`h_i` at various
@@ -272,7 +269,7 @@ Assumptions
 To use the technique of linear regression, the following assumptions should be
 fulfilled:
 
-1. The \emph{independent variables} (i.e. $x$) are exactly known.
+1. The *independent variables* (i.e. *x*) are exactly known.
 2. Validity. Most importantly, the data you are analyzing should map to the research question you are trying to answer. This sounds obvious but is often overlooked or ignored because it can be inconvenient. For example, a linear regression does not properly describe a quadratic curve.
 3. Additivity and linearity. The most important mathematical assumption of the regression model is that its deterministic component is a linear function of the separate predictors.
 4. Independence of errors.
