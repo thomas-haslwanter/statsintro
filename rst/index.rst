@@ -116,6 +116,14 @@ Analysis of Survival Times
 
    statsSurvival
 
+Advanced Statistical Analysis
+=============================
+
+.. toctree::
+   :maxdepth: 2
+
+   statsAdvanced
+
 Indices and tables
 ==================
 
