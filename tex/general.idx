@@ -88,13 +88,13 @@
 \indexentry{ANOVA}{66}
 \indexentry{test!ANOVA}{66}
 \indexentry{test!Levene}{66}
-\indexentry{test!F-test}{68}
-\indexentry{test!variance ratio}{68}
+\indexentry{test!F-test}{67}
+\indexentry{test!variance ratio}{67}
 \indexentry{Multiple Comparisons}{68}
 \indexentry{test!Tukey's}{68}
-\indexentry{Bonferroni correction}{69}
+\indexentry{Bonferroni correction}{68}
 \indexentry{Holms correction}{69}
-\indexentry{test!Kruskal-Wallis}{70}
+\indexentry{test!Kruskal-Wallis}{69}
 \indexentry{test!binomial}{71}
 \indexentry{test!Cochran's Q}{73}
 \indexentry{incidence}{74}
@@ -139,3 +139,4 @@
 \indexentry{Kaplan-Meier survival curve}{113}
 \indexentry{test!logrank}{114}
 \indexentry{Cox regression model}{114}
+\indexentry{Generalized Linear Models, GLM}{117}
