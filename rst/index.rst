@@ -20,6 +20,10 @@
 
 This work is licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License.
 
+Available versions: `HTML <http://work.thaslwanter.at/Stats/html/>`_ | `PDF
+<http://work.thaslwanter.at/Stats/StatsIntro.pdf>`_ | `github (full
+sourcecode) <https://github.com/thomas-haslwanter/statsintro>`_
+
 Preface
 =======
 
