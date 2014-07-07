@@ -111,32 +111,40 @@
 \indexentry{correlation!Spearman}{87}
 \indexentry{correlation!Kendall's $\tau$}{87}
 \indexentry{regression}{87}
-\indexentry{covariate}{88}
-\indexentry{regressand}{88}
-\indexentry{endogenous variable}{88}
-\indexentry{regressor}{88}
-\indexentry{exogenous variable}{88}
-\indexentry{regression!multilinear}{89}
-\indexentry{regression!multiple linear|see{regression!multilinear}}{89}
+\indexentry{design matrix}{88}
 \indexentry{test!Friedman}{93}
 \indexentry{regression!multilinear}{93}
 \indexentry{ANOVA, two-way}{93}
 \indexentry{test!ANOVA}{93}
 \indexentry{regression!multilinear}{94}
+\indexentry{regression!multiple}{94}
 \indexentry{statistical modeling}{95}
-\indexentry{design matrix}{95}
-\indexentry{regression!multiple}{96}
-\indexentry{Maximum likelihood}{101}
-\indexentry{log likelihood function}{101}
-\indexentry{Akaike Information Criterion AIC}{102}
-\indexentry{Bayesian Information Criterion BIC}{102}
-\indexentry{Akaike Information Criterion AIC}{102}
-\indexentry{Bayesian Information Criterion BIC}{102}
-\indexentry{condition number}{106}
-\indexentry{scikit-learn}{107}
-\indexentry{bootstrapping}{112}
-\indexentry{survival times}{113}
-\indexentry{Kaplan-Meier survival curve}{113}
-\indexentry{test!logrank}{114}
-\indexentry{Cox regression model}{114}
-\indexentry{Generalized Linear Models, GLM}{117}
+\indexentry{hypothesis test}{95}
+\indexentry{covariate}{96}
+\indexentry{regressand}{96}
+\indexentry{endogenous variable}{96}
+\indexentry{regressor}{96}
+\indexentry{exogenous variable}{96}
+\indexentry{regression!multilinear}{97}
+\indexentry{regression!multiple linear|see{regression!multilinear}}{97}
+\indexentry{Maximum likelihood}{102}
+\indexentry{log likelihood function}{102}
+\indexentry{Akaike Information Criterion AIC}{103}
+\indexentry{Bayesian Information Criterion BIC}{103}
+\indexentry{Akaike Information Criterion AIC}{103}
+\indexentry{Bayesian Information Criterion BIC}{103}
+\indexentry{condition number}{108}
+\indexentry{scikit-learn}{109}
+\indexentry{bootstrapping}{113}
+\indexentry{survival times}{115}
+\indexentry{Kaplan-Meier survival curve}{115}
+\indexentry{test!logrank}{116}
+\indexentry{Cox regression model}{116}
+\indexentry{Bayesian Statistics}{117}
+\indexentry{interpretation!frequentist}{117}
+\indexentry{interpretation!Bayesian}{117}
+\indexentry{Bayes' Theorem}{117}
+\indexentry{prior probability}{117}
+\indexentry{posterior probability}{117}
+\indexentry{logistic function}{119}
+\indexentry{Generalized Linear Models, GLM}{125}

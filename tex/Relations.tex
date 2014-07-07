@@ -107,6 +107,8 @@ If the data distribution is not normal, a different approach is necessary. In th
 
 \section{Regression} \index{general}{regression}
 
+\subsection{General linear regression model}
+
 We can use the method of \emph{regression} when we want to predict the value of one variable from the other.
 
 \begin{figure}
@@ -130,63 +132,107 @@ Note that in contrast to the correlation, this relationship between $x$ and $y$ 
   \caption{Best-fit linear regression line (red) and residuals (black). }\label{fig:residuals}
 \end{figure}
 
-
-\subsection{Introduction}
-
-\footnote{This section has been taken from Wikipedia} Given a data set $\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n$ of $n$ statistical units, a linear regression model assumes that the relationship between the dependent variable $y_i$ and the $p$-vector of regressors $x_i$ is linear. This relationship is modelled through a \emph{disturbance term} or \emph{error variable} $\epsilon_i$, an unobserved random variable that adds noise to the linear relationship between the dependent variable and regressors. Thus the model takes the form
-
-\begin{equation}\label{eq:regression}
-   y_i = \beta_1   x_{i1} + \cdots + \beta_p x_{ip} + \varepsilon_i
-   = \mathbf{x}^{\rm T}_i\boldsymbol\beta + \varepsilon_i,
-   \qquad i = 1, \ldots, n,
-\end{equation}
-
-where $^T$ denotes the transpose, so that $x_i^T\beta$ is the inner product between vectors $x_i$ $\beta$.
-
-Often these $n$ equations are stacked together and written in vector form as
+\subsection{Simple Regression}
+Example of \emph{simple linear regression} with 7 observations.
+Suppose there are 7 data points $\left\{ {{y_i},{x_i}} \right\}$, where $i=1,2,…,7$. The simple linear regression model is
 
 \begin{equation}
-  \mathbf{y} = \mathbf{X}\boldsymbol\beta + \boldsymbol\varepsilon, \,
+  y_i = \beta_0 + \beta_1 x_i +\epsilon_i, \,
 \end{equation}
 
-where
+where $\beta_0$ is the y-intercept and $\beta_1$ is the slope of the regression line. This model can be represented in matrix form as
 
-\begin{equation}
-   \mathbf{y} = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}, \quad
-   \mathbf{X} = \begin{pmatrix} \mathbf{x}^{\rm T}_1 \\ \mathbf{x}^{\rm T}_2 \\ \vdots \\ \mathbf{x}^{\rm T}_n \end{pmatrix}
-   = \begin{pmatrix} x_{11} & \cdots & x_{1p} \\
-   x_{21} & \cdots & x_{2p} \\
-   \vdots & \ddots & \vdots \\
-   x_{n1} & \cdots & x_{np}
-   \end{pmatrix}, \quad
-   \boldsymbol\beta = \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_p \end{pmatrix}, \quad
-   \boldsymbol\varepsilon = \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}.
+\begin{equation}\label{eq:simpleRegression}
+  \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+  =
+  \begin{bmatrix}1 & x_1  \\1 & x_2  \\1 & x_3  \\1 & x_4  \\1 & x_5  \\1 & x_6 \\ 1 & x_7  \end{bmatrix}
+  \begin{bmatrix} \beta_0 \\ \beta_1  \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
+\end{equation}
+where the first column of ones in the matrix on the right hand side represents the y-intercept term while the second column is the x-values associated with the y-value.
+
+\subsection{Design Matrix}
+This can be rewritten in matrix form:
+
+\begin{equation}\label{eq:DesignMatrix}
+    y=X\beta+ \epsilon,
 \end{equation}
 
-Some remarks on terminology and general use:
-\begin{itemize} \index{general}{covariate} \index{general}{regressand} \index{general}{endogenous variable} \index{general}{regressor} \index{general}{exogenous variable}
-  \item $y_i$  is called the \emph{regressand}, \emph{endogenous variable}, \emph{response variable}, \emph{measured variable}, or \emph{dependent variable}.  The decision as to which variable in a data set is modeled as the dependent variable and which are modeled as the independent variables may be based on a presumption that the value of one of the variables is caused by, or directly influenced by the other variables. Alternatively, there may be an operational reason to model one of the variables in terms of the others, in which case there need be no presumption of causality.
-  \item $\mathbf{x}_i$ are called \emph{regressors}, \emph{exogenous variables}, \emph{explanatory variables}, \emph{covariates}, \emph{input variables}, \emph{predictor variables}, or \emph{independent variables}, but not to be confused with \emph{independent random variables}. The matrix $\mathbf{X}$ is sometimes called the \emph{design matrix}.
-      \begin{itemize}
-        \item Usually a constant is included as one of the regressors. For example we can take $x_{i1}=1$ for $i=1,...,n$. The corresponding element of $\beta$ is called the \emph{intercept}. Many statistical inference procedures for linear models require an intercept to be present, so it is often included even if theoretical considerations suggest that its value should be zero.
-        \item Sometimes one of the regressors can be a non-linear function of another regressor or of the data, as in polynomial regression and segmented regression. The model remains linear as long as it is linear in the parameter vector $\beta$.
-        \item The regressors $x_{ij}$ may be viewed either as random variables, which we simply observe, or they can be considered as predetermined fixed values which we can choose. Both interpretations may be appropriate in different cases, and they generally lead to the same estimation procedures; however different approaches to asymptotic analysis are used in these two situations.
-         \end{itemize}
-  \item $\boldsymbol\beta\,$ is a $p$-dimensional \emph{parameter vector}. Its elements are also called \emph{effects}, or \emph{regression coefficients}. Statistical estimation and inference in linear regression focuses on $\beta$.
-  \item $\varepsilon_i\,$ is called the \emph{residuals}, \emph{error term}, \emph{disturbance term}, or \emph{noise}. This variable captures all other factors which influence the dependent variable $y_i$ other than the regressors $x_i$. The relationship between the error term and the regressors, for example whether they are correlated, is a crucial step in formulating a linear regression model, as it will determine the method to use for estimation.
-  \item If $i=1$ and $p=1$ in Eq.\ref{eq:regression}, we have a \emph{simple linear regression}, corresponding to Eq.\ref{eq:simpleRegression}. If $i>1$ we talk about \emph{multilinear regression} \index{general}{regression!multilinear} or \emph{multiple linear regression} \index{general}{regression!multiple linear|see{regression!multilinear}}.
+$Y$ is a vector of dimension $(n \times 1)$ and is called the \emph{endogenous variable}, the \emph{design matrix} \index{general}{design matrix} $X$ is a matrix of dimension $(n \times k)$ where each column is an explanatory variable, and $\epsilon$ is the error term. $\beta$ is the vector of dimension $(k \times 1)$ and contains the parameters we want to estimate.
 
-\end{itemize}
-\emph{Example}. Consider a situation where a small ball is being tossed up in the air and then we measure its heights of ascent $h_i$ at various moments in time $t_i$. Physics tells us that, ignoring the drag, the relationship can be modelled as
-:
+\subsection{Coding}
 
-\begin{equation}
- h_i = \beta_1 t_i + \beta_2 t_i^2 + \varepsilon_i,
-\end{equation}
+If you have vectors $x,y$ containing your data, you can use \lstinline{statsmodels} to create a design matrix that also includes the $1's$ for the offset:
 
-where $\beta_1$ determines the initial velocity of the ball, $\beta_2$ is proportional to the standard gravity, and $\epsilon_i$ is due to measurement errors. Linear regression can be used to estimate the values of $\beta_1$ and $\beta_2$ from the measured data. This model is non-linear in the time variable, but it is linear in the parameters $\beta_1$ and $\beta_2$; if we take regressors $\mathbf{x}_i = (x_{i1},x_{i2}) = (t_i,t_i^2)$, the model takes on the standard form
-:
- $h_i = \mathbf{x}^{\rm T}_i\boldsymbol\beta + \varepsilon_i.$
+\begin{lstlisting}
+    import statsmodels.api as sm
+    Xmat = sm.add_constant(x)
+\end{lstlisting}
+
+The parameters are then easily found as
+
+\begin{lstlisting}
+    params = np.linalg.lstsq(Xmat, y)
+\end{lstlisting}
+
+However, you get a lot more information if you use the OLS-fit from \lstinline{statmodels}:
+
+\begin{lstlisting}
+    import numpy as np
+    import statsmodels.api as sm
+
+    # Generate artificial data
+    nobs = 100
+    X = np.random.random(nobs)
+    X = sm.add_constant(X)
+    beta = [5, 3.5]
+    e = np.random.random(nobs)
+    y = np.dot(X, beta) + e
+
+    # Fit regression model
+    results = sm.OLS(y, X).fit()
+
+    # Inspect the results
+    print(results.summary())
+\end{lstlisting}
+
+yields the following results:
+
+\begin{lstlisting}
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.923
+Model:                            OLS   Adj. R-squared:                  0.922
+Method:                 Least Squares   F-statistic:                     1173.
+Date:                Fri, 04 Jul 2014   Prob (F-statistic):           2.45e-56
+Time:                        14:49:08   Log-Likelihood:                -15.390
+No. Observations:                 100   AIC:                             34.78
+Df Residuals:                      98   BIC:                             39.99
+Df Model:                           1
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+const          5.4410      0.059     92.685      0.000         5.324     5.557
+x1             3.5718      0.104     34.250      0.000         3.365     3.779
+==============================================================================
+Omnibus:                       21.620   Durbin-Watson:                   2.302
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):                5.798
+Skew:                           0.223   Prob(JB):                       0.0551
+Kurtosis:                       1.908   Cond. No.                         4.60
+==============================================================================
+\end{lstlisting}
+
+The meaning of many of these parameters is described in the chapter \nameref{chapter:Models}.
+
+From the \lstinline{results}, you can extract e.g. the model parameters, standard errors, confidence intervals, and residuals:
+
+\begin{lstlisting}
+    params = results.params
+    std_err = results.bse
+    ConfInt = results.conf_int()
+    residuals = results.resid
+\end{lstlisting}
 
 \subsection{Assumptions}
 
@@ -213,7 +259,8 @@ To use the technique of linear regression, the following assumptions should be f
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/regression_wLegend.png}\\
-  \caption{Regression, with confidence intervals for the mean, as well as for the predicted data. The red dotted line shows the confidence interval for the mean; and the green dotted line the confidence interval for predicted data. (This can be compared to the standard error and the standard deviation for a population.)} \label{fig:regline}
+  \caption{Regression, with confidence intervals for the mean, as well as for the predicted data. The red dotted line shows the confidence interval for the mean; and the green dotted line the confidence interval for predicted data. (This can be compared to the standard error and the standard deviation for a population.) The corresponding code can be found
+  at p. \pageref{py:fitLine}} \label{fig:regline}
 \end{figure}
 
 Since to my knowledge there exists no program in the Python standard library (or numpy, scipy) to calculate the confidence intervals for a regression line, I include my corresponding program \emph{lineFit.py} \ref{py:fitLine}. The output of this program is shown in Figure \ref{fig:regline}. This program also shows how Python programs intended for distribution should be documented.
