@@ -26,6 +26,9 @@ statsmodels
   * Extensive unit tests to ensure correctness of results
   * Many more models and extensions in development
 
+A first introduction to statistical modeling, as well as some examples, are
+presented in chapter Statistical Models.
+
 PyMC: Bayesian Statistics and Monte Carlo Markov Modeling
 =========================================================
 
@@ -46,6 +49,9 @@ PyMC provides functionalities to make Bayesian analysis as painless as possible.
 
 A very recommendable, free ebook on Bayesian methods, which also provides a very good introduction to \emph{PyMC}, is \href{http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/}{
 Probabilistic Programming \& Bayesian Methods for Hackers}. Warmly recommended!
+
+An introduction to Bayesian Statistics, and an example from the "Bayesian
+Methods for Hackers" book, are presented in chapter Bayesian Statistics.
 
 scikit-learn
 ============

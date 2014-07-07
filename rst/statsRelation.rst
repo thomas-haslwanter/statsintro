@@ -123,6 +123,9 @@ of calculating the rank correlation.
 Regression
 ----------
 
+General linear regression model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 We can use the method of *regression* when we want to predict the value
 of one variable from the other.
 
@@ -147,121 +150,125 @@ between :math:`x` and :math:`y` is no more symmetrical: it is assumed
 that the :math:`x-`\ values are known exactly, and that all the
 variability lies in the residuals.
 
+Simple Regression
+~~~~~~~~~~~~~~~~~
+
+Example of *simple linear regression* with 7 observations. Suppose there
+are 7 data points :math:`\left\{ {{y_i},{x_i}} \right\}`, where
+:math:`i=1,2,…,7`. The simple linear regression model is
+
+.. math:: y_i = \beta_0 + \beta_1 x_i +\epsilon_i, \,
+
+where :math:`\beta_0` is the y-intercept and :math:`\beta_1` is the
+slope of the regression line. This model can be represented in matrix
+form as
+
+.. math::
+
+   \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+     =
+     \begin{bmatrix}1 & x_1  \\1 & x_2  \\1 & x_3  \\1 & x_4  \\1 & x_5  \\1 & x_6 \\ 1 & x_7  \end{bmatrix}
+     \begin{bmatrix} \beta_0 \\ \beta_1  \end{bmatrix}
+     +
+     \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
+
+where the first column of ones in the design matrix represents the
+y-intercept term while the second column is the x-values associated with
+the y-value.
+
+Design Matrix
+~~~~~~~~~~~~~
+
+This can be rewritten in matrix form:
+
+.. math:: y=X\beta+ \epsilon,
+
+the matrix :math:`X` is the *design matrix*.
+
+:math:`Y` is a vector of dimension :math:`(n \times 1)` and is called the endogenous variable, :math:`X` is a
+matrix of dimension :math:`(n \times k)` where each colum is  an explanatory variable and :math:`\varepsilon`
+is the error term. :math:`\beta` is the vector of dimension :math:`(k \times 1)` and contains the parameters we
+want to estimate.
+
 | |image28|
 
 *Best-fit linear regression line (red) and residuals (black).*
 
-Introduction
-~~~~~~~~~~~~
+Coding
+~~~~~~
 
-Given a data set :math:`\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n`
-of :math:`n` statistical units, a linear regression model assumes that
-the relationship between the dependent variable :math:`y_i` and the
-:math:`p`-vector of regressors :math:`x_i` is linear. This relationship
-is modelled through a *disturbance term* or *error variable*
-:math:`\epsilon_i`, an unobserved random variable that adds noise to the
-linear relationship between the dependent variable and regressors. Thus
-the model takes the form
+If you have vectors *x,y* containing your data, you can use *statsmodels* to create a design matrix that also
+includes the *1's* for the offset:
 
-.. math::
+::
 
-   \label{eq:regression}
-      y_i = \beta_1   x_{i1} + \cdots + \beta_p x_{ip} + \varepsilon_i
-      = \mathbf{x}^{\rm T}_i \beta + \varepsilon_i,
-      \qquad i = 1, \ldots, n,
+    import statsmodels.api as sm
+    Xmat = sm.add_constant(x)
 
-where :math:`^T` denotes the transpose, so that :math:`x_i^T\beta` is
-the inner product between vectors :math:`x_i` :math:`\beta`.
+The parameters are then easily found as
 
-Often these :math:`n` equations are stacked together and written in
-vector form as
+::
 
-.. math:: \mathbf{y} = \mathbf{X}\beta + \varepsilon, \,
+    params = np.linalg.lstsq(Xmat, y)
 
-where
+However, you get a lot more information if you use the OLS-fit from *statmodels*:
 
-.. math::
+::
 
-   \mathbf{y} = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}, \quad
-      \mathbf{X} = \begin{pmatrix} \mathbf{x}^{\rm T}_1 \\ \mathbf{x}^{\rm T}_2 \\ \vdots \\ \mathbf{x}^{\rm T}_n \end{pmatrix}
-      = \begin{pmatrix} x_{11} & \cdots & x_{1p} \\
-      x_{21} & \cdots & x_{2p} \\
-      \vdots & \ddots & \vdots \\
-      x_{n1} & \cdots & x_{np}
-      \end{pmatrix}, \quad
-      \beta = \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_p \end{pmatrix}, \quad
-      \varepsilon = \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}.
+    import numpy as np
+    import statsmodels.api as sm
 
-Some remarks on terminology and general use:
+    # Generate artificial data
+    nobs = 100
+    X = np.random.random(nobs)
+    X = sm.add_constant(X)
+    beta = [5, 3.5]
+    e = np.random.random(nobs)
+    y = np.dot(X, beta) + e
 
--  :math:`y_i` is called the *regressand*, *endogenous variable*,
-   *response variable*, *measured variable*, or *dependent variable*.
-   The decision as to which variable in a data set is modeled as the
-   dependent variable and which are modeled as the independent variables
-   may be based on a presumption that the value of one of the variables
-   is caused by, or directly influenced by the other variables.
-   Alternatively, there may be an operational reason to model one of the
-   variables in terms of the others, in which case there need be no
-   presumption of causality.
+    # Fit regression model
+    results = sm.OLS(y, X).fit()
 
--  :math:`\mathbf{x}_i` are called *regressors*, *exogenous variables*,
-   *explanatory variables*, *covariates*, *input variables*, *predictor
-   variables*, or *independent variables*, but not to be confused with
-   *independent random variables*. The matrix :math:`\mathbf{X}` is
-   sometimes called the *design matrix*.
+    # Inspect the results
+    print(results.summary())
 
-   -  Usually a constant is included as one of the regressors. For
-      example we can take :math:`x_{i1}=1` for :math:`i=1,...,n`. The
-      corresponding element of :math:`\beta` is called the *intercept*.
-      Many statistical inference procedures for linear models require an
-      intercept to be present, so it is often included even if
-      theoretical considerations suggest that its value should be zero.
+yields the following results:
 
-   -  Sometimes one of the regressors can be a non-linear function of
-      another regressor or of the data, as in polynomial regression and
-      segmented regression. The model remains linear as long as it is
-      linear in the parameter vector :math:`\beta`.
+::
 
-   -  The regressors :math:`x_{ij}` may be viewed either as random
-      variables, which we simply observe, or they can be considered as
-      predetermined fixed values which we can choose. Both
-      interpretations may be appropriate in different cases, and they
-      generally lead to the same estimation procedures; however
-      different approaches to asymptotic analysis are used in these two
-      situations.
+                            OLS Regression Results
+    ==============================================================================
+    Dep. Variable:                      y   R-squared:                       0.923
+    Model:                            OLS   Adj. R-squared:                  0.922
+    Method:                 Least Squares   F-statistic:                     1173.
+    Date:                Fri, 04 Jul 2014   Prob (F-statistic):           2.45e-56
+    Time:                        14:49:08   Log-Likelihood:                -15.390
+    No. Observations:                 100   AIC:                             34.78
+    Df Residuals:                      98   BIC:                             39.99
+    Df Model:                           1
+    ==============================================================================
+                     coef    std err          t      P>|t|      [95.0% Conf. Int.]
+    ------------------------------------------------------------------------------
+    const          5.4410      0.059     92.685      0.000         5.324     5.557
+    x1             3.5718      0.104     34.250      0.000         3.365     3.779
+    ==============================================================================
+    Omnibus:                       21.620   Durbin-Watson:                   2.302
+    Prob(Omnibus):                  0.000   Jarque-Bera (JB):                5.798
+    Skew:                           0.223   Prob(JB):                       0.0551
+    Kurtosis:                       1.908   Cond. No.                         4.60
+    ==============================================================================
 
--  :math:`\beta\,` is a :math:`p`-dimensional *parameter
-   vector*. Its elements are also called *effects*, or *regression
-   coefficients*. Statistical estimation and inference in linear
-   regression focuses on :math:`\beta`.
+The meaning of many of these parameters is described in the chapter on "Statistical Models".
 
--  :math:`\varepsilon_i\,` is called the *residuals*, *error term*, *disturbance
-   term*, or *noise*. This variable captures all other factors which
-   influence the dependent variable :math:`y_i` other than the
-   regressors :math:`x_i`. The relationship between the error term and
-   the regressors, for example whether they are correlated, is a crucial
-   step in formulating a linear regression model, as it will determine
-   the method to use for estimation.
+From the *results*, you can extract e.g. the model parameters, standard errors, confidence intervals, and residuals:
 
--  If :math:`i=1` and :math:`p=1` in the equation above, we have a *simple linear regression*, corresponding to :math:`y = k*x + d + \epsilon` . If :math:`i>1` we talk about *multilinear regression* or *multiple linear regression* .
+::
 
-*Example*. Consider a situation where a small ball is being tossed up in
-the air and then we measure its heights of ascent :math:`h_i` at various
-moments in time :math:`t_i`. Physics tells us that, ignoring the drag,
-the relationship can be modelled as :
+    params = results.params
+    std_err = results.bse
+    ConfInt = results.conf_int()
+    residuals = results.resid
 
-.. math:: h_i = \beta_1 t_i + \beta_2 t_i^2 + \varepsilon_i,
-
-where :math:`\beta_1` determines the initial velocity of the ball,
-:math:`\beta_2` is proportional to the standard gravity, and
-:math:`\epsilon_i` is due to measurement errors. Linear regression can
-be used to estimate the values of :math:`\beta_1` and :math:`\beta_2`
-from the measured data. This model is non-linear in the time variable,
-but it is linear in the parameters :math:`\beta_1` and :math:`\beta_2`;
-if we take regressors
-:math:`\mathbf{x}_i = (x_{i1},x_{i2}) = (t_i,t_i^2)`, the model takes on
-the standard form :
-:math:`h_i = \mathbf{x}^{\rm T}_i\beta + \varepsilon_i.`
 
 Assumptions
 ~~~~~~~~~~~

@@ -3,6 +3,34 @@
 
 .. Statistical Models
 
+There is a substantial difference in approach between *hypothesis
+tests* and *statistical modeling*. In
+the former case, you typically start out with a *null hypothesis*.
+Based on your question and your data, you then select the appropriate
+statistical test as well as the desired significance level, and either
+accept or reject the null hypothesis.
+
+In contrast, statistical modeling is much more an interactive analysis of
+the data. Based on a first look at the data, you typically start out with
+selecting a statistical model that may describe your data. In the previous
+chapters, we have for example described the hypythesized linear relationship
+between data with the model 
+
+.. math:: y = k*x + d
+
+You then 
+  - determine the model parameters (e.g. *k* and *d*),
+  - assess the quality of the model (e.g. through the :math:`R^2`-value, or another suitable parameter),
+  - and inspect the residuals, to check if your proposed model has missed essential features in the data.
+
+If you are not happy with the quality of the model, or if you find during
+the inspection of the residuals that you have either outliers or need
+another model, you modify your proposed model and repeat this procedure
+until you are happy with the results. You see that in comparison to
+hypothesis tests, statistical modeling involves much more an interactive
+playing with the data.
+
+
 Model language 
 ----------------
 
@@ -27,61 +55,137 @@ Design Matrix
 Definition
 ^^^^^^^^^^
 
-In a regression model, written in matrix-vector form as
+A very general definition of a regression model is the following:
 
-.. math:: y=X\beta+ \epsilon,
+.. math::
+   \label{eq:regmodel}
+   Y = f(x,\varepsilon)
+   
 
-the matrix :math:`X` is the *design matrix*.
+In the case of a linear regression model, the function f is simply the
+affine function, and the model can be rewritten as:
+
+.. math::
+    \label{eq:simplereg}
+    Y = X \beta + \varepsilon
+
+For a simple linear regression and multivariate regression, the corresponding Design Matrices
+are given in the sections on simple linear regression and on multivariate
+regression.
+
+Given a data set :math:`\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n`
+of :math:`n` statistical units, a linear regression model assumes that
+the relationship between the dependent variable :math:`y_i` and the
+:math:`p`-vector of regressors :math:`x_i` is linear. This relationship
+is modelled through a *disturbance term* or *error variable*
+:math:`\epsilon_i`, an unobserved random variable that adds noise to the
+linear relationship between the dependent variable and regressors. Thus
+the model takes the form
+
+.. math::
+
+   \label{eq:regression}
+      y_i = \beta_1   x_{i1} + \cdots + \beta_p x_{ip} + \varepsilon_i
+      = \mathbf{x}^{\rm T}_i \beta + \varepsilon_i,
+      \qquad i = 1, \ldots, n,
+
+where :math:`^T` denotes the transpose, so that :math:`x_i^T\beta` is
+the inner product between vectors :math:`x_i` :math:`\beta`.
+
+Often these :math:`n` equations are stacked together and written in
+vector form as
+
+.. math:: \mathbf{y} = \mathbf{X}\beta + \varepsilon, \,
+
+
+where
+
+.. math::
+
+   \mathbf{y} = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}, \quad
+      \mathbf{X} = \begin{pmatrix} \mathbf{x}^{\rm T}_1 \\ \mathbf{x}^{\rm T}_2 \\ \vdots \\ \mathbf{x}^{\rm T}_n \end{pmatrix}
+      = \begin{pmatrix} x_{11} & \cdots & x_{1p} \\
+      x_{21} & \cdots & x_{2p} \\
+      \vdots & \ddots & \vdots \\
+      x_{n1} & \cdots & x_{np}
+      \end{pmatrix}, \quad
+      \beta = \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_p \end{pmatrix}, \quad
+      \varepsilon = \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}.
+
+Some remarks on terminology and general use:
+
+-  :math:`y_i` is called the *regressand*, *endogenous variable*,
+   *response variable*, *measured variable*, or *dependent variable*.
+   The decision as to which variable in a data set is modeled as the
+   dependent variable and which are modeled as the independent variables
+   may be based on a presumption that the value of one of the variables
+   is caused by, or directly influenced by the other variables.
+   Alternatively, there may be an operational reason to model one of the
+   variables in terms of the others, in which case there need be no
+   presumption of causality.
+
+-  :math:`\mathbf{x}_i` are called *regressors*, *exogenous variables*,
+   *explanatory variables*, *covariates*, *input variables*, *predictor
+   variables*, or *independent variables*, but not to be confused with
+   *independent random variables*. The matrix :math:`\mathbf{X}` is
+   sometimes called the *design matrix*.
+
+   -  Usually a constant is included as one of the regressors. For
+      example we can take :math:`x_{i1}=1` for :math:`i=1,...,n`. The
+      corresponding element of :math:`\beta` is called the *intercept*.
+      Many statistical inference procedures for linear models require an
+      intercept to be present, so it is often included even if
+      theoretical considerations suggest that its value should be zero.
+
+   -  Sometimes one of the regressors can be a non-linear function of
+      another regressor or of the data, as in polynomial regression and
+      segmented regression. The model remains linear as long as it is
+      linear in the parameter vector :math:`\beta`.
+
+   -  The regressors :math:`x_{ij}` may be viewed either as random
+      variables, which we simply observe, or they can be considered as
+      predetermined fixed values which we can choose. Both
+      interpretations may be appropriate in different cases, and they
+      generally lead to the same estimation procedures; however
+      different approaches to asymptotic analysis are used in these two
+      situations.
+
+-  :math:`\beta\,` is a :math:`p`-dimensional *parameter
+   vector*. Its elements are also called *effects*, or *regression
+   coefficients*. Statistical estimation and inference in linear
+   regression focuses on :math:`\beta`.
+
+-  :math:`\varepsilon_i\,` is called the *residuals*, *error term*, *disturbance
+   term*, or *noise*. This variable captures all other factors which
+   influence the dependent variable :math:`y_i` other than the
+   regressors :math:`x_i`. The relationship between the error term and
+   the regressors, for example whether they are correlated, is a crucial
+   step in formulating a linear regression model, as it will determine
+   the method to use for estimation.
+
+-  If :math:`i=1` and :math:`p=1` in the equation above, we have a *simple linear regression*, corresponding to :math:`y = k*x + d + \epsilon` . If :math:`i>1` we talk about *multilinear regression* or *multiple linear regression* .
+
+*Example*. Consider a situation where a small ball is being tossed up in
+the air and then we measure its heights of ascent :math:`h_i` at various
+moments in time :math:`t_i`. Physics tells us that, ignoring the drag,
+the relationship can be modelled as :
+
+.. math:: h_i = \beta_1 t_i + \beta_2 t_i^2 + \varepsilon_i,
+
+where :math:`\beta_1` determines the initial velocity of the ball,
+:math:`\beta_2` is proportional to the standard gravity, and
+:math:`\epsilon_i` is due to measurement errors. Linear regression can
+be used to estimate the values of :math:`\beta_1` and :math:`\beta_2`
+from the measured data. This model is non-linear in the time variable,
+but it is linear in the parameters :math:`\beta_1` and :math:`\beta_2`;
+if we take regressors
+:math:`\mathbf{x}_i = (x_{i1},x_{i2}) = (t_i,t_i^2)`, the model takes on
+the standard form :
+:math:`h_i = \mathbf{x}^{\rm T}_i\beta + \varepsilon_i.`
+
 
 Examples
 ^^^^^^^^
-
-Simple Regression
-'''''''''''''''''
-
-Example of *simple linear regression* with 7 observations. Suppose there
-are 7 data points :math:`\left\{ {{y_i},{x_i}} \right\}`, where
-:math:`i=1,2,…,7`. The simple linear regression model is
-
-.. math:: y_i = \beta_0 + \beta_1 x_i +\epsilon_i, \,
-
-where :math:`\beta_0` is the y-intercept and :math:`\beta_1` is the
-slope of the regression line. This model can be represented in matrix
-form as
-
-.. math::
-
-   \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
-     =
-     \begin{bmatrix}1 & x_1  \\1 & x_2  \\1 & x_3  \\1 & x_4  \\1 & x_5  \\1 & x_6 \\ 1 & x_7  \end{bmatrix}
-     \begin{bmatrix} \beta_0 \\ \beta_1  \end{bmatrix}
-     +
-     \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
-
-where the first column of ones in the design matrix represents the
-y-intercept term while the second column is the x-values associated with
-the y-value.
-
-Multiple Regression
-'''''''''''''''''''
-
-Example of *multiple regression* with covariates (i.e. independent
-variables) :math:`w_i` and :math:`x_i`. Again suppose that the data are
-7 observations, and for each observed value to be predicted
-(:math:`y_i`), there are two covariates that were also observed
-:math:`w_i` and :math:`x_i`. The model to be considered is
-
-.. math:: y_i = \beta_0 + \beta_1 w_i + \beta_2 x_i + \epsilon_i
-
-This model can be written in matrix terms as
-
-.. math::
-
-   \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix} =
-       \begin{bmatrix} 1 & w_1 & x_1  \\1 & w_2 & x_2  \\1 & w_3 & x_3  \\1 & w_4 & x_4  \\1 & w_5 & x_5  \\1 & w_6 & x_6 \\ 1& w_7  & x_7  \end{bmatrix}
-       \begin{bmatrix} \beta_0 \\ \beta_1 \\ \beta_2  \end{bmatrix}
-       +
-       \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
 
 One-way ANOVA (Cell Means Model)
 ''''''''''''''''''''''''''''''''

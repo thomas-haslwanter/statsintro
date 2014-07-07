@@ -20,7 +20,7 @@ ecosystem offers today.
 The idea of this book is to give you all (or at least most of) the tools
 that you will need for your statistical data analysis. Thereby I try to
 provide all the background required to understand what you are doing. I
-will not proof any theorems, and won’t indulge in mathematics where it
+will not proof any theorems, and won't indulge in mathematics where it
 is unnecessary. This approach explains why so much code is included: in
 principle, you have to define our problem, select the corresponding
 program, and adapt it to your needs. This should allow you to get going
@@ -54,9 +54,18 @@ How to use this book
 
    If you have never used github, you might want to check out `this
    introduction to
-   github <https://help.github.com/articles/set-up-git>`__. But don’t be
+   github <https://help.github.com/articles/set-up-git>`__. But don't be
    scared off, you can download individual files easily from your
    web-browser.
+
+Chapter 1 gives an introduction to the book, especially to the Python programming environment that we are going
+to use. Chapter 2 proceeds with an introduction to statistical analysis. Chapter 3 provides the basis on which
+statistic rests: continuous and discrete distribution functions. Chapter 4-10, form the heart of the
+introduction: they introduce the different statistical tests, and give examples (including the Python code) on
+how to use them. Chapters 11- 13 provide an outlook to advanced statistical analysis procedures, with an
+introduction to statistical modeling in Chapter 12, and a presentation of the basic ideas of Bayesian
+Statistics in Chapter 13.
+
 
 Contributor List
 ----------------
@@ -72,6 +81,12 @@ but not as easy to work with. Thanks!
 - Connor Johnson wrote a very nice blog explaining the results of
   statsmodels OLS command, which formed the basis of a large part of the
   section on *Statistical Models*
+
+- To demonstrate Bayesian statistics and MCMC-models, I took the example of the Challenger disaster from the
+  excellent open source e-book Probabilistic-Programming-and-Bayesian-Methods-for-Hackers by Cam Davidson
+  Pilon.
+
+  
 
 .. |ipynb| image:: ../Images/IPython.jpg
     :scale: 50 % 

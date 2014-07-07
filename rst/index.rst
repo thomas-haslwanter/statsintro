@@ -13,7 +13,7 @@
 
 | *email:*  thomas.haslwanter@fh-linz.at
 
-| *Version:*  4.0
+| *Version:*  5.0
 
 .. image:: ../Images/cc_licence.png
    :scale: 100 %
@@ -104,14 +104,6 @@ Relation Between Several Variables
 
    statsANOVA
 
-Statistical Models
-==================
-
-.. toctree::
-   :maxdepth: 2
-
-   statsModels
-
 Analysis of Survival Times
 ==========================
 
@@ -127,6 +119,22 @@ Advanced Statistical Analysis
    :maxdepth: 2
 
    statsAdvanced
+
+Statistical Models
+==================
+
+.. toctree::
+   :maxdepth: 2
+
+   statsModels
+
+Bayesian Statistics
+===================
+
+.. toctree::
+   :maxdepth: 2
+
+   statsBayes
 
 Indices and tables
 ==================
