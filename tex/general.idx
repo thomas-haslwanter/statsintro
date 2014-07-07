@@ -118,33 +118,33 @@
 \indexentry{test!ANOVA}{93}
 \indexentry{regression!multilinear}{94}
 \indexentry{regression!multiple}{94}
-\indexentry{statistical modeling}{95}
-\indexentry{hypothesis test}{95}
-\indexentry{covariate}{96}
-\indexentry{regressand}{96}
-\indexentry{endogenous variable}{96}
-\indexentry{regressor}{96}
-\indexentry{exogenous variable}{96}
-\indexentry{regression!multilinear}{97}
-\indexentry{regression!multiple linear|see{regression!multilinear}}{97}
-\indexentry{Maximum likelihood}{102}
-\indexentry{log likelihood function}{102}
-\indexentry{Akaike Information Criterion AIC}{103}
-\indexentry{Bayesian Information Criterion BIC}{103}
-\indexentry{Akaike Information Criterion AIC}{103}
-\indexentry{Bayesian Information Criterion BIC}{103}
-\indexentry{condition number}{108}
-\indexentry{scikit-learn}{109}
-\indexentry{bootstrapping}{113}
-\indexentry{survival times}{115}
-\indexentry{Kaplan-Meier survival curve}{115}
-\indexentry{test!logrank}{116}
-\indexentry{Cox regression model}{116}
-\indexentry{Bayesian Statistics}{117}
-\indexentry{interpretation!frequentist}{117}
-\indexentry{interpretation!Bayesian}{117}
-\indexentry{Bayes' Theorem}{117}
-\indexentry{prior probability}{117}
-\indexentry{posterior probability}{117}
-\indexentry{logistic function}{119}
-\indexentry{Generalized Linear Models, GLM}{125}
+\indexentry{survival times}{95}
+\indexentry{Kaplan-Meier survival curve}{95}
+\indexentry{test!logrank}{96}
+\indexentry{Cox regression model}{96}
+\indexentry{Generalized Linear Models, GLM}{99}
+\indexentry{statistical modeling}{101}
+\indexentry{hypothesis test}{101}
+\indexentry{covariate}{102}
+\indexentry{regressand}{102}
+\indexentry{endogenous variable}{102}
+\indexentry{regressor}{102}
+\indexentry{exogenous variable}{102}
+\indexentry{regression!multilinear}{103}
+\indexentry{regression!multiple linear|see{regression!multilinear}}{103}
+\indexentry{Maximum likelihood}{108}
+\indexentry{log likelihood function}{108}
+\indexentry{Akaike Information Criterion AIC}{109}
+\indexentry{Bayesian Information Criterion BIC}{109}
+\indexentry{Akaike Information Criterion AIC}{109}
+\indexentry{Bayesian Information Criterion BIC}{109}
+\indexentry{condition number}{114}
+\indexentry{scikit-learn}{115}
+\indexentry{bootstrapping}{119}
+\indexentry{Bayesian Statistics}{121}
+\indexentry{interpretation!frequentist}{121}
+\indexentry{interpretation!Bayesian}{121}
+\indexentry{Bayes' Theorem}{121}
+\indexentry{prior probability}{121}
+\indexentry{posterior probability}{121}
+\indexentry{logistic function}{123}

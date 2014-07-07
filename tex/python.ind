@@ -1,6 +1,18 @@
 \begin{theindex}
 
+  \item anovaOneway, 68
+  \item anovaTwoway, 93
+
+  \indexspace
+
+  \item Bayesian Statistics, 125
+  \item binomialTest, 71
+  \item bootstrapDemo, 119
+
+  \indexspace
+
   \item checkNormality, 53
+  \item compGroups, 81
 
   \indexspace
 
@@ -11,11 +23,31 @@
   \indexspace
 
   \item figsBasicPrinciples, 23
+  \item fitLine, 90
 
   \indexspace
 
   \item getData, 16
   \item gettingStarted, 14
+
+  \indexspace
+
+  \item KruskalWallis, 70
+
+  \indexspace
+
+  \item linear regression model, 104
+
+  \indexspace
+
+  \item modeling, 119
+  \item multipleRegression, 94
+  \item multipleTesting, 69
+  \item multivariate, 90
+
+  \indexspace
+
+  \item oneSample, 64
 
   \indexspace
 
@@ -25,5 +57,10 @@
 
   \item sampleSize, 57
   \item statsmodelsIntro, 16
+  \item survival, 96
+
+  \indexspace
+
+  \item twoSample, 65
 
 \end{theindex}
