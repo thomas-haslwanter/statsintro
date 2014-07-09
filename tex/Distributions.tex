@@ -35,9 +35,9 @@ Since the likelihood to find any given value cannot be less than zero, and since
   \caption{Probability Density Function (PDF) of a value x. The integral over the PDF between a and b gives the likelihood of finding the value of x in that range.}\label{fig:PDF}
 \end{figure}
 
-\subsubsection{Cumulative Density Function (CDF)}\index{general}{cumulative density function}
+\subsubsection{Cumulative Distribution Function (CDF)}\index{general}{cumulative distribution function}
 
-The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \emph{Cumulative Density Function} tells you for each value which percentage of the data has a lower value (Figure \ref{fig:CDF}). Together, this gives us
+The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \emph{Cumulative Distribution Function} tells you for each value which percentage of the data has a lower value (Figure \ref{fig:CDF}). Together, this gives us
 
 \begin{equation}
    \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
@@ -47,10 +47,10 @@ The probability to find a value between $a$ and $b$ is given by the integral ove
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/PDF_CDF.png}\\
-  \caption{\emph{Probability density function} (left) and \emph{Cumulative density function} (right) of a normal distribution.}\label{fig:CDF}
+  \caption{\emph{Probability density function} (left) and \emph{Cumulative distribution function} (right) of a normal distribution.}\label{fig:CDF}
 \end{figure}
 
-\subsubsection{Other important presentations of Probability Densities}\index{general}{cumulative density function}
+\subsubsection{Other important presentations of Probability Densities}\index{general}{cumulative distribution function}
 
 Figure \ref{fig:DistributionUtilities} shows a number of functions that are equivalent to the PDF, but each represent a different aspect of the probability distribution.
 
@@ -634,9 +634,9 @@ where ${n \choose k}={n! \over k!(n-k)!}$
 \end{figure}
 
 The binomial distribution for $n = 1$ is sometimes referred to as \emph{Bernoulli Distribution}\index{general}{distributions!Bernoulli}.
- 
+
  For $n$ trials, we have the following properties:
- 
+
  \begin{itemize}
    \item mean: $np$
    \item variance: $n p (1-p)$
@@ -685,13 +685,13 @@ The Poisson distribution has the following properties:
 
 \section{Exercises}
 
-\subsection{Python}
+\subsection*{Python}
 \begin{enumerate}
   \item Create an numpy-array, containing the data 1,2,3,...,10. Calculate mean and sample(!)-standard deviation.
     (Correct answer: 3.03)
 \end{enumerate}
 
-\subsection{Distributions}
+\subsection*{Distributions}
 
 
 \begin{enumerate}
@@ -705,7 +705,7 @@ The Poisson distribution has the following properties:
     (Correct answer: [ -0.88, 10.88])
 \end{enumerate}
 
-\subsection{Analysis}
+\subsection*{Analysis}
 \begin{enumerate}
   \item
   \begin{enumerate}
@@ -716,7 +716,7 @@ The Poisson distribution has the following properties:
 
 \end{enumerate}
 
-\subsection{Continuous Distributions }
+\subsection*{Continuous Distributions }
 \begin{enumerate}
     \item \textbf{Normal Distribution:} Your doctor tells you that he can use hip implants for surgery even if they are 1 mm bigger or smaller than the specified size. And your financial officer tells you that you can discard 1 out of 1000 hip implants, and still make a profit.
 
@@ -737,7 +737,7 @@ The Poisson distribution has the following properties:
     Note: calculate the corresponding F-value, and check if the CDF for the corresponding F-distribution is $<0.025$.
     (Correct answer: no)
 \end{enumerate}
-\subsection{Discrete Distributions }
+\subsection*{Discrete Distributions }
 
 \begin{enumerate}
     \item \textbf{Binomial Distribution} "According to research, pure blue eyes in Europe approach greatest frequency in Finland, Sweden and Norway(at 72\%), followed by Estonia, Denmark(69\%); Latvia, Ireland(66\%); Scotland(63\%); Lithuania(61\%); The Netherlands(58\%); Belarus, England(55\%); Germany(53\%); Poland, Wales(50\%); Russia, The Czech Republic(48\%); Slovakia(46\%); Belgium(43\%); Austria, Switzerland, Ukraine(37\%); France, Slovenia(34\%); Hungary(28\%); Croatia(26\%); Bosnia and Herzegovina(24\%); Romania(20\%); Italy(18\%); Serbia, Bulgaria(17\%); Spain(15\%); Georgia, Portugal(13\%); Albania(11\%); Turkey and Greece(10\%). Further analysis shows that the average occurrence of blue eyes in Europe is 34\%, with 50\% in Northern Europe and 18\% in Southern Europe."

@@ -6,7 +6,7 @@ Python, for b) the statistical analysis of data.
 
 For most of my coding life I have worked with Matlab, as my work was
 confined to academic research. When I started to look at real life
-applications (i.e. things that you might want to really sell), I
+applications (i.e. programs that you might want to really sell), I
 realized how expensive Matlab licenses are. At the same time, I
 discovered the (coding) beauty of Python. Put the two together, and add
 the fact that around 2010 Python and its documentation had matured to

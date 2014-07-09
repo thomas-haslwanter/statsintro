@@ -48,12 +48,12 @@ properties:
 
     *Probability Density Function (PDF) of a value x. The integral over the PDF between a and b gives the likelihood of finding the value of x in that range.*
 
-Cumulative Density Function (CDF)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Cumulative Distribution Function (CDF)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The probability to find a value between :math:`a` and :math:`b` is given
 by the integral over the PDF in that range (see Fig. [fig:PDF]), and the
-*Cumulative Density Function* tells you for each value which percentage
+*Cumulative Distribution Function* tells you for each value which percentage
 of the data has a lower value (see Figure below). Together, this gives
 us
 
@@ -62,7 +62,7 @@ us
 .. figure:: ../Images/PDF_CDF.png
     :scale: 25 % 
 
-    *Probability Density Function* (left) and *Cumulative density function* (right) of a normal distribution. 
+    *Probability Density Function* (left) and *Cumulative distribution function* (right) of a normal distribution. 
 
 Other important presentations of Probability Densities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,9 +146,10 @@ quartile (see below).
 Percentiles 
 ^^^^^^^^^^^^
 
-The *Cumulative distribution function (CDF)* tells you for each value which
-percentage of the data has a lower value (Figure :ref:`fig-lDistributionFunctions`).
-The value below which a given percentage of the values occur is called *centile* or *percentile*, and corresponds to a value with a specified cumulative frequency.
+The *Cumulative distribution function (CDF)* tells you for each value which percentage of the data has
+a lower value (Figure :ref:`fig-DistributionFunctions`). The value below which a given percentage of
+the values occur is called *centile* or *percentile*, and corresponds to a value with a specified
+cumulative frequency.
 
 For example, when you look for the data range which includes 95% of the
 data, you have to find the :math:`2.5^{th}` and the :math:`97.5^{th}`
@@ -871,7 +872,7 @@ Analysis
 
 #. 
 
-   #. Read in the data from ’Data\\amstat\\calcium.dat.txt’.
+   #. Read in the data from "Data\\amstat\\calcium.dat.txt".
 
    #. Check for erroneous entries.
 
