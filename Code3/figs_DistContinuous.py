@@ -10,12 +10,14 @@
 
 '''
 
-# author: Thomas Haslwanter, date: Jun-2013
+# author: Thomas Haslwanter, date: July-2014
 
 # Note: here I use the iPython approach, which is best suited for interactive work
 from pylab import *
 from scipy import stats
-matplotlib.rcParams.update({'font.size': 18})
+import mystyle   # custom module to set fontsize, etc
+
+#matplotlib.rcParams.update({'font.size': 18})
 
 #----------------------------------------------------------------------
 def showDistribution(x, d1, d2, tTxt, xTxt, yTxt, legendTxt, xmin=-10, xmax=10):
@@ -23,7 +25,7 @@ def showDistribution(x, d1, d2, tTxt, xTxt, yTxt, legendTxt, xmin=-10, xmax=10):
     plot(x, d1.pdf(x))
     if d2 != '':
         hold(True)
-        plot(x, d2.pdf(x), 'r')
+        plot(x, d2.pdf(x), 'r--')
         legend(legendTxt)
         
     xlim(xmin, xmax)
@@ -50,7 +52,7 @@ def show_continuous():
     
     # Students' T-distribution
     # ... with 4, and with 10 degrees of freedom (DOF)
-    plot(x, stats.norm.pdf(x), 'g')
+    plot(x, stats.norm.pdf(x), 'g-.')
     hold(True)
     showDistribution(x, stats.t(4), stats.t(10),
                      'T-Distribution', 'X', 'P(X)',['normal', 't=4', 't=10'])
@@ -90,4 +92,5 @@ def show_continuous():
     
 #----------------------------------------------------------------------
 if __name__ == '__main__':
+    mystyle.set()
     show_continuous()

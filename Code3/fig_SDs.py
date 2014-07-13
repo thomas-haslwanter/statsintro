@@ -2,7 +2,7 @@
 Graphical display of data within 1,2,3 SD.
 '''
 
-# author: Thomas Haslwanter, date: April-2014
+# author: Thomas Haslwanter, date: July-2014
 
 import numpy as np
 import os
@@ -28,7 +28,7 @@ fig, axs = plt.subplots(1,3, sharey=True)
 def show_SD(axis, xi, yi, text):
     '''Show the area covered by 1/2/3 SDs'''
     
-    fc = 'red'
+    fc = '#DDDDDD'
     axis.plot(x,y)
     axis.fill_between(xi, yi, facecolor=fc)
     

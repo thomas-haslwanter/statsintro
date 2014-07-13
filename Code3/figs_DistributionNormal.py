@@ -5,11 +5,13 @@
 
 '''
 
-# author: Thomas Haslwanter, date: Sept-2013
+# author: Thomas Haslwanter, date: July-2014
 
 import numpy as np
+
 import scipy.stats as stats
 import matplotlib.pyplot as plt
+import os
 
 myMean = 0
 mySD = 3
@@ -31,26 +33,47 @@ def simple_normal():
 
     plt.plot(x,nd.pdf(x))
     plt.xlim([-4,4])
+    plt.yticks(np.linspace(0, 0.4, 5))
     plt.title('Normal Distribution - PDF')
     
     plt.subplot(323)
     plt.plot(x,nd.cdf(x))
     plt.xlim([-4,4])
+    plt.ylim([0,1])
+    plt.vlines(0, 0, 1, linestyles='--')
     plt.title('CDF: cumulative distribution fct')
     
     plt.subplot(324)
     plt.plot(x,nd.sf(x))
     plt.xlim([-4,4])
+    plt.ylim([0,1])
+    plt.vlines(0, 0, 1, linestyles='--')
     plt.title('SF: survival fct')
     
     plt.subplot(325)
     plt.plot(x2,nd.ppf(x2))
+    plt.yticks(np.linspace(-4,4,5))
+    plt.hlines(0, 0, 1, linestyles='--')
+    plt.ylim([-4,4])
     plt.title('PPF')
 
     plt.subplot(326)
     plt.plot(x2,nd.isf(x2))
+    plt.yticks(np.linspace(-4,4,5))
+    plt.hlines(0, 0, 1, linestyles='--')
     plt.title('ISF')
+    plt.ylim([-4,4])
     plt.tight_layout()
+    
+    outDir = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'
+    outFile = 'DistributionFunctions.png'
+    
+    saveTo = os.path.join(outDir, outFile)
+    plt.savefig(saveTo, dpi=200)
+    
+    print('OutDir: {0}'.format(outDir))
+    print('Figure saved to {0}'.format(outFile))
+    
     plt.show()
 
 def shifted_normal():

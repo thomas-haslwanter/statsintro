@@ -2,14 +2,18 @@
 Graphical display of PDF (probability density function) and CDF (cumulative density function)
 '''
 
-# author: Thomas Haslwanter, date: April-2014
+# author: Thomas Haslwanter, date: July-2014
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+import os
 import seaborn as sns
+import mystyle
 
-outFile = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images\PDF_CDF.png'
+outDir = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'
+outFile = 'PDF_CDF.png'
+
 # Calculate the values
 nd = stats.norm()
 
@@ -20,20 +24,30 @@ x1 = np.linspace(-3, 1)
 y1 = nd.pdf(x1)
 
 # Make the plot
+sns.set_context('paper')
+sns.set_style('white')
+mystyle.set(12)
+
 figs, axs = plt.subplots(1,2)
 
-axs[0].plot(x,yp)
-axs[0].fill_between(x1, y1, facecolor='red')
+axs[0].plot(x,yp, 'k')
+axs[0].fill_between(x1, y1, facecolor='#CCCCCC')
 axs[0].text(0, 0.1, 'CDF(x)', family='cursive', fontsize=14, horizontalalignment='center', style='italic')
 axs[0].set_xlabel('x')
 axs[0].set_ylabel('PDF(x)')
+sns.despine()
 
-axs[1].plot(x, y, 'r', lw=2)
+axs[1].plot(x, y, '#999999', lw=3)
 axs[1].set_xlabel('x')
 axs[1].set_ylabel('CDF(x)')
+plt.vlines(0, 0, 1, linestyles='--')
+sns.despine()
 
-sns.set(context='poster')
-plt.tight_layout()
-plt.savefig(outFile, dpi=200)
+#plt.tight_layout()
+saveTo = os.path.join(outDir, outFile)
+plt.savefig(saveTo, dpi=200)
+
+print('OutDir: {0}'.format(outDir))
 print('Figure saved to {0}'.format(outFile))
+
 plt.show()

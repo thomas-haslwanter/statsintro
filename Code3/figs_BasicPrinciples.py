@@ -6,13 +6,11 @@ The examples contain:
 - histograms
 - boxplots
 - violinplots
-- probplots
 - cumulative density functions
-- regression fits
 
 '''
 
-# author: Thomas Haslwanter, date: May-2013
+# author: Thomas Haslwanter, date: July-2014
 
 # First, import the libraries that you are going to need. You could also do
 # that later, but it is better style to do that at the beginning.
@@ -25,50 +23,40 @@ import scipy.stats as stats
 import seaborn as sns
 import pandas as pd
 
+import mystyle   # custom module to set fontsize, etc
+
 def main():
     # Univariate data -------------------------
     # Generate data that are normally distributed
     x = randn(500)
     
+    # Set the fonts the way I like them
+    sns.set_context('paper')
+    sns.set_style('white')
+    mystyle.set()
+    
     # Scatter plot
     plot(x,'.')
-    title('Scatter Plot')
-    xlabel('X')
-    ylabel('Y')
-    draw()
-    show()
+    mystyle.printout('scatterPlot.png', xlabel='x', ylabel='y', title='Scatter')
     
     # Histogram
-    hist(x)
-    xlabel('Data Values')
-    ylabel('Frequency')
-    title('Histogram, default settings')
-    show()
+    hist(x, color='#BBBBBB')
+    mystyle.printout('histogram_plain.png', xlabel='Data Values', ylabel='Frequency', title='Histogram, default settings')
     
-    hist(x,25)
-    xlabel('Data Values')
-    ylabel('Frequency')
-    title('Histogram, 25 bins')
-    show()
+    hist(x,25, color='#BBBBBB')
+    mystyle.printout('histogram.png', xlabel='Data Values', ylabel='Frequency', title='Histogram, 25 bins')
     
     # Cumulative probability density
     numbins = 20
-    cdf = stats.cumfreq(x,numbins)
-    plot(cdf[0])
-    xlabel('Data Values')
-    ylabel('Cumulative Frequency')
-    title('Cumulative probablity density function')
-    show()
+    plot(stats.cumfreq(x,numbins)[0])
+    mystyle.printout('CumulativeFrequencyFunction.png', xlabel='Data Values', ylabel='Cumulative Freuqency')
     
     # Boxplot
-    # The error bars indiacte the range, and the box consists of the
-    # first, second (middle) and third quartile
-    boxplot(x)
-    title('Boxplot')
-    ylabel('Values')
-    show()
+    # The ox consists of the first, second (middle) and third quartile
+    boxplot(x, sym='*')
+    mystyle.printout('boxplot.png', xlabel='Values', title='Boxplot')
     
-    boxplot(x, vert=False)
+    boxplot(x, sym='*', vert=False)
     title('Boxplot, horizontal')
     xlabel('Values')
     show()
@@ -76,43 +64,15 @@ def main():
     # Violinplot
     nd = stats.norm
     data = nd.rvs(size=(100))
-    nd2 = stats.norm(loc = 0.5, scale = 1.2)
+    
+    nd2 = stats.norm(loc = 3, scale = 1.5)
     data2 = nd2.rvs(size=(100))
     
-    # Use the seaborn package for the violin plot, and set the context for "poster"
-    sns.set(context='poster')
+    # Use pandas and the seaborn package for the violin plot
     df = pd.DataFrame({'Girls':data, 'Boys':data2})
-    sns.violinplot(df)
-    show()
+    sns.violinplot(df, color = ["#999999", "#DDDDDD"])
     
-    # Check for normality
-    _ = stats.probplot(x, plot=plt)
-    title('Probplot - check for normality')
-    show()
-    
-    # Bivariate data -------------------------
-    
-    # Generate data
-    x = randn(200)
-    y = 10+0.5*x+randn(len(x))
-    
-    # Scatter plot
-    scatter(x,y)
-    # This one is quite similar to "plot(x,y,'.')"
-    title('Scatter plot of data')
-    xlabel('X')
-    ylabel('Y')
-    show()
-    
-    # LineFit
-    M = vstack((ones(len(x)), x)).T
-    pars = linalg.lstsq(M,y)[0]
-    intercept = pars[0]
-    slope = pars[1]
-    scatter(x,y)
-    hold(True)
-    plot(x, intercept + slope*x, 'r')
-    show()
+    mystyle.printout('violinplot.png')
     
 if __name__ == '__main__':
     main()
