@@ -5,6 +5,7 @@
 # author: Thomas Haslwanter, date: April-2014
 
 from pylab import *
+import mystyle
 
 def main():
     # generate the data
@@ -22,11 +23,12 @@ def main():
     plot(x, yfit, 'r')
     for ii in range(len(x)):
         plot([x[ii], x[ii]], [yfit[ii], y[ii]], 'k')
+        
     xlim((-0.1, 9.1))
     xlabel('X')
     ylabel('Y')
-    savefig('residuals.png', dpi=200)
-    show()
+    
+    mystyle.printout_plain('residuals.png') 
 
 if __name__ == '__main__':
     main()

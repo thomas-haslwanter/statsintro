@@ -271,6 +271,52 @@ Matplotlib, pylab, and pyplot: how are they related?
 The pyplot interface is generally preferred for non-interactive plotting (i.e., scripting). The pylab interface is convenient for interactive calculations and plotting, as it minimizes typing. Note that this is what you get if you use the ipython shell with the -pylab option, which imports everything from pylab and makes plotting fully interactive.
 
 
+Personalizing IPython
+^^^^^^^^^^^^^^^^^^^^^
+
+When working on a new problem, I always start out with IPython. Once I have
+the individual steps working, I use the IPython command
+*%history* to get the commands I have used, and switch to an
+integrated development environment (typically *Wing* or *Spyder*).
+
+To start up IPython quickly in the location and with the configuration I
+like, I use the following tricks (the following are the steps on MS Windows,
+but should be easy to adapt to other operating systems):
+
+To personalize ipython, generate your own profile:
+
+  - run "cmd"
+
+  - In the newly created command shell, execute the following command
+    ::
+
+            ipython profile create <myName>
+        (This generates a folder ".ipython\profile_<myName>\startup")
+
+  - Into this folder, place a file with e.g. the name *00_<myName>.py*, containing
+    ::
+
+        import pandas as pd
+        import os
+        os.chdir(r'C:\<your_favorite_dir>')
+
+  - Generate a file "ipython.bat" in your startup-directory, containing
+    ::
+
+      [Python-directory]\Scripts\ipython3 qtconsole --profile <myName> --pylab=inline
+
+Now you can start "your" ipython by just typing "ipython" in the Windows run
+command
+
+To see all ipython notebooks for the course, do the following:
+  - run "cmd"
+  - Run the commands
+    ::
+
+      cd [ipynb-directory]
+      [Python-directory]\Scripts\ipython3.exe notebook --pylab=inline
+
+
 Coding Styles in Python
 ^^^^^^^^^^^^^^^^^^^^^^^
 In Python you will find different coding styles and usage patterns. These styles are all perfectly valid, and each have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.

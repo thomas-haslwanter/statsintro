@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
 import os
-
+import mystyle
 
 # Fit the normal distribution
 md, sd = 3.5, 0.76
@@ -17,6 +17,7 @@ nd = stats.norm(md, sd)
 
 # Plot the data
 sns.set_context(context='poster')
+sns.set_style('ticks')
 
 limits = (md-3*sd, md+3*sd)
 x = np.linspace(limits[0], limits[1])
@@ -37,9 +38,8 @@ plt.xlabel('Weight')
 plt.ylabel('P(Weight)')
 plt.text(2.1, 0.05, '11.8%', fontsize=20)
 
-outDir = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'
-outFile = os.path.join(outDir, 'pdf_checkValue.png')
-plt.savefig(outFile, dpi=200)
-print('Figure saved to {0}'.format(outFile))
+sns.despine()
+
+mystyle.printout_plain('pdf_checkValue.png')
 
 plt.show()

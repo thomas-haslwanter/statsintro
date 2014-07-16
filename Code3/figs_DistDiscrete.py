@@ -4,12 +4,15 @@
 
 '''
 
-# author: Thomas Haslwanter, date: April-2013
+# author: Thomas Haslwanter, date: July-2014
 
 # Note: here I use the modular approach, which is more appropriate for scripts
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 import numpy as np
+import os
+import seaborn as sns
+import mystyle
 
 #----------------------------------------------------------------------
 def show_binomial():
@@ -20,14 +23,24 @@ def show_binomial():
     bd3 = stats.binom(40, 0.5)
     
     k = np.arange(40)
-    plt.plot(k, bd1.pmf(k), 'o-b')
+    
+    sns.set_context('paper')
+    sns.set_style('ticks')
+    mystyle.set(14)
+    
+    markersize = 8
+    plt.plot(k, bd1.pmf(k), 'o-b', ms=markersize)
     plt.hold(True)
-    plt.plot(k, bd2.pmf(k), 'd-r')
-    plt.plot(k, bd3.pmf(k), 's-g')
-    plt.title('Binomial distribition')
+    plt.plot(k, bd2.pmf(k), 'd-r', ms=markersize)
+    plt.plot(k, bd3.pmf(k), 's-g', ms=markersize)
+    plt.title('Binomial distribuition')
     plt.legend(['p=0.5 and n=20', 'p=0.7 and n=20', 'p=0.5 and n=40'])
     plt.xlabel('X')
     plt.ylabel('P(X)')
+    sns.despine()
+    
+    mystyle.printout_plain('Binomial_distribution_pmf.png')
+    
     plt.show()
     
 #----------------------------------------------------------------------
@@ -38,6 +51,7 @@ def show_poisson():
     
     k = np.arange(25)
     pd = stats.poisson(10)
+    mystyle.set(12)
     
     ax[0].plot(k, pd.pmf(k),'x-')
     ax[0].set_title('Poisson distribition')

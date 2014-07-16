@@ -13,7 +13,7 @@
 
 | *email:*  thomas.haslwanter@fh-linz.at
 
-| *Version:*  5.0
+| *Version:*  5.1
 
 .. image:: ../Images/cc_licence.png
    :scale: 100 %

@@ -21,29 +21,25 @@ def main():
     # Show them
     fig, axs = plt.subplots(1,3)
     mystyle.set(14)
+    myColor = '#CCCCCC'
     #sns.set_context('paper')
     #sns.set_style('whitegrid')
     
-    axs[0].hist(data,bins=nbins)
+    axs[0].hist(data,bins=nbins, color=myColor)
     axs[0].set_title('Random data')
     axs[0].set_xticks([0, 0.5, 1])
     axs[0].set_ylabel('Counts')
     
-    axs[1].hist( np.mean(data.reshape((ndata/2,2)),  axis=1), bins=nbins)
+    axs[1].hist( np.mean(data.reshape((ndata/2,2)),  axis=1), bins=nbins, color=myColor)
     axs[1].set_xticks([0, 0.5, 1])
     axs[1].set_title(' Average over 2')
     
-    axs[2].hist( np.mean(data.reshape((ndata/10,10)),axis=1), bins=nbins)
+    axs[2].hist( np.mean(data.reshape((ndata/10,10)),axis=1), bins=nbins, color=myColor)
     axs[2].set_xticks([0, 0.5, 1])
     axs[2].set_title(' Average over 10')
     
-    outDir = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'
-    outFile = 'CentralLimitTheorem.png'
-    saveTo = os.path.join(outDir, outFile)
     plt.tight_layout()
-    plt.savefig(saveTo, dpi=200)
-    print('OutDir: {0}'.format(outDir))
-    print('Figure saved to {0}'.format(outFile))
+    mystyle.printout_plain('CentralLimitTheorem.png')
     
     plt.show()    
     

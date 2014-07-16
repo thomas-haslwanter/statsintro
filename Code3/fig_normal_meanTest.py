@@ -2,13 +2,14 @@
 Short demo of how to check for the significance of a mean value.
 '''
 
-# author: Thomas Haslwanter, date: April-2014
+# author: Thomas Haslwanter, date: July-2014
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
 import os
+import mystyle
 
 
 # Get the data, and fit the normal distribution
@@ -33,9 +34,6 @@ plt.hold(True)
 plt.plot(x,y)
 plt.fill_between(x1, y1, alpha=0.3)
 
-outDir = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'
-outFile = os.path.join(outDir, 'pdf_checkMean.png')
-plt.savefig(outFile, dpi=200)
-print('Figure saved to {0}'.format(outFile))
+mystyle.printout_plain('pdf_checkMean.png')
 
 plt.show()

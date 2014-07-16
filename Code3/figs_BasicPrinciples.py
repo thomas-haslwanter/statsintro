@@ -40,10 +40,10 @@ def main():
     mystyle.printout('scatterPlot.png', xlabel='x', ylabel='y', title='Scatter')
     
     # Histogram
-    hist(x, color='#BBBBBB')
+    hist(x, color='#999999')
     mystyle.printout('histogram_plain.png', xlabel='Data Values', ylabel='Frequency', title='Histogram, default settings')
     
-    hist(x,25, color='#BBBBBB')
+    hist(x,25, color='#999999')
     mystyle.printout('histogram.png', xlabel='Data Values', ylabel='Frequency', title='Histogram, 25 bins')
     
     # Cumulative probability density

@@ -177,7 +177,46 @@ these things:
 
 The pyplot interface is generally preferred for non-interactive plotting (i.e., scripting). The pylab interface is convenient for interactive calculations and plotting, as it minimizes typing. Note that this is what you get if you use the ipython shell with the -pylab option, which imports everything from pylab and makes plotting fully interactive.
 
+\subsubsection{Personalizing IPython}
 
+When working on a new problem, I always start out with IPython. Once I have the individual steps working, I use the IPython command \lstinline{\%history} to get the commands I have used, and switch to an integrated development environment (typically \emph{Wing} or \emph{Spyder}).
+
+To start up IPython quickly in the location and with the configuration I like, I use the following tricks (the following are the steps on MS Windows, but should be easy to adapt to other operating systems):
+
+To personalize ipython, generate your own profile:
+
+\begin{itemize}
+  \item run "cmd"
+  
+  \item In the newly created command shell, execute the following command
+        \begin{lstlisting}
+            ipython profile create $<myName>$
+        \end{lstlisting}
+        (This generates a folder $.ipython \backslash profile\_<myName> \backslash startup"$)
+  \item Into this folder, place a file with e.g. the name $00\_<myName>.py$, containing
+        \begin{lstlisting}
+        import pandas as pd
+        import os
+        os.chdir(r'C:\<your_favorite_dir>')"
+        \end{lstlisting}            
+  \item Generate a file "ipython.bat" in your startup-directory, containing
+      \begin{lstlisting}
+      [Python-directory]\backslash Scripts \backslash ipython3 qtconsole --profile <myName> --pylab=inline
+      \end{lstlisting}            
+\end{itemize}
+    
+Now you can start "your" ipython by just typing "ipython" in the Windows run command
+
+To see all ipython notebooks for the course, do the following:
+\begin{itemize}
+  \item run "cmd"
+  \item Run the commands
+  \begin{lstlisting}
+  cd [ipynb-directory]
+  [Python-directory]\backslash Scripts \backslash ipython3.exe notebook --pylab=inline
+  \end{lstlisting}
+\end{itemize}
+        
 \subsubsection{Coding Styles in Python}
 
 In Python you will find different coding styles and usage patterns. These styles are all perfectly valid, and each have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.

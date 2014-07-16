@@ -5,11 +5,12 @@ respectively, and a standard deviation of 2.
 
 '''
 
-# author: Thomas Haslwanter, date: March-2013
+# author: Thomas Haslwanter, date: July-2014
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+import mystyle
 
 def main():
     # Calculate the PDF-curves
@@ -41,22 +42,22 @@ def main():
     # Plot and label the PDF-curves
     ax1.plot(x,y1)
     ax1.hold(True)
-    ax1.fill_between(x,0,y1, where=x<3, facecolor='blue', alpha=0.5)
+    ax1.fill_between(x,0,y1, where=x<3, facecolor='#CCCCCC', alpha=0.5)
     ax1.annotate('Sensitivity',
-                 xy=(x[50], y1[50]),
-                 xytext=(x[20], y1[50]*1.2), 
+                 xy=(x[75], y1[65]),
+                 xytext=(x[40], y1[75]*1.2), 
                  fontsize=14,
                  horizontalalignment='center',
-                 arrowprops=dict(facecolor='blue'))
+                 arrowprops=dict(facecolor='#CCCCCC'))
     
-    ax1.plot(x,y2,'r')
-    ax1.fill_between(x,0,y2, where=x<3, facecolor='red', alpha=0.5)
+    ax1.plot(x,y2,'#888888')
+    ax1.fill_between(x,0,y2, where=x<3, facecolor='#888888', alpha=0.5)
     ax1.annotate('1-Specificity',
-                 xy=(3, 0.03),
-                 xytext=(4,0.05), 
+                 xy=(2.5, 0.03),
+                 xytext=(6,0.05), 
                  fontsize=14,
                  horizontalalignment='center',
-                 arrowprops=dict(facecolor='red'))
+                 arrowprops=dict(facecolor='#888888'))
     
     ax1.set_ylabel('PDF')
     
@@ -74,11 +75,7 @@ def main():
     ax2.set_ylabel('sensitivity')
     
     # Show the plot, and create a figure
-    outFile = r'C:\Temp\ROC.png'
-    plt.savefig(outFile, dpi=200)
-    print(('ROC-figure saved to {0}.'.format(outFile)))
+    mystyle.printout_plain('ROC.png')    
     
-    plt.show()
-
 if __name__ == '__main__':
     main()

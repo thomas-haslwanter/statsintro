@@ -42,16 +42,20 @@ print('T-distribution: {0} -> {1}'.format(fit_t_wo[1:], fit_t_w[1:]))
 
 # Show the data
 fig, axs = plt.subplots(2,1, sharex=True)
-axs[0].hist(data, normed=True, bins=25)
+axs[0].hist(data, normed=True, bins=25, color='#CCCCCC')
 axs[0].plot(fitted_x, fitted_gauss_wo, label='normal')
 axs[0].plot(fitted_x, fitted_t_wo, ls='--', lw=2, label='t-dist')
 axs[0].set_title('Without outliers')
 axs[0].legend()
 
-axs[1].hist(dataWOutlier, normed=True, bins=25)
+axs[1].hist(dataWOutlier, normed=True, bins=25, color='#CCCCCC')
 axs[1].plot(fitted_x, fitted_gauss_w, label='norm')
 axs[1].plot(fitted_x, fitted_t_w, ls='--', lw=2, label='t-dist')
 axs[1].set_title('With outliers')
+
+outDir = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'
+outFile = 'CentralLimitTheorem.png'
+saveTo = os.path.join(outDir, outFile)
 
 outFile = r'C:\Temp\ttest_stability.png'
 plt.savefig(outFile, dpi=200)

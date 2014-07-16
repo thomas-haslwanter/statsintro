@@ -608,6 +608,20 @@ Working with distribution functions in Python takes a bit to get used to. But on
 
 While the functions describing continuous distributions are referred to as \emph{probability density functions}, discrete distributions are described by \emph{probability mass functions}.
 
+Two discretely distributions are commonly encountered: the \emph{binomial distribution}, and the \emph{Poisson distribution}. These two have the following properties:
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{l|c|c|}
+      & Mean & Variance \\
+      \hline
+      Binomial & $n \cdot p$ & $np(1-p)$ \\
+      Poisson & $\lambda$ & $\lambda$ \\
+      %\hline
+  \end{tabular}
+\caption{Properties of discrete distributions.}
+\end{table}
+
 \subsubsection{Binomial Distribution}\index{general}{distributions!binomial}
 The Binomial is associated with the question "Out of a given number of trials, how many will succeed?" Some example questions that are modeled with a Binomial distribution are:
 \begin{itemize}

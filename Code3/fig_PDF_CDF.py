@@ -11,9 +11,6 @@ import os
 import seaborn as sns
 import mystyle
 
-outDir = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'
-outFile = 'PDF_CDF.png'
-
 # Calculate the values
 nd = stats.norm()
 
@@ -43,11 +40,6 @@ axs[1].set_ylabel('CDF(x)')
 plt.vlines(0, 0, 1, linestyles='--')
 sns.despine()
 
-#plt.tight_layout()
-saveTo = os.path.join(outDir, outFile)
-plt.savefig(saveTo, dpi=200)
-
-print('OutDir: {0}'.format(outDir))
-print('Figure saved to {0}'.format(outFile))
+mystyle.printout_plain('PDF_CDF.png')
 
 plt.show()

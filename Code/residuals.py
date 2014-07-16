@@ -8,7 +8,10 @@ Date:   April-2013
 Version: 1.0
 '''
 
-from pylab import *
+#from pylab import *
+import numpy as np
+import matplotlib.pyplot as plt
+import mys
 
 def main():
     # generate the data
@@ -26,6 +29,8 @@ def main():
     plot(x, yfit, 'r')
     for ii in range(len(x)):
         plot([x[ii], x[ii]], [yfit[ii], y[ii]], 'k')
+    
+        
     xlim((-0.1, 9.1))
     xlabel('X')
     ylabel('Y')

@@ -32,7 +32,6 @@ plt.xlabel('x')
 plt.ylabel('PDF(x)')
 ax = plt.gca()
 
-
 sns.set(context='poster')
 plt.savefig(outFile, dpi=200)
 print('Figure saved to {0}'.format(outFile))
