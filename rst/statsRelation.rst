@@ -179,7 +179,28 @@ the y-value.
 Design Matrix
 ~~~~~~~~~~~~~
 
+Quadratic Fit
+^^^^^^^^^^^^^
+
+The equation for a quadratic fit to the given data is
+
+.. math:: y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 +\epsilon_i, \,
+
 This can be rewritten in matrix form:
+
+.. math::
+
+  \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+  =
+  \begin{bmatrix}1 & x_1 & x_1^2 \\1 & x_2  & x_2^2 \\1 & x_3  & x_3^2 \\1 & x_4  & x_4^2 \\1 & x_5  & x_5^2 \\1 & x_6  & x_6^2 \\ 1 & x_7  & x_7^2 \end{bmatrix}
+  \begin{bmatrix} \beta_0 \\ \beta_1  \\ \beta_2 \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
+
+General Formulation
+^^^^^^^^^^^^^^^^^^^
+
+In general,this can be rewritten in matrix form as:
 
 .. math:: y=X\beta+ \epsilon,
 
