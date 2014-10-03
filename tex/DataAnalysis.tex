@@ -177,7 +177,7 @@ For finding a difference between two normally distributed means, with standard d
 
 \emph{statsmodels} makes clever use of the fact that 3 of the 4 factors mentioned above are independent, and combines it with the Python feature of \emph{named parameters} to provide a program that takes 3 of those parameters as input, and calculates the remaining $4^{th}$ parameter.
 
-For example, 
+For example,
 
 \begin{lstlisting}
     from statsmodels.stats import power
@@ -187,7 +187,7 @@ For example,
 
 tells us that if we compare two groups with the same number of subjects and the same standard deviation, require an $\alpha=0.05$ a test power of $80\%$, and we want to detect a difference between the groups that is half the standard deviation, we need to test 64 subjects.
 
-Similarly, 
+Similarly,
 
 \begin{lstlisting}
     effect_size = power.tt_ind_solve_power(alpha =0.05, power=0.8, nobs1=25)
@@ -230,12 +230,18 @@ Some of the more confusing terms in statistical analysis are \emph{sensitivity} 
   \caption{Relationship between sensitivity, specificity, positive predictive value and negative predictive value. (From: Wikipedia)}\label{fig:sens_spec_diagram}
 \end{figure}
 
-\begin{itemize}
-  \item \textbf{Sensitivity} = proportion of positives that are correctly identified by a test = probability of a positive test, given the patient is ill.
-  \item \textbf{Specificity} = proportion of negatives that are correctly identified by a test = probability of a negative test, given that patient is well.
-  \item \textbf{Positive predictive value} = proportion of patients with positive test results who are correctly diagnosed.
-  \item \textbf{Negative predictive value} = proportion of patients with negative test results who are correctly diagnosed.
-\end{itemize}
+\begin{description}
+  \item[Sensitivity] Proportion of positives that are correctly identified by a test = probability of a positive test, given the patient is ill.
+  \item[Specificity] Proportion of negatives that are correctly identified by a test = probability of a negative test, given that patient is well.
+  \item[Positive Predictive Value (PPV)] Proportion of patients with positive test results who are correctly diagnosed.
+  \item[Negative Predictive Value (NPV)] Proportion of patients with negative test results who are correctly diagnosed.
+\end{description}
+
+For example, \emph{pregnancy tests} have a high sensitivity: when a woman is pregnant, the probability that the test is positive is very high.
+
+In contrast, an indicator for an attack with atomic weapons on the White House should have a very high specificity: if there is no attack, the probability that the test goes on should be very, very small.
+
+\emph{Sensitivity} and \emph{specificity} characerize a test, while \emph{PPV} and \emph{NPV} are the parameters that tell the doctor how to interpret a test result.
 
 While sensitivity and specificity are independent of prevalence, they do not tell us what portion of patients with abnormal test results are truly abnormal. This information is provided by the positive/negative predictive value. However, as Fig. \ref{fig:prevalence} indicates, these values are affected by the \emph{prevalence} \index{general}{prevalence} of the disease. In other words, we need to know the prevalence of the disease as well as the PPV/NPV of a test to provide a sensible interpretation of the test results.
 

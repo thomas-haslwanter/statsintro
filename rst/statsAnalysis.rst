@@ -342,20 +342,31 @@ following diagram shows how the four are related:
 *Relationship between sensitivity, specicity, positive predictive value and negative
 predictive value. (From: Wikipedia)*
 
--  **Sensitivity** = proportion of positives that are correctly
+-  **Sensitivity** Proportion of positives that are correctly
    identified by a test = probability of a positive test, given the
    patient is ill.
 
--  **Specificity** = proportion of negatives that are correctly
+-  **Specificity** Proportion of negatives that are correctly
    identified by a test = probability of a negative test, given that
    patient is well.
 
--  **Positive predictive value** is the proportion of patients with
+-  **Positive predictive value** Proportion of patients with
    positive test results who are correctly diagnosed.
 
--  **Negative predictive value** is the proportion of patients with
+-  **Negative predictive value** Proportion of patients with
    negative test results who are correctly diagnosed.
 
+For example, *pregnancy tests* have a high sensitivity: when a woman is
+pregnant, the probability that the test is positive is very high.
+
+In contrast, an indicator for an attack with atomic weapons on the White
+House should have a very high specificity: if there is no attack, the
+probability that the test goes on should be very, very small.
+
+*Sensitivity* and *specificity* characerize a test, while *PPV* and
+*NPV* are the parameters that tell the doctor how to interpret a test
+result.
+ 
 While sensitivity and specificity are independent of prevalence, they do
 not tell us what portion of patients with abnormal test results are
 truly abnormal. This information is provided by the positive/negative
