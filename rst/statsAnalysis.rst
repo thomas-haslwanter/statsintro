@@ -27,10 +27,25 @@ The first thing you have to do in your data analysis is simply *inspect your dat
 Outliers
 ^^^^^^^^
 
-While there is no unique definition of *outliers*, they are often defined as data that lie either more than 1.5*IQR (inter-quartile range), or more than 2 standard deviations, from the mean corresponding data value. Outliers often fall in one of two groups: they are either caused by mistakes in the recording, in which case they should be excluded; or they constitute very important and valuable data points, in which case they have to be included in the data analysis. To decide which of the two is the case, you have to check the underlying raw data (for saturation or invalid data values), and the protocols from your experiments (for mistakes that may have occurred during the recording). If you find an underlying problem, then - and only then - may you eliminate the outliers from the analysis. In every other case, you have to keep them!
+.. index:: outliers
+
+While there is no unique definition of *outliers*, they are often defined as
+data that lie either more than 1.5*IQR (inter-quartile range), or more than
+2 standard deviations, from the mean corresponding data value. Outliers
+often fall in one of two groups: they are either caused by mistakes in the
+recording, in which case they should be excluded; or they constitute very
+important and valuable data points, in which case they have to be included
+in the data analysis. To decide which of the two is the case, you have to
+check the underlying raw data (for saturation or invalid data values), and
+the protocols from your experiments (for mistakes that may have occurred
+during the recording). If you find an underlying problem, then - and only
+then - may you eliminate the outliers from the analysis. In every other
+case, you have to keep them!
 
 Normality Check
 ~~~~~~~~~~~~~~~
+
+.. index:: normality Check
 
 Statistical hypothesis tests can be grouped into *parametric tests* and *non-parametric tests*. Parametric tests assume that the data can be well described by a distribution that is defined by one or more parameters, in most cases by a normal distribution. For the given data set, the best-fit parameters for this distribution are then determined, together with their confidence intervals, and interpreted.
 
@@ -45,6 +60,8 @@ Here we will focus on tests for normality. Again, you should start out with a vi
 
 QQ-plots
 ^^^^^^^^
+
+.. index:: QQ-plot
 
 In statistics, *QQ`plots* ("Q" stands for quantile)
 are used for visual assessments of distributions. They are a graphical
@@ -75,6 +92,8 @@ In Python, the plot can be generated with the command
 
 Hypothesis Tests for Normality
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: normality tests
 
 Tests to evaluate normality or a specific distribution can be broadly divided into two categories:
 
@@ -107,6 +126,8 @@ tail: such data can often be made normal by applying a *log transform*.
 
 Hypothesis tests
 ----------------
+
+.. index:: hypothesis tests
 
 Statistical evaluations are based on the initially
 often counterintuitive procedure of *hypothesis tests*. A hypothesis
@@ -151,6 +172,8 @@ In hypothesis testing, two types of errors can occur:
 Type I errors
 ^^^^^^^^^^^^^
 
+.. index:: error-Type 1 
+
 These are errors, where you get a significant result despite the fact
 that the hypothesis is true. The likelihood of a Type I error is
 commonly indicated with :math:`\alpha`, and *is set before you start the
@@ -170,6 +193,8 @@ error*.
 
 Type II errors and Test Power
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: error-Type 2
 
 If we want to answer the question "How much chance do we have to reject
 the null hypothesis when the alternative is in fact true?" Or in other
@@ -191,6 +216,8 @@ test, you need an alternative hypothesis.
 
 Sample Size
 ~~~~~~~~~~~
+
+.. index:: sample size
 
 The power of a statistical test depends on four factors:
 
@@ -332,6 +359,10 @@ but it did happen anyway.
 Sensitivity and Specificity 
 -----------------------------
 
+.. index:: sensitivity
+
+.. index:: specificity
+
 Some of the more confusing terms in statistical analysis are
 *sensitivity* and *specificity* . A related topic are *positive
 predictive value (PPV)* and *negative predictive value (NPV)* . The
@@ -415,6 +446,9 @@ specificity).
 
 ROC Curves
 -----------
+
+.. index:: ROC curves
+
 Closely related to *Sensitivity* and *Specificity* is the *receiver operating characteristic (ROC)* curve. This is a graph displaying the relationship between the true positive rate (on the vertical axis) and the false positive rate (on the horizontal axis). The technique comes from the field of engineering, where it was developed to find the predictor which best discriminates between two given distributions. In the ROC-curve (see figure below) this point is given by the value with the largest distance to the diagonal.
 
 

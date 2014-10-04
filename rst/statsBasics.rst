@@ -7,6 +7,10 @@
 Population and samples
 ----------------------
 
+.. index:: popution
+
+.. index:: samples
+
 While the whole *population* of a group has certain characteristics, we
 can typically never measure all of them. Instead, we have to confine
 ourselves to investigate a representative *sample* of this group, and
@@ -23,8 +27,12 @@ datatypes:
 Categorical 
 ~~~~~~~~~~~
 
+.. index:: datatypes-categorical
+
 boolean 
 ^^^^^^^
+
+.. index:: datatypes-boolean
 
 Some data can only have two values. For example,
 
@@ -35,17 +43,23 @@ Some data can only have two values. For example,
 nominal 
 ^^^^^^^
 
+.. index:: datatypes-nominal
+
 Many classifications require more than two categories, e.g. *married /
 single / divorced*
 
 ordinal 
 ^^^^^^^
 
+.. index:: datatypes-ordinal
+
 These are ordered categorical data, e.g. *very few / few / some / many
 / very many*
 
 Numerical 
 ~~~~~~~~~
+
+.. index:: datatypes - numerical
 
 Numerical discrete 
 ^^^^^^^^^^^^^^^^^^^^
@@ -72,6 +86,8 @@ patterns in visually represented data.
 Scatter Plots 
 ~~~~~~~~~~~~~
 
+.. index:: plots-scatterplot
+
 This is the simplest way of representing your data: just plot each
 individual data point. (In cases where many data points are superposed,
 you may want to add a little bit of jitter to show each data point.)
@@ -80,6 +96,8 @@ you may want to add a little bit of jitter to show each data point.)
 
 Histograms 
 ~~~~~~~~~~~~
+
+.. index:: plots-histogram
 
 *Histograms* provide a first good overview of the distribution of your
 data. If you divide by the overall number of data points, you get a
@@ -90,6 +108,8 @@ points of each bin, you obtain a *relative frequency polygon*.
 
 KDE Plots
 ~~~~~~~~~
+
+.. index:: plots-KDE-plot
 
 For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident compared to the discreteness of the histogram, as kernel density estimates converge faster to the true underlying density for continuous random variables.
 
@@ -115,6 +135,8 @@ where :math:`\hat{\sigma}` is the standard deviation of the samples.
 Cumulative Frequencies 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: cumulative frequencies
+
 *Cumulative frequency* curves indicate the number (or percent) of data
 with less than a given value. This is important for the statistical
 analysis (e.g. when we want to know the data range containing 95% of all
@@ -130,6 +152,8 @@ has the additional advantage that it is bounded:
 
 Box Plots 
 ~~~~~~~~~~~
+
+.. index:: plots-boxplot
 
 *Box plots* are frequently used in scientific publications to indicate
 values in two or more groups. The error bars typically indicate the
@@ -150,6 +174,8 @@ Boxplots are often combined with KDE-plots to produce so-called
 
 *Violinplot, produced with the Python package "seaborn".*
 
+.. index:: plots-violinplot
+
 Programs: Data Display 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 |ipynb| `20_figs_BasicPrinciples.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/20_figs_BasicPrinciples.ipynb>`_
@@ -157,6 +183,8 @@ Programs: Data Display
 
 Study Design 
 --------------
+
+.. index:: study design
 
 To design a medical study properly is not only advisable - it is even
 required by ISO 14155-1:2003, for *Clinical investigations of medical
@@ -184,6 +212,10 @@ Types of Studies
 Observational or experimental 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: studies-observational
+
+.. index:: studies-experimental
+
 With *observational* studies the researcher only collects information,
 but does not interact with the study population. In contrast, in
 *experimental* studies the researcher deliberately influences events
@@ -193,12 +225,20 @@ the effects of these interventions.
 Prospective or retrospective 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: studies-prospective
+
+.. index:: studies-retrospective
+
 In *prospective* studies the data are collected, starting with the
 beginning of the study. In contrast, a *retrospective* study takes data
 acquired from previous events, e.g. routine tests taken at a hospital.
 
 Longitudinal or cross-sectional 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: studies-longitudinal
+
+.. index:: studies-cross-sectional
 
 In *longitudinal* investigations, the researcher collects information
 over a period of time, maybe multiple times from each patient. In
@@ -208,6 +248,10 @@ usually longitudinal.
 
 Case control and Cohort studies 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: studies-case-control
+
+.. index:: studies-cohort
 
 In *case control* studies, first the patients are treated, and then they
 are selected for inclusion in the study, based on some characteristic
@@ -221,6 +265,8 @@ Design of Experiments
 
 Bias 
 ^^^^^^
+
+.. index:: bias
 
 In general, when selecting our subject you try to make them
 representative of the population that you want to study; and you try to
@@ -240,6 +286,8 @@ Care should be taken to avoid bias as much as possible.
 
 Randomized controlled trial 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: randomization
 
 The gold standard for experimental scientific clinical trials is the
 *randomized controlled trial*. Thereby bias is avoided by splitting the
@@ -268,6 +316,8 @@ group assignment.
 Simple randomization
 ''''''''''''''''''''
 
+.. index:: randomization-simple
+
 This procedure is robust against selection and accidental bias. The
 disadvantage is that the resulting groupsize can differ significantly.
 
@@ -276,6 +326,8 @@ number in each group. To achieve this, other options are possible:
 
 Block randomization
 '''''''''''''''''''
+
+.. index:: randomization-block
 
 This is used to keep the number of subjects in the different groups
 closely balanced at all times. For example, if you have two types of
@@ -302,6 +354,8 @@ group always almost equal.
 Minimization
 ''''''''''''
 
+.. index:: minimization
+
 A closely related, but not completely random way to allocate a treatment
 is *minimization*. Thereby you take whichever treatment has the smallest
 number of subjects, and allocate this treatment with a probability
@@ -309,6 +363,8 @@ greater than 0.5 to the next patient.
 
 Stratified randomization
 ''''''''''''''''''''''''
+
+.. index:: randomization-stratified
 
 Sometimes you may want to include a wider variety of subjects, with
 different characteristics. For example, you may choose to have younger
@@ -320,6 +376,8 @@ subjects.
 Crossover studies 
 ^^^^^^^^^^^^^^^^^^^
 
+.. index:: crossover studies
+
 An alternative to randomization is the *crossover* design of studies. A
 crossover study is a longitudinal study in which subjects receive a
 sequence of different treatments. Every subject receives every
@@ -328,6 +386,8 @@ allocation should be randomized.
 
 Blinding 
 ^^^^^^^^^^
+
+.. index:: blinding
 
 Consciously or not, the experimenter can significantly influence the outcome
 of an experiment. For example, a young researcher with a new "brilliant"
@@ -347,6 +407,8 @@ repetitions of each measurement.
 Sample selection 
 ^^^^^^^^^^^^^^^^^^
 
+.. index:: sample selection
+
 When selecting your subjects, you should take care of two points:
 
 #. Make sure that the samples are representative of the population.
@@ -360,6 +422,8 @@ health problems.
 
 Sample size 
 ^^^^^^^^^^^^^
+
+.. index:: sample size
 
 Many studies fail, because the sample size is too small to observed an
 effect of the desired magnitude. To plan your sample size, you have to
@@ -415,6 +479,8 @@ your data analysis afterwards.
 
 Clinical Investigation Plan 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: clinical investigation plan
 
 To design a medical study properly is not only advisable - it is even
 required by ISO 14155-1:2003, for *Clinical investigations of medical

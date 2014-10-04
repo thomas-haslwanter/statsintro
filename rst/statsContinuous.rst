@@ -9,6 +9,8 @@ Distribution of a Sample Mean
 One sample t-test for a mean value
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: tests-T-test, one sample
+
 To check the mean value of normally distributed data against a reference
 value, we typically use the *one sample t-test*, which is based on the
 *t-distribution*.
@@ -50,6 +52,8 @@ Since it is very important to understand the basic principles of how we arrive a
 
 Wilcoxon signed rank sum test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: tests-Wilcoxon signed rank sum
 
 If our data are not normally distributed, we cannot use the t-test
 (although this test is fairly robust against deviations from normality).
@@ -104,6 +108,8 @@ Subject Daily energy intake (kJ) Difference from 7725 kJ Ranks of differences
 Comparison of Two Groups
 ------------------------
 
+.. index:: tests-T-test, unpaired
+
 When you compare two groups with each other, we have to distinguish
 between two cases. In the first case, we compare two values recorded
 from the same subject at two specific times. For example, we measure the
@@ -137,6 +143,8 @@ indicates the *standard error*.
 Non-parametric Comparison of Two Groups: Mann-Whitney Test 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: tests-Mann-Whitney
+
 If the measurement values from the two groups are not normally
 distributed we have to resort to a non-parametric test. The most common
 test for that is the *Mann-Whitney(-Wilcoxon) test*.
@@ -154,6 +162,8 @@ Comparison of More Groups
 
 Analysis of Variance 
 ~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: tests-ANOVA, one-way
 
 The idea behind the *ANalysis Of VAriance (ANOVA)* is to divide the variance into
 the variance *between* groups, and that *within* groups, and see if those
@@ -270,6 +280,8 @@ to get there.
 Multiple Comparisons
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: multiple comparisons
+
 The Null hypothesis in a one-way ANOVA is that the means of all the samples are the same. So if a one-way ANOVA yields a significant result, we only know that they are
 *not* the same.
 
@@ -285,6 +297,8 @@ since we perform multiple comparison tests, we should compensate for the risk of
 
 Tukey's Test
 ^^^^^^^^^^^^
+
+.. index:: tests-Tukey's
 
 *Tukey's test*, sometimes also referred to as the *Tukey Honest Significant Difference (HSD) method*, controls for the Type I error rate across multiple comparisons and is generally considered an acceptable technique. It is based on a formula very similar to that of the t-test. In fact, Tukey's test is essentially a t-test, except that it corrects for multiple comparisons.
 
@@ -307,6 +321,8 @@ Note that the studentized range statistic is the same as the t-statistic except 
 Bonferroni correction 
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: Bonferroni correction
+
 Tukey's studentized range test (HSD) is a test specific to the comparison of all pairs of k independent samples. Instead we can run t-tests on all pairs, calculate the p-values and apply one of the p-value corrections for multiple testing problems. The simplest - and at the same time quite conservative - approach is to divide the required p-value by the number of tests that we do (*Bonferroni correction*). For example, if you perform 4 comparisons, you check for significance not at *p=0.05*, but at *p=0.0125*.
 
 While multiple testing is not yet included in Python standardly, you can
@@ -325,6 +341,8 @@ package:
 
 Kruskal-Wallis test 
 ~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: tests-Kruskal-Wallis
 
 When we compare two groups to each other, we use the *t-test* when the
 data are normally distributed and the non-parametric *Mann-Whitney

@@ -26,6 +26,8 @@ ordered data* we can use rank order methods for the analysis:
 Binomial Test
 ~~~~~~~~~~~~~
 
+.. index:: tests-binomial
+
 Example
 ^^^^^^^
 

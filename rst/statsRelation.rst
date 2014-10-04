@@ -13,8 +13,12 @@ have to use a technique known as *Analysis of Variance (ANOVA)*.
 Correlation
 -----------
 
+.. index:: correlation
+
 Correlation Coefficient
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: correlation coefficient
 
 If the two variables are normally distributed, the standard measure of
 determining the *correlation coefficient*, often ascribed to *Pearson* ,
@@ -41,6 +45,8 @@ Pearson's correlation coefficient, sometimes also referred to as *population cor
 
 Coefficient of determination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: coefficient of determination
 
 The *coefficient of determination*  or :math:`R^2` is the square of the correlation. It is easier to interpret than the correlation coefficient r: Values of :math:`R^2` close to 1 are good, values close to 0 are poor. To explain the interpretation of :math:`R^2`, let us look at the math more formally:
 
@@ -105,6 +111,8 @@ coefficient is undefied because the variance of Y is zero. (From: Wikipedia)*
 Rank correlation 
 ~~~~~~~~~~~~~~~~~~
 
+.. index:: rank correlation
+
 If the data distribution is not normal, a different approach is
 necessary. In that case one can rank the set of subjects for each
 variable and compare the orderings. There are two commonly used methods
@@ -123,8 +131,12 @@ of calculating the rank correlation.
 Regression
 ----------
 
+.. index:: regression
+
 General linear regression model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: regression-linear
 
 We can use the method of *regression* when we want to predict the value
 of one variable from the other.
@@ -178,6 +190,8 @@ the y-value.
 
 Design Matrix
 ~~~~~~~~~~~~~
+
+.. index:: design matrix
 
 Quadratic Fit
 ^^^^^^^^^^^^^

@@ -22,11 +22,15 @@ group, and estimate the properties of the population from this sample.
 Continuous Distribution Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: distributions-continuous
+
 A continuous distribution function describes the distribution of a
 population, and can be represented in several equivalent ways:
 
 Probability Density Function (PDF)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: probability density function (PDF)
 
 The PDF, or density of a continuous random variable, is a function that
 describes the relative likelihood for a random variable :math:`X` to
@@ -51,6 +55,8 @@ properties:
 Cumulative Distribution Function (CDF)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: cumulative distribution function (CDF)
+
 The probability to find a value between :math:`a` and :math:`b` is given
 by the integral over the PDF in that range (see Fig. [fig:PDF]), and the
 *Cumulative Distribution Function* tells you for each value which percentage
@@ -66,6 +72,10 @@ us
 
 Other important presentations of Probability Densities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: survival function
+
+.. index:: percentile point function
 
 The Figure :ref:`fig-DistributionFunctions` shows a number of functions are
 commonly used to select appropriate points a distribution function:
@@ -102,6 +112,8 @@ Distribution Center
 Mean 
 ^^^^^^
 
+.. index:: mean
+
 By default, when we talk about the *mean value* we mean the *arithmetic
 mean* :math:`\bar{x}`:
 
@@ -110,6 +122,8 @@ mean* :math:`\bar{x}`:
 Median 
 ^^^^^^^^
 
+.. index:: median
+
 The *median* is that value that comes half-way when the data are ranked
 in order. In contrast to the mean, it is not affected by outlying data
 points.
@@ -117,11 +131,15 @@ points.
 Mode 
 ^^^^^^
 
+.. index:: mode value
+
 The *mode* value is the most frequently occurring value in a
 distribution.
 
 Geometric Mean 
 ^^^^^^^^^^^^^^^^
+
+.. index:: mean-geometric
 
 In some situations the *geometric mean* can be useful to describe the
 location of a distribution. It is usually close to the median, and can
@@ -132,6 +150,8 @@ Quantifying Variability
 
 Range 
 ^^^^^^^
+
+.. index:: range
 
 This one is fairly easy: it is the difference between the highest and
 the lowest data value. The only thing that you have to watch out for:
@@ -145,6 +165,10 @@ quartile (see below).
 
 Percentiles 
 ^^^^^^^^^^^^
+
+.. index:: percentiles
+
+.. index:: quartiles
 
 The *Cumulative distribution function (CDF)* tells you for each value which percentage of the data has
 a lower value (Figure :ref:`fig-DistributionFunctions`). The value below which a given percentage of
@@ -167,6 +191,10 @@ plots.
 
 Standard Deviation and Variance 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: standard deviation
+
+.. index:: variance
 
 The *variance* (SD) of a distribution is defined as
 
@@ -216,6 +244,8 @@ have to set "ddof=1" to obtain the variance for "n-1":
 Standard Error 
 ^^^^^^^^^^^^^^^^
 
+.. index:: standard error
+
 While the standard deviation is a good measure for the distribution of
 your values, often you are more interested in the distribution of the
 mean value. For example, when you measure the response to a new
@@ -233,6 +263,8 @@ For the *sample standard error of the mean*, which is the one you will be workin
 
 Confidence Intervals
 ^^^^^^^^^^^^^^^^^^^^
+
+.. index:: confidence intervales
 
 The most informative parameter that you can give for a statistical variable is arguably its \emph{confidence interval}. The confidence interval reports the range that contains the true value for your parameter with a likelihood of :math:`\alpha`\%.
 
@@ -292,6 +324,8 @@ constants.
 Skewness
 ^^^^^^^^
 
+.. index:: skewneww
+
 Distributions are *skewed* if they depart from symmetry. For example, if you
 have a measurement that cannot be negative, which is usually the case, then
 we can infer that the data have a skewed distribution if the standard
@@ -307,6 +341,8 @@ deviation is more than half the mean. Such an asymmetry is referred to as
 Kurtosis
 ^^^^^^^^
 
+.. index:: kurtosis
+
 Kurtosis is any measure of the "peakedness" of the probability distribution.
 Distributions with negative or positive excess kurtosis are called
 platykurtic distributions or leptokurtic distributions respectively.
@@ -321,6 +357,8 @@ platykurtic distributions or leptokurtic distributions respectively.
 Distribution Functions
 ----------------------
 
+.. index:: statistic
+
 The variable for a standardized distribution function is often called
 *statistic*. So you often find expressions like "the z-statistic" (for
 the normal distribution function), the "t-statistic" (for the
@@ -331,6 +369,10 @@ Probability and Samples
 
 Normal Distribution
 ~~~~~~~~~~~~~~~~~~~
+
+.. index:: distribution-normal
+
+.. index:: distribution-Gaussian
 
 The *Normal distribution* or *Gaussian distribution* is by far the most
 important of all the distribution functions. This is due to the fact
@@ -422,6 +464,8 @@ that step:
 Central Limit Theorem 
 ~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: central limit theorem
+
 The central limit theorem states that for identically distributed
 independent random variables (also referred to as *random variates*),
 the mean of a sufficiently large number of these variables will be
@@ -480,6 +524,8 @@ In the following, we will describe these distributions in more detail.
 t Distribution
 ^^^^^^^^^^^^^^
 
+.. index:: distribution-T
+
 For a small number of samples (ca *<10*) from a normal
 distribution, the distribution of the mean deviates slightly from the
 normal distribution. The reason is that the sample mean does not
@@ -526,6 +572,8 @@ distribution.*
 Chi-square Distribution
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: distribution-chi2
+
 The *Chi-square distribution* is related to normal distribution in a
 simple way: If a random variable :math:`X` has a normal distribution
 (:math:`X \in N(0,1)`), then :math:`X^2` has a chi-square distribution,
@@ -568,6 +616,8 @@ standard deviation.
 
 F Distribution
 ^^^^^^^^^^^^^^
+
+.. index:: distribution-F
 
 Named after Sir Ronald Fisher, who developed the F distribution for use
 in determining critical values in ANOVAs (*ANalysis Of VAriance*). The
@@ -641,6 +691,8 @@ reject the hypothesis that the two methods have the same precision.
 Lognormal Distribution
 ^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: distribution-lognormal
+
 In some circumstances a set of data with a positively skewed
 distribution can be transformed into a symmetric distribution by taking
 logarithms. Taking logs of data with a skewed distribution will often
@@ -657,6 +709,8 @@ Plotted against a logarithmic abscissa.
 
 Weibull Distribution
 ^^^^^^^^^^^^^^^^^^^^
+
+.. index:: distribution-Weibull
 
 The Weibull distribution is the most commonly used distribution for modeling reliability data or "survival" data. It has two parameters, which allow it to handle increasing, decreasing or constant failure-rates (see Figure below).
 It is defined as
@@ -691,6 +745,8 @@ In the field of materials science, the shape parameter k of a distribution of st
 Exponential Distribution
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: distribution-exponential
+
 For a stochastic variable X with an *exponential distribution*, the
 probability distribution function is:
 
@@ -711,6 +767,8 @@ The exponential PDF is shown in the figure below
 
 Uniform Distribution
 ^^^^^^^^^^^^^^^^^^^^
+
+.. index:: distribution-uniform
 
 This is a simple one: an even probability for all data values (see Figure
 below). Not very common for real data.
@@ -735,12 +793,16 @@ Working with distribution functions in Python takes a bit to get used to. But on
 Discrete Distributions
 ~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: distributions-discrete
+
 While the functions describing continuous distributions are referred to
 as *probability distribution functions*, discrete distributions are
 described by *probability mass functions*.
 
 Binomial Distribution
 ^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: distributions-binomial
 
 The Binomial is associated with the question "Out of a given number of
 trials, how many will succeed?" Some example questions that are modeled
@@ -785,6 +847,8 @@ For *n* trials, we have the following properties:
 
 Poisson Distribution
 ^^^^^^^^^^^^^^^^^^^^
+
+.. index:: distributions-Poisson
 
 Any French speaker will notice that "Poisson" means "fish", but really
 there's nothing fishy about this distribution. It's actually pretty

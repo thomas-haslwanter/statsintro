@@ -43,6 +43,8 @@ to as *multiple linear regression*.
 Two-way ANOVA
 -----------------
 
+.. index:: ANOVA-two-way
+
 Compared to one-way ANOVAs (see :ref:`one-way ANOVAs`), the analysis with
 two-way ANOVAs has a new element. We can look not only if each of the factors is
 significant; we can also check if the *interaction* of the factors has a
@@ -68,6 +70,8 @@ Example: two-way ANOVA
 
 Multilinear Regression 
 ------------------------
+
+.. index:: regression-multilinear
 
 If you have truly independent variables, *multilinear regression* is a
 straightforward extension of the simple linear regression.

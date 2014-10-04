@@ -4,6 +4,8 @@
 .. Analysis of Survival Times
 .. ==========================
 
+.. index:: survival times
+
 When analyzing survival times, different problems come up than the ones
 discussed so far. One question is how do we deal with subjects dropping
 out of a study. For example, assume that we test a new cancer drug.
@@ -17,6 +19,8 @@ Survival Probabilities
 
 Kaplan-Meier survival curve
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: Kaplan-Meier survival curve
 
 A clever way to deal with these problems is described in detail in .
 First, the time is subdivided into small periods. Then the likelihood is

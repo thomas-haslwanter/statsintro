@@ -146,6 +146,8 @@ Programming Matters
 Python
 ~~~~~~
 
+.. index:: Python
+
 There are three reasons why I have decided to use Python for this
 lecture.
 
@@ -225,6 +227,8 @@ in addition to the Python standard library:
 IPython
 ^^^^^^^
 
+.. index:: IPython
+
 Make sure that you have a good programming environment! Currently, my
 favorite way of programming is similar to my old Matlab style: I first get
 the individual steps worked out interactively in `ipython
@@ -253,6 +257,12 @@ these things:
 
 Matplotlib, pylab, and pyplot: how are they related?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: Matplotlib
+
+.. index:: pylab
+
+.. index:: pyplot
 
 **Matplotlib** is the whole package; *pylab* is a Matlab-like module in matplotlib that gets installed alongside matplotlib; and *matplotlib.pyplot* is a module in matplotlib.
 
@@ -373,6 +383,9 @@ shows you how to get started with the Python.
 
 Pandas
 ~~~~~~
+
+.. index:: pandas
+
 `pandas <http://pandas.pydata.org/>`_ is a Python module which provides suitable data structures for
 statistical analysis. It significantly enhances the abilities of Python for
 data input, data organization, and data manipulation. In the following, I assume
@@ -535,6 +548,8 @@ it with *statsmodels* (see below).
 Statsmodels
 ~~~~~~~~~~~
 
+.. index:: statsmodels
+
 `statsmodels <http://statsmodels.sourceforge.net/>`_ is a Python module that
 provides classes and functions for the estimation of many different
 statistical models, as well as for conducting statistical tests, and
@@ -559,6 +574,8 @@ The following piece of code shows you how shows you how the combination of panda
 
 Seaborn
 ~~~~~~~
+
+.. index:: seaborn
 
 is a Python visualization library based on matplotlib. Its primary goal
 is to provide a concise, high-level interface for drawing statistical
