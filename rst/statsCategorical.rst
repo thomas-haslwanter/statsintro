@@ -4,6 +4,8 @@
 .. Tests on Categorical Data 
 .. ==========================
 
+.. index:: categorical data
+
 In a sample of individuals the number falling into a particular group is
 called the *frequency*, so the analysis of categorical data is the
 analysis of frequencies. When two or more groups are compared the data
@@ -106,6 +108,8 @@ female students will eventually die from this disease.
 Frequency Tables
 ----------------
 
+.. index:: frequency tables
+
 If your data can be organized in a set of categories, and they are given as *frequencies*, i.e. the total number of samples in each category (not as percentages), the tests described in this section are appropriate for your data analysis.
 
 Many of these tests analyze the *deviation from an expected value*. Since the chi-square distribution characterizes the variability of data (in other words, their deviation from a mean value), many of these tests refer to this distribution, and are accordingly termed *chi-square tests*.
@@ -126,6 +130,8 @@ simple index running from :math:`1,...,I` or even a multiindex
 
 One-way Chi-square Test
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: tests-chi-square, one-way
 
 For example, assume that you go hiking with your friends. Every evening, you draw lots who has to do the washing up.
 But at the end of the trip, you seem to have done most of the work:
@@ -152,6 +158,8 @@ In other words, you doing a lot of the washing up really could have been by chan
 
 Chi-square Contingency Test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: tests-chi-square, contingency
 
 If you can arrange your data in rows and columns, you can check if the numbers in the individual columns are contingent on the row value. For this reason, this test is sometimes called *contingency test*.
 
@@ -249,6 +257,8 @@ tests.
 
 Fisher's Exact Test
 ~~~~~~~~~~~~~~~~~~~
+
+.. index:: tests-Fisher's Exact Test
 
 If the requirement that 80% of cells should have expected values of at least
 5 is not fulfilled, *Fisher's exact test* should be used. This test is based
@@ -353,6 +363,8 @@ The test described above is known as "Fisher's exact test."
 McNemar's Test
 ~~~~~~~~~~~~~~
 
+.. index:: tests-McNemar
+
 Although the McNemar test bears a superficial resemblance to a test of
 categorical association, as might be performed by a 2x2 chi-square test or
 a 2x2 Fisher exact probability test, it is doing something quite different.
@@ -425,6 +437,8 @@ hypothesis of no treatment effect.
 
 Cochran's Q Test
 ~~~~~~~~~~~~~~~~
+
+.. index:: tests-Cochran's Q test
 
 Cochran's Q test is a hypothesis test where the response variable can take
 only two possible outcomes (coded as 0 and 1). It is a non-parametric

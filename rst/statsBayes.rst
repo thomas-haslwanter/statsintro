@@ -3,6 +3,8 @@
 
 .. Bayesian Statistics
 
+.. index:: Bayesian statistics
+
 Bayesian vs. Frequentist Interpretation
 ---------------------------------------
 

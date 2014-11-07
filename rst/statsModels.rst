@@ -3,6 +3,8 @@
 
 .. Statistical Models
 
+.. index:: modeling-statistical
+
 There is a substantial difference in approach between *hypothesis
 tests* and *statistical modeling*. In
 the former case, you typically start out with a *null hypothesis*.
@@ -54,6 +56,8 @@ Design Matrix
 
 Definition
 ^^^^^^^^^^
+
+.. index:: design matrix
 
 A very general definition of a regression model is the following:
 
@@ -421,6 +425,8 @@ value is defined as
 The *adjusted* :math:`R^2` Value
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: R2-value, adjusted
+
 Many researchers prefer the adjusted :math:`\bar{R}^2` value (Eq
 [eq:adjustedR2]), which is penalized for having a large number of
 parameters in the model:
@@ -452,6 +458,8 @@ so
 
 The F-test
 ^^^^^^^^^^
+
+.. index:: tests-F
 
 If :math:`t_1, t_2, ... , t_m` are independent, :math:`N(0, \sigma^2)`
 random variables, then :math:`\sum_{i=1}^m \frac{t_i^2}{\sigma^2}` is a
@@ -524,6 +532,8 @@ observed.
 Log-Likelihood Function
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: maximum likelihood estimation
+
 A very common approach in statistics is the idea of *Maximum Likelihood*
 estimation. The basic idea is quite different from the *minimum square*
 approach: there, the model is constant, and the errors of the response
@@ -573,6 +583,10 @@ We can calculate this in Python as follows:
 
 Information Content of Statistical Models - AIC and BIC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: Akaike Information Criterion (AIC)
+
+.. index:: Bayesian Information Criterion (BIC)
 
 To judge the quality of your model, you should first visually inspect
 the residuals. In addition, you can also use a number of numerical
@@ -841,6 +855,8 @@ implementation would be,
 Omnibus Test
 ^^^^^^^^^^^^
 
+.. index:: tests-omnibus
+
 The Omnibus test uses skewness and kurtosis to test the null hypothesis
 that a distribution is normal. In this case, we’re looking at the
 distribution of the residual. If we obtain a very small value for
@@ -862,6 +878,8 @@ test should pick it up.
 Durbin-Watson
 ^^^^^^^^^^^^^
 
+.. index:: tests-Durbin-Watson
+
 The Durbin-Watson test is used to detect the presence of autocorrelation
 (a relationship between values separated from each other by a given time
 lag) in the residuals. Here the lag is one.
@@ -877,6 +895,8 @@ lag) in the residuals. Here the lag is one.
 
 Jarque-Bera Test
 ^^^^^^^^^^^^^^^^
+
+.. index:: tests-Jarque-Bera
 
 The Jarque-Bera test is another test that considers skewness (S), and
 kurtosis (K). The null hypothesis is that the distribution is normal,
@@ -902,7 +922,9 @@ with two degrees of freedom we have,
 Condition Number
 ^^^^^^^^^^^^^^^^
 
-The *condition number* measures the sensitivity of a function’s output
+.. index:: condition number
+
+The *condition number* measures the sensitivity of a function's output
 to its input. When two predictor variables are highly correlated, which
 is called multicollinearity, the coefficients or factors of those
 predictor variables can fluctuate erratically for small changes in the
@@ -985,6 +1007,8 @@ They might signify a new trend, or some possibly catastrophic event.
 
 Regression Using Sklearn
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: scikit-learn
 
 `*Scikit-learn (sklearn)* <http://scikit-learn.org/>`__ is an open
 source machine learning library for the Python programming language. It
@@ -1279,6 +1303,8 @@ design.
 
 Bootstrapping
 -------------
+
+.. index:: bootstraping
 
 Another type of modelling is *bootstrapping*/. Sometimes you have data
 describing a distribution, but do not know what type of distribution it
