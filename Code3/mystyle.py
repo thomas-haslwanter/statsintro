@@ -36,7 +36,7 @@ def set(fs=18):
     matplotlib.rc('legend', **legend)
     matplotlib.rc( 'figure', **figure)
     
-def printout(outFile, xlabel = '', ylabel='', title='', outDir = 'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'):
+def printout(outFile, xlabel = '', ylabel='', title='', outDir = '..\Images'):
     '''Save the current figure to a file, and then display it'''
     
     plt.xlabel(xlabel)
@@ -58,7 +58,7 @@ def printout(outFile, xlabel = '', ylabel='', title='', outDir = 'C:\Users\p2052
     plt.show()
     plt.close()
 
-def printout_plain(outFile, outDir = 'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\Images'):
+def printout_plain(outFile, outDir = '..\Images'):
     '''Save a figure with subplots to a file, and then display it'''
     
     saveTo = os.path.join(outDir, outFile)

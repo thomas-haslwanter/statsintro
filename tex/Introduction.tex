@@ -21,7 +21,7 @@ Statistics was originally invented - as so many other things - by the famous mat
 \begin{itemize}
     \item \url{http://www.statsref.com/}
     \item \url{http://www.vassarstats.net/}
-    \item \url{http://udel.edu/~mcdonald/statintro.html}
+    \item \url{http://www.biostathandbook.com/}
     \item \url{http://onlinestatbook.com/2/index.html}
 \end{itemize}
 
@@ -44,48 +44,9 @@ Statistics will help you to
 
 Without statistics, your interpretation of your data can be massively flawed. Take for example the estimated number of German tanks during World War II, also known as the \emph{German tank problem} (\url{http://en.wikipedia.org/wiki/German_tank_problem}): from standard intelligence data, the estimate for the number of German tanks produced per month was $1550$; in contrast, the statistical estimate from the tanks observed led to a number of $327$, which was very close to the actual production number of $342$.
 
-\section{What you should already know}
+\chapter{Python}
 
-From previous courses on math, quality control, signal analysis, etc., you are probably already familiar with a number of statistical concepts. While they will be dealt with in detail later on, let me list them here to make sure we start at the same level:
-
-\begin{itemize}
-  \item mean
-  \item median
-  \item mode
-  \item standard deviation
-  \item variance
-  \item confidence intervals
-  \item t-test
-  \item boxplot
-  \item normal distribution
-  \item regression coefficient
-  \item coefficient of determination
-\end{itemize}
-
-\section{Projects}
-
-The biggest problems in statistics do \emph{not} arise from a faulty analysis, but from a faulty experimental design. If you have a suitable topic of interest, you can select to do a project instead of the final exam. For this you will have to
-
-\begin{enumerate}
-  \item Read up on the problem.
-  \item Design the study:
-
-  \begin{enumerate}
-    \item Determine the parameter to analyze.
-    \item Decide on the requirements of the sample population.
-    \item Plan the randomization.
-    \item Decide which test you want to use for the analysis.
-  \end{enumerate}
-
-  \item Analyze some data.
-  \item Generate the appropriate graphs.
-  \item Write up a summary of your project.
-\end{enumerate}
-
-\section{Programming Matters}
-
-\subsection{Python}
-
+\section{Getting Started}
 
 There are three reasons why I have decided to use Python for this lecture.
 
@@ -96,70 +57,231 @@ There are three reasons why I have decided to use Python for this lecture.
 \end{enumerate}
 
 I have not seen many books on Python that I really liked. My favorite introductory book is \cite{Harms2010}.
-A good free book, which introduces Python with a focus on statistics, is \href{http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf} {"Introduction to Python for Econometrics, Statistics and Data Analysis", by Kevin Sheppard, Oxford University}.
 
-In general, I suggest that you start out by installing a Python distribution which includes the most important libraries. Since I suggest that you use Python $>3.3$ for this course, \cite{pythonxy} (which comes complete with help) is currently not an option, since it is only available for Python 2.7. All the Python packages required for this course are now available for Python 3, so I don't see a good reason to stay with Python 2.7 . My favorites Python 3.3 distributions  are
+There are also many tutorials available on the internet (see links below). Personally, most of the time I just google; thereby I stick primarily a) to the official pages, and b) to \url{http://stackoverflow.com/}. Also, I have found user groups surprisingly active and helpful!
+
+\subsection{Python Links}
+
+\begin{itemize}
+  \item  \href{http://scipy-lectures.github.com}{Python Scientific Lecture Notes.} If you don't read anything else, read this!
+  \item \href{http://www.scipy.org/NumPy\_for\_Matlab\_Users}{NumPy for Matlab Users} Start here if you have Matlab experience.
+  \item \href{https://github.com/jrjohansson/scientific-python-lectures}{Lectures on scientific computing with Python.} Great IPython notebooks, from JR Johansson!
+  \item \href{http://docs.python.org/2/tutorial}{The Python tutorial.} The official introduction.
+\end{itemize}
+
+\subsection{Free Python Books}
+
+\begin{itemize}
+  \item \href{http://swaroopch.com/notes/python}{A Byte of Python.} Free book, very good at the introductory level.
+  \item \href{http://learnpythonthehardway.org/book/}{Learn Python the Hard Way, 3rd Ed} A popular, free book that you can work through.
+  \item \href{http://www.greenteapress.com/thinkpython}{ThinkPython.} Free book, for advanced programmers.
+  \item \href{http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf}{Introduction to
+      Python for Econometrics, Statistics and Data Analysis} by Kevin Sheppard: A
+      good free book, which introduces Python with a focus on statistics.
+\end{itemize}
+
+\subsection{Installation and Updates}
+
+In general, I suggest that you start out by installing a Python distribution which includes the most important libraries. Since all the Python packages required for this course are now available for Python 3.x, I will use primarily Python 3 for this book. However, all the scripts included should also work for Python 2.7. My favorite Python distributions  are
 
 \begin{enumerate}
-    \item \cite{winpython} No admin-rights required. Recommended for Windows users.
-    \item \cite{anaconda} From Continuum. For Windows, Mac, and Linux. By default installs to Python 2.7.x, but can upgrade to Python 3.x.
+    \item \href{https://winpython.github.io/}{WinPython} No admin-rights required. Recommended for Windows users.
+    \item \href{https://store.continuum.io/cshop/anaconda/}{anaconda} From Continuum. For Windows, Mac, and Linux.
 \end{enumerate}
 
 which are very good starting points when you are using Windows. \emph{winpython} does not require administrator rights, and \emph{anaconda} is a more recent distribution, which is free for educational purposes.
 
-Mac and Unix users should check out the installations tips from Johansson (see Table \ref{table:python}).
+Mac and Unix users should check out the \href{https://github.com/jrjohansson/scientific-python-lectures}{installations tips from Johansson}.
 
-There are also many tutorials available on the internet (Table \ref{table:python}). Personally, most of the time I just google; thereby I stick primarily a) to the official pages, and b) to \url{http://stackoverflow.com/}. Also, I have found user groups surprisingly active and helpful!
+\subsection{PyPI - the Python Package Index}
 
-\begin{table}
-
-  \footnotesize{
-  \centering
-   \begin{tabular}{|p{8 cm}|p{8 cm}|}
-     \hline
-     \url{http://scipy-lectures.github.com} & \emph{Python Scientific Lecture Notes.} Pretty comprehensive. \\     \url{http://www.scipy.org/NumPy\_for\_Matlab\_Users} & \emph{NumPy for Matlab Users} Start here if you have Matlab experience. \\
-     \url {https://github.com/jrjohansson/scientific-python-lectures} & \emph{Lectures on scientific computing with Python.} Great IPython notebooks! \\     \url{http://docs.python.org/2/tutorial} & \emph{The Python tutorial.} The official introduction. \\
-     \url{http://swaroopch.com/notes/python} & \emph{A Byte of Python.} Free book, very good at the introductory level. \\
-     \url{http://learnpythonthehardway.org/book/} & \emph{Learn Python the Hard Way, 3rd Ed} A popular, free book that you can work through. \\
-     \url{http://www.greenteapress.com/thinkpython} & \emph{ThinkPython.} Free book, for advanced programmers. \\
-
-     \hline
-   \end{tabular}
-   }
-  \caption{Python on the WWW}\label{table:python}
-\end{table}
-
-If you decide to install things manually, you need the following modules in addition to the Python standard library:
+If you decide to install things manually, you need the following modules in addition to the Python standard library (in brackets I give the version number with which the code provided here was tested):
 
 \begin{itemize}
-  \item \emph{ipython} ... For interactive work.
-  \item \emph{numpy} ... For working with vectors and arrays.
-  \item \emph{scipy} ... All the essential scientific algorithms, including those for statistics.
-  \item \emph{matplotlib} ... The de-facto standard module for plotting and visualization.
-  \item \emph{pandas} ... Adds \emph{DataFrames} (imagine powerful spreadsheets) to Python.
-  \item \emph{patsy} ... For working with statistical formulas.
-  \item \emph{statsmodels} ... For statistical modeling and advanced analysis.
-  \item \emph{seaborn} ... For visualization of statistical data.
+  \item \emph{ipython 2.3.0} ... For interactive work.
+  \item \emph{numpy 1.8.2} ... For working with vectors and arrays.
+  \item \emph{scipy 0.14} ... All the essential scientific algorithms, including those for statistics.
+  \item \emph{matplotlib 1.4.1} ... The de-facto standard module for plotting and visualization.
+  \item \emph{pandas 0.15.0} ... Adds \emph{DataFrames} (imagine powerful spreadsheets) to Python.
+  \item \emph{patsy 0.3.0} ... For working with statistical formulas.
+  \item \emph{statsmodels 0.6.0} ... For statistical modeling and advanced analysis.
+  \item \emph{seaborn 0.4.0} ... For visualization of statistical data.
 \end{itemize}
 
-\subsubsection{Ipython}
+The \href{https://pypi.python.org/pypi}{Python Package Index (\emph{PyPI})} is a repository of software for the Python programming language. There are currently 51219 packages here!
+
+To use a package from this index you simply can use
+
+\begin{lstlisting}
+    pip install [package]
+\end{lstlisting}
+
+and to update packages
+
+\begin{lstlisting}
+    pip install [package] -U
+\end{lstlisting}
+
+To get a list of all the Python packages installed, type
+
+\begin{lstlisting}
+    pip list
+\end{lstlisting}
 
 
-Make sure that you have a good programming environment! Currently, my favorite way of programming is similar to my old Matlab style: I first get the individual steps worked out interactively in an \cite{ipython} \emph{qtconsole}. Ipython \index{general}{Python!ipython} provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code.
-When ipython is started in \emph{pylab mode} (which is the typical configuration), it automatically loads numpy and matplotlib.pyplot into the
-active workspace, and provides a very convenient, Matlab-like programming environment. A very helpful new addition is the browser-based \emph{ipython
-notebook}, with support for code, text, mathematical expressions, inline plots and other rich media. Please check out the links to the ipython
+\section{Ipython}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/ipython-qtconsole.png}\\
+  \caption{The \emph{ipython qtconsole} provides a powerful and flexible interactive work environment.}
+\end{figure}
+
+Make sure that you have a good programming environment! Currently, my favorite way of programming is
+similar to my old Matlab style: I first get the individual steps worked out interactively in an
+\href{http://ipython.org/}{ipython} \emph{qtconsole}. Ipython \index{general}{Python!ipython} provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code. When ipython is started in \emph{pylab mode} (which is the typical configuration), it automatically loads numpy and matplotlib.pyplot into the active workspace, and provides a very convenient, Matlab-like programming environment.
+
+A very helpful new addition is the browser-based \emph{ipython notebook}, with support for code, text, mathematical expressions, inline plots and other rich media. Please check out the links to the ipython
 notebooks in this statistics introduction. I believe that it will  help you to get up to speed with python much more quickly.
 
-And to write a program, I then go to either \emph{Spyder} (which is free) or \emph{Wing} (which is very good, but commercial). \emph{PyCharm} is another IDE with a good debugger, and has very good vim-emulation.
+\subsection{Personalizing IPython}
 
-The flexibility of Python has the "disadvantage" that it can come in
-different flavors or coding styles. When you know the different approaches,
-they are great to use. But when you get started, it can be a bit confusing.
-The following section from the Matplotlib documentation may help to clarify
+When working on a new problem, I always start out with IPython. Once I have the individual steps working, I use the IPython command \lstinline{\%history} to get the commands I have used, and switch to an integrated development environment (typically \emph{Wing} or \emph{Spyder}).
+
+To start up IPython quickly in the location and with the configuration I like, I use the following tricks (the following are the steps on MS Windows, but should be easy to adapt to other operating systems):
+
+To personalize ipython, generate your own profile:
+
+\begin{itemize}
+  \item run "cmd"
+
+  \item In the newly created command shell, execute the following command
+        \begin{lstlisting}
+            ipython profile create $<myName>$
+        \end{lstlisting}
+        (This generates a folder $.ipython \backslash profile\_<myName> \backslash startup"$)
+  \item Into this folder, place a file with e.g. the name $00\_<myName>.py$, containing
+        \begin{lstlisting}
+        import pandas as pd
+        import os
+        os.chdir(r'C:\<your_favorite_dir>')"
+        \end{lstlisting}
+  \item Generate a file "ipython.bat" in your startup-directory, containing
+      \begin{lstlisting}
+      [Python-directory]\backslash Scripts \backslash ipython3 qtconsole --profile <myName> --pylab=inline
+      \end{lstlisting}
+\end{itemize}
+
+Now you can start "your" ipython by just typing "ipython" in the Windows run command
+
+To see all ipython notebooks for the course, do the following:
+\begin{itemize}
+  \item run "cmd"
+  \item Run the commands
+  \begin{lstlisting}
+  cd [ipynb-directory]
+  [Python-directory]\backslash Scripts \backslash ipython3.exe notebook --pylab=inline
+  \end{lstlisting}
+\end{itemize}
+
+
+
+\subsection{Ipython Tips}
+
+\begin{enumerate}
+    \item Use pylab: \texttt{ipython qtconsole ---pylab=inline}
+    \item For help on e.g. \texttt{plot}, use \texttt{plot?} or \texttt{help(plot)}.
+    \item Check out the help tips when you start ipython.
+    \item Customize ipython on your computer: it will save you time in the long run!
+    \item TAB-completion, for file- and directory names, variable names, AND for commands
+    \item To switch between inline and external graphs, use \texttt{\%pylab inline} and \texttt{\%pylab qt4}
+    \item Use \texttt{\%runfile [aFile]} to run a file, and \texttt{import [aFile]} to import it
+\end{enumerate}
+
+\section{Developing Python Programs}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/spyder-screenshot.jpg}\\
+  \caption{\emph{Spyder} is a very good, free IDE.}
+\end{figure}
+
+To write a program, I typically take the commands I have worked out in ipython with \lstinline{\%history}, and take them to an IDE (integrated development environment): I either use \emph{Spyder} (which is free) or \emph{Wing} (which is very good, but commercial). \emph{PyCharm} is another IDE with a good debugger, and has very good vim-emulation.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Wing.png}\\
+  \caption{\emph{Wing} is my favorite development environment, with probably the best existing debugger for Python.}
+\end{figure}
+
+\subsection{Python Tips}
+
+\begin{enumerate}
+  \item Stick to the standard conventions.
+      \begin{itemize}
+        \item Every function has a docu-string.
+        \item \texttt{import matplotlib.pyplot as plt}\\
+            \texttt{import numpy as np}\\
+            \texttt{import scipy as sp}\\
+            \texttt{import pandas as pd}\\
+            \texttt{import seaborn as sns}
+      \end{itemize}
+  \item To get the current directory, use \texttt{os.path.abspath(os.curdir)}.
+  \item Everything in Python is an object: to find out about "obj", use \texttt{type(obj)} and \texttt{dir(obj)}.
+  \item Learn to use the debugger.
+  \item Know \emph{lists}, \emph{tuples}, and \emph{dictionaries}; also, know about \emph{numpy arrays} and \emph{pandas DataFrames}.
+  \item Use functions a lot, and understand the \texttt{if \_\_name\_\_=='\_\_main\_\_':} construct.
+\end{enumerate}
+
+\subsection{Python Data Structures}
+
+\begin{description}
+  \item[Tuple ()] A collection of different things. Cannot be modified after creation.
+  \item[List [] ] A collection of similar things. Does not care if those are numbers or strings.
+  \item[Array [] ] Vectors and matrices, for numerical data manipulation. Defined in \emph{numpy}.
+  \item[Dictionary \{\}] Dictionaries are unordered \emph{(key/value)} collections of content, where the content is addressed as \emph{dict['key']} (see example below).
+  \item[DataFrame] Data structure optimized for working with named, statistical data. Defined in \emph{pandas}. (See next chapter.)
+\end{description}
+
+\begin{lstlisting}
+    In [1]: myTuple = ('abc', np.arange(0,3,0.2), 2.5)
+
+    In [2]: myTuple[2]
+    Out[2]: 2.5
+
+    In [3]: myList = ['abc', 'def', 'ghij']
+
+    In [4]: myList.append('klm')
+
+    In [5]: myList2 = [1,2,3]
+
+    In [6]: myList3 = [4,5,6]
+
+    In [7]: myList2 + myList3
+    Out[7]: [1, 2, 3, 4, 5, 6]
+
+    In [8]: myArray = np.array(myList2)
+
+    In [9]: myArray2 = np.array(myList3)
+
+    In [10]: myArray + myArray2
+    Out[10]: array([5, 7, 9])
+
+    In [11]: myDict = dict(one=1, two=2, info='some information')
+
+    In [12]: myDict2 = {'ten':1, 'twenty':20, 'info':'more information'}
+
+    In [13]: myDict['info']
+    Out[13]: 'some information'
+
+    In [14]: myDict.keys()
+    Out[14]: dict_keys(['one', 'info', 'two'])
+\end{lstlisting}
+
+\section{Matplotlib, pylab, and pyplot: how are they related?}
+
+The flexibility of Python has the "disadvantage" that it can come in different flavors or coding styles. When you know the different approaches, they are great to use. But when you get started, it can be a bit confusing. The following section from the Matplotlib documentation may help to clarify
 these things:
-
-\subsubsection{Matplotlib, pylab, and pyplot: how are they related?}
 
 \textbf{Matplotlib}\index{general}{Python!Matplotlib} is the whole package; \emph{pylab} is a Matlab-like module in matplotlib that gets installed alongside matplotlib; and \emph{matplotlib.pyplot} is a module in matplotlib.
 
@@ -177,47 +299,7 @@ these things:
 
 The pyplot interface is generally preferred for non-interactive plotting (i.e., scripting). The pylab interface is convenient for interactive calculations and plotting, as it minimizes typing. Note that this is what you get if you use the ipython shell with the -pylab option, which imports everything from pylab and makes plotting fully interactive.
 
-\subsubsection{Personalizing IPython}
-
-When working on a new problem, I always start out with IPython. Once I have the individual steps working, I use the IPython command \lstinline{\%history} to get the commands I have used, and switch to an integrated development environment (typically \emph{Wing} or \emph{Spyder}).
-
-To start up IPython quickly in the location and with the configuration I like, I use the following tricks (the following are the steps on MS Windows, but should be easy to adapt to other operating systems):
-
-To personalize ipython, generate your own profile:
-
-\begin{itemize}
-  \item run "cmd"
-  
-  \item In the newly created command shell, execute the following command
-        \begin{lstlisting}
-            ipython profile create $<myName>$
-        \end{lstlisting}
-        (This generates a folder $.ipython \backslash profile\_<myName> \backslash startup"$)
-  \item Into this folder, place a file with e.g. the name $00\_<myName>.py$, containing
-        \begin{lstlisting}
-        import pandas as pd
-        import os
-        os.chdir(r'C:\<your_favorite_dir>')"
-        \end{lstlisting}            
-  \item Generate a file "ipython.bat" in your startup-directory, containing
-      \begin{lstlisting}
-      [Python-directory]\backslash Scripts \backslash ipython3 qtconsole --profile <myName> --pylab=inline
-      \end{lstlisting}            
-\end{itemize}
-    
-Now you can start "your" ipython by just typing "ipython" in the Windows run command
-
-To see all ipython notebooks for the course, do the following:
-\begin{itemize}
-  \item run "cmd"
-  \item Run the commands
-  \begin{lstlisting}
-  cd [ipynb-directory]
-  [Python-directory]\backslash Scripts \backslash ipython3.exe notebook --pylab=inline
-  \end{lstlisting}
-\end{itemize}
-        
-\subsubsection{Coding Styles in Python}
+\section{Coding Styles in Python}
 
 In Python you will find different coding styles and usage patterns. These styles are all perfectly valid, and each have their pros and cons. Just about all of the examples can be converted into another style and achieve the same results. The only caveat is to avoid mixing the coding styles for your own code.
 
@@ -266,21 +348,17 @@ Next, the same example using a pure MATLAB-style:
 So, why all the extra typing as one moves away from the pure MATLAB-style? For very simple things like this example, the only advantage is academic: the wordier styles are more explicit, more clear as to where things come from and what is going on. For more complicated applications, this explicitness and clarity becomes increasingly valuable, and the richer and more complete object-oriented interface will likely make the program easier to write and maintain.
 
 Here an example, to get you started with Python. For interactive work, it is
-simplest to use the \emph{pylab mode}, as shown in the example below. The corresponding ipython
-notebook
- \url{http://nbviewer.ipython.org/github/thomas-haslwanter/statsintro/blob/master/ipynb/getting\_started.ipynb})
-shows how numpy and matplotlib can be addressed directly. (This is common
-practice when writing functions.)
+simplest to use the \emph{pylab mode}, as shown in the example below.
 
-\subsubsection{Example-Session}
+\subsection{Example-Session}
 
 \PyImg "gettingStarted.py" (p \pageref{py:gettingStarted_ipy}) gives a short demonstration of Python for scientific data analysis.
 \index{python}{gettingStarted}
 
 
-\subsection{Pandas}
+\section{Pandas}
 
-\cite{pandas} is a Python module which provides suitable data structures for
+\href{http://pandas.pydata.org/.}{pandas} is a Python module which provides suitable data structures for
 statistical analysis. It significantly enhances the abilities of Python for
 data input, data organization, and data manipulation. In the following, I assume
 that pandas has been imported with
@@ -292,7 +370,7 @@ that pandas has been imported with
 A good introduction to pandas can be found under
 \url{http://www.randalolson.com/2012/08/06/statistical-analysis-made-easy-in-python/}
 
-\subsubsection{Data Input}
+\subsection{Data Input}
 
 Pandas offers tools for reading and writing data between in-memory data structures and different
 formats, e.g. CSV and text files, Microsoft Excel, and SQL databases. For example, if you have data
@@ -313,7 +391,7 @@ Or data from "Sheet1" in an Excel-file "data.xls" can be read in easily with
 \PyImg "readZip.py" (p \pageref{py:readZip}) This advanced script shows you how you can directly import data from an MS-Excel file from a zipped archive on the web.
 \index{python}{readZip}
 
-\subsubsection{Data Handling and Manipulation}
+\subsection{Data Handling and Manipulation}
 
 
 To handle labeled data, pandas introduces \emph{DataFrame} objects. A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table. It is generally the most commonly used pandas object.
@@ -427,19 +505,24 @@ produces
 For statistical analysis, pandas becomes really powerful if you combine it with \emph{statsmodels} (see below).
 
 
-\subsection{Statsmodels}
+\section{Statsmodels}
 
-\cite{statsmodels} is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. In its latest release (version 0.5), statsmodels also allows the formulation of models with the popular formula language also used by $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model
-$success \sim intelligence * diligence$, which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
+\href{http://statsmodels.sourceforge.net/.}{statsmodels} is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. \emph{statsmodels} also allows the formulation of models with the popular formula language also used by $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model
+
+\begin{equation*}
+    success \sim intelligence * diligence
+\end{equation*}
+
+ which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
 
 While for complex statistical models R still has an edge, python has a much clearer and more readable syntax, and is arguably more powerful for the data manipulation often required for statistical analysis.
 
 \PyImg "statsmodelsIntro.py" (p \pageref{py:statsmodelsIntro}) shows you how the combination of pandas and statsmodels can be used for data analysis.
 \index{python}{statsmodelsIntro}
 
-\subsection{Seaborn}
+\section{Seaborn}
 
-\cite{seaborn} is a Python visualization library based on matplotlib. Its primary goal is to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive. Seaborn can be installed easily by opening up a \emph{WinPython Command Prompt}, and then typing \lstinline{pip install seaborn}.
+\href{http://statsmodels.sourceforge.net/.}{seaborn} is a Python visualization library based on matplotlib. Its primary goal is to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive.
 
 \begin{lstlisting}
         x = linspace(1, 7, 50)
