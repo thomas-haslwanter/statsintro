@@ -31,19 +31,20 @@ def main():
     x = randn(500)
     
     # Set the fonts the way I like them
-    sns.set_context('paper')
-    sns.set_style('white')
-    mystyle.set()
+    sns.set_context('poster')
+    sns.set_style('ticks')
+    #mystyle.set()
     
     # Scatter plot
-    plot(x,'.')
+    scatter(arange(len(x)), x)
+    xlim([0, len(x)])
     mystyle.printout('scatterPlot.png', xlabel='x', ylabel='y', title='Scatter')
     
     # Histogram
-    hist(x, color='#999999')
+    hist(x)
     mystyle.printout('histogram_plain.png', xlabel='Data Values', ylabel='Frequency', title='Histogram, default settings')
     
-    hist(x,25, color='#999999')
+    hist(x,25)
     mystyle.printout('histogram.png', xlabel='Data Values', ylabel='Frequency', title='Histogram, 25 bins')
     
     # Cumulative probability density
@@ -70,7 +71,8 @@ def main():
     
     # Use pandas and the seaborn package for the violin plot
     df = pd.DataFrame({'Girls':data, 'Boys':data2})
-    sns.violinplot(df, color = ["#999999", "#DDDDDD"])
+    #sns.violinplot(df, color = ["#999999", "#DDDDDD"])
+    sns.violinplot(df)
     
     mystyle.printout('violinplot.png')
     

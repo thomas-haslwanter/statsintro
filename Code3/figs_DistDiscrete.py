@@ -11,40 +11,63 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 import numpy as np
 import os
-import seaborn as sns
+#import seaborn as sns
 import mystyle
 
 #----------------------------------------------------------------------
 def show_binomial():
     """Show an example of binomial distributions"""
     
-    bd1 = stats.binom(20, 0.5)
-    bd2 = stats.binom(20, 0.7)
-    bd3 = stats.binom(40, 0.5)
+    ns = [20,20,40]
+    ps = [0.5, 0.7, 0.5]
     
-    k = np.arange(40)
+    #markersize = 8
+    for (p,n) in zip(ps, ns):
+        bd = stats.binom(n,p)
+        x = np.arange(n)
+        plt.plot(x, bd.pmf(x), 'o-', label='p={0:3.1f}, n={1}'.format(p,n))
     
-    sns.set_context('paper')
-    sns.set_style('ticks')
-    mystyle.set(14)
+    plt.legend()
+    #sns.set_context('poster')
+    #sns.set_style('ticks')
+    #mystyle.set(14)
     
-    markersize = 8
-    plt.plot(k, bd1.pmf(k), 'o-b', ms=markersize)
-    plt.hold(True)
-    plt.plot(k, bd2.pmf(k), 'd-r', ms=markersize)
-    plt.plot(k, bd3.pmf(k), 's-g', ms=markersize)
     plt.title('Binomial distribuition')
-    plt.legend(['p=0.5 and n=20', 'p=0.7 and n=20', 'p=0.5 and n=40'])
     plt.xlabel('X')
     plt.ylabel('P(X)')
-    sns.despine()
+    #sns.despine()
     
     mystyle.printout_plain('Binomial_distribution_pmf.png')
+    plt.show()
+    
+    
+#----------------------------------------------------------------------
+def show_poisson():
+    """Show an example of poisson distributions"""
+    
+    lambdas = [1,4,10]
+    
+    k = np.arange(20)
+    markersize = 8
+    for par in lambdas:
+        plt.plot(k, stats.poisson.pmf(k, par), 'o-', label='$\lambda={0}$'.format(par))
+    
+    plt.legend()
+    #sns.set_context('poster')
+    #sns.set_style('ticks')
+    #mystyle.set(14)
+    
+    plt.title('Poisson distribuition')
+    plt.xlabel('X')
+    plt.ylabel('P(X)')
+    #sns.despine()
+    
+    mystyle.printout_plain('Poisson_distribution_pmf.png')
     
     plt.show()
     
 #----------------------------------------------------------------------
-def show_poisson():
+def show_poisson_views():
     """Show different views of a Poisson distribution"""
     
     fig, ax = plt.subplots(3,1)
@@ -74,3 +97,4 @@ def show_poisson():
 if __name__ == '__main__':
     show_binomial()
     show_poisson()
+    show_poisson_views()
