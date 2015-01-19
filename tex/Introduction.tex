@@ -5,7 +5,7 @@ unexplained."}
 
 \vspace{5 mm}
 
-Statistics was originally invented - as so many other things - by the famous mathematician C.F. Gauss, who said about his own work \emph{"Ich habe fleissig sein m\"ussen; wer es gleichfalls ist, wird eben so weit kommen"}. Even if your aspirations are not that high, you can get a lot out of statistics. In fact, if your work with real data, you probably won't be able to avoid it. Statistics can
+Statistics was originally invented - as so many other things - by the famous mathematician C.F. Gauss, who said about his own work \emph{"Ich habe fleissig sein m\"ussen; wer es gleichfalls ist, wird eben so weit kommen"} ("I have had to be diligent; if you are diligent too, you will get as far as I have."). Even if your aspirations are not that high, you can get a lot out of statistics. In fact, if your work with real data, you probably won't be able to avoid it. Statistics can
 
 \begin{itemize}
   \item Describe variation.
@@ -76,7 +76,7 @@ There are also many tutorials available on the internet (see links below). Perso
   \item \href{http://learnpythonthehardway.org/book/}{Learn Python the Hard Way, 3rd Ed} A popular, free book that you can work through.
   \item \href{http://www.greenteapress.com/thinkpython}{ThinkPython.} Free book, for advanced programmers.
   \item \href{http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf}{Introduction to
-      Python for Econometrics, Statistics and Data Analysis} by Kevin Sheppard: A
+      Python for Econometrics, Statistics and Data Analysis (pdf)} by Kevin Sheppard: A
       good free book, which introduces Python with a focus on statistics.
 \end{itemize}
 
@@ -99,16 +99,16 @@ If you decide to install things manually, you need the following modules in addi
 
 \begin{itemize}
   \item \emph{ipython 2.3.0} ... For interactive work.
-  \item \emph{numpy 1.8.2} ... For working with vectors and arrays.
-  \item \emph{scipy 0.14} ... All the essential scientific algorithms, including those for statistics.
-  \item \emph{matplotlib 1.4.1} ... The de-facto standard module for plotting and visualization.
-  \item \emph{pandas 0.15.0} ... Adds \emph{DataFrames} (imagine powerful spreadsheets) to Python.
+  \item \emph{numpy 1.9.1} ... For working with vectors and arrays.
+  \item \emph{scipy 0.14.1} ... All the essential scientific algorithms, including those for statistics.
+  \item \emph{matplotlib 1.4.2} ... The de-facto standard module for plotting and visualization.
+  \item \emph{pandas 0.15.2} ... Adds \emph{DataFrames} (imagine powerful spreadsheets) to Python.
   \item \emph{patsy 0.3.0} ... For working with statistical formulas.
-  \item \emph{statsmodels 0.6.0} ... For statistical modeling and advanced analysis.
-  \item \emph{seaborn 0.4.0} ... For visualization of statistical data.
+  \item \emph{statsmodels 0.6.1} ... For statistical modeling and advanced analysis.
+  \item \emph{seaborn 0.5.1} ... For visualization of statistical data.
 \end{itemize}
 
-The \href{https://pypi.python.org/pypi}{Python Package Index (\emph{PyPI})} is a repository of software for the Python programming language. There are currently 51219 packages here!
+The \href{https://pypi.python.org/pypi}{Python Package Index (\emph{PyPI})} is a repository of software for the Python programming language. There are currently 53955 packages here!
 
 To use a package from this index you simply can use
 
@@ -194,7 +194,7 @@ To see all ipython notebooks for the course, do the following:
     \item Check out the help tips when you start ipython.
     \item Customize ipython on your computer: it will save you time in the long run!
     \item TAB-completion, for file- and directory names, variable names, AND for commands
-    \item To switch between inline and external graphs, use \texttt{\%pylab inline} and \texttt{\%pylab qt4}
+    \item To switch between inline and external graphs, use \texttt{\%matplotlib inline} and \texttt{\%matplotlib qt4}
     \item Use \texttt{\%runfile [aFile]} to run a file, and \texttt{import [aFile]} to import it
 \end{enumerate}
 
@@ -206,7 +206,7 @@ To see all ipython notebooks for the course, do the following:
   \caption{\emph{Spyder} is a very good, free IDE.}
 \end{figure}
 
-To write a program, I typically take the commands I have worked out in ipython with \lstinline{\%history}, and take them to an IDE (integrated development environment): I either use \emph{Spyder} (which is free) or \emph{Wing} (which is very good, but commercial). \emph{PyCharm} is another IDE with a good debugger, and has very good vim-emulation.
+To write a program, I typically take the commands I have worked out in ipython with \lstinline{\%history}, and take them to an IDE (integrated development environment): I either use \emph{Wing} (my clear favorite Python IDE, although it is commercial) or \emph{Spyder} (which is good and free). \emph{PyCharm} is another IDE with a good debugger, and has very good vim-emulation.
 
 \begin{figure}
   \centering
@@ -530,12 +530,13 @@ While for complex statistical models R still has an edge, python has a much clea
         sns.regplot(x,y)
 \end{lstlisting}
 
-already produces a nice and informative regression plot
+already produces a nice and informative regression plot (Fig. \ref{fig:seaborn}).
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/regplot.png}\\
   \caption{Regression plot, from \emph{seaborn}, with a substantial amount of added information.}
+  \label{fig:seaborn}
 \end{figure}
 
 \subsection{General Routines}

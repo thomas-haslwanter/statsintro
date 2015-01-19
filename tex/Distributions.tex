@@ -162,18 +162,12 @@ The most informative parameter that you can give for a statistical variable is a
 Most of the time you want to determine the confidence interval for normally distributed data, which is given by
 
 \begin{equation}
-  ci = mean \pm std * t_{df,\alpha}
+  ci = mean \pm std * N_{ISF}(\alpha)
 \end{equation}\label{eq:ci}
 
-where $std$ is the sample standard deviation, and $t_{df,\alpha}$ the $t$ statistic (which will be covered later in this chapter) for $df$ degrees of freedom. For the 95\% two-sided confidence intervals, for example, you have to set $\alpha=0.025$ and $\alpha=0.975$ .
+where $std$ is the sample standard deviation, and $N_{ISF}(\alpha)$ the inverse survival function for the normal distribution. For the 95\% two-sided confidence intervals, for example, you have to set $\alpha=0.025$ and $\alpha=0.975$ .
 
-\textbf{Note:} If you want to know the confidence interval for the mean value, you have to replace the \emph{standard deviation} by the \emph{standard error}! In Python, the 95\% confidence interval for the mean can be obtained with a one-liner:
-
-\begin{lstlisting}
-    alpha = 0.95
-    df = len(data)-1
-    ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
-\end{lstlisting}
+\textbf{Note:} If you want to know the confidence interval for the mean value, you have to replace the \emph{standard deviation} by the \emph{standard error}!
 
 \subsection{Parameters Describing the Form of a Distribution}
 
@@ -201,22 +195,20 @@ where f is the density of a standardized version of the density.
 
 A shape parameter is any parameter of a probability distribution that is neither a location parameter nor a scale parameter. If \emph{location }and \emph{shape} already completely determine the distribution (as is the case for e.g. the normal distribution or the exponential distribution, etc.), then these distributions don't have any \emph{shape parameter}. It follows that the \emph{skewness }and \emph{kurtosis} of these distribution are constants.
 
-
-\subsubsection{Skewness}\index{general}{skewness}
-
-Distributions are \emph{skewed} if they depart from symmetry. For example, if you have a measurement that cannot be negative, which is usually the case, then we can infer that the data have a skewed distribution if the standard deviation is more than half the mean. Such an asymmetry is referred to as \emph{positive skewness}. The opposite, negative skewness, is rare.
-
-
 \begin{figure}
   \centering
-  \includegraphics[width=0.75\textwidth]{../Images/Skewness.png}\\
+  \includegraphics[width=0.66\textwidth]{../Images/Skewness.png}\\
   \caption{Left) Normal distribution, and distribution with positive skewness. Right) The (leptokurtic) Laplace distribution has an excess kurtosis of 3, and the (platykurtic) Wigner semicircle distribution an excess kurtosis of -1.}\label{fig:skewkurtosis}
 \end{figure}
 
 
+\subsubsection{Skewness}\index{general}{skewness}
+
+Distributions are \emph{skewed} if they depart from symmetry (Fig. \ref{fig:skewkurtosis}, left). For example, if you have a measurement that cannot be negative, which is usually the case, then we can infer that the data have a skewed distribution if the standard deviation is more than half the mean. Such an asymmetry is referred to as \emph{positive skewness}. The opposite, negative skewness, is rare.
+
 \subsubsection{Kurtosis}\index{general}{kurtosis}
 
-Kurtosis is any measure of the "peakedness" of the probability distribution. Distributions with negative or positive excess kurtosis are called platykurtic distributions or leptokurtic distributions respectively.
+Kurtosis is any measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right). Distributions with negative or positive excess kurtosis are called platykurtic distributions or leptokurtic distributions respectively.
 
 %(Lecture 5)
 
@@ -226,7 +218,7 @@ The variable for a standardized distribution function is often called \emph{stat
 
 \subsection{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}
 
-The \emph{Normal distribution} or \emph{Gaussian distribution} is by far the most important of all the distribution functions. This is due to the fact that the mean values of \emph{all} distribution functions approximate a normal distribution for large enough sample numbers.
+The \emph{Normal distribution} or \emph{Gaussian distribution} is by far the most important of all the distribution functions. This is due to the fact that the \emph{mean }values of \emph{all} distribution functions approximate a normal distribution for large enough sample numbers.
 Mathematically, the normal distribution is characterized by a mean value $\mu$, and a standard deviation $\sigma$:
 
 \begin{equation}\label{eq_normal}
@@ -248,14 +240,6 @@ For smaller sample numbers, the sample distribution can show quite a bit of vari
   \caption{25 randomly generated normal distributions of 100 points.}\label{fig:MultipleNormal}
 \end{figure}
 
-Some examples of applications are:
-
-\begin{itemize}
-    \item{}If the average man is 175 cm tall with a standard deviation of 6 cm, what is the probability that a man found at random will be 183 cm tall?
-    \item{}If the average man is 175 cm tall with a standard deviation of 6 cm and the average woman is 168 cm tall with a standard deviation of 3 cm, what is the probability that the average man from a given sample will be shorter than the average woman from a given sample?
-    \item{}If cans are assumed to have a standard deviation of 4 grams, what does the average weight need to be in order to ensure that the 99\% of all cans have a weight of at least 250 grams?
-\end{itemize}
-
 The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu,\sigma)$}. If the \emph{random variate (rv)} {\itshape X} is normally distributed with expectation $\mu$ and standard deviation $\sigma$, one denotes: {$\,X \sim N(\mu,\sigma)$} or $\,X \in N(\mu,\sigma)$.
 
 \begin{figure}
@@ -264,7 +248,6 @@ The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu
   \includegraphics[width=0.8\textwidth]{../Images/area_SDs.png}\\
   \caption{Area under +/1 1, 2, and 3 standard deviations of a normal distribution.}\label{fig:area_SDs}
 \end{figure}
-
 
 \begin{table}
   \centering
@@ -281,7 +264,6 @@ The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu
   \end{tabular}
   \caption{Tails of a normal distribution.}
 \end{table}
-
 
 
 \vspace{5 mm}
@@ -311,6 +293,14 @@ In Python, the most elegant way of working with distribution function is a two-s
   Out[38]:  array([-3.38590382, -0.61409618]
 \end{lstlisting}
 \emph{Example of how to calculate the interval of the PDF containing 95\% of the data, for the green curve in Figure \ref{fig:normal}}
+
+\subsubsection{Examples of Normal Distributions}
+
+\begin{itemize}
+    \item{}If the average man is 175 cm tall with a standard deviation of 6 cm, what is the probability that a man found at random will be 183 cm tall?
+    \item{}If the average man is 175 cm tall with a standard deviation of 6 cm and the average woman is 168 cm tall with a standard deviation of 3 cm, what is the probability that the average man from a given sample will be shorter than the average woman from a given sample?
+    \item{}If cans are assumed to have a standard deviation of 4 grams, what does the average weight need to be in order to ensure that the 99\% of all cans have a weight of at least 250 grams?
+\end{itemize}
 
 \subsection{Central Limit Theorem}\index{general}{central limit theorem}
 The central limit theorem states that for identically distributed independent random variables (also referred to as \emph{random variates})\index{general}{variate}, the mean of a sufficiently large number of these variables will be approximately normally distributed.
@@ -360,6 +350,8 @@ In the following, we will describe these distributions in more detail.
 \subsubsection{t Distribution}\index{general}{distributions!t-distribution}
 For a small number of samples (ca.$<10$) from a normal distribution, the distribution of the mean deviates slightly from the normal distribution. The reason is that the sample mean does not coincide exactly with the population mean. This modified distribution is the \emph{t-distribution}, and converges for larger values towards the normal distribution (Fig. \ref{fig:t}).
 
+Since in most cases you will not know the mean and standard deviation of the population, you typically work with the t-distribution when analyzing your sample data!
+
 The t-distribution was first described by a researcher working under the pseudonym of "Student", and the corresponding test is therefore sometimes referred to as \emph{Student's t-test}.
 
 If $\bar{x}$ is the sample mean, and $s$ the sample standard deviation, then
@@ -368,7 +360,11 @@ If $\bar{x}$ is the sample mean, and $s$ the sample standard deviation, then
   t = \frac{\bar{x}-\mu}{s/ \sqrt{n}}
 \end{equation}
 
-A very frequent application of the t-distribution is in the calculation of confidence intervals (Eq. \ref{eq:ci}):
+A very frequent application of the t-distribution is in the calculation of confidence intervals (Eq. \ref{eq:ci_t}):
+
+\begin{equation}
+  ci = mean \pm std * t_{df,\alpha}
+\end{equation}\label{eq:ci_t}
 
 \begin{lstlisting}
   In [28]: n = 20
@@ -379,7 +375,16 @@ A very frequent application of the t-distribution is in the calculation of confi
   In [31]: stats.norm.ppf(1-alpha/2)
   Out[31]: 1.959963984540054
 \end{lstlisting}
+
 \emph{Calculating the t-values for confidence intervals, for n = 20 and $\alpha=0.05$. For comparison, I also calculate the corresponding value from the normal distribution.}
+
+In Python, the 95\% confidence interval for the mean can be obtained with a one-liner:
+
+\begin{lstlisting}
+    alpha = 0.95
+    df = len(data)-1
+    ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
+\end{lstlisting}
 
 \begin{figure}
   \centering
@@ -610,6 +615,8 @@ Two discretely distributions are commonly encountered: the \emph{binomial distri
 \caption{Properties of discrete distributions.}
 \end{table}
 
+The big difference between those two functions that you have to keep in mind: applications of the Binomial function have an inherent upper limit (e.g. when you throw dice five times, each side can come up a maximum of five times); in contrast, the Poisson distribution does not have an inherent upper limit (e.g. how many people you know).
+
 \subsubsection{Binomial Distribution}\index{general}{distributions!binomial}
 The Binomial is associated with the question "Out of a given number of trials, how many will succeed?" Some example questions that are modeled with a Binomial distribution are:
 \begin{itemize}
@@ -631,7 +638,7 @@ where ${n \choose k}={n! \over k!(n-k)!}$
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.75\textwidth]{../Images/Binomial_distribution_pmf.png}\\
+  \includegraphics[width=0.66\textwidth]{../Images/Binomial_distribution_pmf.png}\\
   \caption{Binomial Distribution}
 \end{figure}
 
@@ -675,7 +682,7 @@ The Poisson distribution has the following properties:
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\textwidth]{../Images/Poisson_distribution_pmf.png}\\
+  \includegraphics[width=0.66\textwidth]{../Images/Poisson_distribution_pmf.png}\\
   \caption{Poisson Distribution}
 \end{figure}
 

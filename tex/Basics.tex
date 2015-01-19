@@ -2,7 +2,7 @@
 
 \section{Datatypes}
 
-The type of your data is essential for the choice of test that you have to use for your data analysis. Your data can have one of the following datatypes:
+We begin with something that is seemingly trivial, somewhat boring - but absolutely essential for your statistical analysis: Datatypes. Because the type of your data directly determines the tests that are available for the data analysis. Your data can have one of the following datatypes:
 
 \subsection{Categorical} \index{general}{data!categorical}
 
@@ -59,9 +59,9 @@ You can also smooth histograms with \emph{kernel-density-estimations (kde-plots)
 
 \subsection{KDE-plots}\index{general}{plots!kde}
 
-\footnote{This paragraph is taken from Wikipedia, "Kernel density estimation".} Kernel density estimates are closely related to histograms, but can be endowed with properties such as smoothness or continuity by using a suitable kernel. To see this, we compare the construction of histogram and kernel density estimators, using these 6 data points: x1 = −2.1, x2 = −1.3, x3 = −0.4, x4 = 1.9, x5 = 5.1, x6 = 6.2. For the histogram, first the horizontal axis is divided into sub-intervals or bins which cover the range of the data. In this case, we have 6 bins each of width 2. Whenever a data point falls inside this interval, we place a box of height 1/12. If more than one data point falls inside the same bin, we stack the boxes on top of each other.
+\footnote{This paragraph is taken from Wikipedia, "Kernel density estimation".} Kernel density estimates are closely related to histograms, but can be endowed with properties such as smoothness or continuity by using a suitable kernel. To see this, we compare the construction of histogram and kernel density estimators, using these 6 data points: x = [−2.1, −1.3, −0.4, 1.9, 5.1, 6.2]. For the histogram, first the horizontal axis is divided into sub-intervals or bins which cover the range of the data. In this case, we have 6 bins each of width 2. Whenever a data point falls inside this interval, we place a box of height 1/12. If more than one data point falls inside the same bin, we stack the boxes on top of each other.
 
-For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident compared to the discreteness of the histogram, as kernel density estimates converge faster to the true underlying density for continuous random variables.
+For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident. Compared to the discreteness of the histogram, the kernel density estimates converge faster to the true underlying density for continuous random variables.
 
 \begin{figure}[ht]
   \centering
@@ -156,7 +156,8 @@ In general, when selecting our subject you try to make them representative of th
 Care should be taken to avoid bias as much as possible.
 
 \subsubsection{Randomized controlled trial} \index{general}{randomized controlled trial}
-The gold standard for experimental scientific clinical trials is the \emph{randomized controlled trial}. Thereby bias is avoided by splitting the subjects to be tested into an \emph{intervention group} and a \emph{control group}\index{general}{control group}. The group allocation is made \emph{random}. By having the groups differ in only one aspect, i.e. is the factor \emph{treatment}, we should be able to detect the effect of the treatment on the patients.
+The gold standard for experimental scientific clinical trials is the \emph{randomized controlled trial}. Thereby bias is avoided by splitting the subjects to be tested into an \emph{intervention group} and a \emph{control group}\index{general}{control group}. The group allocation is made \emph{random}.
+In a designed experiment, there may be several conditions, called factors, that are controlled by the experimenter. By having the groups differ in only one aspect, the factor \emph{treatment}, we should be able to detect the effect of the treatment on the patients.
 Factors that can affect the outcome of the experiment are called \emph{covariates} or \emph{confoundings}. Through \emph{randomization}, covariates should be balanced across the groups.
 
 \subsubsection{Randomization} \index{general}{randomization}
@@ -190,7 +191,7 @@ A closely related, but not completely random way to allocate a treatment is \emp
 Sometimes you may want to include a wider variety of subjects, with different characteristics. For example, you may choose to have younger as well as older subjects. In that case you should try to keep the number of subjects within each \emph{stratum} balanced. For this you will have to keep different lists of random numbers for each group of subjects.
 
 \subsubsection{Crossover studies} \index{general}{crossover studies}
-An alternative to randomization is the \emph{crossover} design of studies. A crossover study is a longitudinal study in which subjects receive a sequence of different treatments. Every subject receives every treatment. To avoid causal effects, the sequence of the treatment allocation should be randomized.
+An alternative to randomization is the \emph{crossover} design of studies. A crossover study is a longitudinal study in which subjects receive a sequence of different treatments. Every subject receives every treatment. (The subject "crosses over" from one treatment to the next.) To avoid causal effects, the sequence of the treatment allocation should be randomized.
 
 \subsubsection{Blinding} \index{general}{blinding}
 Consciously or not, the experimenter can significantly influence the outcome of an experiment. For example, a young researcher with a new "brilliant" idea for a new treatment will be bias in the execution of the experiment, as well in the analysis of the data, to see his hypothesis confirmed. To avoid such a subjective influence, ideally the experimenter as well as the subject should be blinded to the therapy. This is referred to as \emph{double blinding}. If also the person who does the analysis does not know which group the subject has been allocated to, we speak about \emph{triple blinding}.
@@ -217,10 +218,9 @@ Many studies fail, because the sample size is too small to observed an effect of
 
 \subsection{Structure of Experiments}
 
+If each combination of factors is tested, we talk about a \emph{factorial design} of the experiment.
 
-In a designed experiment, there may be several conditions, called \emph{factors}\index{general}{factor}, that are controlled by the experimenter. If each combination of factors is tested, we talk about a \emph{factorial design} of the experiment.
-
-In planning the analysis, you have to keep the important distinction between \emph{within subject} comparisons, and \emph{between subjects} comparisons.
+In planning the analysis, you have to keep the important distinction between \emph{within subject} comparisons, and \emph{between subjects} comparisons. The former one, \emph{within subject comparisons}, allows you to detect smaller differences with the same number of subjects than \emph{between subject comparisons}.
 
 %(Lecture 3)
 

@@ -29,6 +29,29 @@ Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new element. 
   Residual              24    1.84    0.07      NaN       NaN
 \end{verbatim}
 
+\section{Three-way ANOVA} \label{sec:anovaThreeWay} \index{general}{ANOVA, three-way}
+
+When you have more than two factors, it is recommendable to use \emph{statistical modeling} for the data analysis (see Chapter \ref{chapter:Models}). However, as always with the analysis of statistical data, you should first inspect the data visually. \emph{seaborn} makes this quite simple:
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/ANOVA_3way.png}\\
+  \caption{Three-way ANOVA.}\label{fig:ANOVA3way}
+\end{figure}
+
+\begin{lstlisting}
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    sns.set(style="whitegrid")
+
+    df = sns.load_dataset("exercise")
+
+    sns.factorplot("time", "pulse", hue="kind", col="diet", data=df,
+                   hue_order=["rest", "walking", "running"],
+                   palette="YlGnBu_d", aspect=.75).despine(left=True)
+    plt.show()
+\end{lstlisting}
+
 \section{Multilinear Regression} \index{general}{regression!multilinear}
 
 If you have truly independent variables, \emph{multilinear regression} is a straightforward extension of the simple linear regression.
