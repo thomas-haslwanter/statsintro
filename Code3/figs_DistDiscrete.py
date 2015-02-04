@@ -4,7 +4,7 @@
 
 '''
 
-# author: Thomas Haslwanter, date: July-2014
+# author: Thomas Haslwanter, date: Feb-2015
 
 # Note: here I use the modular approach, which is more appropriate for scripts
 import matplotlib.pyplot as plt
@@ -24,7 +24,7 @@ def show_binomial():
     #markersize = 8
     for (p,n) in zip(ps, ns):
         bd = stats.binom(n,p)
-        x = np.arange(n)
+        x = np.arange(n+1)
         plt.plot(x, bd.pmf(x), 'o-', label='p={0:3.1f}, n={1}'.format(p,n))
     
     plt.legend()
@@ -36,6 +36,9 @@ def show_binomial():
     plt.xlabel('X')
     plt.ylabel('P(X)')
     #sns.despine()
+    plt.annotate('Upper Limit', xy=(20,0), xytext=(27,0.04), 
+                 arrowprops=dict(shrink=0.05))
+    
     
     mystyle.printout_plain('Binomial_distribution_pmf.png')
     plt.show()

@@ -10,25 +10,26 @@
 \indexentry{plots!histogram}{24}
 \indexentry{plots!kde}{25}
 \indexentry{cumulative frequency}{26}
-\indexentry{plots!boxplot}{26}
+\indexentry{plots!errorbars}{26}
+\indexentry{plots!boxplot}{27}
 \indexentry{plots!violinplot}{27}
-\indexentry{bias}{28}
-\indexentry{randomized controlled trial}{28}
-\indexentry{control group}{28}
+\indexentry{bias}{29}
+\indexentry{randomized controlled trial}{29}
+\indexentry{control group}{29}
 \indexentry{randomization}{29}
-\indexentry{crossover studies}{29}
+\indexentry{crossover studies}{30}
 \indexentry{blinding}{30}
 \indexentry{replication}{30}
 \indexentry{sample selection}{30}
-\indexentry{documentation}{30}
+\indexentry{documentation}{31}
 \indexentry{probability density function}{33}
 \indexentry{random variate}{33}
 \indexentry{cumulative distribution function}{33}
 \indexentry{cumulative distribution function}{34}
 \indexentry{mean}{35}
 \indexentry{median}{35}
-\indexentry{mode}{35}
-\indexentry{geometric mean}{35}
+\indexentry{mode}{36}
+\indexentry{geometric mean}{36}
 \indexentry{range}{36}
 \indexentry{centiles}{36}
 \indexentry{percentiles}{36}
@@ -39,25 +40,25 @@
 \indexentry{confidence interval}{37}
 \indexentry{shape parameters}{38}
 \indexentry{skewness}{38}
-\indexentry{kurtosis}{39}
-\indexentry{statistic}{39}
+\indexentry{kurtosis}{38}
+\indexentry{statistic}{38}
 \indexentry{distributions!normal}{39}
 \indexentry{probability density function}{39}
-\indexentry{central limit theorem}{41}
-\indexentry{variate}{41}
-\indexentry{distributions!continuous}{42}
-\indexentry{distributions!t-distribution}{42}
-\indexentry{distributions!chi square}{43}
-\indexentry{distributions!F distribution}{45}
-\indexentry{distributions!lognormal}{46}
+\indexentry{central limit theorem}{42}
+\indexentry{variate}{42}
+\indexentry{distributions!continuous}{43}
+\indexentry{distributions!t-distribution}{43}
+\indexentry{distributions!chi square}{44}
+\indexentry{distributions!F distribution}{46}
+\indexentry{distributions!lognormal}{47}
 \indexentry{distributions!weibull}{48}
 \indexentry{distributions!exponential}{48}
-\indexentry{distributions!uniform}{49}
-\indexentry{distributions!discrete}{49}
+\indexentry{distributions!uniform}{48}
+\indexentry{distributions!discrete}{50}
 \indexentry{distributions!binomial}{50}
-\indexentry{distributions!Bernoulli}{50}
-\indexentry{distributions!poisson}{50}
-\indexentry{distributions!discrete}{51}
+\indexentry{distributions!Bernoulli}{51}
+\indexentry{distributions!poisson}{51}
+\indexentry{distributions!discrete}{52}
 \indexentry{outliers}{55}
 \indexentry{normality check}{56}
 \indexentry{parametric tests}{56}
@@ -70,10 +71,12 @@
 \indexentry{test!omnibus}{57}
 \indexentry{transformation}{58}
 \indexentry{hypotheses}{58}
+\indexentry{significance level}{58}
+\indexentry{null hypothesis}{58}
 \indexentry{error!Type I}{59}
 \indexentry{power}{59}
-\indexentry{error!Type II}{59}
-\indexentry{sample size}{59}
+\indexentry{error!Type II}{60}
+\indexentry{sample size}{60}
 \indexentry{sensitivity}{62}
 \indexentry{specificity}{62}
 \indexentry{positive predictive value}{62}

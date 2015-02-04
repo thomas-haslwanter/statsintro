@@ -24,8 +24,8 @@ For proposition A and evidence B,
 
 \begin{itemize}
   \item P(A), the \emph{prior probabiliby}\index{general}{prior probability}, is the initial degree of belief in A.
-  \item P(A|B), the \emph{posterior probability}\index{general}{posterior probability}, is the degree of belief having accounted for B. It can be read as \emph{"the probability of A, given that B is the case"}.
-  \item the quotient P(B|A)/P(B) represents the support B provides for A.
+  \item $P(A|B)$, the \emph{posterior probability}\index{general}{posterior probability}, is the degree of belief having accounted for B. It can be read as \emph{"the probability of A, given that B is the case"}.
+  \item the quotient $P(B|A)/P(B)$ represents the support B provides for A.
 \end{itemize}
 
 If the number of available data points is large, the difference in interpretation does typically not change the result significantly. If the number of data points is small, however, the possibility to bring in external knowledge may lead to a significantly improved estimation of $p$.
@@ -36,9 +36,9 @@ If the number of available data points is large, the difference in interpretatio
 
 To see how this is done, let W represent the event that the conversation was held with a woman, and L denote the event that the conversation was held with a long-haired person. It can be assumed that women constitute half the population for this example. So, not knowing anything else, the probability that W occurs is P(W) = 0.5.
 
-Suppose it is also known that 75\% of women have long hair, which we denote as P(L |W) = 0.75 (read: the probability of event L given event W is 0.75, meaning that the probability of a person having long hair (event "L"), given that we already know that the person is a woman ("event W") is 75\%). Likewise, suppose it is known that 15\% of men have long hair, or P(L |M) = 0.15, where M is the complementary event of W, i.e., the event that the conversation was held with a man (assuming that every human is either a man or a woman).
+Suppose it is also known that 75\% of women have long hair, which we denote as $P(L |W) = 0.75$ (read: the probability of event L given event W is 0.75, meaning that the probability of a person having long hair (event "L"), given that we already know that the person is a woman ("event W") is 75\%). Likewise, suppose it is known that 15\% of men have long hair, or $P(L|M) = 0.15$, where M is the complementary event of W, i.e., the event that the conversation was held with a man (assuming that every human is either a man or a woman).
 
-Our goal is to calculate the probability that the conversation was held with a woman, given the fact that the person had long hair, or, in our notation, P(W |L). Using the formula for Bayes's theorem, we have:
+Our goal is to calculate the probability that the conversation was held with a woman, given the fact that the person had long hair, or, in our notation, $P(W|L)$. Using the formula for Bayes's theorem, we have:
 
 \begin{equation*}
   P(W|L) = \frac{P(L|W) P(W)}{P(L)} = \frac{P(L|W) P(W)}{P(L|W) P(W) + P(L|M) P(M)}
@@ -91,7 +91,7 @@ To simulate the probability of the O-rings failing, we need a function that goes
 
 In this model, the variable $\beta$ that describes how quickly the function changes from 1 to 0, and $\alpha$ indicates the location of this change.
 
-Using the Python package PyMC, a Monte-Carlo simulation of this model can be done remarkably easily (Note: at the time of writing, PyMC was not yet released for Python 3!):
+Using the Python package PyMC, a Monte-Carlo simulation of this model can be done remarkably easily:
 
 \begin{lstlisting}
     # --- Perform the MCMC-simulations ---
@@ -150,6 +150,6 @@ One advantage of the MCMC simulation is, that it also provides confidence interv
 
 On the day of the Challenger disaster, the outside temperature was 31 degrees Fahrenheit. The posterior distribution of a defect occurring, given this temperature, almost guaranteed that the Challenger was going to be subject to defective O-rings.
 
-\PyImg "challenger.py" (p \pageref{py:Challenger}): Full implementation of the MCMC simulation. Note that Python 2.x is required for PyMC!.
+\PyImg "challenger.py" (p \pageref{py:Challenger}): Full implementation of the MCMC simulation.
 \index{python}{Bayesian Statistics}
 

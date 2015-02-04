@@ -100,7 +100,7 @@ def shifted_normal():
     sns.set_palette('husl', 4)
     for mu,sigma in zip(myMean, np.sqrt(mySD2)):
         y = stats.norm.pdf(t, mu, sigma)
-        plt.plot(t,y, label='$\mu={0}, \t\sigma={1:3.1f}$'.format(mu,sigma))
+        plt.plot(t,y, label='$\mu={0}, \; \t\sigma={1:3.1f}$'.format(mu,sigma))
     plt.legend()
     plt.xlim([-5,5])
     plt.title('Normal Distributions')
@@ -210,6 +210,7 @@ def values_fromCDF():
 if __name__ == '__main__':
     simple_normal()
     many_normals()
+    sns.set(font_scale=1.5, style='white')
     values_fromCDF()
     shifted_normal()
 

@@ -54,14 +54,29 @@ The probability to find a value between $a$ and $b$ is given by the integral ove
 
 Figure \ref{fig:DistributionUtilities} shows a number of functions that are equivalent to the PDF, but each represent a different aspect of the probability distribution.
 
-\textbf{Note: }It is very important that you understand this figure!
+\textbf{Note: }It is very important that you understand this figure (!). I will give examples which demonstrate each aspect for a normal distribution describing the size of male subjects. To obtain the respective values, you have to multiply the PDF-function etc. with the observed standard distribution, and add the mean value:
 
 \begin{itemize}
   \item \emph{Probability density function (PDF)}: note that to obtain the probability for the variable appearing in a certain interval, you have to \emph{integrate} the PDF over that range.
+
+      Example: What is the chance that a man is between 160 and 165 cm tall?
+
   \item \emph{Cumulative distribution function (CDF)}: gives the probability of obtaining a value smaller than the given value.
+
+        Example: What is the chance that a man is less than 165 cm tall?
+
   \item \emph{Survival function (SF)}: 1-CDF: gives the probability of obtaining a value larger than the given value. It can also be interpreted as the proportion of data "surviving" above a certain value.
+
+      Example: What is the chance that a man is larger than 165 cm?
+
   \item \emph{Percentile point function (PPF)}: the inverse of the CDF. Answers the question "Given a certain probability, what is the corresponding value for the CDF?"
+
+    Example: Given that I am looking for a man who is smaller than 95\% of all other men, what size does the subject have to be?
+
   \item \emph{Inverse survival function (ISF)}: the name says it all.
+
+      Example: Given that I am looking for a man who is larger than 95\% of all other men, what size does the subject have to be?
+
 \end{itemize}
 
 \begin{figure}
@@ -111,7 +126,7 @@ The only thing that you have to watch out for: after you have acquired your data
 Median, upper and lower quartile are used for the data display in box plots (Fig.\ref{fig:Boxplot}).
 
 \subsubsection{Standard Deviation and Variance}
-The \emph{variance} (SD) of a distribution is defined as
+The \emph{variance} of a distribution is defined as
 
 \begin{equation}\label{eq_variance} \index{general}{variance}
   var = \frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}
@@ -150,7 +165,7 @@ Watch out: in Python, by default the variance is calculated for "n". You have to
 \subsubsection{Standard Error} \index{general}{standard error}
 While the standard deviation is a good measure for the distribution of your values, often you are more interested in the distribution of the mean value. For example, when you measure the response to a new medication, you might be interested in how well you can characterize this response, i.e. is how well you know the mean value. This measure is called the \emph{standard error of the mean}, or sometimes just the \emph{standard error}. In a single sample from a population with a standard deviation of $\sigma$ the variance of the sampling distribution of the mean is $\sigma^2/n$, and so the standard error of the mean is $\sigma/\sqrt{n}$.
 
-For the \emph{sample standard error of the mean}, which is the one you will be working with most of the time, we have
+For the \emph{sample standard error of the mean} (SE or SEM), which is the one you will be working with most of the time, we have
 
 \begin{equation}
   SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
@@ -165,7 +180,7 @@ Most of the time you want to determine the confidence interval for normally dist
   ci = mean \pm std * N_{ISF}(\alpha)
 \end{equation}\label{eq:ci}
 
-where $std$ is the sample standard deviation, and $N_{ISF}(\alpha)$ the inverse survival function for the normal distribution. For the 95\% two-sided confidence intervals, for example, you have to set $\alpha=0.025$ and $\alpha=0.975$ .
+where $std$ is the  standard deviation, and $N_{ISF}(\alpha)$ the inverse survival function for the normal distribution. For the 95\% two-sided confidence intervals, for example, you have to set $\alpha=0.025$ and $\alpha=0.975$ .
 
 \textbf{Note:} If you want to know the confidence interval for the mean value, you have to replace the \emph{standard deviation} by the \emph{standard error}!
 
@@ -218,7 +233,7 @@ The variable for a standardized distribution function is often called \emph{stat
 
 \subsection{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}
 
-The \emph{Normal distribution} or \emph{Gaussian distribution} is by far the most important of all the distribution functions. This is due to the fact that the \emph{mean }values of \emph{all} distribution functions approximate a normal distribution for large enough sample numbers.
+The \emph{Normal distribution} or \emph{Gaussian distribution} is by far the most important of all the distribution functions. This is due to the fact that the \emph{mean }values of \emph{all} distribution functions approximate a normal distribution for large enough sample numbers (see chapter \ref{sec:CentralLimitTheorem}).
 Mathematically, the normal distribution is characterized by a mean value $\mu$, and a standard deviation $\sigma$:
 
 \begin{equation}\label{eq_normal}
@@ -286,13 +301,13 @@ In Python, the most elegant way of working with distribution function is a two-s
 \begin{lstlisting}
   In [33]:  from scipy import stats
   In [34]:  mu = -2
-  In [35]:  sigma = sqrt(0.5)
+  In [35]:  sigma = 0.7
   In [36]:  myDistribution = stats.norm(mu, sigma)
   In [37]:  significanceLevel = 0.05
   In [38]:  myDistribution.ppf([significanceLevel/2, 1-significanceLevel/2])
   Out[38]:  array([-3.38590382, -0.61409618]
 \end{lstlisting}
-\emph{Example of how to calculate the interval of the PDF containing 95\% of the data, for the green curve in Figure \ref{fig:normal}}
+\emph{Example of how to calculate the interval of the PDF containing 95\% of the data, for the blue curve in Figure \ref{fig:normal}}
 
 \subsubsection{Examples of Normal Distributions}
 
@@ -302,7 +317,7 @@ In Python, the most elegant way of working with distribution function is a two-s
     \item{}If cans are assumed to have a standard deviation of 4 grams, what does the average weight need to be in order to ensure that the 99\% of all cans have a weight of at least 250 grams?
 \end{itemize}
 
-\subsection{Central Limit Theorem}\index{general}{central limit theorem}
+\subsection{Central Limit Theorem}\label{sec:CentralLimitTheorem}\index{general}{central limit theorem}
 The central limit theorem states that for identically distributed independent random variables (also referred to as \emph{random variates})\index{general}{variate}, the mean of a sufficiently large number of these variables will be approximately normally distributed.
 \ref{fig:CentralLimitTheorem} shows that averaging over 10 uniformly distributed data already produces a smooth, almost Gaussian distribution.
 
@@ -323,9 +338,9 @@ To illustrate the ideas behind the use of distribution functions, let us go step
 The average weight of a newborn child in the US is 3.5 kg, with a standard deviation of 0.76 kg. If we want to check all children that are \emph{significantly different} from the typical baby, what should we do with a child that is born with a weight of 2.6 kg?
 
 \begin{itemize}
-  \item Find the distribution that characterizes healthy babies.
+  \item Find the distribution that characterizes healthy babies ($\mu=3.5, \sigma=0.76$).
   \item Calculate the CDF at the interesting value (\emph{CDF(2.6 kg) = 0.118}).
-  \item Interpret the result (\emph{"If the baby is healthy, the chance that its weight deviates by at least the observed value from the mean is 2*11.8\% = 23.6\% - This is not significant"}).
+  \item Interpret the result -see Fig. \ref{fig:pdf_checkValue} (\emph{"If the baby is healthy, the chance that its weight deviates by at least the observed value from the mean is 2*11.8\% = 23.6\% - This is not significant"}).
 \end{itemize}
 
 \begin{figure}
@@ -345,7 +360,14 @@ The distributions you will encounter most frequently are:
   \item \textbf{F-distribution} - for comparing variability
 \end{itemize}
 
-In the following, we will describe these distributions in more detail.
+In the following, we will describe these distributions in more detail. Other distributions you should have heard about will be mentioned briefly:
+
+\begin{itemize}
+  \item \textbf{Lognormal distribution} - a normal distribution, plotted on an exponential scale. Often used to convert a strongly skewed distribution into a normal one.
+  \item \textbf{Weibull distribution} - mainly used for reliability or survival data.
+  \item \textbf{Exponential distribution} - exponential curves
+  \item \textbf{uniform distribution} - when everything is equally likely.
+\end{itemize}
 
 \subsubsection{t Distribution}\index{general}{distributions!t-distribution}
 For a small number of samples (ca.$<10$) from a normal distribution, the distribution of the mean deviates slightly from the normal distribution. The reason is that the sample mean does not coincide exactly with the population mean. This modified distribution is the \emph{t-distribution}, and converges for larger values towards the normal distribution (Fig. \ref{fig:t}).
@@ -367,13 +389,14 @@ A very frequent application of the t-distribution is in the calculation of confi
 \end{equation}\label{eq:ci_t}
 
 \begin{lstlisting}
-  In [28]: n = 20
+  In [27]: n = 20
+  In [28]: df = n-1
   In [29]: alpha = 0.05
-  In [30]: stats.t(20).ppf(1-alpha/2)
-  Out[30]: 2.0859634472658364
+  In [30]: stats.t(df).ppf(1-alpha/2)
+  Out[30]: 2.093
 
   In [31]: stats.norm.ppf(1-alpha/2)
-  Out[31]: 1.959963984540054
+  Out[31]: 1.960
 \end{lstlisting}
 
 \emph{Calculating the t-values for confidence intervals, for n = 20 and $\alpha=0.05$. For comparison, I also calculate the corresponding value from the normal distribution.}
@@ -403,7 +426,7 @@ Since the t-distribution has longer tails than the normal distribution, it is mu
 
 \subsubsection{Chi-square Distribution}\index{general}{distributions!chi square}
 
-The \emph{Chi-square distribution} is related to normal distribution in a simple way: If a random variable $X$ has a normal distribution ($X \in N(0,1)$), then $X^2$ has a chi-square distribution, with one degree of freedom ($X^2 \in \chi_{1}^2$). The sum squares of $n$ independent and standard normal random variables has a chi-square distribution with $n$ degrees of freedom:
+The \emph{Chi-square distribution} is related to normal distribution in a simple way: If a random variable $X$ has a normal distribution ($X \in N(0,1)$), then $X^2$ has a chi-square distribution, with one degree of freedom ($X^2 \in \chi_{1}^2$). The \emph{sum squares }of $n$ independent and standard normal random variables has a chi-square distribution with $n$ degrees of freedom (Fig. \ref{fig:chi2}):
 
 \begin{equation}
     \sum\limits_{i = 1}^n {X_i^2} \in \chi_{n}^2
@@ -414,6 +437,7 @@ The \emph{Chi-square distribution} is related to normal distribution in a simple
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/dist_chi2.png}\\
   \caption{Chi-square Distribution}
+  \label{fig:chi2}
 \end{figure}
 
 \textbf{Application Example}
@@ -442,13 +466,21 @@ Named after Sir Ronald Fisher, who developed the F distribution for use in deter
   \item significance level
 \end{itemize}
 
-ANOVA compares the size of the variance between two different samples. This is done by dividing the larger variance over the smaller variance. The formula for the resulting \emph{F statistic} is:
+ANOVA compares the size of the variance between two different samples. This is done by dividing the larger variance over the smaller variance. The formula for the resulting \emph{F statistic} is (Fig. \ref{fig:Fdistribution}):
 
 \begin{equation}
     F(r_1, r_2) = \frac{\chi_{r1} ^2 /r_1}{\chi_{r2} ^2 /r_2}
 \end{equation}
 
 where $\chi_{r1}^2$ and $\chi_{r2}^2$ are the chi-square statistics of sample one and two respectively, and $r_1$ and $r_2$ are their degrees of freedom, i.e. the number of observations.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{../Images/dist_f.png}\\
+  \caption{F Distribution}
+  \label{fig:Fdistribution}
+\end{figure}
+
 
 \paragraph{F-Test of Equality of Variances}
 If you want to investigate whether two groups have the same variance, you have to calculate the ratio of the sample standard deviations squared:
@@ -462,7 +494,7 @@ where $S_x$ ist he sample standard deviation of the first sample, and $S_y$ the 
 \textbf{Application Example}
 
 Take for example the case that you want to compare two methods to measure eye movements. The two methods
-can have different accuracy and different precision. With your test you want to
+can have different accuracy and different precision (Fig. \ref{fig:accuracy}). With your test you want to
 determine if the precision of the two methods is equivalent, or if one
 method is more precise than the other.
 
@@ -470,6 +502,7 @@ method is more precise than the other.
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/Accuracy_and_precision.png}\\
   \caption{Accuracy and precision of a measurement are two different characteristics!}
+  \label{fig:accuracy}
 \end{figure}
 
 When you look 20 deg to the right, you get the following results:
@@ -492,16 +525,10 @@ The F statistic is $F = 0.494$, and has $n-1$ and $m-1$ degrees of freedom, wher
               print 'There is a significant difference between the two distributions.'
 \end{lstlisting}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{../Images/dist_f.png}\\
-  \caption{F Distribution}
-\end{figure}
-
 
 \subsubsection{Lognormal Distribution}\index{general}{distributions!lognormal}
 
-In some circumstances a set of data with a positively skewed distribution can be transformed into a symmetric distribution by taking logarithms. Taking logs of data with a skewed distribution will often give a distribution that is near to normal (see Figure \ref{fig:lognormal}).
+Normal distributions are the easiest ones to work with. In some circumstances a set of data with a positively skewed distribution can be transformed into a symmetric, normal distribution by taking logarithms. Taking logs of data with a skewed distribution will often give a distribution that is near to normal (see Figure \ref{fig:lognormal}).
 
 \begin{figure}
 \centering
@@ -618,7 +645,7 @@ Two discretely distributions are commonly encountered: the \emph{binomial distri
 The big difference between those two functions that you have to keep in mind: applications of the Binomial function have an inherent upper limit (e.g. when you throw dice five times, each side can come up a maximum of five times); in contrast, the Poisson distribution does not have an inherent upper limit (e.g. how many people you know).
 
 \subsubsection{Binomial Distribution}\index{general}{distributions!binomial}
-The Binomial is associated with the question "Out of a given number of trials, how many will succeed?" Some example questions that are modeled with a Binomial distribution are:
+The Binomial is associated with the question "Out of a given (fixed) number of trials, how many will succeed?" Some example questions that are modeled with a Binomial distribution are:
 \begin{itemize}
   \item Out of ten tosses, how many times will this coin land ''heads''?
   \item From the children born in a given hospital on a given day, how many of them will be girls?
@@ -655,7 +682,7 @@ The binomial distribution for $n = 1$ is sometimes referred to as \emph{Bernoull
 
 Any French speaker will notice that "Poisson" means "fish", but really there's nothing fishy about this distribution. It's actually pretty straightforward. The name comes from the mathematician Siméon-Denis Poisson (1781-1840).
 
-The Poisson Distribution is ''very similar'' to the Binomial Distribution. We are examining the number of times an event happens. The difference is subtle. Whereas the Binomial Distribution looks at how many times we register a success over a fixed total number of trials, the Poisson Distribution measures how many times a discrete event occurs, over a period of continuous space or time. There isn't a "total" value n. As with the previous sections, let's examine a couple of experiments or questions that might have an underlying Poisson nature.
+The Poisson Distribution is ''very similar'' to the Binomial Distribution. We are examining the number of times an event happens. The difference is subtle. Whereas the Binomial Distribution looks at how many times we register a success over a fixed total number of trials, the Poisson Distribution measures how many times a discrete event occurs, over a period of continuous space or time. There is no "total" value n. As with the previous sections, let's examine a couple of experiments or questions that might have an underlying Poisson nature.
 
 \begin{itemize}
   \item How many pennies will I encounter on my walk home?

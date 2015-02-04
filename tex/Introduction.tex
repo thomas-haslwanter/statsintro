@@ -82,7 +82,7 @@ There are also many tutorials available on the internet (see links below). Perso
 
 \subsection{Installation and Updates}
 
-In general, I suggest that you start out by installing a Python distribution which includes the most important libraries. Since all the Python packages required for this course are now available for Python 3.x, I will use primarily Python 3 for this book. However, all the scripts included should also work for Python 2.7. My favorite Python distributions  are
+In general, I suggest that you start out by installing a Python distribution which includes the most important libraries. Unless you have a specific requirement for 64-bit versions, I recommend that you install a 32-bit version of Python: it facilitates many activities that require compilation of module parts, e.g. for Bayesian statistics (PyMC), or when you want to speed up your programs with Cython. Since all the Python packages required for this course are now available for Python 3.x, I will use primarily Python 3 for this book. However, all the scripts included should also work for Python 2.7. My favorite Python distributions  are
 
 \begin{enumerate}
     \item \href{https://winpython.github.io/}{WinPython} No admin-rights required. Recommended for Windows users.
@@ -106,6 +106,7 @@ If you decide to install things manually, you need the following modules in addi
   \item \emph{patsy 0.3.0} ... For working with statistical formulas.
   \item \emph{statsmodels 0.6.1} ... For statistical modeling and advanced analysis.
   \item \emph{seaborn 0.5.1} ... For visualization of statistical data.
+  \item \emph{PyMC 2.3.4} ... For Bayesian statistics, including Markov chain Monte Carlo simulations.
 \end{itemize}
 
 The \href{https://pypi.python.org/pypi}{Python Package Index (\emph{PyPI})} is a repository of software for the Python programming language. There are currently 53955 packages here!
@@ -202,16 +203,16 @@ To see all ipython notebooks for the course, do the following:
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.75\textwidth]{../Images/spyder-screenshot.jpg}\\
-  \caption{\emph{Spyder} is a very good, free IDE.}
+  \includegraphics[width=0.75\textwidth]{../Images/Wing.png}\\
+  \caption{\emph{Wing} is my favorite development environment, with probably the best existing debugger for Python.}
 \end{figure}
 
 To write a program, I typically take the commands I have worked out in ipython with \lstinline{\%history}, and take them to an IDE (integrated development environment): I either use \emph{Wing} (my clear favorite Python IDE, although it is commercial) or \emph{Spyder} (which is good and free). \emph{PyCharm} is another IDE with a good debugger, and has very good vim-emulation.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.75\textwidth]{../Images/Wing.png}\\
-  \caption{\emph{Wing} is my favorite development environment, with probably the best existing debugger for Python.}
+  \includegraphics[width=0.75\textwidth]{../Images/spyder-screenshot.jpg}\\
+  \caption{\emph{Spyder} is a very good, free IDE.}
 \end{figure}
 
 \subsection{Python Tips}

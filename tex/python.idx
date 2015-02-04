@@ -4,11 +4,11 @@
 \indexentry{getData}{21}
 \indexentry{figsBasicPrinciples}{27}
 \indexentry{distributionNormal}{41}
-\indexentry{distributionDiscrete}{41}
-\indexentry{distributionContinuous}{49}
-\indexentry{distributionDiscrete}{51}
+\indexentry{distributionDiscrete}{42}
+\indexentry{distributionContinuous}{50}
+\indexentry{distributionDiscrete}{52}
 \indexentry{checkNormality}{57}
-\indexentry{sampleSize}{61}
+\indexentry{sampleSize}{62}
 \indexentry{oneSample}{68}
 \indexentry{twoSample}{70}
 \indexentry{anovaOneway}{72}

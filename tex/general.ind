@@ -10,7 +10,7 @@
   \item Bayes' Theorem, 129
   \item Bayesian Information Criterion BIC, 117
   \item Bayesian Statistics, 129
-  \item bias, 28
+  \item bias, 29
   \item blinding, 30
   \item Bonferroni correction, 73
   \item bootstrapping, 127
@@ -18,12 +18,12 @@
   \indexspace
 
   \item centiles, 36
-  \item central limit theorem, 41
+  \item central limit theorem, 42
   \item coefficient of determination, 91
     \subitem adjusted, 92
   \item condition number, 122
   \item confidence interval, 37
-  \item control group, 28
+  \item control group, 29
   \item correlation
     \subitem Kendall's $\tau$, 93
     \subitem Pearson, 91
@@ -31,7 +31,7 @@
   \item correlation coefficient, 91
   \item covariate, 110
   \item Cox regression model, 104
-  \item crossover studies, 29
+  \item crossover studies, 30
   \item cumulative distribution function, 33, 34
   \item cumulative frequency, 26
 
@@ -43,27 +43,27 @@
     \subitem ordinal, 23
   \item design matrix, 95
   \item distributions
-    \subitem Bernoulli, 50
+    \subitem Bernoulli, 51
     \subitem binomial, 50
-    \subitem chi square, 43
-    \subitem continuous, 42
-    \subitem discrete, 49, 51
+    \subitem chi square, 44
+    \subitem continuous, 43
+    \subitem discrete, 50, 52
     \subitem exponential, 48
-    \subitem F distribution, 45
-    \subitem lognormal, 46
+    \subitem F distribution, 46
+    \subitem lognormal, 47
     \subitem normal, 39
-    \subitem poisson, 50
-    \subitem t-distribution, 42
-    \subitem uniform, 49
+    \subitem poisson, 51
+    \subitem t-distribution, 43
+    \subitem uniform, 48
     \subitem weibull, 48
-  \item documentation, 30
+  \item documentation, 31
 
   \indexspace
 
   \item endogenous variable, 110
   \item error
     \subitem Type I, 59
-    \subitem Type II, 59
+    \subitem Type II, 60
   \item exogenous variable, 110
 
   \indexspace
@@ -73,7 +73,7 @@
   \indexspace
 
   \item Generalized Linear Models, GLM, 107
-  \item geometric mean, 35
+  \item geometric mean, 36
 
   \indexspace
 
@@ -92,7 +92,7 @@
   \indexspace
 
   \item Kaplan-Meier survival curve, 103
-  \item kurtosis, 39
+  \item kurtosis, 38
 
   \indexspace
 
@@ -104,7 +104,7 @@
   \item Maximum likelihood, 116
   \item mean, 35
   \item median, 35
-  \item mode, 35
+  \item mode, 36
   \item Multiple Comparisons, 72
 
   \indexspace
@@ -113,6 +113,7 @@
   \item nominal, 23
   \item non-parametric tests, 56
   \item normality check, 56
+  \item null hypothesis, 58
 
   \indexspace
 
@@ -124,7 +125,8 @@
   \item percentiles, 36
   \item plots
     \subitem $Q-Q$ plot, 56
-    \subitem boxplot, 26
+    \subitem boxplot, 27
+    \subitem errorbars, 26
     \subitem histogram, 24
     \subitem kde, 25
     \subitem probplot, 56
@@ -146,7 +148,7 @@
 
   \item random variate, 33
   \item randomization, 29
-  \item randomized controlled trial, 28
+  \item randomized controlled trial, 29
   \item range, 36
   \item regressand, 110
   \item regression, 93
@@ -159,15 +161,16 @@
   \indexspace
 
   \item sample selection, 30
-  \item sample size, 59
+  \item sample size, 60
   \item scikit-learn, 123
   \item sensitivity, 62
   \item shape parameters, 38
+  \item significance level, 58
   \item skewness, 38
   \item specificity, 62
   \item standard deviation, 36
   \item standard error, 37
-  \item statistic, 39
+  \item statistic, 38
   \item statistical modeling, 109
   \item survival times, 103
 
@@ -201,6 +204,6 @@
   \indexspace
 
   \item variance, 36
-  \item variate, 41
+  \item variate, 42
 
 \end{theindex}

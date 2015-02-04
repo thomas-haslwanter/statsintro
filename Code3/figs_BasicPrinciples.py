@@ -4,13 +4,14 @@ Note than in ipython, the "show()" commands are automatically generated.
 The examples contain:
 - scatter plots
 - histograms
+- errorbars
 - boxplots
 - violinplots
 - cumulative density functions
 
 '''
 
-# author: Thomas Haslwanter, date: July-2014
+# author: Thomas Haslwanter, date: Feb-2015
 
 # First, import the libraries that you are going to need. You could also do
 # that later, but it is better style to do that at the beginning.
@@ -50,7 +51,7 @@ def main():
     # Cumulative probability density
     numbins = 20
     plot(stats.cumfreq(x,numbins)[0])
-    mystyle.printout('CumulativeFrequencyFunction.png', xlabel='Data Values', ylabel='Cumulative Freuqency')
+    mystyle.printout('CumulativeFrequencyFunction.png', xlabel='Data Values', ylabel='Cumulative Frequency')
     
     # Boxplot
     # The ox consists of the first, second (middle) and third quartile
@@ -61,6 +62,15 @@ def main():
     title('Boxplot, horizontal')
     xlabel('Values')
     show()
+    
+    # Errorbars
+    x = arange(5)
+    y = x**2
+    errorBar = x/2
+    errorbar(x,y, yerr=errorBar, fmt='o', capsize=5, capthick=3)
+    xlim([-0.2, 4.2])
+    ylim([-0.2, 19])
+    mystyle.printout('Errorbars.png', xlabel='Data Values', ylabel='Measurements', title='Errorbars')
     
     # Violinplot
     nd = stats.norm

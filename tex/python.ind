@@ -16,8 +16,8 @@
 
   \indexspace
 
-  \item distributionContinuous, 49
-  \item distributionDiscrete, 41, 51
+  \item distributionContinuous, 50
+  \item distributionDiscrete, 42, 52
   \item distributionNormal, 41
 
   \indexspace
@@ -55,7 +55,7 @@
 
   \indexspace
 
-  \item sampleSize, 61
+  \item sampleSize, 62
   \item statsmodelsIntro, 20
   \item survival, 104
 
