@@ -50,9 +50,8 @@ Since it is very important to understand the basic principles of how we arrive a
 
 \subsection{Wilcoxon signed rank sum test}\index{general}{test!Wilcoxon signed rank sum}
 
-If our data are not normally distributed, we cannot use the t-test (although this test is fairly robust against deviations from normality). Instead, we must use a \emph{non-parametric} test on the mean value. We can do this by performing a \emph{Wilcoxon signed rank sum test}.
- \footnote{Python Example: scipy.stats.wilcoxon, in "univariate.py"}
-\footnote{The following description and example has been taken from \cite{altman99}, Table 9.2}
+If our data are not normally distributed, we cannot use the t-test (although this test is fairly robust against deviations from normality, see Fig. \ref{fig:ttest_stability}). Instead, we must use a \emph{non-parametric} test on the mean value. We can do this by performing a \emph{Wilcoxon signed rank sum test}.
+ \footnote{Python Example: scipy.stats.wilcoxon, in "univariate.py"},\footnote{The following description and example has been taken from \cite{altman99}, Table 9.2}
 This method has three steps:
 
 \begin{enumerate}
@@ -88,7 +87,7 @@ In Table \ref{tab:wilcoxon} you see an example, where the significance to a devi
 \section{Comparison of Two Groups} \index{general}{test! t-test, paired}
 
 \subsection{Paired T-Test}
-When you compare two groups with each other, we have to distinguish between two cases. In the first case, we compare two values recorded from the same subject at two specific times. For example, we measure the size of students when they enter primary school and after their first year, and check if they have been growing. Since we are only interested in the \emph{difference} between the first and the second measurement, this test is called \emph{paired t-test}, and is essentially equivalent to a one-sample t-test for the mean difference.
+When we compare two groups with each other, we have to distinguish between two cases. In the first case, we compare two values recorded from the same subject at two specific times. For example, we measure the size of students when they enter primary school and after their first year, and check if they have grown. Since we are only interested in the \emph{difference} between the first and the second measurement, this test is called \emph{paired t-test}, and is essentially equivalent to a one-sample t-test for the mean difference.
 
 \subsection{Unpaired T-Test}
 The second test is if we compare two independent groups. For example, we can compare the effect of a two medications given to two different groups of patients, and compare how the two groups respond. This is called an \emph{unpaired t-test}, or \emph{t-test for two independent groups}.
@@ -105,7 +104,7 @@ where $\bar{x}_i$ is the mean of the i-th sample, and \emph{se} indicates the \e
 
 \subsection{Non-parametric Comparison of Two Groups: Mann-Whitney Test} \index{general}{test!Mann-Whitney}\label{test:Mann-Whitney}
 
-If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilcoxon) test}. Watch out, because this test is sometimes also referred to as \emph{Wilcoxon rank-sum test}. This is different than the \emph{Wilcoxon signed rank sum test}!
+If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilcoxon) test}. Watch out, because this test is sometimes also referred to as \emph{Wilcoxon rank-sum test}. This is different from the \emph{Wilcoxon signed rank sum test}!
 
 \PyImg "twoSample.py" (p \pageref{py:twoSample}): Comparison of two groups, paired and unpaired.
 \index{python}{twoSample}
@@ -131,19 +130,52 @@ These numbers can be generated, and a t-test comparing the two groups can be don
     random.seed(123)
     race_1 = np.round(randn(20)*10+90)
     race_2 = np.round(randn(20)*10+85)
-    stats.ttest_rel(race_1, race_2)
+    (t, pVal) = stats.ttest_rel (race_1, race_2)
+    print('The probability that the two distributions are equal is {0}'.format(pVal))
 \end{lstlisting}
+
+The command \lstinline{random.seed(123)} initializes the random number generator with the number $123$, which ensures that two consecutive runs of this code produce the same result, corresponding to the numbers given above.
 
 \subsubsection{Statistical Modeling}
 
 \begin{lstlisting}
     import pandas as pd
     import statsmodels.formula.api as sm
+    np.random.seed(123)
     df = pd.DataFrame({'Race1': race_1, 'Race2':race_2})
     result = sm.ols(formula='I(Race2-Race1) ~ 1', data=df).fit()
-    print result.summary()
+    print(result.summary())
 \end{lstlisting}
 
+The important line is the last but one, which produces the $results$. Thereby the \emph{ordinary least square (ols)} function from \emph{statsmodels} tests the model which describes the difference between the results of \emph{Race1} and those of \emph{Race2} with only an \emph{offset} (also called \emph{intercept} in the language of modeling). In other words, our model has only one paramter, the \emph{intercept}. The results below show that the probability that this intercept is 0 is only 0.03: the difference is \emph{significant}.
+
+ \small\begin{lstlisting}
+ 
+                             OLS Regression Results
+==============================================================================
+Dep. Variable:       I(Race2 - Race1)   R-squared:                       0.000
+Model:                            OLS   Adj. R-squared:                  0.000
+Method:                 Least Squares   F-statistic:                       nan
+Date:                Sun, 08 Feb 2015   Prob (F-statistic):                nan
+Time:                        18:48:06   Log-Likelihood:                -85.296
+No. Observations:                  20   AIC:                             172.6
+Df Residuals:                      19   BIC:                             173.6
+Df Model:                           0
+Covariance Type:            nonrobust
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -9.1000      3.950     -2.304      0.033       -17.367    -0.833
+==============================================================================
+Omnibus:                        0.894   Durbin-Watson:                   2.009
+Prob(Omnibus):                  0.639   Jarque-Bera (JB):                0.793
+Skew:                           0.428   Prob(JB):                        0.673
+Kurtosis:                       2.532   Cond. No.                         1.00
+==============================================================================
+\end{lstlisting}
+\normalsize
+
+The output is explained in more model in the chapter \ref{chapter:Models}. The important point here is that the t- and p-value for the \emph{intercept} are the same as with the classical t-test above.
 
 \section{Comparison of More Groups}
 
