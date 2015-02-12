@@ -1,6 +1,6 @@
 \chapter{Tests on Categorical Data }
 
-In a sample of individuals the number falling into a particular group is called the \emph{frequency}, so the analysis of categorical data is the analysis of frequencies. When two or more groups are compared the data are often shown in the form of a \emph{frequency table}, sometimes also called \emph{contingency table}.
+In a data sample the number of data falling into a particular group is called the \emph{frequency}, so the analysis of categorical data is the analysis of frequencies. When two or more groups are compared the data are often shown in the form of a \emph{frequency table}, sometimes also called \emph{contingency table}. For example, Table \ref{table:frequency} gives the number of right/left-handed subjects, \emph{contingent} on the subject being male or female.
 
 \begin{table}
   \centering
@@ -51,7 +51,7 @@ We know that:
 \begin{itemize}
   \item the FH OOe has about 5'000 students, about half of which are female.
   \item breast cancer hits predominantly women.
-  \item the \emph{incidence} of breast cancer in the age group 20-30 is about 10
+  \item the \emph{incidence} of breast cancer in the age group 20-30 is about 10, where \emph{incidence}\index{general}{incidence} is typically defined as the new occurrences of a disease per year per 100'000 people.
   \item 3.8\% of all women die of cancer.
 \end{itemize}
 
@@ -59,7 +59,7 @@ From these points of information, we can obtain the following parameters for our
 
 \begin{itemize}
   \item n = 2'500
-  \item $p_{incidence} = 10 / 100'000$, as \emph{incidence}\index{general}{incidence} is typically defined as the new occurrences of a disease per year per 100'000 people.
+  \item $p_{incidence} = 10 / 100'000$
   \item $p_{mortality} = 3.8/100$.
 \end{itemize}
 
@@ -83,11 +83,11 @@ Many of these tests analyze the \emph{deviation from an expected value}. Since t
   \hline
   \end{tabular}
 
-  \caption{Corresponding expected values for Table \ref{table:frequency}\label{table:expectedValues}}
+  \caption{Corresponding \emph{expected values} for Table \ref{table:frequency}\label{table:expectedValues}}
 \end{table}
 
 
-Assume you have observed absolute frequencies $o_i$ and expected absolute frequencies $e_i$. Under the Null hypothesis all your data come from the same population, and the test statistic
+Assume that you have observed absolute frequencies $o_i$ and expected absolute frequencies $e_i$. Under the Null hypothesis all your data come from the same population, and the test statistic
 
 \begin{equation}\label{eq:chi2}
   V = \sum_i \frac{(o_i-e_i)^2}{e_i} \approx \chi^2_f
@@ -129,7 +129,7 @@ In other words, you doing a lot of the washing up really could have been by chan
 
 If you can arrange your data in rows and columns, you can check if the numbers in the individual columns are contingent on the row value. For this reason, this test is sometimes called \emph{contingency test}.
 
-The chi-square contingency test is based on a test statistic that measures the divergence of the observed data from the values that would be expected under the null hypothesis of no association. When $n$ is the total number of observations included in the table, the expected value for each cell in a two-way table is
+The chi-square contingency test is based on a test statistic that measures the divergence of the observed data from the values that would be expected under the null hypothesis of no association (e.g. Table \ref{table:expectedValues}). When $n$ is the total number of observations included in the table, the expected value for each cell in a two-way table is
 
 \begin{equation}
   expectedFrequency = \frac{RowTotal * ColumnTotal}{n}
@@ -161,6 +161,8 @@ We might have to subtract from the number of degrees of freedom the number of pa
 The Python command \emph{stats.chi2\_contingency} returns the following list: ($\chi^2$-value, p-value, degrees-of-freedom, expected values).
 
 \begin{lstlisting}
+     data = np.array([[43,9],
+                      [44,4]])
     V, p, dof, expected = stats.chi2_contingency(data)
     print(p)
     >>> 0.300384770391
@@ -168,11 +170,11 @@ The Python command \emph{stats.chi2\_contingency} returns the following list: ($
 
 For the example data in Table \ref{table:frequency}, the results are ($\chi^2=1.1, p=0.3, df=1$). In other words, there is no indication that there is a difference in left-handed people vs right-handed people between males and females.
 
-\textbf{Note:} These values assume the default setting, which uses the \emph{Yates correction}. Without this correction, i.e. using Eq. \ref{eq:chi2}, the results are$\chi^2=1.8, p=0.18$.
+\textbf{Note:} These values assume the default setting, which uses the \emph{Yates correction}. Without this correction, i.e. using Eq. \ref{eq:chi2}, the results are $\chi^2=1.8, p=0.18$.
 
 \subsubsection{Example 2}
 
-The $\chi^2$ test can be used to generate "quick and dirty" test, e.g.
+The Chi-square test can be used to generate a "quick and dirty" test of normality, e.g.
 
 $H_0:$ The random variable $X$ is symmetrically distributed versus
 
@@ -211,13 +213,13 @@ The Chi-square test is a pure hypothesis test. It tells you if your observed fre
 
 If the requirement that 80\% of cells should have expected values of at least 5 is not fulfilled, \emph{Fisher's exact test} should be used. This test is based on the observed row and column totals. The method consists of evaluating the probability associated with all possible 2x2 tables which have the same row and column totals as the observed data, making the assumption that the null hypothesis (i.e. that the row and column variables are unrelated) is true.  In most cases, Fisher's exact test is preferable to the chi-square test. But until the advent of powerful computers, it was not practical. You should use it up to approximately 10-15 cells in the frequency tables. It is called "exact" because the significance of the deviation from a null hypothesis can be calculated exactly, rather than relying on an approximation that becomes exact in the limit as the sample size grows to infinity, as with many statistical tests.
 
-In using the test, you have to decide if you want to use a one-tailed test or a two-tailed test. The former one looks for the probability to find a distribution as extreme or more extreme as the observed one. The latter one (which is the default in python) also considers tables as extreme in the opposite direction.
+In using the test, you have to decide if you want to use a one-tailed test or a two-tailed test. The former one looks for the probability to find a distribution as extreme as or more extreme than the observed one. The latter one (which is the default in python) also considers tables as extreme in the opposite direction.
 
-\textbf{Note:} The python command $stats.fisher_exact$ returns by default the p-value for \emph{finding a value as extreme or more extreme than the observed one}. According to Altman, this is a reasonable approach, although not all statisticians agree on that point.
+\textbf{Note:} The python command \lstinline{stats.fisher_exact} returns by default the p-value for \emph{finding a value as extreme or more extreme than the observed one}. According to Altman (\cite{altman99}), this is a reasonable approach, although not all statisticians agree on that point.
 
-\subsubsection{Example: "A Lady Tasting Tea"}\footnote{Adapted from Stat Labs: Mathematical statistics through applications by D. Nolan and T. Speed, Springer-Verlag, New York, 2000}
+\subsubsection{Example: "A Lady Tasting Tea"}
 
-R. A. Fisher was one of the founding fathers of modern statistics. One of his early, and perhaps the most famous, experiments was to test an English lady's claim that she could tell whether milk was poured before tea or not. Here is an account of the seemingly trivial event that had the most profound impact on the history of modern statistics, and hence, arguably, modern quantitative science \cite{Box1978}.
+\footnote{Adapted from Stat Labs: Mathematical statistics through applications by D. Nolan and T. Speed, Springer-Verlag, New York, 2000}R. A. Fisher was one of the founding fathers of modern statistics. One of his early, and perhaps the most famous, experiments was to test an English lady's claim that she could tell whether milk was poured before tea or not. Here is an account of the seemingly trivial event that had the most profound impact on the history of modern statistics, and hence, arguably, modern quantitative science \cite{Box1978}.
 
 \begin{adjustwidth}{2.5em}{2.5em}
     Already, quite soon after he had come to Rothamstead, his presence had transformed one commonplace tea time to an historic event. It happened one afternoon when he drew a cup of tea from the urn and offered it to the lady beside him, Dr. B. Muriel Bristol, an algologist. She declined it, stating that she preferred a cup into which the milk had been poured first. "Nonsense," returned Fisher, smiling, "Surely it makes no difference." But she maintained, with emphasis, that of course it did. From just behind, a voice suggested, "Let's test her." It was William Roach who was not long afterward to marry Miss Bristol. Immediately, they embarked on the preliminaries of the experiment, Roach assisting with the cups and exulting that Miss Bristol divined correctly more than enough of those cups into which tea had been poured first to prove her case.
@@ -243,7 +245,7 @@ An actual scenario described by Fisher and told by many others as the "lady tast
   \item For each cup, we record the order of actual pouring and what the lady says the order is. We can summarize the result by a table like this:
 
       \begin{tabular}{ r r|c|c|c }
-       & \multicolumn{1}{c}{} & \multicolumn{2}{ c }{Order of Actual Pouring} & \\
+       & \multicolumn{1}{c}{} & \multicolumn{2}{ c }{Order of actual pouring} & \\
        & \multicolumn{1}{c}{} &  \multicolumn{1}{c}{Tea first} & \multicolumn{1}{c}{Milk first} & \\
        \cline{3-4}
        \multirow{2}{*}{Lady says} & Tea first & $a$ & $b$ & $a+b$ \\
@@ -255,7 +257,7 @@ An actual scenario described by Fisher and told by many others as the "lady tast
 
 
       Here $n$ is the total number of cups of tea made. The number of cups where tea is poured
-    first is $a + c$ and the lady classifies $a + b$ of them as tea first. Ideally, if she can taste the difference, the counts $b$ and $c$ should be small. On the other hand, if she can’t really tell, we would expect $a$ and $c$ to be about the same.
+    first is $a + c$ and the lady classifies $a + b$ of them as tea first. Ideally, if she can taste the difference, the counts $b$ and $c$ should be small. On the other hand, if she cannot really tell, we would expect $a$ and $c$ to be about the same.
 
   \item Suppose now that to test the lady, 8 cups of tea are prepared, 4 tea first, 4 milk first, and she is informed of the design (that there are 4 cups milk first and 4 cups tea first). Suppose also that the cups are presented to her in random order. Her task then is to identify the 4 cups milk first and 4 cups tea first.
 
@@ -290,7 +292,7 @@ An actual scenario described by Fisher and told by many others as the "lady tast
       \end{tabular}
 
 
-  \item With these probabilities, we can compute the p-value for the test of the hypothesis that the lady cannot tell between the two preparations. Recall that the p-value is the probability of observing a result as extreme or more extreme than the observed result assuming the null hypothesis. If she makes all correct calls,the p-value is 1/70 and if she makes one error (3 correct calls) then the p-value is 1/70 + 16/70 ˜ 0.24.
+  \item With these probabilities, we can compute the p-value for the test of the hypothesis that the lady cannot tell between the two preparations. Recall that the p-value is the probability of observing a result as extreme or more extreme than the observed result assuming the null hypothesis. If she makes all correct calls,the p-value is 1/70 and if she makes one error (3 correct calls) then the p-value is $1/70 + 16/70 \sim 0.24$.
 
 \end{itemize}
   	
