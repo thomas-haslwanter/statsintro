@@ -1,5 +1,27 @@
+\indexentry{gettingStarted}{18}
+\indexentry{readZip}{18}
+\indexentry{statsmodelsIntro}{20}
+\indexentry{getData}{21}
+\indexentry{figsBasicPrinciples}{27}
+\indexentry{distributionNormal}{41}
+\indexentry{distributionDiscrete}{42}
+\indexentry{distributionContinuous}{50}
+\indexentry{distributionDiscrete}{52}
+\indexentry{checkNormality}{57}
+\indexentry{sampleSize}{62}
 \indexentry{oneSample}{68}
 \indexentry{twoSample}{70}
 \indexentry{anovaOneway}{73}
 \indexentry{multipleTesting}{73}
 \indexentry{KruskalWallis}{74}
+\indexentry{binomialTest}{77}
+\indexentry{compGroups}{87}
+\indexentry{multivariate}{97}
+\indexentry{fitLine}{97}
+\indexentry{anovaTwoway}{99}
+\indexentry{multipleRegression}{101}
+\indexentry{survival}{104}
+\indexentry{linear regression model}{112}
+\indexentry{modeling}{127}
+\indexentry{bootstrapDemo}{127}
+\indexentry{Bayesian Statistics}{133}

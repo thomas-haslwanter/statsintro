@@ -1,12 +1,12 @@
 \chapter{Relation Between Two Continuous Variables}
 
-If we have two related variables, the \emph{correlation} measures the association between the two variables. In contrast, a \emph{linear regression} is used for the prediction of the value of one variable from another. If we want to compare more than two groups of variables, we have to use a technique known as \emph{Analysis of Variance (ANOVA)}.
+If we have two related variables, the \emph{correlation} measures the association between the two variables. In contrast, a \emph{linear regression} is used for the prediction of the value of one variable from another. For the correlation between many variables, you should look into "correlation tables" (nicely implemented in \emph{seaborn}).  And an extension of linear regression to more than two variables brings you into the realm of statistical modeling (\ref{chapter:Models}).
 
 \section{Correlation}
 
 \subsection{Correlation Coefficient} \index{general}{correlation coefficient}
 
-If the two variables are normally distributed, the standard measure of determining the \emph{correlation coefficient}, often ascribed to \emph{Pearson} \index{general}{correlation!Pearson}, is
+The \emph{correlation coefficient} between two variables answers the question: "Are the two variables related? I.e. if one variable changes, does the other also change?" If the two variables are normally distributed, the standard measure of determining the \emph{correlation coefficient}, often ascribed to \emph{Pearson} \index{general}{correlation!Pearson}, is
 
 \begin{equation}\label{eq:pearson}
   r = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum\limits_{i=1}^n (X_i - \bar{X})^2} \sqrt{\sum\limits_{i=1}^n (Y_i - \bar{Y})^2}}
@@ -18,25 +18,29 @@ With
   s_{xy} = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}
 \end{equation}
 
-and $s_x, s_y$ the sample standard deviations of the $x$ and $y$ values, respectively, the Equation \ref{eq:pearson} can also be written as
+and $s_x, s_y$ the sample standard deviations of the $x$ and $y$ values, respectively,  Eq. \ref{eq:pearson} can also be written as
 
 \begin{equation}
   r = \frac{s_{xy}}{s_x \cdot s_y}.
 \end{equation}
 
-Pearson's correlation coefficient, sometimes also referred to as \emph{population correlation coefficient} or \emph{sample correlation}, can take any value from -1 to +1. Examples are given in Figure \ref{fig:correlation}. Note that the formula for the correlation coefficient is symmetrical between $x$ and $y$.
+Pearson's correlation coefficient, sometimes also referred to as \emph{population correlation coefficient} or \emph{sample correlation}, can take any value from -1 to +1. Examples are given in Figure \ref{fig:correlation}. Note that the formula for the correlation coefficient is symmetrical between $x$ and $y$ - which is not the case for linear regression!
 
 \subsection{Coefficient of determination}
 
-The \emph{coefficient of determination} \index{general}{coefficient of determination} or $R^2$ is the square of the correlation. It is easier to interpret than the correlation coefficient r: Values of $R^2$ close to 1 are good, values close to 0 are poor. To explain the interpretation of $R^2$, let us look at the math more formally:
+In order to interpret r, let me first define a few common terms.
+
+\begin{description}
+  \item[Residuals] Differences between observed values and predicted values.
+\end{description}
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.75\textwidth]{../Images/Coefficient_of_Determination.png}\\
-  \caption{The better the linear regression (on the right) fits the data in comparison to the simple average (on the left graph), the closer the value of $R^2$ is to one. The areas of the blue squares represent the squared residuals with respect to the linear regression. The areas of the red squares represent the squared residuals with respect to the average value (from Wikipedia)}\label{fig:CoefDetermination}
+  \includegraphics[width=0.75\textwidth]{../Images/residuals_linreg.png}\\
+  \caption{Best-fit linear regression line (red) and residuals (black). }\label{fig:residuals}
 \end{figure}
 
-A data set has values $y_i$, each of which has an associated modelled value $f_i$ (also sometimes referred to as $\hat{y}_i$). Here, the values $y_i$ are called the \emph{observed values}* and the modelled values $f_i$ are sometimes called the \emph{predicted values}.
+A data set has values $y_i$, each of which has an associated modelled value $f_i$ (also sometimes referred to as $\hat{y}_i$). Here, the values $y_i$ are called the \emph{observed values}, and the modelled values $f_i$ are sometimes called the \emph{predicted values}.
 
 In the following $\bar{y}$ is the mean of the observed data:
 
@@ -48,27 +52,42 @@ where n is the number of observations.
 
 The "variability" of the data set is measured through different sums of squares:
 
+\vspace{5 mm}
+
     $SS_\text{tot}=\sum_i (y_i-\bar{y})^2$, the total sum of squares (proportional to the sample variance);
 
-    $SS_\text{reg}=\sum_i (f_i -\bar{y})^2$, the regression sum of squares, also called the explained sum of squares.
+    $SS_\text{reg}=\sum_i (f_i -\bar{y})^2$, the regression sum of squares, also called the explained sum of squares;
 
     $SS_\text{res}=\sum_i (y_i - f_i)^2\,$, the sum of squares of residuals, also called the residual sum of squares.
 
+\vspace{5 mm}
+
 The notations $SS_{R}$ and $SS_{E}$ should be avoided, since in some texts their meaning is reversed to "Residual sum of squares" and "Explained sum of squares", respectively.
 
-The most general definition of the coefficient of determination is
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Coefficient_of_Determination.png}\\
+  \caption{The better the linear regression (on the right) fits the data in comparison to the simple average (on the left graph), the closer the value of $R^2$ is to one. The areas of the blue squares represent the squared residuals with respect to the linear regression. The areas of the red squares represent the squared residuals with respect to the average value (from Wikipedia)}\label{fig:CoefDetermination}
+\end{figure}
 
-\begin{equation}
+\vspace{5 mm}
+
+With these expressions, the most general definition of the \emph{coefficient of determination, $R^2$} is
+
+\begin{equation}\label{eq:R2}
   R^2 \equiv 1 - {SS_{\rm res}\over SS_{\rm tot}}.\,
 \end{equation}
 
+For simple linear regression (i.e. line-fits), the \emph{coefficient of determination} \index{general}{coefficient of determination} or $R^2$ is the square of the correlation coefficient $r$. It is easier to interpret than the correlation coefficient r: values of $R^2$ close to 1 are good, values close to 0 are poor.
+Note that for general models it is common to write $R^2$, whereas for simple linear regression $r^2$ is used.
+
 \subsubsection{Relation to unexplained variance}
 
-In a general form, $R^2$ can be seen to be related to the unexplained variance, since the second term compares the unexplained variance (variance of the model's errors) with the total variance (of the data). See fraction of variance unexplained.
+In a general form, $R^2$ can be seen to be related to the unexplained variance, since the second term in Eq. \ref{eq:R2} compares the unexplained variance (variance of the model's errors) with the total variance (of the data).
 
 \subsubsection{Adjusted $R^2$}\index{general}{coefficient of determination!adjusted}
 
-For multiple regression, the \emph{adjusted $R^2$} value (written as $\bar{R}^2$) is often used instead of $R^2$:
+If we add additional parameters to our model, we should somehow take that into consideration: because with additional parameters the residuals will \emph{always} become smaller, but the model may not become any better. Therefore for multiple regression the \emph{adjusted $R^2$} value (written as $\bar{R}^2$) is often used instead of $R^2$:
 
 \begin{equation}\label{eq:adjustedR2}
       \bar{R}^2 = 1 - (1 - R^2)\frac{n - 1}{n - p - 1}
@@ -125,12 +144,6 @@ When we search for the best-fit line to a given $(x_i,y_i)$ dataset, we are look
 
 where $k$ is the \emph{slope} or \emph{inclination} of the line, and $d$ the \emph{intercept}. This is in fact just the one-dimensional example of the more general technique, which is described in the next section.
 Note that in contrast to the correlation, this relationship between $x$ and $y$ is no more symmetrical: it is assumed that the $x-$values are known exactly, and that all the variability lies in the residuals.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.75\textwidth]{../Images/residuals_linreg.png}\\
-  \caption{Best-fit linear regression line (red) and residuals (black). }\label{fig:residuals}
-\end{figure}
 
 \subsection{Simple Regression}
 Example of \emph{simple linear regression} with 7 observations.
