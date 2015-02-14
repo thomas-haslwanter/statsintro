@@ -150,7 +150,7 @@ The command \lstinline{random.seed(123)} initializes the random number generator
 The important line is the last but one, which produces the $results$. Thereby the \emph{ordinary least square (ols)} function from \emph{statsmodels} tests the model which describes the difference between the results of \emph{Race1} and those of \emph{Race2} with only an \emph{offset} (also called \emph{intercept} in the language of modeling). In other words, our model has only one paramter, the \emph{intercept}. The results below show that the probability that this intercept is 0 is only 0.03: the difference is \emph{significant}.
 
  \small\begin{lstlisting}
- 
+
                              OLS Regression Results
 ==============================================================================
 Dep. Variable:       I(Race2 - Race1)   R-squared:                       0.000
@@ -197,34 +197,23 @@ Because the null hypothesis is that there is no difference between the groups, t
 
 The one-way ANOVA assumes all the samples are drawn from normally distributed populations with equal variance. To test this assumption, you can use the \emph{Levene test}\index{general}{test!Levene}.
 
-ANOVA uses traditional standardized terminology. The definitional equation
-of sample variance is $s^2=\textstyle\frac{1}{n-1}\sum(y_i-\bar{y})^2$,
-where
-the divisor is called the degrees of freedom (DF), the summation is called
-the sum of squares (SS), the result is called the mean square (MS) and the
-squared terms are deviations from the sample mean. ANOVA estimates 3 sample
-variances: a total variance based on all the observation deviations from the
-grand mean, an error variance based on all the observation deviations from
-their appropriate treatment means and a treatment variance. The treatment
-variance is based on the deviations of treatment means from the grand mean,
-the result being multiplied by the number of observations in each treatment
-to account for the difference between the variance of observations and the
-variance of means. If the null hypothesis is true, all three variance
-estimates are equal (within sampling error).
+ANOVA uses traditional standardized terminology. The definitional equation of sample variance is $s^2=\textstyle\frac{1}{n-1}\sum(y_i-\bar{y})^2$,
+where the divisor is called the degrees of freedom (DF), the summation is called the sum of squares (SS), the result is called the mean square (MS) and the squared terms are deviations from the sample mean. ANOVA estimates 3 sample variances: a \emph{total variance }based on all the observation deviations from the grand mean, an \emph{error variance }based on all the observation deviations from their appropriate treatment means and a \emph{treatment variance}. The treatment variance is based on the deviations of treatment means from the grand mean, the result being multiplied by the number of observations in each treatment to account for the difference between the variance of observations and the variance of means. If the null hypothesis is true, all three variance estimates are equal (within sampling error).
 
-The fundamental technique is a partitioning of the total sum of squares SS
-into components related to the effects used in the model. For example, the
-model for a simplified ANOVA with one type of treatment at different levels.
+The fundamental technique is a partitioning of the total sum of squares SS into components related to the effects used in the model (Fig. \ref{fig:ANOVA_annotated}). For example, the model for a simplified ANOVA with one type of treatment at different levels gives
 
 \begin{equation}
   SS_\text{Total} = SS_\text{Error} + SS_\text{Treatments}
 \end{equation}
 
+where $SS_{Total}$ is sum-squared devation from the overall mean, the $SS_{Error}$ the sum-squared deviation from the mean within a group, and the $SS_{treatment}$ the sum-squared deviation between each group and the overall mean (Fig. \ref{fig:ANOVA_annotated}).
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{../Images/anova_annotated.png}\\
+  \caption{The long blue line indicates the grand mean over all data. The $SS_{Error}$ describes the variability \emph{within} the groups, and the $SS_{Treamtent}$ (summed over all respective points!) the variability \emph{between} groups.}\label{fig:ANOVA_annotated}
+\end{figure}
 
-The number of degrees of freedom DF can be partitioned in a similar way: one
-of these components (that for error) specifies a chi-squared distribution
-which describes the associated sum of squares, while the same is true for
-"treatments" if there is no treatment effect.
+The number of degrees of freedom DF can be partitioned in a similar way: one of these components (that for error) specifies a chi-squared distribution which describes the associated sum of squares, while the same is true for "treatments" if there is no treatment effect.
 
 \begin{equation}
   DF_\text{Total} = DF_\text{Error} + DF_\text{Treatments}
@@ -232,9 +221,7 @@ which describes the associated sum of squares, while the same is true for
 
 
 \subsubsection{Example: one-way ANOVA}
-As an example, let us take the red cell folate levels ($\mu g/l$) in three groups of cardiac bypass patients given different levels of nitrous oxide ventilation (Amess et al, 1978), described in the Python code example
-below. I first show the result of this ANOVA test, and then explain the steps
-to get there.
+As an example, let us take the red cell folate levels ($\mu g/l$) in three groups of cardiac bypass patients given different levels of nitrous oxide ventilation (Amess et al, 1978), described in the Python code example below. I first show the result of this ANOVA test, and then explain the steps to get there.
 
 \begin{verbatim}
                 DF    SS          MS     F    p(>F)
@@ -255,7 +242,7 @@ to get there.
   \item Under the null hypothesis that two normally distributed populations have equal variances we expect the ratio of the two sample variances to have an \emph{F Distribution} (see section \ref{sec:ContinuousDistributions}). From the F-value, we can look up the corresponding p-value.
 \end{itemize}
 
-\PyImg "anovaOneway.py" (p \pageref{py:anovaOneway}): different aspects of one-way ANOVAs.
+\PyImg "anovaOneway.py" (p \pageref{py:anovaOneway}): different aspects of one-way ANOVAs: how to check the assumptions (with the Levene test), different ways to calculate a one-way ANOVA, and a demonstration that for the comparison between groups, a one-way ANOVA is equal to a T-test.
 \index{python}{anovaOneway}
 
 \subsection{Multiple Comparisons}\index{general}{Multiple Comparisons}
@@ -319,7 +306,7 @@ The Holm adjustment sequentially compares the lowest p-value with a Type I error
 
 \subsection{Kruskal-Wallis test}\index{general}{test!Kruskal-Wallis}\label{test:Kruskal-Wallis}
 
-When we compare two groups to each other, we use the \emph{t-test} when the data are normally distributed and the non-parametric \emph{Mann-Whitney test} otherwise. For three or more groups, the test for normally distributed data is the \emph{ANOVA-test}; for not-normally distributed data, the corresponding test is the \emph{Kruskal-Wallis test}. When the null hypothesis is true the test statistic for the Kruskal-Wallis test follows the \emph{Chi squared distribution}.
+When we compare \emph{two} groups to each other, we use the \emph{t-test} when the data are normally distributed and the non-parametric \emph{Mann-Whitney test} otherwise. For \emph{three or more }groups, the test for normally distributed data is the \emph{ANOVA-test}; for not-normally distributed data, the corresponding test is the \emph{Kruskal-Wallis test}. When the null hypothesis is true the test statistic for the Kruskal-Wallis test follows the \emph{Chi squared distribution}.
 
 \PyImg "KruskalWallis.py" (p \pageref{py:KruskalWallis}): Example of a Kruskal-Wallis test (for not normally distributed data).
 \index{python}{KruskalWallis}

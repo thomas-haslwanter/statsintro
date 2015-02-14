@@ -90,13 +90,18 @@
 \indexentry{ANOVA}{71}
 \indexentry{test!ANOVA}{71}
 \indexentry{test!Levene}{72}
-\indexentry{test!F-test}{72}
-\indexentry{test!variance ratio}{72}
+\indexentry{test!F-test}{73}
+\indexentry{test!variance ratio}{73}
 \indexentry{Multiple Comparisons}{73}
-\indexentry{test!Tukey's}{73}
+\indexentry{test!Tukey's}{74}
 \indexentry{Bonferroni correction}{74}
+<<<<<<< HEAD
 \indexentry{Holms correction}{74}
 \indexentry{test!Kruskal-Wallis}{74}
+=======
+\indexentry{Holms correction}{75}
+\indexentry{test!Kruskal-Wallis}{75}
+>>>>>>> 18967f642ca6209be079ed4d07e9b675ea4b6770
 \indexentry{test!binomial}{77}
 \indexentry{test!Cochran's Q}{79}
 \indexentry{incidence}{80}
@@ -108,12 +113,21 @@
 \indexentry{test!Cochran's Q}{86}
 \indexentry{correlation coefficient}{91}
 \indexentry{correlation!Pearson}{91}
+<<<<<<< HEAD
 \indexentry{coefficient of determination}{92}
 \indexentry{coefficient of determination!adjusted}{93}
 \indexentry{correlation!Spearman}{93}
 \indexentry{correlation!Kendall's $\tau$}{93}
 \indexentry{regression}{94}
 \indexentry{design matrix}{96}
+=======
+\indexentry{coefficient of determination}{91}
+\indexentry{coefficient of determination!adjusted}{92}
+\indexentry{correlation!Spearman}{93}
+\indexentry{correlation!Kendall's $\tau$}{93}
+\indexentry{regression}{93}
+\indexentry{design matrix}{95}
+>>>>>>> 18967f642ca6209be079ed4d07e9b675ea4b6770
 \indexentry{test!Friedman}{99}
 \indexentry{regression!multilinear}{99}
 \indexentry{ANOVA, two-way}{99}

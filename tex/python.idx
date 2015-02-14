@@ -12,8 +12,13 @@
 \indexentry{oneSample}{68}
 \indexentry{twoSample}{70}
 \indexentry{anovaOneway}{73}
+<<<<<<< HEAD
 \indexentry{multipleTesting}{73}
 \indexentry{KruskalWallis}{74}
+=======
+\indexentry{multipleTesting}{74}
+\indexentry{KruskalWallis}{75}
+>>>>>>> 18967f642ca6209be079ed4d07e9b675ea4b6770
 \indexentry{binomialTest}{77}
 \indexentry{compGroups}{87}
 \indexentry{multivariate}{97}
