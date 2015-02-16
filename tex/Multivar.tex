@@ -12,7 +12,9 @@ If we have matched pairs for two groups, and the differences are not normally di
 
 An example for the application of the Friedman test: Ten professional piano players are blindfolded, and are asked to judge the quality of three different pianos. Each player rates each piano on a scale of 1 to 10 (1 being the lowest possible grade, and 10 the highest possible grade). The null hypothesis is that all three pianos rate equally. To test the null hypothesis, the Friedman test is used on the ratings of the ten piano players.
 
-And if we want to and predict the value of one variable \emph{many} other variables, linear regression has to be replaced by of \emph{multilinear regression} \index{general}{regression!multilinear}, sometimes also referred to as \emph{multiple linear regression}.
+When moving from two to many variables, the correlation coefficient gets replaced by the \emph{correlation matrix}\index{general}{correlation matrix}. And if we want to and predict the value of one variable \emph{many} other variables, linear regression has to be replaced by of \emph{multilinear regression} \index{general}{regression!multilinear}, sometimes also referred to as \emph{multiple linear regression}.
+
+However, watch out for the pitfalls that loom when you work with many variables! Take for example the following hypothetical case: you make a survey about the activity and life circumstances of a large range of people, covering all the numbers that you can get your hand on. In this survey you find out that a) rich people spend more time playing golf than poor people, and b) rich people tend to have fewer children than poor people. This leads to a strong negative correlation between playing golf and having children, and you may be tempted to (falsely) draw the conclusion that playing golf reduces your fertility, while in reality it is the higher income which causes both effects. \cite{Kaplan2009} nicely describes where those problems come from, and how best to avoid them.
 
 \section{Two-way ANOVA} \label{sec:anovaTwoWay} \index{general}{ANOVA, two-way} \index{general}{test!ANOVA}
 
@@ -51,6 +53,33 @@ When you have more than two factors, it is recommendable to use \emph{statistica
                    palette="YlGnBu_d", aspect=.75).despine(left=True)
     plt.show()
 \end{lstlisting}
+
+\section{Correlation Matrix}\index{general}{Correlation matrix}
+
+An elegant way to visualize the correlation between a large number of variables is the \emph{correlation matrix}. Using \emph{seaborn}, it can be implemented elegantly as follows:
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/many_pairwise_correlations.png}\\
+  \caption{Visualization of the Correlation matrix.}\label{fig:CorrelationMatrix}
+\end{figure}
+
+\begin{lstlisting}
+    import numpy as np
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    sns.set(style="darkgrid")
+
+    rs = np.random.RandomState(33)
+    d = rs.normal(size=(100, 30))
+
+    f, ax = plt.subplots(figsize=(9, 9))
+    cmap = sns.diverging_palette(220, 10, as_cmap=True)
+    sns.corrplot(d, annot=False, sig_stars=False,
+                 diag_names=False, cmap=cmap, ax=ax)
+    f.tight_layout()
+\end{lstlisting}
+
 
 \section{Multilinear Regression} \index{general}{regression!multilinear}
 
