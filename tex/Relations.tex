@@ -1,6 +1,8 @@
 \chapter{Relation Between Two Continuous Variables}
 
-If we have two related variables, the \emph{correlation} measures the association between the two variables. In contrast, a \emph{linear regression} is used for the prediction of the value of one variable from another. For the correlation between many variables, you should look into "correlation tables" (nicely implemented in \emph{seaborn}).  And an extension of linear regression to more than two variables brings you into the realm of statistical modeling (\ref{chapter:Models}).
+So far we have been dealing with problems where only one variable is measured. Expressions or functions which only depend on one variable are sometimes called \emph{univariate}\index{general}{univariate}. If more than one variable is involved, we are dealing with \emph{multivariate}\index{general}{multivariate} problems. In the simplest case we have two varibles involved, and we need a \emph{bivariate}\index{general}{bivariate} data analysis.
+
+For two related variables, the \emph{correlation} measures the association between the two variables. In contrast, a \emph{linear regression} is used for the prediction of the value of one variable from another. For the correlation between many variables, you should look into "correlation tables" (nicely implemented in \emph{seaborn}).  And an extension of linear regression to more than two variables brings you into the realm of statistical modeling (\ref{chapter:Models}).
 
 \section{Correlation}
 
@@ -56,7 +58,7 @@ The "variability" of the data set is measured through different sums of squares:
 
     $SS_\text{tot}=\sum_i (y_i-\bar{y})^2$, the total sum of squares (proportional to the sample variance);
 
-    $SS_\text{reg}=\sum_i (f_i -\bar{y})^2$, the regression sum of squares, also called the explained sum of squares;
+    $SS_\text{mod}=\sum_i (f_i -\bar{y})^2$, the sum of squares of the model values, also called the explained sum of squares;
 
     $SS_\text{res}=\sum_i (y_i - f_i)^2\,$, the sum of squares of residuals, also called the residual sum of squares.
 
@@ -78,22 +80,24 @@ With these expressions, the most general definition of the \emph{coefficient of 
   R^2 \equiv 1 - {SS_{\rm res}\over SS_{\rm tot}}.\,
 \end{equation}
 
+Since
+
+\begin{equation}
+  SS_\text{tot} = SS_\text{mod} + SS_\text{res}
+\end{equation}
+
+Eq. \ref{eq:R2} is equivalent to
+
+\begin{equation}
+  R^2 = \frac{SS_\text{mod}}{SS_\text{tot}}
+\end{equation}
+
 For simple linear regression (i.e. line-fits), the \emph{coefficient of determination} \index{general}{coefficient of determination} or $R^2$ is the square of the correlation coefficient $r$. It is easier to interpret than the correlation coefficient r: values of $R^2$ close to 1 are good, values close to 0 are poor.
 Note that for general models it is common to write $R^2$, whereas for simple linear regression $r^2$ is used.
 
 \subsubsection{Relation to unexplained variance}
 
 In a general form, $R^2$ can be seen to be related to the unexplained variance, since the second term in Eq. \ref{eq:R2} compares the unexplained variance (variance of the model's errors) with the total variance (of the data).
-
-\subsubsection{Adjusted $R^2$}\index{general}{coefficient of determination!adjusted}
-
-If we add additional parameters to our model, we should somehow take that into consideration: because with additional parameters the residuals will \emph{always} become smaller, but the model may not become any better. Therefore for multiple regression the \emph{adjusted $R^2$} value (written as $\bar{R}^2$) is often used instead of $R^2$:
-
-\begin{equation}\label{eq:adjustedR2}
-      \bar{R}^2 = 1 - (1 - R^2)\frac{n - 1}{n - p - 1}
-\end{equation}
-
-where $n$ is the sample size and $p$ is the number of independent variables.
 
 \begin{figure}
   \centering
@@ -177,7 +181,7 @@ The equation for a quadratic fit to the given data is
 
 This can be rewritten in matrix form:
 
-\begin{equation}\label{eq:simpleRegression}
+\begin{equation}\label{eq:polynomialRegression}
   \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
   =
   \begin{bmatrix}1 & x_1 & x_1^2 \\1 & x_2  & x_2^2 \\1 & x_3  & x_3^2 \\1 & x_4  & x_4^2 \\1 & x_5  & x_5^2 \\1 & x_6  & x_6^2 \\ 1 & x_7  & x_7^2 \end{bmatrix}

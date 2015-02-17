@@ -2,13 +2,13 @@
 
 There is a substantial difference in approach between \emph{hypothesis tests}\index{general}{hypothesis test} and \emph{statistical modeling}. In the former case, you typically start out with a \emph{null hypothesis}. Based on your question and your data, you then select the appropriate statistical test as well as the desired significance level, and either accept or reject the null hypothesis.
 
-In contrast, statistical modeling is much more an interactive analysis of the data. Based on a first look at the data, you typically start out with selecting a statistical model that may describe your data. In the previous chapters, we have for example described the hypythesized linear relationship between data with the model 
+In contrast, statistical modeling is much more an interactive analysis of the data. Based on a first look at the data, you typically start out with selecting a statistical model that may describe your data. In the previous chapters, we have for example described the hypythesized linear relationship between data with the model
 
 \begin{equation*}
-  y = k*x + d
+  y = k*x + d .
 \end{equation*}
 
-You then 
+You then
 \begin{itemize}
   \item determine the model parameters (e.g. $k$ and $d$),
   \item assess the quality of the model (e.g. through the $R^2$-value, or another suitable parameter),
@@ -47,7 +47,7 @@ The symbols in Table \ref{tab:syntax} are used on the right hand side to denote 
   \caption{Formula syntax}
 \end{table}\label{tab:syntax}
 
-A complete set of the description is found under \cite{patsy}.
+A complete set of the description is found under \url{http:\\\\patsy.readthedocs.org}.
 
 \subsection{Design Matrix}
 
@@ -63,7 +63,7 @@ In the case of a linear regression model, the model can be rewritten as in Eq \r
     y=X\beta+ \epsilon,
 \end{equation*}
 
-For a simple linear regression and multivariate regression, the corresponding Design Matrices are given in \ref{eq:simpleRegression} and \ref{eq:multipleRegression}.
+For a simple linear regression and multivariate regression, the corresponding Design Matrices are given in \ref{eq:simpleRegression} and \ref{eq:multipleRegression}, respectively.
 
 \footnote{This section has been taken from Wikipedia} Given a data set $\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n$ of $n$ statistical units, a linear regression model assumes that the relationship between the dependent variable $y_i$ and the $p$-vector of regressors $x_i$ is linear. This relationship is modelled through a \emph{disturbance term} or \emph{error variable} $\epsilon_i$, an unobserved random variable that adds noise to the linear relationship between the dependent variable and regressors. Thus the model takes the form
 
@@ -73,7 +73,7 @@ For a simple linear regression and multivariate regression, the corresponding De
    \qquad i = 1, \ldots, n,
 \end{equation}
 
-where $^T$ denotes the transpose, so that $x_i^T\beta$ is the inner product between vectors $x_i$ $\beta$.
+where $^T$ denotes the transpose, so that $x_i^T\beta$ is the inner product between the vectors $\mathbf{x}_i$ and $\boldsymbol\beta$.
 
 Often these $n$ equations are stacked together and written in vector form as
 
@@ -101,27 +101,29 @@ Some remarks on terminology and general use:
   \item $\mathbf{x}_i$ are called \emph{regressors}, \emph{exogenous variables}, \emph{explanatory variables}, \emph{covariates}, \emph{input variables}, \emph{predictor variables}, or \emph{independent variables}, but not to be confused with \emph{independent random variables}. The matrix $\mathbf{X}$ is sometimes called the \emph{design matrix}.
       \begin{itemize}
         \item Usually a constant is included as one of the regressors. For example we can take $x_{i1}=1$ for $i=1,...,n$. The corresponding element of $\beta$ is called the \emph{intercept}. Many statistical inference procedures for linear models require an intercept to be present, so it is often included even if theoretical considerations suggest that its value should be zero.
-        \item Sometimes one of the regressors can be a non-linear function of another regressor or of the data, as in polynomial regression and segmented regression. The model remains linear as long as it is linear in the parameter vector $\beta$.
-        \item The regressors $x_{ij}$ may be viewed either as random variables, which we simply observe, or they can be considered as predetermined fixed values which we can choose. Both interpretations may be appropriate in different cases, and they generally lead to the same estimation procedures; however different approaches to asymptotic analysis are used in these two situations.
+        \item Sometimes one of the regressors can be a non-linear function of another regressor or of the data, as in polynomial regression and segmented regression. The model remains linear as long as it is linear in the parameter vector $\beta$ (see Eq. \ref{eq:polynomialRegression}).
          \end{itemize}
   \item $\boldsymbol\beta\,$ is a $p$-dimensional \emph{parameter vector}. Its elements are also called \emph{effects}, or \emph{regression coefficients}. Statistical estimation and inference in linear regression focuses on $\beta$.
   \item $\varepsilon_i\,$ is called the \emph{residuals}, \emph{error term}, \emph{disturbance term}, or \emph{noise}. This variable captures all other factors which influence the dependent variable $y_i$ other than the regressors $x_i$. The relationship between the error term and the regressors, for example whether they are correlated, is a crucial step in formulating a linear regression model, as it will determine the method to use for estimation.
-  \item If $i=1$ and $p=1$ in Eq.\ref{eq:regression}, we have a \emph{simple linear regression}, corresponding to Eq.\ref{eq:simpleRegression}. If $i>1$ we talk about \emph{multilinear regression} \index{general}{regression!multilinear} or \emph{multiple linear regression} \index{general}{regression!multiple linear|see{regression!multilinear}}.
+  \item If $i=1$ and $p=1$ in Eq.\ref{eq:regression}, we have a \emph{simple linear regression}, corresponding to Eq.\ref{eq:simpleRegression}. If $i>1$ we talk about \emph{multilinear regression} \index{general}{regression!multilinear} or \emph{multiple linear regression}\index{general}{regression!multiple linear|see{regression!multilinear}} (see Eq. \ref{eq:multipleRegression}).
 
 \end{itemize}
-\emph{Example}. Consider a situation where a small ball is being tossed up in the air and then we measure its heights of ascent $h_i$ at various moments in time $t_i$. Physics tells us that, ignoring the drag, the relationship can be modelled as
-:
+
+\subsubsection{Examples}
+
+\paragraph{Polynomial Model}
+Consider a situation where a small ball is being tossed up in the air and then we measure its heights of ascent $h_i$ at various moments in time $t_i$. Physics tells us that, ignoring the drag, the relationship can be modelled as:
 
 \begin{equation}
  h_i = \beta_1 t_i + \beta_2 t_i^2 + \varepsilon_i,
 \end{equation}
 
-where $\beta_1$ determines the initial velocity of the ball, $\beta_2$ is proportional to the standard gravity, and $\epsilon_i$ is due to measurement errors. Linear regression can be used to estimate the values of $\beta_1$ and $\beta_2$ from the measured data. This model is non-linear in the time variable, but it is linear in the parameters $\beta_1$ and $\beta_2$; if we take regressors $\mathbf{x}_i = (x_{i1},x_{i2}) = (t_i,t_i^2)$, the model takes on the standard form
-:
+where $\beta_1$ determines the initial velocity of the ball, $\beta_2$ is proportional to the standard gravity, and $\epsilon_i$ is due to measurement errors. Linear regression can be used to estimate the values of $\beta_1$ and $\beta_2$ from the measured data. This model is non-linear in the time variable, but it is linear in the parameters $\beta_1$ and $\beta_2$; if we take regressors $\mathbf{x}_i = (x_{i1},x_{i2}) = (t_i,t_i^2)$, the model takes on the standard form:
+
  $h_i = \mathbf{x}^{\rm T}_i\boldsymbol\beta + \varepsilon_i.$
 
 
-\subsubsection{Examples}
+
 \paragraph{One-way ANOVA (Cell Means Model)}
 Example with a one-way analysis of variance (ANOVA) with 3 groups and 7 observations. The given data set has the first three observations belonging to the first group, the following two observations belong to the second group and the final two observations are from the third group.
 If the model to be fit is just the mean of each group, then the model is
@@ -246,36 +248,36 @@ Kurtosis:                       1.527   Cond. No.                         27.2
 \normalsize
 
 
-And now we have a very nice table of mostly meaningless numbers. I will go through and explain each one. The left column of the first table is mostly self explanatory. The degrees of freedom of the model are the number of predictor, or explanatory variables. The degrees of freedom of the residuals is the number of observations minus the degrees of freedom of the model, minus one (for the offset).
+And now we have a very nice table of mostly meaningless numbers. I will go through and explain each one. The left column of the first table is mostly self explanatory. The degrees of freedom (\emph{Df}) of the model are the number of predictor, or explanatory, variables. The degrees of freedom of the residuals is the number of observations minus the degrees of freedom of the model, minus one (for the offset).
 
 Most of the values listed in the summary are available via the \lstinline{result} object. For instance, the $R^2$ value is obtained by \lstinline{result.rsquared}. If you are using IPython, you may type \lstinline{result.} and hit the TAB key, and a list of attributes for the \lstinline{result} object will drop down.
 
 \subsection{Model Results}
 \subsubsection{Definitions for Regression with Intercept}
 
-$n$ is the number of observations, $p$ is the number of regression parameters. For example, if you fit a straight line, $k=2$.
+$n$ is the number of observations, $k$ is the number of regression parameters. For example, if you fit a straight line, $k=2$.
 In the following $\hat{y}_i$ will indicate the fitted model values, and $\bar{y}$ will indicate the mean.
 
 \begin{itemize}
-  \item $SSM = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2$ is the \emph{Sum of Square for Model}, or the sum of squares for the regression.
-  \item $SSE = \sum_{i=1}^n (y_i-\hat{y}_i)^2$ is the \emph{sum of Squares for Error}, or the sum of squares for the residuals.
-  \item $SST = \sum_{i=1}^n (y_i-\bar{y})^2$ is the \emph{Sum of Squares Total}, and is equivalent to the sample variance multiplied by $n-1$.
+  \item $SS_\text{mod} = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2$ is the \emph{Model Sum of Squares}, or the sum of squares for the regression.
+  \item $SS_\text{res} = \sum_{i=1}^n (y_i-\hat{y}_i)^2$ is the \emph{Residuals Sum of Squares}, or the sum of squares for the errors.
+  \item $SS_\text{tot} = \sum_{i=1}^n (y_i-\bar{y})^2$ is the \emph{Total Sum of Squares}, and is equivalent to the sample variance multiplied by $n-1$.
 \end{itemize}
 
-For multiple regression models, $SSM + SSE = SST$
+For multiple regression models, $SS_\text{mod} + SS_\text{res} = SS_\text{tot}$
 
 \begin{itemize}
-  \item $DFM = k - 1$ is the \emph{(Corrected) Degrees of Freedom for Model}. (The "-1" comes from the fact that we are only interested in the correlation, not in the absolute offset of the data.)
-  \item $DFE = n - k$ is the \emph{Degrees of Freedom for Error}
-  \item $DFT = n - 1$ is the \emph{(Corrected) Degrees of Freedom Total}. The Horizontal line regression is the null hypothesis model.
+  \item $DF_\text{mod} = k - 1$ is the \emph{(Corrected) ModelDegrees of Freedom }. (The "-1" comes from the fact that we are only interested in the correlation, not in the absolute offset of the data.)
+  \item $DF_\text{res} = n - k$ is the \emph{Residuals Degrees of Freedom}
+  \item $DF_\text{tot} = n - 1$ is the \emph{(Corrected) Total Degrees of Freedom}. The Horizontal line regression is the null hypothesis model.
 \end{itemize}
 
-For multiple regression models with intercept, DFM + DFE = DFT.
+For multiple regression models with intercept, $DF_\text{mod} + DF_\text{res} = DF_\text{tot}$.
 
 \begin{itemize}
-  \item $MSM = SSM / DFM$ : \emph{Mean of Squares for Model}
-  \item $MSE = SSE / DFE$ : \emph{Mean of Squares for Error}. MSE is an unbiased estimate for $\sigma^2$ for multiple regression models.
-  \item $MST = SST / DFT$ : \emph{Mean of Squares Total}, which is the sample variance of the y-variable.
+  \item $MS_\text{mod} = SS_\text{mod} / DF_\text{mod}$ : \emph{Model Mean of Squares}
+  \item $MS_\text{res} = SS_\text{res} / DF_\text{res}$ : \emph{Residuals Mean of Squares}. $MS_\text{res}$ is an unbiased estimate for $\sigma^2$ for multiple regression models.
+  \item $MS_\text{tot} = SS_\text{tot} / DF_\text{tot}$ : \emph{Total Mean of Squares}, which is the sample variance of the y-variable.
 \end{itemize}
 
 \subsubsection{The $R^2$ Value}
@@ -283,31 +285,31 @@ For multiple regression models with intercept, DFM + DFE = DFT.
 The $R^2$ value indicates the proportion of variation in the y-variable that is due to variation in the x-variables. For simple linear regression, the $R^2$ value is the square of the sample correlation $r_{xy}$. For multiple linear regression with intercept (which includes simple linear regression), the $R^2$ value is defined as
 
 \begin{equation}
-  R^2 = \frac{SSM}{SST}
+  R^2 = \frac{SS_\text{mod}}{SS_\text{tot}}
 \end{equation}
 
-\subsection{The \emph{adjusted} $R^2$ Value}
+\subsection{$\bar{R}^2$ - The \emph{adjusted} $R^2$ Value}\index{general}{coefficient of determination!adjusted}
 
-Many researchers prefer the adjusted $\bar{R}^2$ value (Eq \ref{eq:adjustedR2}), which is penalized for having a large number of parameters in the model:
+Many researchers prefer the \emph{adjusted $\bar{R}^2$ value}, which is penalized for having a large number of parameters in the model:
 
 Here is the logic behind the definition of $\bar{R}^2$:
-$R^2$ is defined as $R^2 = 1 - SSE/SST$ or $1 - R^2 = SSE/SST$. To take into account the number of regression parameters $p$, define the \emph{adjusted R-squared} value as
+$R^2$ is defined as $R^2 = 1 - SS_\text{res}/SS_\text{tot}$ or $1 - R^2 = SS_\text{res}/SS_\text{tot}$. To take into account the number of regression parameters $p$, define the \emph{adjusted R-squared} value as
 \begin{equation}
-  1- \bar{R}^2 = \frac{Variance for Error}{Variance Total}
+  1- \bar{R}^2 = \frac{ResidualVariance }{Total Variance}
 \end{equation}
 
-where \emph{(Sample) Variance for Error} is estimated by $SSE/DFE = SSE/(n-k)$, and \emph{(Sample) Variance Total} is estimated by $SST/DFT = SST/(n-1)$. Thus,
+where \emph{(Sample) Residual Variance} is estimated by $SS_\text{res}/DF_\text{res} = SS_\text{res}/(n-k)$, and \emph{(Sample) Total Variance} is estimated by $SS_\text{tot}/DF_\text{tot} = SS_\text{tot}/(n-1)$. Thus,
 \begin{eqnarray}
-    1 - \bar{R}^2 &=& \frac{SSE/(n - k)}{SST/(n - 1)} \\
-          	&=& \frac{SSE}{SST}\frac{n - 1}{n - k}
+    1 - \bar{R}^2 &=& \frac{SS_\text{res}/(n - k)}{SS_\text{tot}/(n - 1)} \nonumber \\
+          	&=& \frac{SS_\text{res}}{SS_\text{tot}}\frac{n - 1}{n - k}
 \end{eqnarray}
 
-    so
+so
+    
 \begin{eqnarray}
-  \bar{R}^2 &=& 1 - \frac{SSE}{SST} \frac{n - 1}{(n - k} \\
+  \bar{R}^2 &=& 1 - \frac{SS_\text{res}}{SS_\text{tot}} \frac{n - 1}{n - k} \nonumber  \\
     &=& 1 - (1 - R^2)\frac{n - 1}{n - k}
 \end{eqnarray}
-
 
 \subsubsection{The F-test}
 
@@ -320,29 +322,29 @@ For a multiple regression model with intercept,
 
 we want to test the following null hypothesis and alternative hypothesis:
 
-        $H_0$:   $\beta_1$ = $\beta_2$ = , ... , = $\beta_n$ = 0
+        $H_0$:   $\beta_1$ = $\beta_2$ = ... = $\beta_n$ = 0
 
         $H_1$:   $\beta_j \neq 0$, for at least one value of j
 
 This test is known as the overall \emph{F-test for regression}.
 
-It can be shown that if $H_0$ is true and the residuals are unbiased, homoscedastic, independent, and normal (see section \ref{sec:Assumptions} ):
+It can be shown that if $H_0$ is true and the residuals are unbiased, homoscedastic (i.e. all function values have the same variance), independent, and normal (see section \ref{sec:Assumptions} ):
 
 \begin{enumerate}
-  \item $SSE / \sigma^2$ has a $\chi^2$ distribution with DFE degrees of freedom.
-  \item $SSM / \sigma^2$ has a $\chi^2$ distribution with DFM degrees of freedom.
-  \item SSE and SSM are independent random variables.
+  \item $SS_\text{res} / \sigma^2$ has a $\chi^2$ distribution with $DF_\text{res}$ degrees of freedom.
+  \item $SS_\text{mod} / \sigma^2$ has a $\chi^2$ distribution with $DF_\text{mod}$ degrees of freedom.
+  \item $SS_\text{res}$ and $SS_\text{mod}$ are independent random variables.
 \end{enumerate}
 
-If $u$ is a $\chi^2$ random variable with $n$ degrees of freedom, $v$ is a $\chi^2$ random variable with $m$ degrees of freedom, and $u$ and $v$ are independent, then if $F = \frac{u/n}{v/m}$ has an F distribution with $(n,m)$ degrees of freedom.
+If $u$ is a $\chi^2$ random variable with $n$ degrees of freedom, $v$ is a $\chi^2$ random variable with $m$ degrees of freedom, and $u$ and $v$ are independent, then $F = \frac{u/n}{v/m}$ has an F distribution with $(n,m)$ degrees of freedom.
 
 If H0 is true,
 
 \begin{equation}
-  F = \frac{(SSM/\sigma^2)/DFM}{(SSE/\sigma^2)/DFE} = \frac{SSM/DFM}{SSE/DFE} = \frac{MSM}{MSE},
+  F = \frac{(SS_\text{mod}/\sigma^2)/DF_\text{mod}}{(SS_\text{res}/\sigma^2)/DF_\text{res}} = \frac{SS_\text{mod}/DF_\text{mod}}{SS_\text{res}/DF_\text{res}} = \frac{MS_\text{mod}}{MS_\text{res}},
 \end{equation}
 
-has an F distribution with $(DFM, DFE)$ degrees of freedom, and is independent of $\sigma$.
+has an F distribution with $(DF_\text{mod}, DF_\text{res})$ degrees of freedom, and is independent of $\sigma$.
 
 We can test this directly in Python with
 
@@ -396,7 +398,7 @@ The \emph{Log Likelihood function} \index{general}{log likelihood function} is d
 It can be shown that the maximum likelihood estimator of $\sigma^2$ is
 
 \begin{equation}
-  E(\sigma^2) = \frac{SSE}{n}
+  E(\sigma^2) = \frac{SS_\text{res}}{n}
 \end{equation}
 
 We can calculate this in Python as follows:

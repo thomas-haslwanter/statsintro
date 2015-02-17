@@ -106,10 +106,12 @@
 \indexentry{test!Fisher's exact}{83}
 \indexentry{test!McNemar's}{85}
 \indexentry{test!Cochran's Q}{86}
+\indexentry{univariate}{91}
+\indexentry{multivariate}{91}
+\indexentry{bivariate}{91}
 \indexentry{correlation coefficient}{91}
 \indexentry{correlation!Pearson}{91}
-\indexentry{coefficient of determination}{92}
-\indexentry{coefficient of determination!adjusted}{93}
+\indexentry{coefficient of determination}{93}
 \indexentry{correlation!Spearman}{93}
 \indexentry{correlation!Kendall's $\tau$}{93}
 \indexentry{regression}{94}
@@ -137,13 +139,14 @@
 \indexentry{exogenous variable}{110}
 \indexentry{regression!multilinear}{111}
 \indexentry{regression!multiple linear|see{regression!multilinear}}{111}
+\indexentry{coefficient of determination!adjusted}{115}
 \indexentry{Maximum likelihood}{116}
 \indexentry{log likelihood function}{116}
 \indexentry{Akaike Information Criterion AIC}{117}
 \indexentry{Bayesian Information Criterion BIC}{117}
 \indexentry{Akaike Information Criterion AIC}{117}
 \indexentry{Bayesian Information Criterion BIC}{117}
-\indexentry{condition number}{122}
+\indexentry{condition number}{121}
 \indexentry{scikit-learn}{123}
 \indexentry{bootstrapping}{127}
 \indexentry{Bayesian Statistics}{129}

@@ -1,7 +1,7 @@
 \begin{theindex}
 
   \item Akaike Information Criterion AIC, 117
-  \item ANOVA, 70
+  \item ANOVA, 71
   \item ANOVA, three-way, 100
   \item ANOVA, two-way, 99
 
@@ -11,24 +11,27 @@
   \item Bayesian Information Criterion BIC, 117
   \item Bayesian Statistics, 129
   \item bias, 29
+  \item bivariate, 91
   \item blinding, 30
-  \item Bonferroni correction, 73
+  \item Bonferroni correction, 74
   \item bootstrapping, 127
 
   \indexspace
 
   \item centiles, 36
   \item central limit theorem, 42
-  \item coefficient of determination, 91
-    \subitem adjusted, 92
+  \item coefficient of determination, 93
+    \subitem adjusted, 93
   \item condition number, 122
   \item confidence interval, 37
   \item control group, 29
   \item correlation
-    \subitem Kendall's $\tau$, 93
+    \subitem Kendall's $\tau$, 94
     \subitem Pearson, 91
-    \subitem Spearman, 93
+    \subitem Spearman, 94
   \item correlation coefficient, 91
+  \item Correlation matrix, 100
+  \item correlation matrix, 99
   \item covariate, 110
   \item Cox regression model, 104
   \item crossover studies, 30
@@ -41,7 +44,7 @@
     \subitem categorical, 23
     \subitem numerical, 23
     \subitem ordinal, 23
-  \item design matrix, 95
+  \item design matrix, 96
   \item distributions
     \subitem Bernoulli, 51
     \subitem binomial, 50
@@ -77,7 +80,7 @@
 
   \indexspace
 
-  \item Holms correction, 74
+  \item Holms correction, 75
   \item hypotheses, 58
   \item hypothesis test, 109
 
@@ -105,7 +108,8 @@
   \item mean, 35
   \item median, 35
   \item mode, 36
-  \item Multiple Comparisons, 72
+  \item Multiple Comparisons, 73
+  \item multivariate, 91
 
   \indexspace
 
@@ -151,9 +155,9 @@
   \item randomized controlled trial, 29
   \item range, 36
   \item regressand, 110
-  \item regression, 93
-    \subitem multilinear, 99, 100, 111
-    \subitem multiple, 100
+  \item regression, 94
+    \subitem multilinear, 99, 101, 111
+    \subitem multiple, 101
   \item regressor, 110
   \item replication, 30
   \item ROC curve, 64
@@ -179,27 +183,31 @@
   \item test
     \subitem  t-test, one sample, 67
     \subitem  t-test, paired, 69
-    \subitem ANOVA, 70, 99
+    \subitem ANOVA, 71, 99
     \subitem binomial, 77
     \subitem chi square, 81
     \subitem chi square, one way, 81
     \subitem Cochran's Q, 79, 86
-    \subitem F-test, 72
+    \subitem F-test, 73
     \subitem Fisher's exact, 83
     \subitem Friedman, 99
     \subitem Kolmogorov-Smirnov, 57
-    \subitem Kruskal-Wallis, 74
-    \subitem Levene, 71
+    \subitem Kruskal-Wallis, 75
+    \subitem Levene, 72
     \subitem Lilliefors, 57
     \subitem logrank, 104
     \subitem Mann-Whitney, 69
     \subitem McNemar's, 85
     \subitem omnibus, 57
     \subitem Shapiro-Wilk, 57
-    \subitem Tukey's, 73
-    \subitem variance ratio, 72
+    \subitem Tukey's, 74
+    \subitem variance ratio, 73
     \subitem Wilcoxon signed rank sum, 68
   \item transformation, 58
+
+  \indexspace
+
+  \item univariate, 91
 
   \indexspace
 
