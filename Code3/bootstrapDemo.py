@@ -1,18 +1,15 @@
 ''' Example of bootstrapping the confidence interval for the mean of a sample distribution
-Since no bootstrapping is implemented in Python, this function requires
-"bootstrap.py", which is included.
-
-Note: The original scikits-bootstrapping module, which works only under
-Python 2, is available from http://github.org/cgevans/scikits-bootstrap
+This function requires "bootstrap.py", which is available from
+https://github.com/cgevans/scikits-bootstrap
    
 '''
 
-# author: Thomas Haslwanter, date: Jan-2014
+# author: Thomas Haslwanter, date: Feb-2015
 
 import scipy as sp
 import matplotlib.pyplot as plt
 from scipy import stats
-import bootstrap
+import scikits.bootstrap as bootstrap
 
 def generate_data():
     # To get reproducable values, I provide a seed value

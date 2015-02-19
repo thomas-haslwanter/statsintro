@@ -288,7 +288,7 @@ The $R^2$ value indicates the proportion of variation in the y-variable that is 
   R^2 = \frac{SS_\text{mod}}{SS_\text{tot}}
 \end{equation}
 
-\subsection{$\bar{R}^2$ - The \emph{adjusted} $R^2$ Value}\index{general}{coefficient of determination!adjusted}
+\subsection{$\bar{R}^2$ - The \emph{adjusted} $R^2$ Value}\index{general}{coefficient of determination!adjusted}\label{sec:adjustedR2}
 
 Many researchers prefer the \emph{adjusted $\bar{R}^2$ value}, which is penalized for having a large number of parameters in the model:
 
@@ -305,7 +305,7 @@ where \emph{(Sample) Residual Variance} is estimated by $SS_\text{res}/DF_\text{
 \end{eqnarray}
 
 so
-    
+
 \begin{eqnarray}
   \bar{R}^2 &=& 1 - \frac{SS_\text{res}}{SS_\text{tot}} \frac{n - 1}{n - k} \nonumber  \\
     &=& 1 - (1 - R^2)\frac{n - 1}{n - k}
@@ -419,7 +419,7 @@ We can calculate this in Python as follows:
 
 To judge the quality of your model, you should first visually inspect the residuals. In addition, you can also use a number of numerical criteria to assess the quality of a statistical model. These criteria represent various approaches for balancing model accuracy with parsimony.
 
-We have already encountered the $adjusted\; R^2$ value (Eq \ref{eq:adjustedR2}), which - in contrast to the $R^2$ value - decreases if there are too many regressors in the model.
+We have already encountered the $adjusted\; R^2$ value (section \ref{sec:adjustedR2}), which - in contrast to the $R^2$ value - decreases if there are too many regressors in the model.
 
 Other commonly encountered criteria are the \emph{Akaike Information Criterion (AIC)} \index{general}{Akaike Information Criterion AIC} and the Schwartz or \emph{Bayesian Information Criterion (BIC)} \index{general}{Bayesian Information Criterion BIC}, which are based on the log-likelihood described in the previous section. Both measures introduce a penalty for model complexity, but the AIC penalizes complexity less severely than the BIC.
 The \emph{Akaike Information Criterion AIC} \index{general}{Akaike Information Criterion AIC} is given by
@@ -431,10 +431,10 @@ The \emph{Akaike Information Criterion AIC} \index{general}{Akaike Information C
 and the Schwartz or \emph{Bayesian Information Criterion BIC} \index{general}{Bayesian Information Criterion BIC} by
 
 \begin{equation}
-  BIC = k*ln(N) - 2*ln(\mathfrak{L})
+  BIC = k*ln(N) - 2*ln(\mathfrak{L}) .
 \end{equation}
 
-are other commonly encountered criteria. Here, $N$ is the number of observations, $k$ is the number of parameters, and $\mathcal{L}$ is the likelihood. We have two parameters in this example, the slope and intercept. The AIC is a relative estimate of information loss between different models. The BIC was initially proposed using a Bayesian argument, and does not related to ideas of information. Both measures are only used when trying to decide between different models. So, if you have one regression for alcohol sales based on cigarette sales, and another model for alcohol consumption that incorporated cigarette sales and lighter sales, then you would be inclined to choose the model that had the lower AIC or BIC value.
+Here, $N$ is the number of observations, $k$ is the number of parameters, and $\mathcal{L}$ is the likelihood. We have two parameters in this example, the slope and intercept. The AIC is a relative estimate of information loss between different models. The BIC was initially proposed using a Bayesian argument, and does not relate to ideas of information. Both measures are only used when trying to decide between different models. So, if you have one regression for alcohol sales based on cigarette sales, and another model for alcohol consumption that incorporated cigarette sales and lighter sales, then you would be inclined to choose the model that had the lower AIC or BIC value.
 
 \subsection{Model Coefficients and Their Interpretation}
 
@@ -501,7 +501,7 @@ Here, $\sigma^{2}$ is the variance, or the MSE (mean squared error) of the resid
 
 \subsubsection{t-statistic}
 
-We use the t-test to test the null hypothesis that the coefficient of a given predictor variable is zero, implying that a given predictor has no appreciable effect on the response variable. The alternative hypothesis is that the predictor does contribute to the response. In testing we set some threshold, $\alpha = 0.05,\;or\; 0.01$, and if $\Pr(T \ge \vert t \vert) \textless \alpha$, then we reject the null hypothesis at our threshold $\alpha$, otherwise we fail to reject the null hypothesis. The t-test generally allows us to evaluate the importance of different predictors, \emph{assuming that the residuals of the model are normally distributed about zero}. If the residuals do not behave in this manner, then that suggests that there is some non-linearity between the variables, and that their t-tests should not be used to assess the importance of individual predictors. Furthermore, it might be best to try to modify the model so that the residuals do tend the cluster normally about zero.
+We use the t-test to test the null hypothesis that the coefficient of a given predictor variable is zero, implying that a given predictor has no appreciable effect on the response variable. The alternative hypothesis is that the predictor does contribute to the response. In testing we set some threshold, $\alpha = 0.05$, or  0.01, and if $\Pr(T \ge \vert t \vert) \textless \alpha$, then we reject the null hypothesis at our threshold $\alpha$, otherwise we fail to reject the null hypothesis. The t-test generally allows us to evaluate the importance of different predictors, \emph{assuming that the residuals of the model are normally distributed about zero}. If the residuals do not behave in this manner, then that suggests that there is some non-linearity between the variables, and that their t-tests should not be used to assess the importance of individual predictors. Furthermore, it might be best to try to modify the model so that the residuals do tend the cluster normally about zero.
 
 The t statistic is given by the ratio of the coefficient (or factor) of the predictor variable of interest, and its corresponding standard error. If $\beta$ is the vector of coefficients or factors of our predictor variables, and SE is our standard error, then the t statistic is given by,
 
@@ -719,7 +719,7 @@ In order to use \emph{sklearn}, we need to input our data in the form of vertica
     data = np.matrix( df )
 \end{lstlisting}
 
-Next, we create the regression objects, and fit the data to them. In this case, we’ll consider a clean set, which will fit a linear regression better, which consists of the data for all of the regions except Northern Ireland, and an original set consisting of the original data
+Next, we create the regression objects, and fit the data to them. In this case, we will consider a clean set, which will fit a linear regression better, which consists of the data for all of the regions except Northern Ireland, and an original set consisting of the original data
 
 \begin{lstlisting}	
     cln = LinearRegression()
@@ -729,7 +729,7 @@ Next, we create the regression objects, and fit the data to them. In this case, 
     cln.fit( X[:-1], Y[:-1] )
     org.fit( X, Y )
 
-    clean_score = '{0:.3f}'.format( cln.score( X[:-1], Y[:-1] ) )
+    clean_score    = '{0:.3f}'.format( cln.score( X[:-1], Y[:-1] ) )
     original_score = '{0:.3f}'.format( org.score( X, Y ) )
 \end{lstlisting}
 
@@ -773,7 +773,7 @@ Finally, we limit and label the axes, add a title, overlay a grid, place the leg
 
 \subsection{Conclusion}
 
-Before you do anything, visualize your data. If your data is highly dimensional, then at least examine a few slices using boxplots. At the end of the day, use your own judgement about a model based on your knowledge of your domain. Statistical tests should guide your reasoning, but they shouldn’t dominate it. In most cases, your data will not align itself with the assumptions made by most of the available tests. \href{http://www.nature.com/news/scientific-method-statistical-errors-1.14700}{Here} is a very interesting article from Nature on classical hypothesis testing. A more intuitive approach to hypothesis testing is Bayesian analysis.
+Before you do anything, visualize your data. If your data is highly dimensional, then at least examine a few slices using boxplots. At the end of the day, use your own judgement about a model based on your knowledge of your domain. Statistical tests should guide your reasoning, but they shouldn’t dominate it. In most cases, your data will not align itself with the assumptions made by most of the available tests. Under \url{http://www.nature.com/news/scientific-method-statistical-errors-1.14700} you can find a very interesting article from Nature on classical hypothesis testing. A more intuitive approach to hypothesis testing is Bayesian analysis.
 
 \section{Assumptions} \label{sec:Assumptions}
 
@@ -817,7 +817,7 @@ The notion of a “unique effect” is appealing when studying a complex system 
 
 \section{Bootstrapping} \index{general}{bootstrapping}
 
-Another type of modelling is \emph{bootstrapping}/. Sometimes you have data describing a distribution, but do not know what type of distribution it is. So what can you do if you want to find out e.g. confidence values for the mean?
+Another type of modelling is \emph{bootstrapping}. Sometimes you have data describing a distribution, but do not know what type of distribution it is. So what can you do if you want to find out e.g. confidence values for the mean?
 
 The answer is bootstrapping. Bootstrapping is a scheme of \emph{resampling}, i.e. taking additional samples repeatedly from the initial sample, to provide estimates of its variability. In a case where the distribution of the initial sample is unknown, bootstrapping is of especial help in that it provides information about the distribution.
 
