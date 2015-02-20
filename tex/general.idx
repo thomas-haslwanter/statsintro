@@ -89,6 +89,7 @@
 \indexentry{test!Mann-Whitney}{69}
 \indexentry{ANOVA}{71}
 \indexentry{test!ANOVA}{71}
+\indexentry{ANOVA!balanced}{72}
 \indexentry{test!Levene}{72}
 \indexentry{test!F-test}{73}
 \indexentry{test!variance ratio}{73}
@@ -119,9 +120,9 @@
 \indexentry{test!Friedman}{99}
 \indexentry{correlation matrix}{99}
 \indexentry{regression!multilinear}{99}
-\indexentry{ANOVA, two-way}{99}
+\indexentry{ANOVA!two-way}{99}
 \indexentry{test!ANOVA}{99}
-\indexentry{ANOVA, three-way}{100}
+\indexentry{ANOVA!three-way}{100}
 \indexentry{Correlation matrix}{100}
 \indexentry{regression!multilinear}{101}
 \indexentry{regression!multiple}{101}
@@ -148,6 +149,7 @@
 \indexentry{Bayesian Information Criterion BIC}{117}
 \indexentry{condition number}{121}
 \indexentry{scikit-learn}{123}
+\indexentry{homoscedasticity}{125}
 \indexentry{bootstrapping}{127}
 \indexentry{Bayesian Statistics}{129}
 \indexentry{interpretation!frequentist}{129}

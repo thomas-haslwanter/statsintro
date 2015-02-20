@@ -2,8 +2,9 @@
 
   \item Akaike Information Criterion AIC, 117
   \item ANOVA, 71
-  \item ANOVA, three-way, 100
-  \item ANOVA, two-way, 99
+    \subitem balanced, 72
+    \subitem three-way, 100
+    \subitem two-way, 99
 
   \indexspace
 
@@ -21,14 +22,14 @@
   \item centiles, 36
   \item central limit theorem, 42
   \item coefficient of determination, 93
-    \subitem adjusted, 93
-  \item condition number, 122
+    \subitem adjusted, 115
+  \item condition number, 121
   \item confidence interval, 37
   \item control group, 29
   \item correlation
-    \subitem Kendall's $\tau$, 94
+    \subitem Kendall's $\tau$, 93
     \subitem Pearson, 91
-    \subitem Spearman, 94
+    \subitem Spearman, 93
   \item correlation coefficient, 91
   \item Correlation matrix, 100
   \item correlation matrix, 99
@@ -81,6 +82,7 @@
   \indexspace
 
   \item Holms correction, 75
+  \item homoscedasticity, 125
   \item hypotheses, 58
   \item hypothesis test, 109
 

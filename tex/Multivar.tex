@@ -16,7 +16,7 @@ When moving from two to many variables, the correlation coefficient gets replace
 
 However, watch out for the pitfalls that loom when you work with many variables! Take for example the following hypothetical case: you make a survey about the activity and life circumstances of a large range of people, covering all the numbers that you can get your hand on. In this survey you find out that a) rich people spend more time playing golf than poor people, and b) rich people tend to have fewer children than poor people. This leads to a strong negative correlation between playing golf and having children, and you may be tempted to (falsely) draw the conclusion that playing golf reduces your fertility, while in reality it is the higher income which causes both effects. \cite{Kaplan2009} nicely describes where those problems come from, and how best to avoid them.
 
-\section{Two-way ANOVA} \label{sec:anovaTwoWay} \index{general}{ANOVA, two-way} \index{general}{test!ANOVA}
+\section{Two-way ANOVA} \label{sec:anovaTwoWay} \index{general}{ANOVA!two-way} \index{general}{test!ANOVA}
 
 Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new element. We can look not only if each of the factors is significant; we can also check if the \emph{interaction} of the factors has a significant influence on the distribution of the data. For sticking to the example above, if only women with treatment B get healthy, we have a significant interaction effect between "gender" and "treatment".
 
@@ -31,7 +31,7 @@ Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new element. 
   Residual              24    1.84    0.07      NaN       NaN
 \end{verbatim}
 
-\section{Three-way ANOVA} \label{sec:anovaThreeWay} \index{general}{ANOVA, three-way}
+\section{Three-way ANOVA} \label{sec:anovaThreeWay} \index{general}{ANOVA!three-way}
 
 When you have more than two factors, it is recommendable to use \emph{statistical modeling} for the data analysis (see Chapter \ref{chapter:Models}). However, as always with the analysis of statistical data, you should first inspect the data visually. \emph{seaborn} makes this quite simple:
 
