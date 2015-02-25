@@ -129,39 +129,101 @@ Hypothesis tests
 
 .. index:: hypothesis tests
 
-Statistical evaluations are based on the initially
-often counterintuitive procedure of *hypothesis tests*. A hypothesis
-test is a standard format for assessing statistical evidence. It is
-ubiquitous in scientific literature, most often appearing in the form of
-statements of *statistical significance* and quotations like
-:math:`"p<0.01"` that pepper scientific journals. Thereby you proceed as
-follows: you
+A statistical hypothesis test is a method of statistical inference using
+data from a scientific study. In statistics, a result is called
+*statistically significant* if it has been predicted as unlikely to have
+occurred "by chance alone". Thereby *by chance alone* is judged with
+respect to a pre-determined threshold probability, the *significance
+level*. These tests are used in determining what outcomes of a study
+would lead to a rejection of the *null hypothesis* for a pre-specified
+*level of significance*. The name *null hypothesis* derives from the
+fact that according to this hypothesis, some value is *null*. The
+critical region of a hypothesis test is the set of all outcomes which
+cause the null hypothesis to be rejected in favor of the *alternative
+hypothesis*.
 
--  state your hypothesis.
+A typical approach is as follows: you
 
--  decide which value you want to test your hypothesis on.
+-  State your hypothesis.
 
--  calculate the *probability p* that you find the given value, assuming
-   that your hypothesis is true
+-  Decide which value you want to test your hypothesis on, which is
+   called the *test statistic*.
 
-The first hypothesis is referred to as *null-hypothesis*, since we
-assume that there is *null* difference between the hypothesis and the
-result. The found probability for a specific target value is the
-*p-value* that you typically find in the literature. If :math:`p<0.05`,
-the difference between your sample and the value that you check is
-*significant*. If :math:`p<0.001`, we speak of a *highly significant*
-difference.
+-  Compute from the observations the observed value of the test
+   statistic.
 
-**Example 1:**  Let us compare the weight of two groups of subject. Then the
-*null hypothesis* is that there is *null* difference in the weight
-between the two groups. If a statistical comparison of the weight produces a
-p-value of 0.03, this means that "the probability that the null hypothesis
-is correct is 0.03, or 3\%". Since this probability is quite low, we say that
-"there is a significant difference between the weight of the two groups".
+-  Calculate the *p-value*. This is the probability, under the null
+   hypothesis, of sampling a test statistic at least as extreme as that
+   which was observed.
 
-**Example 2:** If we want to check the assumption that the mean value of a group
-is 7, then the null hypothesis would be: "We assume that there is null
-difference between the mean value in our population and the value 7."
+-  Reject the null hypothesis, in favor of the alternative hypothesis,
+   if and only if the p-value is less than the significance level (the
+   selected probability) threshold. If :math:`p<0.05`, the difference
+   between your sample and the value that you check is *significant*. If
+   :math:`p<0.001`, we speak of a *highly significant* difference.
+
+**Example 1:** Let us compare the weight of two groups of subject. Then
+the *null hypothesis* is that there is *null* difference in the weight
+between the two groups. If a statistical comparison of the weight
+produces a p-value of 0.03, this means that *the probability that the
+null hypothesis is correct is 0.03, or 3%*. Since this probability is
+quite low, we say that *there is a significant difference between the
+weight of the two groups*.
+
+**Example 2:** If we want to check the assumption that the mean value of
+a group is 7, then the null hypothesis would be: *"We assume that there
+is null difference between the mean value in our population and the
+value 7."*
+
+The interpretation of the p-value, and the "p-value fallacy"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Note:** A value of *p<0.05* for the null hypothesis has to be
+interpreted as follows: *If the null hypothesis is true, the chance that
+we find a test statistic as extreme or more extreme than the one
+observed is less than 5%.* This is *not* the same as saying that the
+null hypothesis is false, and even less so, that an alternative
+hypothesis is true! Stating a p-value alone is no longer
+state-of-the-art for the statistical analysis of data. You should also
+state the the confidence intervals for the parameter that you
+investigate.
+
+In other words, p values are often used to measure evidence against a
+hypothesis. Unfortunately, they are often incorrectly viewed as an error
+probability for rejection of the hypothesis, or, even worse, as the
+posterior probability (i.e. after the data have been collected) that the
+hypothesis is true. As an example, take the case where the alternative
+hypothesis is that the mean is just a fraction of one standard deviation
+larger than the mean under the null hypothesis: in that case, a sample
+that produces a p-value of 0.05 may just as likely be produced if the
+alternative hypothesis is true as if the null hypothesis is true!
+
+ have investigated this question in detail, and recommend to use a
+"calibrated p-value" to estimate the probability of making a mistake
+when rejecting the null hypothesis, when the data produce a p-value
+:math:`p`:
+
+.. math::
+
+   \label{eq:pFallacy}
+       \alpha(p)= \frac{1}{1 + \frac{1}{-e \; p \; log(p)}}
+
+with :math:`e=exp(1)`, and :math:`log` the natural logarithm. For
+example, :math:`p=0.05` leads to :math:`\alpha=0.29`, and :math:`p=0.01`
+to :math:`\alpha=0.11`.
+
+Remember, p only indicates the likelihood of obtaining a certain value
+for the test statistic if the null hypothesis is true - nothing else!
+
+And keep in mind that improbable events do happen, even if not very
+frequently. For example, back in 1980 a woman named Maureen Wilcox
+bought tickets for both the Rhode Island lottery and the Massachusetts
+lottery. And she got the correct numbers for both lotteries.
+Unfortunately for her, she picked all the correct numbers for
+Massachusetts on her Rhode Island ticket, and all the right numbers for
+Rhode island on her Massachusetts ticket :( Seen statistically, the
+p-value for such an event would be extremely small - but it did happen
+anyway.
 
 
 Types of Error
@@ -244,7 +306,7 @@ that will answer the clinical question being posed is often called
 
 | |image22|
 
-*Eect of an increase in sampling size on the power of a test.*
+*Effect of an increase in sampling size on the power of a test.*
 
 Examples for some special cases 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -317,45 +379,6 @@ Programs: SampleSize
 *Sample size calculation for normally distributed groups with arbitrary standard deviations.*
 
 
-The "p-value fallacy"
-~~~~~~~~~~~~~~~~~~~~~
-
-p values are often used to measure evidence against a hypothesis.
-Unfortunately, they are often incorrectly viewed as an error probability
-for rejection of the hypothesis, or, even worse, as the posterior
-probability (i.e. after the data have been collected) that the
-hypothesis is true. As an example, take the case where the alternative
-hypothesis is that the mean is just a fraction of one standard deviation
-larger than the mean under the null hypothesis: in that case, a sample
-that produces a p-value of 0.05 may just as likely be produced if the
-the alternative hypothesis is true as if the null hypothesis is true!
-
-Sellke et al (2001) have investigated this question in detail, and recommend to use a
-"calibrated p-value" to estimate the probability of making a mistake
-when rejecting the null hypothesis, when the data produce a p-value
-:math:`p`:
-
-.. math::
-
-   \label{eq:pFallacy}
-       \alpha(p)= \frac{1}{1 + \frac{1}{-e \; p \; log(p)}}
-
-with :math:`e=exp(1)`, and :math:`log` the natural logarithm. For
-example, :math:`p=0.05` leads to :math:`\alpha=0.29`, and :math:`p=0.01`
-to :math:`\alpha=0.11`.
-
-Remember, p only indicates the likelihood of obtaining a certain value
-for the test statistic if the null hypothesis is true - nothing else!
-
-And keep in mind that improbable events do happen, even if not very
-frequently. For example, back in 1980 a woman named Maureen Wilcox bought
-tickets for both the Rhode Island lottery and the Massachusetts lottery. And
-she got the correct numbers for both lotteries. Unfortunately for her, she
-picked all the correct numbers for Massachusetts on her Rhode Island ticket,
-and all the  right numbers for Rhode island on her Massachusetts ticket :(
-Seen statistically, the p-value for such an event would be extremely small -
-but it did happen anyway.
-
 Sensitivity and Specificity 
 -----------------------------
 
@@ -401,14 +424,14 @@ result.
 While sensitivity and specificity are independent of prevalence, they do
 not tell us what portion of patients with abnormal test results are
 truly abnormal. This information is provided by the positive/negative
-predictive value. However, as Fig. [fig:prevalence] indicates, these
+predictive value. However, as the Figure below indicates, these
 values are affected by the *prevalence* of the disease. In other words,
 we need to know the prevalence of the disease as well as the PPV/NPV of
 a test to provide a sensible interpretation of the test results.
 
 | |image24|
 
-*Eect of prevalence on PPV and NPV. "T" stands for "test", and "P" for "patient".(For comparison with below: T+P+ = TP, T-P- = TN, T+P- = FP, and T-P+ = FN)*
+*Effect of prevalence on PPV and NPV. "T" stands for "test", and "P" for "patient".(For comparison with below: T+P+ = TP, T-P- = TN, T+P- = FP, and T-P+ = FN)*
 
 The Figure gives a worked example:
 
@@ -424,15 +447,15 @@ Related calculations
    :math:`\frac{180}{180+1820}` = 9%
 
 -  False negative rate (:math:`\beta`) = type II error =
-   :math:`1−sensitivity` = :math:`\frac{FN}{TP + FN}` =
+   :math:`1 - sensitivity` = :math:`\frac{FN}{TP + FN}` =
    :math:`\frac{10}{20+10}` = 33%
 
--  Power = sensitivity = :math:`1−\beta`
+-  Power = sensitivity = :math:`1 - \beta`
 
--  Likelihood ratio positive = :math:`\frac{sensitivity}{1−specificity}`
+-  Likelihood ratio positive = :math:`\frac{sensitivity}{1 - specificity}`
    = :math:`\frac{66.67\%}{1−91\%}` = 7.4
 
--  Likelihood ratio negative = :math:`\frac{1−sensitivity}{specificity}`
+-  Likelihood ratio negative = :math:`\frac{1 - sensitivity}{specificity}`
    = :math:`\frac{1−66.67\%}{91\%}` = 0.37
 
 Hence with large numbers of false positives and few false negatives, a

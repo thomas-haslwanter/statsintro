@@ -84,30 +84,46 @@ commonly used to select appropriate points a distribution function:
    probability for the variable appearing in a certain interval, you
    have to *integrate* the PDF over that range.
 
--  *Cumulative distribution function (CDF)*: gives the probability of
-   obtaining a value smaller than the given value
+   Example: What is the chance that a man is between 160 and 165 cm
+   tall?
 
--  *Survival function (SF) = 1-CDF*: gives the probability of obtaining a
-    value larger than the given value. It can also be interpreted as the proportion of data "surviving" above a certain value.
+-  *Cumulative distribution function (CDF)*: gives the probability of
+   obtaining a value smaller than the given value.
+
+   Example: What is the chance that a man is less than 165 cm tall?
+
+-  *Survival function (SF)*: 1-CDF: gives the probability of obtaining a
+   value larger than the given value. It can also be interpreted as the
+   proportion of data "surviving" above a certain value.
+
+   Example: What is the chance that a man is larger than 165 cm?
 
 -  *Percentile point function (PPF)*: the inverse of the CDF. Answers
    the question "Given a certain probability, what is the corresponding
    value for the CDF?"
 
+   Example: Given that I am looking for a man who is smaller than 95% of
+   all other men, what size does the subject have to be?
+
 -  *Inverse survival function (ISF)*: the name says it all.
+
+   Example: Given that I am looking for a man who is larger than 95% of
+   all other men, what size does the subject have to be?
+
 
 .. _fig-DistributionFunctions: 
 
 .. figure:: ../Images/DistributionFunctions.png
-    :scale: 75 %
-
-    Distribution Functions
+    :scale: 33 %
 
     Utility functions for continuous distributions, here for the normal distribution.
 
 
 Distribution Center 
 ~~~~~~~~~~~~~~~~~~~~~
+
+When we have a datasample from a distribution, we can characterize the
+center of the distribution with different parameters:
 
 Mean 
 ^^^^^^
@@ -261,6 +277,7 @@ For the *sample standard error of the mean*, which is the one you will be workin
 
 .. math::  SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
 
+
 Confidence Intervals
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -270,17 +287,16 @@ The most informative parameter that you can give for a statistical variable is a
 
 Most of the time you want to determine the confidence interval for normally distributed data, which is given by
 
-.. math::  ci = mean \pm std * t_{df,\alpha}
+.. math:: ci = mean \pm std * N_{ISF}(\alpha)
 
-where *std* is the sample standard deviation, and :math:`t_{df,\alpha}` the *t* statistic (which will be covered later in this chapter) for *df* degrees of freedom. For the 95\% two-sided confidence intervals, for example, you have to set :math:`\alpha=0.025` and :math:`\alpha=0.975` .
+where :math:`std` is the standard deviation, and :math:`N_{ISF}(\alpha)`
+the inverse survival function for the normal distribution. For the 95%
+two-sided confidence intervals, for example, you have to set
+:math:`\alpha=0.025` and :math:`\alpha=0.975` .
 
-**Note:** If you want to know the confidence interval for the mean value, you have to replace the *standard deviation* by the *standard error*! In Python, the 95\% confidence interval for the mean can be obtained with a one-liner:
-
-::
-
-    alpha = 0.95
-    df = len(data)-1
-    ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
+**Note:** If you want to know the confidence interval for the mean
+value, you have to replace the *standard deviation* by the *standard
+error*!
 
 
 Parameters Describing a Distribution
@@ -324,7 +340,7 @@ constants.
 Skewness
 ^^^^^^^^
 
-.. index:: skewneww
+.. index:: skewness
 
 Distributions are *skewed* if they depart from symmetry. For example, if you
 have a measurement that cannot be negative, which is usually the case, then
@@ -332,11 +348,11 @@ we can infer that the data have a skewed distribution if the standard
 deviation is more than half the mean. Such an asymmetry is referred to as
 *positive skewness*. The opposite, negative skewness, is rare.
 
-.. figure:: ../Images/SkewedDistribution.png
-    :scale: 75 % 
+.. image:: ../Images/Skewness.png
+    :scale: 25 %
 
-    Skewness: Example of experimental data with non-zero (positive)
-    skewness (from Wikipedia).
+*{Left) Normal distribution, and distribution with positive skewness. Right) The (leptokurtic) Laplace distribution has an excess kurtosis of 3, and the (platykurtic) Wigner semicircle distribution an excess kurtosis of -1.}*
+
 
 Kurtosis
 ^^^^^^^^
@@ -346,12 +362,6 @@ Kurtosis
 Kurtosis is any measure of the "peakedness" of the probability distribution.
 Distributions with negative or positive excess kurtosis are called
 platykurtic distributions or leptokurtic distributions respectively.
-
-.. figure:: ../Images/KurtosisChanges.png
-  :scale: 75 %
-
-  Kurtosis: The "Darkness" data is platykurtic (-0.194), while "Far Red
-  Light" shows leptokurtosis (0.055) (from Wikipedia)
 
 
 Distribution Functions
@@ -363,9 +373,6 @@ The variable for a standardized distribution function is often called
 *statistic*. So you often find expressions like "the z-statistic" (for
 the normal distribution function), the "t-statistic" (for the
 t-distribution) or the "F-statistic" (for the F-distribution).
-
-Probability and Samples
-~~~~~~~~~~~~~~~~~~~~~~~
 
 Normal Distribution
 ~~~~~~~~~~~~~~~~~~~
@@ -475,7 +482,7 @@ The figure below shows that averaging over 10 uniformly distributed data
 already produces a smooth, almost Gaussian distribution.
 
 .. figure:: ../Images/centralLimitTheorem.png
-  :scale: 33 %
+  :scale: 25 %
 
 *Demonstration of the "Central Limit Theorem": Left) Histogram of random
 data between 0 and 1. Center) Histogram of average over two datapoints.)
@@ -519,6 +526,19 @@ The distributions you will encounter most frequently are:
 - **F-distribution** - for comparing variability
 
 In the following, we will describe these distributions in more detail.
+Other distributions you should have heard about will be mentioned
+briefly:
+
+-  **Lognormal distribution** - a normal distribution, plotted on an
+   exponential scale. Often used to convert a strongly skewed
+   distribution into a normal one.
+
+-  **Weibull distribution** - mainly used for reliability or survival
+   data.
+
+-  **Exponential distribution** - exponential curves
+
+-  **uniform distribution** - when everything is equally likely.
 
 
 t Distribution
@@ -543,17 +563,32 @@ If :math:`\bar{x}` is the sample mean, and *s* the sample standard deviation, th
 
 A very frequent application of the t-distribution is in the calculation of `Confidence intervals`_:
 
+
+.. math:: ci = mean \pm std * t_{df,\alpha}
+
 ::
 
-    In [28]: n = 20
-    In [29]: alpha = 0.05
-    In [30]: stats.t(20).ppf(1-alpha/2)
-    Out[30]: 2.0859634472658364
+      In [27]: n = 20
+      In [28]: df = n-1
+      In [29]: alpha = 0.05
+      In [30]: stats.t(df).ppf(1-alpha/2)
+      Out[30]: 2.093
 
-    In [31]: stats.norm.ppf(1-alpha/2)
-    Out[31]: 1.959963984540054
+      In [31]: stats.norm.ppf(1-alpha/2)
+      Out[31]: 1.960
 
-*Calculating the t-values for confidence intervals, for n = 20 and alpha=0.05. For comparison, I also calculate the corresponding value from the normal distribution.*
+*Calculating the t-values for confidence intervals, for n = 20 and
+:math:`\alpha=0.05`. For comparison, I also calculate the corresponding
+value from the normal distribution.*
+
+In Python, the 95% confidence interval for the mean can be obtained with
+a one-liner:
+
+::
+
+        alpha = 0.95
+        df = len(data)-1
+        ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
 
 | |image11|
 
@@ -567,7 +602,6 @@ is much less sensitive to outliers (see Figure below).
 
 *The t-distribution is much more robust against outliers than the normal
 distribution.*
-
 
 Chi-square Distribution
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -649,6 +683,8 @@ If you want to investigate whether two groups have the same variance, you have t
 
 where :math:`S_x` ist he sample standard deviation of the first sample,
 and :math:`S_y` the sample standard deviation for the second sample.
+
+**Application Example**
 
 Take for example the case that you want to compare two methods to
 measure eye movements. The two methods can have different accuracy and
@@ -798,6 +834,26 @@ Discrete Distributions
 While the functions describing continuous distributions are referred to
 as *probability distribution functions*, discrete distributions are
 described by *probability mass functions*.
+
+Two discretely distributions are commonly encountered: the *binomial
+distribution*, and the *Poisson distribution*. These two have the
+following properties:
+
++------------+---------------------+-------------------+
+|            | Mean                | Variance          |
++============+=====================+===================+
+| Binomial   | :math:`n \cdot p`   | :math:`np(1-p)`   |
++------------+---------------------+-------------------+
+| Poisson    | :math:`\lambda`     | :math:`\lambda`   |
++------------+---------------------+-------------------+
+
+Table: Properties of discrete distributions.
+
+The big difference between those two functions that you have to keep in
+mind: applications of the Binomial function have an inherent upper limit
+(e.g. when you throw dice five times, each side can come up a maximum of
+five times); in contrast, the Poisson distribution does not have an
+inherent upper limit (e.g. how many people you know).
 
 Binomial Distribution
 ^^^^^^^^^^^^^^^^^^^^^
@@ -971,26 +1027,26 @@ Continuous Distributions
 
 
 .. |image8| image:: ../Images/Normal_Distribution_PDF.png
-    :scale: 50 %
+    :scale: 33 %
 .. |image9| image:: ../Images/Normal_MultHist.png
-    :scale: 50 %
-.. |image11| image:: ../Images/Student_t_pdf.png
-    :scale: 40 %
-.. |image12| image:: ../Images/ChiSquare_pdf.png
-    :scale: 40 %
-.. |image13| image:: ../Images/F_distributionPDF.png
-    :scale: 40 %
+    :scale: 25 %
+.. |image11| image:: ../Images/dist_t.png
+    :scale: 25 %
+.. |image12| image:: ../Images/dist_chi2.png
+    :scale: 25 %
+.. |image13| image:: ../Images/dist_f.png
+    :scale: 25 %
 .. |image14| image:: ../Images/LogNormal_Linear.png
     :scale: 40 %
 .. |image15| image:: ../Images/LogNormal_Logarithmic.png
     :scale: 40 %
-.. |image16| image:: ../Images/Exponential_pdf.png
-    :scale: 40 %
+.. |image16| image:: ../Images/dist_exp.png
+    :scale: 25 %
 .. |image17| image:: ../Images/Uniform_Distribution_PDF.png
     :scale: 40 %
 .. |image18| image:: ../Images/Binomial_distribution_pmf.png
     :scale: 40 %
-.. |image19| image:: ../Images/Poisson_pmf.png
+.. |image19| image:: ../Images/Poisson_distribution_pmf.png
     :scale: 40 %
 
 .. |ipynb| image:: ../Images/IPython.jpg

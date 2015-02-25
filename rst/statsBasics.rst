@@ -7,21 +7,13 @@
 Population and samples
 ----------------------
 
-.. index:: popution
-
-.. index:: samples
-
-While the whole *population* of a group has certain characteristics, we
-can typically never measure all of them. Instead, we have to confine
-ourselves to investigate a representative *sample* of this group, and
-estimate the properties of the population. Great care should be used to
-make the sample representative for the population you study.
-
 Datatypes
 ---------
 
-The type of your data is essential for the choice of test that you have
-to use for your data analysis. Your data can have one of the following
+We begin with something that is seemingly trivial, somewhat boring - but
+absolutely essential for your statistical analysis: Datatypes. Because
+the type of your data directly determines the tests that are available
+for the data analysis. Your data can have one of the following
 datatypes:
 
 Categorical 
@@ -66,8 +58,8 @@ Numerical discrete
 
 For example *Number of children: 0 1 2 3 4 5*
 
-Continuous 
-~~~~~~~~~~~~
+Numerical continuous 
+^^^^^^^^^^^^^^^^^^^^^
 
 Whenever possible, it is best to record the data in their original
 continuous format, and only with a sensible number of decimal places.
@@ -104,12 +96,26 @@ data. If you divide by the overall number of data points, you get a
 *relative frequency histogram*; and if you just connect the top center
 points of each bin, you obtain a *relative frequency polygon*.
 
+You can also smooth histograms with *kernel-density-estimations
+(kde-plots)*. Those are nicely implemented and described in *seaborn*.
+
 | |image4|
 
 KDE Plots
 ~~~~~~~~~
 
 .. index:: plots-KDE-plot
+
+Kernel density estimates are closely related to histograms, but
+can be endowed with properties such as smoothness or continuity by using
+a suitable kernel. To see this, we compare the construction of histogram
+and kernel density estimators, using these 6 data points: x = [2.1,
+1.3, 0.4, 1.9, 5.1, 6.2]. For the histogram, first the horizontal axis
+is divided into sub-intervals or bins which cover the range of the data.
+In this case, we have 6 bins each of width 2. Whenever a data point
+falls inside this interval, we place a box of height 1/12. If more than
+one data point falls inside the same bin, we stack the boxes on top of
+each other.
 
 For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident compared to the discreteness of the histogram, as kernel density estimates converge faster to the true underlying density for continuous random variables.
 
@@ -150,6 +156,23 @@ has the additional advantage that it is bounded:
 
 | |image5|
 
+Errorbars
+~~~~~~~~~
+
+*Errorbars* are a common way to show mean value and variability when
+comparing a few measurement values. Note that you have to state
+explicitly if your errorbars correspond to the *standard devation* or to
+the *standard error* of the data. Using *standard errors* has a nice
+feature: When error bars for the *standard error* for two groups
+overlap, you can be sure the difference between the two means is not
+statistically significant (P>0.05). Watch out, though, since the
+opposite is not always true!
+
+.. image:: ..\Images\Errorbars.png
+    :scale: 33 %
+
+*Errorbars.*
+
 Box Plots 
 ~~~~~~~~~~~
 
@@ -170,7 +193,7 @@ Boxplots are often combined with KDE-plots to produce so-called
 *violin-plots* as shown in the Figure below.
 
 .. image:: ..\Images\violinplot.png
-    :scale: 75 %
+    :scale: 25 %
 
 *Violinplot, produced with the Python package "seaborn".*
 
@@ -185,26 +208,6 @@ Study Design
 --------------
 
 .. index:: study design
-
-To design a medical study properly is not only advisable - it is even
-required by ISO 14155-1:2003, for *Clinical investigations of medical
-devices for human subjects*. This norm specifies many aspects of your
-clinical study. It enforces the preparation of a *Clinical Investigation
-Plan (CIP)*, specifying
-
--  The designation of a *monitor* for the investigation.
-
--  The designation of a *clinical investigator*.
-
--  Specification the data handling.
-
--  Specification of the inclusion/exclusion criteria for the subjects.
-
--  Specification of the paradigm.
-
--  Specification and justification of the chosen sample numbers.
-
--  Description of the data analysis.
 
 Types of Studies
 ~~~~~~~~~~~~~~~~
@@ -532,30 +535,28 @@ Plan (CIP)*, specifying
 Exercises
 ---------
 
-#. 
 
-   #. Read in the data from ’Data\\amst\\babyboom.dat.txt’.
+#. Read in the data from "Data\\amst\\babyboom.dat.txt".
 
-   #. Inspect them visually, and give a numerical description of the
-      data.
+#. Inspect them visually, and give a numerical description of the data.
 
-   #. Are the data normally distributed?
+#. Are the data normally distributed?
 
-   #. How would you design the corresponding study? 
-         * How do you make sure you have enough younge/middle aged/older women?
-         * Which information do you need from the women?
-         * What are useful inclusion/exclusion criteria?
+#. How would you design the corresponding study? 
+     * How do you make sure you have enough younge/middle aged/older women?
+     * Which information do you need from the women?
+     * What are useful inclusion/exclusion criteria?
 
 
 
 .. |image3| image:: ../Images/scatterPlot.png
-    :scale: 50 %
+    :scale: 25 %
 .. |image4| image:: ../Images/Histogram.png
-    :scale: 50 %
+    :scale: 25 %
 .. |image5| image:: ../Images/CumulativeFrequencyFunction.png
-    :scale: 50 %
+    :scale: 25 %
 .. |image6| image:: ../Images/boxplot.png
-    :scale: 50 %
+    :scale: 25 %
 
 
 .. |ipynb| image:: ../Images/IPython.jpg

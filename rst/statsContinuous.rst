@@ -108,7 +108,10 @@ Subject Daily energy intake (kJ) Difference from 7725 kJ Ranks of differences
 Comparison of Two Groups
 ------------------------
 
-.. index:: tests-T-test, unpaired
+Paired T-Test
+~~~~~~~~~~~~~
+
+.. index:: tests-T-test, paired
 
 When you compare two groups with each other, we have to distinguish
 between two cases. In the first case, we compare two values recorded
@@ -118,6 +121,12 @@ year, and check if they have been growing. Since we are only interested
 in the *difference* between the first and the second measurement, this
 test is called *paired t-test*, and is essentially equivalent to a
 one-sample t-test for the mean difference.
+
+
+Unpaired T-Test
+~~~~~~~~~~~~~~~
+
+.. index:: tests-T-test, unpaired
 
 The second test is if we compare two independent groups. For example, we
 can compare the effect of a two medications given to two different
@@ -147,13 +156,104 @@ Non-parametric Comparison of Two Groups: Mann-Whitney Test
 
 If the measurement values from the two groups are not normally
 distributed we have to resort to a non-parametric test. The most common
-test for that is the *Mann-Whitney(-Wilcoxon) test*.
+test for that is the *Mann-Whitney(-Wilcoxon) test*. Watch out, because
+this test is sometimes also referred to as *Wilcoxon rank-sum test*.
+This is different from the *Wilcoxon signed rank sum test*!
 
 |ipynb| `51_twoSample.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/51_twoSample.ipynb>`_
 
 |python| `twoSample.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/twoSample.py>`_
 
 .. .. literalinclude:: ..\Code3\twoSample.py
+
+Statistical Tests vs Statistical Modeling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With the advent of cheap computing power, statistical modeling has been
+a booming field. This has also affected classical statistical analysis,
+as most problems can be viewed from two perspectives: you can either
+make a statistical hypothesis, and verify or falsify that hypothesis; or
+you can make a statistical model, and analyse the significance of the
+model parameters.
+
+Let me use a classical t-test as an example.
+
+Classical t-test
+^^^^^^^^^^^^^^^^
+
+Let us take performance measurements from a racing team, on two
+different occasions. During Race\_1, the members of the team achieve a
+score of [ 79., 100., 93., 75., 84., 107., 66., 86., 103., 81., 83.,
+89., 105., 84., 86., 86., 112., 112., 100., 94.], and during Race\_2 [
+92., 100., 76., 97., 72., 79., 94., 71., 84., 76., 82., 57., 67., 78.,
+94., 83., 85., 92., 76., 88.].
+
+These numbers can be generated, and a t-test comparing the two groups
+can be done, with the following Python commands:
+
+::
+
+        from scipy import stats
+        random.seed(123)
+        race_1 = np.round(randn(20)*10+90)
+        race_2 = np.round(randn(20)*10+85)
+        (t, pVal) = stats.ttest_rel (race_1, race_2)
+        print('The probability that the two distributions are equal is {0}'.format(pVal))
+
+The command *random.seed(123)* initializes the random number generator
+with the number :math:`123`, which ensures that two consecutive runs of
+this code produce the same result, corresponding to the numbers given
+above.
+
+Statistical Modeling
+^^^^^^^^^^^^^^^^^^^^
+
+::
+
+        import pandas as pd
+        import statsmodels.formula.api as sm
+        np.random.seed(123)
+        df = pd.DataFrame({'Race1': race_1, 'Race2':race_2})
+        result = sm.ols(formula='I(Race2-Race1) ~ 1', data=df).fit()
+        print(result.summary())
+
+The important line is the last but one, which produces the
+:math:`results`. Thereby the *ordinary least square (ols)* function from
+*statsmodels* tests the model which describes the difference between the
+results of *Race1* and those of *Race2* with only an *offset* (also
+called *intercept* in the language of modeling). In other words, our
+model has only one paramter, the *intercept*. The results below show
+that the probability that this intercept is 0 is only 0.03: the
+difference is *significant*.
+
+::
+
+
+                                 OLS Regression Results
+    ==============================================================================
+    Dep. Variable:       I(Race2 - Race1)   R-squared:                       0.000
+    Model:                            OLS   Adj. R-squared:                  0.000
+    Method:                 Least Squares   F-statistic:                       nan
+    Date:                Sun, 08 Feb 2015   Prob (F-statistic):                nan
+    Time:                        18:48:06   Log-Likelihood:                -85.296
+    No. Observations:                  20   AIC:                             172.6
+    Df Residuals:                      19   BIC:                             173.6
+    Df Model:                           0
+    Covariance Type:            nonrobust
+    ==============================================================================
+                     coef    std err          t      P>|t|      [95.0% Conf. Int.]
+    ------------------------------------------------------------------------------
+    Intercept     -9.1000      3.950     -2.304      0.033       -17.367    -0.833
+    ==============================================================================
+    Omnibus:                        0.894   Durbin-Watson:                   2.009
+    Prob(Omnibus):                  0.639   Jarque-Bera (JB):                0.793
+    Skew:                           0.428   Prob(JB):                        0.673
+    Kurtosis:                       2.532   Cond. No.                         1.00
+    ==============================================================================
+
+The output is explained in more model in the chapter [chapter:Models].
+The important point here is that the t- and p-value for the *intercept*
+are the same as with the classical t-test above.
 
 Comparison of More Groups
 -------------------------
@@ -169,10 +269,12 @@ The idea behind the *ANalysis Of VAriance (ANOVA)* is to divide the variance int
 the variance *between* groups, and that *within* groups, and see if those
 distributions match the null hypothesis that all groups come from the same
 distribution. The variables that distinguish the different groups are often
-called *factors*. (By comparison, t-tests look at the mean values of two groups,
+called *factors*.
+
+(By comparison, t-tests look at the mean values of two groups,
 and check if those are consistent with the assumption that the two groups come
 from the same distribution.)
-
+ 
 .. image:: ..\Images\ANOVA_oneway.png
     :scale: 50%
 
@@ -195,6 +297,13 @@ groups (i.e. between their means) with that expected from the observed
 variability between subjects. The comparison takes the general form of an F test
 to compare variances, but for two groups the t test leads to exactly the same
 answer.
+
+.. image:: ..\Images\anova_annotated.png
+    :scale: 25%
+
+*The long blue line indicates the grand mean over all data. The
+SS_{Error} describes the variability "within"the groups, and the
+SS_{Treatment}`(summed over all respective points!) the variability "between" groups*.
 
 The one-way ANOVA assumes all the samples are drawn from normally
 distributed populations with equal variance. To test this assumption, you can
@@ -285,7 +394,7 @@ Multiple Comparisons
 The Null hypothesis in a one-way ANOVA is that the means of all the samples are the same. So if a one-way ANOVA yields a significant result, we only know that they are
 *not* the same.
 
-However, often we are not just interested in the joint hypothesis if all samples are the same, but we would also like to know for which pairs of samples the hypothesis of equal values is rejected. In this case we conduct several tests at the same time, one test for each pair of samples. (Typically, this is done with *t-tests* )
+However, often we are not just interested in the joint hypothesis if all samples are the same, but we would also like to know for which pairs of samples the hypothesis of equal values is rejected. In this case we conduct several tests at the same time, one test for each pair of samples. (Typically, this is done with *t-tests*)
 
 This results, as a consequence, in a *multiple testing problem*:
 since we perform multiple comparison tests, we should compensate for the risk of getting a significant result, even if our null hypothesis is true. This can be cone by correcting the p-values to account for this. We have a number of options to do so:
@@ -338,6 +447,18 @@ package:
       array([ 0.15,  0.9 ,  0.03]),
       0.016952427508441503,
       0.016666666666666666)
+
+Holms correction
+^^^^^^^^^^^^^^^^
+
+.. index:: Holms correction
+
+The Holm adjustment sequentially compares the lowest p-value with a Type
+I error rate that is reduced for each consecutive test. For example, if
+you have three groups (and thus three comparisons), this means that the
+first p-value is tested at the .05/3 level (.017), the second at the
+.05/2 level (.025), and third at the .05/1 level (.05). This method is
+generally considered superior to the Bonferroni adjustment.
 
 Kruskal-Wallis test 
 ~~~~~~~~~~~~~~~~~~~~~

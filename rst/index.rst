@@ -13,7 +13,7 @@
 
 | *email:*  thomas.haslwanter@fh-linz.at
 
-| *Version:*  5.13
+| *Version:*  6.3
 
 .. image:: ../Images/cc_licence.png
    :scale: 100 %
@@ -39,6 +39,14 @@ Introduction
    :maxdepth: 2
 
    statsIntroduction
+
+Python
+======
+
+.. toctree::
+   :maxdepth: 2
+
+   statsPython
 
 Basic Principles
 ================
