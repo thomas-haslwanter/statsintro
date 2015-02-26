@@ -4,11 +4,19 @@
 .. Relation Between Two Continuous Variables
 .. =========================================
 
-If we have two related variables, the *correlation* measures the
-association between the two variables. In contrast, a *linear
-regression* is used for the prediction of the value of one variable from
-another. If we want to compare more than two groups of variables, we
-have to use a technique known as *Analysis of Variance (ANOVA)*.
+So far we have been dealing with problems where only one variable is
+measured. Expressions or functions which only depend on one variable are
+sometimes called *univariate*. If more than one variable is involved, we
+are dealing with *multivariate* problems. In the simplest case we have
+two varibles involved, and we need a *bivariate* data analysis.
+
+For two related variables, the *correlation* measures the association
+between the two variables. In contrast, a *linear regression* is used
+for the prediction of the value of one variable from another. For the
+correlation between many variables, you should look into "correlation
+tables" (nicely implemented in *seaborn*). And an extension of linear
+regression to more than two variables brings you into the realm of
+statistical modeling.
 
 Correlation
 -----------
@@ -20,9 +28,10 @@ Correlation Coefficient
 
 .. index:: correlation coefficient
 
-If the two variables are normally distributed, the standard measure of
-determining the *correlation coefficient*, often ascribed to *Pearson* ,
-is
+The *correlation coefficient* between two variables answers the question:
+"Are the two variables related? I.e., if the two variables are normally
+distributed, the standard measure of determining the *correlation
+coefficient*, often ascribed to *Pearson* , is
 
 .. math::
 
@@ -48,49 +57,80 @@ Coefficient of determination
 
 .. index:: coefficient of determination
 
-The *coefficient of determination*  or :math:`R^2` is the square of the correlation. It is easier to interpret than the correlation coefficient r: Values of :math:`R^2` close to 1 are good, values close to 0 are poor. To explain the interpretation of :math:`R^2`, let us look at the math more formally:
+In order to interpret r, let me first define a few common terms.
 
-.. image:: ../Images/Coefficient_of_Determination.png
-    :scale: 75 %
+Residuals
+    Differences between observed values and predicted values.
 
-*The better the linear regression (on the right) fits the data in comparison to the simple average (on the left graph), the closer the value of* :math:`R^2` *is to one. The areas of the blue squares represent the squared residuals with respect to the linear regression. The areas of the red squares represent the squared residuals with respect to the average value (from Wikipedia)*
+| |image28|
 
-A data set has values :math:`y_i`, each of which has an associated modelled value :math:`f_i` (also sometimes referred to as :math:`\hat{y}_i`). Here, the values :math:`y_i` are called the *observed values* and the modelled values :math:`f_i` are sometimes called the *predicted values*.
+*Best-fit linear regression line (red) and residuals (black).*
+
+A data set has values :math:`y_i`, each of which has an associated
+modelled value :math:`f_i` (also sometimes referred to as
+:math:`\hat{y}_i`). Here, the values :math:`y_i` are called the
+*observed values*, and the modelled values :math:`f_i` are sometimes
+called the *predicted values*.
 
 In the following :math:`\bar{y}` is the mean of the observed data:
 
-.. math::
-    \bar{y}=\frac{1}{n}\sum_{i=1}^n y_i 
+.. math:: \bar{y}=\frac{1}{n}\sum_{i=1}^n y_i
 
 where n is the number of observations.
 
-The "variability" of the data set is measured through different sums of squares:
+The "variability" of the data set is measured through different sums of
+squares:
 
-    :math:`SS_\text{tot}=\sum_i (y_i-\bar{y})^2`, the total sum of squares (proportional to the sample variance);
+:math:`SS_\text{tot}=\sum_i (y_i-\bar{y})^2`, the total sum of squares
+(proportional to the sample variance);
 
-    :math:`SS_\text{reg}=\sum_i (f_i -\bar{y})^2`, the regression sum of squares, also called the explained sum of squares.
+:math:`SS_\text{mod}=\sum_i (f_i -\bar{y})^2`, the sum of squares of the
+model values, also called the explained sum of squares;
 
-    :math:`SS_\text{res}=\sum_i (y_i - f_i)^2\,`, the sum of squares of residuals, also called the residual sum of squares.
+:math:`SS_\text{res}=\sum_i (y_i - f_i)^2\,`, the sum of squares of
+residuals, also called the residual sum of squares.
 
-The notations :math:`SS_{R}` and :math:`SS_{E}` should be avoided, since in some texts their meaning is reversed to "Residual sum of squares" and "Explained sum of squares", respectively.
+The notations :math:`SS_{R}` and :math:`SS_{E}` should be avoided, since
+in some texts their meaning is reversed to "Residual sum of squares" and
+"Explained sum of squares", respectively.
 
-The most general definition of the coefficient of determination is
+.. image:: ../Images/Coefficient_of_Determination.png
+    :scale: 50 %
+
+*The better the linear regression (on the right) fits the data in
+comparison to the simple average (on the left graph), the closer the
+value of :math:`R^2` is to one. The areas of the blue squares represent
+the squared residuals with respect to the linear regression. The areas
+of the red squares represent the squared residuals with respect to the
+average value (from Wikipedia)*
+
+With these expressions, the most general definition of the *coefficient
+of determination*, :math:`R^2`, is
 
 .. math::
-    R^2 \equiv 1 - {SS_{\rm res}\over SS_{\rm tot}}.\,
+
+   \label{eq:R2}
+     R^2 \equiv 1 - {SS_{\rm res}\over SS_{\rm tot}}.\,
+
+Since
+
+.. math:: SS_\text{tot} = SS_\text{mod} + SS_\text{res}
+
+Therefore the equation above is equivalent to
+
+.. math:: R^2 = \frac{SS_\text{mod}}{SS_\text{tot}}
+
+For simple linear regression (i.e. line-fits), the *coefficient of
+determination* or :math:`R^2` is the square of the correlation
+coefficient :math:`r`. It is easier to interpret than the correlation
+coefficient r: values of :math:`R^2` close to 1 are good, values close
+to 0 are poor. Note that for general models it is common to write
+:math:`R^2`, whereas for simple linear regression :math:`r^2` is used.
+
 
 **Relation to unexplained variance**
 
-In a general form, :math:`R^2` can be seen to be related to the unexplained variance, since the second term compares the unexplained variance (variance of the model's errors) with the total variance (of the data). See fraction of variance unexplained.
-
-**Adjusted** :math:`R^2`
-
-For multiple regression, the *adjusted* :math:`R^2` value (written as :math:`\bar{R}^2`) is often used instead of :math:`R^2`:
-
-.. math::
-      \bar{R}^2 = 1 - (1 - R^2)\frac{n - 1}{n - p - 1}
-
-where *n* is the sample size and *p* is the number of independent variables.
+In a general form, :math:`R^2` can be seen to be related to the unexplained variance, since the second term compares the unexplained variance (variance of the model's errors) with the total variance (of the data).
 
 **Examples**
 
@@ -224,10 +264,6 @@ the matrix :math:`X` is the *design matrix*.
 matrix of dimension :math:`(n \times k)` where each colum is  an explanatory variable and :math:`\varepsilon`
 is the error term. :math:`\beta` is the vector of dimension :math:`(k \times 1)` and contains the parameters we
 want to estimate.
-
-| |image28|
-
-*Best-fit linear regression line (red) and residuals (black).*
 
 Coding
 ~~~~~~

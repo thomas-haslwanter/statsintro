@@ -6,11 +6,13 @@
 
 .. index:: categorical data
 
-In a sample of individuals the number falling into a particular group is
+In a data sample the number of data falling into a particular group is
 called the *frequency*, so the analysis of categorical data is the
 analysis of frequencies. When two or more groups are compared the data
 are often shown in the form of a *frequency table*, sometimes also
-called *contingency table*.
+called *contingency table*. For example, the Table below gives
+the number of right/left-handed subjects, *contingent* on the subject
+being male or female.
 
 
 
@@ -284,6 +286,12 @@ opposite direction.
 p-value for *finding a value as extreme or more extreme than the
 observed one*. According to Altman, this is a reasonable approach, although
 not all statisticians agree on that point.
+
+.. image:: ../Images/TeaFirst_MilkFirst.jpg
+    :scale: 20 %
+
+*First milk, then tea (top) - or first tea, then milk (bottom): Could you taste the difference?*
+
 
 Example: "A Lady Tasting Tea"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
