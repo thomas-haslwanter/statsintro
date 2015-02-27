@@ -373,42 +373,46 @@ Model Results
 Definitions for Regression with Intercept
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:math:`n` is the number of observations, :math:`p` is the number of
+:math:`n` is the number of observations, :math:`k` is the number of
 regression parameters. For example, if you fit a straight line,
 :math:`k=2`. In the following :math:`\hat{y}_i` will indicate the fitted
 model values, and :math:`\bar{y}` will indicate the mean.
 
--  :math:`SSM = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2` is the *Sum of
-   Square for Model*, or the sum of squares for the regression.
+-  :math:`SS_\text{mod} = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2` is the
+   *Model Sum of Squares*, or the sum of squares for the regression.
 
--  :math:`SSE = \sum_{i=1}^n (y_i-\hat{y}_i)^2` is the *sum of Squares
-   for Error*, or the sum of squares for the residuals.
+-  :math:`SS_\text{res} = \sum_{i=1}^n (y_i-\hat{y}_i)^2` is the
+   *Residuals Sum of Squares*, or the sum of squares for the errors.
 
--  :math:`SST = \sum_{i=1}^n (y_i-\bar{y})^2` is the *Sum of Squares
-   Total*, and is equivalent to the sample variance multiplied by
-   :math:`n-1`.
+-  :math:`SS_\text{tot} = \sum_{i=1}^n (y_i-\bar{y})^2` is the *Total
+   Sum of Squares*, and is equivalent to the sample variance multiplied
+   by :math:`n-1`.
 
-For multiple regression models, :math:`SSM + SSE = SST`
+For multiple regression models,
+:math:`SS_\text{mod} + SS_\text{res} = SS_\text{tot}`
 
--  :math:`DFM = k - 1` is the *(Corrected) Degrees of Freedom for
-   Model*. (The “-1” comes from the fact that we are only interested in
-   the correlation, not in the absolute offset of the data.)
+-  :math:`DF_\text{mod} = k - 1` is the *(Corrected) ModelDegrees of
+   Freedom* . (The "-1" comes from the fact that we are only interested
+   in the correlation, not in the absolute offset of the data.)
 
--  :math:`DFE = n - k` is the *Degrees of Freedom for Error*
+-  :math:`DF_\text{res} = n - k` is the *Residuals Degrees of Freedom*
 
--  :math:`DFT = n - 1` is the *(Corrected) Degrees of Freedom Total*.
-   The Horizontal line regression is the null hypothesis model.
+-  :math:`DF_\text{tot} = n - 1` is the *(Corrected) Total Degrees of
+   Freedom*. The Horizontal line regression is the null hypothesis
+   model.
 
-For multiple regression models with intercept, DFM + DFE = DFT.
+For multiple regression models with intercept,
+:math:`DF_\text{mod} + DF_\text{res} = DF_\text{tot}`.
 
--  :math:`MSM = SSM / DFM` : *Mean of Squares for Model*
+-  :math:`MS_\text{mod} = SS_\text{mod} / DF_\text{mod}` : *Model Mean
+   of Squares*
 
--  :math:`MSE = SSE / DFE` : *Mean of Squares for Error*. MSE is an
-   unbiased estimate for :math:`\sigma^2` for multiple regression
-   models.
+-  :math:`MS_\text{res} = SS_\text{res} / DF_\text{res}` : *Residuals
+   Mean of Squares*. :math:`MS_\text{res}` is an unbiased estimate for
+   :math:`\sigma^2` for multiple regression models.
 
--  :math:`MST = SST / DFT` : *Mean of Squares Total*, which is the
-   sample variance of the y-variable.
+-  :math:`MS_\text{tot} = SS_\text{tot} / DF_\text{tot}` : *Total Mean
+   of Squares*, which is the sample variance of the y-variable.
 
 The :math:`R^2` Value
 ^^^^^^^^^^^^^^^^^^^^^
@@ -420,40 +424,41 @@ correlation :math:`r_{xy}`. For multiple linear regression with
 intercept (which includes simple linear regression), the :math:`R^2`
 value is defined as
 
-.. math:: R^2 = \frac{SSM}{SST}
+.. math:: R^2 = \frac{SS_\text{mod}}{SS_\text{tot}}
 
-The *adjusted* :math:`R^2` Value
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+:math:`\bar{R}^2` - The *adjusted* :math:`R^2` Value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index:: R2-value, adjusted
 
-Many researchers prefer the adjusted :math:`\bar{R}^2` value (Eq
-[eq:adjustedR2]), which is penalized for having a large number of
-parameters in the model:
+Many researchers prefer the *adjusted :math:`\bar{R}^2` value*, which is
+penalized for having a large number of parameters in the model:
 
 Here is the logic behind the definition of :math:`\bar{R}^2`:
-:math:`R^2` is defined as :math:`R^2 = 1 - SSE/SST` or
-:math:`1 - R^2 = SSE/SST`. To take into account the number of regression
-parameters :math:`p`, define the *adjusted R-squared* value as
+:math:`R^2` is defined as :math:`R^2 = 1 - SS_\text{res}/SS_\text{tot}`
+or :math:`1 - R^2 = SS_\text{res}/SS_\text{tot}`. To take into account
+the number of regression parameters :math:`p`, define the *adjusted
+R-squared* value as
 
-.. math:: 1- \bar{R}^2 = \frac{Variance for Error}{Variance Total}
+.. math:: 1- \bar{R}^2 = \frac{ResidualVariance }{Total Variance}
 
-where *(Sample) Variance for Error* is estimated by
-:math:`SSE/DFE = SSE/(n-k)`, and *(Sample) Variance Total* is estimated
-by :math:`SST/DFT = SST/(n-1)`. Thus,
+where *(Sample) Residual Variance* is estimated by
+:math:`SS_\text{res}/DF_\text{res} = SS_\text{res}/(n-k)`, and *(Sample)
+Total Variance* is estimated by
+:math:`SS_\text{tot}/DF_\text{tot} = SS_\text{tot}/(n-1)`. Thus,
 
 .. math::
 
    \begin{aligned}
-       1 - \bar{R}^2 &=& \frac{SSE/(n - k)}{SST/(n - 1)} \\
-             	&=& \frac{SSE}{SST}\frac{n - 1}{n - k}\end{aligned}
+       1 - \bar{R}^2 &=& \frac{SS_\text{res}/(n - k)}{SS_\text{tot}/(n - 1)} \nonumber \\
+             	&=& \frac{SS_\text{res}}{SS_\text{tot}}\frac{n - 1}{n - k}\end{aligned}
 
 so
 
 .. math::
 
    \begin{aligned}
-     \bar{R}^2 &=& 1 - \frac{SSE}{SST} \frac{n - 1}{(n - k} \\
+     \bar{R}^2 &=& 1 - \frac{SS_\text{res}}{SS_\text{tot}} \frac{n - 1}{n - k} \nonumber  \\
        &=& 1 - (1 - R^2)\frac{n - 1}{n - k}\end{aligned}
 
 The F-test
@@ -473,37 +478,38 @@ For a multiple regression model with intercept,
 we want to test the following null hypothesis and alternative
 hypothesis:
 
-:math:`H_0`: :math:`\beta_1` = :math:`\beta_2` = , ... , =
-:math:`\beta_n` = 0
+:math:`H_0`: :math:`\beta_1` = :math:`\beta_2` = ... = :math:`\beta_n` =
+0
 
 :math:`H_1`: :math:`\beta_j \neq 0`, for at least one value of j
 
 This test is known as the overall *F-test for regression*.
 
 It can be shown that if :math:`H_0` is true and the residuals are
-unbiased, homoscedastic, independent, and normal (see section
-[sec:Assumptions] ):
+unbiased, homoscedastic (i.e. all function values have the same
+variance), independent, and normal (see section [sec:Assumptions] ):
 
-#. :math:`SSE / \sigma^2` has a :math:`\chi^2` distribution with DFE
-   degrees of freedom.
+#. :math:`SS_\text{res} / \sigma^2` has a :math:`\chi^2` distribution
+   with :math:`DF_\text{res}` degrees of freedom.
 
-#. :math:`SSM / \sigma^2` has a :math:`\chi^2` distribution with DFM
-   degrees of freedom.
+#. :math:`SS_\text{mod} / \sigma^2` has a :math:`\chi^2` distribution
+   with :math:`DF_\text{mod}` degrees of freedom.
 
-#. SSE and SSM are independent random variables.
+#. :math:`SS_\text{res}` and :math:`SS_\text{mod}` are independent
+   random variables.
 
 If :math:`u` is a :math:`\chi^2` random variable with :math:`n` degrees
 of freedom, :math:`v` is a :math:`\chi^2` random variable with :math:`m`
-degrees of freedom, and :math:`u` and :math:`v` are independent, then if
+degrees of freedom, and :math:`u` and :math:`v` are independent, then
 :math:`F = \frac{u/n}{v/m}` has an F distribution with :math:`(n,m)`
 degrees of freedom.
 
 If H0 is true,
 
-.. math:: F = \frac{(SSM/\sigma^2)/DFM}{(SSE/\sigma^2)/DFE} = \frac{SSM/DFM}{SSE/DFE} = \frac{MSM}{MSE},
+.. math:: F = \frac{(SS_\text{mod}/\sigma^2)/DF_\text{mod}}{(SS_\text{res}/\sigma^2)/DF_\text{res}} = \frac{SS_\text{mod}/DF_\text{mod}}{SS_\text{res}/DF_\text{res}} = \frac{MS_\text{mod}}{MS_\text{res}},
 
-has an F distribution with :math:`(DFM, DFE)` degrees of freedom, and is
-independent of :math:`\sigma`.
+has an F distribution with :math:`(DF_\text{mod}, DF_\text{res})`
+degrees of freedom, and is independent of :math:`\sigma`.
 
 We can test this directly in Python with
 
@@ -523,11 +529,10 @@ which gives us
         F-statistic: 12.785,  p-value: 0.00723
 
 Here, *stats.f.cdf( F, m, n )* returns the cumulative sum of the
-F-distribution with shape parameters *m = k-1 = 1*, and *n = N - k
-= 8*, up to the F-statistic :math:`F`. Subtracting this quantity from
-one, we obtain the probability in the tail, which represents the
-probability of observing F-statistics more extreme than the one
-observed.
+F-distribution with shape parameters *m = k-1 = 1*, and *n = N - k = 8*,
+up to the F-statistic :math:`F`. Subtracting this quantity from one, we
+obtain the probability in the tail, which represents the probability of
+observing F-statistics more extreme than the one observed.
 
 Log-Likelihood Function
 ^^^^^^^^^^^^^^^^^^^^^^^

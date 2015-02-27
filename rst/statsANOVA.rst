@@ -34,11 +34,23 @@ null hypothesis is that all three pianos rate equally. To test the null
 hypothesis, the Friedman test is used on the ratings of the ten piano
 players.
 
-And if we want to and predict the value of one variable *many* other
-variables, linear regression has to be replaced by of *multilinear
-regression* , sometimes also referred
-to as *multiple linear regression*.
+When moving from two to many variables, the correlation coefficient gets
+replaced by the *correlation matrix*. And if we want to and predict the
+value of *many* other variables, linear regression has to be replaced by
+*multilinear regression*, sometimes also referred to as *multiple linear
+regression*.
 
+However, watch out for the pitfalls that loom when you work with many
+variables! Take for example the following hypothetical case: you make a
+survey about the activity and life circumstances of a large range of
+people, covering all the numbers that you can get your hand on. In this
+survey you find out that a) rich people spend more time playing golf
+than poor people, and b) rich people tend to have fewer children than
+poor people. This leads to a strong negative correlation between playing
+golf and having children, and you may be tempted to (falsely) draw the
+conclusion that playing golf reduces your fertility, while in reality it
+is the higher income which causes both effects. nicely describes where
+those problems come from, and how best to avoid them.
 
 Two-way ANOVA
 -----------------
@@ -67,6 +79,60 @@ Example: two-way ANOVA
   C(fetus):C(observer)   6    0.56    0.09     1.22  3.29e-01
   Residual              24    1.84    0.07      NaN       NaN
     
+.. figure:: ../Images/ANOVA_3way.png
+    :scale: 33 %
+
+*Three-way ANOVA*
+
+Three-way ANOVA
+---------------
+
+When you have more than two factors, it is recommendable to use
+*statistical modeling* for the data analysis (see Chapter
+[chapter:Models]). However, as always with the analysis of statistical
+data, you should first inspect the data visually. *seaborn* makes this
+quite simple:
+
+::
+
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+        sns.set(style="whitegrid")
+
+        df = sns.load_dataset("exercise")
+
+        sns.factorplot("time", "pulse", hue="kind", col="diet", data=df,
+                       hue_order=["rest", "walking", "running"],
+                       palette="YlGnBu_d", aspect=.75).despine(left=True)
+        plt.show()
+
+Correlation Matrix
+------------------
+
+An elegant way to visualize the correlation between a large number of
+variables is the *correlation matrix*. Using *seaborn*, it can be
+implemented elegantly as follows:
+
+.. figure:: ../Images/many_pairwise_correlations.png
+    :scale: 66 %
+
+*Visualization of the Correlation matrix.*
+
+::
+
+        import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+        sns.set(style="darkgrid")
+
+        rs = np.random.RandomState(33)
+        d = rs.normal(size=(100, 30))
+
+        f, ax = plt.subplots(figsize=(9, 9))
+        cmap = sns.diverging_palette(220, 10, as_cmap=True)
+        sns.corrplot(d, annot=False, sig_stars=False,
+                     diag_names=False, cmap=cmap, ax=ax)
+        f.tight_layout()
 
 Multilinear Regression 
 ------------------------

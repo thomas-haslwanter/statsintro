@@ -250,8 +250,7 @@ given this temperature, almost guaranteed that the Challenger was going
 to be subject to defective O-rings.
 
 |python| `challenger.py <https://github.com/thomas-haslwanter/statsintro/blob/master/Code3/challenger.py>`_
-*Full implementation of the MCMC simulation. Note
-that Python 2.x is required for PyMC!.*
+*Full implementation of the MCMC simulation.*
 
 .. |image_ORings| image:: ../Images/Challenger_ORings.png
     :scale: 25 % 
