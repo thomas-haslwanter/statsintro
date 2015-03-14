@@ -698,16 +698,6 @@ below).
 *Regression plot, from "seaborn", with a substantial amount of added
 information.*
 
-
-General Routines
-~~~~~~~~~~~~~~~~
-
-Here is also a good place to introduce the short function that we will
-use a number of times to simplify the reading in of data:
-
-"getData.py" (p ) Gets the input data for many Python programs in this
-script.
-
 Exercises
 ---------
 
