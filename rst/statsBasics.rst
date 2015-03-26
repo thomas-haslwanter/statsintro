@@ -4,9 +4,6 @@
 .. Basic Principles
 .. ================
 
-Population and samples
-----------------------
-
 Datatypes
 ---------
 
@@ -179,11 +176,18 @@ Box Plots
 .. index:: plots-boxplot
 
 *Box plots* are frequently used in scientific publications to indicate
-values in two or more groups. The error bars typically indicate the
-*range*. However, outliers are often excluded, and plotted separately.
-There are a number of tests to check for outliers. One of them is to
-check for data which lie more than 1.5 \* *inter-quartile-range* (IQR)
-above or below the first/third quartile.
+values in two or more groups. The bottom and top of the box indicate the
+first and third quartiles, and the line inside the box shows the median.
+Care has to be taken with the whiskers, as different conventions exist for
+them. The most common form is that the lower whisker indicates the lowest
+value still within 1.5 *inter-quartile-range* (IQR) of the lower quartile,
+and the upper whisker the highest value still within 1.5 IQR of the upper
+quartile. Outliers (outside the whiskers) are plotted separately. Another
+convention is to have the whiskers indicate the full data range.
+
+There are a number of tests to check for outliers. The method suggested by
+Tukey is to check for data which lie more than 1.5 * IQR above or below the
+first/third quartile (see next Section).
 
 | |image6|
 

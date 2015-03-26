@@ -198,10 +198,7 @@ larger than the mean under the null hypothesis: in that case, a sample
 that produces a p-value of 0.05 may just as likely be produced if the
 alternative hypothesis is true as if the null hypothesis is true!
 
- have investigated this question in detail, and recommend to use a
-"calibrated p-value" to estimate the probability of making a mistake
-when rejecting the null hypothesis, when the data produce a p-value
-:math:`p`:
+ have investigated this question in detail, and recommend to use a "calibrated p-value" to estimate the probability of making a mistake when rejecting the null hypothesis, when the data produce a p-value *p* :
 
 .. math::
 

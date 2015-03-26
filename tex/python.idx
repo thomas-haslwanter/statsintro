@@ -1,27 +1,27 @@
-\indexentry{gettingStarted}{18}
-\indexentry{readZip}{18}
-\indexentry{statsmodelsIntro}{20}
-\indexentry{getData}{21}
-\indexentry{figsBasicPrinciples}{27}
-\indexentry{distributionNormal}{41}
-\indexentry{distributionDiscrete}{42}
-\indexentry{distributionContinuous}{50}
-\indexentry{distributionDiscrete}{52}
-\indexentry{checkNormality}{57}
-\indexentry{sampleSize}{62}
-\indexentry{oneSample}{68}
-\indexentry{twoSample}{70}
-\indexentry{anovaOneway}{73}
-\indexentry{multipleTesting}{74}
-\indexentry{KruskalWallis}{75}
-\indexentry{binomialTest}{77}
-\indexentry{compGroups}{87}
-\indexentry{multivariate}{97}
-\indexentry{fitLine}{97}
-\indexentry{anovaTwoway}{100}
-\indexentry{multipleRegression}{102}
-\indexentry{survival}{104}
-\indexentry{linear regression model}{112}
-\indexentry{modeling}{127}
-\indexentry{bootstrapDemo}{127}
-\indexentry{Bayesian Statistics}{133}
+\indexentry{gettingStarted}{19}
+\indexentry{readZip}{20}
+\indexentry{statsmodelsIntro}{21}
+\indexentry{getData}{22}
+\indexentry{figsBasicPrinciples}{30}
+\indexentry{distributionNormal}{43}
+\indexentry{distributionDiscrete}{44}
+\indexentry{distributionContinuous}{52}
+\indexentry{distributionDiscrete}{54}
+\indexentry{checkNormality}{59}
+\indexentry{sampleSize}{64}
+\indexentry{oneSample}{70}
+\indexentry{twoSample}{72}
+\indexentry{anovaOneway}{75}
+\indexentry{multipleTesting}{76}
+\indexentry{KruskalWallis}{77}
+\indexentry{binomialTest}{79}
+\indexentry{compGroups}{89}
+\indexentry{multivariate}{99}
+\indexentry{fitLine}{99}
+\indexentry{anovaTwoway}{102}
+\indexentry{multipleRegression}{104}
+\indexentry{survival}{106}
+\indexentry{linear regression model}{114}
+\indexentry{modeling}{129}
+\indexentry{bootstrapDemo}{129}
+\indexentry{Bayesian Statistics}{135}
