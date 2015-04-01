@@ -141,22 +141,105 @@ Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plo
 
 \section{Study Design}
 
+\subsection{Terminology}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Process_Optimization.jpg}\\
+  \caption{Process Schematic}\label{fig:StudyDesign}
+\end{figure}
+
+In the context of study design, different terminologies can be found (Fig. \ref{fig:StudyDesign}):
+
+\begin{itemize}
+    \item{The controlled inputs are often called \emph{factors}\index{general}{factors} or
+            \emph{treatments}\index{general}{treatments}.}
+    \item{The uncontrolled inputs are called \emph{co-factors}\index{general}{co-factors} or
+            \emph{nuisance factors}.}
+\end{itemize}
+
+When we try to model a process with two inputs and one outputs, we can
+formulate a mathematical model for example as
+
+\begin{equation}
+    X = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_{12} X_1 X_2 + \epsilon
+\end{equation}
+
+The terms with the single "X's" are called \emph{main effects}\index{general}{main effects}, and the terms with multiple "X's" \emph{interaction terms}\index{general}{interactions}. And since the $\beta$
+parameters enter the equation only linearly, this is referred to as a \emph{general linear model}. The $\epsilon$s are called \emph{residuals}, and
+are expected to be approximately normally distributed around zero.
+
+\subsection{Overview}
+
+The first question you have to ask yourself is what you want to do. Do you want to
+
+\begin{itemize}
+    \item{Compare two or more groups, or one group to a fixed value?}
+    \item{Screen the observed responses to identify
+            factors/effects that are important?}
+    \item{Maximize or minimize a response (variability, distanct to target,
+            robustness)?, or}
+    \item{Develop a regression model to quantify the dependence of a
+            response variable on the process input?}
+\end{itemize}
+
+The first question leads to an hypothesis test. The second one is a screening investigation, where you have to watch out for \emph{multiple testing artefacts}. The third task is an optimization problem. And the last one brings you into the realm of \emph{statistical modeling}.
+
+Once you have determined \emph{what} you want to do, you have to decide \emph{how} you want to do this. You can either do \emph{controlled experiments}. Or you can use \emph{observations} to obtain the data that you are looking for. In a controlled experiment you typically try to vary only a single parameter, and investigate the effects of that parameter on the output.
+
+\subsection{Personal Tips}
+
+\begin{enumerate}
+  \item Be realistic about your task.
+  \item Plan in sufficient control/calibration experiments.
+  \item Take notes.
+  \item Store your data in a well structured way.
+\end{enumerate}
+
+\subsubsection{Preliminary Investigations and Murphy's Law}
+Most investigations require more than one round of experiments and analyses. The theory goes that you first state your hypothesis, then do the experiments, and accept or reject the hypothesis. Done.
+Most of my investigations have been less straightforward. Typically, you start out with an idea. After making sure that nobody else has solved your question before, you sit down and do the first rounds of measurements, and write the analysis programs required to analyze your data. Thereby you find most of the things that can go wrong (they typically do, as indicated by \emph{Murphy's Law}), and what you should have done differently in the first place. Not only does that first round of investigation provide a \emph{proof of principle} that your question is tractable, but you also have obtained some data on the variability of typical responses. This allows you to obtain a reasonable estimate of the number of subjects/samples you need in order to accept or reject your hypothesis. By this time you also know if your experimental setup is sufficient, or if you need a higher quality measurement equipment. The second round of investigations is in most cases the real stuff, and (hopefully) provides you with enough data to publish your findings.
+
+\subsubsection{Calibration Runs}
+If anyhow possible, you should start out and end your recordings with something that you know. For example during movement recordings I try to start out with recording a stationary point, and then move it 10 cm forward, left, and up. Having a recording where you know exactly what happens not only helps to detect drift in the sensors, and problems in the experimental setup. These recordings also help to verify the accuracy of your analysis programs.
+
+\subsubsection{Documentation} \index{general}{documentation}
+Make sure that you document all the factors that may influence your results, and everything that happens during the experiment:
+
+\begin{itemize}
+  \item The date and time of the experiment.
+  \item Information about the experimenters and the subjects.
+  \item The exact paradigm that you have decided on.
+  \item Anything noteworthy that happens during the experiment.
+\end{itemize}
+
+Be as brief as possible, but take down everything note-worthy that happens during your experiment. Be especially clear about the names of the recorded data-files, as this will be the first thing you need when you later analyze the data.
+Often you won't need all the details. But when you have outliers, weird data, etc., these notes can be invaluable for your later data analysis.
+
+\subsubsection{Data Storage}
+Try to have clear, intuitive, and practical naming conventions. For example, when you perform experiments with patients and with normals on different days, you could name these recordings "[p/n][yyyy/mm/dd]\_[x].dat", e.g. \emph{n20150329\_a}. With this convention you have a natural grouping of normals and patients, and your data are automatically sorted logically by their date.
+
+Always immediately store the rawdata, preferably in a separate directory. I prefer to make this directory read-only, so that I don't inadvertently delete valuable raw-data. You can in most cases easily redo an analysis run. But you often won't be able to repeat an experiment.
 
 \subsection{Types of Studies}
 
-\subsubsection{Observational or experimental}
+\subsubsection{Observational or experimental}\index{general}{design of experiments!observational}\index{general}{design of experiments!experimental}
 With \emph{observational} studies the researcher only collects information, but does not interact with the study population. In contrast, in \emph{experimental} studies the researcher deliberately influences events (e.g. treats the patient with a new type of treatment) and investigates the effects of these interventions.
 
-\subsubsection{Prospective or retrospective}
+\subsubsection{Prospective or retrospective}\index{general}{design of experiments!prospective}\index{general}{design of experiments!retrospective}
 In \emph{prospective} studies the data are collected, starting with the beginning of the study. In contrast, a \emph{retrospective} study takes data acquired from previous events, e.g. routine tests taken at a hospital.
 
-\subsubsection{Longitudinal or cross-sectional}
+\subsubsection{Longitudinal or cross-sectional}\index{general}{design of experiments!longitudinal}\index{general}{design of experiments!cross-sectional}
 In \emph{longitudinal} investigations, the researcher collects information over a period of time, maybe multiple times from each patient. In contrast, in \emph{cross-sectional} studies individuals are observed only once. For example, most surveys are cross-sectional, but experiments are usually longitudinal.
 
-\subsubsection{Case control and Cohort studies}
+\subsubsection{Case control and Cohort studies}\index{general}{design of experiments!case control studies}\index{general}{design of experiments!cohort studies}
 In \emph{case control} studies, first the patients are treated, and then they are selected for inclusion in the study, based on some characteristic (e.g. if they responded to a certain medication). In contrast, in \emph{cohort studies}, first subjects of interest are selected, and then these subjects are studied over time, e.g. for their response to a treatment.
 
 \subsection{Design of Experiments}
+
+\emph{"Block whatever you can; and randomize the rest!"}
+
+I have mentioned above that you have factors (which you control) and nuisance factors, which influence your results, but which you cannot control and/or manipulate. Assume, for example, that you have an experiment where the result depends on the person who performs the experiment (e.g. the nurse who tests the subject), and on the time of the day. In that case you can \emph{block} the factor \emph{nurse}, by having all tests performed by the same nurse. But it won't be possible to test all subjects at the same time. So you try to average out time effects, by \emph{randomly} mixing the timing of your subjects. If, in contrast, you measure your patients in the morning and your healthy subjects in the afternoon, you will invariably bring some \emph{bias} into your data.
 
 \subsubsection{Bias} \index{general}{bias}
 In general, when selecting our subject you try to make them representative of the population that you want to study; and you try to conduct your experiments in a way representative of investigations by other researchers. However, it is \emph{very} easy to get a \emph{bias} into your data. Bias can arise from a number of sources:
@@ -218,9 +301,12 @@ When selecting your subjects, you should take care of two points:
 \begin{enumerate}
   \item Make sure that the samples are representative of the population.
   \item In comparative studies, care is needed in making groups similar with respect to known sources of variation.
+  \item \textbf{Important:} Make sure that your selection of samples/subject sufficiently covers all parameters that you need!
 \end{enumerate}
 
-For example, if you select your subjects randomly from patients at a hospital, you automatically bias your sample towards subjects with health problems.
+Ad 1) For example, if you select your subjects randomly from patients at a hospital, you automatically bias your sample towards subjects with health problems.
+
+Ad 3) For example, if you test the efficacy of a new rehabilitation therapy for stroke patients, do \emph{not} just select patients who have had a stroke: make sure that your patient selection includes even numbers of patients with mild, medium, and severe symptoms. Otherwise you may end up with data who primarily include patients with little or no aftereffects of the stroke. (I hate to admit that this type of mistake has repeatedly happened to me, and cost me many months of work!)
 
 \subsubsection{Sample size}
 Many studies fail, because the sample size is too small to observed an effect of the desired magnitude. To plan your sample size, you have to know
@@ -231,30 +317,11 @@ Many studies fail, because the sample size is too small to observed an effect of
 
 \subsection{Structure of Experiments}
 
-If each combination of factors is tested, we talk about a \emph{factorial design} of the experiment.
+If each combination of factors is tested, we talk about a \emph{full factorial design}\index{general}{design of experiments!factorial} of the experiment.
 
 In planning the analysis, you have to keep the important distinction between \emph{within subject} comparisons, and \emph{between subjects} comparisons. The former one, \emph{within subject comparisons}, allows you to detect smaller differences with the same number of subjects than \emph{between subject comparisons}.
 
-%(Lecture 3)
-
-\subsection{Data Management}
-
-\subsubsection{Documentation} \index{general}{documentation}
-Make sure that you document all the factors that may influence your results:
-
-\begin{itemize}
-  \item The date and time of the experiment.
-  \item Information about the experimenters and the subjects.
-  \item The exact paradigm that you have decided on.
-  \item Anything noteworthy that happens during the experiment.
-\end{itemize}
-
-\subsubsection{Data Handling}
-You can already significantly facilitate the data handling by storing your data with telltale names. For example, if you execute your experiments in Vienna and in Linz, you can store your rawdata with the format "[town][year][month][day].dat". For example, an experiment in Vienna on April 1, 2013 would be stored as "vi20130401.dat".
-
-When you have finished recording the data, back up your data right away. Best do that into a directory that is separate from the one where you do your data analysis afterwards.
-
-\subsection{Clinical Investigation Plan}
+\subsection{Clinical Investigation Plan}\index{general}{clinical investigation plan}
 
 To design a medical study properly is not only advisable - it is even required by ISO 14155-1:2003, for \emph{Clinical investigations of medical devices for human subjects}. This norm specifies many aspects of your clinical study. It enforces the preparation of a \emph{Clinical Investigation Plan (CIP)}, specifying
 
