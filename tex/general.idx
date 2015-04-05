@@ -43,8 +43,9 @@
 \indexentry{random variate}{37}
 \indexentry{cumulative distribution function}{37}
 \indexentry{cumulative distribution function}{38}
-\indexentry{mean}{39}
-\indexentry{median}{39}
+\indexentry{frozen distribution}{39}
+\indexentry{mean}{40}
+\indexentry{median}{40}
 \indexentry{mode}{40}
 \indexentry{geometric mean}{40}
 \indexentry{range}{40}
@@ -52,13 +53,15 @@
 \indexentry{percentiles}{40}
 \indexentry{inter-quartile-range, IQR}{40}
 \indexentry{variance}{40}
-\indexentry{standard deviation}{40}
+\indexentry{standard deviation}{41}
 \indexentry{standard error}{41}
-\indexentry{confidence interval}{41}
+\indexentry{confidence interval}{42}
+\indexentry{distribution!location}{42}
+\indexentry{distribution!scale}{42}
 \indexentry{shape parameters}{42}
-\indexentry{skewness}{42}
-\indexentry{kurtosis}{42}
-\indexentry{statistic}{42}
+\indexentry{skewness}{43}
+\indexentry{kurtosis}{43}
+\indexentry{statistic}{43}
 \indexentry{distributions!normal}{43}
 \indexentry{probability density function}{43}
 \indexentry{central limit theorem}{46}

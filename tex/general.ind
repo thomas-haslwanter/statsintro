@@ -26,7 +26,7 @@
   \item coefficient of determination, 97
     \subitem adjusted, 119
   \item condition number, 125
-  \item confidence interval, 41
+  \item confidence interval, 42
   \item control group, 33
   \item correlation
     \subitem Kendall's $\tau$, 97
@@ -58,6 +58,9 @@
     \subitem observational, 32
     \subitem prospective, 33
     \subitem retrospective, 33
+  \item distribution
+    \subitem location, 42
+    \subitem scale, 42
   \item distributions
     \subitem Bernoulli, 55
     \subitem binomial, 54
@@ -86,6 +89,7 @@
 
   \item factors, 30
   \item frequency tables, 84
+  \item frozen distribution, 39
 
   \indexspace
 
@@ -111,7 +115,7 @@
   \indexspace
 
   \item Kaplan-Meier survival curve, 107
-  \item kurtosis, 42
+  \item kurtosis, 43
 
   \indexspace
 
@@ -122,8 +126,8 @@
 
   \item main effects, 30
   \item Maximum likelihood, 120
-  \item mean, 39
-  \item median, 39
+  \item mean, 40
+  \item median, 40
   \item mode, 40
   \item Multiple Comparisons, 77
   \item multivariate, 95
@@ -187,11 +191,11 @@
   \item sensitivity, 66
   \item shape parameters, 42
   \item significance level, 62
-  \item skewness, 42
+  \item skewness, 43
   \item specificity, 66
-  \item standard deviation, 40
+  \item standard deviation, 41
   \item standard error, 41
-  \item statistic, 42
+  \item statistic, 43
   \item statistical modeling, 113
   \item survival times, 107
 
