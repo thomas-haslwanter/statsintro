@@ -213,6 +213,142 @@ Study Design
 
 .. index:: study design
 
+
+Terminology
+~~~~~~~~~~~
+
+.. image:: ..\Images\Process_Optimization.jpg
+    :scale: 50 %
+
+*Process Schematic*
+
+In the context of study design, different terminologies can be found
+
+-  The controlled inputs are often called *factors* or *treatments*.
+
+-  The uncontrolled inputs are called *co-factors* or *nuisance
+   factors*.
+
+When we try to model a process with two inputs and one outputs, we can
+formulate a mathematical model for example as
+
+.. math:: X = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_{12} X_1 X_2 + \epsilon
+
+The terms with the single "X's" are called *main effects*, and the terms
+with multiple "X's| *interaction terms*. And since the :math:`\beta`
+parameters enter the equation only linearly, this is referred to as a
+*general linear model*. The :math:`\epsilon`\ s are called *residuals*,
+and are expected to be approximately normally distributed around zero.
+
+Overview
+~~~~~~~~
+
+The first question you have to ask yourself is what you want to do. Do
+you want to
+
+-  Compare two or more groups, or one group to a fixed value?
+
+-  Screen the observed responses to identify factors/effects that are
+   important?
+
+-  Maximize or minimize a response (variability, distanct to target,
+   robustness)?, or
+
+-  Develop a regression model to quantify the dependence of a response
+   variable on the process input?
+
+The first question leads to an hypothesis test. The second one is a
+screening investigation, where you have to watch out for *multiple
+testing artefacts*. The third task is an optimization problem. And the
+last one brings you into the realm of *statistical modeling*.
+
+Once you have determined *what* you want to do, you have to decide *how*
+you want to do this. You can either do *controlled experiments*. Or you
+can use *observations* to obtain the data that you are looking for. In a
+controlled experiment you typically try to vary only a single parameter,
+and investigate the effects of that parameter on the output.
+
+Personal Tips
+~~~~~~~~~~~~~
+
+#. Be realistic about your task.
+
+#. Plan in sufficient control/calibration experiments.
+
+#. Take notes.
+
+#. Store your data in a well structured way.
+
+Preliminary Investigations and Murphy's Law
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Most investigations require more than one round of experiments and
+analyses. The theory goes that you first state your hypothesis, then do
+the experiments, and accept or reject the hypothesis. Done. Most of my
+investigations have been less straightforward. Typically, you start out
+with an idea. After making sure that nobody else has solved your
+question before, you sit down and do the first rounds of measurements,
+and write the analysis programs required to analyze your data. Thereby
+you find most of the things that can go wrong (they typically do, as
+indicated by *Murphy's Law*), and what you should have done differently
+in the first place. Not only does that first round of investigation
+provide a *proof of principle* that your question is tractable, but you
+also have obtained some data on the variability of typical responses.
+This allows you to obtain a reasonable estimate of the number of
+subjects/samples you need in order to accept or reject your hypothesis.
+By this time you also know if your experimental setup is sufficient, or
+if you need a higher quality measurement equipment. The second round of
+investigations is in most cases the real stuff, and (hopefully) provides
+you with enough data to publish your findings.
+
+Calibration Runs
+^^^^^^^^^^^^^^^^
+
+If anyhow possible, you should start out and end your recordings with
+something that you know. For example during movement recordings I try to
+start out with recording a stationary point, and then move it 10 cm
+forward, left, and up. Having a recording where you know exactly what
+happens not only helps to detect drift in the sensors, and problems in
+the experimental setup. These recordings also help to verify the
+accuracy of your analysis programs.
+
+Documentation
+^^^^^^^^^^^^^
+
+Make sure that you document all the factors that may influence your
+results, and everything that happens during the experiment:
+
+-  The date and time of the experiment.
+
+-  Information about the experimenters and the subjects.
+
+-  The exact paradigm that you have decided on.
+
+-  Anything noteworthy that happens during the experiment.
+
+Be as brief as possible, but take down everything note-worthy that
+happens during your experiment. Be especially clear about the names of
+the recorded data-files, as this will be the first thing you need when
+you later analyze the data. Often you won't need all the details. But
+when you have outliers, weird data, etc., these notes can be invaluable
+for your later data analysis.
+
+Data Storage
+^^^^^^^^^^^^
+
+Try to have clear, intuitive, and practical naming conventions. For
+example, when you perform experiments with patients and with normals on
+different days, you could name these recordings
+"[p/n][yyyy/mm/dd]\_[x].dat", e.g. *n20150329\_a*. With this convention
+you have a natural grouping of normals and patients, and your data are
+automatically sorted logically by their date.
+
+Always immediately store the rawdata, preferably in a separate
+directory. I prefer to make this directory read-only, so that I don't
+inadvertently delete valuable raw-data. You can in most cases easily
+redo an analysis run. But you often won't be able to repeat an
+experiment.
+
 Types of Studies
 ~~~~~~~~~~~~~~~~
 
@@ -269,6 +405,21 @@ treatment.
 
 Design of Experiments 
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+*"Block whatever you can; and randomize the rest!"*
+
+I have mentioned above that you have factors (which you control) and
+nuisance factors, which influence your results, but which you cannot
+control and/or manipulate. Assume, for example, that you have an
+experiment where the result depends on the person who performs the
+experiment (e.g. the nurse who tests the subject), and on the time of
+the day. In that case you can *block* the factor *nurse*, by having all
+tests performed by the same nurse. But it won't be possible to test all
+subjects at the same time. So you try to average out time effects, by
+*randomly* mixing the timing of your subjects. If, in contrast, you
+measure your patients in the morning and your healthy subjects in the
+afternoon, you will invariably bring some *bias* into your data.
+
 
 Bias 
 ^^^^^^
@@ -423,9 +574,20 @@ When selecting your subjects, you should take care of two points:
 #. In comparative studies, care is needed in making groups similar with
    respect to known sources of variation.
 
-For example, if you select your subjects randomly from patients at a
-hospital, you automatically bias your sample towards subjects with
+#. **Important:** Make sure that your selection of samples/subject
+   sufficiently covers all parameters that you need!
+
+Ad 1) For example, if you select your subjects randomly from patients at
+a hospital, you automatically bias your sample towards subjects with
 health problems.
+
+Ad 3) For example, if you test the efficacy of a new rehabilitation
+therapy for stroke patients, do *not* just select patients who have had
+a stroke: make sure that your patient selection includes even numbers of
+patients with mild, medium, and severe symptoms. Otherwise you may end
+up with data who primarily include patients with little or no
+aftereffects of the stroke. (I hate to admit that this type of mistake
+has repeatedly happened to me, and cost me many months of work!)
 
 Sample size 
 ^^^^^^^^^^^^^

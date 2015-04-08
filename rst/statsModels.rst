@@ -249,7 +249,7 @@ Example 1: Program Effectiveness
 
 In this rather simple example we use data from Spector and Mazzeo (1980), to estimate a linear regression model with statsmodels.
 
-.. literalinclude:: ..\Code\regSpector.py
+.. literalinclude:: ..\Code3\regSpector.py
 
 Example 2: Linear Models
 ~~~~~~~~~~~~~~~~~~~~~~~~

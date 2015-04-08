@@ -118,6 +118,14 @@ commonly used to select appropriate points a distribution function:
 
     Utility functions for continuous distributions, here for the normal distribution.
 
+**Note:**
+
+In Python, the most elegant way of working with distribution function is a two-step procedure:
+
+  - In the first step, you create your distribution (e.g. *nd = stats.norm()*). Note that is a *distribution* (in Python parlance a "frozen distribution"), not a function yet!
+  - In the second step, you decide which function you want to use from this distribution, , and calculate the function value for the desired x-input (e.g. *y = nd.cdf(x)*)
+
+
 
 Distribution Center 
 ~~~~~~~~~~~~~~~~~~~~~
@@ -299,8 +307,20 @@ value, you have to replace the *standard deviation* by the *standard
 error*!
 
 
-Parameters Describing a Distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Parameters Describing the Form of a Distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In *scipy.stats*, continuous distribution functions are characterized by
+their *location* and their *scale*. Should the definition of a
+distribution require more than two parameters, the following parameters
+are called *shape parameters*. The exact meaning of each parameter can
+be found in the function definition.
+
+For example, for the *normal distribution*, *(location/shape)* are given
+by *(mean/standard deviation)* of the distribution. In contrast, for the
+*uniform distribution*, *location/shape* are given by the *(start/end)*
+of the range where the distribution is different from zero.
+
 
 Location
 ^^^^^^^^
@@ -427,14 +447,6 @@ is denoted as :math:`N(\mu,\sigma)`. If the *random variate (rv)* *X* is
 normally distributed with expectation :math:`\mu` and standard deviation
 :math:`\sigma`, one denotes: :math:`\,X \sim N(\mu,\sigma)` or
 :math:`\,X \in N(\mu,\sigma)`.
-
-
-**Note:**
-
-In Python, the most elegant way of working with distribution function is a two-step procedure:
-
-  - In the first step, you create your distribution (e.g. *nd = stats.norm()*). Note that is a *distribution* (in Python parlance a "frozen distribution"), not a function yet!
-  - In the second step, you decide which function you want to use from this distribution, , and calculate the function value for the desired x-input (e.g. *y = nd.cdf(x)*)
 
 
 |ipynb| `30_figs_DistributionNormal.ipynb <http://nbviewer.ipython.org/url/raw.github.com/thomas-haslwanter/statsintro/master/ipynb/30_figs_DistributionNormal.ipynb>`_
@@ -986,18 +998,6 @@ Distributions
 #.  From the PDF, calculate the interval containing 95% of these data.
      (Correct answer: [ -0.88, 10.88])
 
-
-Analysis
-~~~~~~~~
-
-#. 
-
-   #. Read in the data from "Data\\amstat\\calcium.dat.txt".
-
-   #. Check for erroneous entries.
-
-   #. Check the Alkaline Phosphatase levels for normality. Use a
-      log-transform on the data, and re-check.
 
 Continuous Distributions 
 ~~~~~~~~~~~~~~~~~~~~~~~~~

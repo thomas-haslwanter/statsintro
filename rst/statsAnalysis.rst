@@ -1,4 +1,5 @@
-.. image:: ..\Images\title_tests.png
+
+. image:: ..\Images\title_tests.png
     :height: 100 px
 
 .. Statistical Data Analysis
@@ -500,6 +501,19 @@ Examples
   - **2 groups, continuous, paired** male/female, looking at diamonds. E.g. "Does looking at diamonds raise the female heart-beat more than the male?
   - **3 groups, continuous** Tyrolians, Viennese, Styrians; IQ. E.g. "Are Tyrolians smarter than people from other Austrian federal states?"
   - **3 groups, continuous, paired** Tyrolians, Viennese, Styrians; looking at mountains. E.g. "Does looking at mountains raise the heartbeat of Tyrolians more than those of other people?"
+
+
+Exercises
+---------
+
+#. 
+
+   #. Read in the data from "Data\\amstat\\calcium.dat.txt".
+
+   #. Check for erroneous entries.
+
+   #. Check the Alkaline Phosphatase levels for normality. Use a
+      log-transform on the data, and re-check.
 
 
 .. |image21| image:: ../Images/power1.png
