@@ -703,10 +703,9 @@ Exercises
 
 -  Read in data from different sources:
 
-   -  A CVS-file with a header ("Data\\Swimming\\swimming\_100m.csv")
+   -  A CVS-file with a header ("Data\\data_kaplan\\swim100m.csv")
 
-   -  An MS-Excel file ("Data\\data\_dobson\\GLM\_data\\Table 2.8 Waist
-      loss.xls")
+   -  An MS-Excel file ("Data/data_others/Table 6.6 Plant experiment.xls")
 
    -  Data from the WWW (see "readZip.py" [py:readZip])
 
