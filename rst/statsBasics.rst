@@ -702,7 +702,7 @@ Exercises
 ---------
 
 
-#. Read in the data from "Data\\amst\\babyboom.dat.txt".
+#. Read in the data from "Data\\amstat\\babyboom.dat.txt".
 
 #. Inspect them visually, and give a numerical description of the data.
 
