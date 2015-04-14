@@ -616,36 +616,6 @@ In planning the analysis, you have to keep the important distinction
 between *within subject* comparisons, and *between subjects*
 comparisons.
 
-Data Management
-~~~~~~~~~~~~~~~
-
-Documentation 
-^^^^^^^^^^^^^^^
-
-Make sure that you document all the factors that may influence your
-results:
-
--  The date and time of the experiment.
-
--  Information about the experimenters and the subjects.
-
--  The exact paradigm that you have decided on.
-
--  Anything noteworthy that happens during the experiment.
-
-Data Handling 
-^^^^^^^^^^^^^^^
-
-You can already significantly facilitate the data handling by storing
-your data with telltale names. For example, if you execute your
-experiments in Vienna and in Linz, you can store your rawdata with the
-format "[town][year][month][day].dat". For example, an experiment in
-Vienna on April 1, 2013 would be stored as "vi20130401.dat".
-
-When you have finished recording the data, back up your data right away.
-Best do that into a directory that is separate from the one where you do
-your data analysis afterwards.
-
 Clinical Investigation Plan 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
