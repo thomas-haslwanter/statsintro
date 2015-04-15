@@ -1,0 +1,74 @@
+\chapter{Data Input}\index{general}{data input}
+
+This chapter deals with how to get read in data for statistical analysis (in Python), and thus forms the link between the chapter on \emph{Python} and the first chapter on data analysis. And while it may be hard to believe, reading data into the system in the correct format is often one of the most time consuming parts of the data analysis.
+
+\vspace{5 mm}
+
+Data input can be complicated by a number of problems, like different separators between data entries (such as spaces and/or tabulators), or empty lines at the end of the file. In addition, data may have been saved in different formats, such as MS Excel, Matlab,  HDF5 (which also contains the Matlab-format), or in databases. Understandably, we cannot cover all possible combinations here. But I will try to give an overview of where and how to start with data input.
+
+\section{Data from ASCII-Files}
+
+\subsection{Visual Inspection}
+
+When your data are available as ASCII-files, you should \emph{always } start out with a \emph{visual inspection }of the data. In particular, you should check
+
+\begin{itemize}
+  \item Do the data have a header and/or a footer?
+  \item Are there empty lines at the end of the file?
+  \item Are there white-spaces before the first number, or at the end of each line? (The latter is a lot harder to see.)
+  \item Are the data separated by tabulators, and/or by spaces? (Tip: you should use a text-editor which can visualize tabs, spaces, and end-of-line (EOL) characters.)
+\end{itemize}
+
+\subsection{Reading ASCII into Python}
+
+In Python, I \emph{strongly} suggest that you start out reading in and inspecting your data in the \emph{Ipython qtconsole}. It allows you to move around much more easily, try things out, and quickly get feedback on how successful your commands were. When you have your command syntax worked out, you can obtain the command history with \lstinline{%history}, copy it into your IDE, and turn it into a program.
+
+While the a numpy command \lstinline{loadtxt} allows you to read in simply formatted text data, most of the time, I go straight to \emph{pandas}, as it provides significantly more powerful tools for data-entry. A typical workflow can contain the following lines:
+
+\begin{lstlisting}
+import pandas as pd
+
+cd 'C:\Data\storage'
+pwd     # Check if you were successful: this is not always the case!
+ls      # List the files in that directory
+inFile = 'data.txt'
+df = pd.read_csv(inFile)
+df.head()   # Check if the first line was read in properly, and compare it to the values in the ASCII-file
+
+'''
+Here I typically have to play around with the options of pd.read_csv, to get things right.
+Make sure you check that the number of column headers is equal to the number of columns that you expect. It can happen that everything gets red in - but into one large single column!
+'''
+
+df.tail()   # Check the last line, and compare it to the values in the ASCII-file
+\end{lstlisting}
+
+\subsubsection{Regular Expressions}
+
+Working with text data often requires the use of simple \emph{regular expressions}\index{general}{regular expressions}. \emph{Regular expressions} are a very powerful way of finding and/or manipulating text strings. Many books have been written about them.
+
+\begin{itemize}
+  \item \url{https://www.debuggex.com/cheatsheet/regex/python} provides a convenient cheat sheet for regular expressions in Python
+  \item \url{http://www.regular-expressions.info} gives and a comprehensive description
+\end{itemize}
+
+Let me give you two useful examples:
+
+\begin{enumerate}
+  \item \lstinline{df = pd.read_csv(inFile, sep='[ ;,]*'}
+
+  would read in data that are separated by a \emph{combination} ("[...]") of \emph{one or more} ("*") whitespaces, semicolons, and/or commas.
+
+  \item \lstinline{vel = df.filter(regex='Vel*')}
+
+  would extract all the columns that start with \emph{'Vel'}, if your DataFrame \emph{df} contains for example the columns \emph{['Time', 'PosX', 'PosY', 'PosZ', 'VelX', 'VelY', 'VelZ']}.
+\end{enumerate}
+
+
+\subsection{Reading in other formats}
+
+\begin{description}
+  \item[Excel] Start out with \lstinline{pd.read_excel}, which is most often the simplest way to access Excel-data. If this fails, give it a try with the Python package \emph{xlrd}.
+  \item[Matlab] Matlab support is built into \emph{scipy}, with the command \lstinline{scipy.io.loadmat}.
+  \item[HDF5] This is a very powerful binary format to store structured data, and in fact also contains for example the Matlab format. It can be accessed with the Python package \lstinline{h5py}.
+\end{description}
