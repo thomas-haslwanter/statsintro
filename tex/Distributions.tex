@@ -248,7 +248,7 @@ Kurtosis is any measure of the "peakedness" of the probability distribution (Fig
 
 The variable for a standardized distribution function is often called \emph{statistic}\index{general}{statistic}. So you often find expressions like "the z-statistic" (for the normal distribution function), the "t-statistic" (for the t-distribution) or the "F-statistic" (for the F-distribution).
 
-\subsection{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}
+\subsection{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}\index{general}{normal distribution}
 
 The \emph{Normal distribution} or \emph{Gaussian distribution} is by far the most important of all the distribution functions. This is due to the fact that the \emph{mean }values of \emph{all} distribution functions approximate a normal distribution for large enough sample numbers (see chapter \ref{sec:CentralLimitTheorem}).
 Mathematically, the normal distribution is characterized by a mean value $\mu$, and a standard deviation $\sigma$:
@@ -297,6 +297,7 @@ The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu
   \caption{Tails of a normal distribution.}
 \end{table}
 
+\vspace{5 mm}
 
 \PyImg "distributionNormal.py" (p \pageref{py:distributionNormal}) shows simple manipulations of normal distribution functions.
 \index{python}{distributionNormal}
@@ -312,12 +313,28 @@ The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu
 \end{lstlisting}
 \emph{Example of how to calculate the interval of the PDF containing 95\% of the data, for the blue curve in Figure \ref{fig:normal}}
 
-\subsubsection{Examples of Normal Distributions}
+\subsubsection{Sum of Normal Distributions}\index{general}{normal distribution!sum of}
+
+An important property of normal distributions is that the sum (or difference) of two normal distributions is also normally distributed. i.e., if
+
+\begin{eqnarray*}
+    X &\sim& N(\mu_X, \sigma_X^2) \\
+    Y &\sim& N(\mu_Y, \sigma_Y^2) \\
+    Z &=& X + Y,
+\end{eqnarray*}
+
+then
+
+\begin{equation}\label{eq:sumOfGaussians}
+    Z \sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2). 
+\end{equation}
+
+\subsubsection{Examples of Normal Distributions}\index{general}{normal distribution!examples}
 
 \begin{itemize}
-    \item{}If the average man is 175 cm tall with a standard deviation of 6 cm, what is the probability that a man found at random will be 183 cm tall?
-    \item{}If the average man is 175 cm tall with a standard deviation of 6 cm and the average woman is 168 cm tall with a standard deviation of 3 cm, what is the probability that the average man from a given sample will be shorter than the average woman from a given sample?
-    \item{}If cans are assumed to have a standard deviation of 4 grams, what does the average weight need to be in order to ensure that the 99\% of all cans have a weight of at least 250 grams?
+    \item If the average man is 175 cm tall with a standard deviation of 6 cm, what is the probability that a man found at random will be 183 cm tall?
+    \item If cans are assumed to have a standard deviation of 4 grams, what does the average weight need to be in order to ensure that the 99\% of all cans have a weight of at least 250 grams?
+   \item If the average man is 175 cm tall with a standard deviation of 6 cm and the average woman is 168 cm tall with a standard deviation of 3 cm, what is the probability that a randomly selected man will be shorter than the randomly selected woman?
 \end{itemize}
 
 \subsection{Central Limit Theorem}\label{sec:CentralLimitTheorem}\index{general}{central limit theorem}

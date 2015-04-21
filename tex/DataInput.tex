@@ -6,7 +6,7 @@ This chapter deals with how to get read in data for statistical analysis (in Pyt
 
 Data input can be complicated by a number of problems, like different separators between data entries (such as spaces and/or tabulators), or empty lines at the end of the file. In addition, data may have been saved in different formats, such as MS Excel, Matlab,  HDF5 (which also contains the Matlab-format), or in databases. Understandably, we cannot cover all possible combinations here. But I will try to give an overview of where and how to start with data input.
 
-\section{Data from ASCII-Files}
+\section{Data from Textfiles}
 
 \subsection{Visual Inspection}
 
@@ -19,7 +19,7 @@ When your data are available as ASCII-files, you should \emph{always } start out
   \item Are the data separated by tabulators, and/or by spaces? (Tip: you should use a text-editor which can visualize tabs, spaces, and end-of-line (EOL) characters.)
 \end{itemize}
 
-\subsection{Reading ASCII into Python}
+\subsection{Reading ASCII-data into Python}
 
 In Python, I \emph{strongly} suggest that you start out reading in and inspecting your data in the \emph{Ipython qtconsole}. It allows you to move around much more easily, try things out, and quickly get feedback on how successful your commands were. When you have your command syntax worked out, you can obtain the command history with \lstinline{%history}, copy it into your IDE, and turn it into a program.
 
@@ -43,7 +43,7 @@ Make sure you check that the number of column headers is equal to the number of 
 df.tail()   # Check the last line, and compare it to the values in the ASCII-file
 \end{lstlisting}
 
-\subsubsection{Regular Expressions}
+\subsection{Regular Expressions}
 
 Working with text data often requires the use of simple \emph{regular expressions}\index{general}{regular expressions}. \emph{Regular expressions} are a very powerful way of finding and/or manipulating text strings. Many books have been written about them.
 
@@ -64,11 +64,33 @@ Let me give you two useful examples:
   would extract all the columns that start with \emph{'Vel'}, if your DataFrame \emph{df} contains for example the columns \emph{['Time', 'PosX', 'PosY', 'PosZ', 'VelX', 'VelY', 'VelZ']}.
 \end{enumerate}
 
+\section{Input from MS Excel}
 
-\subsection{Reading in other formats}
+Pandas also offers tools for reading and writing data for MS Excel, in-memory data structures and SQL databases. 
+
+\footnote{The following section has been taken from the \emph{pandas} documentation.}There are two approaches to reading an excel file. The \lstinline{read_excel} function and the \lstinline{ExcelFile} class. \lstinline{read_excel} is for reading one file with file-specific arguments (ie. identical data formats across sheets). \lstinline{ExcelFile} is for reading one file with sheet-specific arguments (ie. various data formats across sheets). Choosing the approach is largely a question of code readability and execution speed.
+
+Equivalent class and function approaches to read a single sheet:
+
+\begin{lstlisting}
+    # using the ExcelFile class
+    xls = pd.ExcelFile('path_to_file.xls')
+    data = xls.parse('Sheet1', index_col=None, na_values=['NA'])
+
+    # using the read_excel function
+    data = read_excel('path_to_file.xls', 'Sheet1', index_col=None, na_values=['NA'])
+\end{lstlisting}
+ 
+If this fails, give it a try with the Python package \emph{xlrd}.
+
+\textbf{Example: }
+\PyImg "readZip.py" (p \pageref{py:readZip}) This advanced script shows you how you can directly import data from an MS-Excel file from a zipped archive on the web.
+\index{python}{readZip}
+
+\section{Input from Matlab and other formats}
 
 \begin{description}
-  \item[Excel] Start out with \lstinline{pd.read_excel}, which is most often the simplest way to access Excel-data. If this fails, give it a try with the Python package \emph{xlrd}.
   \item[Matlab] Matlab support is built into \emph{scipy}, with the command \lstinline{scipy.io.loadmat}.
-  \item[HDF5] This is a very powerful binary format to store structured data, and in fact also contains for example the Matlab format. It can be accessed with the Python package \lstinline{h5py}.
+  \item[Clipboard] If you have data in your clipboard, you can import them directly with \lstinline{pd.read_clipboard()}
+  \item[Other Fileformats] pandas supports input from a number of additional formats. The simplest way to access them is typing \lstinline{pd.read_ + TAB}, which shows you the currently available options.
 \end{description}
