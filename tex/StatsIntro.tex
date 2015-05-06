@@ -11,6 +11,7 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{courier}
 \usepackage{float}
+\usepackage[acronym]{glossaries}
 \usepackage[margin=1.0in]{geometry}
 \usepackage[pdftex]{graphicx}
 \usepackage[colorlinks=true,
@@ -68,7 +69,10 @@
 \makeindex{general}
 \makeindex{python}
 
-%\includeonly{DataEntry}
+\include{GlossariesAndAcronyms}
+
+
+%\includeonly{Python}
 
 % ----------------------------------------------------------------
 \begin{document}
@@ -98,6 +102,11 @@
 
 \bibliographystyle{plainnat}
 \bibliography{thomas}
+
+\clearpage
+
+%\glossarystyle{list}
+\printglossaries
 
 \printindex{general}{Index Topics}
 \printindex{python}{Python Programs}
