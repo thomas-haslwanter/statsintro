@@ -5,13 +5,11 @@
 
 \subsection{Population and samples}
 
-While the whole \emph{population} of a group has certain characteristics,
-we can typically never measure all of them. In many cases, the population distribution
-is described by an idealized, continuous distribution function.
+When determining estimating the parameters that characterize a groupd of people, e.g. the weight of male Europeans, we can typically never measure all of them. In many cases, the function describing the distribution of the parameter under investigation is a smooth, continuous distribution function.
 
 In the analysis of measured data, in contrast, we have to confine
 ourselves to investigate a (hopefully representative) \emph{sample} of this group, and
-estimate the properties of the population from this sample.
+estimate the properties of the population from this sample. Thereby we assume that this sample is drawn randomly from the group, without any bias in the characteristics of our subjects.
 
 \subsection{Continuous Distribution Functions}
 
@@ -37,7 +35,7 @@ Since the likelihood to find any given value cannot be less than zero, and since
 
 \subsubsection{Cumulative Distribution Function (CDF)}\index{general}{cumulative distribution function}
 
-The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \emph{Cumulative Distribution Function} tells you for each value which percentage of the data has a lower value (Figure \ref{fig:CDF}). Together, this gives us
+The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \emph{Cumulative Distribution Function} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
 
 \begin{equation}
    \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
@@ -54,7 +52,7 @@ The probability to find a value between $a$ and $b$ is given by the integral ove
 
 Figure \ref{fig:DistributionUtilities} shows a number of functions that are equivalent to the PDF, but each represent a different aspect of the probability distribution.
 
-\textbf{Note: }It is very important that you understand this figure (!). I will give examples which demonstrate each aspect for a normal distribution describing the size of male subjects. To obtain the respective values, you have to multiply the PDF-function etc. with the observed standard distribution, and add the mean value:
+I will give examples which demonstrate each aspect for a normal distribution describing the size of male subjects. To obtain the respective values, one has to multiply the PDF-function etc. with the observed standard distribution, and add the mean value:
 
 \begin{itemize}
   \item \emph{Probability density function (PDF)}: note that to obtain the probability for the variable appearing in a certain interval, you have to \emph{integrate} the PDF over that range.

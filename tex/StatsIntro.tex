@@ -11,13 +11,15 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{courier}
 \usepackage{float}
-\usepackage[acronym]{glossaries}
 \usepackage[margin=1.0in]{geometry}
 \usepackage[pdftex]{graphicx}
 \usepackage[colorlinks=true,
             linkcolor=BlueViolet,
             urlcolor=BlueViolet,
             citecolor=MidnightBlue]{hyperref}
+
+\usepackage[acronym]{glossaries}
+
 \usepackage{listings}
 \usepackage{multirow}
 %\usepackage{makeidx}
@@ -72,7 +74,7 @@
 \include{GlossariesAndAcronyms}
 
 
-%\includeonly{Python}
+%\includeonly{Basics}
 
 % ----------------------------------------------------------------
 \begin{document}
@@ -105,7 +107,7 @@
 
 \clearpage
 
-%\glossarystyle{list}
+\glossarystyle{list}
 \printglossaries
 
 \printindex{general}{Index Topics}

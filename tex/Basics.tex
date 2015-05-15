@@ -2,7 +2,9 @@
 
 \section{Datatypes}
 
-We begin with something that is seemingly trivial, somewhat boring - but absolutely essential for your statistical analysis: Datatypes. Because the type of your data directly determines the tests that are available for the data analysis. Your data can have one of the following datatypes:
+The choice of appropriate statistical procedure depends on the data. If the variables are numeric, we are led to a certain statistical strategy. In contrast, if the variables represent qualitative categorizations, then we follow a different path.
+
+ The data can have one of the following datatypes:
 
 \subsection{Categorical} \index{general}{data!categorical}
 
@@ -59,32 +61,33 @@ You can also smooth histograms with \emph{kernel-density-estimations (kde-plots)
 
 \subsection{KDE-plots}\index{general}{plots!kde}
 
-\footnote{This paragraph is taken from Wikipedia, "Kernel density estimation".} Kernel density estimates are closely related to histograms, but can be endowed with properties such as smoothness or continuity by using a suitable kernel. To see this, we compare the construction of histogram and kernel density estimators, using these 6 data points: x = [−2.1, −1.3, −0.4, 1.9, 5.1, 6.2]. For the histogram, first the horizontal axis is divided into sub-intervals or bins which cover the range of the data. In this case, we have 6 bins each of width 2. Whenever a data point falls inside this interval, we place a box of height 1/12. If more than one data point falls inside the same bin, we stack the boxes on top of each other.
+Histograms have the disadvantage that they are discontinuous, and that their shape critically depends on the chosen bin-width. In order to obtain smooth \emph{probability densities}, i.e. curves describing the likelihood of finding an event in any given interval, the technique of \emph{Kernel Density Estimation (KDE)}\index{general}{Kernel Density Estimator (KDE)} can be used. Thereby a normal distribution is typically used for the kernel. The width of this kernel function determines the amount of smoothing. To see how this works, we compare the construction of histogram and kernel density estimators, using these 6 data points: x = [−2.1, −1.3, −0.4, 1.9, 5.1, 6.2]. For the histogram, first the horizontal axis is divided into sub-intervals or bins which cover the range of the data. In this case, we have 6 bins each of width 2. Whenever a data point falls inside this interval, we place a box of height 1/12. If more than one data point falls inside the same bin, we stack the boxes on top of each other.
 
 For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident. Compared to the discreteness of the histogram, the kernel density estimates converge faster to the true underlying density for continuous random variables.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.75\textwidth]{../Images/Comparison_of_1D_histogram_and_KDE.png}\\
-  \caption{Comparison of the histogram (left) and kernel density estimate (right) constructed using the same data. The 6 individual kernels are the red dashed curves, the kernel density estimate the blue curves. The data points are the rug plot on the horizontal axis. (from Wikipedia)}
+  \includegraphics[width=0.75\textwidth]{../Images/KDEexplained.png}\\
+  \caption{Comparison of the histogram (left) and kernel density estimate (right) constructed using the same data. The 6 individual kernels are the red dashed curves, the kernel density estimate the blue curves. The data points are the rug plot on the horizontal axis.}
 \end{figure}
 
-The bandwidth of the kernel is a free parameter which exhibits a strong influence on the resulting estimate. To illustrate its effect, we take a simulated random sample from the standard normal distribution (plotted at the blue spikes in the rug plot on the horizontal axis). The grey curve is the true density (a normal density with mean 0 and variance 1). In comparison, the red curve is undersmoothed since it contains too many spurious data artifacts arising from using a bandwidth h = 0.05 which is too small. The green curve is oversmoothed since using the bandwidth h = 2 obscures much of the underlying structure. The black curve with a bandwidth of h = 0.337 is considered to be optimally smoothed since its density estimate is close to the true density.
+
+The bandwidth of the kernel is the parameter which determines how much we smooth out the contribution from each event. To illustrate its effect, we take a simulated random sample from the standard normal distribution, plotted as the blue spikes in the rug plot on the horizontal axis in Fig. \ref{fig:kdeBandwidth}, left. The right plot shows the true density (blue. a normal density with mean 0 and variance 1). In comparison, the gray dashed curve is undersmoothed since it contains too many spurious data artifacts arising from using a bandwidth h = 0.1 which is too small. The green dashed curve is oversmoothed since using the bandwidth h = 1 obscures much of the underlying structure. The red curve with a bandwidth of h = 0.42 is considered to be optimally smoothed since its density estimate is close to the true density.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.5\textwidth]{../Images/Comparison_of_1D_bandwidth_selectors.png}\\
-  \caption{Kernel density estimate (KDE) with different bandwidths of a random sample of 100 points from a standard normal distribution. Grey: true density (standard normal). Red: KDE with h=0.05. Green: KDE with h=2. Black: KDE with h=0.337. (from Wikipedia)}
+  \includegraphics[width=0.75\textwidth]{../Images/KDEplot.png}\\
+  \caption{ Left: Rug plot, histogram, and Kernel density estimate (KDE) of a random sample of 100 points from a standard normal distribution. Right: True density distribution (blue), and KDE with different bandwidths. Gray dashed: KDE with h=0.1; red: KDE with h=0.42 green dashed: KDE with h=1.0.}
+  \label{fig:kdeBandwidth}
 \end{figure}
 
 It can be shown that under certain conditions the optimal choice for h is
+
 \begin{equation}
   h = \left(\frac{4\hat{\sigma}^5}{3n}\right)^{\frac{1}{5}} \approx 1.06 \hat{\sigma} n^{-1/5},
 \end{equation}
 
-
-where $\hat{\sigma}$ is the standard deviation of the samples.
-
+where $\hat{\sigma}$ is the standard deviation of the samples ("Silverman's rule of thumb").
 
 \subsection{Cumulative Frequencies}\index{general}{cumulative frequency}
 
@@ -100,7 +103,7 @@ When you use percentage points, the cumulative frequency presentation has the ad
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/CumulativeFrequencyFunction.png}\\
-  \caption{Cumulative frequency function}
+  \caption{Cumulative frequency function for a normal distribution.}
 \end{figure}
 
 \subsection{Errorbars}\index{general}{plots!errorbars}
@@ -138,6 +141,48 @@ Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plo
 \subsection{Programs: Data Display}
 \PyImg "figsBasicPrinciples.py" (p \pageref{py:BasicPrinciples}) shows how the plots in this section have been generated.
 \index{python}{figsBasicPrinciples}
+
+\section{Populations and Samples}
+
+The main difference between a \emph{population} and a \emph{sample} has to do with how observations are assigned to the data set (see Fig. \ref{fig:population}).
+
+\begin{description}
+  \item[Population] includes all of the elements from a set of data.
+  \item[Sample] consists of one or more observations from the population.
+\end{description}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=1.0\textwidth]{../Images/PopulationAndSample.jpg}\\
+  \caption{With statistical inference information from Samples is used to estimate Parameters from Populations.}\label{fig:population}
+\end{figure}
+
+More than one sample can be derived from the same population.
+
+\begin{description}
+  \item[Parameter] characteristic of a population, such as a mean or standard deviation. Often denoted with Greek symbols.
+  \item[Statistic] a measurable characteristic of a sample.
+  \item[Statistical inference] enables you to make an educated guess about a population parameter based on a statistic computed from a sample randomly drawn from that population.
+\end{description}
+
+An example for parameters and statistics is given in Table \ref{table:population}.
+
+\begin{table}[ht]
+
+  \centering
+    \begin{tabular}{|l|c|c|}
+      \hline
+       & Sample Statistic & Population Parameter \\
+       \hline
+      Mean & $\bar{x}$ & $\mu$ \\
+      Standard Deviation & s & $\sigma$ \\
+      \hline
+    \end{tabular}
+    \caption{Comparison of Sample Statistics and Population Parameters.}
+    \label{table:population}
+\end{table}
+
 
 \section{Study Design}
 
@@ -242,7 +287,16 @@ In \emph{case control} studies, first the patients are treated, and then they ar
 I have mentioned above that you have factors (which you control) and nuisance factors, which influence your results, but which you cannot control and/or manipulate. Assume, for example, that you have an experiment where the result depends on the person who performs the experiment (e.g. the nurse who tests the subject), and on the time of the day. In that case you can \emph{block} the factor \emph{nurse}, by having all tests performed by the same nurse. But it won't be possible to test all subjects at the same time. So you try to average out time effects, by \emph{randomly} mixing the timing of your subjects. If, in contrast, you measure your patients in the morning and your healthy subjects in the afternoon, you will invariably bring some \emph{bias} into your data.
 
 \subsubsection{Bias} \index{general}{bias}
-In general, when selecting our subject you try to make them representative of the population that you want to study; and you try to conduct your experiments in a way representative of investigations by other researchers. However, it is \emph{very} easy to get a \emph{bias} into your data. Bias can arise from a number of sources:
+%http://www.math.upenn.edu/~deturck/m170/wk4/lecture/case1.html
+To explain the effects of selection bias on a statistical analysis, consider the 1936 presidential elections in the USA. The Republican A. Landon challenged the incumbent president, F.D. Roosevelt. The \emph{Literary Digest}, at the time one of the most respected magazines, asked 10 million Americans about whom they would vote for. 2.4 million responded, and the Literary Digest predicted Landon would win 57% of the votes, against 41% for Roosevelt. However, the actual election results were 62% for Roosevelt against 38% for Landon. In other words, despite the huge sample size, the predictions were a whopping 19% off!
+
+What went wrong?
+
+First, the sample was badly chosen, and not representative for the American voter: the the mailing list for the survey were taken from telephone directories, club membership lists, and lists of magazine subscribers. Thus, they were strongly biased towards the American middle- and upper-class. And second, only about one fourth of the people asked responded. And people who respond to surveys are different from people who don't, the so-called \emph{nonresponse bias}\index{general}{nonresponse bias}.
+
+This example shows that a large sample size alone does not guarantee a representative response. You have to watch out for selection bias and nonresponse bias.
+
+In general, when selecting our subject you try to make them representative of the group that you want to study; and you try to conduct your experiments in a way representative of investigations by other researchers. However, it is \emph{very} easy to get a \emph{bias} into your data. Bias can arise from a number of sources:
 \begin{itemize}
   \item The selection of subjects.
   \item The structure of the experiment.
@@ -292,14 +346,11 @@ An alternative to randomization is the \emph{crossover} design of studies. A cro
 \subsubsection{Blinding} \index{general}{blinding}
 Consciously or not, the experimenter can significantly influence the outcome of an experiment. For example, a young researcher with a new "brilliant" idea for a new treatment will be bias in the execution of the experiment, as well in the analysis of the data, to see his hypothesis confirmed. To avoid such a subjective influence, ideally the experimenter as well as the subject should be blinded to the therapy. This is referred to as \emph{double blinding}. If also the person who does the analysis does not know which group the subject has been allocated to, we speak about \emph{triple blinding}.
 
-\subsubsection{Replication} \index{general}{replication}
-For variable measurements it is helpful to have a number of independent repetitions of each measurement.
-
 \subsubsection{Sample selection} \index{general}{sample selection}
 When selecting your subjects, you should take care of two points:
 
 \begin{enumerate}
-  \item Make sure that the samples are representative of the population.
+  \item Make sure that the samples are representative of the group you want to study.
   \item In comparative studies, care is needed in making groups similar with respect to known sources of variation.
   \item \textbf{Important:} Make sure that your selection of samples/subject sufficiently covers all parameters that you need!
 \end{enumerate}
@@ -308,12 +359,16 @@ Ad 1) For example, if you select your subjects randomly from patients at a hospi
 
 Ad 3) For example, if you test the efficacy of a new rehabilitation therapy for stroke patients, do \emph{not} just select patients who have had a stroke: make sure that your patient selection includes even numbers of patients with mild, medium, and severe symptoms. Otherwise you may end up with data who primarily include patients with little or no aftereffects of the stroke. (I hate to admit that this type of mistake has repeatedly happened to me, and cost me many months of work!)
 
+Many surveys and studies fall short on these criteria (see section on \emph{Bias} above). The field of "matching by propensity scores" (\cite{Rosenbaum1983}) attempts to correct these problems.
+
 \subsubsection{Sample size}
-Many studies fail, because the sample size is too small to observed an effect of the desired magnitude. To plan your sample size, you have to know
+Many studies fail because the sample size is too small to observed an effect of the desired magnitude. To plan your sample size, you have to know
 \begin{itemize}
   \item What is the variance of the parameter in the population you are investigating.
   \item What is the magnitude of the effect you are interested in, relative to the standard deviation of the parameter.
 \end{itemize}
+
+This is known as \gls{power analysis}. it is especially important in behavioral research, where research plans are not approved without careful sample size calculations.
 
 \subsection{Structure of Experiments}
 
