@@ -1,70 +1,70 @@
 \begin{theindex}
 
-  \item anovaOneway, 87
-  \item anovaTwoway, 114
+  \item anovaOneway, 91
+  \item anovaTwoway, 118
 
   \indexspace
 
-  \item Bayesian Statistics, 147
-  \item binomialTest, 91
-  \item bootstrapDemo, 141
+  \item Bayesian Statistics, 151
+  \item binomialTest, 95
+  \item bootstrapDemo, 145
 
   \indexspace
 
-  \item checkNormality, 71
-  \item compGroups, 101
+  \item checkNormality, 75
+  \item compGroups, 105
 
   \indexspace
 
-  \item distributionContinuous, 64
-  \item distributionDiscrete, 56, 66
-  \item distributionNormal, 54
+  \item distributionContinuous, 68
+  \item distributionDiscrete, 60, 70
+  \item distributionNormal, 60
 
   \indexspace
 
-  \item figsBasicPrinciples, 40
-  \item fitLine, 111
+  \item figsBasicPrinciples, 41
+  \item fitLine, 115
 
   \indexspace
 
-  \item getData, 28
-  \item gettingStarted, 25
+  \item getData, 30
+  \item gettingStarted, 27
 
   \indexspace
 
-  \item interactivePlots, 24
+  \item interactivePlots, 26
 
   \indexspace
 
-  \item KruskalWallis, 89
+  \item KruskalWallis, 93
 
   \indexspace
 
-  \item linear regression model, 126
+  \item linear regression model, 130
 
   \indexspace
 
-  \item modeling, 141
-  \item multipleRegression, 116
-  \item multipleTesting, 88
-  \item multivariate, 111
+  \item modeling, 145
+  \item multipleRegression, 120
+  \item multipleTesting, 92
+  \item multivariate, 115
 
   \indexspace
 
-  \item oneSample, 82
+  \item oneSample, 86
 
   \indexspace
 
-  \item readZip, 33
+  \item readZip, 35
 
   \indexspace
 
-  \item sampleSize, 76
-  \item statsmodelsIntro, 28
-  \item survival, 118
+  \item sampleSize, 80
+  \item statsmodelsIntro, 30
+  \item survival, 122
 
   \indexspace
 
-  \item twoSample, 84
+  \item twoSample, 88
 
 \end{theindex}

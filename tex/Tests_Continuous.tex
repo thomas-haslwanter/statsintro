@@ -18,7 +18,7 @@ Since it is very important to understand the basic principles of how we arrive a
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/ttestExplained.png}\\
-  \caption{Left: Frequency histogram of the sample data, together with a normal fit. The sample mean, which is very close to the population mean, is indicated with a yellow triangle; the value to be checked with a red triangle. Right: t-distribution for n-1 degrees of freedom. At the bottom the normalized value of sample mean (yellow triangle) and value to be checked (red triangle). The red shaded area corresponds to the p-value.}\label{fig:ttestExplained}
+  \caption{Left: Frequency histogram of the sample data, together with a normal fit. The sample mean, which is very close to the population mean, is indicated with a yellow triangle; the value to be checked with a red triangle. Right: sampling distribution of t (for n-1 degrees of freedom). At the bottom the normalized value of sample mean (yellow triangle) and value to be checked (red triangle). The red shaded area corresponds to the p-value.}\label{fig:ttestExplained}
 \end{figure}
 
 \begin{itemize}
@@ -109,7 +109,7 @@ If the measurement values from the two groups are not normally distributed we ha
 \PyImg "twoSample.py" (p \pageref{py:twoSample}): Comparison of two groups, paired and unpaired.
 \index{python}{twoSample}
 
-\subsection{Statistical Tests vs Statistical Modeling}
+\subsection{Statistical Hypothesis Tests vs Statistical Modeling}
 
 With the advent of cheap computing power, statistical modeling has been a booming field. This has also affected classical statistical analysis, as most problems can be viewed from two perspectives: you can either make a statistical hypothesis, and verify or falsify that hypothesis; or you can make a statistical model, and analyse the significance of the model parameters.
 
@@ -117,11 +117,7 @@ Let me use a classical t-test as an example.
 
 \subsubsection{Classical t-test}
 
-Let us take performance measurements from a racing team, on two different occasions. During Race\_1, the members of the team achieve a score of [ 79.,  100.,   93.,   75.,   84.,  107.,   66.,   86.,  103.,
-         81.,   83.,   89.,  105.,   84.,   86.,   86.,  112.,  112.,
-        100.,   94.], and during Race\_2 [  92.,  100.,   76.,   97.,   72.,   79.,   94.,   71.,   84.,
-         76.,   82.,   57.,   67.,   78.,   94.,   83.,   85.,   92.,
-         76.,   88.].
+Let us take performance measurements from a racing team, on two different occasions. During Race\_1, the members of the team achieve a score of [ 79, 100, 93, 75, 84, 107, 66, 86, 103, 81, 83, 89, 105, 84, 86, 86, 112, 112, 100, 94], and during Race\_2 [ 92, 100, 76, 97, 72, 79, 94, 71, 84, 76, 82, 57, 67, 78, 94, 83, 85, 92, 76, 88].
 
 These numbers can be generated, and a t-test comparing the two groups can be done, with the following Python commands:
 
@@ -195,7 +191,7 @@ For example, if we compare a group with No treatment, another with treatment A, 
 
 Because the null hypothesis is that there is no difference between the groups, the test is based on a comparison of the observed variation between the groups (i.e. between their means) with that expected from the observed variability between subjects. The comparison takes the general form of an \emph{F test} to compare variances, but for two groups the t test leads to exactly the same answer.
 
-The one-way ANOVA assumes all the samples are drawn from normally distributed populations with equal variance. To test this assumption, you can use the \emph{Levene test}\index{general}{test!Levene}.
+The one-way ANOVA assumes all the samples are drawn from normally distributed populations with equal variance. To test the equal variance assumption, one of the popular approaches is the \emph{Levene test}\index{general}{test!Levene}.
 
 ANOVA uses traditional standardized terminology. The definitional equation of sample variance is $s^2=\textstyle\frac{1}{n-1}\sum(y_i-\bar{y})^2$,
 where the divisor is called the degrees of freedom (DF), the summation is called the sum of squares (SS), the result is called the mean square (MS) and the squared terms are deviations from the sample mean. ANOVA estimates 3 sample variances: a \emph{total variance }based on all the observation deviations from the grand mean, an \emph{error variance }based on all the observation deviations from their appropriate treatment means and a \emph{treatment variance}. The treatment variance is based on the deviations of treatment means from the grand mean, the result being multiplied by the number of observations in each treatment to account for the difference between the variance of observations and the variance of means. If the null hypothesis is true, all three variance estimates are equal (within sampling error).
@@ -325,7 +321,7 @@ The daily energy intake from 11 healthy women is [5260., 5470., 5640., 6180., 63
 
   \item \textbf{t-test of independent samples}
 
-In a clinic, 15 lazy patients weight [76., 101., 66., 72., 88., 82., 79., 73., 76., 85., 75., 64., 76., 81., 86.] kg, and 15 sporty patients weigh [ 64., 65., 56., 62., 59., 76., 66., 82., 91., 57., 92., 80., 82., 67., 54.] kg.
+In a clinic, 15 lazy patients weight [76, 101, 66, 72, 88, 82, 79, 73, 76, 85, 75, 64, 76, 81, 86.] kg, and 15 sporty patients weigh [ 64, 65, 56, 62, 59, 76, 66, 82, 91, 57, 92, 80, 82, 67, 54] kg.
 
     Are the lazy patients significantly heavier?
     (Correct answer: yes, p=0.045)

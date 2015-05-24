@@ -25,7 +25,7 @@ def show_binomial():
     for (p,n) in zip(ps, ns):
         bd = stats.binom(n,p)
         x = np.arange(n+1)
-        plt.plot(x, bd.pmf(x), 'o-', label='p={0:3.1f}, n={1}'.format(p,n))
+        plt.plot(x, bd.pmf(x), 'o--', label='p={0:3.1f}, n={1}'.format(p,n))
     
     plt.legend()
     #sns.set_context('poster')
@@ -53,7 +53,7 @@ def show_poisson():
     k = np.arange(20)
     markersize = 8
     for par in lambdas:
-        plt.plot(k, stats.poisson.pmf(k, par), 'o-', label='$\lambda={0}$'.format(par))
+        plt.plot(k, stats.poisson.pmf(k, par), 'o--', label='$\lambda={0}$'.format(par))
     
     plt.legend()
     #sns.set_context('poster')

@@ -3,14 +3,6 @@
 
 \section{Characterizing a Distribution}
 
-\subsection{Population and samples}
-
-When determining estimating the parameters that characterize a groupd of people, e.g. the weight of male Europeans, we can typically never measure all of them. In many cases, the function describing the distribution of the parameter under investigation is a smooth, continuous distribution function.
-
-In the analysis of measured data, in contrast, we have to confine
-ourselves to investigate a (hopefully representative) \emph{sample} of this group, and
-estimate the properties of the population from this sample. Thereby we assume that this sample is drawn randomly from the group, without any bias in the characteristics of our subjects.
-
 \subsection{Continuous Distribution Functions}
 
 A continuous distribution function describes the \Gls{distribution} of a population, and can be represented in several equivalent ways:
@@ -25,6 +17,12 @@ Since the likelihood to find any given value cannot be less than zero, and since
   \item $PDF(x) \geq 0\,\forall \,x \in \mathbb{R}$
   \item $ \int\limits_{ - \infty }^\infty  {PDF(x)dx = 1} $
 \end{itemize}
+
+The PDF also defines the \emph{expected value E[x]} \index{general}{expected value} of a continuous distribution of X:
+
+\begin{equation}\label{eq:expectedValue}
+   \operatorname{E}[X] = \int_{-\infty}^\infty x f(x)\, \mathrm{d}x .
+\end{equation}
 
 \begin{figure}
   \centering
@@ -138,15 +136,18 @@ The only thing that you have to watch out for: after you have acquired your data
 Median, upper and lower quartile are used for the data display in box plots (Fig.\ref{fig:Boxplot}).
 
 \subsubsection{Standard Deviation and Variance}
-The \emph{variance} of a distribution is defined as
+
+In Fig. \ref{fig:population} I sketched out how we have to use the \emph{sample statistic} to learn about the corresponding \emph{population parameter}.
+The \emph{maximum likelihood estimator of the sample variance} is given by
 
 \begin{equation}\label{eq_variance} \index{general}{variance}
-  var = \frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}
+  var = \frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n}
 \end{equation}
 
-Note that we divide by \emph{n-1} rather than the more obvious n: dividing by $n$ gives the variance of the observations around the sample mean, but we virtually always consider our data as a sample from some larger population and wish to use the sample data to estimate the variability in the population. Dividing by $n-1$ gives us a better estimate of the population variance.
+The best \emph{estimate of the population variance} is given by
+However, this systematically underestimates the \emph{population variance}, and is therefore referred to as a \emph{biased estimator}\index{general}{biased estimator}.
 
-Figure \ref{fig:mean_std} indicates why the sample standard deviation underestimates the standard deviation of the underlying distribution.
+Figure \ref{fig:mean_std} indicates that the sample variance underestimates the population variance, because the sample mean is chosen such as to minimize the variance of the data.
 
 \begin{figure}[ht]
   \centering
@@ -154,13 +155,16 @@ Figure \ref{fig:mean_std} indicates why the sample standard deviation underestim
   \caption{Gaussian distributions fitted to selections of data from the underlying distribution: While the average mean of a number of samples converges to the real mean, the sample standard deviation underestimates the standard deviation from the distribution.}\label{fig:mean_std}
 \end{figure}
 
+Division by $n-1$ corrects for this bias, and provides the best possible estimate of the population variance. The variance calculated with $n-1$ is called the \emph{sample variance}.
+
+
 The \emph{standard deviation} \index{general}{standard deviation} is simply given by the square root of the variance:
 
 \begin{equation}
   s = \sqrt{var}
 \end{equation}
 
-In statistics it is often common to denote the population standard deviation with $\sigma$, and the sample standard deviation with $s$.
+As mentioned in Table \ref{table:population}, in statistics it is often common to denote the population standard deviation with $\sigma$, and the sample standard deviation with $s$.
 
 Watch out: in Python, by default the variance is calculated for "n". You have to set "ddof=1" to obtain the variance for "n-1":
 
@@ -175,20 +179,29 @@ Watch out: in Python, by default the variance is calculated for "n". You have to
 \end{lstlisting}
 
 \subsubsection{Standard Error} \index{general}{standard error}
-While the standard deviation is a good measure for the distribution of your values, often you are more interested in the distribution of the mean value. For example, when you measure the response to a new medication, you might be interested in how well you can characterize this response, i.e. is how well you know the mean value. This measure is called the \emph{standard error of the mean}, or sometimes just the \emph{standard error}. In a single sample from a population with a standard deviation of $\sigma$ the variance of the sampling distribution of the mean is $\sigma^2/n$, and so the standard error of the mean is $\sigma/\sqrt{n}$.
 
-For the \emph{sample standard error of the mean} (SE or SEM), which is the one you will be working with most of the time, we have
+The \emph{standard error} is the estimate of the \emph{standard deviation of a coefficient}. For example, in Fig. \ref{fig:sem}, we have used 100 datapoint from a normal distribution about \emph{5}. The more datapoints we have to estimate the mean value, the better our estimate. With 100 datapoints the standard deviation of our estimate, or \emph{standard error of the mean}, is 10 times smaller than the sample standard deviation.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.66\textwidth]{../Images/standardError.jpg}\\
+  \caption{100 random data points, from a normal distribution about 5. The sample mean is very close to the real mean. The standard deviation of the mean, or \emph{standard error} is 10 times smaller than the standard deviation of the samples.}
+  \label{fig:sem}
+\end{figure}
+
+For normally distributed data, the \emph{sample standard error of the mean} (SE or SEM) is
 
 \begin{equation}
   SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
 \end{equation}
 
 \subsubsection{Confidence Intervals}\index{general}{confidence interval}
-The most informative parameter that you can give for a statistical variable is arguably its \emph{confidence interval}. The confidence interval reports the range that contains the true value for your parameter with a likelihood of $\alpha$\%.
 
-Most of the time you want to determine the confidence interval for normally distributed data, which is given by
+ In the statistical analysis of data it has become common to state the \emph{confidence interval} of an estimated parameter. The confidence interval reports the range that contains the true value for your parameter with a likelihood of $\alpha$\%.
 
-\begin{equation}
+If the sampling distribution is symmetrical and unimodal, it will often be possible to approximate the confidence interval by
+
+\begin{equation}\
   ci = mean \pm std * N_{ISF}(\alpha)
 \end{equation}\label{eq:ci}
 
@@ -224,7 +237,7 @@ where f is the density of a standardized version of the density.
 
 \subsubsection{Shape Parameters}\index{general}{shape parameters}
 
-A shape parameter is any parameter of a probability distribution that is neither a location parameter nor a scale parameter. If \emph{location }and \emph{shape} already completely determine the distribution (as is the case for e.g. the normal distribution or the exponential distribution, etc.), then these distributions don't have any \emph{shape parameter}. It follows that the \emph{skewness }and \emph{kurtosis} of these distribution are constants.
+It is customary to refer to all of the parameters beyond \emph{location} and \emph{scale} as \emph{shape paraemters}. Thankfully, almost all of the distributions that we use in statistics have only one or two parameters. It follows that the \emph{skewness }and \emph{kurtosis} of these distribution are constants.
 
 \begin{figure}
   \centering
@@ -238,7 +251,7 @@ Distributions are \emph{skewed} if they depart from symmetry (Fig. \ref{fig:skew
 
 \subsubsection{Kurtosis}\index{general}{kurtosis}
 
-Kurtosis is any measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right). Distributions with negative or positive excess kurtosis are called platykurtic distributions or leptokurtic distributions respectively.
+Kurtosis is any measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right), where the normal distribution is taken as the standard refernence. Distributions with negative or positive excess kurtosis are called \emph{platykurtic} distributions or \emph{leptokurtic} distributions, respectively.
 
 %(Lecture 5)
 
@@ -336,7 +349,7 @@ then
 \end{itemize}
 
 \subsection{Central Limit Theorem}\label{sec:CentralLimitTheorem}\index{general}{central limit theorem}
-The central limit theorem states that for identically distributed independent random variables (also referred to as \emph{random variates})\index{general}{variate}, the mean of a sufficiently large number of these variables will be approximately normally distributed.
+The central limit theorem states that for identically distributed independent random variables (also referred to as \emph{random variates})\index{general}{variate}, the mean of a sufficiently large number of these variables will be approximately normally distributed. Or in other words, the sampling distribution of the mean tends toward normality, regardless of the distribution.
 \ref{fig:CentralLimitTheorem} shows that averaging over 10 uniformly distributed data already produces a smooth, almost Gaussian distribution.
 
 \begin{figure}
@@ -388,19 +401,20 @@ In the following, we will describe these distributions in more detail. Other dis
 \end{itemize}
 
 \subsubsection{t Distribution}\index{general}{distributions!t-distribution}
-For a small number of samples (ca.$<10$) from a normal distribution, the distribution of the mean deviates slightly from the normal distribution. The reason is that the sample mean does not coincide exactly with the population mean. This modified distribution is the \emph{t-distribution}, and converges for larger values towards the normal distribution (Fig. \ref{fig:t}).
 
-Since in most cases you will not know the mean and standard deviation of the population, you typically work with the t-distribution when analyzing your sample data!
+In 1908 W.S. Gosset, who worked for the Guinnes brewery in Dublin, was interested in the problems of small samples, for example the chemical properties of barley where sample sizes might be as low as 3. Since in these measurements the true variance of the mean was unknown, it must be approximated by the sample standard error of the mean. And the ratio between the sample mean and the standard error had a distribution that was unknown till Gosset, under the  pseudonym "Student", solved that problem.
 
-The t-distribution was first described by a researcher working under the pseudonym of "Student", and the corresponding test is therefore sometimes referred to as \emph{Student's t-test}.
+The corresponding distribution is the \emph{t-distribution}, and converges for larger values towards the normal distribution (Fig. \ref{fig:t}).
+
+Since in most cases the population mean and its variance are unknown, one typically works with the t-distribution when analyzing sample data.
 
 If $\bar{x}$ is the sample mean, and $s$ the sample standard deviation, then
 
-\begin{equation}\
+\begin{equation}
   t = \frac{\bar{x}-\mu}{s/ \sqrt{n}}
-\end{equation}
+\end{equation}\label{eq:Tdistribution}
 
-A very frequent application of the t-distribution is in the calculation of confidence intervals (Eq. \ref{eq:ci_t}):
+A very frequent application of the t-distribution is in the calculation of confidence intervals for the mean. The \emph{width }of the 95%-confidence interval, i.e. the interval that contains the true mean with a chance of 95%, is the same width about the population mean that contains 95% of the sample means (Eq. \ref{eq:ci_t}):
 
 \begin{equation}
   ci = mean \pm std * t_{df,\alpha}
@@ -433,7 +447,7 @@ In Python, the 95\% confidence interval for the mean can be obtained with a one-
   \caption{t Distribution}\label{fig:t}
 \end{figure}
 
-Since the t-distribution has longer tails than the normal distribution, it is much less sensitive to outliers (see Figure \ref{fig:ttest_stability}).
+Since the t-distribution has longer tails than the normal distribution, it is much less affected by extreme cases (see Figure \ref{fig:ttest_stability}).
 
 \begin{figure}
   \centering
@@ -476,7 +490,8 @@ Since the Chi-square distribution describes the distribution of the summed squar
 \emph{Interpretation:} if the batch of pills is from a distribution with a standard deviation of $\sigma=0.05$, the likelihood of obtaining a chi-square value as large or larger than the one observed is about 19\%, so it is not atypical. In other words, the batch matches the expected standard deviation.
 
 \subsubsection{F Distribution}\index{general}{distributions!F distribution}
-Named after Sir Ronald Fisher, who developed the F distribution for use in determining critical values in ANOVAs (\emph{ANalysis Of VAriance}).  The cutoff values in an F table are found using three variables:
+Named after Sir Ronald Fisher, who developed the F distribution for use in determining critical values in ANOVAs (\emph{ANalysis Of VAriance}).
+Suppose we want to calculate the variance of a variable in two separate subsets. "Is one more diverse than the other?" It is tempting to take the ratio of the variances, $S_1^2 / S_2^2$, but we don't know for sure how big or small that number must be before we conclude that the variances are different. This problem is solved by the F distribution. The cutoff values in an F table are found using three variables:
 
 \begin{itemize}
   \item ANOVA numerator degrees of freedom
@@ -673,7 +688,7 @@ The Binomial is associated with the question "Out of a given (fixed) number of t
 
   We conduct $n$ repeated experiments where the probability of success is given by the parameter $p$ and add up the number of successes. This number of successes is represented by the random variable $X$.  The value of $X$ is then between 0 and $n$.
 
-When a random variable X has a Binomial Distribution with parameters $p$ and $n$ we write it as $\,X \sim Bin(n,p)$ or $\,X \sim B(n,p)$ and the probability mass function is given at $X=k$ by the equation:
+When a random variable X has a Binomial Distribution with parameters $p$ and $n$ we write it as $\,X \sim B(n,p)$ and the probability mass function is given at $X=k$ by the equation:
 
 \begin{equation}
     P\left[X = k\right] = \begin{cases} {n \choose k} p^k \left(1-p\right)^{n-k}\ & 0 \le k \le n \\ 0 & \mbox{otherwise} \end{cases} \quad 0 \leq p \leq 1, \quad n \in \mathbb{N}
@@ -684,7 +699,7 @@ where ${n \choose k}={n! \over k!(n-k)!}$
 \begin{figure}
   \centering
   \includegraphics[width=0.66\textwidth]{../Images/Binomial_distribution_pmf.png}\\
-  \caption{Binomial Distribution}
+  \caption{Binomial Distribution. Note that legal values exist only for integer x. The dotted lines in between only facilitate the grouping of the values to individual distribution parameters.}
 \end{figure}
 
 The binomial distribution for $n = 1$ is sometimes referred to as \emph{Bernoulli Distribution}\index{general}{distributions!Bernoulli}.
@@ -728,7 +743,7 @@ The Poisson distribution has the following properties:
 \begin{figure}
   \centering
   \includegraphics[width=0.66\textwidth]{../Images/Poisson_distribution_pmf.png}\\
-  \caption{Poisson Distribution}
+  \caption{Poisson Distribution. Again note that legal values exist only for integer x. The dotted lines in between only facilitate the grouping of the values to individual distribution parameters.}
 \end{figure}
 
 \subsubsection{Programs: Discrete Distribution Functions} \index{general}{distributions!discrete}
