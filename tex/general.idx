@@ -18,9 +18,10 @@
 \indexentry{inter-quartile-range, IQR}{41}
 \indexentry{outliers}{41}
 \indexentry{plots!violinplot}{41}
-\indexentry{factors}{43}
-\indexentry{treatments}{43}
-\indexentry{co-factors}{43}
+\indexentry{DF, degrees of freedom}{43}
+\indexentry{factors}{44}
+\indexentry{treatments}{44}
+\indexentry{co-factors}{44}
 \indexentry{main effects}{44}
 \indexentry{interactions}{44}
 \indexentry{documentation}{45}
@@ -32,16 +33,16 @@
 \indexentry{design of experiments!cross-sectional}{46}
 \indexentry{design of experiments!case control studies}{46}
 \indexentry{design of experiments!cohort studies}{46}
-\indexentry{bias}{46}
+\indexentry{bias}{47}
 \indexentry{nonresponse bias}{47}
 \indexentry{randomized controlled trial}{47}
 \indexentry{control group}{47}
-\indexentry{randomization}{47}
+\indexentry{randomization}{48}
 \indexentry{crossover studies}{48}
-\indexentry{blinding}{48}
-\indexentry{sample selection}{48}
+\indexentry{blinding}{49}
+\indexentry{sample selection}{49}
 \indexentry{design of experiments!factorial}{49}
-\indexentry{clinical investigation plan}{49}
+\indexentry{clinical investigation plan}{50}
 \indexentry{probability density function}{51}
 \indexentry{random variate}{51}
 \indexentry{expected value}{51}
@@ -91,20 +92,23 @@
 \indexentry{normality check}{76}
 \indexentry{parametric tests}{76}
 \indexentry{non-parametric tests}{76}
-\indexentry{plots!$Q-Q$ plot}{76}
+\indexentry{plots!probability plot}{76}
 \indexentry{plots!probplot}{76}
-\indexentry{test!Lilliefors}{77}
-\indexentry{test!Kolmogorov-Smirnov}{77}
+\indexentry{plots!qq-plot}{76}
+\indexentry{plots!pp-plot}{76}
+\indexentry{plots!probability plot}{77}
+\indexentry{test!Lilliefors}{78}
+\indexentry{test!Kolmogorov-Smirnov}{78}
 \indexentry{test!Shapiro-Wilk}{78}
 \indexentry{test!omnibus}{78}
 \indexentry{transformation}{78}
-\indexentry{hypotheses}{78}
-\indexentry{null hypothesis}{79}
+\indexentry{hypotheses}{79}
+\indexentry{null hypothesis}{80}
 \indexentry{alternative hypothesis}{80}
 \indexentry{significance level}{80}
 \indexentry{statistical inference}{80}
-\indexentry{exploratory research}{80}
-\indexentry{confirmatory research}{80}
+\indexentry{exploratory research}{81}
+\indexentry{confirmatory research}{81}
 \indexentry{error!Type I}{81}
 \indexentry{power}{81}
 \indexentry{error!Type II}{81}
@@ -113,8 +117,8 @@
 \indexentry{specificity}{84}
 \indexentry{positive predictive value}{84}
 \indexentry{negative predictive value}{84}
-\indexentry{prevalence}{84}
-\indexentry{ROC curve}{85}
+\indexentry{prevalence}{85}
+\indexentry{ROC curve}{86}
 \indexentry{test! t-test, one sample}{89}
 \indexentry{test!Wilcoxon signed rank sum}{90}
 \indexentry{test! t-test, paired}{91}
@@ -123,10 +127,12 @@
 \indexentry{test!ANOVA}{93}
 \indexentry{ANOVA!balanced}{94}
 \indexentry{test!Levene}{94}
+\indexentry{sample variance}{94}
 \indexentry{test!F-test}{95}
 \indexentry{test!variance ratio}{95}
 \indexentry{Multiple Comparisons}{95}
 \indexentry{test!Tukey's}{96}
+\indexentry{studentized range}{96}
 \indexentry{Bonferroni correction}{96}
 \indexentry{Holms correction}{97}
 \indexentry{test!Kruskal-Wallis}{97}

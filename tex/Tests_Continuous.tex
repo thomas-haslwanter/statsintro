@@ -193,10 +193,14 @@ Because the null hypothesis is that there is no difference between the groups, t
 
 The one-way ANOVA assumes all the samples are drawn from normally distributed populations with equal variance. To test the equal variance assumption, one of the popular approaches is the \emph{Levene test}\index{general}{test!Levene}.
 
-ANOVA uses traditional standardized terminology. The definitional equation of sample variance is $s^2=\textstyle\frac{1}{n-1}\sum(y_i-\bar{y})^2$,
-where the divisor is called the degrees of freedom (DF), the summation is called the sum of squares (SS), the result is called the mean square (MS) and the squared terms are deviations from the sample mean. ANOVA estimates 3 sample variances: a \emph{total variance }based on all the observation deviations from the grand mean, an \emph{error variance }based on all the observation deviations from their appropriate treatment means and a \emph{treatment variance}. The treatment variance is based on the deviations of treatment means from the grand mean, the result being multiplied by the number of observations in each treatment to account for the difference between the variance of observations and the variance of means. If the null hypothesis is true, all three variance estimates are equal (within sampling error).
+ANOVA uses traditional terminology. DF indicates the degrees of freedom (DF) (see also section \ref{sec:DF}), the summation is called the sum of squares (SS), the result is called the mean square (MS) and the squared terms are deviations from the sample mean.
+In general, the \emph{sample variance}\index{general}{sample variance} is defined by
 
-The fundamental technique is a partitioning of the total sum of squares SS into components related to the effects used in the model (Fig. \ref{fig:ANOVA_annotated}). For example, the model for a simplified ANOVA with one type of treatment at different levels gives
+\begin{equation}\label{eq:sampleVariance}
+  s^2 = \frac{1}{DF} \sum (y_i - \bar{y})^2 = \frac{SS}{DF}
+\end{equation}
+
+The fundamental technique is a partitioning of the total sum of squares SS into components related to the effects used in the model (Fig. \ref{fig:ANOVA_annotated}). Thereby ANOVA estimates 3 sample variances: a \emph{total variance} based on all the observation deviations from the grand mean (calculated from $SS_{Total}$), a \emph{treatment variance} (from $SS_{Treatments}$), and an \emph{error variance} based on all the observation deviations from their appropriate treatment means (from $SS_{Error}$). The treatment variance is based on the deviations of treatment means from the grand mean, the result being multiplied by the number of observations in each treatment to account for the difference between the variance of observations and the variance of means. If the null hypothesis is true, all three variance estimates are equal (within sampling error).
 
 \begin{equation}
   SS_\text{Total} = SS_\text{Error} + SS_\text{Treatments}
@@ -260,16 +264,15 @@ since we perform multiple comparison tests, we should compensate for the risk of
 
 \subsubsection{Tukey's Test}\index{general}{test!Tukey's}
 
-\emph{Tukey's test}, sometimes also referred to as the \emph{Tukey Honest Significant Difference (HSD) method }, controls for the Type I error rate across multiple comparisons and is generally considered an acceptable technique. It is based on a formula very similar to that of the t-test. In fact, Tukey's test is essentially a t-test, except that it corrects for multiple comparisons.
-
-The formula for Tukey's test is:
+\emph{Tukey's test}, sometimes also referred to as the \emph{Tukey Honest Significant Difference (HSD) method}, controls for the Type I error rate across multiple comparisons and is generally considered an acceptable technique. It is based on a
+statistic that we have not come across yet, the \emph{studentized range}\index{general}{studentized range}, which is commonly represented by the variable q. The \emph{studentized range} computed from a list of numbers $x_1, ..., x_n$ is given by
 
 \begin{equation}
-    q_s = \frac{Y_A - Y_B}{SE}
+  q _{n}= \frac{\max\{\,x_1,\ \dots \ x_n\,\} - \min\{\,x_1,\ \dots\ x_n\}}{s}
 \end{equation}
 
-where $Y_A$ is the larger of the two means being compared, $Y_B$ is the smaller of the two means being compared, and $SE$ is the standard error of the data in question. This $q_s$ value can then be compared to a q value from the \emph{studentized range distribution}, which takes into account the multiple comparisons. If the q value is larger than the critical value obtained from the distribution, the two means are said to be significantly different.
-Note that the studentized range statistic is the same as the t-statistic except for a scaling factor (np.sqrt(2)).
+where \emph{s} is the sample standard deviation.
+In the Tukey HSD method the sample $x_1, ..., x_n$ is a sample of means and $q$ is the basic test-statistic. It can be used as post-hoc analysis to test between which two groups means there is a significant difference (pairwise comparisons) after rejecting the null hypothesis that all groups are from the same population (i.e. all means are equal).
 
 \PyImg "multipleTesting.py" (p \pageref{py:multipleTesting}): this script provides an example where three treatments are compared.
 \index{python}{multipleTesting}
@@ -298,7 +301,8 @@ Out[8]:
 
 \subsubsection{Holms correction}\index{general}{Holms correction}
 
-The Holm adjustment sequentially compares the lowest p-value with a Type I error rate that is reduced for each consecutive test. For example, if you have three groups (and thus three comparisons), this means that the first p-value is tested at the .05/3 level (.017), the second at the .05/2 level (.025), and third at the .05/1 level (.05). This method is generally considered superior to the Bonferroni adjustment.
+The Holm adjustment sequentially compares the lowest p-value with a Type I error rate that is reduced for each consecutive test. For example, if you have three groups (and thus three comparisons), this means that the first p-value is tested at the .05/3 level (.017), the second at the .05/2 level (.025), and third at the .05/1 level (.05).
+As stated by Holm (\cite{Holm1979})"Except in trivial non-interesting cases the sequentially rejective Bonferroni test has strictly larger probability of rejecting false hypotheses and thus it ought to replace the classical Bonferroni test at all instants where the latter usually is applied."
 
 \subsection{Kruskal-Wallis test}\index{general}{test!Kruskal-Wallis}\label{test:Kruskal-Wallis}
 

@@ -34,16 +34,23 @@ Here we will focus on tests for normality. Again, you should start out with a vi
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/ProbPlot.png}\\
-  \caption{QQ-Plot, to check for normality of distribution.}\label{fig:qqplot}
+  \caption{Probability-Plot, to check for normality of distribution.}\label{fig:qqplot}
 \end{figure}
 
 
-\subsubsection{QQ-Plots}\index{general}{plots!$Q-Q$ plot} \index{general}{plots!probplot}
+\subsubsection{Probability-Plots}\index{general}{plots!probability plot} \index{general}{plots!probplot}
 
-[xxx Try to explain xxx]
-In statistics, \emph{$Q–Q$ plots} ("Q" stands for quantile) are used for visual assessments of distributions. They are a graphical method for comparing two probability distributions by plotting their quantiles against each other. First, the set of intervals for the quantiles is chosen. A point $(x,y)$ on the plot corresponds to one of the quantiles of the second distribution (y-coordinate) plotted against the same quantile of the first distribution (x-coordinate).
+In statistics, different tools are available for the visual assessments of distributions. They are graphical methods for comparing two probability distributions by plotting their quantiles, or closely related parameters against each other:
 
-If the two distributions being compared are similar, the points in the $Q-Q$ plot will approximately lie on the line $y = x$. If the distributions are linearly related, the points in the $Q-Q$ plot will approximately lie on a line, but not necessarily on the line $y = x$ (Figure \ref{fig:qqplot}). In Python, the plot can be generated with the command
+\begin{description}
+  \item[QQ-Plots] \index{general}{plots!qq-plot}"Q" stands for \emph{quantile}. The quantiles of a given data set are plotted against the quantiles of a reference distribution, typically the standard normal distribution.
+  \item[PP-Plots] \index{general}{plots!pp-plot} plot the \emph{CDF (cumulative-distribution-function} of a given data set against the CDF of a reference distribution.
+  \item[Probability Plots] \index{general}{plots!probability plot} plot the ordered values of a given data set against the quantiles of a reference distribution.
+\end{description}
+
+In all three cases the results are similar: if the two distributions being compared are similar, the points will approximately lie on the line $y = x$. If the distributions are linearly related, the points will approximately lie on a line, but not necessarily on the line $y = x$ (Figure \ref{fig:qqplotChi2}).
+
+In Python, the plot can be generated with the command
 
 \begin{lstlisting}
     stats.probplot(data, plot=plt)
@@ -52,8 +59,10 @@ If the two distributions being compared are similar, the points in the $Q-Q$ plo
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{../Images/chi2pp.png}\\
-  \caption{QQ-Plot for chi2-distribution (k=3), which is clearly non-normal.}\label{fig:qqplot}
+  \caption{Left) Probility-density-function for a Chi2-distribution (k=3), which is clearly non-normal. Right) Corresponding Probability-plot}\label{fig:qqplotChi2}
 \end{figure}
+
+To understand the principle behind those plots, look at the right plot in Fig. \ref{fig:qqplotChi2}. Here we have \emph{100} random datapoints from a Chi2-distribution. The x-value of the first data point is (approximately) the $1/100$-quantile of a standard normal distribution (\lstinline{stats.norm().ppf(0.01)}), which corresponds to \emph{-2.33} (The exact value is slightly shifted, because of \emph{Filliben's estimate}). The y-value is the smallest value of our data-set. Similarly, the second x-value corresponds approximately to \lstinline{stats.norm().ppf(0.01)}, and the second y-value is the second-lowest value of the data set, etc.
 
 \subsubsection{Hypothesis Tests for Normality}
 
