@@ -86,6 +86,7 @@
 \indexentry{distributions!discrete}{69}
 \indexentry{distributions!binomial}{69}
 \indexentry{distributions!Bernoulli}{69}
+\indexentry{test!binomial}{70}
 \indexentry{distributions!poisson}{70}
 \indexentry{distributions!discrete}{71}
 \indexentry{outliers}{75}
@@ -122,7 +123,7 @@
 \indexentry{test! t-test, one sample}{89}
 \indexentry{test!Wilcoxon signed rank sum}{90}
 \indexentry{test! t-test, paired}{91}
-\indexentry{test!Mann-Whitney}{91}
+\indexentry{test!Mann-Whitney}{92}
 \indexentry{ANOVA}{93}
 \indexentry{test!ANOVA}{93}
 \indexentry{ANOVA!balanced}{94}
@@ -136,63 +137,70 @@
 \indexentry{Bonferroni correction}{96}
 \indexentry{Holms correction}{97}
 \indexentry{test!Kruskal-Wallis}{97}
-\indexentry{test!binomial}{99}
-\indexentry{test!Cochran's Q}{101}
-\indexentry{incidence}{102}
-\indexentry{frequency tables}{102}
-\indexentry{test!chi square, one way}{103}
-\indexentry{test!chi square}{103}
-\indexentry{test!Fisher's exact}{105}
-\indexentry{test!McNemar's}{108}
-\indexentry{test!Cochran's Q}{109}
-\indexentry{univariate}{113}
-\indexentry{multivariate}{113}
-\indexentry{bivariate}{113}
-\indexentry{correlation coefficient}{113}
-\indexentry{correlation!Pearson}{113}
-\indexentry{coefficient of determination}{115}
-\indexentry{correlation!Spearman}{115}
-\indexentry{correlation!Kendall's $\tau$}{115}
-\indexentry{regression}{116}
-\indexentry{design matrix}{118}
-\indexentry{test!Friedman}{121}
-\indexentry{correlation matrix}{121}
+\indexentry{test!Cochran's Q}{99}
+\indexentry{incidence}{100}
+\indexentry{frequency tables}{101}
+\indexentry{test!chi square, one way}{101}
+\indexentry{test!chi square}{102}
+\indexentry{test!Fisher's exact}{103}
+\indexentry{test!McNemar's}{106}
+\indexentry{test!Cochran's Q}{107}
+\indexentry{univariate}{111}
+\indexentry{multivariate}{111}
+\indexentry{bivariate}{111}
+\indexentry{correlation coefficient}{111}
+\indexentry{correlation!Pearson}{111}
+\indexentry{coefficient of determination}{113}
+\indexentry{correlation!Spearman}{113}
+\indexentry{correlation!Kendall's $\tau$}{113}
+\indexentry{regression}{114}
+\indexentry{design matrix}{116}
+\indexentry{test!Friedman}{119}
+\indexentry{correlation matrix}{119}
+\indexentry{regression!multilinear}{119}
+\indexentry{ANOVA!two-way}{119}
+\indexentry{test!ANOVA}{119}
+\indexentry{ANOVA!three-way}{120}
+\indexentry{Correlation matrix}{120}
 \indexentry{regression!multilinear}{121}
-\indexentry{ANOVA!two-way}{121}
-\indexentry{test!ANOVA}{121}
-\indexentry{ANOVA!three-way}{122}
-\indexentry{Correlation matrix}{122}
-\indexentry{regression!multilinear}{123}
-\indexentry{regression!multiple}{123}
-\indexentry{survival times}{125}
-\indexentry{Kaplan-Meier survival curve}{125}
-\indexentry{test!logrank}{126}
-\indexentry{Cox regression model}{126}
-\indexentry{Generalized Linear Models, GLM}{129}
-\indexentry{statistical modeling}{131}
-\indexentry{hypothesis test}{131}
-\indexentry{covariate}{132}
-\indexentry{regressand}{132}
-\indexentry{endogenous variable}{132}
-\indexentry{regressor}{132}
-\indexentry{exogenous variable}{132}
-\indexentry{regression!multilinear}{133}
-\indexentry{regression!multiple linear|see{regression!multilinear}}{133}
-\indexentry{coefficient of determination!adjusted}{137}
-\indexentry{Maximum likelihood}{138}
-\indexentry{log likelihood function}{138}
-\indexentry{Akaike Information Criterion AIC}{139}
-\indexentry{Bayesian Information Criterion BIC}{139}
-\indexentry{Akaike Information Criterion AIC}{139}
-\indexentry{Bayesian Information Criterion BIC}{139}
-\indexentry{condition number}{143}
-\indexentry{scikit-learn}{145}
-\indexentry{homoscedasticity}{147}
-\indexentry{bootstrapping}{149}
-\indexentry{Bayesian Statistics}{151}
-\indexentry{interpretation!frequentist}{151}
-\indexentry{interpretation!Bayesian}{151}
-\indexentry{Bayes' Theorem}{151}
-\indexentry{prior probability}{151}
-\indexentry{posterior probability}{151}
-\indexentry{logistic function}{153}
+\indexentry{regression!multiple}{121}
+\indexentry{survival times}{123}
+\indexentry{Kaplan-Meier survival curve}{123}
+\indexentry{test!logrank}{124}
+\indexentry{Cox regression model}{124}
+\indexentry{Generalized Linear Models, GLM}{127}
+\indexentry{statistical modeling}{129}
+\indexentry{hypothesis test}{129}
+\indexentry{covariate}{130}
+\indexentry{regressand}{130}
+\indexentry{endogenous variable}{130}
+\indexentry{regressor}{130}
+\indexentry{exogenous variable}{130}
+\indexentry{regression!multilinear}{131}
+\indexentry{regression!multiple linear|see{regression!multilinear}}{131}
+\indexentry{coefficient of determination!adjusted}{135}
+\indexentry{Maximum likelihood}{136}
+\indexentry{log likelihood function}{136}
+\indexentry{Akaike Information Criterion AIC}{137}
+\indexentry{Bayesian Information Criterion BIC}{137}
+\indexentry{Akaike Information Criterion AIC}{137}
+\indexentry{Bayesian Information Criterion BIC}{137}
+\indexentry{condition number}{141}
+\indexentry{scikit-learn}{143}
+\indexentry{homoscedasticity}{145}
+\indexentry{bootstrapping}{147}
+\indexentry{logistic regression}{149}
+\indexentry{ordinal logistic regression}{149}
+\indexentry{Logistic Regression}{150}
+\indexentry{logistic function}{150}
+\indexentry{link-function}{151}
+\indexentry{Generalized Linear Models}{152}
+\indexentry{distributions!exponential family}{152}
+\indexentry{Ordinal Logistic Regression}{153}
+\indexentry{Bayesian Statistics}{155}
+\indexentry{interpretation!frequentist}{155}
+\indexentry{interpretation!Bayesian}{155}
+\indexentry{Bayes' Theorem}{155}
+\indexentry{prior probability}{155}
+\indexentry{posterior probability}{155}
+\indexentry{logistic function}{157}

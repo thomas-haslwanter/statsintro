@@ -677,7 +677,7 @@ Two discretely distributions are commonly encountered: the \emph{binomial distri
 
 The big difference between those two functions that you have to keep in mind: applications of the Binomial function have an inherent upper limit (e.g. when you throw dice five times, each side can come up a maximum of five times); in contrast, the Poisson distribution does not have an inherent upper limit (e.g. how many people you know).
 
-\subsubsection{Binomial Distribution}\index{general}{distributions!binomial}
+\subsubsection{Binomial Distribution}\index{general}{distributions!binomial}\label{sec:binomialDist}
 The Binomial is associated with the question "Out of a given (fixed) number of trials, how many will succeed?" Some example questions that are modeled with a Binomial distribution are:
 \begin{itemize}
   \item Out of ten tosses, how many times will this coin land ''heads''?
@@ -710,6 +710,18 @@ The binomial distribution for $n = 1$ is sometimes referred to as \emph{Bernoull
    \item mean: $np$
    \item variance: $n p (1-p)$
  \end{itemize}
+
+\paragraph{Example: Binomial Test}\index{general}{test!binomial}
+
+Suppose we have a board game that depends on the roll of a die and attaches special importance to rolling a 6. In a particular game, the die is rolled 235 times, and 6 comes up 51 times. If the die is fair, we would expect 6 to come up 235/6 = 39.17 times. Is the proportion of 6's significantly higher than would be expected by chance, on the null hypothesis of a fair die?
+
+To find an answer to this question using the \emph{Binomial Test}, we consult the binomial distribution with n=235 and p=1/6, to determine the probability of finding exactly 51 sixes in a sample of 235 if the true probability of rolling a 6 on each trial is 1/6. We then find the probability of finding exactly 52, exactly 53, and so on up to 235, and add all these probabilities together. In this way, we calculate the probability of obtaining the observed result (51 6s) or a more extreme result ($>51 6's$) assuming that the die is fair. In this example, the result is 0.0265, which indicates that observing 51 6's is unlikely (significant at the 5\% level) to come from a die that is not loaded to give many 6's (one-tailed test).
+
+Clearly a die could roll too few sixes as easily as too many and we would be just as suspicious, so we should use the two-tailed test which (for example) splits the 5\% probability across the two tails.
+
+\PyImg "binomial.py" (p \pageref{py:binomial}): Example of a one-and two-sided binomial test.
+\index{python}{binomialTest}
+
 
 \subsubsection{Poisson Distribution}\index{general}{distributions!poisson}
 
@@ -798,6 +810,9 @@ The Poisson distribution has the following properties:
 \subsection*{Discrete Distributions }
 
 \begin{enumerate}
+
+    \item Under which conditions do you use the \emph{binomial distribution} to evaluate the likelihood of a discrete number of events? And under which do you use the \emph{Poisson distribution}?
+
     \item \textbf{Binomial Distribution} "According to research, pure blue eyes in Europe approach greatest frequency in Finland, Sweden and Norway(at 72\%), followed by Estonia, Denmark(69\%); Latvia, Ireland(66\%); Scotland(63\%); Lithuania(61\%); The Netherlands(58\%); Belarus, England(55\%); Germany(53\%); Poland, Wales(50\%); Russia, The Czech Republic(48\%); Slovakia(46\%); Belgium(43\%); Austria, Switzerland, Ukraine(37\%); France, Slovenia(34\%); Hungary(28\%); Croatia(26\%); Bosnia and Herzegovina(24\%); Romania(20\%); Italy(18\%); Serbia, Bulgaria(17\%); Spain(15\%); Georgia, Portugal(13\%); Albania(11\%); Turkey and Greece(10\%). Further analysis shows that the average occurrence of blue eyes in Europe is 34\%, with 50\% in Northern Europe and 18\% in Southern Europe."
 
     If we have 15 Austrian students in the class-room, what ist the chance of finding 3, 6, or 10 students with blue eyes?

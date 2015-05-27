@@ -95,12 +95,14 @@ The second test is if we compare two independent groups. For example, we can com
 If we have two independent samples the variance of the difference between their means is the \emph{sum} of the separate variances, so the standard error of the difference in means is the square root of the sum of the separate variances:
 
 \begin{align*}
-   se({{\bar x}_1} - {{\bar x}_2}) &= \sqrt {\operatorname{var} ({{\bar x}_1}) + \operatorname{var} ({{\bar x}_2})}  \\
+   se({{\bar x}_1} \pm {{\bar x}_2}) &= \sqrt {\operatorname{var} ({{\bar x}_1}) + \operatorname{var} ({{\bar x}_2})}  \\
    &= \sqrt {{{\left\{ {se({{\bar x}_1})} \right\}}^2} + {{\left\{ {se({{\bar x}_2})} \right\}}^2}}  \\
    &= \sqrt {\frac{{s_1^2}}{{{n_1}}} + \frac{{s_2^2}}{{{n_2}}}}  \\
 \end{align*}
 
 where $\bar{x}_i$ is the mean of the i-th sample, and \emph{se} indicates the \emph{standard error}.
+
+Expressed in words, \emph{The variance of a sum of independent random variables equals the sum of the variances.}
 
 \subsection{Non-parametric Comparison of Two Groups: Mann-Whitney Test} \index{general}{test!Mann-Whitney}\label{test:Mann-Whitney}
 

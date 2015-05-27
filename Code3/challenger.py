@@ -17,7 +17,7 @@ def logistic(x, beta, alpha=0):
 sns.set_context('poster')
 
 # --- Get and show the O-ring data ---
-dataDir = r'C:\Users\p20529\Documents\Teaching\Master_FH\Stats\dist\Data\data_bayes'
+dataDir = r'..\Data\data_bayes'
 inFile = os.path.join(dataDir, 'challenger_data.csv')
 
 challenger_data = np.genfromtxt(inFile, skip_header=1, usecols=[1, 2],

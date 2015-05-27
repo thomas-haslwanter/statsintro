@@ -31,7 +31,7 @@ If you have only one sample group of data, the analysis options are somewhat lim
 
 If you have one sample group of data, you can check if your sample is representative of the standard population. To do so, you have to know the proportion $p$ of the characteristic in the standard population. The occurrence of a characteristic in a group of $n$ people is described by the binomial distribution, with $mean = p*n$. The standard error of samples with this characteristic is given by
 
-\begin{equation}
+\begin{equation}\label{eq:oneProportion}
   se(p) = \sqrt{p(1-p)/n}
 \end{equation}
 
@@ -42,6 +42,30 @@ and the corresponding 95\% confidence interval is
 
 If your data lie outside this confidence interval, they are \emph{not} representative of the population.
 
+\subsection{Explanation}
+
+The innocent looking equation \ref{eq:oneProportion} is more involved than it seems at first:
+ 
+If you have $n$ independent samples from a binomial distribution $B(k,p)$, the variance of their sample mean is
+
+\begin{equation*}
+    \operatorname{var} \left( {\frac{1}{n}\sum\limits_{i = 1}^n {{X_i}} } \right) = \frac{1}{{{n^2}}}\sum\limits_{i = 1}^n {\operatorname{var} ({X_i})}  = \frac{{n\,\operatorname{var} ({X_i})}}{{{n^2}}} = \frac{{\operatorname{var} ({X_i})}}{n} = \frac{{kpq}}{n}
+\end{equation*}
+
+where $q=1−p$ and $\bar{X}$ is the same mean. This follows since
+\begin{enumerate}
+  \item $var(cX)=c^2 var(X)$, for any random variable, $X$, and any constant $c$.
+  \item the variance of a sum of independent random variables equals the sum of the variances.
+\end{enumerate}
+
+The standard error of $\bar{X}$ is the square root of the variance: $\sqrt {\frac{kpq}{n}}$. Therefore,
+
+\begin{itemize}
+  \item When $k=n$, we get $se = \sqrt {pq}$.
+  \item When $k=1$, and the Binomial variables are just Bernoulli trials, the standard error is given by $se = \sqrt {\frac{pq}{n}}$.
+\end{itemize}
+
+    
 \subsection{Example}
 
 For example, let us look at incidence and mortality for breast cancer, and try to answer the following two questions: among the FH-students, how many occurrences of breast cancer should we expect per year? And how many of the female FH-students will probably die from breast cancer at the end of their life?
@@ -188,6 +212,9 @@ We know that in case of a symmetrical distribution the arithmetic mean $\bar{x}$
 
 
 \subsubsection{Comments}
+
+%[xxx Here I don't understand the reviewer's comment xxx]
+
 The Chi-square test is a pure hypothesis test. It tells you if your observed frequency can be due to a random sample selection from a single population. A number of different expressions have been used for chi-square tests, which are due to the original derivation of the formulas (from the time before computers were pervasive). Expression such as \emph{2x2 tables}, \emph{r-c tables}, or \emph{Chi-square test of contingency} all refer to frequency tables and are typically analyzed with chi-square tests.
 
 
@@ -213,6 +240,8 @@ The Chi-square test is a pure hypothesis test. It tells you if your observed fre
 
 If the requirement that 80\% of cells should have expected values of at least 5 is not fulfilled, \emph{Fisher's exact test} should be used. This test is based on the observed row and column totals. The method consists of evaluating the probability associated with all possible 2x2 tables which have the same row and column totals as the observed data, making the assumption that the null hypothesis (i.e. that the row and column variables are unrelated) is true.  In most cases, Fisher's exact test is preferable to the chi-square test. But until the advent of powerful computers, it was not practical. You should use it up to approximately 10-15 cells in the frequency tables. It is called "exact" because the significance of the deviation from a null hypothesis can be calculated exactly, rather than relying on an approximation that becomes exact in the limit as the sample size grows to infinity, as with many statistical tests.
 
+% [xxx The reviewer marked the section "rather than relying on an approximation" - but I don't understand why xxx]
+
 In using the test, you have to decide if you want to use a one-tailed test or a two-tailed test. The former one looks for the probability to find a distribution as extreme as or more extreme than the observed one. The latter one (which is the default in python) also considers tables as extreme in the opposite direction.
 
 \textbf{Note:} The python command \lstinline{stats.fisher_exact} returns by default the p-value for \emph{finding a value as extreme or more extreme than the observed one}. According to Altman (\cite{altman99}), this is a reasonable approach, although not all statisticians agree on that point.
@@ -230,7 +259,7 @@ In using the test, you have to decide if you want to use a one-tailed test or a 
 \begin{adjustwidth}{2.5em}{2.5em}
     Already, quite soon after he had come to Rothamstead, his presence had transformed one commonplace tea time to an historic event. It happened one afternoon when he drew a cup of tea from the urn and offered it to the lady beside him, Dr. B. Muriel Bristol, an algologist. She declined it, stating that she preferred a cup into which the milk had been poured first. "Nonsense," returned Fisher, smiling, "Surely it makes no difference." But she maintained, with emphasis, that of course it did. From just behind, a voice suggested, "Let's test her." It was William Roach who was not long afterward to marry Miss Bristol. Immediately, they embarked on the preliminaries of the experiment, Roach assisting with the cups and exulting that Miss Bristol divined correctly more than enough of those cups into which tea had been poured first to prove her case.
 
-    Miss Bristol's personal triumph was never recorded, and perhaps Fisher was not satisfied at that moment with the extempore experimental procedure. One can be sure, however, that even as he conceived and carried out the experiment beside the trestle table, and the onlookers, no doubt, took sides as to its outcome, he was thinking through the questions it raised: How many cups should be used in the test? Should they be paired? In what order should the cups be presented? What should be done about chance variations in the temperature, sweetness, and so on? What conclusion could be drawn from a perfect score or from one with one or more errors?
+    Miss Bristol's personal triumph was never recorded, and perhaps Fisher was not satisfied at that moment with the extempore experimental procedure. One can be sure, however, that even as he conceived and carried out the experiment beside the trestle table, and the onlookers, no doubt, took sides as to its outcome, he was thinking through the questions it raised. 
 \end{adjustwidth}
 
 The real scientific significance of this experiment is in these questions. These are, allowing incidental particulars, the questions one has to consider before designing an experiment. We will look at these questions as pertaining to the "lady tasting tea", but you can imagine how these questions should be adapted to different situations.
