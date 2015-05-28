@@ -12,8 +12,6 @@ Ordinal data have clear rankings, e.g. "none - little - some - much - very much"
 
 \end{description}
 
-\section{Logistic Regression}
-
 A more complex question arises when the requirement arises not only to compare two groups, but also to make quantitative predictions for ordinal data. For example, suppose you want to calculate the probability that a patient survives an operation, based on the amount of anesthetic he/she receives. The answer to this question involves statistical modelling, and the tool of \emph{logistic regression}\index{general}{logistic regression}. If more than two ordinal (i.e. naturally ranked) levels are involved, the so-called \emph{ordinal logistic regression}\index{general}{ordinal logistic regression} is used.
 
 \emph{Hypothesis tests} allow you to state quantitative probabilities on the likelihood of a hypothesis. \emph{Linear Regression Modeling} allows you to make predictions and give confidence intervals for output variables that depend linearly on given inputs. But a large class of problems exceeds these requirements. For example, suppose you want to calculate the probability that a patient survives an operation, based on the amount of anesthetic he/she receives, and you want to find out how much anesthetic you can give the patient so that the chance of survival is at least 95\%.
@@ -117,22 +115,74 @@ The linear predictor for GLM is the same as the one used for \emph{linear models
 
 The \emph{link function} is an arbitrary function, with the only requirements that it is continuous and invertable.
 
-\section{Ordinal Logistic Regression}\index{general}{Ordinal Logistic Regression}
+\section{Ordinal Logistic Regression}\index{general}{Logistic Ordinal Regression}
 
-\begin{eqnarray*}{rl}
-    log (P(Y\ge 1|X) &=& 1/[1 + exp(-(\alpha_1 + B_1 X_1 + ….+ B_{n-1} X_{n-1}))]\\
-    log (P(Y\ge 2|X) &=& 1/[1+exp(-(\alpha_2 + B_1 X_1 + ….+ B_{n-1} X_{n-1}))]\\
-    …. &=& …. \\
-    log (P(Y \ge m-2|X) &=& 1/ [1 + exp[-( \alpha_{m-2}+ B_1 X_1 + ….+ B_{n-1} X_{n-1}))]\\
-    log (P(Y \ge m-1|X) &=& 1/ [1 + exp(\alpha_{m-1}+ B_1 X_1 + ….+ B_{n-1} X_{n-1}))]\\
+\footnote{This section has been taken with permission from Fabian Pedregosa's blog on ordinal logistic regression, http://fa.bianp.net/blog/2013/logistic-ordinal-regression/} The \emph{logistic ordinal regression} model, also known as the proportional odds was introduced in the early 80s by McCullagh \cite{McCullagh1980,McCullaghNelder1989} and is a generalized linear model specially tailored for the case of predicting ordinal variables, that is, variables that are discrete (as in classification) but which can be ordered (as in regression). It can be seen as an extension of the logistic regression model to the ordinal setting.
+
+Given $X \in {\mathbb{R}^{n \times p}}$ input data and $y \in \mathbb{N}^n$ target values. For simplicity we assume $y$ is a non-decreasing vector, that is, ${y_1} \leq {y_2} \leq ...$ Just as the logistic regression models posterior probability $P(y=j|X_i)$ as the logistic function, in the logistic ordinal regression we model the \emph{cumulative} probability as the logistic function. That is,
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{../Images/ordinal_1.png}\\
+  \includegraphics[width=0.4\textwidth]{../Images/ordinal_logistic.png}\\
+  \caption{Toy example with three classes denoted in different colors. Also shown the vector of coefficients $w$ and the thresholds $\theta_0$ and $\theta_1$. (Figure from Fabian Pedregosa, with permission)}
+\end{figure}
+
+\begin{equation}
+  P(y \leq j|X_i) = \phi(\theta_j - w^T X_i) = \frac{1}{1 + \exp(w^T X_i - \theta_j)}
+\end{equation}
+
+where $w,\theta$ are vectors to be estimated from the data and $\phi$ is the logistic function defined as $\phi(t)=\frac{1}{1+exp(−t)}$.
+
+%Toy example with three classes denoted in different colors. Also shown the vector of coefficients w and the thresholds $\theta_0$ and $\theta_1$
+
+Compared to multiclass logistic regression, we have added the constrain that the hyperplanes that separate the different classes are \emph{parallel} for all classes, that is, the vector $w$ is common across classes. To decide to which class will $X_i$ be predicted we make use of the vector of thresholds $\theta$. If there are $K$ different classes, $\theta$ is a non-decreasing vector (that is, ${\theta _1} \leq {\theta _2} \leq ... \leq {\theta _{K - 1}}$
+ of size $K−1$. We will then assign the class $j$ if the prediction $w^T X$ (recall that it's a linear model) lies in the interval $[\theta_{j−1},\theta_j[$. In order to keep the same definition for extremal classes, we define $\theta _0 =  - \infty $ and $\theta_0 = + \infty$.
+
+The intuition is that we are seeking a vector w such that $Xw$ produces a set of values that are well separated into the different classes by the different thresholds $\theta$. We choose a logistic function to model the probability $P(y \leq j|X_i)$ but other choices are possible. In the proportional hazards model \cite{McCullagh1980} the probability is modeled as $-\log(1 - P(y \leq j | X_i)) = \exp(\theta_j - w^T
+X_i)$. Other link functions are possible, where the link function satisfies $\text{link}(P(y \leq j | X_i)) = \theta_j - w^T X_i$. Under this framework, the logistic ordinal regression model has a logistic link function and the proportional hazards model has a log-log link function.
+
+The logistic ordinal regression model is also known as the proportional odds model, because the ratio of corresponding odds for two different samples $X_1$ and $X_2$ is $\exp(w^T(X_1 - X_2))$ and so does not depend on the class $j$ but only on the difference between the samples $X_1$ and $X_2$.
+
+\subsection{Optimization}
+
+Model estimation can be posed as an optimization problem. Here, we minimize the loss function for the model, defined as minus the log-likelihood:
+
+\begin{equation}
+  \mathcal{L}(w, \theta) = - \sum_{i=1}^n \log(\phi(\theta_{y_i} - w^T X_i) -  \phi(\theta_{y_i -1} - w^T X_i))
+\end{equation}
+
+
+In this sum all terms are convex on w, thus the loss function is convex over $w$. It might be also jointly convex over $w$ and $\theta$, although I haven't checked. I use the function \texttt{fmin\_slsqp} in \texttt{scipy.optimize} to optimize $\mathcal{L}$ under the constraint that $\theta$ is a non-decreasing vector. There might be better options, I don't know. If you do know, please leave a comment!.
+
+Using the formula $\log(\phi(t))^\prime = (1 - \phi(t))$, we can compute the gradient of the loss function as
+
+
+\begin{eqnarray*}
+    \nabla_w \mathcal{L}(w, \theta) &=& \sum_{i=1}^n X_i (1 - \phi(\theta_{y_i} - w^T X_i) - \phi(\theta_{y_i-1} - w^T X_i)) \\
+    \nabla_\theta \mathcal{L}(w, \theta) &=& \sum_{i=1}^n e_{y_i} \left(1 - \phi(\theta_{y_i} - w^T X_i) - \frac{1}{1 - \exp(\theta_{y_i -1} - \theta_{y_i})}\right)  \\
+        \qquad  &+& e_{y_i -1}\left(1 - \phi(\theta_{y_i -1} - w^T X_i) - \frac{1}{1 - \exp(- (\theta_{y_i-1} - \theta_{y_i}))}\right)
 \end{eqnarray*}
 
-The probability that $$Y = k$$, is then given by $$P(Y = k|X) = P(Y\ge k) -P(Y\ge k+1)$$. Of course we have $$(Y = m-1|X) = P(Y\ge m-1|X)$$ at the boundary with $$P(Y\ge 0|X) = 1.0$$.
+where $e_i$ is the $i$th canonical vector.
 
-The likelihood function is given by the following formula:
+\subsection{Code}
 
-$$L=\prod_{i= 0}^{N-1} \prod_{k=0}^{m-1 }P(Y= j|X)^{\delta_k^j}$$
+I've implemented a Python version of this algorithm using Scipy's \lstinline{optimize.fmin_slsqp} function. This takes as arguments the loss function, the gradient denoted before and a function that is > 0 when the inequalities on θ are satisfied.
 
-where $$\delta_k^j= 1$$ if $$k = j$$, otherwise it is zero. The coefficients are obtained by maximizing L using an optimizer. It is more convenient to work with logarithms and the logarithm is then called the log likelihood function. Most statistical softwares will multiply the result by -2 so that a minimizer can be used to optimize the log likelihood value.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{../Images/ordinal_bars.png}
+  \caption{(Figure from Fabian Pedregosa, with permission)}
+\end{figure}
 
-Here is our Python module for performing ordinal logistic regression. It currently focuses on determining the coefficients of the model specified above. 
+
+Code can be found here as part of the minirank package, which is my sandbox for code related to ranking and ordinal regression. At some point I would like to submit it to scikit-learn but right now the I don't know how the code will scale to medium-scale problems, but I suspect not great. On top of that I'm not sure if there is a real demand of these models for scikit-learn and I don't want to bloat the package with unused features.
+Performance
+
+I compared the prediction accuracy of this model in the sense of mean absolute error (IPython notebook) on the boston house-prices dataset. To have an ordinal variable, I rounded the values to the closest integer, which gave me a problem of size 506 × 13 with 46 different target values. Although not a huge increase in accuracy, this model did give me better results on this particular dataset:
+
+Here, ordinal logistic regression is the best-performing model, followed by a Linear Regression model and a One-versus-All Logistic regression model as implemented in scikit-learn.
+
+\PyImg "ologit.py" (p \pageref{py:ologit}) corresponding Code by Fabian Pedregosa
+\index{python}{ologit}

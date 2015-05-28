@@ -14,7 +14,7 @@ The \emph{correlation coefficient} between two variables answers the question: "
   r = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum\limits_{i=1}^n (X_i - \bar{X})^2} \sqrt{\sum\limits_{i=1}^n (Y_i - \bar{Y})^2}}
 \end{equation}
 
-With
+With the \emph{sample covariance}\index{general}{covariance}
 
 \begin{equation}
   s_{xy} = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}
@@ -28,6 +28,97 @@ and $s_x, s_y$ the sample standard deviations of the $x$ and $y$ values, respect
 
 Pearson's correlation coefficient, sometimes also referred to as \emph{population correlation coefficient} or \emph{sample correlation}, can take any value from -1 to +1. Examples are given in Figure \ref{fig:correlation}. Note that the formula for the correlation coefficient is symmetrical between $x$ and $y$ - which is not the case for linear regression!
 
+\subsection{Rank Correlation}
+
+If the data distribution is not normal, a different approach is necessary. In that case one can rank the set of subjects for each variable and compare the orderings. There are two commonly used methods of calculating the rank correlation. \index{general}{correlation!Spearman}
+\index{general}{correlation!Kendall's $\tau$}
+
+\begin{itemize}
+  \item   \emph{Spearman's $\rho$}, which is exactly the same as the Pearson correlation coefficient $r$ calculated on the ranks of the observations.
+  \item   \emph{Kendall's $\tau$} is also a rank correlation coefficient, measuring the association between two measured quantities. It is harder to calculate than Spearman's rho, but it has been argued that confidence intervals for Spearman’s rho are less reliable and less interpretable than confidence intervals for Kendall’s tau-parameters.
+\end{itemize}
+
+%\begin{itemize}
+%  \item   "Regression to the mean"
+%  \item   Partial correlation (comment)
+%\end{itemize}
+
+%(Lecture 11)
+
+\section{Regression} \index{general}{regression}
+
+\subsection{General linear regression model}
+
+We can use the method of \emph{regression} when we want to predict the value of one variable from the other.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Linear_regression.png}\\
+  \caption{Linear regression.}\label{fig:regression}
+\end{figure}
+
+When we search for the best-fit line to a given $(x_i,y_i)$ dataset, we are looking for the parameters $(k,d)$ which minimize the sum of the squared \emph{residuals} $\epsilon_i$ in
+
+\begin{equation}\label{eq:simpleRegression}
+  y_i = k * x_i + d + \epsilon_i
+\end{equation}
+
+where $k$ is the \emph{slope} or \emph{inclination} of the line, and $d$ the \emph{intercept}. This is in fact just the one-dimensional example of the more general technique, which is described in the next section.
+Note that in contrast to the correlation, this relationship between $x$ and $y$ is no more symmetrical: it is assumed that the $x-$values are known exactly, and that all the variability lies in the residuals.
+
+\subsection{Simple Regression}
+Example of \emph{simple linear regression} with 7 observations.
+Suppose there are 7 data points $\left\{ {{y_i},{x_i}} \right\}$, where $i=1,2,…,7$. The simple linear regression model is
+
+\begin{equation}
+  y_i = \beta_0 + \beta_1 x_i +\epsilon_i, \,
+\end{equation}
+
+where $\beta_0$ is the y-intercept and $\beta_1$ is the slope of the regression line. This model can be represented in matrix form as
+
+\begin{equation}\label{eq:simpleRegression}
+  \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+  =
+  \begin{bmatrix}1 & x_1  \\1 & x_2  \\1 & x_3  \\1 & x_4  \\1 & x_5  \\1 & x_6 \\ 1 & x_7  \end{bmatrix}
+  \begin{bmatrix} \beta_0 \\ \beta_1  \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
+\end{equation}
+where the first column of ones in the matrix on the right hand side represents the y-intercept term while the second column is the x-values associated with the y-value.
+
+\subsection{Design Matrix}
+
+
+\subsubsection{Quadratic Fit}
+
+The equation for a quadratic fit to the given data is
+
+\begin{equation}
+  y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 +\epsilon_i, \,
+\end{equation}
+
+This can be rewritten in matrix form:
+
+\begin{equation}\label{eq:polynomialRegression}
+  \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+  =
+  \begin{bmatrix}1 & x_1 & x_1^2 \\1 & x_2  & x_2^2 \\1 & x_3  & x_3^2 \\1 & x_4  & x_4^2 \\1 & x_5  & x_5^2 \\1 & x_6  & x_6^2 \\ 1 & x_7  & x_7^2 \end{bmatrix}
+  \begin{bmatrix} \beta_0 \\ \beta_1  \\ \beta_2 \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
+\end{equation}
+
+\subsubsection{General Formulation}
+
+In general, this can be rewritten in matrix form as:
+
+\begin{equation}\label{eq:DesignMatrix}
+    \mathbf{y} = \mathbf{X} \cdot \mathbf{\beta } + \mathbf{\varepsilon }
+\end{equation}
+
+$\mathbf{y}$ is a vector of dimension $(n \times 1)$ and is called the \emph{endogenous variable}, the \emph{design matrix} \index{general}{design matrix} $\mathbf{X}$ is a matrix of dimension $(n \times k)$ where each column is an explanatory variable, and $\mathbf{\varepsilon }$ is the error term, the elements of which are assumed to be normally distributed about zero. $\mathbf{\beta }$ is the vector of dimension $(k \times 1)$ and contains the parameters we want to estimate.
+
+% [xxx "the elements of which are assumed to be normally distributed about zero" - is this what the reviewer wanted, when he/she said "No, we also want variance of epsilon" xxx]
 \subsection{Coefficient of determination}
 
 In order to interpret r, let me first define a few common terms.
@@ -102,7 +193,7 @@ In a general form, $R^2$ can be seen to be related to the unexplained variance, 
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/Correlation_examples2.png}\\
-  \caption{Several sets of (x, y) points, with the correlation coefficient of x and y for each set. Note that the correlation reflects the non-linearity and direction of a linear relationship (top row), but not the slope of that relationship (middle), nor many aspects of nonlinear relationships (bottom). N.B.: the figure in the center has a slope of 0 but in that case the correlation coefficient is undefined because the variance of Y is zero. (From: Wikipedia)}\label{fig:correlation}
+  \caption{Several sets of (x, y) points, with the correlation coefficient of x and y for each set. Note that the correlation reflects the non-linearity and direction of a linear relationship (top row), but not the slope of that relationship (middle), nor many aspects of nonlinear relationships (bottom). N.B.: the figure in the center has a slope of 0 but in that case the correlation coefficient is undefined because the variance of Y is zero. (In Wikipedia. Retrieved May 27, 2015, from http://en.wikipedia.org/wiki/Correlation\_and\_dependence)}\label{fig:correlation}
 \end{figure}
 
 \subsubsection{Examples}
@@ -111,94 +202,6 @@ How large $R^2$ must be to be considered good depends on the discipline. They ar
 
 Caution: the sample correlation and $R^2$ are misleading if there is a nonlinear relationship between the independent and dependent variables!
 
-\subsection{Rank Correlation}
-
-If the data distribution is not normal, a different approach is necessary. In that case one can rank the set of subjects for each variable and compare the orderings. There are two commonly used methods of calculating the rank correlation. \index{general}{correlation!Spearman}
-\index{general}{correlation!Kendall's $\tau$}
-
-\begin{itemize}
-  \item   \emph{Spearman's $\rho$}, which is exactly the same as the Pearson correlation coefficient $r$ calculated on the ranks of the observations.
-  \item   \emph{Kendall's $\tau$} is also a rank correlation coefficient, measuring the association between two measured quantities. It is harder to calculate than Spearman's rho, but it has been argued that confidence intervals for Spearman’s rho are less reliable and less interpretable than confidence intervals for Kendall’s tau-parameters.
-\end{itemize}
-
-%\begin{itemize}
-%  \item   "Regression to the mean"
-%  \item   Partial correlation (comment)
-%\end{itemize}
-
-%(Lecture 11)
-
-\section{Regression} \index{general}{regression}
-
-\subsection{General linear regression model}
-
-We can use the method of \emph{regression} when we want to predict the value of one variable from the other.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.75\textwidth]{../Images/Linear_regression.png}\\
-  \caption{Linear regression.}\label{fig:regression}
-\end{figure}
-
-When we search for the best-fit line to a given $(x_i,y_i)$ dataset, we are looking for the parameters $(k,d)$ which minimize the sum of the squared \emph{residuals} $\epsilon_i$ in
-
-\begin{equation}\label{eq:simpleRegression}
-  y_i = k * x_i + d + \epsilon_i
-\end{equation}
-
-where $k$ is the \emph{slope} or \emph{inclination} of the line, and $d$ the \emph{intercept}. This is in fact just the one-dimensional example of the more general technique, which is described in the next section.
-Note that in contrast to the correlation, this relationship between $x$ and $y$ is no more symmetrical: it is assumed that the $x-$values are known exactly, and that all the variability lies in the residuals.
-
-\subsection{Simple Regression}
-Example of \emph{simple linear regression} with 7 observations.
-Suppose there are 7 data points $\left\{ {{y_i},{x_i}} \right\}$, where $i=1,2,…,7$. The simple linear regression model is
-
-\begin{equation}
-  y_i = \beta_0 + \beta_1 x_i +\epsilon_i, \,
-\end{equation}
-
-where $\beta_0$ is the y-intercept and $\beta_1$ is the slope of the regression line. This model can be represented in matrix form as
-
-\begin{equation}\label{eq:simpleRegression}
-  \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
-  =
-  \begin{bmatrix}1 & x_1  \\1 & x_2  \\1 & x_3  \\1 & x_4  \\1 & x_5  \\1 & x_6 \\ 1 & x_7  \end{bmatrix}
-  \begin{bmatrix} \beta_0 \\ \beta_1  \end{bmatrix}
-  +
-  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
-\end{equation}
-where the first column of ones in the matrix on the right hand side represents the y-intercept term while the second column is the x-values associated with the y-value.
-
-\subsection{Design Matrix}
-
-\subsubsection{Quadratic Fit}
-
-The equation for a quadratic fit to the given data is
-
-\begin{equation}
-  y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 +\epsilon_i, \,
-\end{equation}
-
-This can be rewritten in matrix form:
-
-\begin{equation}\label{eq:polynomialRegression}
-  \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
-  =
-  \begin{bmatrix}1 & x_1 & x_1^2 \\1 & x_2  & x_2^2 \\1 & x_3  & x_3^2 \\1 & x_4  & x_4^2 \\1 & x_5  & x_5^2 \\1 & x_6  & x_6^2 \\ 1 & x_7  & x_7^2 \end{bmatrix}
-  \begin{bmatrix} \beta_0 \\ \beta_1  \\ \beta_2 \end{bmatrix}
-  +
-  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
-\end{equation}
-
-\subsubsection{General Formulation}
-
-In general,this can be rewritten in matrix form as:
-
-\begin{equation}\label{eq:DesignMatrix}
-    y=X\beta+ \epsilon,
-\end{equation}
-
-$Y$ is a vector of dimension $(n \times 1)$ and is called the \emph{endogenous variable}, the \emph{design matrix} \index{general}{design matrix} $X$ is a matrix of dimension $(n \times k)$ where each column is an explanatory variable, and $\epsilon$ is the error term. $\beta$ is the vector of dimension $(k \times 1)$ and contains the parameters we want to estimate.
 
 \subsection{Coding}
 
@@ -281,7 +284,7 @@ To use the technique of linear regression, the following assumptions should be f
   \item The \emph{independent variables} (i.e. $x$) are exactly known.
   \item Validity. Most importantly, the data you are analyzing should map to the research question you are trying to answer. This sounds obvious but is often overlooked or ignored because it can be inconvenient. For example, a linear regression does not properly describe a quadratic curve.
   \item Additivity and linearity. The most important mathematical assumption of the regression model is that its deterministic component is a linear function of the separate predictors.
-  \item Independence of errors.
+  \item Independence of errors from the values of the independent variables.
   \item Equal variance of errors.
   \item Normality of errors.
 \end{enumerate}

@@ -26,6 +26,7 @@ For instance, if we have some variable $y$, and we want to regress it against so
     y \sim x + a + b + a:b
 \end{equation}
 
+This formula language is based on the notation introduced by Wilkinson and Rogsers (\cite{Wilkinson1973}, and also used by $S$ and $R$.
 The symbols in Table \ref{tab:syntax} are used on the right hand side to denote different interactions.
 
 \begin{table}
@@ -63,7 +64,7 @@ In the case of a linear regression model, the model can be rewritten as in Eq \r
     y=X\beta+ \epsilon,
 \end{equation*}
 
-For a simple linear regression and multivariate regression, the corresponding Design Matrices are given in \ref{eq:simpleRegression} and \ref{eq:multipleRegression}, respectively.
+For a simple linear regression and multiple regression, the corresponding Design Matrices are given in \ref{eq:simpleRegression} and \ref{eq:multipleRegression}, respectively.
 
 \footnote{This section has been taken from Wikipedia} Given a data set $\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n$ of $n$ statistical units, a linear regression model assumes that the relationship between the dependent variable $y_i$ and the $p$-vector of regressors $x_i$ is linear. This relationship is modelled through a \emph{disturbance term} or \emph{error variable} $\epsilon_i$, an unobserved random variable that adds noise to the linear relationship between the dependent variable and regressors. Thus the model takes the form
 
@@ -167,8 +168,7 @@ In this model $\mu$ is the mean of the reference group and $\tau_i$ is the diffe
 
 \section{Linear Regression Analysis with Python}
 
-The following is based on the \href{http://connor-johnson.com/2014/02/18/linear-regression-with-python/}{blog of Connor Johnson}.
-
+\footnote{The following is based on the \href{http://connor-johnson.com/2014/02/18/linear-regression-with-python/}{blog of Connor Johnson}.}
 We will use Python to explore measures of fit for linear regression: the coefficient of determination ($R^2$), hypothesis tests (F, t, Omnibus), AIC, BIC, and other measures.
 
 First we will look at a small data set from \href{http://lib.stat.cmu.edu/DASL/Stories/AlcoholandTobacco.html}{DASL library}, regarding the correlation between tobacco and alcohol purchases in different regions of the United Kingdom. The interesting feature of this data set is that Northern Ireland is reported as an outlier. Notwithstanding, we will use this data set to describe two tools for calculating a linear regression. We will alternatively use the \emph{statsmodels} and \emph{sklearn} modules for calculating the linear regression, while using \emph{pandas} for data management, and \emph{matplotlib} for plotting. To begin, we will import the modules, get the data into Python, and have a look at them:
@@ -367,7 +367,7 @@ Here, \lstinline{stats.f.cdf( F, m, n )} returns the cumulative sum of the F-dis
 
 \subsubsection{Log-Likelihood Function}
 
-A very common approach in statistics is the idea of \emph{Maximum Likelihood} estimation. \index{general}{Maximum likelihood} The basic idea is quite different from the \emph{minimum square} approach: there, the model is constant, and the errors of the response are variable; in contrast, in the maximum likelihood approach, the data response values are regarded as constant, and the likelihood of the model is maximised.
+A very common approach in statistics is the idea of \emph{Maximum Likelihood} estimation. \index{general}{Maximum likelihood} The basic idea is quite different from the \emph{least square} approach: there, the model is constant, and the errors of the response are variable; in contrast, in the maximum likelihood approach, the data response values are regarded as constant, and the likelihood of the model is maximised.
 
 For the Classical Linear Regression Model (with normal errors) we have
 
@@ -417,6 +417,7 @@ We can calculate this in Python as follows:
 
 \subsubsection{Information Content of Statistical Models - AIC and BIC}
 
+% [xxx Is there any way of stating which one is the best? xxx]
 To judge the quality of your model, you should first visually inspect the residuals. In addition, you can also use a number of numerical criteria to assess the quality of a statistical model. These criteria represent various approaches for balancing model accuracy with parsimony.
 
 We have already encountered the $adjusted\; R^2$ value (section \ref{sec:adjustedR2}), which - in contrast to the $R^2$ value - decreases if there are too many regressors in the model.
@@ -465,6 +466,7 @@ Here, $X$ is the matrix of predictor variables as columns, with an extra column 
 
 \subsubsection{Standard Error}
 
+% [xxx Check Formulas in Dobson! xxx]
 To obtain the \emph{standard errors of the coefficients} we will calculate the covariance-variance matrix, also called the covariance matrix, for the estimated coefficients $\beta$ of the predictor variables using
 
 \begin{equation}
@@ -670,7 +672,7 @@ Note that $X.T * X$ should be $( P + 1 ) \times ( P + 1 )$, where $P$ is the num
     >>> Condition No.: 27.22887
 \end{lstlisting}
 
-Our condition number is juuust below 30, so we can sort of sleep okay.
+Our condition number is juuust below 30 (weak!), so we can sort of sleep okay.
 
 \subsection{Comparison}
 
@@ -713,7 +715,7 @@ Kurtosis:                       3.022   Cond. No.                         25.5
 
 \href{http://scikit-learn.org/}{\emph{Scikit-learn (sklearn)}} \index{general}{scikit-learn} is an open source machine learning library for the Python programming language. It features various classification, regression and clustering algorithms.
 
-In order to use \emph{sklearn}, we need to input our data in the form of vertical vectors. Whenever one slices off a column from a NumPy array, NumPy stops worrying whether it is a vertical or horizontal vector. MATLAB works differently, as it is primarily concerned with matrix operations. NumPy, however has a matrix class for whenever the verticalness or horizontalness of an array is important. Therefore, in our case, we’ll cast the DataFrame as Numpy matrix so that vertical arrays stay vertical once they are sliced off the data set.
+In order to use \emph{sklearn}, we need to input our data in the form of vertical vectors. Therefore, in our case, we’ll cast the DataFrame to Numpy matrix so that vertical arrays stay vertical once they are sliced off the data set.
 
 \begin{lstlisting}	
     data = np.matrix( df )

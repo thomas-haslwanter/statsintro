@@ -33,7 +33,7 @@ The PDF also defines the \emph{expected value E[x]} \index{general}{expected val
 
 \subsubsection{Cumulative Distribution Function (CDF)}\index{general}{cumulative distribution function}
 
-The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \emph{Cumulative Distribution Function} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
+The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \acrfull{cdf} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
 
 \begin{equation}
    \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
@@ -61,17 +61,19 @@ I will give examples which demonstrate each aspect for a normal distribution des
 
         Example: What is the chance that a man is less than 165 cm tall?
 
-  \item \emph{Survival function (SF)}: 1-CDF: gives the probability of obtaining a value larger than the given value. It can also be interpreted as the proportion of data "surviving" above a certain value.
+  \item \emph{\acrfull{sf} (SF)}: 1-CDF: gives the probability of obtaining a value larger than the given value. It can also be interpreted as the proportion of data "surviving" above a certain value.
 
       Example: What is the chance that a man is larger than 165 cm?
 
-  \item \emph{Percentile point function (PPF)}: the inverse of the CDF. Answers the question "Given a certain probability, what is the corresponding value for the CDF?"
+  \item \emph{\acrfull{ppf} (PPF)}: the inverse of the CDF. Answers the question "Given a certain probability, what is the corresponding value for the CDF?"
 
     Example: Given that I am looking for a man who is smaller than 95\% of all other men, what size does the subject have to be?
 
-  \item \emph{Inverse survival function (ISF)}: the name says it all.
+  \item \emph{\acrfull{isf} (ISF)}: the name says it all.
 
       Example: Given that I am looking for a man who is larger than 95\% of all other men, what size does the subject have to be?
+      
+  \item \acrfull{rvs} \emph{(RVS)}: random variates\index{general}{variate} from a given distribution. (A \emph{variable} is the general type, a \emph{variate} is a specific number.)
 
 \end{itemize}
 
@@ -197,7 +199,7 @@ For normally distributed data, the \emph{sample standard error of the mean} (SE 
 
 \subsubsection{Confidence Intervals}\index{general}{confidence interval}
 
- In the statistical analysis of data it has become common to state the \emph{confidence interval} of an estimated parameter. The confidence interval reports the range that contains the true value for your parameter with a likelihood of $\alpha$\%.
+ In the statistical analysis of data it has become common to state the \acrfull{ci} of an estimated parameter. The confidence interval reports the range that contains the true value for your parameter with a likelihood of $\alpha$\%.
 
 If the sampling distribution is symmetrical and unimodal, it will often be possible to approximate the confidence interval by
 

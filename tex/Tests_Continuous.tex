@@ -179,7 +179,7 @@ The output is explained in more model in the chapter \ref{chapter:Models}. The i
 
 \subsection{Analysis of Variance - ANOVA} \label{sec:anova} \index{general}{ANOVA} \index{general}{test!ANOVA}
 
-The idea behind the \emph{ANalysis Of VAriance (ANOVA)} is to divide the variance into the variance \emph{between} groups, and that \emph{within} groups, and see if those distributions match the null hypothesis that all groups come from the same distribution. The variables that distinguish the different groups are often called \emph{factors}.
+The idea behind the \acrfull{anova} (ANOVA) is to divide the variance into the variance \emph{between} groups, and that \emph{within} groups, and see if those distributions match the null hypothesis that all groups come from the same distribution. The variables that distinguish the different groups are often called \emph{factors}.
 
 \begin{figure}
   \centering
@@ -195,7 +195,7 @@ Because the null hypothesis is that there is no difference between the groups, t
 
 The one-way ANOVA assumes all the samples are drawn from normally distributed populations with equal variance. To test the equal variance assumption, one of the popular approaches is the \emph{Levene test}\index{general}{test!Levene}.
 
-ANOVA uses traditional terminology. DF indicates the degrees of freedom (DF) (see also section \ref{sec:DF}), the summation is called the sum of squares (SS), the result is called the mean square (MS) and the squared terms are deviations from the sample mean.
+ANOVA uses traditional terminology. DF indicates the degrees of freedom (DF) (see also section \ref{sec:DF}), the summation is called the \acrfull{ss} (SS), the result is called the mean square (MS) and the squared terms are deviations from the sample mean.
 In general, the \emph{sample variance}\index{general}{sample variance} is defined by
 
 \begin{equation}\label{eq:sampleVariance}
@@ -266,7 +266,7 @@ since we perform multiple comparison tests, we should compensate for the risk of
 
 \subsubsection{Tukey's Test}\index{general}{test!Tukey's}
 
-\emph{Tukey's test}, sometimes also referred to as the \emph{Tukey Honest Significant Difference (HSD) method}, controls for the Type I error rate across multiple comparisons and is generally considered an acceptable technique. It is based on a
+\emph{Tukey's test}, sometimes also referred to as the \acrfull{hsd} (HSD) method, controls for the Type I error rate across multiple comparisons and is generally considered an acceptable technique. It is based on a
 statistic that we have not come across yet, the \emph{studentized range}\index{general}{studentized range}, which is commonly represented by the variable q. The \emph{studentized range} computed from a list of numbers $x_1, ..., x_n$ is given by
 
 \begin{equation}
