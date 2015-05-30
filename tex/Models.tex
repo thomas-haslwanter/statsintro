@@ -64,7 +64,7 @@ In the case of a linear regression model, the model can be rewritten as in Eq \r
     y=X\beta+ \epsilon,
 \end{equation*}
 
-For a simple linear regression and multiple regression, the corresponding Design Matrices are given in \ref{eq:simpleRegression} and \ref{eq:multipleRegression}, respectively.
+For a simple linear regression and multiple regression, the corresponding Design Matrices are given in \ref{eq:simpleRegressionMatrix} and \ref{eq:multipleRegression}, respectively.
 
 \footnote{This section has been taken from Wikipedia} Given a data set $\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n$ of $n$ statistical units, a linear regression model assumes that the relationship between the dependent variable $y_i$ and the $p$-vector of regressors $x_i$ is linear. This relationship is modelled through a \emph{disturbance term} or \emph{error variable} $\epsilon_i$, an unobserved random variable that adds noise to the linear relationship between the dependent variable and regressors. Thus the model takes the form
 
@@ -599,7 +599,7 @@ As you see, the $\hat{\mu}_3$ and $\hat{\mu}_4$ are the third and fourth central
     >>> Skewness: -0.014,  Kurtosis: 1.527
 \end{lstlisting}
 
-\subsubsection{Omnibus Test}
+\subsubsection{Omnibus Test}\index{general}{test!Omnibus}
 
 The Omnibus test uses skewness and kurtosis to test the null hypothesis that a distribution is normal. In this case, we’re looking at the distribution of the residual. If we obtain a very small value for $\Pr( \mbox{ Omnibus } )$, then the residuals are not normally distributed about zero, and we should maybe look at our model more closely. The \lstinline{statsmodels} OLS function uses the \lstinline{stats.normaltest()} function:
 
@@ -627,7 +627,7 @@ The Durbin-Watson test is used to detect the presence of autocorrelation (a rela
     >>> Durbin-Watson: 1.97535
 \end{lstlisting}
 
-\subsubsection{Jarque-Bera Test}
+\subsubsection{Jarque-Bera Test}\index{general}{test!Jarque-Bera}
 
 The Jarque-Bera test is another test that considers skewness (S), and kurtosis (K). The null hypothesis is that the distribution is normal, that both the skewness and excess kurtosis equal zero, or alternatively, that the skewness is zero and the regular run-of-the-mill kurtosis is three. Unfortunately, with small samples the Jarque-Bera test is prone rejecting the null hypothesis -– that the distribution is normal–when it is in fact true.
 
@@ -648,7 +648,7 @@ Calculating the JB-statistic using the $\chi^{2}$ distribution with two degrees 
 
 \subsubsection{Condition Number}
 
-The \emph{condition number} \index{general}{condition number} measures the sensitivity of a function's output to its input. When two predictor variables are highly correlated, which is called multicollinearity, the coefficients or factors of those predictor variables can fluctuate erratically for small changes in the data, or the model. Ideally, similar models should be similar, i.e., have approximately equal coefficients. Multicollinearity can cause numerical matrix inversion to crap out, or produce inaccurate results. One approach to this problem in regression is the technique of \emph{ridge regression}, which is available in the \lstinline{sklearn} Python module.
+The \emph{condition number} \index{general}{condition number} measures the sensitivity of a function's output to its input. When two predictor variables are highly correlated, which is called \emph{multicollinearity}\index{general}{multicollinearity}, the coefficients or factors of those predictor variables can fluctuate erratically for small changes in the data, or the model. Ideally, similar models should be similar, i.e., have approximately equal coefficients. Multicollinearity can cause numerical matrix inversion to crap out, or produce inaccurate results. One approach to this problem in regression is the technique of \emph{ridge regression}, which is available in the \lstinline{sklearn} Python module.
 
 We calculate the condition number by taking the eigenvalues of the product of the predictor variables (including the constant vector of ones) and then taking the square root of the ratio of the largest eigenvalue to the least eigenvalue. If the condition number is greater than thirty, then the regression may have multicollinearity.
 

@@ -1,3 +1,5 @@
+\part{Python}
+
 \chapter{Python}
 
 \section{Getting Started}
@@ -55,11 +57,12 @@ The programs included in this book have been tested under Windows and Linux, usi
   \item \emph{scipy 0.15.1} ... All the essential scientific algorithms, including those for statistics.
   \item \emph{matplotlib 1.4.3} ... The de-facto standard module for plotting and visualization.
   \item \emph{pandas 0.16.0} ... Adds \emph{DataFrames} (imagine powerful spreadsheets) to Python.
-  \item \emph{patsy 0.3.0} ... For working with statistical formulas.
+  \item \emph{patsy 0.3.0} ... \index{general}{patsy}For working with statistical formulas.
   \item \emph{statsmodels 0.6.1} ... For statistical modeling and advanced analysis.
   \item \emph{seaborn 0.5.1} ... For visualization of statistical data.
   \item \emph{PyMC 2.3.4} ... For Bayesian statistics, including Markov chain Monte Carlo simulations.
   \item \emph{scikits.bootstrap 0.3.2} ... Provides bootstrap confidence interval algorithms for scipy.
+  \item \emph{rpy2 2.5.6} ... Provides a wrapper for R-functions in Python.
 \end{itemize}
 
 \subsection{PyPI - the Python Package Index}
@@ -85,9 +88,9 @@ To get a list of all the Python packages installed on your computer, type
 \end{lstlisting}
 
 
-\section{IPython}
+\section{IPython}\index{general}{IPython}
 
-Make sure that you have a good programming environment! For me, the most efficient way to write new code is as follows: I first get the individual steps worked out interactively in an \href{http://ipython.org/}{ipython} \emph{qtconsole}. Ipython \index{general}{Python!ipython} provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code. When ipython is started in \emph{pylab mode} (which is the typical configuration), it automatically loads numpy and matplotlib.pyplot into the active workspace, and provides a very convenient, Matlab-like programming environment.
+Make sure that you have a good programming environment! For me, the most efficient way to write new code is as follows: I first get the individual steps worked out interactively in an \href{http://ipython.org/}{ipython} \emph{qtconsole}. Ipython provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code. When ipython is started in \emph{pylab mode} (which is the typical configuration), it automatically loads numpy and matplotlib.pyplot into the active workspace, and provides a very convenient, Matlab-like programming environment.
 
 A very helpful new addition is the browser-based \emph{ipython notebook}, with support for code, text, mathematical expressions, inline plots and other rich media. Please check out the links to the ipython
 notebooks in this statistics introduction. I believe that it will  help you to get up to speed with python much more quickly.
@@ -121,7 +124,7 @@ First IPython starts out telling you about the version of IPython and Python you
 
     To understand what is happening here requires a short detour into the structure of scientific Python. Fig.\ref{fig:scientificPython} shows the connection of the most important Python packages that are used in this book.
 
-    \emph{Python} itself is an interpretative programming language, with no optimization for working with vectors or matrices or for producing plots. \emph{Packages} which extend the abilities of Python must be loaded explicitly. The most important package for scientific applications is \emph{numpy}, which makes working with vectors and matrices fast and efficient, and \emph{matplotlib}, which is the most common package used for producing graphical output. \emph{scipy} contains important scientific algorithms. For the statistical data analysis, \lstinline{scipy.stats} contains the majority of the algorithms that will be used in this book. \emph{pandas} is a more recent addition, which has become widely adopted for statistical data analysis. It provides \emph{DataFrames}, which are labelled, 2-dimensional data structures, making work with data more intuitive and clearer. \emph{seaborn} extends the plotting abilities of \emph{matplotlib}, with a focus on statistical graphs. And \emph{statsmodels} contains many modules for statistical modeling, and for advanced statistical analysis. Both \emph{seaborn} and \emph{statsmodels} make use of the \emph{pandas'} DataFrames.
+    \emph{Python} itself is an interpretative programming language, with no optimization for working with vectors or matrices or for producing plots. \emph{Packages} which extend the abilities of Python must be loaded explicitly. The most important package for scientific applications is \emph{numpy}\index{general}{numpy}, which makes working with vectors and matrices fast and efficient, and \emph{matplotlib}, which is the most common package used for producing graphical output. \emph{scipy}\index{general}{scipy} contains important scientific algorithms. For the statistical data analysis, \lstinline{scipy.stats} contains the majority of the algorithms that will be used in this book. \emph{pandas} is a more recent addition, which has become widely adopted for statistical data analysis. It provides \emph{DataFrames}, which are labelled, 2-dimensional data structures, making work with data more intuitive and clearer. \emph{seaborn} extends the plotting abilities of \emph{matplotlib}, with a focus on statistical graphs. And \emph{statsmodels} contains many modules for statistical modeling, and for advanced statistical analysis. Both \emph{seaborn} and \emph{statsmodels} make use of the \emph{pandas'} DataFrames.
 
     \emph{IPython} provides the tools for interactive data analysis. It lets you quickly display graphs and change directories, explore the workspace, provides a command history etc. The ideas and base structure of IPython have been so successful that one component, the \emph{IPython Notebook} has been turned into a project of its own, \emph{Jupyter}, which is now also used by other languages like Julia, R, and Ruby.
 
@@ -221,6 +224,28 @@ Now you can start "your" ipython by just typing \lstinline{ipy}, and the noteboo
 
 Here the procedure should be the same as in Linux [CHECK!!!]
 
+\subsection{Ipython Notebook}\index{general}{IPython!notebook}
+
+Since approximately 2013 the \emph{IPython notebook} has become a very popular way to share research and results with the Python community. It allows to combine a structured layout, equation in the popular LaTex-format, and resulting graphs and videos.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\textwidth]{../Images/ipython-notebook.png}\\
+  \caption{The \emph{IPython Notebook} makes it easy to share research, formulas, and results.}
+\end{figure}
+
+\subsubsection{rpy2}\index{general}{rpy2}\index{general}{R (programming language)}
+
+While Python is my preferred programming language, the world of advanced statistics is clearly dominated by \emph{R}. Like Python, R is completely free, and has a very active user community. While Python is a general programming language, R is optimized for the interactive work with statistical data. Many users swear that \emph{ggplot} provides the best-looking graphs for statistical data.
+
+To combine the best of both worlds, the package \emph{rpy2} provides a way to transfer data from Python into R, execute commands in R, and transfer the results back into Python. In the IPython notebook, with rpy2 even R graphics can be fully utilized!
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\textwidth]{../Images/ipython-rmagic.png}\\
+  \caption{The output from R-commands is not working properly yet, and has been "hacked" here. However, this issue should be resolved soon.}
+\end{figure}
+
 \subsection{IPython Tips}
 
 \begin{enumerate}
@@ -276,7 +301,7 @@ The following modifications were made from the IPython history:
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/Wing.png}\\
-  \caption{\emph{Wing} is my favorite development environment, with probably the best existing debugger for Python.}
+  \caption{\emph{Wing}\index{general}{Wing} is my favorite development environment, with probably the best existing debugger for Python.}
 \end{figure}
 
 To write a program, I typically take the commands I have worked out in ipython with \lstinline{%history}, and take them to an IDE (integrated development environment): I either use \emph{Wing} (my clear favorite Python IDE, although it is commercial) or \emph{Spyder} (which is good and free). \emph{PyCharm} is another IDE with a good debugger, and has very good vim-emulation.
@@ -284,7 +309,7 @@ To write a program, I typically take the commands I have worked out in ipython w
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/spyder-screenshot.jpg}\\
-  \caption{\emph{Spyder} is a very good, free IDE.}
+  \caption{\emph{Spyder}\index{general}{Spyder} is a very good, free IDE.}
 \end{figure}
 
 \subsection{Functions, Modules, and Packages}
@@ -347,7 +372,7 @@ If you import a module multiple times, Python recognizes that the module is alre
 
 The next example shows you how to import functions from one module into another one:
 
-\lstinputlisting[label=py:pythonFunction,caption=pythonImport.py, language=Python, numbers=left]{../Code3/pythonImport.py}
+\lstinputlisting[label=py:pythonImport,caption=pythonImport.py, language=Python, numbers=left]{../Code3/pythonImport.py}
 
 \begin{itemize}
   \item textbf{6:} Here the module \lstinline{pythonFunction} (that we have just discussed above) is imported. Note that the code in the section \lstinline{if \_\_name\_\_ == '\_\_main\_\_'} is NOT executed when the module is imported!
@@ -388,11 +413,11 @@ The next example shows you how to import functions from one module into another 
 \section{Python Data Structures}
 
 \begin{description}
-  \item[Tuple ()] A collection of different things. Tuples are \emph{immutable}, i.e. they cannot be modified after creation.
-  \item[List [] ] Lists are \emph{mutable}, i.e. their elements can be modified. Therefore lists are typically used to collect items of the same type (numbers, strings, ...).
-  \item[Array [] ] Vectors and matrices, for numerical data manipulation. Defined in \emph{numpy}.
-  \item[Dictionary \{\}] Dictionaries are unordered \emph{(key/value)} collections of content, where the content is addressed as \emph{dict['key']} (see example below).
-  \item[DataFrame] Data structure optimized for working with named, statistical data. Defined in \emph{pandas}. (See next chapter.)
+  \item[Tuple ()] \index{general}{tuple}A collection of different things. Tuples are \emph{immutable}, i.e. they cannot be modified after creation.
+  \item[List [] ] \index{general}{list}Lists are \emph{mutable}, i.e. their elements can be modified. Therefore lists are typically used to collect items of the same type (numbers, strings, ...).
+  \item[Array [] ] \index{general}{array}Vectors\index{general}{vectors} and matrices, for numerical data manipulation. Defined in \emph{numpy}. Note that vectors and 1-d arrays are different: vectors \emph{cannot} be transposed!
+  \item[Dictionary \{\}] \index{general}{dictionary}Dictionaries are unordered \emph{(key/value)} collections of content, where the content is addressed as \emph{dict['key']} (see example below).
+  \item[DataFrame] \index{general}{dataframe}Data structure optimized for working with named, statistical data. Defined in \emph{pandas}. (See next chapter.)
 \end{description}
 
 \begin{lstlisting}
@@ -430,7 +455,7 @@ The next example shows you how to import functions from one module into another 
     Out[14]: dict_keys(['one', 'info', 'two'])
 \end{lstlisting}
 
-\subsection{Indexing and Slicing}
+\subsection{Indexing and Slicing}\index{general}{indexing}\index{general}{slicing}
 
 For addressing individual elements in Python lists or tuples, or in numpy arrays, the following conventions are used (Fig. \ref{fig:indexing}):
 
@@ -516,11 +541,11 @@ There are a few points that are peculiar to Python, and that are worth noting:
 
 \section{Plots in Python}
 
-The Python core does not include any possibilities to generate plots. This is added by other packages. The by far most common package used for plotting is \Gls{matplotlib}. Matplotlib is not part of the core of Python. But if you installed Python with a scientific package like \emph{WinPython} or \emph{anaconda}, it will be included. Matplotlib is intended to mimic the style of Matlab. As such, users can either generate plots in the MATLAB style, or in the traditional Python style (see below).
+The Python core does not include any possibilities to generate plots. This is added by other packages. The by far most common package used for plotting is \Gls{matplotlib}\index{general}{matplotlib}. Matplotlib is not part of the core of Python. But if you installed Python with a scientific package like \emph{WinPython} or \emph{anaconda}, it will be included. Matplotlib is intended to mimic the style of Matlab. As such, users can either generate plots in the MATLAB style, or in the traditional Python style (see below).
 
 Matplotlib contains a number of different modules and features:
 \begin{description}
-  \item[matplotlib.pyplot] This is the module that is commonly used to generate plots, and is by convention imported in Python functions and scripts with \lstinline{import matplotlib.pyplot as plt}. \emph{pyplot} \index{general}{Python!pyplot} provides the interface to the plotting library in matplotlib. Pyplot handles a lot of little details, such as creating figures and axes for the plot, so that the user can concentrate on the data analysis.
+  \item[matplotlib.pyplot] This is the module that is commonly used to generate plots, and is by convention imported in Python functions and scripts with \lstinline{import matplotlib.pyplot as plt}. \emph{pyplot} \index{general}{pyplot} provides the interface to the plotting library in matplotlib. Pyplot handles a lot of little details, such as creating figures and axes for the plot, so that the user can concentrate on the data analysis.
   \item[matplotlib.mlab] Contains a number of functions that are commonly used in MATLAB, such as \lstinline{find}, \lstinline{griddata}, etc.
   \item["backends"] Matplotlib can produce output in many different formats, which are referred to as \emph{backends}\index{general}{backend}:
     \begin{itemize}
@@ -530,7 +555,7 @@ Matplotlib contains a number of different modules and features:
     \end{itemize}
 \end{description}
 
-\emph{pylab}\index{general}{Python!pylab} is a convenience module that bulk imports matplotlib.pyplot (for plotting) and numpy (for mathematics and working with arrays) in a single name space. Although many examples use pylab, it is no longer recommended, and should only be used in IPython, to facilitate interactive development of code.
+\emph{pylab}\index{general}{pylab} is a convenience module that bulk imports matplotlib.pyplot (for plotting) and numpy (for mathematics and working with arrays) in a single name space. Although many examples use pylab, it is no longer recommended, and should only be used in IPython, to facilitate interactive development of code.
 
 \subsection{Interactive plots}
 
@@ -605,7 +630,7 @@ simplest to use the \emph{pylab mode}, as shown in the example below.
 \index{python}{gettingStarted}
 
 
-\section{Pandas}
+\section{Pandas}\index{general}{Pandas}
 
 \href{http://pandas.pydata.org/.}{pandas} is a widely used Python package which has been contributed by Wes McKinney. It provides data structures suitable for statistical analysis, and adds functions that facilitate
 data input, data organization, and data manipulation. It is common to \lstinline{import pandas as pd}, which reduces the typing a bit.
@@ -754,7 +779,7 @@ produces
 
 For statistical analysis, pandas becomes really powerful if you combine it with \emph{statsmodels} (see below).
 
-\section{Statsmodels}
+\section{Statsmodels}\index{general}{statsmodels}
 
 \href{http://statsmodels.sourceforge.net/.}{statsmodels} is a Python package contributed to the community by the statsmodels development team. It has a very active user community, and has in the last five years massively improved the suitability of Python for statistical data analysis. \emph{statsmodels} provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. \emph{statsmodels} also allows the formulation of models with the popular formula language based on the notation introduced by Wilkinson and Rogsers (\cite{Wilkinson1973}, and also used by $S$ and $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model
 
@@ -769,7 +794,7 @@ While for complex statistical models R still has an edge, python has a much clea
 \PyImg "statsmodelsIntro.py" (p \pageref{py:statsmodelsIntro}) shows you how the combination of pandas and statsmodels can be used for data analysis.
 \index{python}{statsmodelsIntro}
 
-\section{Seaborn}
+\section{Seaborn}\index{general}{seaborn}
 
 \href{http://statsmodels.sourceforge.net/.}{seaborn} is a Python visualization library based on Matplotlib. Its primary goal is to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive.
 

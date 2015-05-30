@@ -1,5 +1,7 @@
 """
 Implementation of logistic ordinal regression (aka proportional odds) model
+
+author: fernando pedorosa, date: march-2013
 """
 
 from sklearn import metrics

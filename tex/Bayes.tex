@@ -60,7 +60,7 @@ Another way to do this calculation is as follows. Initially, it is equally likel
 
 \section{The Bayesian Approach in the Age of Computers}
 
-Bayes's theorem was named after the Reverend Thomas Bayes (1701 - 1761), who studied how to compute a distribution for the probability parameter of a binomial distribution. So it has been around for a long time. The reason Bayes' Theorem has become so popular in statistics in recent years is the cheap availability of massive computational power. This allows the empirical calculation of posterior probabilities, one-by-one, for each new piece of evidence. This, combined with statistical approaches like \emph{Markov Chain Monte Carlo (MCMC)} simulations, has allowed radically new statistical analysis procedures, and has led to what may be called "statistical trench warfare" between the followers of the different philosophies. If you don't believe me, check the corresponding discussions on the WWW.
+Bayes's theorem was named after the Reverend Thomas Bayes (1701 - 1761), who studied how to compute a distribution for the probability parameter of a binomial distribution. So it has been around for a long time. The reason Bayes' Theorem has become so popular in statistics in recent years is the cheap availability of massive computational power. This allows the empirical calculation of posterior probabilities, one-by-one, for each new piece of evidence. This, combined with statistical approaches like \acrfull{mcmc} (MCMC) simulations, has allowed radically new statistical analysis procedures, and has led to what may be called "statistical trench warfare" between the followers of the different philosophies. If you don't believe me, check the corresponding discussions on the WWW.
 
 For more information on that topic, check out (in order of rising complexity)
 
@@ -85,9 +85,9 @@ On January 28, 1986, the twenty-fifth flight of the U.S. space shuttle program e
 
 To simulate the probability of the O-rings failing, we need a function that goes from one to zero. One of the most frequently used functions for that is the \emph{logistic function}\index{general}{logistic function}:
 
-\begin{equation}\label{eq:logisticFcn}
+\begin{equation*}
   p(t) = \frac{1}{ 1 + e^{ \;\beta t + \alpha } }
-\end{equation}
+\end{equation*}
 
 In this model, the variable $\beta$ that describes how quickly the function changes from 1 to 0, and $\alpha$ indicates the location of this change.
 

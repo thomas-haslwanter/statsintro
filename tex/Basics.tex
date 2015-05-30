@@ -1,3 +1,5 @@
+\part{Basics Principles and Hypothesis Tests}
+
 \chapter{Basic Principles}
 
 \section{Datatypes}
@@ -144,7 +146,7 @@ Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plo
 
 \section{Populations and Samples}
 
-The main difference between a \emph{population} and a \emph{sample} has to do with how observations are assigned to the data set (see Fig. \ref{fig:population}).
+The main difference between a \emph{population}\index{general}{population} and a \emph{sample}\index{general}{sample} has to do with how observations are assigned to the data set (see Fig. \ref{fig:population}).
 
 \begin{description}
   \item[Population] includes all of the elements from a set of data.
@@ -160,7 +162,7 @@ The main difference between a \emph{population} and a \emph{sample} has to do wi
 
 More than one sample can be derived from the same population.
 
-When estimating a \emph{parameter} of a \emph{population}, e.g. the weight of male Europeans, we can typically never measure all of them. We have to confine ourselves to investigate a (hopefully representative) random \emph{sample} of this group. Based on the \emph{sample statistic}, we use \emph{statistical inference} to find out what we know about the \emph{parameter}.
+When estimating a \emph{parameter} of a \emph{population}, e.g. the weight of male Europeans, we can typically never measure all of them. We have to confine ourselves to investigate a (hopefully representative) random \emph{sample} of this group. Based on the \emph{sample statistic}, we use \emph{statistical inference}\index{general}{inference} to find out what we know about the \emph{parameter}.
 
 \begin{description}
   \item[Parameter] characteristic of a population, such as a mean or standard deviation. Often denoted with Greek symbols.
@@ -188,7 +190,7 @@ An example for parameters and statistics is given in Table \ref{table:population
 
 \section{Degrees of Freedom}\label{sec:DF}
 
-The concept of \acrfull{dof} (DOF)\index{general}{DOF, degrees of freedom}, which in mechanics seems to be crystal clear, is harder to grasp for statistical applications.
+The concept of \acrfull{dof} (DOF)\index{general}{degrees of freedom, DOF}, which in mechanics seems to be crystal clear, is harder to grasp for statistical applications.
 
 In mechanics, a particle which moves in a plane has \emph{2 DOF}: at each point in time, two parameters (the x/y-coordinates) define the location of the particle. If the particle moves about in space, it is said to have \emph{3 DOF}: the x/y/z-coordinates.
 
@@ -229,8 +231,7 @@ formulate a mathematical model for example as
 \end{equation}
 
 The terms with the single "X's" are called \emph{main effects}\index{general}{main effects}, and the terms with multiple "X's" \emph{interaction terms}\index{general}{interactions}. And since the $\beta$
-parameters enter the equation only linearly, this is referred to as a \emph{general linear model}. The $\epsilon$s are called \emph{residuals}, and
-are expected to be approximately normally distributed around zero.
+parameters enter the equation only linearly, this is referred to as a \emph{general linear model}. The $\epsilon$s are called \emph{residuals}\index{general}{residuals}, and are expected to be approximately normally distributed around zero.
 
 \subsection{Overview}
 
@@ -286,16 +287,16 @@ Always immediately store the rawdata, preferably in a separate directory. I pref
 
 \subsection{Types of Studies}
 
-\subsubsection{Observational or experimental}\index{general}{design of experiments!observational}\index{general}{design of experiments!experimental}
+\subsubsection{Observational or experimental}\index{general}{design of experiments!observational}\index{general}{study!experimental}
 With \emph{observational} studies the researcher only collects information, but does not interact with the study population. In contrast, in \emph{experimental} studies the researcher deliberately influences events (e.g. treats the patient with a new type of treatment) and investigates the effects of these interventions.
 
-\subsubsection{Prospective or retrospective}\index{general}{design of experiments!prospective}\index{general}{design of experiments!retrospective}
+\subsubsection{Prospective or retrospective}\index{general}{study!prospective}\index{general}{study!retrospective}
 In \emph{prospective} studies the data are collected, starting with the beginning of the study. In contrast, a \emph{retrospective} study takes data acquired from previous events, e.g. routine tests taken at a hospital.
 
-\subsubsection{Longitudinal or cross-sectional}\index{general}{design of experiments!longitudinal}\index{general}{design of experiments!cross-sectional}
+\subsubsection{Longitudinal or cross-sectional}\index{general}{study!longitudinal}\index{general}{study!cross-sectional}
 In \emph{longitudinal} investigations, the researcher collects information over a period of time, maybe multiple times from each patient. In contrast, in \emph{cross-sectional} studies individuals are observed only once. For example, most surveys are cross-sectional, but experiments are usually longitudinal.
 
-\subsubsection{Case control and Cohort studies}\index{general}{design of experiments!case control studies}\index{general}{design of experiments!cohort studies}
+\subsubsection{Case control and Cohort studies}\index{general}{study!case control }\index{general}{study!cohort}
 In \emph{case control} studies, first the patients are treated, and then they are selected for inclusion in the study, based on some characteristic (e.g. if they responded to a certain medication). In contrast, in \emph{cohort studies}, first subjects of interest are selected, and then these subjects are studied over time, e.g. for their response to a treatment.
 
 \subsection{Design of Experiments}

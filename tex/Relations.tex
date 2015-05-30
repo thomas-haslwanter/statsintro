@@ -28,7 +28,7 @@ and $s_x, s_y$ the sample standard deviations of the $x$ and $y$ values, respect
 
 Pearson's correlation coefficient, sometimes also referred to as \emph{population correlation coefficient} or \emph{sample correlation}, can take any value from -1 to +1. Examples are given in Figure \ref{fig:correlation}. Note that the formula for the correlation coefficient is symmetrical between $x$ and $y$ - which is not the case for linear regression!
 
-\subsection{Rank Correlation}
+\subsection{Rank Correlation}\index{general}{rank correlation}
 
 If the data distribution is not normal, a different approach is necessary. In that case one can rank the set of subjects for each variable and compare the orderings. There are two commonly used methods of calculating the rank correlation. \index{general}{correlation!Spearman}
 \index{general}{correlation!Kendall's $\tau$}
@@ -76,7 +76,7 @@ Suppose there are 7 data points $\left\{ {{y_i},{x_i}} \right\}$, where $i=1,2,â
 
 where $\beta_0$ is the y-intercept and $\beta_1$ is the slope of the regression line. This model can be represented in matrix form as
 
-\begin{equation}\label{eq:simpleRegression}
+\begin{equation}\label{eq:simpleRegressionMatrix}
   \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
   =
   \begin{bmatrix}1 & x_1  \\1 & x_2  \\1 & x_3  \\1 & x_4  \\1 & x_5  \\1 & x_6 \\ 1 & x_7  \end{bmatrix}
@@ -124,7 +124,7 @@ $\mathbf{y}$ is a vector of dimension $(n \times 1)$ and is called the \emph{end
 In order to interpret r, let me first define a few common terms.
 
 \begin{description}
-  \item[Residuals] Differences between observed values and predicted values.
+  \item[Residuals] \index{general}{residuals}Differences between observed values and predicted values.
 \end{description}
 
 \begin{figure}
@@ -186,7 +186,7 @@ Eq. \ref{eq:R2} is equivalent to
 For simple linear regression (i.e. line-fits), the \emph{coefficient of determination} \index{general}{coefficient of determination} or $R^2$ is the square of the correlation coefficient $r$. It is easier to interpret than the correlation coefficient r: values of $R^2$ close to 1 are good, values close to 0 are poor.
 Note that for general models it is common to write $R^2$, whereas for simple linear regression $r^2$ is used.
 
-\subsubsection{Relation to unexplained variance}
+\subsubsection{Relation to unexplained variance}\index{general}{unexplained variance}
 
 In a general form, $R^2$ can be seen to be related to the unexplained variance, since the second term in Eq. \ref{eq:R2} compares the unexplained variance (variance of the model's errors) with the total variance (of the data).
 
@@ -292,7 +292,7 @@ To use the technique of linear regression, the following assumptions should be f
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/Anscombes_quartet.png}\\
-  \caption{The sets in the \emph{Anscombe's quartet} have the same linear regression line but are themselves very different.}
+  \caption{The sets in the \emph{Anscombe's quartet}\index{general}{Anscombe's quartet} have the same linear regression line but are themselves very different.}
 \end{figure}
 
 \PyImg "multivariate.py" (p \pageref{py:multivariate}): Analysis of multivariate data (regression, correlation).
