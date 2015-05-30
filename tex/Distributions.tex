@@ -5,10 +5,10 @@
 
 \subsection{Continuous Distribution Functions}
 
-A continuous distribution function describes the \Gls{distribution} of a population, and can be represented in several equivalent ways:
+A continuous \gls{distribution} Function describes the distribution of a population, and can be represented in several equivalent ways:
 
 \subsubsection{Probability Density Function (PDF)}\index{general}{probability density function}
-The \acrfull{pdf}, or density of a continuous random variable, is a function that describes the relative likelihood for a random variable $X$ to take on a given value $x$.
+The \acrfull{pdf}, or \gls{density} of a continuous random variable, is a function that describes the relative likelihood for a random variable $X$ to take on a given value $x$.
 In the mathematical fields of probability and statistics, a \emph{random variate x} \index{general}{random variate} is a particular outcome of a \emph{random variable X}: the random variates which are other outcomes of the same random variable might have different values.
 
 Since the likelihood to find any given value cannot be less than zero, and since the variable has to have some value, the PDF has the following properties:
@@ -33,7 +33,7 @@ The PDF also defines the \emph{expected value E[x]} \index{general}{expected val
 
 \subsubsection{Cumulative Distribution Function (CDF)}\index{general}{cumulative distribution function}
 
-The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \acrfull{cdf} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
+The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \gls{cdf_} \acr{cdf} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
 
 \begin{equation}
    \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
@@ -99,7 +99,12 @@ In Python, the most elegant way of working with distribution function is a two-s
 
 \subsection{Distribution Center}\index{general}{distribution center}
 
-When we have a datasample from a distribution, we can characterize the center of the distribution with different parameters:
+When we have a datasample from a distribution, we can characterize the center of the distribution with different parameters. Thereby the data can be evaluated in two ways:
+
+\begin{enumerate}
+  \item By their value.
+  \item by their \gls{rank}.
+\end{enumerate}
 
 \subsubsection{Mean} \index{general}{mean}
 By default, when we talk about the \emph{mean value} we mean the \emph{arithmetic mean} $\bar{x}$:
@@ -109,11 +114,11 @@ By default, when we talk about the \emph{mean value} we mean the \emph{arithmeti
 \end{equation}
 
 \subsubsection{Median} \index{general}{median}
-The \emph{median} is that value that comes half-way when the data are ranked in order.
+The \gls{median} is that value that comes half-way when the data are ranked in order.
 In contrast to the mean, it is not affected by outlying data points.
 
 \subsubsection{Mode} \index{general}{mode}
-The \emph{mode} value is the most frequently occurring value in a distribution.
+The \gls{mode} is the most frequently occurring value in a distribution.
 
 \subsubsection{Geometric Mean}\index{general}{geometric mean}
 In some situations the \emph{geometric mean} can be useful to describe the location of a distribution. It is usually close to the median, and can be calculated via the arithmetic mean of the log of the values.
@@ -127,7 +132,7 @@ The only thing that you have to watch out for: after you have acquired your data
 
 \subsubsection{Percentiles}\index{general}{centiles}\index{general}{percentiles}
 
-\emph{Centiles}, also called \emph{percentile}, give the value below which a given percentage of the values occur. It corresponds to a value with a specified cumulative frequency. While you won't often hear the expression \emph{centiles}, you will frequently encounter specific centiles:
+\emph{Centiles}, also called \gls{percentile}, give the value below which a given percentage of the values occur. It corresponds to a value with a specified cumulative frequency. While you won't often hear the expression \emph{centiles}, you will frequently encounter specific centiles:
 
 \begin{itemize}
   \item When you look for the data range which includes 95\% of the data, you have to find the $2.5^{th}$ and the $97.5^{th}$ percentile of your sample distribution.
@@ -140,7 +145,7 @@ Median, upper and lower quartile are used for the data display in box plots (Fig
 \subsubsection{Standard Deviation and Variance}
 
 In Fig. \ref{fig:population} I sketched out how we have to use the \emph{sample statistic} to learn about the corresponding \emph{population parameter}.
-The \emph{maximum likelihood estimator of the sample variance} is given by
+The \emph{maximum likelihood estimator} of the sample \gls{variance} is given by
 
 \begin{equation}\label{eq_variance} \index{general}{variance}
   var = \frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n}
@@ -160,7 +165,7 @@ Figure \ref{fig:mean_std} indicates that the sample variance underestimates the 
 Division by $n-1$ corrects for this bias, and provides the best possible estimate of the population variance. The variance calculated with $n-1$ is called the \emph{sample variance}.
 
 
-The \emph{standard deviation} \index{general}{standard deviation} is simply given by the square root of the variance:
+The \gls{sd_} \index{general}{standard deviation} is simply given by the square root of the variance:
 
 \begin{equation}
   s = \sqrt{var}
@@ -199,7 +204,7 @@ For normally distributed data, the \emph{sample standard error of the mean} (SE 
 
 \subsubsection{Confidence Intervals}\index{general}{confidence interval}
 
- In the statistical analysis of data it has become common to state the \acrfull{ci} of an estimated parameter. The confidence interval reports the range that contains the true value for your parameter with a likelihood of $\alpha$\%.
+ In the statistical analysis of data it has become common to state the \acrfull{ci} of an estimated parameter. The \gls{confidenceinterval} reports the range that contains the true value for your parameter with a likelihood of $\alpha$\%.
 
 If the sampling distribution is symmetrical and unimodal, it will often be possible to approximate the confidence interval by
 
@@ -219,7 +224,7 @@ For example, for the \emph{normal distribution}, \emph{(location/shape)} are giv
 
 \subsubsection{Location}\index{general}{distribution!location}
 
-A \emph{location parameter} $x_0$  determines the "location" or shift of a distribution.
+A \gls{location} parameter $x_0$  determines the "location" or shift of a distribution.
 
 \begin{equation*}
   f_{x0}(x)=f(x-x_0)
@@ -229,7 +234,7 @@ Examples of location parameters include the mean, the median, and the mode.
 
 \subsubsection{Scale}\index{general}{distribution!scale}
 
-The \emph{scale parameter} describes the width of a probability distribution.  If s is large, then the distribution will be more spread out; if s is small then it will be more concentrated. If the probability density exists for all values of $s$, then the density (as a function of the scale parameter only) satisfies
+The \gls{scale} parameter describes the width of a probability distribution.  If s is large, then the distribution will be more spread out; if s is small then it will be more concentrated. If the probability density exists for all values of $s$, then the density (as a function of the scale parameter only) satisfies
 
 \begin{equation*}
    f_s(x) = f(x/s)/s,
@@ -239,7 +244,7 @@ where f is the density of a standardized version of the density.
 
 \subsubsection{Shape Parameters}\index{general}{shape parameters}
 
-It is customary to refer to all of the parameters beyond \emph{location} and \emph{scale} as \emph{shape paraemters}. Thankfully, almost all of the distributions that we use in statistics have only one or two parameters. It follows that the \emph{skewness }and \emph{kurtosis} of these distribution are constants.
+It is customary to refer to all of the parameters beyond \emph{location} and \emph{scale} as \glspl{shapeparameter}. Thankfully, almost all of the distributions that we use in statistics have only one or two parameters. It follows that the \gls{skewness} and \gls{kurtosis} of these distribution are constants.
 
 \begin{figure}
   \centering
@@ -269,7 +274,7 @@ Mathematically, the normal distribution is characterized by a mean value $\mu$, 
 \begin{equation}\label{eq_normal}
      f_{\mu,\sigma} (x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-( x - \mu )^2 /2 \sigma^2}
 \end{equation}
-where $ - \infty < x < \infty $, and $f_{\mu,\sigma}$ is the \emph{probability density function (PDF)} \index{general}{probability density function}.
+where $ - \infty < x < \infty $, and $f_{\mu,\sigma}$ is the \gls{pdf_} (PDF)} \index{general}{probability density function}.
 
 \begin{figure}
   \centering

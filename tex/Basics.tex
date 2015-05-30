@@ -6,7 +6,7 @@
 
 The choice of appropriate statistical procedure depends on the data. If the variables are numeric, we are led to a certain statistical strategy. In contrast, if the variables represent qualitative categorizations, then we follow a different path.
 
- The data can have one of the following datatypes:
+ The data can be \gls{categorical} or \gls{numerical}:
 
 \subsection{Categorical} \index{general}{data!categorical}
 
@@ -63,7 +63,7 @@ You can also smooth histograms with \acrfull{kde} (kde-plots). Those are nicely 
 
 \subsection{KDE-plots}\index{general}{plots!kde}
 
-Histograms have the disadvantage that they are discontinuous, and that their shape critically depends on the chosen bin-width. In order to obtain smooth \emph{probability densities}, i.e. curves describing the likelihood of finding an event in any given interval, the technique of \emph{Kernel Density Estimation (KDE)}\index{general}{Kernel Density Estimator (KDE)} can be used. Thereby a normal distribution is typically used for the kernel. The width of this kernel function determines the amount of smoothing. To see how this works, we compare the construction of histogram and kernel density estimators, using these 6 data points: x = [−2.1, −1.3, −0.4, 1.9, 5.1, 6.2]. For the histogram, first the horizontal axis is divided into sub-intervals or bins which cover the range of the data. In this case, we have 6 bins each of width 2. Whenever a data point falls inside this interval, we place a box of height 1/12. If more than one data point falls inside the same bin, we stack the boxes on top of each other.
+Histograms have the disadvantage that they are discontinuous, and that their shape critically depends on the chosen bin-width. In order to obtain smooth \emph{probability densities}, i.e. curves describing the likelihood of finding an event in any given interval, the technique of \emph{Kernel \gls{density} Estimation (KDE)}\index{general}{Kernel Density Estimator (KDE)} can be used. Thereby a normal distribution is typically used for the kernel. The width of this kernel function determines the amount of smoothing. To see how this works, we compare the construction of histogram and kernel density estimators, using these 6 data points: x = [−2.1, −1.3, −0.4, 1.9, 5.1, 6.2]. For the histogram, first the horizontal axis is divided into sub-intervals or bins which cover the range of the data. In this case, we have 6 bins each of width 2. Whenever a data point falls inside this interval, we place a box of height 1/12. If more than one data point falls inside the same bin, we stack the boxes on top of each other.
 
 For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident. Compared to the discreteness of the histogram, the kernel density estimates converge faster to the true underlying density for continuous random variables.
 
@@ -121,7 +121,7 @@ When you use percentage points, the cumulative frequency presentation has the ad
 
 \subsection{Box Plots}\index{general}{plots!boxplot}
 
-\emph{Box plots} are frequently used in scientific publications to indicate values in two or more groups. The bottom and top of the box indicate the first and third quartiles, and the line inside the box shows the median. Care has to be taken with the whiskers, as different conventions exist for them. The most common form is that the lower whisker indicates the lowest value still within 1.5 \emph{inter-quartile-range} (IQR)\index{general}{inter-quartile-range, IQR} of the lower quartile, and the upper whisker the highest value still within 1.5 IQR of the upper quartile. Outliers (outside the whiskers) are plotted separately. Another convention is to have the whiskers indicate the full data range.
+\Glspl{boxplot} are frequently used in scientific publications to indicate values in two or more groups. The bottom and top of the box indicate the first and third \glspl{quartile}, and the line inside the box shows the median. Care has to be taken with the whiskers, as different conventions exist for them. The most common form is that the lower whisker indicates the lowest value still within 1.5 \emph{inter-quartile-range} (IQR)\index{general}{inter-quartile-range, IQR} of the lower quartile, and the upper whisker the highest value still within 1.5 IQR of the upper quartile. Outliers (outside the whiskers) are plotted separately. Another convention is to have the whiskers indicate the full data range.
 
 There are a number of tests to check for outliers\index{general}{outliers}. The method suggested by Tukey is to check for data which lie more than 1.5 * IQR above or below the first/third quartile (see Section \ref{sec:centiles}).
 
@@ -146,7 +146,7 @@ Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plo
 
 \section{Populations and Samples}
 
-The main difference between a \emph{population}\index{general}{population} and a \emph{sample}\index{general}{sample} has to do with how observations are assigned to the data set (see Fig. \ref{fig:population}).
+The main difference between a \gls{population}\index{general}{population} and a \gls{sample}\index{general}{sample} has to do with how observations are assigned to the data set (see Fig. \ref{fig:population}).
 
 \begin{description}
   \item[Population] includes all of the elements from a set of data.
@@ -217,8 +217,8 @@ The case becomes more complex if we have many groups. For example, in chapter \r
 In the context of study design, different terminologies can be found (Fig. \ref{fig:StudyDesign}):
 
 \begin{itemize}
-    \item{The controlled inputs are often called \emph{factors}\index{general}{factors} or
-            \emph{treatments}\index{general}{treatments}.}
+    \item{The controlled inputs are often called \glspl{factor}\index{general}{factors} or
+            \gls{treatment}\index{general}{treatments}.}
     \item{The uncontrolled inputs are called \emph{co-factors}\index{general}{co-factors} or
             \emph{nuisance factors}.}
 \end{itemize}
@@ -288,22 +288,22 @@ Always immediately store the rawdata, preferably in a separate directory. I pref
 \subsection{Types of Studies}
 
 \subsubsection{Observational or experimental}\index{general}{design of experiments!observational}\index{general}{study!experimental}
-With \emph{observational} studies the researcher only collects information, but does not interact with the study population. In contrast, in \emph{experimental} studies the researcher deliberately influences events (e.g. treats the patient with a new type of treatment) and investigates the effects of these interventions.
+With an \gls{observational} the researcher only collects information, but does not interact with the study population. In contrast, in an \gls{experimental} the researcher deliberately influences events (e.g. treats the patient with a new type of treatment) and investigates the effects of these interventions.
 
 \subsubsection{Prospective or retrospective}\index{general}{study!prospective}\index{general}{study!retrospective}
-In \emph{prospective} studies the data are collected, starting with the beginning of the study. In contrast, a \emph{retrospective} study takes data acquired from previous events, e.g. routine tests taken at a hospital.
+In a \gls{prospective} the data are collected, starting with the beginning of the study. In contrast, a \gls{retrospective} takes data acquired from previous events, e.g. routine tests taken at a hospital.
 
 \subsubsection{Longitudinal or cross-sectional}\index{general}{study!longitudinal}\index{general}{study!cross-sectional}
 In \emph{longitudinal} investigations, the researcher collects information over a period of time, maybe multiple times from each patient. In contrast, in \emph{cross-sectional} studies individuals are observed only once. For example, most surveys are cross-sectional, but experiments are usually longitudinal.
 
 \subsubsection{Case control and Cohort studies}\index{general}{study!case control }\index{general}{study!cohort}
-In \emph{case control} studies, first the patients are treated, and then they are selected for inclusion in the study, based on some characteristic (e.g. if they responded to a certain medication). In contrast, in \emph{cohort studies}, first subjects of interest are selected, and then these subjects are studied over time, e.g. for their response to a treatment.
+In a \gls{casecontrol}, first the patients are treated, and then they are selected for inclusion in the study, based on some characteristic (e.g. if they responded to a certain medication). In contrast, in a \gls{cohort}, first subjects of interest are selected, and then these subjects are studied over time, e.g. for their response to a treatment.
 
 \subsection{Design of Experiments}
 
 \emph{"Block whatever you can; and randomize the rest!"}
 
-I have mentioned above that you have factors (which you control) and nuisance factors, which influence your results, but which you cannot control and/or manipulate. Assume, for example, that you have an experiment where the result depends on the person who performs the experiment (e.g. the nurse who tests the subject), and on the time of the day. In that case you can \emph{block} the factor \emph{nurse}, by having all tests performed by the same nurse. But it won't be possible to test all subjects at the same time. So you try to average out time effects, by \emph{randomly} mixing the timing of your subjects. If, in contrast, you measure your patients in the morning and your healthy subjects in the afternoon, you will invariably bring some \emph{bias} into your data.
+I have mentioned above that you have factors (which you control) and nuisance factors, which influence your results, but which you cannot control and/or manipulate. Assume, for example, that you have an experiment where the result depends on the person who performs the experiment (e.g. the nurse who tests the subject), and on the time of the day. In that case you can \gls{block} the factor \emph{nurse}, by having all tests performed by the same nurse. But it won't be possible to test all subjects at the same time. So you try to average out time effects, by \emph{randomly} mixing the timing of your subjects. If, in contrast, you measure your patients in the morning and your healthy subjects in the afternoon, you will invariably bring some \gls{bias} into your data.
 
 \subsubsection{Bias} \index{general}{bias}
 %http://www.math.upenn.edu/~deturck/m170/wk4/lecture/case1.html
@@ -330,7 +330,7 @@ In a designed experiment, there may be several conditions, called factors, that 
 Factors that can affect the outcome of the experiment are called \emph{covariates} or \emph{confoundings}. Through \emph{randomization}, covariates should be balanced across the groups.
 
 \subsubsection{Randomization} \index{general}{randomization}
-This may be one of the most important aspects of experimental planning. Randomization is used to avoid bias as much as possible, and there are different ways to randomize an experiment. For the randomization, \emph{random number generators}, which are available with most computer languages, can be used. To minimize the chance of bias, the randomly allocated numbers should be presented to the experimenter as late as possible.
+This may be one of the most important aspects of experimental planning. \Gls{randomization} is used to avoid bias as much as possible, and there are different ways to randomize an experiment. For the randomization, \emph{random number generators}, which are available with most computer languages, can be used. To minimize the chance of bias, the randomly allocated numbers should be presented to the experimenter as late as possible.
 
 Depending on the experiment, there are different ways to randomize the group assignment.
 
@@ -360,7 +360,7 @@ A closely related, but not completely random way to allocate a treatment is \emp
 Sometimes you may want to include a wider variety of subjects, with different characteristics. For example, you may choose to have younger as well as older subjects. In that case you should try to keep the number of subjects within each \emph{stratum} balanced. For this you will have to keep different lists of random numbers for each group of subjects.
 
 \subsubsection{Crossover studies} \index{general}{crossover studies}
-An alternative to randomization is the \emph{crossover} design of studies. A crossover study is a longitudinal study in which subjects receive a sequence of different treatments. Every subject receives every treatment. (The subject "crosses over" from one treatment to the next.) To avoid causal effects, the sequence of the treatment allocation should be randomized.
+An alternative to randomization is the \gls{crossover} design of studies. A crossover study is a longitudinal study in which subjects receive a sequence of different treatments. Every subject receives every treatment. (The subject "crosses over" from one treatment to the next.) To avoid causal effects, the sequence of the treatment allocation should be randomized.
 
 \subsubsection{Blinding} \index{general}{blinding}
 Consciously or not, the experimenter can significantly influence the outcome of an experiment. For example, a young researcher with a new "brilliant" idea for a new treatment will be bias in the execution of the experiment, as well in the analysis of the data, to see his hypothesis confirmed. To avoid such a subjective influence, ideally the experimenter as well as the subject should be blinded to the therapy. This is referred to as \emph{double blinding}. If also the person who does the analysis does not know which group the subject has been allocated to, we speak about \emph{triple blinding}.
@@ -387,7 +387,7 @@ Many studies fail because the sample size is too small to observed an effect of 
   \item What is the magnitude of the effect you are interested in, relative to the standard deviation of the parameter.
 \end{itemize}
 
-This is known as \gls{power analysis}. it is especially important in behavioral research, where research plans are not approved without careful sample size calculations.
+This is known as \gls{poweranalysis}. it is especially important in behavioral research, where research plans are not approved without careful sample size calculations.
 
 \subsection{Structure of Experiments}
 
