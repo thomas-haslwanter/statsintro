@@ -28,12 +28,13 @@ The PDF also defines the \emph{expected value E[x]} \index{general}{expected val
   \centering
   % Requires \usepackage{graphicx}
   \includegraphics[width=0.5\textwidth]{../Images/PDF.png}\\
-  \caption{Probability Density Function (PDF) of a value x. The integral over the PDF between a and b gives the likelihood of finding the value of x in that range.}\label{fig:PDF}
+  \caption{Probability Density Function (PDF) of a value x. The integral over the PDF between a and b gives the likelihood of finding the value of x in that range.}
+  \label{fig:PDF}
 \end{figure}
 
 \subsubsection{Cumulative Distribution Function (CDF)}\index{general}{cumulative distribution function}
 
-The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \gls{cdf_} \acr{cdf} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
+The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \gls{cdf_} \acrshort{cdf} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
 
 \begin{equation}
    \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
@@ -274,7 +275,7 @@ Mathematically, the normal distribution is characterized by a mean value $\mu$, 
 \begin{equation}\label{eq_normal}
      f_{\mu,\sigma} (x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-( x - \mu )^2 /2 \sigma^2}
 \end{equation}
-where $ - \infty < x < \infty $, and $f_{\mu,\sigma}$ is the \gls{pdf_} (PDF)} \index{general}{probability density function}.
+where $ - \infty < x < \infty $, and $f_{\mu,\sigma}$ is the \gls{pdf_} (PDF) \index{general}{probability density function}.
 
 \begin{figure}
   \centering

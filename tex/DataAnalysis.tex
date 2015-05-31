@@ -171,7 +171,7 @@ with $e=exp(1)$, and $log$ the natural logarithm. For example, $p=0.05$ leads to
 In hypothesis testing, two types of errors can occur:
 
 \subsubsection{Type I errors} \index{general}{error!Type I} \index{general}{power}
-These are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and \emph{is set before you start the data analysis}. In quality control, a Type I error is called \emph{producer risk}, because you keep a produced item despite the fact that it meets the regulatory requirements.
+\gls{TypeI} are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and \emph{is set before you start the data analysis}. In quality control, a Type I error is called \emph{producer risk}, because you keep a produced item despite the fact that it meets the regulatory requirements.
 
 For example, assume that the population of young Austrian adults has a mean IQ of 105 (i.e. we are smarter than the rest) and a standard deviation of 15. We now want to check if the average FH student in Linz has the same IQ as the average Austrian, and we select 20 students. We set $\alpha=0.05$, i.e. we set our significance level to 95\%.
 Let us now assume that the average student has in fact the same IQ as the average Austrian. If we repeat our study 20 times, we will find one of those 20 times that our sample mean is significantly different from the Austrian average IQ. Such a finding would be a false result, despite the fact that our assumption is correct, and would constitute a \emph{type I error}.
@@ -181,7 +181,7 @@ If we want to answer the question "How much chance do we have to reject the null
 
 For the example given above, an \emph{alternative hypothesis} could be: "We assume that our population has a mean value of 6."
 
-A \emph{Type II error} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false.  In quality control, a Type II error is called a \emph{consumer risk}, because the consumer obtains an item that does not meet the regulatory requirements.
+A \gls{TypeII} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false.  In quality control, a Type II error is called a \emph{consumer risk}, because the consumer obtains an item that does not meet the regulatory requirements.
 
 The probability for this type of error is commonly indicated with $\beta$. The \emph{power} of a statistical test is defined as $(1-\beta)*100$, and is the chance of correctly accepting the alternate hypothesis. Figure \ref{fig:power1} shows the meaning of the \emph{power} of a statistical test. Note that for finding the power of a test, you need an alternative hypothesis.
 
@@ -273,7 +273,7 @@ The corresponding command for one sample t-tests is \lstinline{tt_solve_power}.
 
 \section{Sensitivity and Specificity}
 
-Some of the more confusing terms in statistical analysis are \emph{sensitivity} \index{general}{sensitivity} and \emph{specificity} \index{general}{specificity}. A related topic are \emph{positive predictive value (PPV)} \index{general}{positive predictive value} and \emph{negative predictive value (NPV)} \index{general}{negative predictive value}. The following diagram shows how the four are related:
+Some of the more confusing terms in statistical analysis are \gls{sensitivity} \index{general}{sensitivity} and \gls{specificity} \index{general}{specificity}. A related topic are \emph{positive predictive value (PPV)} \index{general}{positive predictive value} and \emph{negative predictive value (NPV)} \index{general}{negative predictive value}. The following diagram shows how the four are related:
 
 \begin{figure}[ht]
   \centering
@@ -282,7 +282,7 @@ Some of the more confusing terms in statistical analysis are \emph{sensitivity} 
 \end{figure}
 
 \begin{description}
-  \item[Sensitivity] Proportion of positives that are correctly identified by a test = probability of a positive test, given the patient is ill.
+  \item[Sensitivity] Also called \gls{power}. Proportion of positives that are correctly identified by a test = probability of a positive test, given the patient is ill.
   \item[Specificity] Proportion of negatives that are correctly identified by a test = probability of a negative test, given that patient is well.
   \item[Positive Predictive Value (PPV)] Proportion of patients with positive test results who are correctly diagnosed.
   \item[Negative Predictive Value (NPV)] Proportion of patients with negative test results who are correctly diagnosed.
