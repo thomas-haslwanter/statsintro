@@ -4,9 +4,14 @@ Implementation of logistic ordinal regression (aka proportional odds) model
 author: fernando pedorosa, date: march-2013
 """
 
+# Linked to text in: An Introduction to Statistics
+
+# Import standard packages
+import numpy as np
+
+# additional packages
 from sklearn import metrics
 from scipy import linalg, optimize, sparse
-import numpy as np
 import warnings
 
 BIG = 1e10
@@ -244,7 +249,7 @@ def ordinal_logistic_predict(w, theta, X):
     tmp = out[:, None].repeat(unique_theta.size, axis=1)
     return np.argmax(tmp < unique_theta, axis=1)
 
-if __name__ == '__main__':
+def main():
     DOC = """
 ================================================================================
     Compare the prediction accuracy of different models on the boston dataset
@@ -301,3 +306,9 @@ if __name__ == '__main__':
     print('MEAN ABSOLUTE ERROR (LOGISTIC REGRESSION): %s' % np.mean(score_logistic))
     print('MEAN ABSOLUTE ERROR (RIDGE REGRESSION):    %s' % np.mean(score_ridge))
     # print('Chance level is at %s' % (1. / np.unique(y).size))
+    
+    return np.mean(score_ridge)
+    
+if __name__ == '__main__':
+    out = main()    
+    print(out)

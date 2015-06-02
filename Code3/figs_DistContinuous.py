@@ -10,11 +10,17 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: July-2014
 
 # Note: here I use the iPython approach, which is best suited for interactive work
-from pylab import *
+
+# Import standard packages
+import numpy as np
+import matplotlib.pyplot as plt
 from scipy import stats
+
+# additional packages
 import mystyle   # custom module to set fontsize, etc
 
 #matplotlib.rcParams.update({'font.size': 18})
@@ -22,25 +28,25 @@ import mystyle   # custom module to set fontsize, etc
 #----------------------------------------------------------------------
 def showDistribution(x, d1, d2, tTxt, xTxt, yTxt, legendTxt, xmin=-10, xmax=10):
     '''Utility function to show the distributions, and add labels and title.'''
-    plot(x, d1.pdf(x))
+    plt.plot(x, d1.pdf(x))
     if d2 != '':
-        hold(True)
-        plot(x, d2.pdf(x), 'r--')
-        legend(legendTxt)
+        plt.hold(True)
+        plt.plot(x, d2.pdf(x), 'r--')
+        plt.legend(legendTxt)
         
-    xlim(xmin, xmax)
-    title(tTxt)
-    xlabel(xTxt)
-    ylabel(yTxt)
-    show()
-    close()
+    plt.xlim(xmin, xmax)
+    plt.title(tTxt)
+    plt.xlabel(xTxt)
+    plt.ylabel(yTxt)
+    plt.show()
+    plt.close()
     
 
 #----------------------------------------------------------------------
 def show_continuous():
     """Show a variety of continuous distributions"""
         
-    x = linspace(-10,10,201)
+    x = np.linspace(-10,10,201)
     
     # Normal distribution
     showDistribution(x, stats.norm, stats.norm(loc=2, scale=4),
@@ -52,8 +58,8 @@ def show_continuous():
     
     # Students' T-distribution
     # ... with 4, and with 10 degrees of freedom (DOF)
-    plot(x, stats.norm.pdf(x), 'g-.')
-    hold(True)
+    plt.plot(x, stats.norm.pdf(x), 'g-.')
+    plt.hold(True)
     showDistribution(x, stats.t(4), stats.t(10),
                      'T-Distribution', 'X', 'P(X)',['normal', 't=4', 't=10'])
     
@@ -66,7 +72,7 @@ def show_continuous():
     # ... with the shape parameter set to 1 and 2
     # Don't worry that in Python it is called "weibull_min": the "weibull_max" is
     # simply mirrored about the origin.
-    showDistribution(arange(0,5,0.02), stats.weibull_min(1), stats.weibull_min(2),
+    showDistribution(np.arange(0,5,0.02), stats.weibull_min(1), stats.weibull_min(2),
                      'Weibull Distribution', 'X', 'P(X)',['k=1', 'k=2'], xmin=0, xmax=4)
     
     # Uniform distribution
@@ -78,17 +84,17 @@ def show_continuous():
                      'Logistic Distribution', 'X', 'P(X)',['Normal', 'Logistic'])
     
     # Lognormal distribution
-    x = logspace(-9,1,1001)+1e-9
+    x = np.logspace(-9,1,1001)+1e-9
     showDistribution(x, stats.lognorm(2), '',
                      'Lognormal Distribution', 'X', 'lognorm(X)','', xmin=-0.1)
     
     # The log-lin plot has to be done by hand:
-    plot(log(x), stats.lognorm.pdf(x,2))
-    xlim(-10, 4)
-    title('Lognormal Distribution')
-    xlabel('log(X)')
-    ylabel('lognorm(X)')
-    show()
+    plt.plot(np.log(x), stats.lognorm.pdf(x,2))
+    plt.xlim(-10, 4)
+    plt.title('Lognormal Distribution')
+    plt.xlabel('log(X)')
+    plt.ylabel('lognorm(X)')
+    plt.show()
     
 #----------------------------------------------------------------------
 if __name__ == '__main__':

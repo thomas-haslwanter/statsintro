@@ -1,6 +1,9 @@
+# Import standard packages
 import numpy as np
 import os
 import pandas as pd
+
+# additional packages
 from statsmodels.formula.api import glm
 from statsmodels.genmod.families import Binomial
 

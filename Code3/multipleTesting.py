@@ -19,8 +19,10 @@ Taken from an example by Josef Perktold (http://jpktd.blogspot.co.at/)
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: June-2014
 
+# Import standard packages
 import numpy as np
 from scipy import stats
 import pandas as pd

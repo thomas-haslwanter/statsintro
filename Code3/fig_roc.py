@@ -7,9 +7,12 @@ respectively, and a standard deviation of 2.
 
 # author: Thomas Haslwanter, date: July-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+
+# additional packages
 import mystyle
 
 def main():

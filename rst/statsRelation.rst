@@ -403,7 +403,7 @@ Exercises
 
 .. |image24| image:: ../Images/Sensitivity_Specificity.png
     :scale: 50 %
-.. |image25| image:: ../Images/Sensitivity_Specificity_Example.png
+.. |image25| image:: ../Images/Sensitivity_Specificity_Example.jpg
     :scale: 50 %
 .. |image26| image:: ../Images/Correlation_examples2.png
     :scale: 50 %

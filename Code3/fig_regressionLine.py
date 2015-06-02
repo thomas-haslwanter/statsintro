@@ -5,9 +5,12 @@ Figure with simple regression line
 
 # author: Thomas Haslwanter, date: May-2015
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+# additional packages
 import mystyle
 
 # Generate the data

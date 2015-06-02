@@ -8,11 +8,15 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: May-2013
 
+# Import standard packages
 import numpy as np
 import scipy.stats as stats
 import pandas as pd
+
+# additional packages
 from getdata import getData
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm

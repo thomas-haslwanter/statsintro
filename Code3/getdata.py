@@ -6,12 +6,17 @@ I use these data quite often, so I have put those by default in a subdirectory
 If the data are not found locally, they are retrieved from the WWW.
 '''
 
+# Linked to text in: An Introduction to Statistics
 #Author:  Thomas Haslwanter, June-2014
 
-from os.path import join
-from numpy import genfromtxt
+# Import standard packages
+import numpy as np
 import os
 import sys
+
+# additional packages
+from os.path import join
+
 if sys.version_info[0] == 3:
     from urllib.request import urlopen
     from urllib.parse import urlparse
@@ -19,12 +24,12 @@ else:
     from urlparse import urlparse
     from urllib import urlopen
 
-def getData(inFile, subDir=r'.\Data'):
+def getData(inFile, subDir=r'..\Data'):
     '''Data are taken from examples in D. Altman, "Practical Statistics for Medical Research" '''
     dataDir = os.path.join(os.path.dirname(__file__), subDir)
     fullInFile = join(dataDir, inFile)
     try:
-        data = genfromtxt(fullInFile, delimiter=',')
+        data = np.genfromtxt(fullInFile, delimiter=',')
     except IOError:
         print((fullInFile + ' does not exist: Trying to read from WWW'))
         try:
@@ -32,7 +37,7 @@ def getData(inFile, subDir=r'.\Data'):
             url = os.path.join(url_base, inFile)
             print(url)
             fileHandle = urlopen(url)
-            data = genfromtxt(fileHandle, delimiter=',')
+            data = np.genfromtxt(fileHandle, delimiter=',')
         except:
             print((url + ' also does not exist!'))
             data = ()

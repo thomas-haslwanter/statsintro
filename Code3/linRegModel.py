@@ -19,6 +19,7 @@ Date:   March-2013
 Ver:    1.3 (Thomas Haslwanter)
 '''
 
+# Linked to text in: An Introduction to Statistics
 # For this we only need to import statsmodels
 import statsmodels.api as sm
 

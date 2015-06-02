@@ -4,11 +4,14 @@ Graphical display of PDF (probability density function) and CDF (cumulative dens
 
 # author: Thomas Haslwanter, date: July-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import os
 import seaborn as sns
+
+# additional packages
 import mystyle
 
 # Calculate the values

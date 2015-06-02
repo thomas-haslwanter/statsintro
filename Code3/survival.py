@@ -5,12 +5,16 @@ The formulas and the example are taken from Altman, Chapter 13.
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: May-2013
 
+# Import standard packages
 import numpy as np
-from scipy import stats
-from getdata import getData
 import matplotlib.pyplot as plt
+from scipy import stats
+
+# additional packages
+from getdata import getData
 
 def kaplanmeier(data):
     '''Determine and the Kaplan-Meier curve for the given data.

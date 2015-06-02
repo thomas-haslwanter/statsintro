@@ -4,11 +4,14 @@ Graphical display of data within 1,2,3 SD.
 
 # author: Thomas Haslwanter, date: July-2014
 
+# Import standard packages
 import numpy as np
 import os
 import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
+
+# additional packages
 import mystyle
 
 nd = stats.norm()

@@ -15,10 +15,7 @@
 
 | *Version:*  6.4
 
-.. image:: ../Images/cc_licence.png
-   :scale: 100 %
-
-This work is licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License.
+This work is copyrighted to Thomas Haslwanter.
 
 Available versions: `HTML <http://work.thaslwanter.at/Stats/html/>`_ | `PDF
 <http://work.thaslwanter.at/Stats/StatsIntro.pdf>`_ | `github (full

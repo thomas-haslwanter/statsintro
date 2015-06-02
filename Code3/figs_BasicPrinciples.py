@@ -11,6 +11,7 @@ The examples contain:
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: Feb-2015
 
 # First, import the libraries that you are going to need. You could also do
@@ -18,18 +19,21 @@ The examples contain:
 
 # pylab imports the numpy, scipy, and matplotlib.pyplot libraries into the
 # current environment
-from pylab import *
 
+# Import standard packages
+import numpy as np
+import matplotlib.pyplot as plt
 import scipy.stats as stats
 import seaborn as sns
 import pandas as pd
 
+# additional packages
 import mystyle   # custom module to set fontsize, etc
 
 def main():
     # Univariate data -------------------------
     # Generate data that are normally distributed
-    x = randn(500)
+    x = np.random.randn(500)
     
     # Set the fonts the way I like them
     sns.set_context('poster')
@@ -37,39 +41,39 @@ def main():
     #mystyle.set()
     
     # Scatter plot
-    scatter(arange(len(x)), x)
-    xlim([0, len(x)])
+    plt.scatter(np.arange(len(x)), x)
+    plt.xlim([0, len(x)])
     mystyle.printout('scatterPlot.png', xlabel='x', ylabel='y', title='Scatter')
     
     # Histogram
-    hist(x)
+    plt.hist(x)
     mystyle.printout('histogram_plain.png', xlabel='Data Values', ylabel='Frequency', title='Histogram, default settings')
     
-    hist(x,25)
+    plt.hist(x,25)
     mystyle.printout('histogram.png', xlabel='Data Values', ylabel='Frequency', title='Histogram, 25 bins')
     
     # Cumulative probability density
     numbins = 20
-    plot(stats.cumfreq(x,numbins)[0])
+    plt.plot(stats.cumfreq(x,numbins)[0])
     mystyle.printout('CumulativeFrequencyFunction.png', xlabel='Data Values', ylabel='Cumulative Frequency')
     
     # Boxplot
     # The ox consists of the first, second (middle) and third quartile
-    boxplot(x, sym='*')
+    plt.boxplot(x, sym='*')
     mystyle.printout('boxplot.png', xlabel='Values', title='Boxplot')
     
-    boxplot(x, sym='*', vert=False)
-    title('Boxplot, horizontal')
-    xlabel('Values')
-    show()
+    plt.boxplot(x, sym='*', vert=False)
+    plt.title('Boxplot, horizontal')
+    plt.xlabel('Values')
+    plt.show()
     
     # Errorbars
-    x = arange(5)
+    x = np.arange(5)
     y = x**2
     errorBar = x/2
-    errorbar(x,y, yerr=errorBar, fmt='o', capsize=5, capthick=3)
-    xlim([-0.2, 4.2])
-    ylim([-0.2, 19])
+    plt.errorbar(x,y, yerr=errorBar, fmt='o', capsize=5, capthick=3)
+    plt.xlim([-0.2, 4.2])
+    plt.ylim([-0.2, 19])
     mystyle.printout('Errorbars.png', xlabel='Data Values', ylabel='Measurements', title='Errorbars')
     
     # Violinplot

@@ -1,6 +1,15 @@
-import matplotlib
+'''Common formatting and print commands
+
+'''
+
+# author: Thomas Haslwanter, date: June-2015
+
+# Import standard packages
 import matplotlib.pyplot as plt
 import os
+
+# additional packages
+import matplotlib as mlb
 
 def despine(axis='right'):
     '''Despine the plot'''
@@ -29,12 +38,12 @@ def set(fs=18):
     
     figure = {'autolayout': True}
     
-    matplotlib.rc('font', **font)
-    matplotlib.rc('xtick', **xtick)
-    matplotlib.rc('ytick', **ytick)
-    matplotlib.rc('axes', **axes)
-    matplotlib.rc('legend', **legend)
-    matplotlib.rc( 'figure', **figure)
+    mlb.rc('font', **font)
+    mlb.rc('xtick', **xtick)
+    mlb.rc('ytick', **ytick)
+    mlb.rc('axes', **axes)
+    mlb.rc('legend', **legend)
+    mlb.rc( 'figure', **figure)
     
 def printout(outFile, xlabel = '', ylabel='', title='', outDir = '..\Images'):
     '''Save the current figure to a file, and then display it'''

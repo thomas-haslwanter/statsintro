@@ -7,14 +7,17 @@ http://connor-johnson.com/2014/02/18/linear-regression-with-python/
 
 # author: Thomas Haslwanter, date: Jan-2014
 
+# Import standard packages
 import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
 import pandas as pd
 import os
+
+# additional packages
 import matplotlib as mpl
-import matplotlib.pyplot as plt
 import statsmodels.formula.api as sm
 from sklearn.linear_model import LinearRegression
-from scipy import stats
 
 data_str = '''Region Alcohol Tobacco
 North 6.47 4.03

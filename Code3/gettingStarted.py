@@ -20,15 +20,18 @@ superfluous. But it shows good Python coding style.
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: May-2013
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
 # And don't worry here about not knowing the right modules: numpy, scipy, and
 # matplotlib is almost everything you will need most of the time, and you
 # will quickly get used to those.
+
+# Import standard packages
 import numpy as np
-import scipy as sp
 import matplotlib.pyplot as plt
+import scipy as sp
 
 def main():
     '''Define the main function. '''

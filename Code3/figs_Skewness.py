@@ -4,12 +4,15 @@
 
 # author: Thomas Haslwanter, date: Nov-2014
 
+# Import standard packages
 import numpy as np
 import scipy.stats as stats
 import matplotlib.pyplot as plt
-from matplotlib.mlab import frange
 import os
 import seaborn as sns
+
+# additional packages
+from matplotlib.mlab import frange
 
 sns.set(context='poster', style='ticks', palette='deep')
 

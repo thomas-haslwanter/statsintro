@@ -1,11 +1,14 @@
 """
 Plotting a three-way ANOVA
-==========================
 
-_thumb: .42, .5
 """
+
+# author: Thomas Haslwanter, date: Nov-2014
+
+# Import standard packages
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 sns.set(style="whitegrid")
 
 df = sns.load_dataset("exercise")

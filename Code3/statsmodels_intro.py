@@ -2,14 +2,19 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: April-2013
 
+# Import standard packages
 import numpy as np
-import pandas as pd
+import matplotlib.pyplot as plt
 from scipy import stats
+import pandas as pd
+
+# additional packages
 import statsmodels.formula.api as sm
 import sys
-import matplotlib.pyplot as plt
+
 if sys.version_info[0] == 3:
     from urllib.request import urlopen
 else:
@@ -57,5 +62,7 @@ def pandas_boxplot():
     
     print(df.mean())
 if __name__ == '__main__':
-    simple_fit()
+    params = simple_fit()
     pandas_boxplot()
+    
+    print('Done')

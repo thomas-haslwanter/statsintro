@@ -5,11 +5,12 @@ Figure explaining the T-Test
 
 # author: Thomas Haslwanter, date: May-2014
 
+# Import standard packages
 import numpy as np
-import os
-import scipy.stats as stats
 import matplotlib.pyplot as plt
+import scipy.stats as stats
 import seaborn as sns
+import os
 
 # Generate the data
 np.random.seed(12345)

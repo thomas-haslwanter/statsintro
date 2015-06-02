@@ -10,12 +10,16 @@ tricks that should make interactive use of plots simpler. The functions below sh
 
 author: Thomas Haslwanter
 date:   March-2015
-ver:    1.0
+er:    1.0
 license: Creative Commons Zero (almost public domain) http://scpyce.org/cc0
 
 '''
+# Linked to text in: An Introduction to Statistics
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
+
+# additional packages
 import tkinter as tk
 
 t = np.arange(0,10,0.1)

@@ -7,13 +7,17 @@ are not known.
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: May-2014
 
+# Import standard packages
 import numpy as np
-import scipy.stats as stats
-from statsmodels.stats.diagnostic import kstest_normal
 import matplotlib.pyplot as plt
+import scipy.stats as stats
 import pandas as pd
+
+# additional packages
+from statsmodels.stats.diagnostic import kstest_normal
 
 myMean = 0
 mySD = 3
@@ -55,6 +59,8 @@ def check_normality():
     if pVals['omnibus'] > 0.05:
         print('Data are normally distributed')
     # --- >>> STOP stats <<< ---
+    
+    return pVals['KS']
     
 if __name__ == '__main__':
     p = check_normality()    

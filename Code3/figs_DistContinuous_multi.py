@@ -8,13 +8,16 @@
 
 # author: Thomas Haslwanter, date: Nov-2014
 
-# Note: here I use the iPython approach, which is best suited for interactive work
-from pylab import *
+
+# Import standard packages
+import numpy as np
+import matplotlib.pyplot as plt
 from scipy import stats
-from matplotlib.mlab import frange
-#import mystyle   # custom module to set fontsize, etc
 import seaborn as sns
 import os
+
+# additional packages
+from matplotlib.mlab import frange
 
 sns.set(context='poster', style='ticks', palette='bright', font_scale=1.5)
 
@@ -29,15 +32,15 @@ def showT():
     t1 = stats.t.pdf(t,1)
     t5 = stats.t.pdf(t,5)
     
-    plot(t,normal, '--',  label='normal')
-    plot(t, t1, label='df=1')
-    plot(t, t5, label='df=5')
-    legend()
+    plt.plot(t,normal, '--',  label='normal')
+    plt.plot(t, t1, label='df=1')
+    plt.plot(t, t5, label='df=5')
+    plt.legend()
         
-    xlim(-5,5)
-    xlabel('X')
-    ylabel('pdf(X)')
-    axis('tight')
+    plt.xlim(-5,5)
+    plt.xlabel('X')
+    plt.ylabel('pdf(X)')
+    plt.axis('tight')
     
     outDir = r'..\Images'
     outFile = 'dist_t.png'
@@ -47,8 +50,8 @@ def showT():
     
     print('OutDir: {0}'.format(outDir))
     print('Figure saved to {0}'.format(outFile))
-    show()
-    close()
+    plt.show()
+    plt.close()
     
 #----------------------------------------------------------------------
 def showChi2():
@@ -58,13 +61,13 @@ def showChi2():
     Chi2Vals = [1,2,3,5]
     
     for chi2 in Chi2Vals:
-        plot(t, stats.chi2.pdf(t, chi2), label='k={0}'.format(chi2))
-    legend()
+        plt.plot(t, stats.chi2.pdf(t, chi2), label='k={0}'.format(chi2))
+    plt.legend()
         
-    xlim(0,8)
-    xlabel('X')
-    ylabel('pdf(X)')
-    axis('tight')
+    plt.xlim(0,8)
+    plt.xlabel('X')
+    plt.ylabel('pdf(X)')
+    plt.axis('tight')
     
     outDir = r'..\Images'
     outFile = 'dist_chi2.png'
@@ -74,8 +77,8 @@ def showChi2():
     
     print('OutDir: {0}'.format(outDir))
     print('Figure saved to {0}'.format(outFile))
-    show()
-    close()
+    plt.show()
+    plt.close()
     
 #----------------------------------------------------------------------
 def showF():
@@ -87,13 +90,13 @@ def showF():
     
     for (d1,d2) in zip(d1s,d2s):
         plot(t, stats.f.pdf(t, d1, d2), label='F({0}/{1})'.format(d1,d2))
-    legend()
+    plt.legend()
         
-    xlim(0,3)
-    xlabel('X')
-    ylabel('pdf(X)')
-    axis('tight')
-    legend()
+    plt.xlim(0,3)
+    plt.xlabel('X')
+    plt.ylabel('pdf(X)')
+    plt.axis('tight')
+    plt.legend()
         
     outDir = r'..\Images'
     outFile = 'dist_f.png'
@@ -103,10 +106,10 @@ def showF():
     
     print('OutDir: {0}'.format(outDir))
     print('Figure saved to {0}'.format(outFile))
-    show()
-    close()
+    plt.show()
+    plt.close()
     
-    
+
 #----------------------------------------------------------------------
 def showExp():
     '''Utility function to show exponential distributions'''
@@ -115,14 +118,14 @@ def showExp():
     lambdas = [0.5, 1, 1.5]
     
     for par in lambdas:
-        plot(t, stats.expon.pdf(t, 0, par), label='$\lambda={0:3.1f}$'.format(par))
-    legend()
+        plt.plot(t, stats.expon.pdf(t, 0, par), label='$\lambda={0:3.1f}$'.format(par))
+    plt.legend()
         
-    xlim(0,3)
-    xlabel('X')
-    ylabel('pdf(X)')
-    axis('tight')
-    legend()
+    plt.xlim(0,3)
+    plt.xlabel('X')
+    plt.ylabel('pdf(X)')
+    plt.axis('tight')
+    plt.legend()
         
     outDir = r'..\Images'
     outFile = 'dist_exp.png'
@@ -132,8 +135,8 @@ def showExp():
     
     print('OutDir: {0}'.format(outDir))
     print('Figure saved to {0}'.format(outFile))
-    show()
-    close()
+    plt.show()
+    plt.close()
     
     
 #----------------------------------------------------------------------

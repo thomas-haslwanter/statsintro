@@ -5,10 +5,13 @@ Plot showing the effekt of a Kernel-Density-Estimation (KDE).
 
 # author: Thomas Haslwanter, date: May-2015
 
+# Import standard packages
 from scipy import stats
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+
+# additional packages
 import mystyle
 
 # Generate normally distributed data

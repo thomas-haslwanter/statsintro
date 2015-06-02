@@ -5,10 +5,11 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: July-2014
 
+# Import standard packages
 import numpy as np
-
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 from matplotlib.mlab import frange

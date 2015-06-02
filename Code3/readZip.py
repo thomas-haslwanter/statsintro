@@ -1,12 +1,16 @@
 '''Get data from MS-Excel files, which are stored zipped on the Web.
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: Jan-2014
 
+# Import standard packages
+import pandas as pd
+
+# additional packages
 import urllib
 import io
 import zipfile
-import pandas as pd
 
 def getDataDobson(url, inFile):
     '''Extract data from a zipped-archive'''

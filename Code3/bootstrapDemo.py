@@ -4,11 +4,15 @@ https://github.com/cgevans/scikits-bootstrap
    
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: Feb-2015
 
-import scipy as sp
+# Import standard packages
 import matplotlib.pyplot as plt
+import scipy as sp
 from scipy import stats
+
+# additional packages
 import scikits.bootstrap as bootstrap
 
 def generate_data():

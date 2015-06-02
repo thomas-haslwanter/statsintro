@@ -2,7 +2,10 @@
 
 author: ThH, date: May-2015'''
 
+# Import standard packages
 import numpy as np
+
+# additional packages
 import pythonFunction
 
 # Generate test-data

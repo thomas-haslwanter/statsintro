@@ -4,9 +4,13 @@ models are expressed in R.
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: Jan-2014
 
+# Import standard packages
 import pandas as pd
+
+# additional packages
 from getdata import getData
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm
@@ -24,6 +28,7 @@ def anova_interaction():
     
     # --- >>> START stats <<< ---
     # Determine the ANOVA with interaction
+    # [xxx]
     formula = 'hs ~ C(fetus) + C(observer) + C(fetus):C(observer)'
     lm = ols(formula, df).fit()
     anovaResults = anova_lm(lm)

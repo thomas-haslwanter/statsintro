@@ -4,18 +4,22 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: May-2013
 
-from pandas import read_csv
+# Import standard packages
+import numpy as np
+import pandas as pd
+
+# additional packages
 from statsmodels.formula.api import ols
 import statsmodels.regression.linear_model as sm
 from statsmodels.stats.anova import anova_lm
-import numpy as np
 
 def model_formulas():
     ''' Define models through formulas '''
     # Get the dta
-    data = read_csv(r'..\Data\data_kaplan\swim100m.csv')
+    data = pd.read_csv(r'..\Data\data_kaplan\swim100m.csv')
     
     # Different models
     model1 = ols("time ~ sex", data).fit()  # one factor

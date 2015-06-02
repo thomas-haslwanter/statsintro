@@ -1,3 +1,4 @@
+# [xxx]
 # Mathieu Blondel, February 2012
 # Port to Python of examples in chapter 5 of
 # "Introductory Statistics with R" by Peter Dalgaard

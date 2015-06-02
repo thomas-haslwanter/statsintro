@@ -23,9 +23,9 @@ superfluous. But it shows good Python coding style.
 # author: Thomas Haslwanter, date: May-2013
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
-# for interactive work, there is a shotcut: "pylab", which loads numpy and
-# matplotlib.pyplot into the current workspace
-from pylab import *
+import numpy as np
+import matplotlib.pyplot as plt
+
 
 # For Python programs, it is common to load the modules explicitly.
 # Don't worry here about not knowing the right modules: numpy, scipy, and
@@ -37,15 +37,15 @@ from pylab import *
 def main():
     '''Define the main function. '''
     # Create a sine-wave
-    t = arange(0,10,0.1)
-    x = sin(t)
+    t = np.arange(0,10,0.1)
+    x = np.sin(t)
 
     # Save the data in a text-file, in column form
     # The formatting is a bit clumsy: data are by default row variables; so to
     # get a matrix, you stack the two rows above each other, and then transpose
     # the matrix
     outFile = 'test.txt'
-    savetxt(outFile, vstack([t,x]).T)
+    np.savetxt(outFile, np.vstack([t,x]).T)
 
     # Read the data into a different variable
     inData = loadtxt(outFile)
@@ -75,27 +75,27 @@ def main():
     # Determine the best-fit line
     # To do so, you have to generate a matrix with "time" in the first
     # column, and a column of "1" in the second column:
-    xMat = vstack((tHigh, ones(len(tHigh)))).T
-    slope, intercept = linalg.lstsq(xMat, xHigh)[0]
+    xMat = np.vstack((tHigh, np.opnes(len(tHigh)))).T
+    slope, intercept = np.linalg.lstsq(xMat, xHigh)[0]
 
     # Show and plot the fit, and save it to a PNG-file with a medium resolution.
     # The "modern" way of Python-formatting is used
-    hold(True)
-    plot(tHigh, intercept + slope*tHigh, 'r')
-    title('Hit any key to continue')
-    savefig('linefit.png', dpi=200)
-    waitforbuttonpress()
-    close()
+    plt.hold(True)
+    plt.plot(tHigh, intercept + slope*tHigh, 'r')
+    plt.title('Hit any key to continue')
+    plt.savefig('linefit.png', dpi=200)
+    plt.waitforbuttonpress()
+    plt.close()
     print(('Fit line: intercept = {0:5.3f}, and slope = {1:5.3f}'.format(intercept, slope)))
     #raw_input('Thanks for using programs by Thomas!')
 
     # If you want to know confidence intervals, best switch to "pandas"
     # Note that this is an advanced topic, and requires new data structures
     # such ad "DataFrames" and "ordinary-least-squares" or "ols-models".
-    import pandas
+    import pandas as pd
     myDict = {'x':tHigh, 'y':xHigh}
-    df = pandas.DataFrame(myDict)
-    model = pandas.ols(y=df['y'], x=df['x'])
+    df = pd.DataFrame(myDict)
+    model = pd.ols(y=df['y'], x=df['x'])
     print(model)
     #raw_input('These are the summary results from Pandas - Hit any key to continue')
 

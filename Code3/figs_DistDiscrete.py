@@ -4,14 +4,16 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: Feb-2015
 
-# Note: here I use the modular approach, which is more appropriate for scripts
+# Import standard packages
+import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as stats
-import numpy as np
 import os
-#import seaborn as sns
+
+# additional packages
 import mystyle
 
 #----------------------------------------------------------------------

@@ -5,9 +5,12 @@ Plot explaining the principle of a Kernel-Density-Estimation (KDE).
 
 # author: Thomas Haslwanter, date: May-2015
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+
+# additional packages
 import mystyle
 
 # Generate dummy data

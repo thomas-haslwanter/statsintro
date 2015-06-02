@@ -4,11 +4,14 @@ Short demo of how to check for the significance of an individual value.
 
 # author: Thomas Haslwanter, date: April-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
 import os
+
+# additional packages
 import mystyle
 
 # Fit the normal distribution

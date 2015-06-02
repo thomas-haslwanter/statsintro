@@ -5,9 +5,10 @@ Stability of the T-distribution against outliers, compared to the normal distrib
 
 # author: Thomas Haslwanter, date: March-2014
 
+# Import standard packages
 import numpy as np
-import scipy.stats as ss
 import matplotlib.pyplot as plt
+import scipy.stats as ss
 
 # Generate the data
 np.random.seed(12345)

@@ -7,10 +7,14 @@ This script shows how to
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: Jun-2014
 
+# Import standard packages
 import numpy as np
 import scipy.stats as stats
+
+# additional packages
 from getdata import getData
 
 def check_mean():        

@@ -5,11 +5,14 @@ Taken from http://www.brightstat.com/index.php?option=com_content&task=view&id=4
 
 # author: Thomas Haslwanter, date: May-2015
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
 import seaborn as sns
+
+# additional packages
 import mystyle
 from statsmodels.formula.api import glm
 from statsmodels.genmod.families import Binomial

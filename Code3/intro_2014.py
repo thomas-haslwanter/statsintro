@@ -6,6 +6,7 @@ http://www.amstat.org/publications/jse/jse_data_archive.htm
 
 # author: Thomas Haslwanter, date: Jan-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd

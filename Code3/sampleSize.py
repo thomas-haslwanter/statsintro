@@ -4,16 +4,19 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, May 2013
 
-from scipy.stats import norm
-from numpy import round
+# Import standard packages
 import numpy as np
+
+# additional packages
+from scipy.stats import norm
 
 def sampleSize_oneGroup(d, alpha=0.05, beta=0.2, sigma=1):
     '''Sample size for a single group.'''
     
-    n = round((norm.ppf(1-alpha/2.) + norm.ppf(1-beta))**2 * sigma**2 / d**2)
+    n = np.round((norm.ppf(1-alpha/2.) + norm.ppf(1-beta))**2 * sigma**2 / d**2)
     
     print(('In order to detect a change of {0} in a group with an SD of {1},'.format(d, sigma)))
     print(('with significance {0} and test-power {1}, you need at least {2:d} subjects.'.format(alpha, 100*(1-beta), int(n))))
@@ -23,7 +26,7 @@ def sampleSize_oneGroup(d, alpha=0.05, beta=0.2, sigma=1):
 def sampleSize_twoGroups(D, alpha=0.05, beta=0.2, sigma1=1, sigma2=1):
     '''Sample size for two groups.'''
     
-    n = round((norm.ppf(1-alpha/2.) + norm.ppf(1-beta))**2 * (sigma1**2 + sigma2**2) / D**2)
+    n = np.round((norm.ppf(1-alpha/2.) + norm.ppf(1-beta))**2 * (sigma1**2 + sigma2**2) / D**2)
     
     print(('In order to detect a change of {0} between groups with an SD of {1} and {2},'.format(D, sigma1, sigma2)))
     print(('with significance {0} and test-power {1}, you need in each group at least {2:d} subjects.'.format(alpha, 100*(1-beta), int(n))))

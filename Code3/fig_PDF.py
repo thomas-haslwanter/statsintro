@@ -5,11 +5,14 @@ Plot demonstrating the integral as the area under a curve of a PDF.
 
 # author: Thomas Haslwanter, date: Jan-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
-import os
-from matplotlib.patches import Polygon
 from scipy import stats
+import os
+
+# additional packages
+from matplotlib.patches import Polygon
 
 
 a, b = -0.5, 1.5 #integral limits

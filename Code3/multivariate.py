@@ -4,12 +4,16 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: Jun-2013
 
-import pandas as pd
-from getdata import getData
+# Import standard packages
+import numpy as np
 from scipy import stats
-from numpy import testing
+import pandas as pd
+
+# additional packages
+from getdata import getData
 
 def regression_line():
     '''Fit a line, using the powerful "ordinary least square" method of pandas.
@@ -49,7 +53,7 @@ def correlation():
     print(corr)    
     
     # Assert that Spearman's rho is just the correlation of the ranksorted data
-    testing.assert_almost_equal(corr['spearman'], stats.pearsonr(stats.rankdata(x), stats.rankdata(y))[0])
+    np.testing.assert_almost_equal(corr['spearman'], stats.pearsonr(stats.rankdata(x), stats.rankdata(y))[0])
     
     return corr['pearson']  # should be 0.79208623217849117
     

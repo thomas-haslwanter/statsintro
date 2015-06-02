@@ -7,11 +7,15 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: Mar-2014
 
+# Import standard packages
 import numpy as np
 import scipy.stats as stats
 import pandas as pd
+
+# additional packages
 from statsmodels.sandbox.stats.runs import cochrans_q, mcnemar
 
 

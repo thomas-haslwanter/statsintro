@@ -6,7 +6,7 @@ Ver:    1.0
 
 '''
 
-# Import packages
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 

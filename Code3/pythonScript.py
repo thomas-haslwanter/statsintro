@@ -7,7 +7,7 @@ ver:    1.0
 
 '''
 
-# Import the necessary libraries
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 import os

@@ -5,10 +5,13 @@ Practical demonstration of the central limit theorem
 
 # author: Thomas Haslwanter, date: July-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+
+# additional packages
 import mystyle
 
 sns.set(context='poster', style='ticks')

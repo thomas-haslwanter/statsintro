@@ -4,18 +4,20 @@ Also shows how to make 3d plots.
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: May-2013
 
-# The standard imports
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# For the 3d plot
+# additional packages ...
+# ... for the 3d plot ...
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
-# For the statistic
+# ... and for the statistic
 from statsmodels.formula.api import ols
 
 def generatedata():

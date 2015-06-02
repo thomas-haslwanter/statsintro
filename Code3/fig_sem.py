@@ -1,7 +1,10 @@
-from scipy import stats
-import seaborn as sns
+# [xxx]
+
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy import stats
+import seaborn as sns
 
 np.random.seed(123)
 x = np.random.randn(100) + 5

@@ -4,11 +4,15 @@
 
 '''
 
+# Linked to text in: An Introduction to Statistics
 # author: Thomas Haslwanter, date: July-2013
 
-from numpy import genfromtxt, mean, std
-import scipy.stats as stats
+# Import standard packages
+import numpy as np
 import matplotlib.pyplot as plt
+import scipy.stats as stats
+
+# additional packages
 from getdata import getData
 
 def paired_data():
@@ -18,8 +22,8 @@ def paired_data():
     # Get the data:  daily intake of energy in kJ for 11 women
     data = getData('altman_93.txt', subDir=r'..\Data\data_altman')
     
-    mean(data, axis=0)
-    std(data, axis=0, ddof=1)
+    np.mean(data, axis=0)
+    np.std(data, axis=0, ddof=1)
     
     pre = data[:,0]
     post = data[:,1]
@@ -55,8 +59,8 @@ def unpaired_data():
     group2 = energ[:, 1] == 1
     group2 = energ[group2][:, 0]
     
-    mean(group1)
-    mean(group2)
+    np.mean(group1)
+    np.mean(group2)
     
     # --- >>> START stats <<< ---
     # two-sample t-test

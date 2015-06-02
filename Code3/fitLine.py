@@ -46,12 +46,14 @@ Example data and formulas are taken from
 D. Altman, "Practical Statistics for Medicine"
 '''
 
+# Linked to text in: An Introduction to Statistics
 '''
 author : thomas haslwanter
 date : 13.Dec.2012
 ver : 1.2
 '''
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as stats

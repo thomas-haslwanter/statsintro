@@ -4,11 +4,14 @@ Short demo of how to check for the significance of a mean value.
 
 # author: Thomas Haslwanter, date: July-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
 import os
+
+# additional packages
 import mystyle
 
 

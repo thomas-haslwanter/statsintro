@@ -4,11 +4,13 @@ Demonstration of the probplot of a non-normal distribution
 
 # author: Thomas Haslwanter, date: May-2015
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
-import os.path
+
+# additional packages
 import mystyle
 
 # Define the skewed distribution

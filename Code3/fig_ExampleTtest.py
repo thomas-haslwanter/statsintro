@@ -1,17 +1,18 @@
 '''Figure for a an example of a T-test for a mean value
 
-author: ThH, Date: May-2015
-
 '''
 
-# For the data generation and the analysis
+# author: Thomas Haslwanter, date: Nov-2014
+
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
-
-# For the plot
 import seaborn as sns
+
+# additional packages
 import mystyle
+
 sns.set_context('poster')
 sns.set_style('ticks')
 

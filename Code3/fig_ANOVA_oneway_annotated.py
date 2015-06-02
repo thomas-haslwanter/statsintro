@@ -5,11 +5,13 @@ Figure explaining the T-Test
 
 # author: Thomas Haslwanter, date: May-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import os
-#import seaborn as sns
+
+# additional packages
 import mystyle
 
 def show_fig(std, ax, title):

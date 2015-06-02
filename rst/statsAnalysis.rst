@@ -520,11 +520,11 @@ Exercises
     :scale: 50 %
 .. |image22| image:: ../Images/power2.png
     :scale: 50 %
-.. |image23| image:: ../Images/Sensitivity_Specificity_Diagram.png
+.. |image23| image:: ../Images/Sensitivity_Specificity_Diagram.jpg
     :scale: 75 %
 .. |image24| image:: ../Images/Sensitivity_Specificity.png
     :scale: 50 %
-.. |image25| image:: ../Images/Sensitivity_Specificity_Example.png
+.. |image25| image:: ../Images/Sensitivity_Specificity_Example.jpg
     :scale: 75 %
 
 .. |ipynb| image:: ../Images/IPython.jpg

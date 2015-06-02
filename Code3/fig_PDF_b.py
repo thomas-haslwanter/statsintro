@@ -4,10 +4,13 @@ Graphical display of PDF (probability density function)
 
 # author: Thomas Haslwanter, date: April-2014
 
+# Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
+
+# additional packages
 from matplotlib import rc
 
 rc('text', usetex=True)

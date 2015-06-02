@@ -3,6 +3,7 @@
 author: thomas haslwanter, date: May-2015
 '''
 
+# Import standard packages
 import numpy as np
 
 def incomeAndExpenses(data):
