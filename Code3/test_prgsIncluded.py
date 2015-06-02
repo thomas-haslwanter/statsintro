@@ -18,20 +18,26 @@ import binomialTest
 import bootstrapDemo
 import checkNormality
 import compGroups
+import figs_BasicPrinciples
 import figs_DistContinuous
 import figs_DistDiscrete
 import figs_DistributionNormal
-import figs_BasicPrinciples
 import fitLine
 from getdata import getData
 import gettingStarted
 import interactivePlots
 import KruskalWallis
 import linRegModel
+import logit
+# import logitShort
+# import pythonFunction
+# import pythonImport
+# import pythonScript
 import modeling
 import multipleRegression
 import multipleTesting
 import multivariate
+import mystyle 
 import ologit
 import oneSample
 import readZip
@@ -146,6 +152,17 @@ class TestSequenceFunctions(unittest.TestCase):
         h = KruskalWallis.main()
         self.assertAlmostEqual(h, 16.028783253379856)
         
+    def test_logit(self):
+        from statsmodels.formula.api import glm
+        from statsmodels.genmod.families import Binomial
+        
+        inData = logit.getData()
+        dfFit = logit.prepareForFit(inData)
+        model = glm('ok + failed ~ temp', data=dfFit, family=Binomial()).fit()
+        logit.showResults(inData, model)
+        
+        self.assertAlmostEqual(model.params.Intercept, -15.042902, places=5)
+        
     def test_modeling(self):
         F = modeling.model_formulas()
         self.assertAlmostEqual(F, 156.1407931415788)
@@ -242,7 +259,7 @@ if __name__ == '__main__':
         unittest.main()
     else:
         suite = unittest.TestSuite()
-        suite.addTest(TestSequenceFunctions('test_ologit'))
+        suite.addTest(TestSequenceFunctions('test_logit'))
         runner = unittest.TextTestRunner()
         runner.run(suite)
     
