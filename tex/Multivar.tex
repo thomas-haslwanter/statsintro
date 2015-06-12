@@ -54,7 +54,28 @@ When you have more than two factors, it is recommendable to use \emph{statistica
     plt.show()
 \end{lstlisting}
 
-\section{Correlation Matrix}\index{general}{Correlation matrix}
+\section{Visualization of Multivariate Correlations}
+
+\subsection{Scatterplot Matrix}\index{general}{Scatterplot matrix}
+
+If you have three to six variables that may be related to each other, you can use a "scatterplot matrix" to visualize the different correlations:
+
+\begin{lstlisting}
+    import seaborn as sns
+    sns.set()
+
+    df = sns.load_dataset("iris")
+    sns.pairplot(df, hue="species", size=2.5)
+\end{lstlisting}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\textwidth]{../Images/multiScatterplot.png}\\
+  \caption{Scatterplot matrix.}\label{fig:scatterplotMatrix}
+\end{figure}
+
+
+\subsection{Correlation Matrix}\index{general}{Correlation matrix}
 
 An elegant way to visualize the correlation between a large number of variables is the \emph{correlation matrix}. Using \emph{seaborn}, it can be implemented elegantly as follows:
 

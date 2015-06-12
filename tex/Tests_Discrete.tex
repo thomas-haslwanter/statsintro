@@ -16,9 +16,9 @@ A more complex question arises when the requirement arises not only to compare t
 
 \emph{Hypothesis tests} allow you to state quantitative probabilities on the likelihood of a hypothesis. \emph{Linear Regression Modeling} allows you to make predictions and give confidence intervals for output variables that depend linearly on given inputs. But a large class of problems exceeds these requirements. For example, suppose you want to calculate the probability that a patient survives an operation, based on the amount of anesthetic he/she receives, and you want to find out how much anesthetic you can give the patient so that the chance of survival is at least 95\%.
 
-To cover such questions \emph{Generalized Linear Models (GLMs)} have been introduced, which extend the technique of linear regression to a wide range of other problems. A general coverage of GLMs is beyond the goals of this book, and I would like to refer to the excellent book by Dobson \cite{Dobson2008}. While Dobson only gives solutions in \emph{R} and \emph{Stata}, I have made solutions in Python available for most of their problems (\url{https://github.com/thomas-haslwanter/dobson.git}).
+To cover such questions \emph{Generalized Linear Models (GLMs)} have been introduced, which extend the technique of linear regression to a wide range of other problems. A general coverage of GLMs is beyond the goals of this book, and I would like to refer to the excellent book by Dobson \cite{Dobson2008}. While Dobson only gives solutions in \emph{R} and \emph{Stata}, I have made solutions in \emph{Python} available for most of their problems (\url{https://github.com/thomas-haslwanter/dobson.git}).
 
-In the following chapter I want to cover one commonly used case, \emph{logistic regression}, and its extension to \emph{ordinal logistic regression}. The Python solutions presented should allow the readers to solve similar problems on their own, and should give a brief insight in Generalized Linear Models.
+In the following chapter I want to cover one commonly used case, \emph{logistic regression}, and its extension to \emph{ordinal logistic regression}. The \emph{Python} solutions presented should allow the readers to solve similar problems on their own, and should give a brief insight in Generalized Linear Models.
 
 \section{Logistic Regression}\index{general}{Logistic Regression}
 
@@ -153,7 +153,7 @@ Model estimation can be posed as an optimization problem. Here, we minimize the 
 \end{equation}
 
 
-In this sum all terms are convex on w, thus the loss function is convex over $w$. It might be also jointly convex over $w$ and $\theta$, although I haven't checked. I use the function \texttt{fmin\_slsqp} in \texttt{scipy.optimize} to optimize $\mathcal{L}$ under the constraint that $\theta$ is a non-decreasing vector. There might be better options, I don't know. If you do know, please leave a comment!.
+In this sum all terms are convex on w, thus the loss function is convex over $w$. It might be also jointly convex over $w$ and $\theta$, although I haven't checked. I use the function \lstinline{fmin_slsqp} in \texttt{scipy.optimize} to optimize $\mathcal{L}$ under the constraint that $\theta$ is a non-decreasing vector. There might be better options, I don't know. If you do know, please leave a comment!.
 
 Using the formula $\log(\phi(t))^\prime = (1 - \phi(t))$, we can compute the gradient of the loss function as
 
@@ -168,7 +168,7 @@ where $e_i$ is the $i$th canonical vector.
 
 \subsection{Code}
 
-I've implemented a Python version of this algorithm using Scipy's \lstinline{optimize.fmin_slsqp} function. This takes as arguments the loss function, the gradient denoted before and a function that is > 0 when the inequalities on θ are satisfied.
+I've implemented a \emph{Python} version of this algorithm using Scipy's \lstinline{optimize.fmin_slsqp} function. This takes as arguments the loss function, the gradient denoted before and a function that is > 0 when the inequalities on θ are satisfied.
 
 \begin{figure}
   \centering

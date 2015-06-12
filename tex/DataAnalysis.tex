@@ -50,7 +50,7 @@ In statistics, different tools are available for the visual assessments of distr
 
 In all three cases the results are similar: if the two distributions being compared are similar, the points will approximately lie on the line $y = x$. If the distributions are linearly related, the points will approximately lie on a line, but not necessarily on the line $y = x$ (Figure \ref{fig:qqplotChi2}).
 
-In Python, the plot can be generated with the command
+In \emph{Python}, the plot can be generated with the command
 
 \begin{lstlisting}
     stats.probplot(data, plot=plt)
@@ -59,7 +59,7 @@ In Python, the plot can be generated with the command
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{../Images/chi2pp.png}\\
-  \caption{Left) Probility-density-function for a Chi2-distribution (k=3), which is clearly non-normal. Right) Corresponding Probability-plot}\label{fig:qqplotChi2}
+  \caption{Left) Probability-density-function for a Chi2-distribution (k=3), which is clearly non-normal. Right) Corresponding Probability-plot}\label{fig:qqplotChi2}
 \end{figure}
 
 To understand the principle behind those plots, look at the right plot in Fig. \ref{fig:qqplotChi2}. Here we have \emph{100} random datapoints from a Chi2-distribution. The x-value of the first data point is (approximately) the $1/100$-quantile of a standard normal distribution (\lstinline{stats.norm().ppf(0.01)}), which corresponds to \emph{-2.33} (The exact value is slightly shifted, because of \emph{Filliben's estimate}). The y-value is the smallest value of our data-set. Similarly, the second x-value corresponds approximately to \lstinline{stats.norm().ppf(0.01)}, and the second y-value is the second-lowest value of the data set, etc.
@@ -75,9 +75,9 @@ In tests for normality, different challenges can arise: sometimes only few sampl
 
 For example, the \emph{Lilliefors test}\index{general}{test!Lilliefors}, which is based on the \emph{Kolmogorov--Smirnov test} \index{general}{test!Kolmogorov-Smirnov}, quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is ca. $\leq 300$.)
 
-The \emph{Shapiro-Wilk W test}\index{general}{test!Shapiro-Wilk}, which depends on the covariance matrix between the order statistics of the observations, can also be used with $\leq 50$ samples, and has been recommended by \cite{altman99} and by \cite{Ghasemi2012}.
+The \emph{Shapiro-Wilk W test}\index{general}{test!Shapiro-Wilk}, which depends on the covariance matrix between the order statistics of the observations, can also be used with $\leq 50$ samples, and has been recommended by \cite{altman99} and by \cite{Ghasemi2012c}.
 
-The Python command \lstinline{stats.normaltest(x)} uses the D’Agostino-Pearson \emph{omnibus test} \index{general}{test!omnibus}. This test combines a skewness and kurtosis test to produce a single, global, "omnibus" statistic.
+The \emph{Python} command \lstinline{stats.normaltest(x)} uses the D’Agostino-Pearson \emph{omnibus test} \index{general}{test!omnibus}. This test combines a skewness and kurtosis test to produce a single, global, "omnibus" statistic.
 
 \PyImg "checkNormality.py" (p \pageref{py:checkNormality}) shows how to check graphically and quantitatively if a given distribution is normal.
 \index{python}{checkNormality}
@@ -108,7 +108,7 @@ The final exam of your 10 students produce the following scores (Fig. \ref{fig:E
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/fig_ExampleTtest.png}\\
-  \caption{The question we ask: based on our sample mean (dashed-dotted line) and the obeserved variance of the data (the sample variance), do we believe that the population mean is different from 110 (dashed line)? Or in other words: our Null-hypothesis is that the difference between the population mean and 110 is zero.}\label{fig:ExampleTtest}
+  \caption{The question we ask: based on our sample mean (dashed-dotted line) and the observed variance of the data (the sample variance), do we believe that the population mean is different from 110 (dashed line)? Or in other words: our Null-hypothesis is that the difference between the population mean and 110 is zero.}\label{fig:ExampleTtest}
 \end{figure}
 
 The question we want to answer: Is the mean value of the scores (\emph{97.1}) significantly different from 110?
@@ -123,7 +123,7 @@ The difference between our sample mean and the value we want to compare it to (\
     p = 2*td.sf(tval)                               # 0.0995
 \end{lstlisting}
 
-(The factor \emph{2} in the last line of the code is required, since we have to combine the probability of $t<-1.84$ and $t>1.84$.) Expressed in words, given our sample data, we can state that the likelihood that the population mean is \emph{110} is 9.95\%. But since a \emph{statistical difference} is only given by convnetion if the likelihood is less than 5\%, we conclude that the observed value of 97.1 is not significantly different from 110, and the bonus has to be paid out.
+(The factor \emph{2} in the last line of the code is required, since we have to combine the probability of $t<-1.84$ and $t>1.84$.) Expressed in words, given our sample data, we can state that the likelihood that the population mean is \emph{110} is 9.95\%. But since a \emph{statistical difference} is only given by convention if the likelihood is less than 5\%, we conclude that the observed value of 97.1 is not significantly different from 110, and the bonus has to be paid out.
 
 \subsection{Generalization}
 
@@ -155,7 +155,7 @@ And keep in mind that improbable events do happen, even if not very frequently. 
 
 \subsection{The interpretation of the p-value, and the "p-value fallacy"}
 
-\textbf{Note:} A value of \emph{p<0.05} for the null hypothesis has to be interpreted as follows: \emph{If the null hypothesis is true, the chance that we find a test statistic as extreme or more extreme than the one observed is less than 5\%.} This is \emph{not} the same as saying that the null hypothesis is false, and even less so, that an alternative hypothesis is true! Stating a p-value alone is no longer state-of-the-art for the statistical analysis of data. You should also state the the confidence intervals for the parameter that you investigate.
+\textbf{Note:} A value of $p<0.05$ for the null hypothesis has to be interpreted as follows: \emph{If the null hypothesis is true, the chance that we find a test statistic as extreme or more extreme than the one observed is less than 5\%.} This is \emph{not} the same as saying that the null hypothesis is false, and even less so, that an alternative hypothesis is true! Stating a p-value alone is no longer state-of-the-art for the statistical analysis of data. You should also state the confidence intervals for the parameter that you investigate.
 
 Therefore research is sometimes divided into \emph{exploratory research}\index{general}{exploratory research} and \emph{confirmatory research}\index{general}{confirmatory research}. Take for example the case of Matt Motyl, a Psychology PhD student at the University of Virginia. In 2010, data from his study of nearly 2000 people indicated that political moderates saw shades of grey more accurately than people with more extreme political opinions, with a p-value of 0.01. However, when he tried to reproduce the data, the p-value dropped down to 0.59. So while the \emph{exploratory research} showed that a certain hypothesis may be likely, the \emph{confirmatory research} showed that the hypothesis did not hold (\cite{Nuzzo2014}).
 
@@ -242,7 +242,7 @@ For finding a difference between two normally distributed means, with standard d
 
 \subsubsection{Python Solution}
 
-\emph{statsmodels} makes clever use of the fact that 3 of the 4 factors mentioned above are independent, and combines it with the Python feature of \emph{named parameters} to provide a program that takes 3 of those parameters as input, and calculates the remaining $4^{th}$ parameter.
+\emph{statsmodels} makes clever use of the fact that 3 of the 4 factors mentioned above are independent, and combines it with the \emph{Python} feature of \emph{named parameters} to provide a program that takes 3 of those parameters as input, and calculates the remaining $4^{th}$ parameter.
 
 For example,
 
@@ -292,7 +292,7 @@ For example, \emph{pregnancy tests} have a high sensitivity: when a woman is pre
 
 In contrast, an indicator for an attack with atomic weapons on the White House should have a very high specificity: if there is no attack, the probability that the test goes on should be very, very small.
 
-\emph{Sensitivity} and \emph{specificity} characerize a test, while \emph{PPV} and \emph{NPV} are the parameters that tell the doctor how to interpret a test result.
+\emph{Sensitivity} and \emph{specificity} characterize a test, while \emph{PPV} and \emph{NPV} are the parameters that tell the doctor how to interpret a test result.
 
 While sensitivity and specificity are independent of prevalence, they do not tell us what portion of patients with abnormal test results are truly abnormal. This information is provided by the positive/negative predictive value. However, as Fig. \ref{fig:prevalence} indicates, these values are affected by the \emph{prevalence} \index{general}{prevalence} of the disease. In other words, we need to know the prevalence of the disease as well as the PPV/NPV of a test to provide a sensible interpretation of the test results.
 

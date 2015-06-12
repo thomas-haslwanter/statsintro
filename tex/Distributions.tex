@@ -89,9 +89,9 @@ I will give examples which demonstrate each aspect for a normal distribution des
 \begin{minipage}{15 cm}
 
 \textbf{Note:}
-In Python, the most elegant way of working with distribution function is a two-step procedure:
+In \emph{Python}, the most elegant way of working with distribution function is a two-step procedure:
 \begin{itemize}
-  \item In the first step, you create your distribution (e.g. \textsf{nd = stats.norm()}). Note that is a \emph{distribution} (in Python parlance a "frozen distribution"\index{general}{frozen distribution}), not a function yet!
+  \item In the first step, you create your distribution (e.g. \textsf{nd = stats.norm()}). Note that is a \emph{distribution} (in \emph{Python} parlance a "frozen distribution"\index{general}{frozen distribution}), not a function yet!
   \item In the second step, you decide which function you want to use from this distribution, and calculate the function value for the desired x-input (e.g. \textsf{y = nd.cdf(x)})
 \end{itemize}
 
@@ -141,7 +141,7 @@ The only thing that you have to watch out for: after you have acquired your data
   \item Also important are the \emph{quartiles}, i.e. the 25th and the 75th percentile. The difference between them is sometimes referred to as \emph{inter-quartile range (IQR)}\index{general}{inter-quartile-range, IQR}.
 \end{itemize}
 
-Median, upper and lower quartile are used for the data display in box plots (Fig.\ref{fig:Boxplot}).
+Median, upper and lower quartile are used for the data display in box plots (Fig. \ref{fig:Boxplot}).
 
 \subsubsection{Standard Deviation and Variance}
 
@@ -174,7 +174,7 @@ The \gls{sd_} \index{general}{standard deviation} is simply given by the square 
 
 As mentioned in Table \ref{table:population}, in statistics it is often common to denote the population standard deviation with $\sigma$, and the sample standard deviation with $s$.
 
-Watch out: in Python, by default the variance is calculated for "n". You have to set "ddof=1" to obtain the variance for "n-1":
+Watch out: in \emph{Python}, by default the variance is calculated for "n". You have to set "ddof=1" to obtain the variance for "n-1":
 
 \begin{lstlisting}
     In[19]: data = arange(7,14)
@@ -219,7 +219,7 @@ where $std$ is the  standard deviation, and $N_{ISF}(\alpha)$ the inverse surviv
 
 \subsection{Parameters Describing the Form of a Distribution}
 
-In \lstinline{scipy.stats}, continuous distribution functions are characterized by their \emph{location} and their \emph{scale}. Should the definition of a distribution require more than two parameters, the following parameters are called \emph{shape parameters}.  The exact meaning of each parameter can be found in the function definition.
+In \texttt{scipy.stats}, continuous distribution functions are characterized by their \emph{location} and their \emph{scale}. Should the definition of a distribution require more than two parameters, the following parameters are called \emph{shape parameters}.  The exact meaning of each parameter can be found in the function definition.
 
 For example, for the \emph{normal distribution}, \emph{(location/shape)} are given by \emph{(mean/standard deviation)} of the distribution. In contrast, for the \emph{uniform distribution}, \emph{location/shape} are given by the \emph{(start/end)} of the range where the distribution is different from zero.
 
@@ -441,7 +441,7 @@ A very frequent application of the t-distribution is in the calculation of confi
 
 \emph{Calculating the t-values for confidence intervals, for n = 20 and $\alpha=0.05$. For comparison, I also calculate the corresponding value from the normal distribution.}
 
-In Python, the 95\% confidence interval for the mean can be obtained with a one-liner:
+In \emph{Python}, the 95\% confidence interval for the mean can be obtained with a one-liner:
 
 \begin{lstlisting}
     alpha = 0.95
@@ -653,7 +653,7 @@ This is a simple one: an even probability for all data values (Figure \ref{fig:u
 
 \subsubsection{Programs: Continuous Distribution Functions}
 
-Working with distribution functions in Python takes a bit to get used to. But once you get the concept, it is marvellously easy. In my opinion, the most logical way is first to define the function, with all the parameters that it requires; and then, to use the methods of this function, e.g. $pdf$, or $cdf$:
+Working with distribution functions in \emph{Python} takes a bit to get used to. But once you get the concept, it is marvellously easy. In my opinion, the most logical way is first to define the function, with all the parameters that it requires; and then, to use the methods of this function, e.g. $pdf$, or $cdf$:
 
 \begin{lstlisting}
   In [1]: from scipy import stats

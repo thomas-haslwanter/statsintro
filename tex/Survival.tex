@@ -25,7 +25,7 @@ Note that the survival curve changes only when a "failure" occurs, i.e. when a s
 
 \section{Comparing Survival Curves in Two Groups} \index{general}{test!logrank}
 
-The most common test for comparing independent groups of survival times is the \emph{logrank test}. This test is a non-parametric hypothesis test, testing the probability that both groups come from the same underlying population. Since to my knowledge this test is not yet implemented in a Python library, I have included an implementation based on the equations given by \cite{altman99} (see program \ref{py:survival}).
+The most common test for comparing independent groups of survival times is the \emph{logrank test}. This test is a non-parametric hypothesis test, testing the probability that both groups come from the same underlying population. Since to my knowledge this test is not yet implemented in a \emph{Python} library, I have included an implementation based on the equations given by \cite{altman99} (see program \ref{py:survival}).
 
 To explore the effect of different variables on survival, more advanced methods are required. The \emph{Cox regression model}\index{general}{Cox regression model} introduced by Cox in 1972 is used widely when it is desired to investigate several variables at the same time. For details, check \cite{altman99} or other statistic textbooks.
 

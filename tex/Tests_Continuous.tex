@@ -51,7 +51,7 @@ Since it is very important to understand the basic principles of how we arrive a
 \subsection{Wilcoxon signed rank sum test}\index{general}{test!Wilcoxon signed rank sum}
 
 If our data are not normally distributed, we cannot use the t-test (although this test is fairly robust against deviations from normality, see Fig. \ref{fig:ttest_stability}). Instead, we must use a \emph{non-parametric} test on the mean value. We can do this by performing a \emph{Wilcoxon signed rank sum test}.
- \footnote{Python Example: scipy.stats.wilcoxon, in "univariate.py"},\footnote{The following description and example has been taken from \cite{altman99}, Table 9.2}
+ \footnote{\emph{Python} Example: scipy.stats.wilcoxon, in "univariate.py"},\footnote{The following description and example has been taken from \cite{altman99}, Table 9.2}
 This method has three steps:
 
 \begin{enumerate}
@@ -121,7 +121,7 @@ Let me use a classical t-test as an example.
 
 Let us take performance measurements from a racing team, on two different occasions. During Race\_1, the members of the team achieve a score of [ 79, 100, 93, 75, 84, 107, 66, 86, 103, 81, 83, 89, 105, 84, 86, 86, 112, 112, 100, 94], and during Race\_2 [ 92, 100, 76, 97, 72, 79, 94, 71, 84, 76, 82, 57, 67, 78, 94, 83, 85, 92, 76, 88].
 
-These numbers can be generated, and a t-test comparing the two groups can be done, with the following Python commands:
+These numbers can be generated, and a t-test comparing the two groups can be done, with the following \emph{Python} commands:
 
 \begin{lstlisting}
     from scipy import stats
@@ -145,7 +145,7 @@ The command \lstinline{random.seed(123)} initializes the random number generator
     print(result.summary())
 \end{lstlisting}
 
-The important line is the last but one, which produces the $results$. Thereby the \emph{ordinary least square (ols)} function from \emph{statsmodels} tests the model which describes the difference between the results of \emph{Race1} and those of \emph{Race2} with only an \emph{offset} (also called \emph{intercept} in the language of modeling). In other words, our model has only one paramter, the \emph{intercept}. The results below show that the probability that this intercept is 0 is only 0.03: the difference is \emph{significant}.
+The important line is the last but one, which produces the $results$. Thereby the \emph{ordinary least square (ols)} function from \emph{statsmodels} tests the model which describes the difference between the results of \emph{Race1} and those of \emph{Race2} with only an \emph{offset} (also called \emph{intercept} in the language of modeling). In other words, our model has only one parameter, the \emph{intercept}. The results below show that the probability that this intercept is 0 is only 0.03: the difference is \emph{significant}.
 
  \small\begin{lstlisting}
 
@@ -208,7 +208,7 @@ The fundamental technique is a partitioning of the total sum of squares SS\index
   SS_\text{Total} = SS_\text{Error} + SS_\text{Treatments}
 \end{equation}
 
-where $SS_{Total}$ is sum-squared devation from the overall mean, the $SS_{Error}$ the sum-squared deviation from the mean within a group, and the $SS_{treatment}$ the sum-squared deviation between each group and the overall mean (Fig. \ref{fig:ANOVA_annotated}).
+where $SS_{Total}$ is sum-squared deviation from the overall mean, the $SS_{Error}$ the sum-squared deviation from the mean within a group, and the $SS_{treatment}$ the sum-squared deviation between each group and the overall mean (Fig. \ref{fig:ANOVA_annotated}).
 \begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/anova_annotated.png}\\
@@ -223,7 +223,7 @@ The number of degrees of freedom DF can be partitioned in a similar way: one of 
 
 
 \subsubsection{Example: one-way ANOVA}
-As an example, let us take the red cell folate levels ($\mu g/l$) in three groups of cardiac bypass patients given different levels of nitrous oxide ventilation (Amess et al, 1978), described in the Python code example below. I first show the result of this ANOVA test, and then explain the steps to get there.
+As an example, let us take the red cell folate levels ($\mu g/l$) in three groups of cardiac bypass patients given different levels of nitrous oxide ventilation (Amess et al, 1978), described in the \emph{Python} code example below. In total 22 patients were included in the analysis. I first show the result of this ANOVA test, and then explain the steps to get there.
 
 \begin{verbatim}
                 DF    SS          MS     F    p(>F)
@@ -289,7 +289,7 @@ In the Tukey HSD method the sample $x_1, ..., x_n$ is a sample of means and $q$ 
 
 Tukey's studentized range test (HSD) is a test specific to the comparison of all pairs of k independent samples. Instead we can run t-tests on all pairs, calculate the p-values and apply one of the p-value corrections for multiple testing problems. The simplest - and at the same time quite conservative - approach is to divide the required p-value by the number of tests that we do (\emph{Bonferroni correction}). For example, if you perform 4 comparisons, you check for significance not at $p=0.05$, but at $p=0.0125$.
 
-While multiple testing is not yet included in Python standardly, you can get a number of multiple-testing corrections done with the statsmodels package:
+While multiple testing is not yet included in \emph{Python} standardly, you can get a number of multiple-testing corrections done with the statsmodels package:
 
 \begin{lstlisting}
   In[7]: from statsmodels.sandbox.stats.multicomp import multipletests
@@ -350,7 +350,7 @@ In a clinic, 15 lazy patients weight [76, 101, 66, 72, 88, 82, 79, 73, 76, 85, 7
 \begin{enumerate}
   \item \textbf{Get the data}
 
-    The file   \emph{https://github.com/thomas-haslwanter/statsintro/blob/master/Data/data\_others/Table 6.6 Plant experiment.xls} contains data from an experiment with plants in three different growing conditions. Get the data into Python.
+    The file   \emph{https://github.com/thomas-haslwanter/statsintro/blob/master/Data/data\_others/Table 6.6 Plant experiment.xls} contains data from an experiment with plants in three different growing conditions. Get the data into \emph{Python}.
     Hint: use the module xlrd
 
   \item \textbf{Perform an ANOVA}

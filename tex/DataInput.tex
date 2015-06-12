@@ -1,16 +1,16 @@
 \chapter{Data Input}\index{general}{data input}
 
-This chapter deals with how to get read in data for statistical analysis (in Python), and thus forms the link between the chapter on \emph{Python} and the first chapter on data analysis. And while it may be hard to believe, reading data into the system in the correct format is often one of the most time consuming parts of the data analysis.
+This chapter deals with how to get read in data for statistical analysis (in \emph{Python}), and thus forms the link between the chapter on \emph{Python} and the first chapter on data analysis. And while it may be hard to believe, reading data into the system in the correct format is often one of the most time consuming parts of the data analysis.
 
 \vspace{5 mm}
 
-Data input can be complicated by a number of problems, like different separators between data entries (such as spaces and/or tabulators), or empty lines at the end of the file. In addition, data may have been saved in different formats, such as MS Excel, Matlab,  HDF5 (which also contains the Matlab-format), or in databases. Understandably, we cannot cover all possible combinations here. But I will try to give an overview of where and how to start with data input.
+Data input can be complicated by a number of problems, like different separators between data entries (such as spaces and/or tabulators), or empty lines at the end of the file. In addition, data may have been saved in different formats, such as MS Excel, \emph{Matlab},  HDF5 (which also contains the \emph{Matlab}-format), or in databases. Understandably, we cannot cover all possible combinations here. But I will try to give an overview of where and how to start with data input.
 
 \section{Data from Textfiles}
 
 \subsection{Visual Inspection}
 
-When your data are available as ASCII-files, you should \emph{always } start out with a \emph{visual inspection }of the data. In particular, you should check
+When your data are available as ASCII-files, you should always start out with a visual inspection of the data! In particular, you should check
 
 \begin{itemize}
   \item Do the data have a header and/or a footer?
@@ -21,9 +21,9 @@ When your data are available as ASCII-files, you should \emph{always } start out
 
 \subsection{Reading ASCII-data into Python}
 
-In Python, I \emph{strongly} suggest that you start out reading in and inspecting your data in the \emph{Ipython qtconsole}. It allows you to move around much more easily, try things out, and quickly get feedback on how successful your commands were. When you have your command syntax worked out, you can obtain the command history with \lstinline{%history}, copy it into your IDE, and turn it into a program.
+In \emph{Python}, I strongly suggest that you start out reading in and inspecting your data in the \emph{ipython qtconsole}. It allows you to move around much more easily, try things out, and quickly get feedback on how successful your commands were. When you have your command syntax worked out, you can obtain the command history with \lstinline{%history}, copy it into your IDE, and turn it into a program.
 
-While the a numpy command \lstinline{loadtxt} allows you to read in simply formatted text data, most of the time, I go straight to \emph{pandas}, as it provides significantly more powerful tools for data-entry. A typical workflow can contain the following lines:
+While the a numpy command \lstinline{np.loadtxt} allows you to read in simply formatted text data, most of the time I go straight to \emph{pandas}, as it provides significantly more powerful tools for data-entry. A typical workflow can contain the following lines:
 
 \begin{lstlisting}
 import pandas as pd
@@ -48,8 +48,8 @@ df.tail()   # Check the last line, and compare it to the values in the ASCII-fil
 Working with text data often requires the use of simple \emph{regular expressions}\index{general}{regular expressions}. \Glspl{regexp} are a very powerful way of finding and/or manipulating text strings. Many books have been written about them.
 
 \begin{itemize}
-  \item \url{https://www.debuggex.com/cheatsheet/regex/python} provides a convenient cheat sheet for regular expressions in Python
-  \item \url{http://www.regular-expressions.info} gives and a comprehensive description
+  \item \url{https://www.debuggex.com/cheatsheet/regex/python} provides a convenient cheat sheet for regular expressions in \emph{Python}.
+  \item \url{http://www.regular-expressions.info} gives and a comprehensive description.
 \end{itemize}
 
 Let me give you two useful examples:
@@ -61,14 +61,14 @@ Let me give you two useful examples:
 
   \item \lstinline{vel = df.filter(regex='Vel*')}
 
-  would extract all the columns that start with \emph{'Vel'}, if your DataFrame \emph{df} contains for example the columns \emph{['Time', 'PosX', 'PosY', 'PosZ', 'VelX', 'VelY', 'VelZ']}.
+  would extract all the columns that start with "Vel...". For example, if your DataFrame \emph{df} contains for example the columns \emph{['Time', 'PosX', 'PosY', 'PosZ', 'VelX', 'VelY', 'VelZ']}, this command would return a DataFrame with only the columns \emph{['VelX', 'VelY', 'VelZ']}.
 \end{enumerate}
 
 \section{Input from MS Excel}\index{general}{Excel}
 
-Pandas also offers tools for reading and writing data for MS Excel, in-memory data structures and SQL databases.
+\emph{pandas} also offers tools for reading and writing data for \emph{Microsoft Excel}, in-memory data structures and SQL databases.
 
-\footnote{The following section has been taken from the \emph{pandas} documentation.}There are two approaches to reading an excel file. The \lstinline{read_excel} function and the \lstinline{ExcelFile} class. \lstinline{read_excel} is for reading one file with file-specific arguments (ie. identical data formats across sheets). \lstinline{ExcelFile} is for reading one file with sheet-specific arguments (ie. various data formats across sheets). Choosing the approach is largely a question of code readability and execution speed.
+\footnote{The following section has been taken from the \emph{pandas} documentation.}There are two approaches to reading an \emph{Excel} file. The \lstinline{read_excel} function and the \lstinline{ExcelFile} class. \lstinline{read_excel} is for reading one file with file-specific arguments (ie. identical data formats across sheets). \lstinline{ExcelFile} is for reading one file with sheet-specific arguments (ie. various data formats across sheets). Choosing the approach is largely a question of code readability and execution speed.
 
 Equivalent class and function approaches to read a single sheet:
 
@@ -81,16 +81,16 @@ Equivalent class and function approaches to read a single sheet:
     data = read_excel('path_to_file.xls', 'Sheet1', index_col=None, na_values=['NA'])
 \end{lstlisting}
 
-If this fails, give it a try with the Python package \emph{xlrd}.
+If this fails, give it a try with the \emph{Python} package \emph{xlrd}.
 
 \textbf{Example: }
-\PyImg "readZip.py" (p \pageref{py:readZip}) This advanced script shows you how you can directly import data from an MS-Excel file from a zipped archive on the web.
+\PyImg "readZip.py" (p \pageref{py:readZip}) This advanced script shows you how you can directly import data from an \emph{Excel} file from a zipped archive on the web.
 \index{python}{readZip}
 
 \section{Input from Matlab and other formats}
 
 \begin{description}
-  \item[Matlab] Matlab support is built into \emph{scipy}, with the command \lstinline{scipy.io.loadmat}.
+  \item[Matlab] \emph{Matlab} support is built into \emph{scipy}, with the command \lstinline{scipy.io.loadmat}.
   \item[Clipboard] If you have data in your clipboard, you can import them directly with \lstinline{pd.read_clipboard()}
   \item[Other Fileformats] pandas supports input from a number of additional formats. The simplest way to access them is typing \lstinline{pd.read_ + TAB}, which shows you the currently available options.
 \end{description}

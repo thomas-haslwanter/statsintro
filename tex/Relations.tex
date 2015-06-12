@@ -1,6 +1,6 @@
 \chapter{Relation Between Two Continuous Variables}
 
-So far we have been dealing with problems where only one variable is measured. Expressions or functions which only depend on one variable are sometimes called \emph{univariate}\index{general}{univariate}. If more than one variable is involved, we are dealing with \emph{multivariate}\index{general}{multivariate} problems. In the simplest case we have two varibles involved, and we need a \emph{bivariate}\index{general}{bivariate} data analysis.
+So far we have been dealing with problems where only one variable is measured. Expressions or functions which only depend on one variable are sometimes called \emph{univariate}\index{general}{univariate}. If more than one variable is involved, we are dealing with \emph{multivariate}\index{general}{multivariate} problems. In the simplest case we have two variables involved, and we need a \emph{bivariate}\index{general}{bivariate} data analysis.
 
 For two related variables, the \emph{correlation} measures the association between the two variables. In contrast, a \emph{linear regression} is used for the prediction of the value of one variable from another. For the correlation between many variables, you should look into "correlation tables" (nicely implemented in \emph{seaborn}).  And an extension of linear regression to more than two variables brings you into the realm of statistical modeling (\ref{chapter:Models}).
 
@@ -205,7 +205,7 @@ Caution: the sample correlation and $R^2$ are misleading if there is a nonlinear
 
 \subsection{Coding}
 
-If you have vectors $x,y$ containing your data, you can use \lstinline{statsmodels} to create a design matrix that also includes the $1's$ for the offset:
+If you have vectors $x,y$ containing your data, you can use \texttt{statsmodels} to create a design matrix that also includes the $1's$ for the offset:
 
 \begin{lstlisting}
     import statsmodels.api as sm
@@ -218,7 +218,7 @@ The parameters are then easily found as
     params = np.linalg.lstsq(Xmat, y)
 \end{lstlisting}
 
-However, you get a lot more information if you use the OLS-fit from \lstinline{statmodels}:
+However, you get a lot more information if you use the OLS-fit from \texttt{statmodels}:
 
 \begin{lstlisting}
     import numpy as np
@@ -267,7 +267,7 @@ Kurtosis:                       1.908   Cond. No.                         4.60
 
 The meaning of many of these parameters is described in the chapter \nameref{chapter:Models}.
 
-From the \lstinline{results}, you can extract e.g. the model parameters, standard errors, confidence intervals, and residuals:
+From the \texttt{results}, you can extract e.g. the model parameters, standard errors, confidence intervals, and residuals:
 
 \begin{lstlisting}
     params = results.params
@@ -305,7 +305,7 @@ To use the technique of linear regression, the following assumptions should be f
   at p. \pageref{py:fitLine}} \label{fig:regline}
 \end{figure}
 
-Since to my knowledge there exists no program in the Python standard library (or numpy, scipy) to calculate the confidence intervals for a regression line, I include my corresponding program \emph{lineFit.py} \ref{py:fitLine}. The output of this program is shown in Figure \ref{fig:regline}. This program also shows how Python programs intended for distribution should be documented.
+Since to my knowledge there exists no program in the \emph{Python} standard library (or numpy, scipy) to calculate the confidence intervals for a regression line, I include my corresponding program \emph{lineFit.py} \ref{py:fitLine}. The output of this program is shown in Figure \ref{fig:regline}. This program also shows how \emph{Python} programs intended for distribution should be documented.
 
 \PyImg "fitLine.py" (p \pageref{py:fitLine}): Linear regression fit.
 \index{python}{fitLine}

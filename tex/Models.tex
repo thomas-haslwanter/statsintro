@@ -18,7 +18,7 @@ You then
 If you are not happy with the quality of the model, or if you find during the inspection of the residuals that you have either outliers or need another model, you modify your proposed model and repeat this procedure until you are happy with the results. You see that in comparison to hypothesis tests, statistical modeling involves much more an interactive playing with the data.
 
 \section{Model language}
-The mini-language commonly used now in statistics to describe formulas was first used in the languages $R$ and $S$, but is now also available in Python through the module \emph{patsy}.
+The mini-language commonly used now in statistics to describe formulas was first used in the languages $R$ and $S$, but is now also available in \emph{Python} through the module \emph{patsy}.
 
 For instance, if we have some variable $y$, and we want to regress it against some other variables $x, a, b$, and the interaction of a and b, then we simply write
 
@@ -169,9 +169,9 @@ In this model $\mu$ is the mean of the reference group and $\tau_i$ is the diffe
 \section{Linear Regression Analysis with Python}
 
 \footnote{The following is based on the \href{http://connor-johnson.com/2014/02/18/linear-regression-with-python/}{blog of Connor Johnson}.}
-We will use Python to explore measures of fit for linear regression: the coefficient of determination ($R^2$), hypothesis tests (F, t, Omnibus), AIC, BIC, and other measures.
+We will use \emph{Python} to explore measures of fit for linear regression: the coefficient of determination ($R^2$), hypothesis tests (F, t, Omnibus), AIC, BIC, and other measures.
 
-First we will look at a small data set from \href{http://lib.stat.cmu.edu/DASL/Stories/AlcoholandTobacco.html}{DASL library}, regarding the correlation between tobacco and alcohol purchases in different regions of the United Kingdom. The interesting feature of this data set is that Northern Ireland is reported as an outlier. Notwithstanding, we will use this data set to describe two tools for calculating a linear regression. We will alternatively use the \emph{statsmodels} and \emph{sklearn} modules for calculating the linear regression, while using \emph{pandas} for data management, and \emph{matplotlib} for plotting. To begin, we will import the modules, get the data into Python, and have a look at them:
+First we will look at a small data set from \href{http://lib.stat.cmu.edu/DASL/Stories/AlcoholandTobacco.html}{DASL library}, regarding the correlation between tobacco and alcohol purchases in different regions of the United Kingdom. The interesting feature of this data set is that Northern Ireland is reported as an outlier. Notwithstanding, we will use this data set to describe two tools for calculating a linear regression. We will alternatively use the \emph{statsmodels} and \emph{sklearn} modules for calculating the linear regression, while using \emph{pandas} for data management, and \emph{matplotlib} for plotting. To begin, we will import the modules, get the data into \emph{Python}, and have a look at them:
 
 \begin{lstlisting}
     import numpy as np
@@ -194,7 +194,7 @@ First we will look at a small data set from \href{http://lib.stat.cmu.edu/DASL/S
     Scotland 6.08 4.51
     Northern_Ireland 4.02 4.56'''
 
-    # Read in the data. Note that for Python 2.x, you have to change the "import" statement
+    # Read in the data. Note that for \emph{Python} 2.x, you have to change the "import" statement
     from io import StringIO
     df = pd.read_csv(StringIO(data_str), sep=r'\s+')
 
@@ -250,7 +250,7 @@ Kurtosis:                       1.527   Cond. No.                         27.2
 
 And now we have a very nice table of mostly meaningless numbers. I will go through and explain each one. The left column of the first table is mostly self explanatory. The degrees of freedom (\emph{Df}) of the model are the number of predictor, or explanatory, variables. The degrees of freedom of the residuals is the number of observations minus the degrees of freedom of the model, minus one (for the offset).
 
-Most of the values listed in the summary are available via the \lstinline{result} object. For instance, the $R^2$ value is obtained by \lstinline{result.rsquared}. If you are using IPython, you may type \lstinline{result.} and hit the TAB key, and a list of attributes for the \lstinline{result} object will drop down.
+Most of the values listed in the summary are available via the \texttt{result} object. For instance, the $R^2$ value is obtained by \lstinline{result.rsquared}. If you are using \emph{IPython}, you may type \lstinline{result.} and hit the TAB key, and a list of attributes for the \lstinline{result} object will drop down.
 
 \subsection{Model Results}
 \subsubsection{Definitions for Regression with Intercept}
@@ -346,7 +346,7 @@ If H0 is true,
 
 has an F distribution with $(DF_\text{mod}, DF_\text{res})$ degrees of freedom, and is independent of $\sigma$.
 
-We can test this directly in Python with
+We can test this directly in \emph{Python} with
 
 \begin{lstlisting}
     N = result.nobs
@@ -401,7 +401,7 @@ It can be shown that the maximum likelihood estimator of $\sigma^2$ is
   E(\sigma^2) = \frac{SS_\text{res}}{n}
 \end{equation}
 
-We can calculate this in Python as follows:
+We can calculate this in \emph{Python} as follows:
 
 \begin{lstlisting}
     N = result.nobs
@@ -455,7 +455,7 @@ We can obtain this directly by computing
     \beta = (X^{T}X)^{-1}X^{T}y.
 \end{equation}
 
-Here, $X$ is the matrix of predictor variables as columns, with an extra column of ones for the constant term, $y$ is the column vector of the response variable, and $\beta$ is the column vector of coefficients corresponding to the columns of $X$. In Python:
+Here, $X$ is the matrix of predictor variables as columns, with an extra column of ones for the constant term, $y$ is the column vector of the response variable, and $\beta$ is the column vector of coefficients corresponding to the columns of $X$. In \emph{Python}:
 
 \begin{lstlisting}
     df['Eins'] = np.ones(( len(df), ))
@@ -473,7 +473,7 @@ To obtain the \emph{standard errors of the coefficients} we will calculate the c
     C = cov(\beta) = \sigma^{2} ( X X^{T} )^{-1}.
 \end{equation}
 
-Here, $\sigma^{2}$ is the variance, or the MSE (mean squared error) of the residuals. The standard errors are the square roots of the elements on the main diagonal of this covariance matrix. We can perform the operation above, and calculate the element-wise square root using the following Python code,
+Here, $\sigma^{2}$ is the variance, or the MSE (mean squared error) of the residuals. The standard errors are the square roots of the elements on the main diagonal of this covariance matrix. We can perform the operation above, and calculate the element-wise square root using the following \emph{Python} code,
 
 \begin{lstlisting}
     X = df.Tobacco[:-1]
@@ -536,7 +536,7 @@ Once we have a t statistic, we can (sort of) calculate the probability of observ
     >>> p = 0.007
 \end{lstlisting}
 
-Here, \lstinline{dof} are the degrees of freedom, which should be eight, which is the number of observations, N, minus the number of parameters, which is two. The CDF is the cumulative sum of the PDF. We are interested in the area under the right hand tail, beyond our t statistic, t, so we subtract the cumulative sum up to that statistic from one in order to obtain the tail probability on the other side. We then multiply this tail probability by two to obtain a two-tailed probability.
+Here, \texttt{dof} are the degrees of freedom, which should be eight, which is the number of observations, N, minus the number of parameters, which is two. The CDF is the cumulative sum of the PDF. We are interested in the area under the right hand tail, beyond our t statistic, t, so we subtract the cumulative sum up to that statistic from one in order to obtain the tail probability on the other side. We then multiply this tail probability by two to obtain a two-tailed probability.
 
 \subsubsection{Confidence Interval}
 
@@ -582,7 +582,7 @@ Skew and kurtosis refer to the shape of a distribution. \emph{Skewness} is a mea
 \end{subequations}
 
 
-As you see, the $\hat{\mu}_3$ and $\hat{\mu}_4$ are the third and fourth central moments of a distribution. One possible Python implementation would be,
+As you see, the $\hat{\mu}_3$ and $\hat{\mu}_4$ are the third and fourth central moments of a distribution. One possible \emph{Python} implementation would be,
 
 \begin{lstlisting}
     d = Y - result.fittedvalues
@@ -601,7 +601,7 @@ As you see, the $\hat{\mu}_3$ and $\hat{\mu}_4$ are the third and fourth central
 
 \subsubsection{Omnibus Test}\index{general}{test!Omnibus}
 
-The Omnibus test uses skewness and kurtosis to test the null hypothesis that a distribution is normal. In this case, we’re looking at the distribution of the residual. If we obtain a very small value for $\Pr( \mbox{ Omnibus } )$, then the residuals are not normally distributed about zero, and we should maybe look at our model more closely. The \lstinline{statsmodels} OLS function uses the \lstinline{stats.normaltest()} function:
+The Omnibus test uses skewness and kurtosis to test the null hypothesis that a distribution is normal. In this case, we’re looking at the distribution of the residual. If we obtain a very small value for $\Pr( \mbox{ Omnibus } )$, then the residuals are not normally distributed about zero, and we should maybe look at our model more closely. The \emph{statsmodels} OLS function uses the \lstinline{stats.normaltest()} function:
 
 \begin{lstlisting}
     (K2, p) = stats.normaltest(result.resid)
@@ -648,7 +648,7 @@ Calculating the JB-statistic using the $\chi^{2}$ distribution with two degrees 
 
 \subsubsection{Condition Number}
 
-The \emph{condition number} \index{general}{condition number} measures the sensitivity of a function's output to its input. When two predictor variables are highly correlated, which is called \emph{multicollinearity}\index{general}{multicollinearity}, the coefficients or factors of those predictor variables can fluctuate erratically for small changes in the data, or the model. Ideally, similar models should be similar, i.e., have approximately equal coefficients. Multicollinearity can cause numerical matrix inversion to crap out, or produce inaccurate results. One approach to this problem in regression is the technique of \emph{ridge regression}, which is available in the \lstinline{sklearn} Python module.
+The \emph{condition number} \index{general}{condition number} measures the sensitivity of a function's output to its input. When two predictor variables are highly correlated, which is called \emph{multicollinearity}\index{general}{multicollinearity}, the coefficients or factors of those predictor variables can fluctuate erratically for small changes in the data, or the model. Ideally, similar models should be similar, i.e., have approximately equal coefficients. Multicollinearity can cause numerical matrix inversion to crap out, or produce inaccurate results. One approach to this problem in regression is the technique of \emph{ridge regression}, which is available in the \texttt{sklearn} \emph{Python} module.
 
 We calculate the condition number by taking the eigenvalues of the product of the predictor variables (including the constant vector of ones) and then taking the square root of the ratio of the largest eigenvalue to the least eigenvalue. If the condition number is greater than thirty, then the regression may have multicollinearity.
 
@@ -713,7 +713,7 @@ Kurtosis:                       3.022   Cond. No.                         25.5
 
 \subsection{Regression Using Sklearn}
 
-\href{http://scikit-learn.org/}{\emph{Scikit-learn (sklearn)}} \index{general}{scikit-learn} is an open source machine learning library for the Python programming language. It features various classification, regression and clustering algorithms.
+\href{http://scikit-learn.org/}{\emph{Scikit-learn (sklearn)}} \index{general}{scikit-learn} is an open source machine learning library for the \emph{Python} programming language. It features various classification, regression and clustering algorithms.
 
 In order to use \emph{sklearn}, we need to input our data in the form of vertical vectors. Therefore, in our case, we’ll cast the DataFrame to Numpy matrix so that vertical arrays stay vertical once they are sliced off the data set.
 

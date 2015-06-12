@@ -6,7 +6,7 @@ Calculating probabilities is only one part of statistics. Another is the interpr
 
 So far we have restricted ourselves to the \emph{frequentist interpretation}\index{general}{interpretation!frequentist}, which interprets $p$ as the \emph{frequency of an occurrence}: if an outcome of an experiment has the probability $p$, it means that if that experiment is repeated $N$ times (where $N$ is a large number), then we observe this specific outcome $N*p$ times.
 
-The \emph{Bayesian interpretation}\index{general}{interpretation!Bayesian} of $p$ is quite different, and interprets $p$ as our \emph{believe of the likelihood} of a certain outcome. For some events, this makes a lot more sense. For example, in the upcoming semi-final of the soccer worldcup in Brazil, Argentine will play against the Netherlands, with Lionel Messi leading the Argentinian team. Since Messi is (for a soccer player) already fairly old, this may be a one-time event, and we will never have a large number $N$ repetitions.
+The \emph{Bayesian interpretation}\index{general}{interpretation!Bayesian} of $p$ is quite different, and interprets $p$ as our \emph{believe of the likelihood} of a certain outcome. For some events, this makes a lot more sense. For example, in the upcoming semi-final of the soccer worldcup in Brazil, Argentine will play against the Netherlands, with Lionel Messi leading the Argentinean team. Since Messi is (for a soccer player) already fairly old, this may be a one-time event, and we will never have a large number $N$ repetitions.
 
 But in addition to this difference in interpretation, the Bayesian approach has another advantage: it lets us bring in \emph{prior knowledge} into the calculation of the probability $p$, through the application of \emph{Bayes' Theorem}\index{general}{Bayes' Theorem}:
 
@@ -23,7 +23,7 @@ John Maynard Keynes, a great economist and thinker, said "When the facts change,
 For proposition A and evidence B,
 
 \begin{itemize}
-  \item P(A), the \emph{prior probabiliby}\index{general}{prior probability}, is the initial degree of belief in A.
+  \item P(A), the \emph{prior probability}\index{general}{prior probability}, is the initial degree of belief in A.
   \item $P(A|B)$, the \emph{posterior probability}\index{general}{posterior probability}, is the degree of belief having accounted for B. It can be read as \emph{"the probability of A, given that B is the case"}.
   \item the quotient $P(B|A)/P(B)$ represents the support B provides for A.
 \end{itemize}
@@ -67,7 +67,7 @@ For more information on that topic, check out (in order of rising complexity)
 \begin{itemize}
   \item Wikipedia, which has some nice explanations under \emph{"Bayes ..."}
   \item \href{http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/}{Bayesian Methods for Hackers}, a nice, free ebook, providing a practical introduction to the use of PyMC (see below).
-  \item The \href{http://pymc-devs.github.io/pymc/}{PyMC User Guide}: PyMC is a very powerful Python package which makes the application of MCMC techniques very simple.
+  \item The \href{http://pymc-devs.github.io/pymc/}{PyMC User Guide}: PyMC is a very powerful \emph{Python} package which makes the application of MCMC techniques very simple.
   \item \emph{Pattern Recognition and Machine Learning}, a comprehensive, but often quite technical book by Christopher M. Bishop \cite{Bishop2007}.
 \end{itemize}
 
@@ -91,7 +91,7 @@ To simulate the probability of the O-rings failing, we need a function that goes
 
 In this model, the variable $\beta$ that describes how quickly the function changes from 1 to 0, and $\alpha$ indicates the location of this change.
 
-Using the Python package PyMC, a Monte-Carlo simulation of this model can be done remarkably easily:
+Using the \emph{Python} package PyMC, a Monte-Carlo simulation of this model can be done remarkably easily:
 
 \begin{lstlisting}
     # --- Perform the MCMC-simulations ---
@@ -137,7 +137,7 @@ The probability curve for an O-ring failure thus looks as follows:
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/Challenger_Probability.png}\\
-  \caption{Probility for an O-ring failure, as a function of temperature.}
+  \caption{Probability for an O-ring failure, as a function of temperature.}
 \end{figure}
 
 One advantage of the MCMC simulation is, that it also provides confidence intervals for the probability:
@@ -145,7 +145,7 @@ One advantage of the MCMC simulation is, that it also provides confidence interv
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/Challenger_CIs.png}\\
-  \caption{95\% Confidence Intervals for the Probility for an O-ring failure.}
+  \caption{95\% Confidence Intervals for the Probability for an O-ring failure.}
 \end{figure}
 
 On the day of the Challenger disaster, the outside temperature was 31 degrees Fahrenheit. The posterior distribution of a defect occurring, given this temperature, almost guaranteed that the Challenger was going to be subject to defective O-rings.

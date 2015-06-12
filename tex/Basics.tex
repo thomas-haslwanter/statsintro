@@ -11,41 +11,82 @@ The choice of appropriate statistical procedure depends on the data. If the vari
 \subsection{Categorical} \index{general}{data!categorical}
 
 \subsubsection{boolean}
-Some data can only have two values. For example,
+
+"Boolean data" are data which can only have two values. For example,
 \begin{enumerate}
   \item male/female
   \item smoker/non-smoker
+  \item True/False
 \end{enumerate}
 
 \subsubsection{nominal}\index{general}{nominal}
-Many classifications require more than two categories, e.g. \emph{married / single / divorced}
+Many classifications require more than two categories. Such data are called "nominal data". An example is  \emph{married / single / divorced}.
 
 \subsubsection{ordinal}\index{general}{data!ordinal}
-These are ordered categorical data, e.g. \emph{very few / few / some / many / very many}
+In contrast to nominal data, "ordinal data" have a logical sequence, e.g. \emph{very few / few / some / many / very many} .
 
 \subsection{Numerical}\index{general}{data!numerical}
-
-\subsubsection{Numerical discrete}
-For example \emph{Number of children: 0 1 2 3 4 5}
 
 \subsubsection{Numerical continuous}
 Whenever possible, it is best to record the data in their original continuous format, and only with a sensible number of decimal places. For example, it does not make sense to record the body size with more than 1 mm accuracy, as there are larger changes in body height between the size in the morning and the size in the evening, due to compression of the intervertebral disks.
 
+\subsubsection{Numerical discrete}
+Some numerical data can only take on integer valued. These data are called "numerical discrete". For example \emph{Number of children: 0 1 2 3 4 5}
+
+\subsubsection{Data with one, two, or more variables}
+
+We distinguish between "univariate", "bivariate", and "multivariate" data. Univariate data \index{general}{univariate} are data of only one variable, e.g. the size of a person. Bivariate data \index{general}{bivariate} have two parameters, for example, the $x/y$ position in a plane, or the income as a function of age. Multivariate data \index{general}{multivariate} have three or more variables, e.g. the position of a particle in space, etc.
+
 \section{Data Display}
 
-When working with a statistical data set, you should \emph{always} first look at the raw-data. Our visual system is incredibly good at recognizing patterns in visually represented data. The programs used for making the plots presented here can be found in "figsBasicPrinciples.py" (p \pageref{py:BasicPrinciples}). For data visualization, check out the Python package \href{http://www.stanford.edu/~mwaskom/software/seaborn/} {seaborn}, which aims to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive.
+The first step in the data analysis should always be a visual inspection of the raw-data. Between 30\% and 50\% of our cortex are involved in the processing of visual information, and as a result our brain is very good at recognizing patterns in visually represented data.
+The most common \emph{Python} package for the visualization of data is \emph{matplotlib}. For statistical data analysis, the \emph{Python} package \emph{seaborn} (\url{http://www.stanford.edu/~mwaskom/software/seaborn/}) builds on \emph{matplotlib}, and aims to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive.
 
-\subsection{Scatter Plots}\index{general}{plots!scatter}
+Other interesting plotting packages are:
 
-This is the simplest way of representing your data: just plot each individual data point. (In cases where many data points are superposed, you may want to add a little bit of jitter to show each data point.)
+\begin{itemize}
+  \item \emph{ggplot} for Python \url{http://ggplot.yhathq.com/}. It emulates the \emph{R}-package \emph{ggplot}, which is loved by many \emph{R}-users.
+  \item \emph{plot.ly} \url{https://plot.ly} is a package that is available for \emph{Python}, \emph{Matlab}, and \emph{R}, and seems to make beautiful graphs. I have not yet tried it out, though.
+\end{itemize}
 
-\begin{figure}
+\subsection{Univariate Data}
+
+The following examples all have the same format:
+
+\begin{lstlisting}
+    # Import standard packages
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import scipy.stats as stats
+    import seaborn as sns
+
+    # Generate the data
+    x = np.random.randn(500)
+
+    # Plot-command, e.g.
+    plt.plot(x, '.')
+
+    # Show plot
+    plt.show()
+\end{lstlisting}
+
+
+\subsubsection{Scatter Plots}\index{general}{plots!scatter}
+
+This is the simplest way to represent univariate data: just plot each individual data point. (In cases where many data points are superposed, you may want to add a little bit of jitter to show each data point.) The corresponding plot-command is
+
+\begin{lstlisting}
+    plt.plot(x, '.')
+    # plt.scatter(np.arange(len(x), x))     # equivalent
+\end{lstlisting}
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/scatterPlot.png}\\
   \caption{Scatter plot}
 \end{figure}
 
-\subsection{Histograms}\index{general}{plots!histogram}
+\subsubsection{Histograms}\index{general}{plots!histogram}
 
 
 \emph{Histograms} provide a first good overview of the distribution of your data.
@@ -55,19 +96,26 @@ histogram}; and if you just connect the top center points of each bin, you obtai
 
 You can also smooth histograms with \acrfull{kde} (kde-plots). Those are nicely implemented and described in \emph{seaborn}.
 
-\begin{figure}[ht]
+\begin{lstlisting}
+    plt.hist(x, bins=25)
+\end{lstlisting}
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/Histogram.png}\\
   \caption{Histogram}
 \end{figure}
 
-\subsection{KDE-plots}\index{general}{plots!kde}
+\subsubsection{KDE-plots}\index{general}{plots!kde}
 
 Histograms have the disadvantage that they are discontinuous, and that their shape critically depends on the chosen bin-width. In order to obtain smooth \emph{probability densities}, i.e. curves describing the likelihood of finding an event in any given interval, the technique of \emph{Kernel \gls{density} Estimation (KDE)}\index{general}{Kernel Density Estimator (KDE)} can be used. Thereby a normal distribution is typically used for the kernel. The width of this kernel function determines the amount of smoothing. To see how this works, we compare the construction of histogram and kernel density estimators, using these 6 data points: x = [−2.1, −1.3, −0.4, 1.9, 5.1, 6.2]. For the histogram, first the horizontal axis is divided into sub-intervals or bins which cover the range of the data. In this case, we have 6 bins each of width 2. Whenever a data point falls inside this interval, we place a box of height 1/12. If more than one data point falls inside the same bin, we stack the boxes on top of each other.
 
 For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident. Compared to the discreteness of the histogram, the kernel density estimates converge faster to the true underlying density for continuous random variables.
 
-\begin{figure}[ht]
+\begin{lstlisting}
+  sns.kdeplot(x)
+\end{lstlisting}
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/KDEexplained.png}\\
   \caption{Comparison of the histogram (left) and kernel density estimate (right) constructed using the same data. The 6 individual kernels are the red dashed curves, the kernel density estimate the blue curves. The data points are the rug plot on the horizontal axis.}
@@ -91,7 +139,7 @@ It can be shown that under certain conditions the optimal choice for h is
 
 where $\hat{\sigma}$ is the standard deviation of the samples ("Silverman's rule of thumb").
 
-\subsection{Cumulative Frequencies}\index{general}{cumulative frequency}
+\subsubsection{Cumulative Frequencies}\index{general}{cumulative frequency}
 
 \emph{Cumulative frequency} curves indicate the number (or percent) of data with less than a given value. This is important for the statistical analysis (e.g. when we want to know the data range containing 95\% of all the values). Cumulative frequencies
 are also useful for comparing the distribution of values in two or more different groups of individuals.
@@ -102,30 +150,44 @@ When you use percentage points, the cumulative frequency presentation has the ad
   0 \leq x \leq 1
 \end{equation*}
 
-\begin{figure}[ht]
+\begin{lstlisting}
+    plt.plot(stats.cumfreq(x,numbins)[0])
+\end{lstlisting}
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/CumulativeFrequencyFunction.png}\\
   \caption{Cumulative frequency function for a normal distribution.}
 \end{figure}
 
-\subsection{Errorbars}\index{general}{plots!errorbars}
+\subsubsection{Errorbars}\index{general}{plots!errorbars}
 
-\emph{Errorbars} are a common way to show mean value and variability when comparing a few measurement values. Note that you have to state explicitly if your errorbars correspond to the \emph{standard devation} or to the \emph{standard error} of the data. Using \emph{standard errors} has a nice feature: When error bars for the \emph{standard error} for two groups overlap, you can be sure the difference between the two means is not statistically significant (P>0.05). Watch out, though, since the opposite is not always true!
+\emph{Errorbars} are a common way to show mean value and variability when comparing a few measurement values. Note that you have to state explicitly if your errorbars correspond to the \emph{standard deviation} or to the \emph{standard error} of the data. Using \emph{standard errors} has a nice feature: When error bars for the \emph{standard error} for two groups overlap, you can be sure the difference between the two means is not statistically significant (P>0.05). Watch out, though, since the opposite is not always true!
 
-\begin{figure}[ht]
+\begin{lstlisting}
+    index = np.arange(5)
+    y = index**2
+    errorBar = index/2
+    plt.errorbar(index,y, yerr=errorBar, fmt='o', capsize=5, capthick=3)
+\end{lstlisting}
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/Errorbars.png}\\
   \caption{Errorbars}
 \end{figure}
 
-
-\subsection{Box Plots}\index{general}{plots!boxplot}
+\subsubsection{Box Plots}\index{general}{plots!boxplot}
 
 \Glspl{boxplot} are frequently used in scientific publications to indicate values in two or more groups. The bottom and top of the box indicate the first and third \glspl{quartile}, and the line inside the box shows the median. Care has to be taken with the whiskers, as different conventions exist for them. The most common form is that the lower whisker indicates the lowest value still within 1.5 \emph{inter-quartile-range} (IQR)\index{general}{inter-quartile-range, IQR} of the lower quartile, and the upper whisker the highest value still within 1.5 IQR of the upper quartile. Outliers (outside the whiskers) are plotted separately. Another convention is to have the whiskers indicate the full data range.
 
 There are a number of tests to check for outliers\index{general}{outliers}. The method suggested by Tukey is to check for data which lie more than 1.5 * IQR above or below the first/third quartile (see Section \ref{sec:centiles}).
 
-\begin{figure}[!ht]
+\begin{lstlisting}
+    plt.boxplot(x, sym='*')
+\end{lstlisting}
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/boxplot.png}\\
   \caption{Box plot}\label{fig:Boxplot}
@@ -133,16 +195,120 @@ There are a number of tests to check for outliers\index{general}{outliers}. The 
 
 Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plots} \index {general}{plots!violinplot}, as shown in Figure \ref{fig:violin}.
 
-\begin{figure}
+\begin{lstlisting}
+    # Generate the data
+    nd = stats.norm
+    data = nd.rvs(size=(100))
+
+    nd2 = stats.norm(loc = 3, scale = 1.5)
+    data2 = nd2.rvs(size=(100))
+
+    # Use pandas and the seaborn package for the violin plot
+    df = pd.DataFrame({'Girls':data, 'Boys':data2})
+    sns.violinplot(df)
+\end{lstlisting}
+
+\begin{figure}[H]
   \centering
-  % Requires \usepackage{graphicx}
   \includegraphics[width=0.75\textwidth]{../Images/violinplot.png}\\
   \caption{Violinplot, produced with \emph{seaborn}.}\label{fig:violin}
 \end{figure}
 
-\subsection{Programs: Data Display}
-\PyImg "figsBasicPrinciples.py" (p \pageref{py:BasicPrinciples}) shows how the plots in this section have been generated.
+\subsubsection{Grouped Barplots}
+
+For some application the plotting abilities of \emph{pandas} can facilitate the generation of useful graphs, e.g. for grouped barplots:
+
+\begin{lstlisting}
+    df = pd.DataFrame(np.random.rand(10, 4), columns=['a', 'b', 'c', 'd'])
+    df.plot(kind='bar', grid=False)
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Images/barplot.png}\\
+  \caption{Grouped barplot, produced with \emph{pandas}.}\label{fig:barplot}
+\end{figure}
+
+\subsubsection{Pieplots}
+
+For other applications \emph{seaborn} may be the way to go, e.g. for pieplots. Note that here I have switched to a different color-palette.
+
+\begin{lstlisting}
+    series = pd.Series(3 * np.random.rand(4), index=['a', 'b', 'c', 'd'], name='series')
+    sns.set_palette("husl")
+    series.plot(kind='pie', figsize=(6, 6))
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{../Images/pieplot.png}\\
+  \caption{Pieplot, produced with \emph{seaborn}.}\label{fig:pieplot}
+\end{figure}
+
+
+\subsubsection{Programs: Data Display}
+\PyImg "figs\_BasicPrinciples.py" (p \pageref{py:BasicPrinciples}) shows how the plots in this section have been generated.
 \index{python}{figsBasicPrinciples}
+
+\subsection{Bivariate and Multivariate Plots}
+
+\subsubsection{Bivariate Scatter Plots}
+
+Simple scatter plots are trivial. But \emph{pandas} also makes fancy scatter plots easy:
+
+\begin{lstlisting}
+    df2 = pd.DataFrame(np.random.rand(50, 4), columns=['a', 'b', 'c', 'd'])
+    df2.plot(kind='scatter', x='a', y='b', s=df['c']*300);
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Images/bivariate.png}\\
+  \caption{Pieplot, produced with \emph{seaborn}.}\label{fig:bivariate}
+\end{figure}
+
+\subsubsection{3D Plots}
+
+I have to admit that 3D plots are more intuitive in \emph{Matlab} than in \emph{Python}. However, they are straightforward to make. Here two examples:
+
+\begin{lstlisting}
+      # imports specific to the plots in this example
+    import numpy as np
+    from matplotlib import cm
+    from mpl_toolkits.mplot3d.axes3d import get_test_data
+
+    # Twice as wide as it is tall.
+    fig = plt.figure(figsize=plt.figaspect(0.5))
+
+    #---- First subplot
+    ax = fig.add_subplot(1, 2, 1, projection='3d')
+    X = np.arange(-5, 5, 0.1)
+    Y = np.arange(-5, 5, 0.1)
+    X, Y = np.meshgrid(X, Y)
+    R = np.sqrt(X**2 + Y**2)
+    Z = np.sin(R)
+    surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.jet,
+            linewidth=0, antialiased=False)
+    ax.set_zlim3d(-1.01, 1.01)
+
+    fig.colorbar(surf, shrink=0.5, aspect=10)
+
+    #---- Second subplot
+    ax = fig.add_subplot(1, 2, 2, projection='3d')
+    X, Y, Z = get_test_data(0.05)
+    ax.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
+
+    outfile = r'..\Images\3dGraph.png'
+    plt.savefig(outfile, dpi=200)
+    print('Image saved to {0}'.format(outfile))
+    plt.show()
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{../Images/3dGraph.png}\\
+  \caption{Two types of 3D graphs. Left) surface plot. Right) wireframe plot .}\label{fig:3dplot}
+\end{figure}
 
 \section{Populations and Samples}
 
@@ -162,7 +328,7 @@ The main difference between a \gls{population}\index{general}{population} and a 
 
 More than one sample can be derived from the same population.
 
-When estimating a \emph{parameter} of a \emph{population}, e.g. the weight of male Europeans, we can typically never measure all of them. We have to confine ourselves to investigate a (hopefully representative) random \emph{sample} of this group. Based on the \emph{sample statistic}, we use \emph{statistical inference}\index{general}{inference} to find out what we know about the \emph{parameter}.
+When estimating a "parameter" of a "population", e.g. the weight of male Europeans, we can typically never measure all of them. We have to confine ourselves to investigate a (hopefully representative) random "sample" of this group. Based on the "sample statistic", we use "statistical inference"\index{general}{inference} to find out what we know about the parameter.
 
 \begin{description}
   \item[Parameter] characteristic of a population, such as a mean or standard deviation. Often denoted with Greek symbols.
@@ -190,11 +356,11 @@ An example for parameters and statistics is given in Table \ref{table:population
 
 \section{Degrees of Freedom}\label{sec:DF}
 
-The concept of \gls{dof_} \acrshort{dof} \index{general}{degrees of freedom, DOF}, which in mechanics seems to be crystal clear, is harder to grasp for statistical applications.
+The concept of \gls{dof_} (\acrshort{dof})\index{general}{degrees of freedom, DOF}, which in mechanics seems to be crystal clear, is harder to grasp for statistical applications.
 
-In mechanics, a particle which moves in a plane has \emph{2 DOF}: at each point in time, two parameters (the x/y-coordinates) define the location of the particle. If the particle moves about in space, it is said to have \emph{3 DOF}: the x/y/z-coordinates.
+In mechanics, a particle which moves in a plane has "2 DOF": at each point in time, two parameters (the x/y-coordinates) define the location of the particle. If the particle moves about in space, it is said to have "3 DOF": the x/y/z-coordinates.
 
-In statistics, a group of \emph{n} values has \emph{n} DOF. If we only look at the shape of the distribution of the values, we can subtract from each value the sample mean. Then, the remaining data only have \emph{n-1} DF. (This is clearest for $n=2$: if you know the mean value and the value of sample 1, then you can calculate the value of sample 2 by $val_2 = 2*mean - val_1$.
+In statistics, a group of \emph{n} values has \emph{n} DOF. If we only look at the shape of the distribution of the values, we can subtract from each value the sample mean. Then, the remaining data only have \emph{n-1} DF. (This is clearest for $n=2$: if you know the mean value and the value of sample 1, then you can calculate the value of sample 2 by $val_2 = 2*mean - val_1$ ).
 
 The case becomes more complex if we have many groups. For example, in chapter \ref{sec:anova}, we describe an example with 22 patients, divided into 3 groups. In the \emph{analysis of variance (ANOVA)}, these are divided as follows:
 
@@ -219,8 +385,8 @@ In the context of study design, different terminologies can be found (Fig. \ref{
 \begin{itemize}
     \item{The controlled inputs are often called \glspl{factor}\index{general}{factors} or
             \gls{treatment}\index{general}{treatments}.}
-    \item{The uncontrolled inputs are called \emph{co-factors}\index{general}{co-factors} or
-            \emph{nuisance factors}.}
+    \item{The uncontrolled inputs are called "co-factors"\index{general}{co-factors} or
+            "nuisance factors".}
 \end{itemize}
 
 When we try to model a process with two inputs and one outputs, we can
@@ -230,26 +396,26 @@ formulate a mathematical model for example as
     X = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_{12} X_1 X_2 + \epsilon
 \end{equation}
 
-The terms with the single "X's" are called \emph{main effects}\index{general}{main effects}, and the terms with multiple "X's" \emph{interaction terms}\index{general}{interactions}. And since the $\beta$
-parameters enter the equation only linearly, this is referred to as a \emph{general linear model}. The $\epsilon$s are called \glspl{residual}\index{general}{residuals}, and are expected to be approximately normally distributed around zero.
+The terms with the single $X$ ($\beta_1, \beta_2$) are called "main effects"\index{general}{main effects}, and the terms with multiple $X$  ($\beta_{12}$) "interaction terms"\index{general}{interactions}. And since the $\beta$
+parameters enter the equation only linearly, this is referred to as a \emph{general linear model}. The $\epsilon$-s are called "\glspl{residual}"\index{general}{residuals}, and are expected to be approximately normally distributed around zero.
 
 \subsection{Overview}
 
-The first question you have to ask yourself is what you want to do. Do you want to
+The first step in the design of a study is the explicit clarification of the goal of the study. Do we want to
 
-\begin{itemize}
+\begin{enumerate}
     \item{Compare two or more groups, or one group to a fixed value?}
     \item{Screen the observed responses to identify
             factors/effects that are important?}
-    \item{Maximize or minimize a response (variability, distanct to target,
+    \item{Maximize or minimize a response (variability, distance to target,
             robustness)?, or}
     \item{Develop a regression model to quantify the dependence of a
             response variable on the process input?}
-\end{itemize}
+\end{enumerate}
 
-The first question leads to an \gls{hypothesistest}. The second one is a screening investigation, where you have to watch out for \emph{multiple testing artefacts}. The third task is an optimization problem. And the last one brings you into the realm of \emph{statistical modeling}.
+The first question leads to a "\gls{hypothesistest}". The second one is a "screening investigation", where you have to watch out for multiple testing artefacts. The third task is an "optimization problem". And the last one brings you into the realm of statistical modeling.
 
-Once you have determined \emph{what} you want to do, you have to decide \emph{how} you want to do this. You can either do \emph{controlled experiments}. Or you can use \emph{observations} to obtain the data that you are looking for. In a controlled experiment you typically try to vary only a single parameter, and investigate the effects of that parameter on the output.
+Once you have determined \emph{what} you want to do, you have to decide \emph{how} you want to do this. You can either do "controlled experiments". Or you can use "observations" to obtain the data that you are looking for. In a controlled experiment you typically try to vary only a single parameter, and investigate the effects of that parameter on the output.
 
 \subsection{Personal Tips}
 
@@ -262,10 +428,11 @@ Once you have determined \emph{what} you want to do, you have to decide \emph{ho
 
 \subsubsection{Preliminary Investigations and Murphy's Law}
 Most investigations require more than one round of experiments and analyses. The theory goes that you first state your hypothesis, then do the experiments, and accept or reject the hypothesis. Done.
-Most of my investigations have been less straightforward. Typically, you start out with an idea. After making sure that nobody else has solved your question before, you sit down and do the first rounds of measurements, and write the analysis programs required to analyze your data. Thereby you find most of the things that can go wrong (they typically do, as indicated by \emph{Murphy's Law}), and what you should have done differently in the first place. Not only does that first round of investigation provide a \emph{proof of principle} that your question is tractable, but you also have obtained some data on the variability of typical responses. This allows you to obtain a reasonable estimate of the number of subjects/samples you need in order to accept or reject your hypothesis. By this time you also know if your experimental setup is sufficient, or if you need a higher quality measurement equipment. The second round of investigations is in most cases the real stuff, and (hopefully) provides you with enough data to publish your findings.
+
+Most of my real investigations have been less straightforward, and typically took two rounds of experiments. Typically, I start out with an idea. After making sure that nobody else has solved your question before, I sit down and do the first rounds of measurements, and write the analysis programs required to analyze your data. Thereby I find most of the things that can go wrong (they typically do, as indicated by \emph{Murphy's Law}), and what I should have done differently in the first place. If the experiments are successful, that first round of investigation provides me with a "proof of principle" that my question is tractable; in addition, I also obtain data on the variability of typical responses. This allows me to obtain a reasonable estimate of the number of subjects/samples you need in order to accept or reject my hypothesis. By this time I also know if my experimental setup is sufficient, or if I need a higher quality measurement equipment. The second round of investigations is in most cases the real stuff, and (when I am lucky) provides me with enough data to publish my findings.
 
 \subsubsection{Calibration Runs}
-If anyhow possible, you should start out and end your recordings with something that you know. For example during movement recordings I try to start out with recording a stationary point, and then move it 10 cm forward, left, and up. Having a recording where you know exactly what happens not only helps to detect drift in the sensors, and problems in the experimental setup. These recordings also help to verify the accuracy of your analysis programs.
+If anyhow possible, you should start out and end your recordings with something that you know. For example during movement recordings I try to start out with recording a stationary point, and then move it 10 cm forward, left, and up. Having a recording where you know exactly what is happening not only helps to detect drift in the sensors, and problems in the experimental setup. These recordings also help to verify the accuracy of your analysis programs.
 
 \subsubsection{Documentation} \index{general}{documentation}
 Make sure that you document all the factors that may influence your results, and everything that happens during the experiment:
@@ -278,7 +445,7 @@ Make sure that you document all the factors that may influence your results, and
 \end{itemize}
 
 Be as brief as possible, but take down everything note-worthy that happens during your experiment. Be especially clear about the names of the recorded data-files, as this will be the first thing you need when you later analyze the data.
-Often you won't need all the details. But when you have outliers, weird data, etc., these notes can be invaluable for your later data analysis.
+Often you won't need all the details of the notes. But when you have outliers, weird data, etc., these notes can be invaluable for your later data analysis.
 
 \subsubsection{Data Storage}
 Try to have clear, intuitive, and practical naming conventions. For example, when you perform experiments with patients and with normals on different days, you could name these recordings "[p/n][yyyy/mm/dd]\_[x].dat", e.g. \emph{n20150329\_a}. With this convention you have a natural grouping of normals and patients, and your data are automatically sorted logically by their date.
@@ -303,25 +470,29 @@ In a \gls{casecontrol}, first the patients are treated, and then they are select
 
 \emph{"Block whatever you can; and randomize the rest!"}
 
-I have mentioned above that you have factors (which you control) and nuisance factors, which influence your results, but which you cannot control and/or manipulate. Assume, for example, that you have an experiment where the result depends on the person who performs the experiment (e.g. the nurse who tests the subject), and on the time of the day. In that case you can \gls{block} the factor \emph{nurse}, by having all tests performed by the same nurse. But it won't be possible to test all subjects at the same time. So you try to average out time effects, by \emph{randomly} mixing the timing of your subjects. If, in contrast, you measure your patients in the morning and your healthy subjects in the afternoon, you will invariably bring some \gls{bias} into your data.
+\vspace{5 Mm}
+
+I have mentioned above that WE have "factors" (which we can control) and "nuisance factors", which influence your results but which we cannot control and/or manipulate. Assume, for example, that we have an experiment where the result depends on the person who performs the experiment (e.g. the nurse who tests the subject), and on the time of the day. In that case we can \gls{block} the factor \emph{nurse}, by having all tests performed by the same nurse. But it won't be possible to test all subjects at the same time. So we try to average out time effects, by \emph{randomly} mixing the timing of your subjects. If, in contrast, we measure our patients in the morning and our healthy subjects in the afternoon, we will invariably bring some \gls{bias} into our data.
 
 \subsubsection{Bias} \index{general}{bias}
 %http://www.math.upenn.edu/~deturck/m170/wk4/lecture/case1.html
-To explain the effects of selection bias on a statistical analysis, consider the 1936 presidential elections in the USA. The Republican A. Landon challenged the incumbent president, F.D. Roosevelt. The \emph{Literary Digest}, at the time one of the most respected magazines, asked 10 million Americans about whom they would vote for. 2.4 million responded, and the Literary Digest predicted Landon would win 57% of the votes, against 41% for Roosevelt. However, the actual election results were 62% for Roosevelt against 38% for Landon. In other words, despite the huge sample size, the predictions were a whopping 19% off!
+To explain the effects of selection bias on a statistical analysis, consider the 1936 presidential elections in the USA. The Republican A. Landon challenged the incumbent president, F.D. Roosevelt. The \emph{Literary Digest}, at the time one of the most respected magazines, asked 10 million Americans about whom they would vote for. 2.4 million responded, and the Literary Digest predicted Landon would win 57\% of the votes, against 41\% for Roosevelt. However, the actual election results were 62\% for Roosevelt against 38\% for Landon. In other words, despite the huge sample size, the predictions were a whopping 19\% off!
 
 What went wrong?
 
-First, the sample was badly chosen, and not representative for the American voter: the the mailing list for the survey were taken from telephone directories, club membership lists, and lists of magazine subscribers. Thus, they were strongly biased towards the American middle- and upper-class. And second, only about one fourth of the people asked responded. And people who respond to surveys are different from people who don't, the so-called \emph{nonresponse bias}\index{general}{nonresponse bias}.
+First, the sample was badly chosen, and not representative for the American voter: the mailing list for the survey were taken from telephone directories, club membership lists, and lists of magazine subscribers. Thus, they were strongly biased towards the American middle- and upper-class. And second, only about one fourth of the people asked responded. And people who respond to surveys are different from people who don't, the so-called "nonresponse bias"\index{general}{nonresponse bias}.
 
 This example shows that a large sample size alone does not guarantee a representative response. You have to watch out for selection bias and nonresponse bias.
 
-In general, when selecting our subject you try to make them representative of the group that you want to study; and you try to conduct your experiments in a way representative of investigations by other researchers. However, it is \emph{very} easy to get a \emph{bias} into your data. Bias can arise from a number of sources:
+In general, when selecting our subject you try to make them representative of the group that you want to study; and you try to conduct your experiments in a way representative of investigations by other researchers. However, it is very easy to get a bias into your data. Bias can arise from a number of sources:
+
 \begin{itemize}
   \item The selection of subjects.
   \item The structure of the experiment.
   \item The measurement device.
   \item The analysis of the data.
 \end{itemize}
+
 Care should be taken to avoid bias as much as possible.
 
 \subsubsection{Randomized controlled trial} \index{general}{randomized controlled trial}
@@ -335,7 +506,7 @@ This may be one of the most important aspects of experimental planning. \Gls{ran
 Depending on the experiment, there are different ways to randomize the group assignment.
 
 \paragraph{Simple randomization}
-This procedure is robust against selection and accidental bias. The disadvantage is that the resulting groupsize can differ significantly.
+This procedure is robust against selection and accidental bias. The disadvantage is that the resulting group size can differ significantly.
 
 For many types of data analysis it is important to have the same sample number in each group. To achieve this, other options are possible:
 

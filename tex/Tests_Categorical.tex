@@ -182,7 +182,7 @@ We might have to subtract from the number of degrees of freedom the number of pa
 
 \subsubsection{Example 1}
 
-The Python command \emph{stats.chi2\_contingency} returns the following list: ($\chi^2$-value, p-value, degrees-of-freedom, expected values).
+The \emph{Python} command \emph{stats.chi2\_contingency} returns the following list: ($\chi^2$-value, p-value, degrees-of-freedom, expected values).
 
 \begin{lstlisting}
      data = np.array([[43,9],
@@ -268,7 +268,7 @@ The real scientific significance of this experiment is in these questions. These
   \item \emph{What should be done about chance variations in the temperature, sweetness, and so on?}
     Ideally, one would like to make all cups of tea identical except for the order of pouring milk first or tea first. But it is never possible to control all of the ways in which the cups of tea can differ from each other. If we cannot control these variations, then the best we can do -– we do mean the "best" -– is by randomization.
 
-  \item \emph{How many cups should be used in the test? Should they be paired? In what order should the cups be presented?} The key idea here is that the number and ordering of the cups should allow a subject ample opportunity to prove his or her abilities and keep a fraud from easily succeeding at correctly discriminating the the order of pouring in all the cups of tea served.
+  \item \emph{How many cups should be used in the test? Should they be paired? In what order should the cups be presented?} The key idea here is that the number and ordering of the cups should allow a subject ample opportunity to prove his or her abilities and keep a fraud from easily succeeding at correctly discriminating the order of pouring in all the cups of tea served.
 
   \item \emph{What conclusion could be drawn from a perfect score or from one with one or more errors?} If the lady is unable to discriminate between the different orders of pouring, then by guessing alone, it should be highly unlikely for that person to determine correctly which cups are which for all of the cups tested. Similarly, if she indeed possesses some skill at differentiating between the orders of pouring, then it may be unreasonable to require her to make no mistakes so as to distinguish her ability from a pure guesser.
 
@@ -312,12 +312,12 @@ An actual scenario described by Fisher and told by many others as the "lady tast
   \item We can test the discriminating skill of the lady, if any, by randomizing the order of the cups served. If we take the position that she has no discriminating skill, then the randomization of the order makes the 4 cups chosen by her as tea first equally likely to be any 4 of the 8 cups served. There are $\left( {\begin{array}{*{20}{c}}
 8\\
 4
-\end{array}} \right) = 70$ (in Python, choose \lstinline{scipy.misc.comb(8,4,exact=True)}) possible ways to classify 4 of the 8 cups as "tea first". If the subject has no ability to discriminate between two preparations, then by the randomization, each of these 70 ways is equally likely. Only one of 70 ways leads to a completely correct classification. So someone with no discriminating skill has 1/70 chance of making no errors.
+\end{array}} \right) = 70$ (in \emph{Python}, choose \lstinline{scipy.misc.comb(8,4,exact=True)}) possible ways to classify 4 of the 8 cups as "tea first". If the subject has no ability to discriminate between two preparations, then by the randomization, each of these 70 ways is equally likely. Only one of 70 ways leads to a completely correct classification. So someone with no discriminating skill has 1/70 chance of making no errors.
 
-  \item It turns out that, if we assume that she has no discriminating skill, the number of correct classifications of tea first ("a" in the table) has a "hypergeometric" probability distribution (\lstinline{hd=stats.hypergeom(8,4,4)} in Python). There are 5 possibilities: 0, 1, 2, 3, 4 for $a$ and the corresponding probabilities (and Python commands for computing the probabilities) are tabulated below.
+  \item It turns out that, if we assume that she has no discriminating skill, the number of correct classifications of tea first ("a" in the table) has a "hypergeometric" probability distribution (\lstinline{hd=stats.hypergeom(8,4,4)} in \emph{Python}). There are 5 possibilities: 0, 1, 2, 3, 4 for $a$ and the corresponding probabilities (and \emph{Python} commands for computing the probabilities) are tabulated below.
 
       \begin{tabular}{c|c|c}
-        Number of correct calls & Python command & Probability \\
+        Number of correct calls & \emph{Python} command & Probability \\
         \hline
         0 & hd.pmf(0) & 1/70 \\
         1 & hd.pmf(1) & 16/70 \\
@@ -376,7 +376,7 @@ has the value 21.01, which is extremely unlikely from the distribution implied b
 
 %[xxx Show that McNemar is similar to logistic regression xxx]
 % http://stats.stackexchange.com/questions/63257/relationship-between-mcnemars-test-and-conditional-logistic-regression
-% in R: 
+% in R:
 %-----------------------------
 %n <- 100
 %do.one <- function(n) {

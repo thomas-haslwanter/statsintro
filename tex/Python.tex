@@ -4,7 +4,7 @@
 
 \section{Getting Started}
 
-There are three reasons why I have decided to use Python for this lecture.
+There are three reasons why I have decided to use \emph{Python} for this lecture.
 
 \begin{enumerate}
   \item It is the most elegant programming language that I know.
@@ -12,40 +12,39 @@ There are three reasons why I have decided to use Python for this lecture.
   \item It is powerful.
 \end{enumerate}
 
-I have not seen many books on Python that I really liked. My favorite introductory book is \cite{Harms2010}.
+I have not seen many books on \emph{Python} that I really liked. My favorite introductory book is \cite{Harms2010}.
 
 There are also many tutorials available on the internet (see links below). Personally, most of the time I just google; thereby I stick primarily a) to the official pages, and b) to \url{http://stackoverflow.com/}. Also, I have found user groups surprisingly active and helpful!
 
 \subsection{Python Links}
 
-\begin{itemize}
-  \item  \href{http://scipy-lectures.github.com}{Python Scientific Lecture Notes.} If you don't read anything else, read this!
-  \item \href{http://www.scipy.org/NumPy\_for\_Matlab\_Users}{NumPy for Matlab Users} Start here if you have Matlab experience.
-  \item \href{https://github.com/jrjohansson/scientific-python-lectures}{Lectures on scientific computing with Python.} Great IPython notebooks, from JR Johansson!
-  \item \href{http://docs.python.org/2/tutorial}{The Python tutorial.} The official introduction.
-\end{itemize}
+\begin{description}
+  \item[Python Scientific Lecture Notes] \url{http://scipy-lectures.github.com} If you don't read anything else, read this!
+  \item[NumPy for Matlab Users] \url{http://www.scipy.org/NumPy\_for\_Matlab\_Users} Start here if you have \emph{Matlab} experience.
+  \item[Lectures on scientific computing with Python] \url{https://github.com/jrjohansson/scientific-python-lectures} Great \emph{ipython notebooks}, from JR Johansson!
+  \item[The Python tutorial] \url{http://docs.python.org/2/tutorial} The official introduction.
+\end{description}
 
 \subsection{Free Python Books}
 
-\begin{itemize}
-  \item \href{http://swaroopch.com/notes/python}{A Byte of Python.} Free book, very good at the introductory level.
-  \item \href{http://learnpythonthehardway.org/book/}{Learn Python the Hard Way, 3rd Ed} A popular, free book that you can work through.
-  \item \href{http://www.greenteapress.com/thinkpython}{ThinkPython.} Free book, for advanced programmers.
-  \item \href{http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf}{Introduction to
-      Python for Econometrics, Statistics and Data Analysis (pdf)} by Kevin Sheppard: A
-      good free book, which introduces Python with a focus on statistics.
-\end{itemize}
+\begin{description}
+  \item[A Byte of Python] \url{http://swaroopch.com/notes/python} Free book, very good at the introductory level.
+  \item[Learn Python the Hard Way] \url{http://learnpythonthehardway.org/book/} ($3^{rd}$ Ed) A popular, free book that you can work through.
+  \item[ThinkPython] \url{http://www.greenteapress.com/thinkpython} Free book, for advanced programmers.
+  \item[Introduction to Python for Econometrics, Statistics and Data Analysis] \url{http://www.kevinsheppard.com/images/0/09/Python_introduction.pdf} by Kevin Sheppard: A
+      good free book, which introduces \emph{Python} with a focus on statistics.
+\end{description}
 
 \subsection{Installation and Updates}
 
-In general, I suggest that you start out by installing a Python distribution which includes the most important libraries. Unless you have a specific requirement for 64-bit versions, I recommend that you install a 32-bit version of Python: it facilitates many activities that require compilation of module parts, e.g. for Bayesian statistics (PyMC), or when you want to speed up your programs with Cython. Since all the Python packages required for this course are now available for Python 3.x, I will use Python 3 for this book. However, all the scripts included should also work for Python 2.7. Make sure that you use a current vrsion of IPython (3.x), since the IPython notebooks provided with this book won't run on IPython 2.x. My favorite Python distributions  are
+In general, I suggest that you start out by installing a \emph{Python} distribution which includes the most important libraries. Unless you have a specific requirement for 64-bit versions, I recommend that you install a 32-bit version of \emph{Python}: it facilitates many activities that require compilation of module parts, e.g. for Bayesian statistics (PyMC), or when you want to speed up your programs with \emph{Cython}. Since all the \emph{Python} packages required for this course are now available for \emph{Python} 3.x, I will use \emph{Python} 3 for this book. However, all the scripts included should also work for \emph{Python} 2.7. Make sure that you use a current vrsion of \emph{IPython} (3.x), since the \emph{ipython notebooks} provided with this book won't run on \emph{IPython} 2.x. My favorite \emph{Python} distributions  are
 
-\begin{enumerate}
-    \item \href{https://winpython.github.io/}{WinPython} Recommended for Windows users.
-    \item \href{https://store.continuum.io/cshop/anaconda/}{anaconda} From Continuum. For Windows, Mac, and Linux.
-\end{enumerate}
+\begin{description}
+    \item[WinPython] \url{https://winpython.github.io/} Recommended for Windows users.
+    \item[anaconda] \url{https://store.continuum.io/cshop/anaconda/} From Continuum. For Windows, Mac, and Linux.
+\end{description}
 
-Neither of these two distributions required administrator rights. Personally I am using WinPython, which is free and customizabla. \emph{anaconda} is a more recent distribution, and is free for educational purposes.
+Neither of these two distributions required administrator rights. Personally I am using \emph{WinPython}, which is free and customizabla. \emph{anaconda} is a more recent distribution, and is free for educational purposes.
 
 Mac and Unix users should check out the \href{https://github.com/jrjohansson/scientific-python-lectures}{installations tips from Johansson}.
 
@@ -56,32 +55,32 @@ The programs included in this book have been tested under Windows and Linux, usi
   \item \emph{numpy 1.9.2} ... For working with vectors and arrays.
   \item \emph{scipy 0.15.1} ... All the essential scientific algorithms, including those for statistics.
   \item \emph{matplotlib 1.4.3} ... The de-facto standard module for plotting and visualization.
-  \item \emph{pandas 0.16.0} ... Adds \emph{DataFrames} (imagine powerful spreadsheets) to Python.
+  \item \emph{pandas 0.16.0} ... Adds \emph{DataFrames} (imagine powerful spreadsheets) to \emph{Python}.
   \item \emph{patsy 0.3.0} ... \index{general}{patsy}For working with statistical formulas.
   \item \emph{statsmodels 0.6.1} ... For statistical modeling and advanced analysis.
   \item \emph{seaborn 0.5.1} ... For visualization of statistical data.
   \item \emph{PyMC 2.3.4} ... For Bayesian statistics, including Markov chain Monte Carlo simulations.
   \item \emph{scikits.bootstrap 0.3.2} ... Provides bootstrap confidence interval algorithms for scipy.
-  \item \emph{rpy2 2.5.6} ... Provides a wrapper for R-functions in Python.
+  \item \emph{rpy2 2.5.6} ... Provides a wrapper for R-functions in \emph{Python}.
 \end{itemize}
 
 \subsection{PyPI - the Python Package Index}
 
-The \href{https://pypi.python.org/pypi}{Python Package Index (\emph{PyPI})} is a repository of software for the Python programming language. It currently contains about 60'000 packages!
+The \href{https://pypi.python.org/pypi}{Python Package Index (\emph{PyPI})} is a repository of software for the \emph{Python} programming language. It currently contains about 60'000 packages!
 
-Packages in this index can be installed easily, from the Windows \emph{command shell ("cmd")} or the Linux \emph{Terminal}, with
+Packages in this index can be installed easily, from the Windows command shell (\lstinline{cmd}) or the Linux \lstinline{terminal}, with
 
 \begin{lstlisting}
-    pip install [package]
+    pip install [_package_]
 \end{lstlisting}
 
 and updated with
 
 \begin{lstlisting}
-    pip install [package] -U
+    pip install [_package_] -U
 \end{lstlisting}
 
-To get a list of all the Python packages installed on your computer, type
+To get a list of all the \emph{Python} packages installed on your computer, type
 
 \begin{lstlisting}
     pip list
@@ -90,48 +89,48 @@ To get a list of all the Python packages installed on your computer, type
 
 \section{IPython}\index{general}{IPython}
 
-Make sure that you have a good programming environment! For me, the most efficient way to write new code is as follows: I first get the individual steps worked out interactively in an \href{http://ipython.org/}{ipython} \emph{qtconsole}. \Gls{IPython} provides interactive computing with Python, similar to the commandline in Matlab. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code. When ipython is started in \gls{pylab} mode (which is the typical configuration), it automatically loads numpy and matplotlib.pyplot into the active workspace, and provides a very convenient, Matlab-like programming environment.
+Make sure that you have a good programming environment! For me, the most efficient way to write new code is as follows: I first get the individual steps worked out interactively in an \href{http://ipython.org/}{ipython} \emph{ipython qtconsole}. \emph{\Gls{IPython}} provides interactive computing with \emph{Python}, similar to the commandline in \emph{Matlab}. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code. When \emph{IPython} is started in "\gls{pylab}" mode, it automatically loads \lstinline{numpy} and \lstinline{matplotlib.pyplot} into the active workspace, and provides a very convenient, \emph{Matlab}-like programming environment.
 
-A very helpful new addition is the browser-based \emph{ipython notebook}, with support for code, text, mathematical expressions, inline plots and other rich media. Please check out the links to the ipython
-notebooks in this statistics introduction. I believe that it will  help you to get up to speed with python much more quickly.
+A very helpful new addition is the browser-based \emph{ipython notebook}, with support for code, text, mathematical expressions, inline plots and other rich media. Please check out the links to the \emph{ipython
+notebooks} in this statistics introduction. I believe that it will  help you to get up to speed with \emph{Python} much more quickly.
 
 \subsection{First Session with the IPython Qt Console}
 
-An important aspect of statistical data analysis is the interactive, visual inspection of the data. Therefore I strongly recommend to start the data analysis in the \emph{IPython Qt Console}. To get you started with python, I will go step-by-step through a short IPython session (Fig. \ref{fig:qtConsole}).
+An important aspect of statistical data analysis is the interactive, visual inspection of the data. Therefore I strongly recommend to start the data analysis in the \emph{ipython qtonsole}. To get you started with python, I will go step-by-step through a short \emph{IPython} session (Fig. \ref{fig:qtConsole}).
 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/ScientificPython.jpg}\\
-  \caption{The structure of the most important Python packages for statistical applications.}
+  \caption{The structure of the most important \emph{Python} packages for statistical applications.}
   \label{fig:scientificPython}
 \end{figure}
 
-For maximum flexibility, I started my session from the \emph{WinPython Command Prompt}, with the command \lstinline{ipython qtconsole}. The \emph{WinPython Command Prompt} is nothing else but a command terminal, with the environment variables set such that Python is readily found.
+For maximum flexibility, I started my session from the \emph{WinPython Command Prompt}, with the command \lstinline{ipython qtconsole}. The \emph{WinPython Command Prompt} is nothing else but a command terminal, with the environment variables set such that \emph{Python} is readily found.
 
-First IPython starts out telling you about the version of IPython and Python you are using, and listing the most important help calls.
+First \emph{IPython} starts out telling you about the version of \emph{IPython} and \emph{Python} you are using, and listing the most important help calls.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.85\textwidth]{../Images/qtConsole.png}\\
-  \caption{Sample session in the IPython Qt-console.}
+  \caption{Sample session in the \emph{ipython qtconsole}.}
   \label{fig:qtConsole}
 \end{figure}
 
 
 \begin{itemize}
-  \item \textbf{In [1]:} The first command \lstinline{%pylab inline} loads numpy and matplotlib into the current workspace, and directs matplotlib to show plots \emph{inline}. (This is automatically done if IPython is started with the commandline option "--pylab=inline".)
+  \item \textbf{In [1]:} The first command \lstinline{%pylab inline} loads \emph{numpy} and \emph{matplotlib} into the current workspace, and directs \emph{matplotlib} to show plots "inline". (This is automatically done if \emph{IPython}is started with the commandline option \lstinline{--pylab=inline} .)
 
-    To understand what is happening here requires a short detour into the structure of scientific Python. Fig.\ref{fig:scientificPython} shows the connection of the most important Python packages that are used in this book.
+    To understand what is happening here requires a short detour into the structure of scientific \emph{Python}. Fig. \ref{fig:scientificPython} shows the connection of the most important \emph{Python} packages that are used in this book.
 
-    \emph{Python} itself is an interpretative programming language, with no optimization for working with vectors or matrices or for producing plots. \emph{Packages} which extend the abilities of Python must be loaded explicitly. The most important package for scientific applications is \gls{numpy} \index{general}{numpy}, which makes working with vectors and matrices fast and efficient, and \emph{matplotlib}, which is the most common package used for producing graphical output. \Gls{scipy}\index{general}{scipy} contains important scientific algorithms. For the statistical data analysis, \lstinline{scipy.stats} contains the majority of the algorithms that will be used in this book. \emph{pandas} is a more recent addition, which has become widely adopted for statistical data analysis. It provides \emph{DataFrames}, which are labelled, 2-dimensional data structures, making work with data more intuitive and clearer. \emph{seaborn} extends the plotting abilities of \gls{matplotlib}, with a focus on statistical graphs. And \emph{statsmodels} contains many modules for statistical modeling, and for advanced statistical analysis. Both \emph{seaborn} and \emph{statsmodels} make use of the \emph{pandas'} DataFrames.
+    \emph{Python} itself is an interpretative programming language, with no optimization for working with vectors or matrices or for producing plots. \emph{Packages} which extend the abilities of \emph{Python} must be loaded explicitly. The most important package for scientific applications is \gls{numpy} \index{general}{numpy}, which makes working with vectors and matrices fast and efficient, and \emph{matplotlib}, which is the most common package used for producing graphical output. \emph{\gls{scipy}}\index{general}{scipy} contains important scientific algorithms. For the statistical data analysis, \texttt{scipy.stats} contains the majority of the algorithms that will be used in this book. \emph{pandas} is a more recent addition, which has become widely adopted for statistical data analysis. It provides "DataFrames", which are labelled, 2-dimensional data structures, making work with data more intuitive and clearer. \emph{seaborn} extends the plotting abilities of \emph{\gls{matplotlib}}, with a focus on statistical graphs. And \emph{statsmodels} contains many modules for statistical modeling, and for advanced statistical analysis. Both \emph{seaborn} and \emph{statsmodels} make use of the \emph{pandas'} DataFrames.
 
-    \emph{IPython} provides the tools for interactive data analysis. It lets you quickly display graphs and change directories, explore the workspace, provides a command history etc. The ideas and base structure of IPython have been so successful that one component, the \emph{IPython Notebook} has been turned into a project of its own, \emph{Jupyter}, which is now also used by other languages like Julia, R, and Ruby.
+    \emph{IPython} provides the tools for interactive data analysis. It lets you quickly display graphs and change directories, explore the workspace, provides a command history etc. The ideas and base structure of \emph{IPython} have been so successful that one component, the \emph{ipython notebook} has been turned into a project of its own, \emph{Jupyter}, which is now also used by other languages like \emph{Julia}, \emph{R}, and \emph{Ruby}.
 
-  \item \textbf{In [2]:} The command \lstinline{t = r_[0:10:0.1]} is a shorthand version for \lstinline{t = arange(0, 10, 0.1)}, and generates a vector from 0 to 10, with a step size of 0.1.  \lstinline{_r} (and \lstinline{arange}) is a command in the numpy package. However, since \lstinline{numpy} has already been imported into the current workspace by IPython, we can use these commands right away.
+  \item \textbf{In [2]:} The command \lstinline{t = r_[0:10:0.1]} is a shorthand version for \lstinline{t = arange(0, 10, 0.1)}, and generates a vector from 0 to 10, with a step size of 0.1.  \lstinline{_r} (and \lstinline{arange}) is a command in the \emph{numpy}  package. However, since \lstinline{numpy} has already been imported into the current workspace by \emph{IPython}, we can use these commands right away.
   \item \textbf{In [4]:} Since \emph{t} is a vector, and \emph{sin} is a function from numpy, the sine-value is calculated automatically for each value of \emph{t}.
-  \item \textbf{In [5]:} In Python scripts, changes of the current folder have to be performed with \lstinline{os.chdir()}. However, common task with interactive computing, like directory changes (\lstinline{%cd}), bookmarks for directories (\lstinline{%bookmark}), inspection of the workspace (\lstinline{%who} and \lstinline{%who}), etc, are implemented as \emph{IPython magic functions}.
-  \item \textbf{In [6]:} Since we started out with the command \lstinline{%pylab inline}, IPython generates plots in the Qt-console, as shown in Fig. \ref{fig:qtConsole}. I have mentioned above that \emph{matplotlib} handles the graphics output. In the IPython Qt-console, you can switch between inline graphs and output into a separate graphics-window with \lstinline{%matplotlib inline} and \lstinline{%matplotlib qt4} (see Fig.\ref{fig:qt4}). This allows you to zoom in and pan, get the cursor position (which can be handy in helping to find outliers), and get interactive input with the command \lstinline{ginput}. matplotlib's plotting commands closely follow the MATLAB conventions. Note that also generating graphics files is very simple (here I generate the PNG-file "Sinewave.png", with a resolution of 200 dots-per-inch.)
+  \item \textbf{In [5]:} In \emph{Python} scripts, changes of the current folder have to be performed with \lstinline{os.chdir()}. However, common task with interactive computing, like directory changes (\lstinline{%cd}), bookmarks for directories (\lstinline{%bookmark}), inspection of the workspace (\lstinline{%who} and \lstinline{%who}), etc, are implemented as "IPython magic functions".
+  \item \textbf{In [6]:} Since we started out with the command \lstinline{%pylab inline}, \emph{IPython} generates plots in the \emph{ipython qtconsole}, as shown in Fig. \ref{fig:qtConsole}. I have mentioned above that \emph{matplotlib} handles the graphics output. In the \emph{ipython qtconsole}, you can switch between inline graphs and output into a separate graphics-window with \lstinline{%matplotlib inline} and \lstinline{%matplotlib qt4} (see Fig. \ref{fig:qt4}). This allows you to zoom in and pan, get the cursor position (which can be handy in helping to find outliers), and get interactive input with the command \lstinline{ginput}. \emph{matplotlib}'s plotting commands closely follow the \emph{Matlab} conventions. Note that also generating graphics files is very simple (here I generate the PNG-file "Sinewave.png", with a resolution of 200 dots-per-inch.)
 \end{itemize}
 
 \begin{figure}
@@ -145,9 +144,9 @@ First IPython starts out telling you about the version of IPython and Python you
 \subsection{Personalizing IPython}
 
 When working on a new problem, I always start out with IPython. Once
-I have the individual steps working, I use the IPython command \emph{\%history} to get the commands I have used, and switch to an integrated development environment (typically \emph{Wing} or \emph{Spyder}).
+I have the individual steps working, I use the \emph{IPython}command \lstinline{%history} to get the commands I have used, and switch to an integrated development environment (typically \emph{Wing} or \emph{Spyder}).
 
-To start up IPython quickly in the location and with the configuration I like, I use the following tricks:
+To start up \emph{IPython}quickly in the location and with the configuration I like, I use the following tricks:
 
 To personalize IPython, generate your own profile as shown below. Thereby, \emph{myname} has replaced with your login name, and \emph{mydir} with your home-directory (i.e. the directory that opens up when you run \lstinline{cmd} in Windows, or \lstinline{terminal} in Linux):
 
@@ -159,21 +158,21 @@ To personalize IPython, generate your own profile as shown below. Thereby, \emph
         \begin{lstlisting}
             ipython profile create myname
         \end{lstlisting}
-        (This generates a folder $.ipython \backslash profile\_myname \backslash startup"$)
-  \item Into this folder, place a file with e.g. the name $00\_myname.py$, containing
+        (This generates a folder \lstinline{.ipython\profile myname\startup})
+  \item Into this folder, place a file with e.g. the name \lstinline{00_myname.py}, containing
         \begin{lstlisting}
             import pandas as pd
             import os
             os.chdir(r'C:\mydir')
         \end{lstlisting}
-        Note: since Windows uses "\" to separate directories, but "\" is also the escape character in strings, directory paths have to be preceded by "r", indicating \emph{raw strings}.
+        Note: since Windows uses "\\" to separate directories, but "\\" is also the escape character in strings, directory paths have to be preceded by "r", indicating "raw strings".
   \item Generate a file "ipy.bat" in \emph{mydir}, containing
       \begin{lstlisting}
       [Python-directory]\Scripts\ipython3 qtconsole --profile myname --pylab=inline
       \end{lstlisting}
 \end{itemize}
 
-To see all ipython notebooks for the course, do the following:
+To see all \emph{ipython notebooks} for the course, do the following:
 \begin{itemize}
     \item Type Win+R, and start a command shell with \lstinline{cmd}
     \item Run the commands
@@ -205,7 +204,7 @@ To see all ipython notebooks for the course, do the following:
       \begin{lstlisting}
           alias ipy='ipython3 qtconsole --profile myname --pylab=inline'
       \end{lstlisting}
-  \item To see all IPython notebooks, do the following:
+  \item To see all \emph{ipython notebooks}, do the following:
     \begin{itemize}
       \item Go to \emph{mydir}
       \item Create the file \emph{ipynb.sh}, containing the lines
@@ -218,76 +217,83 @@ To see all ipython notebooks for the course, do the following:
     \end{itemize}
 \end{itemize}
 
-Now you can start "your" ipython by just typing \lstinline{ipy}, and the notebooks by typing "ipynb.sh"
+Now you can start "your" \emph{IPython} by just typing \lstinline{ipy}, and the \emph{ipython notebook} by typing \lstinline{ipynb.sh}
 
 \subsubsection{In OSX}
 
-Here the procedure should be the same as in Linux [CHECK!!!]
+Here the procedure should be the same as in Linux [xxx CHECK!!! xxx]
 
 \subsection{Ipython Notebook}\index{general}{IPython!notebook}
 
-Since approximately 2013 the \emph{IPython notebook} has become a very popular way to share research and results with the Python community. It allows to combine a structured layout, equation in the popular LaTex-format, and resulting graphs and videos.
+Since approximately 2013 the \emph{ipython notebook} has become a very popular way to share research and results with the \emph{Python} community. It allows to combine a structured layout, equation in the popular LaTex-format, and resulting graphs and videos.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.85\textwidth]{../Images/ipython-notebook.png}\\
-  \caption{The \emph{IPython Notebook} makes it easy to share research, formulas, and results.}
+  \caption{The \emph{ipython notebook} makes it easy to share research, formulas, and results.}
 \end{figure}
 
 \subsubsection{rpy2}\index{general}{rpy2}\index{general}{R (programming language)}
 
-While Python is my preferred programming language, the world of advanced statistics is clearly dominated by \emph{R}. Like Python, R is completely free, and has a very active user community. While Python is a general programming language, R is optimized for the interactive work with statistical data. Many users swear that \emph{ggplot} provides the best-looking graphs for statistical data.
+While \emph{Python} is my preferred programming language, the world of advanced statistics is clearly dominated by \emph{R}. Like \emph{Python}, \emph{R} is completely free, and has a very active user community. While \emph{Python} is a general programming language, \emph{R} is optimized for the interactive work with statistical data. Many users swear that \emph{ggplot} provides the best-looking graphs for statistical data.
 
-To combine the best of both worlds, the package \emph{rpy2} provides a way to transfer data from Python into R, execute commands in R, and transfer the results back into Python. In the IPython notebook, with rpy2 even R graphics can be fully utilized!
+To combine the best of both worlds, the package \emph{rpy2} provides a way to transfer data from \emph{Python} into \emph{R}, execute commands in \emph{R}, and transfer the results back into \emph{Python}. In the \emph{ipython notebook}, with \emph{rpy2} even \emph{R} graphics can be fully utilized!
 
 \begin{figure}
   \centering
   \includegraphics[width=0.85\textwidth]{../Images/ipython-rmagic.png}\\
-  \caption{The output from R-commands is not working properly yet, and has been "hacked" here. However, this issue should be resolved soon.}
+  \caption{The output from \emph{R}-commands is not working properly yet, and has been "hacked" here. However, this issue should be resolved soon.}
 \end{figure}
 
 \subsection{IPython Tips}
 
 \begin{enumerate}
-    \item Use IPython in the qtconsole, and start it in \emph{pylab}-mode: pylab: \texttt{ipython qtconsole ---pylab=inline}
-    \item For help on e.g. \texttt{plot}, use \texttt{plot?} or \texttt{help(plot)}.
-    \item Check out the help tips when you start ipython.
-    \item Customize ipython on your computer, as described above: it will save you time in the long run!
+    \item Use \emph{IPython} in the \emph{ipython qtconsole}, and start it in \emph{pylab}-mode: pylab: \lstinline{ipython qtconsole ---pylab=inline}
+    \item For help on e.g. \lstinline{plot}, use \lstinline{plot?} or \lstinline{help(plot)}.
+    \item Check out the help tips when you start \emph{IPython}.
+    \item Customize \emph{IPython} on your computer, as described above: it will save you time in the long run!
     \item TAB-completion, for file- and directory names, variable names, AND for commands.
-    \item To switch between inline and external graphs, use \; \texttt{\%matplotlib inline} and \; \texttt{\%matplotlib qt4}.
+    \item To switch between inline and external graphs, use \; \lstinline{%matplotlib inline} and \; \lstinline{%matplotlib qt4}.
 \end{enumerate}
 
 \section{Developing Python Programs}
 
 \subsection{First Python Script}
 
-IPython is very helpful in working out the command syntax and sequence. The next step is to turn this in to a Python program that can be run from the command-line. This section introduces a fairly large number of Python conventions and syntax.
+\emph{IPython} is very helpful in working out the command syntax and sequence. The next step is to turn this in to a \emph{Python} program that can be run from the command-line. This section introduces a fairly large number of \emph{Python} conventions and syntax.
 
-An efficient way to to turn IPython commands into a function is to
+An efficient way to to turn \emph{IPython} commands into a function is to
 
 \begin{itemize}
   \item first obtain the command history with the command \lstinline{%hist}.
   \item copy the history into a good IDE (e.g. \emph{Wing}, see below)
-  \item turn it into a working Python program by adding the relevant package information, etc.
+  \item turn it into a working \emph{Python} program by adding the relevant package information, etc.
 \end{itemize}
 
 In this case, this leads to
 
 \lstinputlisting[label=py:pythonDemo,caption=pythonScript.py, language=Python, numbers=left]{../Code3/pythonScript.py}
 
-The following modifications were made from the IPython history:
+The following modifications were made from the \emph{IPython} history:
 
 \begin{itemize}
-  \item Files with the extension \emph{\.py} are called \emph{Modules}.
-  \item \textbf{1-8:} It is comment to precede a Python module with a header block. Multiline comments are given between " ''' ". The first comment block describing the module should also contain information about author, date, and version number.
-  \item \textbf{10:}  Single-line comments use " \# ".
-  \item \textbf{11-13:} The required Python packages have to be imported explicitly. (In IPython, this is done by the command \lstinline{%pylab}.) It is customary to import \emph{numpy as np}, and \emph{matplotlib.pyplot}, the matplotlib module which contains all the plotting commands, as \emph{plt}.
+  \item Files with the extension ".py" are called "Modules".
 
-  \item \textbf{16 etc:} The numpy command \emph{r\_} has to be addressed through the corresponding package name, i.e. \lstinline{np.r_}. (In IPython, \emph{\%pylab} took care of that.)
-  \item \textbf{20:}  Note that also \emph{pi} is in numpy, so \lstinline{np.pi} is needed!
- \item \textbf{23 etc:}  All the plotting commands have to be preceded by their corresponding module, \emph{plt.}.
-  \item \textbf{30:} Changes of the current directory require the \lstinline{os} package. In Windows, you have to deal with the additional problem that directories in path-names are separated by "", which is also used as the escape-character in strings. To take "" literally, a string has to be preceded by "r" (for "r"aw string).
-  \item \textbf{34:} While IPython automatically shows graphical output, Python programs don't show the output until this is explicitly requested by \lstinline{plt.show()}. The idea behind this is to optimize the program speed, only showing the graphical output when it is all finished.
+  \item \textbf{1-8:} It is comment to precede a \emph{Python} module with a header block. Multiline comments are given between triple inverted commas \lstinline{''' [_ xxx _] '''}. The first comment block describing the module should also contain information about author, date, and version number.
+
+  \item \textbf{10:}  Single-line comments use " \# ".
+
+  \item \textbf{11-13:} The required \emph{Python} packages have to be imported explicitly. (In IPython, this is done by the command \lstinline{%pylab}.) It is customary to import \emph{numpy as np}, and \emph{matplotlib.pyplot}, the matplotlib module which contains all the plotting commands, as \emph{plt}.
+
+  \item \textbf{16 etc:} The numpy command \lstinline{r_} has to be addressed through the corresponding package name, i.e. \lstinline{np.r_}. (In \emph{IPython}, \lstinline{%pylab} took care of that.)
+
+  \item \textbf{20:}  Note that also "pi" is in \emph{numpy}, so \lstinline{np.pi} is needed!
+
+  \item \textbf{23 etc:}  All the plotting commands have to be preceded by their corresponding module, \lstinline{plt.}
+
+  \item \textbf{30:} Changes of the current directory require the \lstinline{os} package. In Windows, you have to deal with the additional problem that directories in path-names are separated by \lstinline{"\"}, which is also used as the escape-character in strings. To take \lstinline{"\"} literally, a string has to be preceded by "r" (for "r"aw string), e.g. \lstinline{r'C:\Users\Peter'} instead of \lstinline{'C:\\Users\\Peter'}.
+
+  \item \textbf{34:} While \emph{IPython} automatically shows graphical output, \emph{Python} programs don't show the output until this is explicitly requested by \lstinline{plt.show()}. The idea behind this is to optimize the program speed, only showing the graphical output when it is all finished.
 \end{itemize}
 
 \begin{figure}
@@ -301,10 +307,10 @@ The following modifications were made from the IPython history:
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/Wing.png}\\
-  \caption{\emph{Wing}\index{general}{Wing} is my favorite development environment, with probably the best existing debugger for Python.}
+  \caption{\emph{Wing}\index{general}{Wing} is my favorite development environment, with probably the best existing debugger for \emph{Python}.}
 \end{figure}
 
-To write a program, I typically take the commands I have worked out in ipython with \lstinline{%history}, and take them to an IDE (integrated development environment): I either use \emph{Wing} (my clear favorite Python IDE, although it is commercial) or \emph{Spyder} (which is good and free). \emph{PyCharm} is another IDE with a good debugger, and has very good vim-emulation.
+To write a program, I typically take the commands I have worked out in \emph{IPython} with \lstinline{%history}, and take them to an IDE (integrated development environment): I either use \emph{Wing} (my clear favorite \emph{Python} IDE, although it is commercial) or \emph{Spyder} (which is good and free). \emph{PyCharm} is another IDE with a good debugger, and has very good \emph{vim}-emulation.
 
 \begin{figure}
   \centering
@@ -314,12 +320,12 @@ To write a program, I typically take the commands I have worked out in ipython w
 
 \subsection{Functions, Modules, and Packages}
 
-Python has different levels of modularization:
+\emph{Python} has different levels of modularization:
 
 \begin{description}
-  \item[Function] \Glspl{function} are defined by the keyword \lstinline{def}, and can be defined anywhere in Python. They return the object in the \lstinline{return} statement, typically at the end of the function.
-  \item[Modules] \Glspl{module} is a file with the extension \emph{.py}. Modules can contain function definitions, as well as valid Python statements.
-  \item[Packages] \Gls{package} is a folder containing multiple Python modules, and must have a file named \emph{\_\_init\_\_.py}. For example, \emph{numpy} is a Python package.
+  \item[Function] A \gls{function} are defined by the keyword \lstinline{def}, and can be defined anywhere in \emph{Python}. It returns the object in the \lstinline{return} statement, typically at the end of the function.
+  \item[Modules] A \gls{module} is a file with the extension ".py". Modules can contain function definitions, as well as valid \emph{Python} statements.
+  \item[Packages] A \gls{package} is a folder containing multiple \emph{Python} modules, and must have a file named \lstinline{__init__.py}. For example, \emph{numpy} is a \emph{Python} package.
 \end{description}
 
 \subsubsection{Functions}
@@ -329,31 +335,39 @@ The following example shows how functions can be defined and used.
 
 \begin{itemize}
   \item \textbf{1-4:} Comment header.
+
   \item \textbf{6:} Since numpy will be required in that module, it has to be imported. To reduce the writing to a minimum, it is conventionally called \emph{np}.
-  \item \textbf{8/9:} Function definition, and a comment describing the function. Note that the function block is defined by the indentation, not by any brackets of \emph{end} statements! This is a feature that irritates many Python novices, but that really helps to keep code clear and nicely formatted. Important: Python makes a difference between a tab and the equivalent amount of spaced. This can lead to errors which are really hard to detect, so you should use a good IDE that automatically converts tabs to spaces!
+
+  \item \textbf{8/9:} Function definition, and a comment describing the function. Note that the function block is defined by the indentation, not by any brackets of \emph{end} statements! This is a feature that irritates many \emph{Python} novices, but that really helps to keep code clear and nicely formatted. Important: \emph{Python} makes a difference between a tab and the equivalent amount of spaced. This can lead to errors which are really hard to detect, so you should use a good IDE that automatically converts tabs to spaces!
+
   \item \textbf{10:}
     \begin{itemize}
       \item The \lstinline{sum} command is taken from \emph{numpy}, so it has to be preceded by \lstinline{.np}.
-      \item In Python, function arguments are indicated by round brackets (\emph{(...)}, whereas elements of lists, tuples, vectors, and arrays are indicated by square brackets (\emph{[...]}).
+      \item In \emph{Python}, function arguments are indicated by round brackets (\lstinline{(...)}, whereas elements of lists, tuples, vectors, and arrays are indicated by square brackets (\lstinline{[...]}).
       \item In \emph{numpy} you can select elements of an array either with an in index (see line \textbf{19}), or with a boolean array as here (line \textbf{10}).
     \end{itemize}
-  \item \textbf{13:} Python also uses round brackets to form groups of elements, so-called \emph{tuples}. And the \lstinline{return} statement does the obvious things: it returns elements from a function.
-  \item \textbf{15:} Here quite a few new aspects of Python come together:
+
+  \item \textbf{13:} \emph{Python} also uses round brackets to form groups of elements, so-called "tuples". And the \lstinline{return} statement does the obvious things: it returns elements from a function.
+
+  \item \textbf{15:} Here quite a few new aspects of \emph{Python} come together:
       \begin{itemize}
-        \item Just like function definitions, \emph{if}-loops or \emph{for}-loops use indentation to define their context.
-        \item Python conventionally uses underscores (\emph{\_-}) to indicate private variables, which are not used for typical programming tasks.
-        \item Here we check the name \lstinline{\_\_name\_\_}, which is denoting the context of a module evaluation. If the module is run as a Python script, \lstinline{\_\_name\_\_} is set to \emph{\_\_main\_\_}. But if a module is imported, it is set to the name of the importing module. This way it is possible to add code to a function that is only used when the module is executed, but not when the functions in this module are \lstinline{import}ed by other modules (see below).
+        \item Just like function definitions, \lstinline{if}-loops or \lstinline{for}-loops use indentation to define their context.
+        \item \emph{Python} conventionally uses underscores (\lstinline{_}) to indicate private variables, which are not used for typical programming tasks.
+        \item Here we check the name \lstinline{__name__}, which is denoting the context of a module evaluation. If the module is run as a \emph{Python} script, \lstinline{__name__} is set to \lstinline{__main__}. But if a module is imported, it is set to the name of the importing module. This way it is possible to add code to a function that is only used when the module is executed, but not when the functions in this module are \lstinline{import}ed by other modules (see below).
       \end{itemize}
+
   \item \textbf{16:} Definition of a \emph{numpy} array.
-  \item \textbf{25:} When two elements are returned from a function \emph{(incomeAndExpenses}, they can be immediately assigned to two different Python objects (\emph{myIncome, myExpenses}.
-  \item \textbf{26:} While there are different ways to produce formatted strings, this is probably the most elegant one: curly brackets (\emph{"{...}"}) indicate values that will be inserted, and can also contain formatting statements. The corresponding values are then passed into the string by the method \lstinline{format}.
+
+  \item \textbf{25:} When two elements are returned from a function \lstinline{incomeAndExpenses}, they can be immediately assigned to two different \emph{Python} objects (\lstinline{myIncome, myExpenses}).
+
+  \item \textbf{26:} While there are different ways to produce formatted strings, this is probably the most elegant one: curly brackets (\lstinline| { ... } |) indicate values that will be inserted, and can also contain formatting statements. The corresponding values are then passed into the string by the method \lstinline{format}, e.g. \lstinline|print('The value of pi is {0}'.format(np.py))| .
 \end{itemize}
 
 \subsubsection{Modules}
 
-To \emph{execute} a module from the commandline, type \lstinline{python pythonFunction.py}. In Windows, if the extension \emph{.py} is associated with the Python program, it suffices to double-click the module, or to type \lstinline{pythonFunction.py} on the commandline. In WinPython the association of the extension \emph{.py} with the Python function is set by the \emph{WinPython Control Panel.exe}, by the command \emph{"Register Distribution ..."} in the menu \emph{"Advanced"}.
+To \emph{execute} a module from the command line, type \lstinline{python pythonFunction.py}. In Windows, if the extension ".py" is associated with the \emph{Python} program, it suffices to double-click the module, or to type \lstinline{pythonFunction.py} on the command line. In WinPython the association of the extension ".py" with the \emph{Python} function is set by the \emph{WinPython Control Panel.exe}, by the command \emph{Register Distribution ...} in the menu \emph{Advanced}.
 
-To run a module in IPython, use the magic function \emph{\%run}:
+To run a module in IPython, use the magic function \lstinline{%run}:
 
 \begin{lstlisting}
     In [56]: %run pythonFunction
@@ -363,47 +377,50 @@ To run a module in IPython, use the magic function \emph{\%run}:
 
 Note that you either have to be in the directory where the function is defined, or you have to give the full pathname.
 
-If you import a module multiple times, Python recognizes that the module is already known, and skips later imports. If you want to override this, and explicitly want to re-import a module that has changed, you have to use the command \emph{reload} from the package \emph{importlib}:
+If you import a module multiple times, \emph{Python} recognizes that the module is already known, and skips later imports. If you want to override this, and explicitly want to re-import a module that has changed, you have to use the command \lstinline{reload} from the package \lstinline{importlib}:
 
 \begin{lstlisting}
     from importlib import reload
     reload(pythonFunction)
 \end{lstlisting}
 
+\textbf{Python 2.x}: \lstinline{reload} does NOT need to be imported from \lstinline{importlib}, but is available as a core module.
+
 The next example shows you how to import functions from one module into another one:
 
 \lstinputlisting[label=py:pythonImport,caption=pythonImport.py, language=Python, numbers=left]{../Code3/pythonImport.py}
 
 \begin{itemize}
-  \item textbf{6:} Here the module \lstinline{pythonFunction} (that we have just discussed above) is imported. Note that the code in the section \lstinline{if \_\_name\_\_ == '\_\_main\_\_'} is NOT executed when the module is imported!
-  \item textbf{12:} To access the function \emph{incomeAndExpenses} from the module \emph{pythonFunction}, I have to use \lstinline{incomeAndExpenses.pythonFunction(...)}
+  \item \textbf{6:} Here the module \lstinline{pythonFunction} (that we have just discussed above) is imported. Note that the code in the section \lstinline{if __name__ == '__main__'} is NOT executed when the module is imported!
+
+  \item \textbf{12:} To access the function \lstinline{incomeAndExpenses} from the module \lstinline{pythonFunction}, I have to use \lstinline{incomeAndExpenses.pythonFunction(...)}
 \end{itemize}
 
-%  \item \textbf{14:} Function definitions can be made anywhere in the Python program. A peculiarity that is loved by many, but hated by many others, is the convention that the function definition is defined by the indentation, not by any explicit \emph{end} or by brackets. Just below the function definition (\textbf{15}) is the customary short function description. Not only functions, but also loops, if-statements etc. are defined by code indentation!
-%  \item \textbf{17:} To group objects of the same type, Python uses \emph{lists}, which are indicated by square brackets (\emph{[...]}).
-%  \item \textbf{18:} To address individual elements of a list, Python uses square brackets (\lstinline{pCoeff[0]}). Note that indexing starts at \emph{0}, not at \emph{1}! To square each element of the vector \lstinline{inData} is achieved by \lstinline{inData**2}.
+%  \item \textbf{14:} Function definitions can be made anywhere in the \emph{Python} program. A peculiarity that is loved by many, but hated by many others, is the convention that the function definition is defined by the indentation, not by any explicit \emph{end} or by brackets. Just below the function definition (\textbf{15}) is the customary short function description. Not only functions, but also loops, if-statements etc. are defined by code indentation!
+%  \item \textbf{17:} To group objects of the same type, \emph{Python} uses \emph{lists}, which are indicated by square brackets (\emph{[...]}).
+%  \item \textbf{18:} To address individual elements of a list, \emph{Python} uses square brackets (\lstinline{pCoeff[0]}). Note that indexing starts at \emph{0}, not at \emph{1}! To square each element of the vector \lstinline{inData} is achieved by \lstinline{inData**2}.
 %  \item \textbf{19:} The return value(s) of a function are indicated by \lstinline{return}. Since here we group elements of different types (a vector and a list), we don't use a \emph{Python tuple}, indicated by round brackets (\emph{(...)}). In contrast to lists, tuples are immutable.
 %  \item \textbf{21:} This statement is related to the difference between \emph{importing} a module, and \emph{running} a module (see the last point in the \emph{IPython Tips} above.)
-%       When the Python interpreter reads a source file, it executes all of the code found in it. Before executing the code, it will define a few special variables. For example, if the python interpreter is running that module (the source file) as the main program, it sets the special \lstinline{__name__} variable to have a value \lstinline{__main__}. If this file is being imported from another module, \lstinline{__name__} will be set to the module's name.
+%       When the \emph{Python} interpreter reads a source file, it executes all of the code found in it. Before executing the code, it will define a few special variables. For example, if the python interpreter is running that module (the source file) as the main program, it sets the special \lstinline{__name__} variable to have a value \lstinline{__main__}. If this file is being imported from another module, \lstinline{__name__} will be set to the module's name.
 
 \subsection{Python Tips}
 
 \begin{enumerate}
   \item Stick to the standard conventions.
       \begin{itemize}
-        \item Every function should have documentation at the top.
-        \item \texttt{import matplotlib.pyplot as plt}\\
-            \texttt{import numpy as np}\\
-            \texttt{import scipy as sp}\\
-            \texttt{import pandas as pd}\\
-            \texttt{import seaborn as sns}
+        \item Every function should have a documentation string on the line below the function definition.
+        \item \lstinline{import numpy as np}\\
+            \lstinline{import matplotlib.pyplot as plt}\\
+            \lstinline{import scipy as sp}\\
+            \lstinline{import pandas as pd}\\
+            \lstinline{import seaborn as sns}
       \end{itemize}
-  \item To get the current directory, use \texttt{os.path.abspath(os.curdir)}.
-  \item Everything in Python is an object: to find out about "obj", use \texttt{type(obj)} and \texttt{dir(obj)}.
-  \item Learn to use the debugger.
-  \item Know \emph{lists}, \emph{tuples}, and \emph{dictionaries}; also, know about \emph{numpy arrays} and \emph{pandas DataFrames}.
-  \item Use functions a lot, and understand the \texttt{if \_\_name\_\_=='\_\_main\_\_':} construct.
-  \item If you have all your personal functions in the directory \emph{mydir}, you can add this directory to your PYTHONPATH with the command
+  \item To get the current directory, use \lstinline{os.path.abspath(os.curdir)}.
+  \item Everything in \emph{Python} is an object: to find out about "obj", use \lstinline{type(obj)} and \lstinline{dir(obj)}.
+  \item Learn to use the debugger. Personally, I always use the debugger from the IDE, and rarely resort to the built-indebugger \emph{pdb}.
+  \item Know "lists", "tuples", and "dictionaries"; also, know about \emph{numpy} "arrays" and \emph{pandas} "DataFrames".
+  \item Use functions a lot, and understand the \lstinline{if __name__=='__main__':} construct.
+  \item If you have all your personal functions in the directory \lstinline{mydir}, you can add this directory to your \lstinline{PYTHONPATH} with the command
       \begin{lstlisting}
         import sys
         sys.path.append('mydir')
@@ -413,117 +430,137 @@ The next example shows you how to import functions from one module into another 
 \section{Python Data Structures}
 
 \begin{description}
-  \item[Tuple ()] \index{general}{tuple}A collection of different things. Tuples are \emph{immutable}, i.e. they cannot be modified after creation.
-  \item[List [] ] \index{general}{list}Lists are \emph{mutable}, i.e. their elements can be modified. Therefore lists are typically used to collect items of the same type (numbers, strings, ...).
-  \item[Array [] ] \index{general}{array}Vectors\index{general}{vectors} and matrices, for numerical data manipulation. Defined in \emph{numpy}. Note that vectors and 1-d arrays are different: vectors \emph{cannot} be transposed!
-  \item[Dictionary \{\}] \index{general}{dictionary}Dictionaries are unordered \emph{(key/value)} collections of content, where the content is addressed as \emph{dict['key']} (see example below).
+  \item[Tuple ()] \index{general}{tuple} A collection of different things. Tuples are "immutable", i.e. they cannot be modified after creation.
+      \begin{lstlisting}
+            In [1]: myTuple = ('abc', np.arange(0,3,0.2), 2.5)
+
+            In [2]: myTuple[2]
+            Out[2]: 2.5
+        \end{lstlisting}
+
+  \item[List [] ] \index{general}{list} Lists are "mutable", i.e. their elements can be modified. Therefore lists are typically used to collect items of the same type (numbers, strings, ...).
+      \begin{lstlisting}
+            In [3]: myList = ['abc', 'def', 'ghij']
+
+            In [4]: myList.append('klm')
+
+            In [5]: myList2 = [1,2,3]
+
+            In [6]: myList3 = [4,5,6]
+
+            In [7]: myList2 + myList3
+            Out[7]: [1, 2, 3, 4, 5, 6]
+        \end{lstlisting}
+
+  \item[Array [] ] \index{general}{array} "Vectors"\index{general}{vectors} and "matrices", for numerical data manipulation. Defined in \emph{numpy}. Note that vectors and 1-d arrays are different: vectors CANNOT be transposed!
+      \begin{lstlisting}
+            In [8]: myArray = np.array(myList2)
+
+            In [9]: myArray2 = np.array(myList3)
+
+            In [10]: myArray + myArray2
+            Out[10]: array([5, 7, 9])
+        \end{lstlisting}
+
+  \item[Dictionary \{\}] \index{general}{dictionary}Dictionaries are unordered "(key/value)" collections of content, where the content is addressed as \lstinline{dict['key']} (see example below).
+      \begin{lstlisting}
+            In [11]: myDict = dict(one=1, two=2, info='some information')
+
+            In [12]: myDict2 = {'ten':1, 'twenty':20, 'info':'more information'}
+
+            In [13]: myDict['info']
+            Out[13]: 'some information'
+
+            In [14]: myDict.keys()
+            Out[14]: dict_keys(['one', 'info', 'two'])
+      \end{lstlisting}
+
   \item[DataFrame] \index{general}{dataframe}Data structure optimized for working with named, statistical data. Defined in \emph{pandas}. (See next chapter.)
 \end{description}
 
-\begin{lstlisting}
-    In [1]: myTuple = ('abc', np.arange(0,3,0.2), 2.5)
-
-    In [2]: myTuple[2]
-    Out[2]: 2.5
-
-    In [3]: myList = ['abc', 'def', 'ghij']
-
-    In [4]: myList.append('klm')
-
-    In [5]: myList2 = [1,2,3]
-
-    In [6]: myList3 = [4,5,6]
-
-    In [7]: myList2 + myList3
-    Out[7]: [1, 2, 3, 4, 5, 6]
-
-    In [8]: myArray = np.array(myList2)
-
-    In [9]: myArray2 = np.array(myList3)
-
-    In [10]: myArray + myArray2
-    Out[10]: array([5, 7, 9])
-
-    In [11]: myDict = dict(one=1, two=2, info='some information')
-
-    In [12]: myDict2 = {'ten':1, 'twenty':20, 'info':'more information'}
-
-    In [13]: myDict['info']
-    Out[13]: 'some information'
-
-    In [14]: myDict.keys()
-    Out[14]: dict_keys(['one', 'info', 'two'])
-\end{lstlisting}
 
 \subsection{Indexing and Slicing}\index{general}{indexing}\index{general}{slicing}
 
-For addressing individual elements in Python lists or tuples, or in numpy arrays, the following conventions are used (Fig. \ref{fig:indexing}):
+For addressing individual elements in \emph{Python} lists or tuples, or in \emph{numpy} arrays, the following conventions are used (Fig. \ref{fig:indexing}):
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/IndexingAndSlicing.png}\\
-  \caption{Conventions for Python Indexing and Slicing.}
+  \caption{Conventions for \emph{Python} Indexing and Slicing.}
   \label{fig:indexing}
 \end{figure}
 
 \begin{itemize}
   \item Indexing starts at 0, NOT at 1.
   \item The index refers to the \emph{pointer}, not to the variable.
-  \item When one element is addressed, the element indicated by the pointer is selected. For example, with \lstinline{data = 'Hello World'}, \lstinline{data[1] gives the letter \emph{"e"}.
-  \item Addressing a \emph{slice of data} (gray shaded area in Fig. \ref{fig:indexing}) returns the elements between the selected pointers.
-        E.g. \lstinline{data[2:5]} returns \emph{"el"}. The number of elements returned (here \emph{3}) equals the difference between the selected pointers (here \emph{5-2}).
-  \item When slicing, the third parameter indicates the step size. E.g. \lstinline{data[1::3]} produces \emph{"eood"}.
-  \item You can also use negative indices, corresponding stepping backwards from the end of the object.
+  \item When one element is addressed, the element indicated by the pointer is selected. For example, with \lstinline{data = 'Hello World'}, the expression \lstinline{data[1]} gives the letter "e".
+  \item Addressing a "slice" of data (gray shaded area in Fig. \ref{fig:indexing}) returns the elements between the selected pointers.
+        E.g. \lstinline{data[2:5]} returns "llo". The number of elements returned (here "3") equals the difference between the selected pointers (here "5-2").
+  \item When slicing, the third parameter indicates the step size. E.g. \lstinline{data[1::3]} produces "eood".
+  \item You can also use negative indices, corresponding stepping backwards from the end of the object, e.g.:
+    \begin{lstlisting}
+        In [2]: x = np.arange(11)
+
+        In [3]: x
+        Out[3]: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+        In [4]: x[::-2]
+        Out[4]: array([10,  8,  6,  4,  2,  0])
+
+        In [5]: x[8:4:-2]
+        Out[5]: array([8, 6])
+    \end{lstlisting}
+
 \end{itemize}
 
 \subsubsection{Vectors and Arrays}
 
-\emph{numpy} is the Python module that makes working with numbers efficient. By default, it produces vectors. The commands most frequently used to generate numbers are
+\emph{numpy} is the \emph{Python} module that makes working with numbers efficient. By default, it produces vectors. The commands most frequently used to generate numbers are
 
 \begin{description}
-  \item[np.zeros] Generates zeros. Note that it takes only \emph{one} input. If you want to generate a matrix of zeroes, this input has to be a tuple containing the number of rows/columns!
+  \item[np.zeros] Generates zeros. Note that it takes only one input. If you want to generate a matrix of zeroes, this input has to be a tuple containing the number of rows/columns!
   \item[np.ones] Generates ones.
   \item[np.random.randn] Generates normally distributed numbers, with a mean of 0 and a standard deviation of 1.
-  \item[np.arange] Generates a range of numbers. Parameters can be \emph{start, end, steppingInterval}. Note that the end-value is \emph{excluded}!
+  \item[np.arange] Generates a range of numbers. Parameters can be \lstinline{start, end, steppingInterval}. Note that the end-value is excluded!
   \item[np.linspace] Generates linearly spaced numbers.
   \item[np.array] Generates a numpy array from the given data.
 \end{description}
 
 \begin{lstlisting}
-    import numpy as np
+    In [1]: import numpy as np
 
-    np.zeros(3)
-    >>>  array([ 0.,  0.,  0.])
+    In [2]: np.zeros(3)
+    Out[2]: array([ 0.,  0.,  0.])
 
-    np.zeros( (2,3) )
-    >>> array([[ 0.,  0.,  0.],
+    In [3]: np.zeros( (2,3) )
+    Out[3]: array([[ 0.,  0.,  0.],
                [ 0.,  0.,  0.]])
 
-    np.arange(3)
-    >>> array([0, 1, 2])
+    In [4]: np.arange(3)
+    Out[4]: array([0, 1, 2])
 
-    np.linspace(0,10,6)
-    >>> array([  0.,   2.,   4.,   6.,   8.,  10.])
+    In [5]: np.linspace(0,10,6)
+    Out[5]: array([  0.,   2.,   4.,   6.,   8.,  10.])
 
-    np.arange(1,3,0.5)
-    >>> array([ 1. ,  1.5,  2. ,  2.5])
+    In [6]: np.arange(1,3,0.5)
+    Out[6]: array([ 1. ,  1.5,  2. ,  2.5])
 
-    array([[1,2], [3,4]])
-    >>> array([ [1, 2],
+    In [7]: array([[1,2], [3,4]])
+    Out[7]: array([ [1, 2],
                 [3, 4] ])
 \end{lstlisting}
 
-There are a few points that are peculiar to Python, and that are worth noting:
+There are a few points that are peculiar to \emph{Python}, and that are worth noting:
 
 \begin{itemize}
-  \item Matrices are simply \emph{lists of lists}. Therefore the first element of a matrix gives you the first row:
+  \item Matrices are simply "lists of lists". Therefore the first element of a matrix gives you the first row:
     \begin{lstlisting}
         import numpy as np
         Amat = np.array([ [1,2], [3,4] ])
         Amat[0]
         >>> array([1, 2])
     \end{lstlisting}
-  \item A vector is not the same as a 1-dimensional matrix! This is one of the few un-intuitive features of Python, and can lead to mistakes that are hard to find. For example, vectors cannot be transposed, but matrices can.
+  \item A vector is not the same as a 1-dimensional matrix! This is one of the few really un-intuitive features of \emph{Python}, and can lead to mistakes that are hard to find. For example, vectors cannot be transposed, but matrices can.
       \begin{lstlisting}
         import numpy as np
 
@@ -541,34 +578,36 @@ There are a few points that are peculiar to Python, and that are worth noting:
 
 \section{Plots in Python}
 
-The Python core does not include any possibilities to generate plots. This is added by other packages. The by far most common package used for plotting is \Gls{matplotlib}\index{general}{matplotlib}. Matplotlib is not part of the core of Python. But if you installed Python with a scientific package like \emph{WinPython} or \emph{anaconda}, it will be included. Matplotlib is intended to mimic the style of Matlab. As such, users can either generate plots in the MATLAB style, or in the traditional Python style (see below).
+The \emph{Python} core does not include any possibilities to generate plots. This is added by other packages. The by far most common package used for plotting is \emph{\gls{matplotlib}}\index{general}{matplotlib}. \emph{matplotlib} is not part of the core of \emph{Python}. But if you installed \emph{Python} with a scientific package like \emph{WinPython} or \emph{anaconda}, it will be included. \emph{matplotlib} is intended to mimic the style of \emph{Matlab}. As such, users can either generate plots in the \emph{Matlab} style, or in the traditional \emph{Python} style (see below).
 
-Matplotlib contains a number of different modules and features:
+\emph{matplotlib} contains a number of different modules and features:
 \begin{description}
-  \item[matplotlib.pyplot] This is the module that is commonly used to generate plots, and is by convention imported in Python functions and scripts with \lstinline{import matplotlib.pyplot as plt}. \emph{pyplot} \index{general}{pyplot} provides the interface to the plotting library in matplotlib. Pyplot handles a lot of little details, such as creating figures and axes for the plot, so that the user can concentrate on the data analysis.
-  \item[matplotlib.mlab] Contains a number of functions that are commonly used in MATLAB, such as \lstinline{find}, \lstinline{griddata}, etc.
-  \item["backends"] Matplotlib can produce output in many different formats, which are referred to as \emph{backends}\index{general}{backend}:
+  \item[matplotlib.pyplot] This is the module that is commonly used to generate plots, and is by convention imported in \emph{Python} functions and scripts with \lstinline{import matplotlib.pyplot as plt}. \emph{pyplot} \index{general}{pyplot} provides the interface to the plotting library in matplotlib. Pyplot handles a lot of little details, such as creating figures and axes for the plot, so that the user can concentrate on the data analysis.
+  \item[matplotlib.mlab] Contains a number of functions that are commonly used in \emph{Matlab}, such as \lstinline{find}, \lstinline{griddata}, etc.
+  \item["backends"] \emph{matplotlib} can produce output in many different formats, which are referred to as \emph{backends}\index{general}{backend}:
     \begin{itemize}
-      \item In an \emph{Ipython Notebook}, or in an \emph{IPython Qt-console}, the command \lstinline{%matplotlib inline} directs output into the current browser window. (\lstinline{%pylab inline} is a combination of loading pylab, and directing plot-output inline.
+      \item In an \emph{Ipython Notebook}, or in an \emph{ipython qtconsole}, the command \lstinline{%matplotlib inline} directs output into the current browser window. (\lstinline{%pylab inline} is a combination of loading pylab, and directing plot-output inline.
       \item In the same environment, \lstinline{%matplotlib qt4} directs the output into a separate graphics window (Fig. \ref{fig:qt4}). This allows panning and zooming the plot, and interactive selection of points on the plot by the user.
       \item In addition, output can be directed to external files, e.g. in PDF, PNG, or JPG format.
     \end{itemize}
 \end{description}
 
-\emph{pylab}\index{general}{pylab} is a convenience module that bulk imports matplotlib.pyplot (for plotting) and numpy (for mathematics and working with arrays) in a single name space. Although many examples use pylab, it is no longer recommended, and should only be used in IPython, to facilitate interactive development of code.
+\emph{pylab}\index{general}{pylab} is a convenience module that bulk imports \lstinline{matplotlib.pyplot} (for plotting) and \lstinline{numpy} (for mathematics and working with arrays) in a single name space. Although many examples use \emph{pylab}, it is no longer recommended, and should only be used in \emph{IPython}, to facilitate interactive development of code. In my experience, when I start out in \emph{IPython}, and then copy code over into the IDE and generate a script, I very frequently forget some \lstinline{np.} or \lstinline{plt.} .
 
 \subsection{Interactive plots}
 
-Matplotlib provided different ways how to interact with the user. Unfortunatly, this interaction is less intuitive than in Matlab. To bypass most of these problems, you can base your code on the examples below:
+\emph{matplotlib} provides different ways how to interact with the user. Unfortunately, this interaction is less intuitive than in \emph{Matlab}. To bypass most of these problems, you can base your code on the examples below:
 
-\PyImg "interactivePlots.py" (p \pageref{py:interactivePlots}) gives a short demonstration of Python for scientific data analysis.
-\index{python}{interactivePlots}
+\lstinputlisting[label=py:pythonFunction,caption=interactivePlots.py, language=Python]{../Code3/interactivePlots.py}
+
+%\PyImg "interactivePlots.py" (p \pageref{py:interactivePlots}) gives a short demonstration of \emph{Python} for scientific data analysis.
+%\index{python}{interactivePlots}
 
 \subsection{Graphical Output in Python: Functional and Object-oriented Approach}
 
-Python plots can be generated in a MATLAB-like style, or in an object oriented, more pythonic way. These styles are all perfectly valid, and each have their pros and cons. The only caveat is to avoid mixing the coding styles for your own code.
+\emph{Python} plots can be generated in a \emph{Matlab}-like style, or in an object oriented, more pythonic way. These styles are all perfectly valid, and each have their pros and cons. The only caveat is to avoid mixing the coding styles for your own code.
 
-First, consider the frequently used pyplot style:
+First, consider the frequently used \emph{pyplot} style:
 
 \begin{lstlisting}
     # Import the required packages, with their conventional names
@@ -584,7 +623,7 @@ First, consider the frequently used pyplot style:
     plt.show()
 \end{lstlisting}
 
-Note that the creation of the required figure and an axes is done automatically by pyplot.
+Note that the creation of the required figure and an axes is done automatically by \emph{pyplot}.
 
 Second, a more pythonic, object oriented style, which may be clearer when working with multiple figures and axes:
 
@@ -610,7 +649,7 @@ Second, a more pythonic, object oriented style, which may be clearer when workin
     plt.show()
 \end{lstlisting}
 
-Next, the same example using a pure MATLAB-style:
+Next, the same example using a pure \emph{Matlab}-style:
 
 \begin{lstlisting}
     from pylab import *
@@ -619,20 +658,19 @@ Next, the same example using a pure MATLAB-style:
     plot(x, y)
 \end{lstlisting}
 
-So, why all the extra typing as one moves away from the pure MATLAB-style? For very simple things like this example, the only advantage is academic: the wordier styles are more explicit, more clear as to where things come from and what is going on. For more complicated applications, this explicitness and clarity becomes increasingly valuable, and the richer and more complete object-oriented interface will likely make the program easier to write and maintain.
+So, why all the extra typing as one moves away from the pure \emph{Matlab}-style? For very simple things like this example, the only advantage is academic: the wordier styles are more explicit, more clear as to where things come from and what is going on. For more complicated applications, this explicitness and clarity becomes increasingly valuable, and the richer and more complete object-oriented interface will likely make the program easier to write and maintain.
 
-Here an example, to get you started with Python. For interactive work, it is
-simplest to use the \emph{pylab mode}, as shown in the example below.
+Here an example, to get you started with \emph{Python}. For interactive work, it is simplest to use the \emph{pylab mode}, as shown in the example below.
 
 \subsubsection{Example-Session}
 
-\PyImg "gettingStarted.py" (p \pageref{py:gettingStarted_ipy}) gives a short demonstration of Python for scientific data analysis.
+\PyImg "gettingStarted.py" (p \pageref{py:gettingStarted_ipy}) gives a short demonstration of \emph{Python} for scientific data analysis.
 \index{python}{gettingStarted}
 
 
 \section{Pandas}\index{general}{Pandas}
 
-\href{http://pandas.pydata.org/.}{pandas} is a widely used Python package which has been contributed by Wes McKinney. It provides data structures suitable for statistical analysis, and adds functions that facilitate
+\emph{pandas} (\url{http://pandas.pydata.org/}) is a widely used \emph{Python} package which has been contributed by Wes McKinney. It provides data structures suitable for statistical analysis, and adds functions that facilitate
 data input, data organization, and data manipulation. It is common to \lstinline{import pandas as pd}, which reduces the typing a bit.
 
 A good introduction to pandas can be found under
@@ -641,8 +679,8 @@ A good introduction to pandas can be found under
 \subsection{Data Handling}
 
 
-To handle labeled data, pandas introduces \emph{DataFrame} objects. A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table. It is generally the most commonly used pandas object.
-At first, handling data with Pandas feels a bit unusual. To get you started, let me give you a specific example:
+To handle labeled data, \emph{pandas} introduces "DataFrame" objects. A DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table. It is generally the most commonly used pandas object.
+At first, handling data with \emph{pandas} feels a bit unusual. To get you started, let me give you a specific example:
 
 \begin{lstlisting}
     import numpy as np
@@ -655,7 +693,7 @@ At first, handling data with Pandas feels a bit unusual. To get you started, let
     df = pd.DataFrame({'Time':t, 'x':x, 'y':y})
 \end{lstlisting}
 
-In Pandas, rows are addressed through "indices", and columns through their "column" name.
+In Pandas, rows are addressed through indices, and columns through their name.
 To address the first column only, you have two options:
 
 \begin{lstlisting}
@@ -682,7 +720,7 @@ For e.g. rows 5-10 (note that there are 6 numbers), use
     data[4:10]
 \end{lstlisting}
 
-as $10-4=6$. (I know, the array indexing takes some time to get used to. Just keep in mind that Python addresses the \emph{locations between} entries, not the entries, and that it starts at $0$!!).
+as $10-4=6$. (I know, the array indexing takes some time to get used to. Just keep in mind that \emph{Python} addresses the \emph{locations between} entries, not the entries, and that it starts at $0$!!).
 
 To extract rows and columns in one go, use
 
@@ -690,7 +728,7 @@ To extract rows and columns in one go, use
     df[['Time', 'y']][4:10]
 \end{lstlisting}
 
-You can also apply the standard row/column notation, by using the method "ix":
+You can also apply the standard row/column notation, by using the method \lstinline{iloc}:
 
 \begin{lstlisting}
     df.iloc[[0,2],4:10]
@@ -707,13 +745,13 @@ Finally, sometimes you want to have direct access to the data, not to the DataFr
 While pandas' DataFrames are similar to numpy arrays, their philosophy is different, and I have wasted a lot of nerves addressing data correctly. Therefore I want to explicitly point out the differences here:
 
 \begin{description}
-  \item[numpy] handels \emph{rows} first. E.g. data[0] is the first row of an array
-  \item[pandas] starts with the columns. E.g. df['values'][0] is the first element of the column 'values'.
+  \item[numpy] handles "rows" first. E.g. \lstinline{data[0]} is the first row of an array
+  \item[pandas] starts with the columns. E.g. \lstinline{df['values'][0]} is the first element of the column \lstinline{'values'}.
 \end{description}
 
-If a DataFrame has labelled rows, you can extract for example the row "rowlabel" with with \lstinline{df.loc['rowlabel']}. If you want to address a row by its number, e.g. row number "15", use \lstinline{df.iloc[15]}. You can also use \emph{iloc} to address \emph{rows/columns}, e.g. \lstinline{df.iloc[2:4,3]}.
+If a DataFrame has labelled rows, you can extract for example the row "rowlabel" with with \lstinline{df.loc['rowlabel']}. If you want to address a row by its number, e.g. row number "15", use \lstinline{df.iloc[15]}. You can also use \lstinline{iloc} to address "rows/columns", e.g. \lstinline{df.iloc[2:4,3]}.
 
-Slicing of rows also works, e.g. \lstinline{df[0:5]} for the first 5 rows. A sometimes confusing convention is that if you want to slice out a single row, e.g. row "5", you have to use \lstinline{df[5:6]}. If you use \lstinline{df[5]} alone, you get an error!
+Slicing of rows also works, e.g. \lstinline{df[0:5]} for the first 5 (!) rows. A sometimes confusing convention is that if you want to slice out a single row, e.g. row "5", you have to use \lstinline{df[5:6]}. If you use \lstinline{df[5]} alone, you get an error!
 
 \subsection{Grouping}
 
@@ -721,6 +759,8 @@ Pandas offers powerful functions to handle missing data and "nans". It also allo
 For example, you can use data-frames to efficiently group objects, and do a statistical evaluation of each group. The following data are simulated (but realistic) data of a survey on how many hours a day people watch on the TV, grouped into "m"ale and "f"emale responses:
 
 \begin{lstlisting}
+    import pandas as pd
+
     data = pd.DataFrame({
         'Gender': ['f', 'f', 'm', 'f', 'm', 'm', 'f', 'm', 'f', 'm'],
         'TV': [3.4, 3.5, 2.6, 4.7, 4.1, 4.0, 5.1, 4.0, 3.7, 2.1]
@@ -781,42 +821,47 @@ For statistical analysis, pandas becomes really powerful if you combine it with 
 
 \section{Statsmodels}\index{general}{statsmodels}
 
-\href{http://statsmodels.sourceforge.net/.}{statsmodels} is a Python package contributed to the community by the statsmodels development team. It has a very active user community, and has in the last five years massively improved the suitability of Python for statistical data analysis. \emph{statsmodels} provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. \emph{statsmodels} also allows the formulation of models with the popular formula language based on the notation introduced by Wilkinson and Rogsers (\cite{Wilkinson1973}, and also used by $S$ and $R$, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model
+\href{http://statsmodels.sourceforge.net/.}{statsmodels} is a \emph{Python} package contributed to the community by the \emph{statsmodels} development team. It has a very active user community, and has in the last five years massively improved the suitability of \emph{Python} for statistical data analysis. \emph{statsmodels} provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. \emph{statsmodels} also allows the formulation of models with the popular formula language based on the notation introduced by Wilkinson and Rogsers (\cite{Wilkinson1973}, and also used by \emph{S} and \emph{R}, the leading statistics package. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model
 
 \begin{equation*}
     success \sim intelligence * diligence
 \end{equation*}
 
- which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
+which would capture the direct effect of "intelligence" and "diligence", as well as the interaction. You find more information on that topic in the section "Statistical Models".
 
-While for complex statistical models R still has an edge, python has a much clearer and more readable syntax, and is arguably more powerful for the data manipulation often required for statistical analysis.
+While for complex statistical models \emph{R} still has an edge, \emph{Python} has a much clearer and more readable syntax, and is arguably more powerful for the data manipulation often required for statistical analysis.
 
-\PyImg "statsmodelsIntro.py" (p \pageref{py:statsmodelsIntro}) shows you how the combination of pandas and statsmodels can be used for data analysis.
+\PyImg "statsmodelsIntro.py" (p \pageref{py:statsmodelsIntro}) shows you how the combination of \emph{pandas} and \emph{statsmodels} can be used for data analysis.
 \index{python}{statsmodelsIntro}
 
 \section{Seaborn}\index{general}{seaborn}
 
-\href{http://statsmodels.sourceforge.net/.}{seaborn} is a Python visualization library based on Matplotlib. Its primary goal is to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive.
+\emph{seaborn} \url{http://stanford.edu/~mwaskom/software/seaborn/} is a \emph{Python} visualization library based on \emph{matplotlib}. Its primary goal is to provide a concise, high-level interface for drawing statistical graphics that are both informative and attractive.
 
 \begin{lstlisting}
-        x = linspace(1, 7, 50)
-        y = 3 + 2*x + 1.5*randn(len(x))
+        import numpy as np
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+
+        x = np.linspace(1, 7, 50)
+        y = 3 + 2*x + 1.5*np.random.randn(len(x))
         sns.regplot(x,y)
+        plt.show()
 \end{lstlisting}
 
-already produces a nice and informative regression plot (Fig. \ref{fig:seaborn}).
+already produces a nice regression plot (Fig. \ref{fig:seaborn}).
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.5\textwidth]{../Images/regplot.png}\\
-  \caption{Regression plot, from \emph{seaborn}. The main axis shows the data, the best-fit line, and the confidence intervals for the fit. It also provides the Pearson Correlation Coefficient, and the p-value for the inclination. The additional axes on top and on the right show histogram and Kernel-Density-Plots for the x- and y-data, respectively.}
+  \includegraphics[width=0.75\textwidth]{../Images/regplot.png}\\
+  \caption{Regression plot, from \emph{seaborn}. The main axis shows the data, the best-fit line, and the confidence intervals for the fit.}
   \label{fig:seaborn}
 \end{figure}
 
 \subsection{General Routines}
-Here is also a good place to introduce the short function that we will use a number of times to simplify the reading in of data:
+Here is also a good place to introduce the short function that will be used to simplify the reading in of data:
 
-\PyImg "getData.py" (p \pageref{py:getData}) Gets the input data for many Python programs in this script.
+\PyImg "getData.py" (p \pageref{py:getData}) Gets the input data for many \emph{Python} programs in this script.
 \index{python}{getData}
 
 \section{Exercises}
@@ -830,7 +875,7 @@ Here is also a good place to introduce the short function that we will use a num
   \end{itemize}
   \item
   \begin{itemize}
-      \item Generate a pandas dataframe, with the x-column time stamps from 0 to 10 sec, at a rate of 10 Hz, the y-column data values with a sine with 1.5 Hz, and the z-column the corresponding cosine values. Label the x-column "Xvals", and the y-column "YVals", and the z-column "ZVals".
+      \item Generate a \emph{pandas} DataFrame, with the x-column time stamps from 0 to 10 sec, at a rate of 10 Hz, the y-column data values with a sine with 1.5 Hz, and the z-column the corresponding cosine values. Label the x-column "Xvals", and the y-column "YVals", and the z-column "ZVals".
       \item Show the head of this dataframe
       \item Extract the data in lines 10-15 from "Yvals" and "ZVals", and write them to the file "out.txt".
   \end{itemize}
