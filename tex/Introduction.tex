@@ -8,9 +8,9 @@ unexplained."}
 Statistics was originally invented - as so many other things - by the famous mathematician C.F. Gauss, who said about his own work \emph{"Ich habe fleissig sein m\"ussen; wer es gleichfalls ist, wird eben so weit kommen"} ("I have had to be diligent; if you are diligent too, you will get as far as I have."). Even if your aspirations are not that high, you can get a lot out of statistics. In fact, if your work with real data, you probably won't be able to avoid it. Statistics can
 
 \begin{itemize}
-  \item describe variation.
-  \item make quantitative statements about estimated parameters.
-  \item ake predictions.
+  \item Describe variation.
+  \item Make quantitative statements about estimated parameters.
+  \item Make predictions.
 \end{itemize}
 
 \textbf{Books: }There are a number of good books about statistics. My favorite is \cite{altman99}: it does not talk a lot about computers and modeling, but gives a terrific introduction into the field. Many formulations and examples in this manuscript have been taken from that book. A more modern book, which is more voluminous and in my opinion a bit harder to read, is \cite{Riffenburgh2012}. \cite{Kaplan2009} provides a simple introduction to modern regression modeling. A very good introduction to “Generalized Linear Models” is \cite{Dobson2008}. If you know your basic statistics, this is a good, advanced starter into statistical modeling.
@@ -34,7 +34,11 @@ Statistics was originally invented - as so many other things - by the famous mat
 
 \section{Why Statistics?}
 
-Statistics will help to
+In everyday life we continually face situations with an uncertain outcome, and have to make decisions on incomplete data: Should I run for the bus? Which stock should I buy? Which man should I marry? Should I take this medication? Should I have my children vaccinated? Some of these questions are beyond the realm of statistics ("Which man should I marry?"), because they involve too many unknown variables. But for many situations, statistics can help extracting the maximum knowledge out of the given information, and clearly spelling out what we do know, and what we don't know. For example, it can turn a vague statement like "You may get sick from this medication" or a  "You may die if you don't take this medication" into a specific statement like "Three out of one thousand persons get sick when taking this medication", or "With 95\% likelihood you will die from this disease if you don't take that medication".
+
+Without statistics, the interpretation of data can quickly become massively flawed. Take for example the estimated number of German tanks during World War II, also known as the "German tank problem" (\url{http://en.wikipedia.org/wiki/German_tank_problem}): from standard intelligence data, the estimate for the number of German tanks produced per month was $1550$; in contrast, the statistical estimate from the tanks observed led to a number of $327$, which was very close to the actual production number of $342$.
+
+In general, statistics will help to
 \begin{itemize}
   \item Clarify the question.
   \item Identify the variable and the measure of that variable that will answer that question.
@@ -43,8 +47,6 @@ Statistics will help to
   \item Make predictions based on your data.
 \end{itemize}
 
-Without statistics, the interpretation of data can quickly become massively flawed. Take for example the estimated number of German tanks during World War II, also known as the \emph{German tank problem} (\url{http://en.wikipedia.org/wiki/German_tank_problem}): from standard intelligence data, the estimate for the number of German tanks produced per month was $1550$; in contrast, the statistical estimate from the tanks observed led to a number of $327$, which was very close to the actual production number of $342$.
-
 \section{Conventions}
 
 In this book I will use the following conventions.
@@ -52,5 +54,5 @@ In this book I will use the following conventions.
   \item Text that is to be typed in at the computer is written as teletype, e.g. \lstinline{plot(x,y)}.
   \item Optional text in command line entries is expressed with square brackets and underscores, e.g. \lstinline{[_InstallationDir_]\bin}. (I use the underscores in addition, as sometimes the square brackets will be used for commands.)
   \item Names referring to computer programs and applications are written in italics, e.g. \emph{IPython}.
-  
+
 \end{itemize}

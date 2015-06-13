@@ -26,21 +26,111 @@ In \emph{Python}, I strongly suggest that you start out reading in and inspectin
 While the a numpy command \lstinline{np.loadtxt} allows you to read in simply formatted text data, most of the time I go straight to \emph{pandas}, as it provides significantly more powerful tools for data-entry. A typical workflow can contain the following lines:
 
 \begin{lstlisting}
-import pandas as pd
+    In [1]: import pandas as pds
+    In [2]: cd 'C:\Data\storage'
+    In [3]: pwd     # Check if you were successful: this is not always the case!
+    In [4]: ls      # List the files in that directory
+    In [5]: inFile = 'data.txt'
+    In [6]: df = pd.read_csv(inFile)
+    In [7]: df.head()   # Check if the first line was read in properly, and compare it to the values in the ASCII-file
+    In [8]: df.tail()   # Check the last line, and compare it to the values in the ASCII-file
+\end{lstlisting}
 
-cd 'C:\Data\storage'
-pwd     # Check if you were successful: this is not always the case!
-ls      # List the files in that directory
-inFile = 'data.txt'
-df = pd.read_csv(inFile)
-df.head()   # Check if the first line was read in properly, and compare it to the values in the ASCII-file
-
-'''
-Here I typically have to play around with the options of pd.read_csv, to get things right.
+After "In [7]" I typically have to play around with the options of \lstinline{pd.read_csv}, to get things right.
 Make sure you check that the number of column headers is equal to the number of columns that you expect. It can happen that everything gets red in - but into one large single column!
-'''
 
-df.tail()   # Check the last line, and compare it to the values in the ASCII-file
+\subsubsection{Simple Text-file}
+
+For example, to read in a file "data.txt" with the following content
+
+\begin{lstlisting}
+    1, 1.3, 0.6
+    2, 2.1, 0.7
+    3, 4.8, 0.8
+    4, 3.3, 0.9
+\end{lstlisting}
+
+could be read in and displayed with
+
+\begin{lstlisting}
+    In [16]: data = np.loadtxt('data.txt', delimiter=',')
+
+    In [16]: data
+    Out[16]:
+        array([[ 1. ,  1.3,  0.6],
+               [ 2. ,  2.1,  0.7],
+               [ 3. ,  4.8,  0.8],
+               [ 4. ,  3.3,  0.9]])
+\end{lstlisting}
+
+where \lstinline{data} is a \emph{numpy array}. Without the flag \lstinline{delimiter=','}, the function \emph{np.loadtxt} crashes. An alternative way to read in these data is with
+
+\begin{lstlisting}
+  In [17]: df = pd.read_csv('data.txt', header=None)
+  
+  In [18]: df
+  Out[18]:
+       0    1    2
+    0  1  1.3  0.6
+    1  2  2.1  0.7
+    2  3  4.8  0.8
+    3  4  3.3  0.9
+\end{lstlisting}
+
+where \lstinline{df} is a \emph{pandas DataFrame}. Without the flag \lstinline{header=None}, the first row is falsely interpreted as the column labels!
+
+\begin{lstlisting}
+  In [19]: df = pd.read_csv('data.txt')
+
+  In [20]: df
+  Out[20]:
+       1   1.3   0.6
+    0  2   2.1   0.7
+    1  3   4.8   0.8
+    2  4   3.3   0.9
+\end{lstlisting}
+ 
+ The \emph{pandas} routine has the advantage that the first column is recognized as integer, whereas the second and third column are float.
+
+\subsubsection{More complex Text-files}
+
+The advantage of using \emph{pandas} for data input becomes clear with more complex files. Take for example the following input file "data2.txt":
+
+\begin{lstlisting}
+    ID, Weight, Value
+    1, 1.3, 0.6
+    2, 2.1, 0.7
+    3, 4.8, 0.8
+    4, 3.3, 0.9
+
+    Those are dummy values, created by ThH.
+    June, 2015
+\end{lstlisting}
+
+One of the input flags of \lstinline{pd.read_csv} is \lstinline{skipfooter}, so we can read in the data easily with
+
+\begin{lstlisting}
+  In [21]: df2 = pd.read_csv('data.txt', skipfooter=3, delimiter='[ ,]*')
+\end{lstlisting}
+
+The last option, \lstinline{delimiter='[ ,]*'}, is a "regular expression" (see below) specifying that "one or more spaces and/or commas may be used to seperate entry values". Also, when the input file includes a row with the column names,  the data can be accessed immediately with their corresponding column name, e.g.:
+
+\begin{lstlisting}
+  In [22]: df2
+  Out[22]:
+       ID   Weight   Value
+    0   1      1.3     0.6
+    1   2      2.1     0.7
+    2   3      4.8     0.8
+    3   4      3.3     0.9
+
+    In [23]: df2.Value
+    Out[23]:
+    0    0.6
+    1    0.7
+    2    0.8
+    3    0.9
+    Name: Value, dtype: float64
 \end{lstlisting}
 
 \subsection{Regular Expressions}\index{general}{regular expressions}
@@ -94,3 +184,19 @@ If this fails, give it a try with the \emph{Python} package \emph{xlrd}.
   \item[Clipboard] If you have data in your clipboard, you can import them directly with \lstinline{pd.read_clipboard()}
   \item[Other Fileformats] pandas supports input from a number of additional formats. The simplest way to access them is typing \lstinline{pd.read_ + TAB}, which shows you the currently available options.
 \end{description}
+
+\subsection{Matlab}
+The following commands return string, number, vector, and matrix variables from a \emph{Matlab} file "data.mat", as well as the content of a structure with two entries (a vector and a string):
+
+\begin{lstlisting}
+    from scipy.io import loadmat
+    data = loadmat('data.mat')
+    
+    number = data['number'][0,0]
+    text   = data['text'][0]
+    vector = data['vector'][0]
+    matrix = data['matrix']
+    struct_values = data['structure'][0,0][0][0]
+    strunct_string = data['structure'][0,0][1][0]
+\end{lstlisting}
+
