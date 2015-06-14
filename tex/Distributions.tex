@@ -1,13 +1,168 @@
 \chapter{Distributions of one Variable}
 
 
-\section{Characterizing a Distribution}
+Distributions of one variable are called "univariate" distributions\index{general}{univariate}. They can be divided into "discrete distributions", where the observations can only take on integer values; and "continuous distributions", where the observation variables are float values.
 
-\subsection{Continuous Distribution Functions}
+\section{Discrete Distributions}\index{general}{distributions!discrete}
 
-A continuous \gls{distribution} Function describes the distribution of a population, and can be represented in several equivalent ways:
+Two discrete distributions are commonly encountered: the \emph{Binomial distribution}, and the \emph{Poisson distribution}. 
 
-\subsubsection{Probability Density Function (PDF)}\index{general}{probability density function}
+The big difference between those two functions: applications of the Binomial distribution have an inherent upper limit (e.g. when you throw dice five times, each side can come up a maximum of five times); in contrast, the Poisson distribution does not have an inherent upper limit (e.g. how many people you know).
+
+\subsection{Bernoulli Distribution}
+
+The simplest case of a univariate distribution, and also the basis of the Binomial distribution, is the Bernoulli distribution\index{general}{distribution!Bernoulli} - the simple coin flipping test. If we flip a coin (and the coin is not rigged), the chance that "head" comes up is $p_{heads}=0.5$. And since it has to be "head" or "tails", we must have
+
+\begin{equation}\label{eq:Bernoulli}
+  p_{heads} + p_{tails} = 1
+\end{equation}
+
+so the chance for "tails" is $p_{tails} = 1-p_{heads}$.
+
+We see that one parameter, $p=p_{heads}$, completely determines everything, and we can fix the distribution with the commands
+
+\begin{lstlisting}
+  In [1]: from scipy import stats
+  In [2]: p = 0.5
+  In [3]: bernoulliDist = stats.bernoulli(p)
+\end{lstlisting}
+
+In \emph{Python} this is called a "frozen distribution function"\index{general}{frozen distribution function}, and it allows us to calculate everything we want for this distribution. For example, the probability if head comes up $0$ or $1$ times is given by the $probability mass function (PMF)$\index{general}{probability mass function, PMF}
+
+\begin{lstlisting}
+  In [4]: p_tails = bernoulliDist.pmf(0)
+  In [5]: p_heads = bernoulliDist.pmf(1)
+\end{lstlisting}
+
+And we can simulate 10 Bernoulli trials with
+
+\begin{lstlisting}
+  In [6]: trials = bernoulliDist.rvs(10)
+
+  In [7]: trials
+  Out[7]: array([0, 0, 0, 1, 0, 0, 0, 1, 1, 0])
+\end{lstlisting}
+
+In command $6$, "rvs" stands for "random variates". (A "random variable" is the general concept, and a "random variate"\index{general}{variate} is a specific number.)
+
+\subsection{Binomial Distribution}\index{general}{distributions!binomial}\label{sec:binomialDist}
+
+If we flip a coil multiple times, and ask "How often did heads come up?" we have the "Binomial Distribution". In general, the Binomial distribution is associated with the question "Out of a given (fixed) number of trials, how many will succeed?" Some example questions that are modeled with a Binomial distribution are:
+\begin{itemize}
+  \item Out of ten tosses, how many times will this coin land ''heads''?
+  \item From the children born in a given hospital on a given day, how many of them will be girls?
+  \item How many students in a given classroom will have green eyes?
+  \item How many mosquitos, out of a swarm, will die when sprayed with insecticide?
+\end{itemize}
+
+We conduct $n$ repeated experiments where the probability of success is given by the parameter $p$ and add up the number of successes. This number of successes is represented by the random variable $X$.  The value of $X$ is then between 0 and $n$.
+
+When a random variable X has a Binomial Distribution with parameters $p$ and $n$ we write it as $\,X \sim B(n,p)$ and the probability mass function is given at $X=k$ by the equation:
+
+\begin{equation}
+    P\left[X = k\right] = \begin{cases} {n \choose k} p^k \left(1-p\right)^{n-k}\ & 0 \le k \le n \\ 0 & \mbox{otherwise} \end{cases} \quad 0 \leq p \leq 1, \quad n \in \mathbb{N}
+\end{equation}
+
+where ${n \choose k}={n! \over k!(n-k)!}$
+
+\vspace{5 mm}
+
+In \emph{Python}, the procedure is that same as above, with one additional paramter, the number of coin tosses. First we generate the frozen distribution function, for example for four coin tosses:
+
+\begin{lstlisting}
+  In [1]: from scipy import stats
+  In [2]: import numpy as np
+  
+  In [3]: (p, num) = (0.5, 4)
+  In [4]: binomDist = stats.binom(num, p)
+\end{lstlisting}
+
+and then we can calculate e.g. the probabilities how often heads come up during those four tosses, given by the PMF for the values zero to four:
+
+\begin{lstlisting}
+  In [5]: binomDist.pmf(np.arange(5))
+  Out[5]: array([ 0.0625,  0.25  ,  0.375 ,  0.25  ,  0.0625])
+\end{lstlisting}
+
+For example, the chance that "heads" never comes up is about 6\%, the chance that it comes up exactly once is 25\%, etc.
+
+Also note that the sum of all probabilities has to add up exactly to one:
+
+\begin{equation}\label{eq:discreteSum}
+  p_0 + p_1 + ... + p_{n-1} = \sum_{i=0}^{n-1} p_i = 1
+\end{equation}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.66\textwidth]{../Images/Binomial_distribution_pmf.png}\\
+  \caption{Binomial Distribution. Note that legal values exist only for integer x. The dotted lines in between only facilitate the grouping of the values to individual distribution parameters.}
+\end{figure}
+
+
+\paragraph{Example: Binomial Test}\index{general}{test!binomial}
+
+Suppose we have a board game that depends on the roll of a die and attaches special importance to rolling a 6. In a particular game, the die is rolled 235 times, and 6 comes up 51 times. If the die is fair, we would expect 6 to come up 235/6 = 39.17 times. Is the proportion of 6's significantly higher than would be expected by chance, on the null hypothesis of a fair die?
+
+To find an answer to this question using the \emph{Binomial Test}, we consult the binomial distribution with n=235 and p=1/6, to determine the probability of finding exactly 51 sixes in a sample of 235 if the true probability of rolling a 6 on each trial is 1/6. We then find the probability of finding exactly 52, exactly 53, and so on up to 235, and add all these probabilities together. In this way, we calculate the probability of obtaining the observed result (51 6s) or a more extreme result ($>51 6's$) assuming that the die is fair. In this example, the result is 0.0265, which indicates that observing 51 6's is unlikely (significant at the 5\% level) to come from a die that is not loaded to give many 6's (one-tailed test).
+
+Clearly a die could roll too few sixes as easily as too many and we would be just as suspicious, so we should use the two-tailed test which (for example) splits the 5\% probability across the two tails.
+
+\PyImg "binomial.py" (p \pageref{py:binomial}): Example of a one-and two-sided binomial test.
+\index{python}{binomialTest}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{l|c|c|}
+      & Mean & Variance \\
+      \hline
+      Binomial & $n \cdot p$ & $np(1-p)$ \\
+      Poisson & $\lambda$ & $\lambda$ \\
+      %\hline
+  \end{tabular}
+\caption{Properties of discrete distributions.}
+\end{table}
+
+\subsection{Poisson Distribution}\index{general}{distributions!poisson}
+
+Any French speaker will notice that "Poisson" means "fish", but really there's nothing fishy about this distribution. It's actually pretty straightforward. The name comes from the mathematician Siméon-Denis Poisson (1781-1840).
+
+The Poisson Distribution is ''very similar'' to the Binomial Distribution. We are examining the number of times an event happens. The difference is subtle. Whereas the Binomial Distribution looks at how many times we register a success over a fixed total number of trials, the Poisson Distribution measures how many times a discrete event occurs, over a period of continuous space or time. There is no "total" value n. As with the previous sections, let's examine a couple of experiments or questions that might have an underlying Poisson nature.
+
+\begin{itemize}
+  \item How many pennies will I encounter on my walk home?
+  \item How many children will be delivered at the hospital today?
+  \item How many products will I sell after airing a new television commercial?
+  \item How many mosquito bites did you get today after having sprayed with insecticide?
+  \item How many defects will there be per 100 metres of rope sold?
+\end{itemize}
+
+What's a little different about this distribution is that the random variable $X$ which counts the number of events can take on \emph{any non-negative integer} value. In other words, I could walk home and find no pennies on the street. I could also find one penny. It's also possible (although unlikely, short of an armored-car exploding nearby) that I would find 10 or 100 or 10,000 pennies.
+
+Instead of having a parameter p that represents a component probability like in the Binomial distribution, this time we have the parameter "lambda" or $\lambda$ which represents the "average or expected" number of events to happen within our experiment. The probability mass function of the Poisson is given by
+
+\begin{equation}
+  P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}
+\end{equation}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.66\textwidth]{../Images/Poisson_distribution_pmf.png}\\
+  \caption{Poisson Distribution. Again note that legal values exist only for integer x. The dotted lines in between only facilitate the grouping of the values to individual distribution parameters.}
+\end{figure}
+
+\subsection{Programs: Discrete Distribution Functions} \index{general}{distributions!discrete}
+
+\vspace{5 mm}
+
+\PyImg "distributionDiscrete.py" (p \pageref{py:discrete}) shows different continuous distribution functions.
+\index{python}{distributionDiscrete}
+%(Lecture 7)
+
+
+\section{Continuous Distribution}
+
+Many measurements have an outcome that is not restricted to discrete integer values. For example, the weight of a person can be any positive number. In that case, the probability that a certain value comes up is described by a continuous function, the "Probability Density Function (PDF)"\index{general}{probability density function}.
+
 The \acrfull{pdf}, or \gls{density} of a continuous random variable, is a function that describes the relative likelihood for a random variable $X$ to take on a given value $x$.
 In the mathematical fields of probability and statistics, a \emph{random variate x} \index{general}{random variate} is a particular outcome of a \emph{random variable X}: the random variates which are other outcomes of the same random variable might have different values.
 
@@ -32,6 +187,10 @@ The PDF also defines the \emph{expected value E[x]} \index{general}{expected val
   \label{fig:PDF}
 \end{figure}
 
+\section{Characterizing a Distribution}
+
+In addition to the "probability mass function (PMF)" for discrete distributions, and the corresponding "probability density function (PDF)" for continuous distributions, probability distributions has many other methods associated with it:
+
 \subsubsection{Cumulative Distribution Function (CDF)}\index{general}{cumulative distribution function}
 
 The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \gls{cdf_} \acrshort{cdf} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
@@ -40,6 +199,7 @@ The probability to find a value between $a$ and $b$ is given by the integral ove
    \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
 \end{equation}
 
+For discrete distributions, the integral has to be replaced by a sum.
 
 \begin{figure}[ht]
   \centering
@@ -261,13 +421,7 @@ Distributions are \emph{skewed} if they depart from symmetry (Fig. \ref{fig:skew
 
 Kurtosis is any measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right), where the normal distribution is taken as the standard refernence. Distributions with negative or positive excess kurtosis are called \emph{platykurtic} distributions or \emph{leptokurtic} distributions, respectively.
 
-%(Lecture 5)
-
-\section{Distribution Functions}
-
-The variable for a standardized distribution function is often called \emph{statistic}\index{general}{statistic}. So you often find expressions like "the z-statistic" (for the normal distribution function), the "t-statistic" (for the t-distribution) or the "F-statistic" (for the F-distribution).
-
-\subsection{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}\index{general}{normal distribution}\index{general}{Gaussian distribution}
+\section{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}\index{general}{normal distribution}\index{general}{Gaussian distribution}
 
 The \emph{Normal distribution} or \emph{Gaussian distribution} is by far the most important of all the distribution functions. This is due to the fact that the \emph{mean }values of \emph{all} distribution functions approximate a normal distribution for large enough sample numbers (see chapter \ref{sec:CentralLimitTheorem}).
 Mathematically, the normal distribution is characterized by a mean value $\mu$, and a standard deviation $\sigma$:
@@ -388,7 +542,7 @@ The average weight of a newborn child in the US is 3.5 kg, with a standard devia
   \caption{The chance that a healthy baby weighs 2.6 kg or less is 11.8\% (darker blue area). The chance that the difference from the mean is that much is twice that much, as the lighter blue area must be added.}\label{fig:pdf_checkValue}
 \end{figure}
 
-\subsection{Other Continuous Distributions}\label{sec:ContinuousDistributions} \index{general}{distributions!continuous}
+\section{Other Continuous Distributions}\label{sec:ContinuousDistributions} \index{general}{distributions!continuous}
 
 The distributions you will encounter most frequently are:
 
@@ -664,113 +818,6 @@ Working with distribution functions in \emph{Python} takes a bit to get used to.
 
 \PyImg "distributionContinuous.py" (p \pageref{py:continuous}) shows different continuous distribution functions.
 \index{python}{distributionContinuous}
-
-\subsection{Discrete Distributions}\index{general}{distributions!discrete}
-
-While the functions describing continuous distributions are referred to as \emph{probability density functions}, discrete distributions are described by \emph{probability mass functions}.
-
-Two discretely distributions are commonly encountered: the \emph{binomial distribution}, and the \emph{Poisson distribution}. These two have the following properties:
-
-\begin{table}[h]
-  \centering
-  \begin{tabular}{l|c|c|}
-      & Mean & Variance \\
-      \hline
-      Binomial & $n \cdot p$ & $np(1-p)$ \\
-      Poisson & $\lambda$ & $\lambda$ \\
-      %\hline
-  \end{tabular}
-\caption{Properties of discrete distributions.}
-\end{table}
-
-The big difference between those two functions that you have to keep in mind: applications of the Binomial function have an inherent upper limit (e.g. when you throw dice five times, each side can come up a maximum of five times); in contrast, the Poisson distribution does not have an inherent upper limit (e.g. how many people you know).
-
-\subsubsection{Binomial Distribution}\index{general}{distributions!binomial}\label{sec:binomialDist}
-The Binomial is associated with the question "Out of a given (fixed) number of trials, how many will succeed?" Some example questions that are modeled with a Binomial distribution are:
-\begin{itemize}
-  \item Out of ten tosses, how many times will this coin land ''heads''?
-  \item From the children born in a given hospital on a given day, how many of them will be girls?
-  \item How many students in a given classroom will have green eyes?
-  \item How many mosquitos, out of a swarm, will die when sprayed with insecticide?
-\end{itemize}
-
-  We conduct $n$ repeated experiments where the probability of success is given by the parameter $p$ and add up the number of successes. This number of successes is represented by the random variable $X$.  The value of $X$ is then between 0 and $n$.
-
-When a random variable X has a Binomial Distribution with parameters $p$ and $n$ we write it as $\,X \sim B(n,p)$ and the probability mass function is given at $X=k$ by the equation:
-
-\begin{equation}
-    P\left[X = k\right] = \begin{cases} {n \choose k} p^k \left(1-p\right)^{n-k}\ & 0 \le k \le n \\ 0 & \mbox{otherwise} \end{cases} \quad 0 \leq p \leq 1, \quad n \in \mathbb{N}
-\end{equation}
-
-where ${n \choose k}={n! \over k!(n-k)!}$
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.66\textwidth]{../Images/Binomial_distribution_pmf.png}\\
-  \caption{Binomial Distribution. Note that legal values exist only for integer x. The dotted lines in between only facilitate the grouping of the values to individual distribution parameters.}
-\end{figure}
-
-The binomial distribution for $n = 1$ is sometimes referred to as \emph{Bernoulli Distribution}\index{general}{distributions!Bernoulli}.
-
- For $n$ trials, we have the following properties:
-
- \begin{itemize}
-   \item mean: $np$
-   \item variance: $n p (1-p)$
- \end{itemize}
-
-\paragraph{Example: Binomial Test}\index{general}{test!binomial}
-
-Suppose we have a board game that depends on the roll of a die and attaches special importance to rolling a 6. In a particular game, the die is rolled 235 times, and 6 comes up 51 times. If the die is fair, we would expect 6 to come up 235/6 = 39.17 times. Is the proportion of 6's significantly higher than would be expected by chance, on the null hypothesis of a fair die?
-
-To find an answer to this question using the \emph{Binomial Test}, we consult the binomial distribution with n=235 and p=1/6, to determine the probability of finding exactly 51 sixes in a sample of 235 if the true probability of rolling a 6 on each trial is 1/6. We then find the probability of finding exactly 52, exactly 53, and so on up to 235, and add all these probabilities together. In this way, we calculate the probability of obtaining the observed result (51 6s) or a more extreme result ($>51 6's$) assuming that the die is fair. In this example, the result is 0.0265, which indicates that observing 51 6's is unlikely (significant at the 5\% level) to come from a die that is not loaded to give many 6's (one-tailed test).
-
-Clearly a die could roll too few sixes as easily as too many and we would be just as suspicious, so we should use the two-tailed test which (for example) splits the 5\% probability across the two tails.
-
-\PyImg "binomial.py" (p \pageref{py:binomial}): Example of a one-and two-sided binomial test.
-\index{python}{binomialTest}
-
-
-\subsubsection{Poisson Distribution}\index{general}{distributions!poisson}
-
-Any French speaker will notice that "Poisson" means "fish", but really there's nothing fishy about this distribution. It's actually pretty straightforward. The name comes from the mathematician Siméon-Denis Poisson (1781-1840).
-
-The Poisson Distribution is ''very similar'' to the Binomial Distribution. We are examining the number of times an event happens. The difference is subtle. Whereas the Binomial Distribution looks at how many times we register a success over a fixed total number of trials, the Poisson Distribution measures how many times a discrete event occurs, over a period of continuous space or time. There is no "total" value n. As with the previous sections, let's examine a couple of experiments or questions that might have an underlying Poisson nature.
-
-\begin{itemize}
-  \item How many pennies will I encounter on my walk home?
-  \item How many children will be delivered at the hospital today?
-  \item How many products will I sell after airing a new television commercial?
-  \item How many mosquito bites did you get today after having sprayed with insecticide?
-  \item How many defects will there be per 100 metres of rope sold?
-\end{itemize}
-
-What's a little different about this distribution is that the random variable $X$ which counts the number of events can take on \emph{any non-negative integer} value. In other words, I could walk home and find no pennies on the street. I could also find one penny. It's also possible (although unlikely, short of an armored-car exploding nearby) that I would find 10 or 100 or 10,000 pennies.
-
-Instead of having a parameter p that represents a component probability like in the Binomial distribution, this time we have the parameter "lambda" or $\lambda$ which represents the "average or expected" number of events to happen within our experiment. The probability mass function of the Poisson is given by
-
-\begin{equation}
-  P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}
-\end{equation}.
-
-The Poisson distribution has the following properties:
-
-\begin{itemize}
-    \item mean: $\lambda$
-    \item variance: $\lambda$
-\end{itemize}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.66\textwidth]{../Images/Poisson_distribution_pmf.png}\\
-  \caption{Poisson Distribution. Again note that legal values exist only for integer x. The dotted lines in between only facilitate the grouping of the values to individual distribution parameters.}
-\end{figure}
-
-\subsubsection{Programs: Discrete Distribution Functions} \index{general}{distributions!discrete}
-
-\PyImg "distributionDiscrete.py" (p \pageref{py:discrete}) shows different continuous distribution functions.
-\index{python}{distributionDiscrete}
-%(Lecture 7)
 
 \section{Exercises}
 

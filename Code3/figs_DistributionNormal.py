@@ -209,8 +209,8 @@ def values_fromCDF():
     plt.show()
 
 if __name__ == '__main__':
-    simple_normal()
     many_normals()
+    simple_normal()
     sns.set(font_scale=1.5, style='white')
     values_fromCDF()
     shifted_normal()
