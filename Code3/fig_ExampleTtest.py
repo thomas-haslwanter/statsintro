@@ -19,7 +19,7 @@ sns.set_style('ticks')
 # Generate the data
 np.random.seed(1234)
 nd = stats.norm(100, 20)
-scores = nd.rvs(100)
+scores = nd.rvs(10)
 
 # Make the plot
 plt.plot(scores, 'o')

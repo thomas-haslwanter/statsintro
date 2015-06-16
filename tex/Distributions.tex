@@ -5,7 +5,7 @@ Distributions of one variable are called "univariate" distributions\index{genera
 
 \section{Discrete Distributions}\index{general}{distributions!discrete}
 
-Two discrete distributions are commonly encountered: the \emph{Binomial distribution}, and the \emph{Poisson distribution}. 
+Two discrete distributions are commonly encountered: the Binomial distribution, and the Poisson distribution.
 
 The big difference between those two functions: applications of the Binomial distribution have an inherent upper limit (e.g. when you throw dice five times, each side can come up a maximum of five times); in contrast, the Poisson distribution does not have an inherent upper limit (e.g. how many people you know).
 
@@ -57,7 +57,7 @@ If we flip a coil multiple times, and ask "How often did heads come up?" we have
 
 We conduct $n$ repeated experiments where the probability of success is given by the parameter $p$ and add up the number of successes. This number of successes is represented by the random variable $X$.  The value of $X$ is then between 0 and $n$.
 
-When a random variable X has a Binomial Distribution with parameters $p$ and $n$ we write it as $\,X \sim B(n,p)$ and the probability mass function is given at $X=k$ by the equation:
+When a random variable X has a Binomial Distribution with parameters $p$ and $n$ we write it as $\,X \in B(n,p)$ and the probability mass function is given at $X=k$ by the equation:
 
 \begin{equation}
     P\left[X = k\right] = \begin{cases} {n \choose k} p^k \left(1-p\right)^{n-k}\ & 0 \le k \le n \\ 0 & \mbox{otherwise} \end{cases} \quad 0 \leq p \leq 1, \quad n \in \mathbb{N}
@@ -72,7 +72,7 @@ In \emph{Python}, the procedure is that same as above, with one additional param
 \begin{lstlisting}
   In [1]: from scipy import stats
   In [2]: import numpy as np
-  
+
   In [3]: (p, num) = (0.5, 4)
   In [4]: binomDist = stats.binom(num, p)
 \end{lstlisting}
@@ -103,7 +103,7 @@ Also note that the sum of all probabilities has to add up exactly to one:
 
 Suppose we have a board game that depends on the roll of a die and attaches special importance to rolling a 6. In a particular game, the die is rolled 235 times, and 6 comes up 51 times. If the die is fair, we would expect 6 to come up 235/6 = 39.17 times. Is the proportion of 6's significantly higher than would be expected by chance, on the null hypothesis of a fair die?
 
-To find an answer to this question using the \emph{Binomial Test}, we consult the binomial distribution with n=235 and p=1/6, to determine the probability of finding exactly 51 sixes in a sample of 235 if the true probability of rolling a 6 on each trial is 1/6. We then find the probability of finding exactly 52, exactly 53, and so on up to 235, and add all these probabilities together. In this way, we calculate the probability of obtaining the observed result (51 6s) or a more extreme result ($>51 6's$) assuming that the die is fair. In this example, the result is 0.0265, which indicates that observing 51 6's is unlikely (significant at the 5\% level) to come from a die that is not loaded to give many 6's (one-tailed test).
+To find an answer to this question using the Binomial Test, we consult the binomial distribution with n=235 and p=1/6, to determine the probability of finding exactly 51 sixes in a sample of 235 if the true probability of rolling a 6 on each trial is 1/6. We then find the probability of finding exactly 52, exactly 53, and so on up to 235, and add all these probabilities together. In this way, we calculate the probability of obtaining the observed result (51 6s) or a more extreme result ($>51 6's$) assuming that the die is fair. In this example, the result is 0.0265, which indicates that observing 51 6's is unlikely (significant at the 5\% level) to come from a die that is not loaded to give many 6's (one-tailed test).
 
 Clearly a die could roll too few sixes as easily as too many and we would be just as suspicious, so we should use the two-tailed test which (for example) splits the 5\% probability across the two tails.
 
@@ -136,7 +136,7 @@ The Poisson Distribution is ''very similar'' to the Binomial Distribution. We ar
   \item How many defects will there be per 100 metres of rope sold?
 \end{itemize}
 
-What's a little different about this distribution is that the random variable $X$ which counts the number of events can take on \emph{any non-negative integer} value. In other words, I could walk home and find no pennies on the street. I could also find one penny. It's also possible (although unlikely, short of an armored-car exploding nearby) that I would find 10 or 100 or 10,000 pennies.
+What's a little different about this distribution is that the random variable $X$ which counts the number of events can take on any non-negative integer value. In other words, I could walk home and find no pennies on the street. I could also find one penny. It's also possible (although unlikely, short of an armored-car exploding nearby) that I would find 10 or 100 or 10,000 pennies.
 
 Instead of having a parameter p that represents a component probability like in the Binomial distribution, this time we have the parameter "lambda" or $\lambda$ which represents the "average or expected" number of events to happen within our experiment. The probability mass function of the Poisson is given by
 
@@ -164,7 +164,7 @@ Instead of having a parameter p that represents a component probability like in 
 Many measurements have an outcome that is not restricted to discrete integer values. For example, the weight of a person can be any positive number. In that case, the probability that a certain value comes up is described by a continuous function, the "Probability Density Function (PDF)"\index{general}{probability density function}.
 
 The \acrfull{pdf}, or \gls{density} of a continuous random variable, is a function that describes the relative likelihood for a random variable $X$ to take on a given value $x$.
-In the mathematical fields of probability and statistics, a \emph{random variate x} \index{general}{random variate} is a particular outcome of a \emph{random variable X}: the random variates which are other outcomes of the same random variable might have different values.
+In the mathematical fields of probability and statistics, a "random variate" x \index{general}{random variate} is a particular outcome of a "random variable" X: the random variates which are other outcomes of the same random variable might have different values.
 
 Since the likelihood to find any given value cannot be less than zero, and since the variable has to have some value, the PDF has the following properties:
 
@@ -173,7 +173,7 @@ Since the likelihood to find any given value cannot be less than zero, and since
   \item $ \int\limits_{ - \infty }^\infty  {PDF(x)dx = 1} $
 \end{itemize}
 
-The PDF also defines the \emph{expected value E[x]} \index{general}{expected value} of a continuous distribution of X:
+The PDF also defines the expected value E[x] \index{general}{expected value} of a continuous distribution of X:
 
 \begin{equation}\label{eq:expectedValue}
    \operatorname{E}[X] = \int_{-\infty}^\infty x f(x)\, \mathrm{d}x .
@@ -193,7 +193,7 @@ In addition to the "probability mass function (PMF)" for discrete distributions,
 
 \subsubsection{Cumulative Distribution Function (CDF)}\index{general}{cumulative distribution function}
 
-The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}), and the \gls{cdf_} \acrshort{cdf} specifies which percentage of the data below any given value (Figure \ref{fig:CDF}). Together, this gives us
+The probability to find a value between $a$ and $b$ is given by the integral over the PDF in that range (see Fig. \ref{fig:PDF}). The \gls{cdf_} \acrshort{cdf}, which is the integral from minus infinity up to the given value, and which specifies which percentage of the data below that value (Figure \ref{fig:CDF}), facilitates that calculation:
 
 \begin{equation}
    \mathbb{P}(a \leq X \leq b) = \int\limits_a^b {PDF(x)dx} = CDF(b) - CDF(a)
@@ -209,9 +209,7 @@ For discrete distributions, the integral has to be replaced by a sum.
 
 \subsubsection{Other important presentations of Probability Densities}\index{general}{cumulative distribution function}
 
-Figure \ref{fig:DistributionUtilities} shows a number of functions that are equivalent to the PDF, but each represent a different aspect of the probability distribution.
-
-I will give examples which demonstrate each aspect for a normal distribution describing the size of male subjects. To obtain the respective values, one has to multiply the PDF-function etc. with the observed standard distribution, and add the mean value:
+Figure \ref{fig:DistributionUtilities} shows a number of functions that are equivalent to the PDF, but each represent a different aspect of the probability distribution. I will give examples which demonstrate each aspect for a normal distribution describing the size of male subjects.
 
 \begin{itemize}
   \item \emph{Probability density function (PDF)}: note that to obtain the probability for the variable appearing in a certain interval, you have to \emph{integrate} the PDF over that range.
@@ -251,11 +249,21 @@ I will give examples which demonstrate each aspect for a normal distribution des
 \textbf{Note:}
 In \emph{Python}, the most elegant way of working with distribution function is a two-step procedure:
 \begin{itemize}
-  \item In the first step, you create your distribution (e.g. \textsf{nd = stats.norm()}). Note that is a \emph{distribution} (in \emph{Python} parlance a "frozen distribution"\index{general}{frozen distribution}), not a function yet!
+  \item In the first step, you create your distribution (e.g. \textsf{nd = stats.norm()}). Note that is a distribution (in \emph{Python} parlance a "frozen distribution"\index{general}{frozen distribution}), not a function yet!
   \item In the second step, you decide which function you want to use from this distribution, and calculate the function value for the desired x-input (e.g. \textsf{y = nd.cdf(x)})
 \end{itemize}
 
 \end{minipage}}
+
+\begin{lstlisting}
+  In [1]: import numpy as np
+  In [2]: from scipy import stats
+  In [3]: myDF = stats.norm(5,3)
+  In [4]: x = np.linspace(-5, 15, 101)
+  In [5]: y = myDF.pdf(x)
+\end{lstlisting}
+
+
 \vspace{10 mm}
 
 \subsection{Distribution Center}\index{general}{distribution center}
@@ -264,11 +272,11 @@ When we have a datasample from a distribution, we can characterize the center of
 
 \begin{enumerate}
   \item By their value.
-  \item by their \gls{rank}.
+  \item By their \gls{rank} (i.e. their list-number when they are ordered according to magnitude).
 \end{enumerate}
 
 \subsubsection{Mean} \index{general}{mean}
-By default, when we talk about the \emph{mean value} we mean the \emph{arithmetic mean} $\bar{x}$:
+By default, when we talk about the mean value we mean the arithmetic mean $\bar{x}$:
 
 \begin{equation}
   \bar{x} = \frac{{\sum\limits_{i = 1}^n {{x_i}} }}{n}
@@ -276,46 +284,47 @@ By default, when we talk about the \emph{mean value} we mean the \emph{arithmeti
 
 \subsubsection{Median} \index{general}{median}
 The \gls{median} is that value that comes half-way when the data are ranked in order.
-In contrast to the mean, it is not affected by outlying data points.
+In contrast to the mean, the median is not affected by outlying data points.
 
 \subsubsection{Mode} \index{general}{mode}
 The \gls{mode} is the most frequently occurring value in a distribution.
 
 \subsubsection{Geometric Mean}\index{general}{geometric mean}
-In some situations the \emph{geometric mean} can be useful to describe the location of a distribution. It is usually close to the median, and can be calculated via the arithmetic mean of the log of the values.
+In some situations the geometric mean can be useful to describe the location of a distribution. It is usually close to the median, and can be calculated via the arithmetic mean of the log of the values.
+
+\begin{equation}\label{eq:geometricMean}
+  mean_{geometric} =  \left(\prod_{i=1}^N x_i\right)^{1/N} = e^{\left( \frac{\sum_i ln(x_i)}{n} \right)}
+\end{equation}
 
 \subsection{Quantifying Variability}\label{sec:centiles}
 
 \subsubsection{Range}\index{general}{range}
+
 This one is fairly easy: it is the difference between the highest and the lowest data value.
-The only thing that you have to watch out for: after you have acquired your data, you have to check for \emph{outliers}, i.e. data points with a value much higher or lower than the rest of the data. Often, such points are caused by errors in the selection of the sample or in the measurement procedure. There are a number of tests to check for outliers. One of them is to check for data which lie more than 1.5*\emph{inter-quartile-range} (IQR) above or below the first/third quartile (see below).
+The only thing that should be watched are outliers, i.e. data points with a value much higher or lower than the rest of the data. Often, such points are caused by errors in the selection of the sample or in the measurement procedure. There are a number of tests to check for outliers. One of them is to check for data which lie more than 1.5*inter-quartile-range (IQR) above or below the first/third quartile (see below).
 
 
 \subsubsection{Percentiles}\index{general}{centiles}\index{general}{percentiles}
 
-\emph{Centiles}, also called \gls{percentile}, give the value below which a given percentage of the values occur. It corresponds to a value with a specified cumulative frequency. While you won't often hear the expression \emph{centiles}, you will frequently encounter specific centiles:
+Centiles, also called "\glspl{percentile}", give the value below which a given percentage of the data values occur. Centiles correspond to the cumulative frequency. While the expression "centiles" does not come up very often, one will frequently encounter specific centiles:
 
 \begin{itemize}
-  \item When you look for the data range which includes 95\% of the data, you have to find the $2.5^{th}$ and the $97.5^{th}$ percentile of your sample distribution.
-  \item The 50th percentile is the \emph{median}.
-  \item Also important are the \emph{quartiles}, i.e. the 25th and the 75th percentile. The difference between them is sometimes referred to as \emph{inter-quartile range (IQR)}\index{general}{inter-quartile-range, IQR}.
+  \item To find the range which includes 95\% of the data, one have to find the $2.5^{th}$ and the $97.5^{th}$ percentile of the sample distribution.
+  \item The 50th percentile is the "median".
+  \item Also important are the "quartiles", i.e. the $25^{th}$ and the $75^{th}$ percentile. The difference between them is called the "inter-quartile range" (IQR)\index{general}{inter-quartile-range, IQR}.
 \end{itemize}
 
 Median, upper and lower quartile are used for the data display in box plots (Fig. \ref{fig:Boxplot}).
 
 \subsubsection{Standard Deviation and Variance}
 
-In Fig. \ref{fig:population} I sketched out how we have to use the \emph{sample statistic} to learn about the corresponding \emph{population parameter}.
-The \emph{maximum likelihood estimator} of the sample \gls{variance} is given by
+In Fig. \ref{fig:population} I have sketched out how to use the sample statistic to learn about the corresponding population parameter. In the following we distinguish between the "sample variance", i.e. the variance in the data sampled, and the "population variance", i.e. the variance of the full population. The maximum likelihood estimator of the sample \gls{variance} is given by
 
-\begin{equation}\label{eq_variance} \index{general}{variance}
+\begin{equation}\label{eq:variance} \index{general}{variance}
   var = \frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n}
 \end{equation}
 
-The best \emph{estimate of the population variance} is given by
-However, this systematically underestimates the \emph{population variance}, and is therefore referred to as a \emph{biased estimator}\index{general}{biased estimator}.
-
-Figure \ref{fig:mean_std} indicates that the sample variance underestimates the population variance, because the sample mean is chosen such as to minimize the variance of the data.
+However, Eq. \ref{eq:variance} systematically underestimates the population variance, and is therefore referred to as a "biased estimator"\index{general}{biased estimator} of the population variance. Figure \ref{fig:mean_std} tries to motivate why the sample variance underestimates the population variance: the sample mean is always chosen such that the variance of the sample data gets minimized.
 
 \begin{figure}[ht]
   \centering
@@ -323,16 +332,22 @@ Figure \ref{fig:mean_std} indicates that the sample variance underestimates the 
   \caption{Gaussian distributions fitted to selections of data from the underlying distribution: While the average mean of a number of samples converges to the real mean, the sample standard deviation underestimates the standard deviation from the distribution.}\label{fig:mean_std}
 \end{figure}
 
-Division by $n-1$ corrects for this bias, and provides the best possible estimate of the population variance. The variance calculated with $n-1$ is called the \emph{sample variance}.
+The best unbiased estimator for the population variance is given by
 
+\begin{equation}\label{eq:sampleVariance}
+  var = \frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}
+\end{equation}
 
-The \gls{sd_} \index{general}{standard deviation} is simply given by the square root of the variance:
+Eq. \ref{eq:sampleVariance} is referred to as "sample variance"\index{general}{sample variance}.
+
+The \gls{sd_} \index{general}{standard deviation}\index{general} is the square root of the variance, and the
+"sample standard deviation"\index{general}{sample satandard deviation} the square root of the "sample variance":
 
 \begin{equation}
   s = \sqrt{var}
 \end{equation}
 
-As mentioned in Table \ref{table:population}, in statistics it is often common to denote the population standard deviation with $\sigma$, and the sample standard deviation with $s$.
+As mentioned in Table \ref{table:population}, in statistics it is common to denote the population standard deviation with $\sigma$, and the sample standard deviation with $s$.
 
 Watch out: in \emph{Python}, by default the variance is calculated for "n". You have to set "ddof=1" to obtain the variance for "n-1":
 
@@ -348,20 +363,22 @@ Watch out: in \emph{Python}, by default the variance is calculated for "n". You 
 
 \subsubsection{Standard Error} \index{general}{standard error}
 
-The \emph{standard error} is the estimate of the \emph{standard deviation of a coefficient}. For example, in Fig. \ref{fig:sem}, we have used 100 datapoint from a normal distribution about \emph{5}. The more datapoints we have to estimate the mean value, the better our estimate. With 100 datapoints the standard deviation of our estimate, or \emph{standard error of the mean}, is 10 times smaller than the sample standard deviation.
+The "standard error" is the estimate of the standard deviation of a coefficient. For example, in Fig. \ref{fig:sem}, we have 100 datapoints from a normal distribution about $5$. The more datapoints we have to estimate the mean value, the better our estimate of the mean. 
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.66\textwidth]{../Images/standardError.jpg}\\
-  \caption{100 random data points, from a normal distribution about 5. The sample mean is very close to the real mean. The standard deviation of the mean, or \emph{standard error} is 10 times smaller than the standard deviation of the samples.}
+  \caption{100 random data points, from a normal distribution about 5. The sample mean is very close to the real mean. The standard deviation of the mean, or standard error is 10 times smaller than the standard deviation of the samples.}
   \label{fig:sem}
 \end{figure}
 
-For normally distributed data, the \emph{sample standard error of the mean} (SE or SEM) is
+For normally distributed data, the sample standard error of the mean (SE or SEM) is
 
 \begin{equation}
   SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
 \end{equation}
+
+So with 100 datapoints the standard deviation of our estimate, i.e. the standard error of the mean, is 10 times smaller than the sample standard deviation.
 
 \subsubsection{Confidence Intervals}\index{general}{confidence interval}
 
@@ -375,17 +392,16 @@ If the sampling distribution is symmetrical and unimodal, it will often be possi
 
 where $std$ is the  standard deviation, and $N_{ISF}(\alpha)$ the inverse survival function for the normal distribution. For the 95\% two-sided confidence intervals, for example, you have to set $\alpha=0.025$ and $\alpha=0.975$ .
 
-\textbf{Note:} If you want to know the confidence interval for the mean value, you have to replace the \emph{standard deviation} by the \emph{standard error}!
+\textbf{Note:} For the confidence interval for the mean value, the standard deviation has to be replaced by the standard error!
 
 \subsection{Parameters Describing the Form of a Distribution}
 
-In \texttt{scipy.stats}, continuous distribution functions are characterized by their \emph{location} and their \emph{scale}. Should the definition of a distribution require more than two parameters, the following parameters are called \emph{shape parameters}.  The exact meaning of each parameter can be found in the function definition.
-
-For example, for the \emph{normal distribution}, \emph{(location/shape)} are given by \emph{(mean/standard deviation)} of the distribution. In contrast, for the \emph{uniform distribution}, \emph{location/shape} are given by the \emph{(start/end)} of the range where the distribution is different from zero.
+In \texttt{scipy.stats}, continuous distribution functions are characterized by their "location" and their "scale". 
+For example, for the normal distribution, (location/shape) are given by (mean/standard deviation) of the distribution. In contrast, for the uniform distribution, (location/shape) are given by the (start/end) of the range where the distribution is different from zero.
 
 \subsubsection{Location}\index{general}{distribution!location}
 
-A \gls{location} parameter $x_0$  determines the "location" or shift of a distribution.
+A \gls{location} parameter $x_0$  determines the "location" or shift of a distribution:
 
 \begin{equation*}
   f_{x0}(x)=f(x-x_0)
@@ -405,7 +421,7 @@ where f is the density of a standardized version of the density.
 
 \subsubsection{Shape Parameters}\index{general}{shape parameters}
 
-It is customary to refer to all of the parameters beyond \emph{location} and \emph{scale} as \glspl{shapeparameter}. Thankfully, almost all of the distributions that we use in statistics have only one or two parameters. It follows that the \gls{skewness} and \gls{kurtosis} of these distribution are constants.
+It is customary to refer to all of the parameters beyond location and scale as \glspl{shapeparameter}. Thankfully, almost all of the distributions that we use in statistics have only one or two parameters. It follows that the \gls{skewness} and \gls{kurtosis} of these distribution are constants.
 
 \begin{figure}
   \centering
@@ -415,21 +431,21 @@ It is customary to refer to all of the parameters beyond \emph{location} and \em
 
 \subsubsection{Skewness}\index{general}{skewness}
 
-Distributions are \emph{skewed} if they depart from symmetry (Fig. \ref{fig:skewkurtosis}, left). For example, if you have a measurement that cannot be negative, which is usually the case, then we can infer that the data have a skewed distribution if the standard deviation is more than half the mean. Such an asymmetry is referred to as \emph{positive skewness}. The opposite, negative skewness, is rare.
+Distributions are "skewed" if they depart from symmetry (Fig. \ref{fig:skewkurtosis}, left). For example, for measurements that cannot be negative, which is usually the case, we can infer that the data have a skewed distribution if the standard deviation is more than half the mean. Such an asymmetry is referred to as "positive skewness". The opposite, negative skewness, is rare.
 
 \subsubsection{Kurtosis}\index{general}{kurtosis}
 
-Kurtosis is any measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right), where the normal distribution is taken as the standard refernence. Distributions with negative or positive excess kurtosis are called \emph{platykurtic} distributions or \emph{leptokurtic} distributions, respectively.
+Kurtosis is a measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right), where the normal distribution is taken as the standard refernence. Distributions with negative or positive excess kurtosis are called "platykurtic" distributions or "leptokurtic" distributions, respectively.
 
 \section{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}\index{general}{normal distribution}\index{general}{Gaussian distribution}
 
-The \emph{Normal distribution} or \emph{Gaussian distribution} is by far the most important of all the distribution functions. This is due to the fact that the \emph{mean }values of \emph{all} distribution functions approximate a normal distribution for large enough sample numbers (see chapter \ref{sec:CentralLimitTheorem}).
+The Normal distribution or Gaussian distribution is by far the most important of all the distribution functions. This is due to the fact that the mean values of \emph{all} distribution functions approximate a normal distribution for large enough sample numbers (see chapter \ref{sec:CentralLimitTheorem}).
 Mathematically, the normal distribution is characterized by a mean value $\mu$, and a standard deviation $\sigma$:
 
 \begin{equation}\label{eq_normal}
      f_{\mu,\sigma} (x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-( x - \mu )^2 /2 \sigma^2}
 \end{equation}
-where $ - \infty < x < \infty $, and $f_{\mu,\sigma}$ is the \gls{pdf_} (PDF) \index{general}{probability density function}.
+where $ - \infty < x < \infty $, and $f_{\mu,\sigma}$ is the \gls{pdf_} (PDF) \index{general}{probability density function} of the normal distribution.
 
 \begin{figure}
   \centering
@@ -445,7 +461,7 @@ For smaller sample numbers, the sample distribution can show quite a bit of vari
   \caption{25 randomly generated normal distributions of 100 points.}\label{fig:MultipleNormal}
 \end{figure}
 
-The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu,\sigma)$}. If the \emph{random variate (rv)} {\itshape X} is normally distributed with expectation $\mu$ and standard deviation $\sigma$, one denotes: {$\,X \sim N(\mu,\sigma)$} or $\,X \in N(\mu,\sigma)$.
+The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu,\sigma)$}. If the random variates (rvs) {\itshape X} are normally distributed with expectation $\mu$ and standard deviation $\sigma$, one writes: {$\,X \in N(\mu,\sigma)$}.
 
 \begin{figure}
   \centering
@@ -476,14 +492,16 @@ The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu
 \index{python}{distributionNormal}
 
 \begin{lstlisting}
-  In [33]:  from scipy import stats
-  In [34]:  mu = -2
-  In [35]:  sigma = 0.7
-  In [36]:  myDistribution = stats.norm(mu, sigma)
-  In [37]:  significanceLevel = 0.05
-  In [38]:  myDistribution.ppf([significanceLevel/2, 1-significanceLevel/2])
-  Out[38]:  array([-3.38590382, -0.61409618]
+  In [1]:   import numpy as np
+  In [2]:  from scipy import stats
+  In [3]:  mu = -2
+  In [4]:  sigma = 0.7
+  In [5]:  myDistribution = stats.norm(mu, sigma)
+  In [6]:  significanceLevel = 0.05
+  In [7]:  myDistribution.ppf([significanceLevel/2, 1-significanceLevel/2])
+  Out[8]:  array([-3.38590382, -0.61409618]
 \end{lstlisting}
+
 \emph{Example of how to calculate the interval of the PDF containing 95\% of the data, for the blue curve in Figure \ref{fig:normal}}
 
 \subsubsection{Sum of Normal Distributions}\index{general}{normal distribution!sum of}
@@ -491,15 +509,15 @@ The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu
 An important property of normal distributions is that the sum (or difference) of two normal distributions is also normally distributed. i.e., if
 
 \begin{eqnarray*}
-    X &\sim& N(\mu_X, \sigma_X^2) \\
-    Y &\sim& N(\mu_Y, \sigma_Y^2) \\
+    X &\in& N(\mu_X, \sigma_X^2) \\
+    Y &\in& N(\mu_Y, \sigma_Y^2) \\
     Z &=& X + Y,
 \end{eqnarray*}
 
 then
 
 \begin{equation}\label{eq:sumOfGaussians}
-    Z \sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2).
+    Z \in N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2).
 \end{equation}
 
 \subsubsection{Examples of Normal Distributions}\index{general}{normal distribution!examples}
@@ -511,7 +529,7 @@ then
 \end{itemize}
 
 \subsection{Central Limit Theorem}\label{sec:CentralLimitTheorem}\index{general}{central limit theorem}
-The central limit theorem states that for identically distributed independent random variables (also referred to as \emph{random variates})\index{general}{variate}, the mean of a sufficiently large number of these variables will be approximately normally distributed. Or in other words, the sampling distribution of the mean tends toward normality, regardless of the distribution.
+The central limit theorem states that the mean of a sufficiently large number of identically distributed random variates\index{general}{variate} will be approximately normally distributed. Or in other words, the sampling distribution of the mean tends toward normality, regardless of the distribution.
 \ref{fig:CentralLimitTheorem} shows that averaging over 10 uniformly distributed data already produces a smooth, almost Gaussian distribution.
 
 \begin{figure}
@@ -528,7 +546,7 @@ The central limit theorem states that for identically distributed independent ra
 
 To illustrate the ideas behind the use of distribution functions, let us go step-by-step through the analysis of the following problem:
 
-The average weight of a newborn child in the US is 3.5 kg, with a standard deviation of 0.76 kg. If we want to check all children that are \emph{significantly different} from the typical baby, what should we do with a child that is born with a weight of 2.6 kg?
+The average weight of a newborn child in the US is 3.5 kg, with a standard deviation of 0.76 kg. If we want to check all children that are significantly different from the typical baby, what should we do with a child that is born with a weight of 2.6 kg?
 
 \begin{itemize}
   \item Find the distribution that characterizes healthy babies ($\mu=3.5, \sigma=0.76$).
@@ -544,29 +562,28 @@ The average weight of a newborn child in the US is 3.5 kg, with a standard devia
 
 \section{Other Continuous Distributions}\label{sec:ContinuousDistributions} \index{general}{distributions!continuous}
 
-The distributions you will encounter most frequently are:
+Frequently encountered distributions are:
 
 \begin{itemize}
-  \item \textbf{Normal distribution} - the "ideal" continuous probability distribution
-  \item \textbf{t-distribution} - for sample distributions (What you will probably use most often.)
-  \item \textbf{$\chi$-square distribution} - for describing  variability
-  \item \textbf{F-distribution} - for comparing variability
+  \item \textbf{Normal distribution} - the "ideal" continuous probability distribution.
+  \item \textbf{t-distribution} - for sample distributions. (What you will probably use most frequently.)
+  \item \textbf{$\chi$-square distribution} - for describing  variability.
+  \item \textbf{F-distribution} - for comparing variability.
 \end{itemize}
 
 In the following, we will describe these distributions in more detail. Other distributions you should have heard about will be mentioned briefly:
 
 \begin{itemize}
-  \item \textbf{Lognormal distribution} - a normal distribution, plotted on an exponential scale. Often used to convert a strongly skewed distribution into a normal one.
+  \item \textbf{Lognormal distribution} - a normal distribution, plotted on an exponential scale. This transformation is often used to convert a strongly skewed distribution into a normal one.
   \item \textbf{Weibull distribution} - mainly used for reliability or survival data.
-  \item \textbf{Exponential distribution} - exponential curves
+  \item \textbf{Exponential distribution} - exponential curves.
   \item \textbf{uniform distribution} - when everything is equally likely.
 \end{itemize}
 
 \subsubsection{t Distribution}\index{general}{distributions!t-distribution}
 
 In 1908 W.S. Gosset, who worked for the Guinnes brewery in Dublin, was interested in the problems of small samples, for example the chemical properties of barley where sample sizes might be as low as 3. Since in these measurements the true variance of the mean was unknown, it must be approximated by the sample standard error of the mean. And the ratio between the sample mean and the standard error had a distribution that was unknown till Gosset, under the  pseudonym "Student", solved that problem.
-
-The corresponding distribution is the \emph{t-distribution}, and converges for larger values towards the normal distribution (Fig. \ref{fig:t}).
+The corresponding distribution is the t-distribution, and converges for larger values towards the normal distribution (Fig. \ref{fig:t}).
 
 Since in most cases the population mean and its variance are unknown, one typically works with the t-distribution when analyzing sample data.
 
@@ -576,31 +593,33 @@ If $\bar{x}$ is the sample mean, and $s$ the sample standard deviation, then
   t = \frac{\bar{x}-\mu}{s/ \sqrt{n}}
 \end{equation}\label{eq:Tdistribution}
 
-A very frequent application of the t-distribution is in the calculation of confidence intervals for the mean. The \emph{width }of the 95%-confidence interval, i.e. the interval that contains the true mean with a chance of 95%, is the same width about the population mean that contains 95% of the sample means (Eq. \ref{eq:ci_t}):
+A very frequent application of the t-distribution is in the calculation of confidence intervals for the mean. The width of the 95\%-confidence interval, i.e. the interval that contains the true mean with a chance of 95\%, is the same width about the population mean that contains 95\% of the sample means (Eq. \ref{eq:ci_t}):
 
 \begin{equation}
   ci = mean \pm std * t_{df,\alpha}
 \end{equation}\label{eq:ci_t}
 
-\begin{lstlisting}
-  In [27]: n = 20
-  In [28]: df = n-1
-  In [29]: alpha = 0.05
-  In [30]: stats.t(df).ppf(1-alpha/2)
-  Out[30]: 2.093
+The following example shows how to calculate the t-values for confidence intervals, for n = 20 and $\alpha=0.05$. For comparison, I also calculate the corresponding value from the normal distribution:
 
-  In [31]: stats.norm.ppf(1-alpha/2)
-  Out[31]: 1.960
+\begin{lstlisting}
+  In [1]: from scipy import stats
+  In [2]: n = 20
+  In [3]: df = n-1
+  In [4]: alpha = 0.05
+  In [5]: stats.t(df).ppf(1-alpha/2)
+  Out[6]: 2.093
+
+  In [7]: stats.norm.ppf(1-alpha/2)
+  Out[7]: 1.960
 \end{lstlisting}
 
-\emph{Calculating the t-values for confidence intervals, for n = 20 and $\alpha=0.05$. For comparison, I also calculate the corresponding value from the normal distribution.}
 
 In \emph{Python}, the 95\% confidence interval for the mean can be obtained with a one-liner:
 
 \begin{lstlisting}
-    alpha = 0.95
-    df = len(data)-1
-    ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
+    In [8]: alpha = 0.95
+    In [9]: df = len(data)-1
+    In [10]: ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
 \end{lstlisting}
 
 \begin{figure}
@@ -620,7 +639,7 @@ Since the t-distribution has longer tails than the normal distribution, it is mu
 
 \subsubsection{Chi-square Distribution}\index{general}{distributions!chi square}
 
-The \emph{Chi-square distribution} is related to normal distribution in a simple way: If a random variable $X$ has a normal distribution ($X \in N(0,1)$), then $X^2$ has a chi-square distribution, with one degree of freedom ($X^2 \in \chi_{1}^2$). The \emph{sum squares }of $n$ independent and standard normal random variables has a chi-square distribution with $n$ degrees of freedom (Fig. \ref{fig:chi2}):
+The chi-square distribution is related to normal distribution in a simple way: If a random variable $X$ has a normal distribution ($X \in N(0,1)$), then $X^2$ has a chi-square distribution, with one degree of freedom ($X^2 \in \chi_{1}^2$). The sum squares of $n$ independent and standard normal random variables has a chi-square distribution with $n$ degrees of freedom (Fig. \ref{fig:chi2}):
 
 \begin{equation}
     \sum\limits_{i = 1}^n {X_i^2} \in \chi_{n}^2
@@ -639,11 +658,11 @@ The \emph{Chi-square distribution} is related to normal distribution in a simple
 A pill producer is ordered to deliver pills with a standard deviation of $\sigma=0.05$. From the next batch of pills you pick $n=13$ random samples. These samples $x_1, x_2, . . . , x_n$ have a weight of
 3.04, 2.94, 3.01, 3.00, 2.94, 2.91, 3.02, 3.04, 3.09, 2.95, 2.99, 3.10, 3.02 g.
 
-\emph{Question:} is the standard deviation larger than allowed?
+\emph{Question:} Is the standard deviation larger than allowed?
 
 \emph{Answer:}
 
-Since the Chi-square distribution describes the distribution of the summed squares of random variates from a \emph{standard normal distribution}, we have to normalize our data before we calculate the corresponding CDF-value:
+Since the chi-square distribution describes the distribution of the summed squares of random variates from a \emph{standard normal distribution}, we have to normalize our data before we calculate the corresponding CDF-value:
 
 \begin{equation}
   1 - CD{F_{{\chi ^2}_{(n - 1)}}}\left( {\sum {(\frac{{x - \bar x}}{\sigma }} {)^2}} \right) = 0.1929
@@ -652,8 +671,8 @@ Since the Chi-square distribution describes the distribution of the summed squar
 \emph{Interpretation:} if the batch of pills is from a distribution with a standard deviation of $\sigma=0.05$, the likelihood of obtaining a chi-square value as large or larger than the one observed is about 19\%, so it is not atypical. In other words, the batch matches the expected standard deviation.
 
 \subsubsection{F Distribution}\index{general}{distributions!F distribution}
-Named after Sir Ronald Fisher, who developed the F distribution for use in determining critical values in ANOVAs (\emph{ANalysis Of VAriance}).
-Suppose we want to calculate the variance of a variable in two separate subsets. "Is one more diverse than the other?" It is tempting to take the ratio of the variances, $S_1^2 / S_2^2$, but we don't know for sure how big or small that number must be before we conclude that the variances are different. This problem is solved by the F distribution. The cutoff values in an F table are found using three variables:
+Named after Sir Ronald Fisher, who developed the F distribution for use in determining critical values in ANOVAs ("ANalysis Of VAriance").
+Suppose we want to calculate the variance of a variable in two separate subsets. "Is one more diverse than the other?" It is tempting to take the ratio of the variances, $S_1^2 / S_2^2$, but we don't know for sure how big or small that number must be before we conclude that the variances are different. This problem is solved by the F distribution. The cutoff values for an F distribution are found using three variables:
 
 \begin{itemize}
   \item ANOVA numerator degrees of freedom
@@ -661,13 +680,13 @@ Suppose we want to calculate the variance of a variable in two separate subsets.
   \item significance level
 \end{itemize}
 
-ANOVA compares the size of the variance between two different samples. This is done by dividing the larger variance over the smaller variance. The formula for the resulting \emph{F statistic} is (Fig. \ref{fig:Fdistribution}):
+ANOVA compares the size of the variance between two different samples. This is done by dividing the larger variance over the smaller variance. The formula for the resulting F statistic is (Fig. \ref{fig:Fdistribution}):
 
 \begin{equation}
     F(r_1, r_2) = \frac{\chi_{r1} ^2 /r_1}{\chi_{r2} ^2 /r_2}
 \end{equation}
 
-where $\chi_{r1}^2$ and $\chi_{r2}^2$ are the chi-square statistics of sample one and two respectively, and $r_1$ and $r_2$ are their degrees of freedom, i.e. the number of observations.
+where $\chi_{r1}^2$ and $\chi_{r2}^2$ are the chi-square statistics of sample one and two respectively, and $r_1$ and $r_2$ are their degrees of freedom.
 
 \begin{figure}
   \centering
@@ -686,7 +705,7 @@ If you want to investigate whether two groups have the same variance, you have t
 
 where $S_x$ ist he sample standard deviation of the first sample, and $S_y$ the sample standard deviation for the second sample.
 
-\textbf{Application Example}
+\paragraph{Application Example}
 
 Take for example the case that you want to compare two methods to measure eye movements. The two methods
 can have different accuracy and different precision (Fig. \ref{fig:accuracy}). With your test you want to
@@ -708,16 +727,23 @@ Method 2: [ 19.7,  19.4,  20.1,  18.6,  18.8,  20.2,  18.7,  19. ]
 The F statistic is $F = 0.494$, and has $n-1$ and $m-1$ degrees of freedom, where $n$ and $m$ are the number of recordings with each method. The code sample below shows that the F statistic is close to the center of the distribution, so we cannot reject the hypothesis that the two methods have the same precision.
 
 \begin{lstlisting}
-  In [1]:  method1 = array([20.7,  20.3,  20.3,  20.3,  20.7,  19.9,  19.9,  19.9,  20.3,
-        20.3,  19.7,  20.3])
-  In [2]:  method2 = array([ 19.7,  19.4,  20.1,  18.6,  18.8,  20.2,  18.7,  19. ])
-  In [3]:  fval = var(method1, ddof=1)/var(method2, ddof=1)
-  In [4]:  fd = stats.f(len(method2)-1,len(method2)-1)
-  In [5]:  p = fd.cdf(fval)
-  In [6]:  print p
-  Out[6]:  0.041
-  In [7]:  if (p<0.025) or (p>0.975):
-              print 'There is a significant difference between the two distributions.'
+  In [1]: import numpy as np
+  
+  In [2]: method1 = np.array([20.7,  20.3,  20.3,  20.3,  20.7,  19.9,  19.9,  19.9,  20.3, 20.3,  19.7,  20.3])
+  
+  In [3]: method2 = np.array([ 19.7,  19.4,  20.1,  18.6,  18.8,  20.2,  18.7,  19. ])
+  
+  In [4]: fval = np.var(method1, ddof=1)/np.var(method2, ddof=1)
+  
+  In [5]: fd = stats.f(len(method2)-1,len(method2)-1)
+  
+  In [6]: p = fd.cdf(fval)
+  
+  In [7]: print(p)
+  Out[7]: 0.041
+  
+  In [8]: if (p<0.025) or (p>0.975):
+              print('There is a significant difference between the two distributions.')
 \end{lstlisting}
 
 
@@ -756,9 +782,9 @@ f_x (x) =
     \end{cases}
 \end{equation}
 
-where $k > 0$ is the \emph{shape parameter }and $\lambda > 0$ is the \emph{scale parameter }of the distribution. Its complementary cumulative distribution function is a stretched exponential function.
+where $k > 0$ is the shape parameter and $\lambda > 0$ is the scale parameter of the distribution. Its complementary cumulative distribution function is a stretched exponential function.
 
-If the quantity x is a "time-to-failure", the Weibull distribution gives a distribution for which the failure rate is proportional to a power of time. The shape parameter, k, is that power plus one, and so this parameter can be interpreted directly as follows:
+If the quantity $x$ is a "time-to-failure", the Weibull distribution gives a distribution for which the failure rate is proportional to a power of time. The shape parameter, k, is that power plus one, and so this parameter can be interpreted directly as follows:
 
 \begin{itemize}
   \item  A value of $k < 1$ indicates that the failure rate decreases over time. This happens if there is significant "infant mortality", or defective items failing early and the failure rate decreasing over time as the defective items are weeded out of the population.
@@ -767,7 +793,7 @@ If the quantity x is a "time-to-failure", the Weibull distribution gives a distr
   \item  A value of $k > 1$ indicates that the failure rate increases with time. This happens if there is an "aging" process, or parts that are more likely to fail as time goes on.
 \end{itemize}
 
-In the field of materials science, the shape parameter k of a distribution of strengths is known as the Weibull modulus.
+In the field of materials science, the shape parameter k of a distribution of strengths is known as the "Weibull modulus"\index{general}{Weibull modulus}.
 
 \begin{figure}
   \centering
@@ -778,7 +804,7 @@ In the field of materials science, the shape parameter k of a distribution of st
 
 \subsubsection{Exponential Distribution}\index{general}{distributions!exponential}
 
-For a stochastic variable X with an \emph{exponential distribution}, the probability distribution function is:
+For a stochastic variable X with an exponential distribution, the probability distribution function is:
 \begin{equation}\label{eq_exponential}
 f_x (x) =
   \begin{cases}
@@ -806,15 +832,6 @@ This is a simple one: an even probability for all data values (Figure \ref{fig:u
 \end{figure}
 
 \subsubsection{Programs: Continuous Distribution Functions}
-
-Working with distribution functions in \emph{Python} takes a bit to get used to. But once you get the concept, it is marvellously easy. In my opinion, the most logical way is first to define the function, with all the parameters that it requires; and then, to use the methods of this function, e.g. $pdf$, or $cdf$:
-
-\begin{lstlisting}
-  In [1]: from scipy import stats
-  In [2]: myDF = stats.norm(5,3)
-  In [3]: x = linspace(-5, 15, 101)
-  In [4]: y = myDF.pdf(x)
-\end{lstlisting}
 
 \PyImg "distributionContinuous.py" (p \pageref{py:continuous}) shows different continuous distribution functions.
 \index{python}{distributionContinuous}
@@ -866,7 +883,7 @@ Working with distribution functions in \emph{Python} takes a bit to get used to.
 
 \begin{enumerate}
 
-    \item Under which conditions do you use the \emph{binomial distribution} to evaluate the likelihood of a discrete number of events? And under which do you use the \emph{Poisson distribution}?
+    \item Under which conditions do you use the binomial distribution to evaluate the likelihood of a discrete number of events? And under which do you use the Poisson distribution?
 
     \item \textbf{Binomial Distribution} "According to research, pure blue eyes in Europe approach greatest frequency in Finland, Sweden and Norway(at 72\%), followed by Estonia, Denmark(69\%); Latvia, Ireland(66\%); Scotland(63\%); Lithuania(61\%); The Netherlands(58\%); Belarus, England(55\%); Germany(53\%); Poland, Wales(50\%); Russia, The Czech Republic(48\%); Slovakia(46\%); Belgium(43\%); Austria, Switzerland, Ukraine(37\%); France, Slovenia(34\%); Hungary(28\%); Croatia(26\%); Bosnia and Herzegovina(24\%); Romania(20\%); Italy(18\%); Serbia, Bulgaria(17\%); Spain(15\%); Georgia, Portugal(13\%); Albania(11\%); Turkey and Greece(10\%). Further analysis shows that the average occurrence of blue eyes in Europe is 34\%, with 50\% in Northern Europe and 18\% in Southern Europe."
 

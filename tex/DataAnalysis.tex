@@ -6,30 +6,28 @@ In "the old days" (before computers with almost unlimited computational power we
 
 The advent of powerful computers has changed the game. Nowadays, the analysis of statistical data is (or at least should be) a highly interactive process: you look at the data, and generate models which may explain your data. Then you determine the best fit parameters for these models, and check these models, typically by looking at the residuals. If you are not happy with the results, you modify the model to improve the correspondence between models and data; when you are happy, you calculate the confidence interval for your model parameters, and form your interpretation based on these values. An introduction into this type of statistical analysis is provided in chapter \ref{chapter:Models}.
 
-In either case, you should start off with the following steps:
+In either case, one should start off with the following steps:
 \begin{itemize}
-  \item Visually inspect your data.
+  \item Visually inspect the data.
   \item Find extreme samples, and check them carefully.
-  \item Determine the data-type of your values.
-  \item If you have continuous data, check whether or not they are normally distributed.
-  \item Select and apply the appropriate test, or start with the model-based analysis of your data.
+  \item Determine the data-type of the values.
+  \item If the data are continuous, check whether or not they are normally distributed.
+  \item Select and apply the appropriate test, or start with the model-based analysis of the data.
 \end{itemize}
 
 \subsection{Data Screening}
 
-The first thing you have to do in your data analysis is simply \emph{inspect your data visually}. Our visual system is enormously powerful, and if your data are properly displayed, you will often be able to see trends that may characterize the data. You should check for \emph{missing data} in your data set, and \emph{outliers} which can significantly influence the result of your analysis.
+The first step in data analysis is the visual inspection of the data. Our visual system is enormously powerful, and if the data are properly displayed, trends that characterize the data can be clearly visible. In addition to checking if the first and the last data values have been read in correctly, it is recommendable to check for missing data and outliers.
 
 \subsubsection{Outliers} \index{general}{outliers}
 
-There is no unique definition of \emph{outliers}. However, for normally distributed samples they are often defined as data that lie either more than 1.5*IQR (inter-quartile range), or more than 2 standard deviations, from the sample mean. Outliers often fall in one of two groups: they are either caused by mistakes in the recording, in which case they should be excluded; or they constitute very important and valuable data points, in which case they have to be included in the data analysis. To decide which of the two is the case, you have to check the underlying raw data (for saturation or invalid data values), and the protocols from your experiments (for mistakes that may have occurred during the recording). If you find an underlying problem, then - and only then - may you eliminate the outliers from the analysis. In every other case, you have to keep them!
+There is no unique definition for outliers. However, for normally distributed samples they are often defined as data that lie either more than 1.5*IQR (inter-quartile range), or more than 2 standard deviations, from the sample mean. Outliers often fall in one of two groups: they are either caused by mistakes in the recording, in which case they should be excluded; or they constitute very important and valuable data points, in which case they have to be included in the data analysis. To decide which of the two is the case, you have to check the underlying raw data (for saturation or invalid data values), and the protocols from your experiments (for mistakes that may have occurred during the recording). If an underlying problem is detected, then - and only then - one may eliminate the outliers from the analysis. In every other case, the data have to be kept!
 
 \subsection{Normality Check} \index{general}{normality check}
 
-Statistical hypothesis tests can be grouped into \emph{parametric tests} \index{general}{parametric tests} and \emph{non-parametric tests}\index{general}{non-parametric tests}. Parametric tests assume that the data can be well described by a distribution that is defined by one or more parameters, in most cases by a normal distribution. For the given data set, the best-fit parameters for this distribution are then determined, together with their confidence intervals, and interpreted.
+Statistical hypothesis tests can be grouped into parametric tests\index{general}{parametric tests} and non-parametric tests\index{general}{non-parametric tests}. Parametric tests assume that the data can be well described by a distribution that is defined by one or more parameters, in most cases by a normal distribution. For the given data set, the best-fit parameters for this distribution are then determined, together with their confidence intervals, and interpreted.
 
 However, this approach only works if the given data set is in fact well approximated by the chosen distribution. If not, the results of the parametric test can be completely wrong. In that case non-parametric tests have to be used which are less sensitive, but therefore do not depend on the data following a specific distribution.
-
-Here we will focus on tests for normality. Again, you should start out with a visual inspection of the data, here with a \emph{QQ-plot}, sometimes also referred to as \emph{probplot}. For a quantitative evaluation one of the many existing normality tests should then be applied.
 
 \begin{figure}
   \centering
@@ -40,12 +38,12 @@ Here we will focus on tests for normality. Again, you should start out with a vi
 
 \subsubsection{Probability-Plots}\index{general}{plots!probability plot} \index{general}{plots!probplot}
 
-In statistics, different tools are available for the visual assessments of distributions. They are graphical methods for comparing two probability distributions by plotting their \glspl{quantile}, or closely related parameters against each other:
+In statistics, different tools are available for the visual assessments of distributions. They are graphical methods for comparing two probability distributions by plotting their \glspl{quantile}, or closely related parameters, against each other:
 
 \begin{description}
   \item[QQ-Plots] \index{general}{plots!qq-plot}The "Q" in \acrfull{qq-plot} stands for \emph{quantile}. The quantiles of a given data set are plotted against the quantiles of a reference distribution, typically the standard normal distribution.
-  \item[PP-Plots] \index{general}{plots!pp-plot} plot the \emph{CDF (cumulative-distribution-function} of a given data set against the CDF of a reference distribution.
-  \item[Probability Plots] \index{general}{plots!probability plot} plot the ordered values of a given data set against the quantiles of a reference distribution.
+  \item[PP-Plots] \index{general}{plots!pp-plot} Plot the CDF (cumulative-distribution-function) of a given data set against the CDF of a reference distribution.
+  \item[Probability Plots] \index{general}{plots!probability plot} Plot the ordered values of a given data set against the quantiles of a reference distribution.
 \end{description}
 
 In all three cases the results are similar: if the two distributions being compared are similar, the points will approximately lie on the line $y = x$. If the distributions are linearly related, the points will approximately lie on a line, but not necessarily on the line $y = x$ (Figure \ref{fig:qqplotChi2}).
@@ -62,7 +60,7 @@ In \emph{Python}, the plot can be generated with the command
   \caption{Left) Probability-density-function for a Chi2-distribution (k=3), which is clearly non-normal. Right) Corresponding Probability-plot}\label{fig:qqplotChi2}
 \end{figure}
 
-To understand the principle behind those plots, look at the right plot in Fig. \ref{fig:qqplotChi2}. Here we have \emph{100} random datapoints from a Chi2-distribution. The x-value of the first data point is (approximately) the $1/100$-quantile of a standard normal distribution (\lstinline{stats.norm().ppf(0.01)}), which corresponds to \emph{-2.33} (The exact value is slightly shifted, because of \emph{Filliben's estimate}). The y-value is the smallest value of our data-set. Similarly, the second x-value corresponds approximately to \lstinline{stats.norm().ppf(0.01)}, and the second y-value is the second-lowest value of the data set, etc.
+To understand the principle behind those plots, look at the right plot in Fig. \ref{fig:qqplotChi2}. Here we have \emph{100} random datapoints from a chi2-distribution, which is clearly unsymmetrical. The x-value of the first data point is (approximately) the $1/100$-quantile of a standard normal distribution (\lstinline{stats.norm().ppf(0.01)}), which corresponds to \emph{-2.33} (The exact value is slightly shifted, because of a small correcton, called "Filliben's estimate"\index{general}{Filliben's estimate}). The y-value is the smallest value of our data-set. Similarly, the second x-value corresponds approximately to \lstinline{stats.norm().ppf(0.01)}, and the second y-value is the second-lowest value of the data set, etc.
 
 \subsubsection{Hypothesis Tests for Normality}
 
@@ -73,11 +71,13 @@ In tests for normality, different challenges can arise: sometimes only few sampl
   \item Tests based on descriptive statistics of the sample. Examples are the skewness test, the kurtosis test, the D’Agostino-Pearson omnibus test, or the Jarque-Bera test.
 \end{enumerate}
 
-For example, the \emph{Lilliefors test}\index{general}{test!Lilliefors}, which is based on the \emph{Kolmogorov--Smirnov test} \index{general}{test!Kolmogorov-Smirnov}, quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should be used carefully, especially if the number of samples is ca. $\leq 300$.)
+For example, the Lilliefors test\index{general}{test!Lilliefors}, which is based on the Kolmogorov--Smirnov test \index{general}{test!Kolmogorov-Smirnov}, quantifies a distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution, or between the empirical distribution functions of two samples. (The original Kolmogorov-Smirnov test should not be used if the number of samples is ca. $\leq 300$.)
 
-The \emph{Shapiro-Wilk W test}\index{general}{test!Shapiro-Wilk}, which depends on the covariance matrix between the order statistics of the observations, can also be used with $\leq 50$ samples, and has been recommended by \cite{altman99} and by \cite{Ghasemi2012c}.
+The Shapiro-Wilk W test\index{general}{test!Shapiro-Wilk}, which depends on the covariance matrix between the order statistics of the observations, can also be used with $\leq 50$ samples, and has been recommended by \cite{altman99} and by \cite{Ghasemi2012c}.
 
-The \emph{Python} command \lstinline{stats.normaltest(x)} uses the D’Agostino-Pearson \emph{omnibus test} \index{general}{test!omnibus}. This test combines a skewness and kurtosis test to produce a single, global, "omnibus" statistic.
+The \emph{Python} command \lstinline{stats.normaltest(x)} uses the D’Agostino-Pearson \emph{omnibus test}\index{general}{test!omnibus}. This test combines a skewness and kurtosis test to produce a single, global, "omnibus" statistic.
+
+\vspace{5 mm}
 
 \PyImg "checkNormality.py" (p \pageref{py:checkNormality}) shows how to check graphically and quantitatively if a given distribution is normal.
 \index{python}{checkNormality}
@@ -90,7 +90,7 @@ The \emph{Python} command \lstinline{stats.normaltest(x)} uses the D’Agostino-
 
 
 \subsection{Transformation} \index{general}{transformation}
-If your data deviate significantly from a normal distribution, it is sometimes possible to make the distribution approximately normal by transforming your data. For example, data often have values that can only be positive (e.g. the size of persons), and that have  long positive tail: such data can often be made normal by applying a \emph{log transform}. This is demonstrated in Figure \ref{fig:lognormal}.
+If your data deviate significantly from a normal distribution, it is sometimes possible to make the distribution approximately normal by transforming your data. For example, data often have values that can only be positive (e.g. the size of persons), and that have  long positive tail: such data can often be made normal by applying a log transform. This is demonstrated in Figure \ref{fig:lognormal}.
 
 
 \section{Hypothesis tests}\label{sec:hypotheses} \index{general}{hypotheses}
@@ -108,12 +108,12 @@ The final exam of your 10 students produce the following scores (Fig. \ref{fig:E
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/fig_ExampleTtest.png}\\
-  \caption{The question we ask: based on our sample mean (dashed-dotted line) and the observed variance of the data (the sample variance), do we believe that the population mean is different from 110 (dashed line)? Or in other words: our Null-hypothesis is that the difference between the population mean and 110 is zero.}\label{fig:ExampleTtest}
+  \caption{The question we ask: based on our sample mean (dashed-dotted line) and the observed variance of the data (the sample variance), do we believe that the population mean is different from 110 (dashed line)? Or in other words: our Null-hypothesis is that the difference between the population mean and 110 is zero. Can we keep our Null-hypothesis, or do we have to reject it based on the data?}\label{fig:ExampleTtest}
 \end{figure}
 
 The question we want to answer: Is the mean value of the scores (\emph{97.1}) significantly different from 110?
 
-A \emph{normality test} (\lstinline{stats.normaltest(scores)}) indicates that the data are probably taken from a normal distribution.  Since we don't know the \emph{population variance} of the results of students tested, we have to take our best guess, the \emph{sample variance} (see also Fig. \ref{fig:population}). And we know that the normalized difference between sample and the population mean, the \emph{t-statistic}, follows the t-distribution (Eq. \ref{eq:Tdistribution}).
+A \emph{normality test} (\lstinline{stats.normaltest(scores)}) indicates that the data are probably taken from a normal distribution.  Since we don't know the population variance of the results of students tested, we have to take our best guess, the sample variance (see also Fig. \ref{fig:population}). And we know that the normalized difference between sample and the population mean, the t-statistic, follows the t-distribution (Eq. \ref{eq:Tdistribution}).
 
 The difference between our sample mean and the value we want to compare it to (\lstinline{ np.mean(scores) - 110} ) is \emph{12.9}. Normalized by the sample standard error (Eq. \ref{eq:Tdistribution}), this gives a value of \emph{t=-1.84}. Since the t-distribution is a known curve that depends only on the number of samples, and we can calculate the likelihood that we obtain a t-statistic of $|t| > 1.84$:
 
@@ -127,21 +127,21 @@ The difference between our sample mean and the value we want to compare it to (\
 
 \subsection{Generalization}
 
-Based on the previous example, the general procedure for \emph{hypothesis tests} can be described as follows (the sketch in Fig. \ref{fig:population} indicates the meaning of many upcoming terms):
+Based on the previous example, the general procedure for hypothesis tests can be described as follows (the sketch in Fig. \ref{fig:population} indicates the meaning of many upcoming terms):
 
 \begin{itemize}
   \item A random sample is drawn from a population. (In our example, the random sample is our \emph{scores}).
-  \item A \emph{Null hypothesis}\index{general}{null hypothesis} is formulated. ("There is Null difference between the population mean and the value of 110.")
-  \item A \emph{test-statistic} is calculated, from which we know the probability distribution. (Here the \emph{sample mean}, since we know that the mean value of samples from a normal distribution follows the t-distribution.)
-  \item Comparing the observed value of the statistic (here the obtained t-value) with the corresponding distribution (the t-distribution), we can find the likelihood that a value as extreme as or more extreme than s the observed one is found by chance. This is the \emph{p-value}.
-  \item If the p-value is $p<0.05$, we reject the Null-hypothesis, and speak of a \emph{statistically significant difference}. If a value of $p<0.001$ is obtained, the result is typically called \emph{highly significant}. The critical region of a hypothesis test is the set of all outcomes which cause the null hypothesis to be rejected in favor of the alternative hypothesis\index{general}{alternative hypothesis}.
+  \item A Null hypothesis\index{general}{null hypothesis} is formulated. ("There is Null difference between the population mean and the value of 110.")
+  \item A test-statistic is calculated, from which we know the probability distribution. (Here the sample mean, since we know that the mean value of samples from a normal distribution follows the t-distribution.)
+  \item Comparing the observed value of the statistic (here the obtained t-value) with the corresponding distribution (the t-distribution), we can find the likelihood that a value as extreme as or more extreme than s the observed one is found by chance. This is the so-called "p-value".
+  \item If the p-value is $p<0.05$, we reject the Null-hypothesis, and speak of a "statistically significant difference". If a value of $p<0.001$ is obtained, the result is typically called "highly significant". The critical region of a hypothesis test is the set of all outcomes which cause the null hypothesis to be rejected in favor of the alternative hypothesis\index{general}{alternative hypothesis}.
 \end{itemize}
 
 In other words, the p-value states how likely it is to obtain a value as extreme or more extreme by chance alone, \emph{if the Null hypothesis is true}.
 
-The value against which the p-value is compared is the \emph{significance level}\index{general}{significance level}, and is often indicated with the letter $\alpha$. The significance level is chosen, and typically set to $0.05$.
+The value against which the p-value is compared is the "significance level"\index{general}{significance level}, and is often indicated with the letter $\alpha$. The significance level is a user choice, and typically set to $0.05$.
 
-This way of proceeding to test a hypothesis is called \emph{statistical inference}\index{general}{statistical inference}.
+This way of proceeding to test a hypothesis is called "statistical inference"\index{general}{statistical inference}.
 
 Remember, p only indicates the likelihood of obtaining a certain value for the test statistic if the null hypothesis is true - nothing else!
 
@@ -149,15 +149,23 @@ And keep in mind that improbable events do happen, even if not very frequently. 
 
 \subsubsection{Additional Examples}
 
-\textbf{Example 1: } Let us compare the weight of two groups of subject. Then the \emph{null hypothesis} is that there is \emph{null} difference in the weight between the two groups. If a statistical comparison of the weight produces a p-value of 0.03, this means that \emph{the probability that the null hypothesis is correct is 0.03, or 3\%}. Since this probability is quite low, we say that \emph{there is a significant difference between the weight of the two groups}.
+\textbf{Example 1: } Let us compare the weight of two groups of subject. The Null hypothesis is that there is null difference in the weight between the two groups. If a statistical comparison of the weight produces a p-value of 0.03, this means that the probability that the null hypothesis is correct is 0.03, or 3\%. Since this probability is quite low, we say that "there is a significant difference between the weight of the two groups".
 
-\textbf{Example 2: } If we want to check the assumption that the mean value of a group is 7, then the null hypothesis would be: \emph{"We assume that there is null difference between the mean value in our population and the value 7."}
+\textbf{Example 2: } If we want to check the assumption that the mean value of a group is 7, then the null hypothesis would be: "We assume that there is null difference between the mean value in our population and the value 7."
 
 \subsection{The interpretation of the p-value, and the "p-value fallacy"}
 
-\textbf{Note:} A value of $p<0.05$ for the null hypothesis has to be interpreted as follows: \emph{If the null hypothesis is true, the chance that we find a test statistic as extreme or more extreme than the one observed is less than 5\%.} This is \emph{not} the same as saying that the null hypothesis is false, and even less so, that an alternative hypothesis is true! Stating a p-value alone is no longer state-of-the-art for the statistical analysis of data. You should also state the confidence intervals for the parameter that you investigate.
+\fbox{
+\begin{minipage}{15 cm}
+    \textbf{Note:} A value of $p<0.05$ for the null hypothesis has to be interpreted as follows: \emph{If the null hypothesis is true, the chance that we find a test statistic as extreme or more extreme than the one observed is less than 5\%.} This is \emph{not} the same as saying that the null hypothesis is false, and even less so, that an alternative hypothesis is true!
+\end{minipage}
+}
 
-Therefore research is sometimes divided into \emph{exploratory research}\index{general}{exploratory research} and \emph{confirmatory research}\index{general}{confirmatory research}. Take for example the case of Matt Motyl, a Psychology PhD student at the University of Virginia. In 2010, data from his study of nearly 2000 people indicated that political moderates saw shades of grey more accurately than people with more extreme political opinions, with a p-value of 0.01. However, when he tried to reproduce the data, the p-value dropped down to 0.59. So while the \emph{exploratory research} showed that a certain hypothesis may be likely, the \emph{confirmatory research} showed that the hypothesis did not hold (\cite{Nuzzo2014}).
+\vspace{5 mm}
+
+Stating a p-value alone is no longer state-of-the-art for the statistical analysis of data. You should also state the confidence intervals for the parameter that you investigate.
+
+Therefore research is sometimes divided into "exploratory research"\index{general}{exploratory research} and "confirmatory research"\index{general}{confirmatory research}. Take for example the case of Matt Motyl, a Psychology PhD student at the University of Virginia. In 2010, data from his study of nearly 2000 people indicated that political moderates saw shades of grey more accurately than people with more extreme political opinions, with a p-value of 0.01. However, when he tried to reproduce the data, the p-value dropped down to 0.59. So while the \emph{exploratory research} showed that a certain hypothesis may be likely, the \emph{confirmatory research} showed that the hypothesis did not hold (\cite{Nuzzo2014}).
 
 \cite{sellke2001} have investigated this question in detail, and recommend to use a "calibrated p-value" to estimate the probability of making a mistake when rejecting the null hypothesis, when the data produce a p-value $p$:
 
@@ -171,19 +179,19 @@ with $e=exp(1)$, and $log$ the natural logarithm. For example, $p=0.05$ leads to
 In hypothesis testing, two types of errors can occur:
 
 \subsubsection{Type I errors} \index{general}{error!Type I} \index{general}{power}
-\gls{TypeI} are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and \emph{is set before you start the data analysis}. In quality control, a Type I error is called \emph{producer risk}, because you keep a produced item despite the fact that it meets the regulatory requirements.
+\gls{TypeI} are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and is set before you start the data analysis. In quality control, a Type I error is called "producer risk", because you keep a produced item despite the fact that it meets the regulatory requirements.
 
 For example, assume that the population of young Austrian adults has a mean IQ of 105 (i.e. we are smarter than the rest) and a standard deviation of 15. We now want to check if the average FH student in Linz has the same IQ as the average Austrian, and we select 20 students. We set $\alpha=0.05$, i.e. we set our significance level to 95\%.
-Let us now assume that the average student has in fact the same IQ as the average Austrian. If we repeat our study 20 times, we will find one of those 20 times that our sample mean is significantly different from the Austrian average IQ. Such a finding would be a false result, despite the fact that our assumption is correct, and would constitute a \emph{type I error}.
+Let us now assume that the average student has in fact the same IQ as the average Austrian. If we repeat our study 20 times, we will find one of those 20 times that our sample mean is significantly different from the Austrian average IQ. Such a finding would be a false result, despite the fact that our assumption is correct, and would constitute a type I error.
 
 \subsubsection{Type II errors and Test Power}\index{general}{error!Type II}
-If we want to answer the question "How much chance do we have to reject the null hypothesis when the alternative is in fact true?" Or in other words, "What’s the probability of detecting a real effect?" we are faced with a different problem. To answer these questions, we need an \emph{alternative hypothesis}.
+If we want to answer the question "How much chance do we have to reject the null hypothesis when the alternative is in fact true?" Or in other words, "What’s the probability of detecting a real effect?" we are faced with a different problem. To answer these questions, we need an "alternative hypothesis".
 
-For the example given above, an \emph{alternative hypothesis} could be: "We assume that our population has a mean value of 6."
+For the example given above, an alternative hypothesis could be: "We assume that our population has a mean value of 6."
 
-A \gls{TypeII} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false.  In quality control, a Type II error is called a \emph{consumer risk}, because the consumer obtains an item that does not meet the regulatory requirements.
+A \gls{TypeII} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false.  In quality control, a Type II error is called a "consumer risk", because the consumer obtains an item that does not meet the regulatory requirements.
 
-The probability for this type of error is commonly indicated with $\beta$. The \emph{power} of a statistical test is defined as $(1-\beta)*100$, and is the chance of correctly accepting the alternate hypothesis. Figure \ref{fig:power1} shows the meaning of the \emph{power} of a statistical test. Note that for finding the power of a test, you need an alternative hypothesis.
+The probability for this type of error is commonly indicated with $\beta$. The "power" of a statistical test is defined as $(1-\beta)*100$, and is the chance of correctly accepting the alternate hypothesis. Figure \ref{fig:power1} shows the meaning of the power of a statistical test. Note that for finding the power of a test, you need an alternative hypothesis.
 
 \subsubsection{Type II Errors and P-value}
 
@@ -195,13 +203,13 @@ The power of a statistical test depends on four factors:
 \begin{enumerate}
   \item  $\alpha$, the probability for Type I errors
   \item  $\beta$, the probability for Type II errors ( $\Rightarrow$ power of the test)
-  \item  $d$, the \emph{effect size}, i.e. the magnitude of the investigated effect relative to $\sigma$, the standard deviation of the sample
+  \item  $d$, the effect size, i.e. the magnitude of the investigated effect relative to $\sigma$, the standard deviation of the sample
   \item  $n$, the sample size
 \end{enumerate}
 
 Only 3 of these 4 parameters can be chosen, the $4^{th}$ is then automatically fixed.
 
-The absolute size of the difference $D$ between mean treatment outcomes that will answer the clinical question being posed is often called \emph{clinical significance} or \emph{clinical relevance}.
+The absolute size of the difference $D$ between mean treatment outcomes that will answer the clinical question being posed is often called "clinical significance" or "clinical relevance".
 
 \begin{figure}[!ht]
   \centering
@@ -217,13 +225,14 @@ The absolute size of the difference $D$ between mean treatment outcomes that wil
 
 \subsubsection{Examples for some special cases}
 
-\textbf{Test on one mean:} if we have the hypothesis that the data population has a mean value of $x_1$ and a standard deviation of $\sigma$, and the actual population has a mean value of $x_1+D$ and the same standard deviation, we can find such a difference with a \emph{minimum sample number} of
+\paragraph{Test on One Mean}
+If we have the hypothesis that the data population has a mean value of $x_1$ and a standard deviation of $\sigma$, and the actual population has a mean value of $x_1+D$ and the same standard deviation, we can find such a difference with a minimum sample number of
 
 \begin{equation}
   n = \frac{{({z_{1 - \alpha /2}} + {z_{1 - \beta }})}^2}{d^2}
 \end{equation}
 
-Here z is the standardized normal variable (see also chapter \ref{sec:normalDistribution})
+Here $z$ is the standardized normal variable (see also chapter \ref{sec:normalDistribution})
 
 \begin{equation}
   z = \frac{x-\mu}{\sigma} .
@@ -233,7 +242,7 @@ and $d = \frac{D}{\sigma}$ the effect size.
 
 In words, if the real mean has a value of $x_1$, we want to detect this correctly in at least $1-\alpha\%$ of all tests; and if the real mean is shifted by $D$ or more, we want to detect this with a likelihood of at least $1-\beta\%$.
 
-\textbf{Test between two different populations:}
+\paragraph{Test Between Two Different Populations}
 For finding a difference between two normally distributed means, with standard deviations of $\sigma_1$ and $\sigma_2$, the minimum number of samples we need in each group to detect an absolute difference $D$ is
 
 \begin{equation}
@@ -242,14 +251,14 @@ For finding a difference between two normally distributed means, with standard d
 
 \subsubsection{Python Solution}
 
-\emph{statsmodels} makes clever use of the fact that 3 of the 4 factors mentioned above are independent, and combines it with the \emph{Python} feature of \emph{named parameters} to provide a program that takes 3 of those parameters as input, and calculates the remaining $4^{th}$ parameter.
-
-For example,
+\emph{statsmodels} makes clever use of the fact that 3 of the 4 factors mentioned above are independent, and combines it with the \emph{Python} feature of "named parameters" to provide a program that takes 3 of those parameters as input, and calculates the remaining $4^{th}$ parameter. For example,
 
 \begin{lstlisting}
-    from statsmodels.stats import power
-    print(power.tt_ind_solve_power(effect_size = 0.5, alpha =0.05, power=0.8))
-    # Result: 63.77
+    In [1]: from statsmodels.stats import power
+    
+    In [2]: nobs = power.tt_ind_solve_power(effect_size = 0.5, alpha =0.05, power=0.8)
+    In [3]: print(nobs)
+    Out[3]: 63.76561177540974
 \end{lstlisting}
 
 tells us that if we compare two groups with the same number of subjects and the same standard deviation, require an $\alpha=0.05$ a test power of $80\%$, and we want to detect a difference between the groups that is half the standard deviation, we need to test 64 subjects.
@@ -257,8 +266,9 @@ tells us that if we compare two groups with the same number of subjects and the 
 Similarly,
 
 \begin{lstlisting}
-    effect_size = power.tt_ind_solve_power(alpha =0.05, power=0.8, nobs1=25)
-    # Result: 0.81
+    In [4]: effect_size = power.tt_ind_solve_power(alpha =0.05, power=0.8, nobs1=25)
+    In [5]: print(effect_size)
+    Out[5]: 0.8087077886680407
 \end{lstlisting}
 
 tells us that if we have an $\alpha=0.05$, a test power of $80\%$, and 25 subjects in each group, then the smallest difference between the groups is 81\% of the sample standard deviation.
@@ -273,7 +283,7 @@ The corresponding command for one sample t-tests is \lstinline{tt_solve_power}.
 
 \section{Sensitivity and Specificity}
 
-Some of the more confusing terms in statistical analysis are \gls{sensitivity} \index{general}{sensitivity} and \gls{specificity} \index{general}{specificity}. A related topic are \emph{positive predictive value (PPV)} \index{general}{positive predictive value} and \emph{negative predictive value (NPV)} \index{general}{negative predictive value}. The following diagram shows how the four are related:
+Some of the more confusing terms in statistical analysis are \gls{sensitivity} \index{general}{sensitivity} and \gls{specificity} \index{general}{specificity}. A related topic are the "positive predictive value (PPV)" \index{general}{positive predictive value} and the "negative predictive value (NPV)" \index{general}{negative predictive value}. The following diagram shows how the four are related:
 
 \begin{figure}[ht]
   \centering

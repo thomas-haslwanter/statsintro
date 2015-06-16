@@ -38,7 +38,7 @@ There are also many tutorials available on the internet (see links below). Perso
 \subsection{Installation and Updates}
 
 In general, I suggest that you start out by installing a \emph{Python} distribution which includes the most important libraries. Unless you have a specific requirement for 64-bit versions, I recommend that you install a 32-bit version of \emph{Python}: it facilitates many activities that require compilation of module parts, e.g. for Bayesian statistics (PyMC), or when you want to speed up your programs with \emph{Cython}. Since all the \emph{Python} packages required for this course are now available for \emph{Python} 3.x, I will use \emph{Python} 3 for this book. However, all the scripts included should also work for \emph{Python} 2.7. Make sure that you use a current vrsion of \emph{IPython} (3.x), since the \emph{ipython notebooks} provided with this book won't run on \emph{IPython} 2.x. My favorite \emph{Python} distributions  are
-    
+
 \begin{itemize}
     \item \emph{WinPython} \url{https://winpython.github.io/} Recommended for Windows users.
     \item \emph{anaconda} \url{https://store.continuum.io/cshop/anaconda/} from Continuum. For Windows, Mac, and Linux.
@@ -253,7 +253,8 @@ To combine the best of both worlds, the package \emph{rpy2} provides a way to tr
     \item Check out the help tips when you start \emph{IPython}.
     \item Customize \emph{IPython} on your computer, as described above: it will save you time in the long run!
     \item TAB-completion, for file- and directory names, variable names, AND for commands.
-    \item To switch between inline and external graphs, use \; \lstinline{%matplotlib inline} and \; \lstinline{%matplotlib qt4}.
+    \item To switch between inline and external graphs, use \; \lstinline{%matplotlib inline} \; and \; \lstinline{%matplotlib qt4}.
+    \item By default, \emph{IPython} displays data with a very high precision. For a more concise display, use \lstinline{%precision 3}.
 \end{enumerate}
 
 \section{Developing Python Programs}
