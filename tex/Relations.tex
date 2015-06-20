@@ -1,20 +1,20 @@
 \chapter{Relation Between Two Continuous Variables}
 
-So far we have been dealing with problems where only one variable is measured. Expressions or functions which only depend on one variable are sometimes called \emph{univariate}\index{general}{univariate}. If more than one variable is involved, we are dealing with \emph{multivariate}\index{general}{multivariate} problems. In the simplest case we have two variables involved, and we need a \emph{bivariate}\index{general}{bivariate} data analysis.
+So far we have been dealing with problems where only one variable is measured. Expressions or functions which only depend on one variable are sometimes called "univariate"\index{general}{univariate}. If more than one variable is involved, we are dealing with "multivariate"\index{general}{multivariate} problems. In the simplest case we have two variables involved, and we need a "bivariate"\index{general}{bivariate} data analysis.
 
-For two related variables, the \emph{correlation} measures the association between the two variables. In contrast, a \emph{linear regression} is used for the prediction of the value of one variable from another. For the correlation between many variables, you should look into "correlation tables" (nicely implemented in \emph{seaborn}).  And an extension of linear regression to more than two variables brings you into the realm of statistical modeling (\ref{chapter:Models}).
+For two related variables, the "correlation" measures the association between the two variables. In contrast, a "linear regression" is used for the prediction of the value of one variable from another. For the correlation between many variables, you should look into "correlation tables" (nicely implemented in \emph{seaborn}).  And an extension of linear regression to more than two variables brings you into the realm of statistical modeling (\ref{chapter:Models}).
 
 \section{Correlation}
 
 \subsection{Correlation Coefficient} \index{general}{correlation coefficient}
 
-The \gls{correlation} \emph{coefficient} between two variables answers the question: "Are the two variables related? I.e. if one variable changes, does the other also change?" If the two variables are normally distributed, the standard measure of determining the \emph{correlation coefficient}, often ascribed to \emph{Pearson} \index{general}{correlation!Pearson}, is
+The \gls{correlation} coefficient between two variables answers the question: "Are the two variables related? I.e. if one variable changes, does the other also change?" If the two variables are normally distributed, the standard measure of determining the correlation coefficient, often ascribed to Pearson\index{general}{correlation!Pearson}, is
 
 \begin{equation}\label{eq:pearson}
   r = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum\limits_{i=1}^n (X_i - \bar{X})^2} \sqrt{\sum\limits_{i=1}^n (Y_i - \bar{Y})^2}}
 \end{equation}
 
-With the \emph{sample covariance}\index{general}{covariance}
+With the  sample covariance\index{general}{covariance} $s_{xy}$ defined as
 
 \begin{equation}
   s_{xy} = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}
@@ -26,17 +26,17 @@ and $s_x, s_y$ the sample standard deviations of the $x$ and $y$ values, respect
   r = \frac{s_{xy}}{s_x \cdot s_y}.
 \end{equation}
 
-Pearson's correlation coefficient, sometimes also referred to as \emph{population correlation coefficient} or \emph{sample correlation}, can take any value from -1 to +1. Examples are given in Figure \ref{fig:correlation}. Note that the formula for the correlation coefficient is symmetrical between $x$ and $y$ - which is not the case for linear regression!
+Pearson's correlation coefficient, sometimes also referred to as "population correlation coefficient" or "sample correlation", can take any value from -1 to +1. Examples are given in Figure \ref{fig:correlation}. Note that the formula for the correlation coefficient is symmetrical between $x$ and $y$ - which is not the case for linear regression!
 
 \subsection{Rank Correlation}\index{general}{rank correlation}
 
 If the data distribution is not normal, a different approach is necessary. In that case one can rank the set of subjects for each variable and compare the orderings. There are two commonly used methods of calculating the rank correlation. \index{general}{correlation!Spearman}
 \index{general}{correlation!Kendall's $\tau$}
 
-\begin{itemize}
-  \item   \emph{Spearman's $\rho$}, which is exactly the same as the Pearson correlation coefficient $r$ calculated on the ranks of the observations.
-  \item   \emph{Kendall's $\tau$} is also a rank correlation coefficient, measuring the association between two measured quantities. It is harder to calculate than Spearman's rho, but it has been argued that confidence intervals for Spearman’s rho are less reliable and less interpretable than confidence intervals for Kendall’s tau-parameters.
-\end{itemize}
+\begin{description}
+  \item[Spearman's $\rho$], which is exactly the same as the Pearson correlation coefficient $r$ calculated on the ranks of the observations.
+  \item[Kendall's $\tau$] is also a rank correlation coefficient, measuring the association between two measured quantities. It is harder to calculate than Spearman's rho, but it has been argued that confidence intervals for Spearman’s rho are less reliable and less interpretable than confidence intervals for Kendall’s tau-parameters.
+\end{description}
 
 %\begin{itemize}
 %  \item   "Regression to the mean"
@@ -57,17 +57,17 @@ We can use the method of \gls{linreg} when we want to predict the value of one v
   \caption{Linear regression.}\label{fig:regression}
 \end{figure}
 
-When we search for the best-fit line to a given $(x_i,y_i)$ dataset, we are looking for the parameters $(k,d)$ which minimize the sum of the squared \emph{residuals} $\epsilon_i$ in
+When we search for the best-fit line to a given $(x_i,y_i)$ dataset, we are looking for the parameters $(k,d)$ which minimize the sum of the squared residuals $\epsilon_i$ in
 
 \begin{equation}\label{eq:simpleRegression}
   y_i = k * x_i + d + \epsilon_i
 \end{equation}
 
-where $k$ is the \emph{slope} or \emph{inclination} of the line, and $d$ the \emph{intercept}. This is in fact just the one-dimensional example of the more general technique, which is described in the next section.
+where $k$ is the slope or inclination of the line, and $d$ the "intercept". This is in fact just the one-dimensional example of the more general technique, which is described in the next section.
 Note that in contrast to the correlation, this relationship between $x$ and $y$ is no more symmetrical: it is assumed that the $x-$values are known exactly, and that all the variability lies in the residuals.
 
 \subsection{Simple Regression}
-Example of \emph{simple linear regression} with 7 observations.
+
 Suppose there are 7 data points $\left\{ {{y_i},{x_i}} \right\}$, where $i=1,2,…,7$. The simple linear regression model is
 
 \begin{equation}
@@ -116,7 +116,7 @@ In general, this can be rewritten in matrix form as:
     \mathbf{y} = \mathbf{X} \cdot \mathbf{\beta } + \mathbf{\varepsilon }
 \end{equation}
 
-$\mathbf{y}$ is a vector of dimension $(n \times 1)$ and is called the \emph{endogenous variable}, the \emph{design matrix} \index{general}{design matrix} $\mathbf{X}$ is a matrix of dimension $(n \times k)$ where each column is an explanatory variable, and $\mathbf{\varepsilon }$ is the error term, the elements of which are assumed to be normally distributed about zero. $\mathbf{\beta }$ is the vector of dimension $(k \times 1)$ and contains the parameters we want to estimate.
+$\mathbf{y}$ is a vector of dimension $(n \times 1)$ and is called the Endogenous Variable, the Design Matrix \index{general}{design matrix} $\mathbf{X}$ is a matrix of dimension $(n \times k)$ where each column is an explanatory variable, and $\mathbf{\varepsilon }$ is the error term, the elements of which are assumed to be normally distributed about zero. $\mathbf{\beta }$ is the vector of dimension $(k \times 1)$ and contains the parameters we want to estimate.
 
 % [xxx "the elements of which are assumed to be normally distributed about zero" - is this what the reviewer wanted, when he/she said "No, we also want variance of epsilon" xxx]
 \subsection{Coefficient of determination}
@@ -133,7 +133,7 @@ In order to interpret r, let me first define a few common terms.
   \caption{Best-fit linear regression line (red) and residuals (black). }\label{fig:residuals}
 \end{figure}
 
-A data set has values $y_i$, each of which has an associated modelled value $f_i$ (also sometimes referred to as $\hat{y}_i$). Here, the values $y_i$ are called the \emph{observed values}, and the modelled values $f_i$ are sometimes called the \emph{predicted values}.
+A data set has values $y_i$, each of which has an associated modelled value $f_i$ (also sometimes referred to as $\hat{y}_i$). Here, the values $y_i$ are called the Observed Values, and the modelled values $f_i$ are sometimes called the Predicted Values.
 
 In the following $\bar{y}$ is the mean of the observed data:
 
@@ -165,7 +165,7 @@ The notations $SS_{R}$ and $SS_{E}$ should be avoided, since in some texts their
 
 \vspace{5 mm}
 
-With these expressions, the most general definition of the \emph{coefficient of determination, $R^2$} is
+With these expressions, the most general definition of the coefficient of determination, $R^2$, is
 
 \begin{equation}\label{eq:R2}
   R^2 \equiv 1 - {SS_{\rm res}\over SS_{\rm tot}}.\,
@@ -183,7 +183,7 @@ Eq. \ref{eq:R2} is equivalent to
   R^2 = \frac{SS_\text{mod}}{SS_\text{tot}}
 \end{equation}
 
-For simple linear regression (i.e. line-fits), the \emph{coefficient of determination} \index{general}{coefficient of determination} or $R^2$ is the square of the correlation coefficient $r$. It is easier to interpret than the correlation coefficient r: values of $R^2$ close to 1 are good, values close to 0 are poor.
+For simple linear regression (i.e. line-fits), the coefficient of determination\index{general}{coefficient of determination} or $R^2$ is the square of the correlation coefficient $r$. It is easier to interpret than the correlation coefficient r: values of $R^2$ close to 1 are good, values close to 0 are poor.
 Note that for general models it is common to write $R^2$, whereas for simple linear regression $r^2$ is used.
 
 \subsubsection{Relation to unexplained variance}\index{general}{unexplained variance}
@@ -281,7 +281,7 @@ From the \texttt{results}, you can extract e.g. the model parameters, standard e
 To use the technique of linear regression, the following assumptions should be fulfilled:
 
 \begin{enumerate}
-  \item The \emph{independent variables} (i.e. $x$) are exactly known.
+  \item The independent variables (i.e. $x$) are exactly known.
   \item Validity. Most importantly, the data you are analyzing should map to the research question you are trying to answer. This sounds obvious but is often overlooked or ignored because it can be inconvenient. For example, a linear regression does not properly describe a quadratic curve.
   \item Additivity and linearity. The most important mathematical assumption of the regression model is that its deterministic component is a linear function of the separate predictors.
   \item Independence of errors from the values of the independent variables.
@@ -292,7 +292,7 @@ To use the technique of linear regression, the following assumptions should be f
 \begin{figure}
   \centering
   \includegraphics[width=0.75\textwidth]{../Images/Anscombes_quartet.png}\\
-  \caption{The sets in the \emph{Anscombe's quartet}\index{general}{Anscombe's quartet} have the same linear regression line but are themselves very different.}
+  \caption{The sets in the "Anscombe's quartet"\index{general}{Anscombe's quartet} have the same linear regression line but are themselves very different.}
 \end{figure}
 
 \PyImg "multivariate.py" (p \pageref{py:multivariate}): Analysis of multivariate data (regression, correlation).

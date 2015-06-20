@@ -1,6 +1,6 @@
 \chapter{ Statistical Models }\label{chapter:Models}\index{general}{statistical modeling}
 
-There is a substantial difference in approach between \emph{hypothesis tests}\index{general}{hypothesis test} and \emph{statistical modeling}. In the former case, you typically start out with a \emph{null hypothesis}. Based on your question and your data, you then select the appropriate statistical test as well as the desired significance level, and either accept or reject the null hypothesis.
+There is a substantial difference in approach between hypothesis tests\index{general}{hypothesis test} and statistical modeling. In the former case, you typically start out with a null hypothesis. Based on your question and your data, you then select the appropriate statistical test as well as the desired significance level, and either accept or reject the null hypothesis.
 
 In contrast, statistical modeling is much more an interactive analysis of the data. Based on a first look at the data, you typically start out with selecting a statistical model that may describe your data. In the previous chapters, we have for example described the hypythesized linear relationship between data with the model
 
@@ -66,7 +66,7 @@ In the case of a linear regression model, the model can be rewritten as in Eq \r
 
 For a simple linear regression and multiple regression, the corresponding Design Matrices are given in \ref{eq:simpleRegressionMatrix} and \ref{eq:multipleRegression}, respectively.
 
-\footnote{This section has been taken from Wikipedia} Given a data set $\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n$ of $n$ statistical units, a linear regression model assumes that the relationship between the dependent variable $y_i$ and the $p$-vector of regressors $x_i$ is linear. This relationship is modelled through a \emph{disturbance term} or \emph{error variable} $\epsilon_i$, an unobserved random variable that adds noise to the linear relationship between the dependent variable and regressors. Thus the model takes the form
+\footnote{This section has been taken from Wikipedia} Given a data set $\{y_i,\, x_{i1}, \ldots, x_{ip}\}_{i=1}^n$ of $n$ statistical units, a linear regression model assumes that the relationship between the dependent variable $y_i$ and the $p$-vector of regressors $x_i$ is linear. This relationship is modelled through a disturbance term or error variable $\epsilon_i$, an unobserved random variable that adds noise to the linear relationship between the dependent variable and regressors. Thus the model takes the form
 
 \begin{equation}\label{eq:regression}
    y_i = \beta_1   x_{i1} + \cdots + \beta_p x_{ip} + \varepsilon_i
@@ -98,15 +98,15 @@ where
 
 Some remarks on terminology and general use:
 \begin{itemize} \index{general}{covariate} \index{general}{regressand} \index{general}{endogenous variable} \index{general}{regressor} \index{general}{exogenous variable}
-  \item $y_i$  is called the \emph{regressand}, \emph{endogenous variable}, \emph{response variable}, \emph{measured variable}, or \emph{dependent variable}.  The decision as to which variable in a data set is modeled as the dependent variable and which are modeled as the independent variables may be based on a presumption that the value of one of the variables is caused by, or directly influenced by the other variables. Alternatively, there may be an operational reason to model one of the variables in terms of the others, in which case there need be no presumption of causality.
-  \item $\mathbf{x}_i$ are called \emph{regressors}, \emph{exogenous variables}, \emph{explanatory variables}, \emph{covariates}, \emph{input variables}, \emph{predictor variables}, or \emph{independent variables}, but not to be confused with \emph{independent random variables}. The matrix $\mathbf{X}$ is sometimes called the \emph{design matrix}.
+  \item $y_i$  is called the Regressand, Endogenous Variable, Response Variable, Measured Variable, or Dependent Variable.  The decision as to which variable in a data set is modeled as the dependent variable and which are modeled as the independent variables may be based on a presumption that the value of one of the variables is caused by, or directly influenced by the other variables. Alternatively, there may be an operational reason to model one of the variables in terms of the others, in which case there need be no presumption of causality.
+  \item $\mathbf{x}_i$ are called Regressors, Exogenous Variables, Explanatory Variables, Covariates, Input Variables, Predictor Variables, or Independent Variables, but not to be confused with Independent Random Variables. The matrix $\mathbf{X}$ is sometimes called the Design Matrix.
       \begin{itemize}
-        \item Usually a constant is included as one of the regressors. For example we can take $x_{i1}=1$ for $i=1,...,n$. The corresponding element of $\beta$ is called the \emph{intercept}. Many statistical inference procedures for linear models require an intercept to be present, so it is often included even if theoretical considerations suggest that its value should be zero.
+        \item Usually a constant is included as one of the regressors. For example we can take $x_{i1}=1$ for $i=1,...,n$. The corresponding element of $\beta$ is called the Intercept. Many statistical inference procedures for linear models require an intercept to be present, so it is often included even if theoretical considerations suggest that its value should be zero.
         \item Sometimes one of the regressors can be a non-linear function of another regressor or of the data, as in polynomial regression and segmented regression. The model remains linear as long as it is linear in the parameter vector $\beta$ (see Eq. \ref{eq:polynomialRegression}).
          \end{itemize}
-  \item $\boldsymbol\beta\,$ is a $p$-dimensional \emph{parameter vector}. Its elements are also called \emph{effects}, or \emph{regression coefficients}. Statistical estimation and inference in linear regression focuses on $\beta$.
-  \item $\varepsilon_i\,$ is called the \emph{residuals}, \emph{error term}, \emph{disturbance term}, or \emph{noise}. This variable captures all other factors which influence the dependent variable $y_i$ other than the regressors $x_i$. The relationship between the error term and the regressors, for example whether they are correlated, is a crucial step in formulating a linear regression model, as it will determine the method to use for estimation.
-  \item If $i=1$ and $p=1$ in Eq.\ref{eq:regression}, we have a \emph{simple linear regression}, corresponding to Eq.\ref{eq:simpleRegression}. If $i>1$ we talk about \emph{multilinear regression} \index{general}{regression!multilinear} or \emph{multiple linear regression}\index{general}{regression!multiple linear|see{regression!multilinear}} (see Eq. \ref{eq:multipleRegression}).
+  \item $\boldsymbol\beta\,$ is a $p$-dimensional parameter vector. Its elements are also called Effects, or Regression Coefficients. Statistical estimation and inference in linear regression focuses on $\beta$.
+  \item $\varepsilon_i\,$ is called the Residuals, Error Term, Disturbance Term, or Noise. This variable captures all other factors which influence the dependent variable $y_i$ other than the regressors $x_i$. The relationship between the error term and the regressors, for example whether they are correlated, is a crucial step in formulating a linear regression model, as it will determine the method to use for estimation.
+  \item If $i=1$ and $p=1$ in Eq.\ref{eq:regression}, we have a Simple Linear Regression, corresponding to Eq.\ref{eq:simpleRegression}. If $i>1$ we talk about Multilinear Regression\index{general}{regression!multilinear} or Multiple Linear Regression\index{general}{regression!multiple linear|see{regression!multilinear}} (see Eq. \ref{eq:multipleRegression}).
 
 \end{itemize}
 
@@ -467,7 +467,7 @@ Here, $X$ is the matrix of predictor variables as columns, with an extra column 
 \subsubsection{Standard Error}
 
 % [xxx Check Formulas in Dobson! xxx]
-To obtain the \emph{standard errors of the coefficients} we will calculate the covariance-variance matrix, also called the covariance matrix, for the estimated coefficients $\beta$ of the predictor variables using
+To obtain the \emph{standard errors of the coefficients} we will calculate the covariance-variance matrix, also called the Covariance Matrix, for the estimated coefficients $\beta$ of the predictor variables using
 
 \begin{equation}
     C = cov(\beta) = \sigma^{2} ( X X^{T} )^{-1}.
@@ -648,7 +648,7 @@ Calculating the JB-statistic using the $\chi^{2}$ distribution with two degrees 
 
 \subsubsection{Condition Number}
 
-The \emph{condition number} \index{general}{condition number} measures the sensitivity of a function's output to its input. When two predictor variables are highly correlated, which is called \emph{multicollinearity}\index{general}{multicollinearity}, the coefficients or factors of those predictor variables can fluctuate erratically for small changes in the data, or the model. Ideally, similar models should be similar, i.e., have approximately equal coefficients. Multicollinearity can cause numerical matrix inversion to crap out, or produce inaccurate results. One approach to this problem in regression is the technique of \emph{ridge regression}, which is available in the \texttt{sklearn} \emph{Python} module.
+The \emph{condition number} \index{general}{condition number} measures the sensitivity of a function's output to its input. When two predictor variables are highly correlated, which is called Multicollinearity\index{general}{multicollinearity}, the coefficients or factors of those predictor variables can fluctuate erratically for small changes in the data, or the model. Ideally, similar models should be similar, i.e., have approximately equal coefficients. Multicollinearity can cause numerical matrix inversion to crap out, or produce inaccurate results. One approach to this problem in regression is the technique of \emph{ridge regression}, which is available in the \texttt{sklearn} \emph{Python} module.
 
 We calculate the condition number by taking the eigenvalues of the product of the predictor variables (including the constant vector of ones) and then taking the square root of the ratio of the largest eigenvalue to the least eigenvalue. If the condition number is greater than thirty, then the regression may have multicollinearity.
 
@@ -804,7 +804,7 @@ Beyond these assumptions, several other statistical properties of the data stron
 
 \subsection{Interpretation}
 
-A fitted linear regression model can be used to identify the relationship between a single predictor variable $x_j$ and the response variable $y$ when all the other predictor variables in the model are “held fixed”. Specifically, the interpretation of $\beta_j$ is the expected change in $y$ for a one-unit change in $x_j$ when the other covariates are held fixed—that is, the expected value of the partial derivative of $y$ with respect to $x_j$. This is sometimes called the ''unique effect'' of $x_j$ on ''y''. In contrast, the ''marginal effect'' of $x_j$ on $y$ can be assessed using a correlation coefficient or simple linear regression model relating $x_j$ to $y$; this effect is the total derivative of $y$ with respect to $x_j$.
+A fitted linear regression model can be used to identify the relationship between a single predictor variable $x_j$ and the response variable $y$ when all the other predictor variables in the model are “held fixed”. Specifically, the interpretation of $\beta_j$ is the expected change in $y$ for a one-unit change in $x_j$ when the other covariates are held fixed—that is, the expected value of the partial derivative of $y$ with respect to $x_j$. This is sometimes called the Unique Effect of $x_j$ on "y". In contrast, the Marginal Effect of $x_j$ on $y$ can be assessed using a correlation coefficient or simple linear regression model relating $x_j$ to $y$; this effect is the total derivative of $y$ with respect to $x_j$.
 
 Care must be taken when interpreting regression results, as some of the regressors may not allow for marginal changes (such as dummy variables, or the intercept term), while others cannot be held fixed (recall the example from the introduction: it would be impossible to “hold $t_j$ fixed” and at the same time change the value of $t_i^2$.
 

@@ -1,19 +1,28 @@
 \chapter{Test of Means of Continuous Data}
 
+This chapter covers hypothesis tests for the mean value of groups:
+
+\begin{itemize}
+  \item Comparison of one group with a fixed value.
+  \item Comparison if two groups with respect to each other.
+  \item Comparison of three or more groups with each other.
+\end{itemize}
+
+In each case we distinguish between two cases. If the data are approximately normally distributed, so called Parametric Tests can be used\index{general}{parameteric test}. These tests are more sensitive than "non-parametric tests", but require that certain assumptions are fulfilled. If the data are not normally distributed, or if they are only available in ranked form, the corresponding non-parametric tests are presented\index{general}{non-parametric tests}.
+
 \section{Distribution of a Sample Mean}
 
 \subsection{One sample t-test for a mean value} \index{general}{test! t-test, one sample}
 
-To check the mean value of normally distributed data against a reference value, we typically use the \emph{one sample t-test}, which is based on the \emph{t-distribution}.
+To check the mean value of normally distributed data against a reference value, we typically use the \emph{one sample t-test}, which is based on the t-distribution.
 
-If we knew the mean and the standard deviation of a normally distributed population, we could calculate the corresponding standard error, and use values from the normal distribution to determine how likely it is to find a certain mean value, given the population mean and standard deviation. However, in practice we have to \emph{estimate} the mean and standard deviation from the sample, and the t-distribution for the mean slightly deviates from a normal distribution.
+If we knew the mean and the standard deviation of a normally distributed population, we could calculate the corresponding standard error, and use values from the normal distribution to determine how likely it is to find a certain mean value, given the population mean and standard deviation. However, in practice we have to estimate the mean and standard deviation from the sample, and the t-distribution, which characterices the distribution of sample means for normally distributed data, deviates slightly from the normal distribution.
 
 \subsubsection{Example}
 
-Let us look at a specific example: we take 100 normally distributed data, with a mean of 7 and with a standard deviation of 3.
-What is the chance of finding a mean value at a distance of 0.5 or more from the mean? \emph{Answer: The probability from the t-test in the example is 0.057, and from the normal distribution 0.054}
+Since it is very important to understand the basic principles of how to calculate the t-statistic and the corresponding p-value for this test, let me illustrate the underlying statistics by going through the analysis of a specific example, step-by-step. As example we take 100 normally distributed data, with a mean of 7 and with a standard deviation of 3.
+What is the chance of finding a mean value at a distance of 0.5 or more from the mean? \emph{Answer: The probability from the t-test in the example is 0.057, and from the normal distribution 0.054.}
 
-Since it is very important to understand the basic principles of how we arrive at the t-statistic and the corresponding p-value for this test, let me illustrate the underlying statistics by going step-by-step through the analysis:
 
 \begin{figure}
   \centering
@@ -23,35 +32,30 @@ Since it is very important to understand the basic principles of how we arrive a
 
 \begin{itemize}
   \item We have a population, with a mean value of 7 and a standard deviation of 3.
-  \item From that population an observer takes 100 random samples. The sample mean is 7.10, close to but different from the real mean. The sample standard deviation is 3.12, and the standard error of the mean 0.312. This gives the observer an idea about the variability of the population.
-  \item The observer knows that the distribution of the real mean follows a t-distribution, and that the \emph{standard error of the mean} characterizes the width of that distribution.
+  \item From that population an observer takes 100 random samples. The sample mean of the example shown in Fig. \ref{fig:ttestExplained} is 7.10, close to but different from the real mean. The sample standard deviation is 3.12, and the standard error of the mean 0.312. This gives the observer an idea about the variability of the population.
+  \item The observer knows that the distribution of the sample mean follows a t-distribution, and that the standard error of the mean (SEM) characterizes the width of that distribution.
   \item How likely it is that the real mean has a value of $x_0$ (e.g. 6.5, indicated by the red triangle in Fig. \ref{fig:ttestExplained}, left)? To find that out, this value has to be transformed, by subtracting the sample mean, and dividing by the standard error. (Fig. \ref{fig:ttestExplained}, right). This provides the \emph{t-statistic} for this test (-1.93).
-  \item The corresponding \emph{p-value}, which tells us how likely it is that the real mean has a value of 6.5 or more extreme relative to the sample mean, is given by the red shaded area under the curve-wings: \emph{2*CDF(t-statistic) = 0.057}, which means that the difference to 6.5 is just not significant. (The factor "2" comes from the fact that we have to check in both tails.)
+  \item The corresponding p-value, which tells us how likely it is that the real mean has a value of 6.5 or more extreme relative to the sample mean, is given by the red shaded area under the curve-wings: \emph{2*CDF(t-statistic) = 0.057}, which means that the difference to 6.5 is just not significant. (The factor "2" comes from the fact that we have to check in both tails.)
 \end{itemize}
+
+In \emph{Python}, test statistic and p-value for the one sample t-test can be calculated with
+
+\begin{lstlisting}
+      t, pVal = stats.ttest_1samp(data, checkValue)
+\end{lstlisting}
 
 \PyImg "oneSample.py" (p \pageref{py:oneSample}): Sample analysis for one group of continuous data.
 \index{python}{oneSample}
 
-%To illustrate the ideas behind the use of distribution functions, let us go step-by-step through the analysis of the following problem:
-%Being 50 years old, 175 cm tall, and moderately active, my daily nutritional requirement is 2460 cal/day. On 10 subsequent days, I have carefully listed my food intake, and obtained the following numbers of calories for each day: [2784, 2632, 2771, 2495, 2435, 2513, 2633, 2737, 2687, 2647]. My question now: is this too much - do I have to cut back on my chocolate??
-%
-%\begin{itemize}
-%  \item Find the mean and standard deviation of the best-fit normal distribution (mean = 2633.4, std = 113.3).
-%  \item Calculate the CDF at the interesting value (2460 cal/day) (CDF(2460) = 0.06).
-%  \item Interpret the result (\emph{"not significant"}).
-%\end{itemize}
-%
-%\begin{figure}
-%  \centering
-%  \includegraphics[width=0.85\textwidth]{../Images/pdf_checkMean.png}\\
-%  \caption{Check if the mean of the fitted curve is significantly different from the value to be checked.}\label{fig:pdf_checkValue}
-%\end{figure}
-
-
 \subsection{Wilcoxon signed rank sum test}\index{general}{test!Wilcoxon signed rank sum}
 
-If our data are not normally distributed, we cannot use the t-test (although this test is fairly robust against deviations from normality, see Fig. \ref{fig:ttest_stability}). Instead, we must use a \emph{non-parametric} test on the mean value. We can do this by performing a \emph{Wilcoxon signed rank sum test}.
- \footnote{\emph{Python} Example: scipy.stats.wilcoxon, in "univariate.py"},\footnote{The following description and example has been taken from \cite{altman99}, Table 9.2}
+If the data are not normally distributed, the one-sample t-test should not be used (although this test is fairly robust against deviations from normality, see Fig. \ref{fig:ttest_stability}). Instead, we must use a non-parametric test on the mean value. We can do this by performing a \emph{Wilcoxon signed rank sum test}. Note that in contrast to the one-sample t-test, this test checks for a difference from null:
+
+\begin{lstlisting}
+    (rank, pVal) = stats.wilcoxon(data-checkValue)
+\end{lstlisting}
+
+\footnote{The following description and example has been taken from \cite{altman99}, Table 9.2}
 This method has three steps:
 
 \begin{enumerate}
@@ -64,7 +68,7 @@ In Table \ref{tab:wilcoxon} you see an example, where the significance to a devi
 
 \begin{table}
   \centering
-  \begin{tabular}{l p{2cm} p{2cm} p{2cm}}
+  \begin{tabular}{l p{2.5cm} p{2.5cm} p{2.5cm}}
      \hline
      Subject & Daily energy intake (kJ) & Difference from 7725 kJ & Ranks of differences \\
      1 & 5260 & 2465 & 11 \\
@@ -87,12 +91,30 @@ In Table \ref{tab:wilcoxon} you see an example, where the significance to a devi
 \section{Comparison of Two Groups} \index{general}{test! t-test, paired}
 
 \subsection{Paired T-Test}
-When we compare two groups with each other, we have to distinguish between two cases. In the first case, we compare two values recorded from the same subject at two specific times. For example, we measure the size of students when they enter primary school and after their first year, and check if they have grown. Since we are only interested in the \emph{difference} between the first and the second measurement, this test is called \gls{paired}, and is essentially equivalent to a one-sample t-test for the mean difference.
+In the comparison of two groups with each other, two cases have to be distinguished. In the first case, two values recorded from the same subject at different times are compared to each other. For example, the size of students when they enter primary school and after their first year, to check if they have grown. Since we are only interested in the difference between the first and the second measurement, this test is called \gls{paired} t-test, and is essentially equivalent to a one-sample t-test for the mean difference.
 
-\subsection{Unpaired T-Test}
-An \gls{unpaired} is if we compare two independent groups. For example, we can compare the effect of a two medications given to two different groups of patients, and compare how the two groups respond. This is called an \emph{unpaired t-test}, or \emph{t-test for two independent groups}.
+Therefore the two tests \lstinline{stats.ttest_1samp} and \lstinline{stats.ttest_rel} provide the same result:
 
-If we have two independent samples the variance of the difference between their means is the \emph{sum} of the separate variances, so the standard error of the difference in means is the square root of the sum of the separate variances:
+\begin{lstlisting}
+  In [1]: import numpy as np
+  In [2]: from scipy import stats
+
+  In [3]: np.random.seed(1234)
+  In [4]: data = np.random.randn(10)+0.1
+  In [5]: data1 = np.random.randn(10)*5  # dummy data
+  In [6]: data2 = data1 + data    # same difference between groups as "data"
+
+  In [7]: stats.ttest_1samp(data, 0)
+  Out[7]: (-0.12458492298731401, 0.90359045085470857)
+
+  In [8]: stats.ttest_rel(data2, data1)
+  Out[8]: (-0.1245849229873135, 0.9035904508547089)
+\end{lstlisting}
+
+\subsection{T-Test Between Independent Groups} \index{general}{test! t-test, independent groups}
+An \gls{unpaired} t-test compares two independent groups. An example would be the comparison of the effect of a two medications given to two different groups of patients. This is called an \emph{unpaired t-test}, or \emph{t-test for two independent groups}.
+
+If we have two independent samples the variance of the difference between their means is the sum of the separate variances, so the standard error of the difference in means is the square root of the sum of the separate variances:
 
 \begin{align*}
    se({{\bar x}_1} \pm {{\bar x}_2}) &= \sqrt {\operatorname{var} ({{\bar x}_1}) + \operatorname{var} ({{\bar x}_2})}  \\
@@ -104,16 +126,26 @@ where $\bar{x}_i$ is the mean of the i-th sample, and \emph{se} indicates the \e
 
 Expressed in words, \emph{The variance of a sum of independent random variables equals the sum of the variances.}
 
+\begin{lstlisting}
+    t_statistic, pVal = stats.ttest_ind(group1, group2)
+\end{lstlisting}
+
 \subsection{Non-parametric Comparison of Two Groups: Mann-Whitney Test} \index{general}{test!Mann-Whitney}\label{test:Mann-Whitney}
 
 If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilcoxon) test}. Watch out, because this test is sometimes also referred to as \emph{Wilcoxon rank-sum test}. This is different from the \emph{Wilcoxon signed rank sum test}!
+The test-statistic for this test is commonly indicated with \emph{u}:
+
+\begin{lstlisting}
+    u_statistic, pVal = stats.mannwhitneyu(group1, group2)
+\end{lstlisting}
+
 
 \PyImg "twoSample.py" (p \pageref{py:twoSample}): Comparison of two groups, paired and unpaired.
 \index{python}{twoSample}
 
 \subsection{Statistical Hypothesis Tests vs Statistical Modeling}
 
-With the advent of cheap computing power, statistical modeling has been a booming field. This has also affected classical statistical analysis, as most problems can be viewed from two perspectives: you can either make a statistical hypothesis, and verify or falsify that hypothesis; or you can make a statistical model, and analyse the significance of the model parameters.
+With the advent of cheap computing power, statistical modeling has been a booming field. This has also affected classical statistical analysis, as most problems can be viewed from two perspectives: one can either make a statistical hypothesis, and verify or falsify that hypothesis; or one can make a statistical model, and analyse the significance of the model parameters.
 
 Let me use a classical t-test as an example.
 
@@ -124,7 +156,9 @@ Let us take performance measurements from a racing team, on two different occasi
 These numbers can be generated, and a t-test comparing the two groups can be done, with the following \emph{Python} commands:
 
 \begin{lstlisting}
+    import numpy as np
     from scipy import stats
+
     random.seed(123)
     race_1 = np.round(randn(20)*10+90)
     race_2 = np.round(randn(20)*10+85)
@@ -139,13 +173,14 @@ The command \lstinline{random.seed(123)} initializes the random number generator
 \begin{lstlisting}
     import pandas as pd
     import statsmodels.formula.api as sm
+
     np.random.seed(123)
     df = pd.DataFrame({'Race1': race_1, 'Race2':race_2})
     result = sm.ols(formula='I(Race2-Race1) ~ 1', data=df).fit()
     print(result.summary())
 \end{lstlisting}
 
-The important line is the last but one, which produces the $results$. Thereby the \emph{ordinary least square (ols)} function from \emph{statsmodels} tests the model which describes the difference between the results of \emph{Race1} and those of \emph{Race2} with only an \emph{offset} (also called \emph{intercept} in the language of modeling). In other words, our model has only one parameter, the \emph{intercept}. The results below show that the probability that this intercept is 0 is only 0.03: the difference is \emph{significant}.
+The important line is the last but one, which produces the $results$. Thereby the function \lstinline{sm.ols}  ("ols" for "ordinary least square") function from \emph{statsmodels} tests the model which describes the difference between the results of \emph{Race1} and those of \emph{Race2} with only an offset (also called Intercept in the language of modeling). In other words, the model has only one parameter, the \emph{Intercept}. The results below show that the probability that this intercept is only $0.033$: the difference is significant.
 
  \small\begin{lstlisting}
 
@@ -173,13 +208,13 @@ Kurtosis:                       2.532   Cond. No.                         1.00
 \end{lstlisting}
 \normalsize
 
-The output is explained in more model in the chapter \ref{chapter:Models}. The important point here is that the t- and p-value for the \emph{intercept} are the same as with the classical t-test above.
+The output is explained in more detail in the chapter \ref{chapter:Models}. The important point here is that the t- and p-value for the intercept are the same as with the classical t-test above.
 
 \section{Comparison of More Groups}
 
 \subsection{Analysis of Variance - ANOVA} \label{sec:anova} \index{general}{ANOVA} \index{general}{test!ANOVA}
 
-The idea behind the \acrfull{anova} (ANOVA) is to divide the variance into the variance \emph{between} groups, and that \emph{within} groups, and see if those distributions match the null hypothesis that all groups come from the same distribution. The variables that distinguish the different groups are often called \emph{factors}.
+The idea behind the \acrfull{anova} (ANOVA) is to divide the variance into the variance \emph{between} groups, and that \emph{within} groups, and see if those distributions match the null hypothesis that all groups come from the same distribution. The variables that distinguish the different groups are often called Factors or Treatments.
 
 \begin{figure}
   \centering
@@ -189,14 +224,14 @@ The idea behind the \acrfull{anova} (ANOVA) is to divide the variance into the v
 
 (By comparison, t-tests look at the mean values of two groups, and check if those are consistent with the assumption that the two groups come from the same distribution.)
 
-For example, if we compare a group with No treatment, another with treatment A, and a third with treatment B, then we perform a \emph{one factor ANOVA}, sometimes also called \emph{one-way ANOVA}, with "treatment" the one analysis factor. If we do the same test with men and with women, then we have a \emph{two-factor} or \emph{two-way ANOVA}, with "gender" and "treatment" as the two treatment factors. Note that with ANOVAs, it is quite important to have exactly the same number of samples in each analysis group! (This is called a \emph{balanced ANOVA}\index{general}{ANOVA!balanced}: a balanced design has an equal number of observations for all possible combinations of factor levels.)
+For example, if we compare a group with \emph{No treatment}, another with \emph{treatment A}, and a third with \emph{treatment B}, then we perform a "one factor ANOVA", sometimes also called "one-way ANOVA", with \emph{treatment} the one analysis factor. If we do the same test with men and with women, then we have a "two-factor" or "two-way ANOVA", with \emph{gender} and \emph{treatment} as the two treatment factors. Note that with ANOVAs, it is quite important to have exactly the same number of samples in each analysis group! (This is called a "balanced ANOVA"\index{general}{ANOVA!balanced}: a balanced design has an equal number of observations for all possible combinations of factor levels.)
 
-Because the null hypothesis is that there is no difference between the groups, the test is based on a comparison of the observed variation between the groups (i.e. between their means) with that expected from the observed variability between subjects. The comparison takes the general form of an \emph{F test} to compare variances, but for two groups the t test leads to exactly the same answer.
+Because the null hypothesis is that there is no difference between the groups, the test is based on a comparison of the observed variation between the groups (i.e. between their means) with that expected from the observed variability between subjects. The comparison takes the general form of an F-test to compare variances, but for two groups the t -test leads to exactly the same result.
 
-The one-way ANOVA assumes all the samples are drawn from normally distributed populations with equal variance. To test the equal variance assumption, one of the popular approaches is the \emph{Levene test}\index{general}{test!Levene}.
+The one-way ANOVA assumes all the samples are drawn from normally distributed populations with equal variance. To test the equal variance assumption, one of the popular approaches is the Levene test\index{general}{test!Levene}.
 
-ANOVA uses traditional terminology. DF indicates the degrees of freedom (DF) (see also section \ref{sec:DF}), the summation is called the \acrfull{ss} (SS), the result is called the mean square (MS) and the squared terms are deviations from the sample mean.
-In general, the \emph{sample variance}\index{general}{sample variance} is defined by
+ANOVA uses traditional terminology. DF indicates the degrees of freedom (DF) (see also section \ref{sec:DF}), the summation is called the \acrfull{ss} (SS), the result is called the Mean Square (MS) and the squared terms are deviations from the sample mean.
+In general, the sample variance\index{general}{sample variance} is defined by
 
 \begin{equation}\label{eq:sampleVariance}
   s^2 = \frac{1}{DF} \sum (y_i - \bar{y})^2 = \frac{SS}{DF}
@@ -223,7 +258,7 @@ The number of degrees of freedom DF can be partitioned in a similar way: one of 
 
 
 \subsubsection{Example: one-way ANOVA}
-As an example, let us take the red cell folate levels ($\mu g/l$) in three groups of cardiac bypass patients given different levels of nitrous oxide ventilation (Amess et al, 1978), described in the \emph{Python} code example below. In total 22 patients were included in the analysis. I first show the result of this ANOVA test, and then explain the steps to get there.
+As an example, take the red cell folate levels ($\mu g/l$) in three groups of cardiac bypass patients given different levels of nitrous oxide ventilation (Amess et al, 1978), described in the \emph{Python} code example below. In total 22 patients were included in the analysis. I first show the result of this ANOVA test, and then explain the steps to get there.
 
 \begin{verbatim}
                 DF    SS          MS     F    p(>F)

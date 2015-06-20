@@ -141,7 +141,7 @@ In other words, the p-value states how likely it is to obtain a value as extreme
 
 The value against which the p-value is compared is the "significance level"\index{general}{significance level}, and is often indicated with the letter $\alpha$. The significance level is a user choice, and typically set to $0.05$.
 
-This way of proceeding to test a hypothesis is called "statistical inference"\index{general}{statistical inference}.
+This way of proceeding to test a hypothesis is called Statistical Inference\index{general}{statistical inference}.
 
 Remember, p only indicates the likelihood of obtaining a certain value for the test statistic if the null hypothesis is true - nothing else!
 
@@ -179,7 +179,7 @@ with $e=exp(1)$, and $log$ the natural logarithm. For example, $p=0.05$ leads to
 In hypothesis testing, two types of errors can occur:
 
 \subsubsection{Type I errors} \index{general}{error!Type I} \index{general}{power}
-\gls{TypeI} are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and is set before you start the data analysis. In quality control, a Type I error is called "producer risk", because you keep a produced item despite the fact that it meets the regulatory requirements.
+\gls{TypeI} are errors, where you get a significant result despite the fact that the hypothesis is true. The likelihood of a Type I error is commonly indicated with $\alpha$, and is set before you start the data analysis. In quality control, a Type I error is called Producer Risk, because you keep a produced item despite the fact that it meets the regulatory requirements.
 
 For example, assume that the population of young Austrian adults has a mean IQ of 105 (i.e. we are smarter than the rest) and a standard deviation of 15. We now want to check if the average FH student in Linz has the same IQ as the average Austrian, and we select 20 students. We set $\alpha=0.05$, i.e. we set our significance level to 95\%.
 Let us now assume that the average student has in fact the same IQ as the average Austrian. If we repeat our study 20 times, we will find one of those 20 times that our sample mean is significantly different from the Austrian average IQ. Such a finding would be a false result, despite the fact that our assumption is correct, and would constitute a type I error.
@@ -189,7 +189,7 @@ If we want to answer the question "How much chance do we have to reject the null
 
 For the example given above, an alternative hypothesis could be: "We assume that our population has a mean value of 6."
 
-A \gls{TypeII} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false.  In quality control, a Type II error is called a "consumer risk", because the consumer obtains an item that does not meet the regulatory requirements.
+A \gls{TypeII} is an error, where you do \emph{not} get a significant result, despite the fact that the null-hypothesis is false.  In quality control, a Type II error is called a Consumer Risk, because the consumer obtains an item that does not meet the regulatory requirements.
 
 The probability for this type of error is commonly indicated with $\beta$. The "power" of a statistical test is defined as $(1-\beta)*100$, and is the chance of correctly accepting the alternate hypothesis. Figure \ref{fig:power1} shows the meaning of the power of a statistical test. Note that for finding the power of a test, you need an alternative hypothesis.
 
@@ -209,7 +209,7 @@ The power of a statistical test depends on four factors:
 
 Only 3 of these 4 parameters can be chosen, the $4^{th}$ is then automatically fixed.
 
-The absolute size of the difference $D$ between mean treatment outcomes that will answer the clinical question being posed is often called "clinical significance" or "clinical relevance".
+The absolute size of the difference $D$ between mean treatment outcomes that will answer the clinical question being posed is often called Clinical Significance or Clinical Relevance.
 
 \begin{figure}[!ht]
   \centering
@@ -255,7 +255,7 @@ For finding a difference between two normally distributed means, with standard d
 
 \begin{lstlisting}
     In [1]: from statsmodels.stats import power
-    
+
     In [2]: nobs = power.tt_ind_solve_power(effect_size = 0.5, alpha =0.05, power=0.8)
     In [3]: print(nobs)
     Out[3]: 63.76561177540974
@@ -298,13 +298,13 @@ Some of the more confusing terms in statistical analysis are \gls{sensitivity} \
   \item[Negative Predictive Value (NPV)] Proportion of patients with negative test results who are correctly diagnosed.
 \end{description}
 
-For example, \emph{pregnancy tests} have a high sensitivity: when a woman is pregnant, the probability that the test is positive is very high.
+For example, pregnancy tests have a high sensitivity: when a woman is pregnant, the probability that the test is positive is very high.
 
 In contrast, an indicator for an attack with atomic weapons on the White House should have a very high specificity: if there is no attack, the probability that the test goes on should be very, very small.
 
-\emph{Sensitivity} and \emph{specificity} characterize a test, while \emph{PPV} and \emph{NPV} are the parameters that tell the doctor how to interpret a test result.
+Sensitivity and specificity characterize a test, while PPV and NPV are the parameters that tell the doctor how to interpret a test result.
 
-While sensitivity and specificity are independent of prevalence, they do not tell us what portion of patients with abnormal test results are truly abnormal. This information is provided by the positive/negative predictive value. However, as Fig. \ref{fig:prevalence} indicates, these values are affected by the \emph{prevalence} \index{general}{prevalence} of the disease. In other words, we need to know the prevalence of the disease as well as the PPV/NPV of a test to provide a sensible interpretation of the test results.
+While sensitivity and specificity characterise a test and are independent of prevalence, they do not indicate what portion of patients with abnormal test results are truly abnormal. This information is provided by the positive/negative predictive value. However, as Fig. \ref{fig:prevalence} indicates, these values are affected by the prevalence \index{general}{prevalence} of the disease. The "prevalence" of a disease indicates how many out of 100'000 people are affected by it; in contrast, the "incidence" gives the number of newly diagnosed cases per 100'000 people. In summary, we need to know the prevalence of the disease as well as the PPV/NPV of a test to provide a sensible interpretation of the test results.
 
 \begin{figure}[ht]
   \centering
@@ -330,11 +330,11 @@ Figure \ref{fig:sens_spec_example} gives a worked example:
   \item Likelihood ratio negative = $\frac{1−sensitivity}{specificity}$ = $\frac{1−66.67\%}{91\%}$ = 0.37
 \end{itemize}
 
-Hence with large numbers of false positives and few false negatives, a positive FOB screen test is in itself poor at confirming cancer (PPV = 10\%) and further investigations must be undertaken; it did, however, correctly identify 66.7\% of all cancers (the sensitivity). However as a screening test, a negative result is very good at reassuring that a patient does not have cancer (NPV = 99.5\%) and at this initial screen correctly identifies 91\% of those who do not have cancer (the specificity).
+Hence with large numbers of false positives and few false negatives, a positive test outcome in this example is in itself poor at confirming cancer (PPV = 12.5\%) and further investigations must be undertaken; it did, however, correctly identify 71\% of all cancers (the sensitivity). However as a screening test, a negative result is very good at reassuring that a patient does not have cancer (NPV = 99.5\%) and at this initial screen correctly identifies 92\% of those who do not have cancer (the specificity).
 
 \section{ROC Curve}\index{general}{ROC curve}
 
-Closely related to \emph{Sensitivity} and \emph{Specificity} is the \acrfull{roc} (ROC) curve. This is a graph displaying the relationship between the true positive rate (on the vertical axis) and the false positive rate (on the horizontal axis). The technique comes from the field of engineering, where it was developed to find the predictor which best discriminates between two given distributions. In the ROC-curve (Figure \ref{fig:ROC}) this point is given by the value with the largest distance to the diagonal.
+Closely related to sensitivity and specificity is the \acrfull{roc} (ROC) curve. This is a graph displaying the relationship between the true positive rate (on the vertical axis) and the false positive rate (on the horizontal axis). The technique comes from the field of engineering, where it was developed to find the predictor which best discriminates between two given distributions. In the ROC-curve (Figure \ref{fig:ROC}) this point is given by the value with the largest distance to the diagonal.
 
 \begin{figure}[ht]
   \centering

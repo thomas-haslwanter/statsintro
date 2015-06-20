@@ -20,7 +20,7 @@ The choice of appropriate statistical procedure depends on the data. If the vari
 \end{enumerate}
 
 \subsubsection{nominal}\index{general}{nominal}
-Many classifications require more than two categories. Such data are called "nominal data". An example is  \emph{married / single / divorced}.
+Many classifications require more than two categories. Such data are called Nominal Data. An example is  \emph{married / single / divorced}.
 
 \subsubsection{ordinal}\index{general}{data!ordinal}
 In contrast to nominal data, "ordinal data" have a logical sequence, e.g. \emph{very few / few / some / many / very many} .
@@ -31,7 +31,7 @@ In contrast to nominal data, "ordinal data" have a logical sequence, e.g. \emph{
 Whenever possible, it is best to record the data in their original continuous format, and only with a sensible number of decimal places. For example, it does not make sense to record the body size with more than 1 mm accuracy, as there are larger changes in body height between the size in the morning and the size in the evening, due to compression of the intervertebral disks.
 
 \subsubsection{Numerical discrete}
-Some numerical data can only take on integer valued. These data are called "numerical discrete". For example \emph{Number of children: 0 1 2 3 4 5}
+Some numerical data can only take on integer valued. These data are called Numerical Discrete. For example \emph{Number of children: 0 1 2 3 4 5}
 
 \subsubsection{Data with one, two, or more variables}
 
@@ -193,7 +193,7 @@ There are a number of tests to check for outliers\index{general}{outliers}. The 
   \caption{Box plot}\label{fig:Boxplot}
 \end{figure}
 
-Boxplots are often combined with KDE-plots to produce so-called \emph{violin-plots} \index {general}{plots!violinplot}, as shown in Figure \ref{fig:violin}.
+Boxplots are often combined with KDE-plots to produce so-called Violin-Plots \index {general}{plots!violinplot}, as shown in Figure \ref{fig:violin}.
 
 \begin{lstlisting}
     # Generate the data
@@ -385,8 +385,8 @@ In the context of study design, different terminologies can be found (Fig. \ref{
 \begin{itemize}
     \item{The controlled inputs are often called \glspl{factor}\index{general}{factors} or
             \gls{treatment}\index{general}{treatments}.}
-    \item{The uncontrolled inputs are called "co-factors"\index{general}{co-factors} or
-            "nuisance factors".}
+    \item{The uncontrolled inputs are called Co-factors\index{general}{co-factors} or
+            Nuisance Factors.}
 \end{itemize}
 
 When we try to model a process with two inputs and one outputs, we can
@@ -396,7 +396,7 @@ formulate a mathematical model for example as
     X = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_{12} X_1 X_2 + \epsilon
 \end{equation}
 
-The terms with the single $X$ ($\beta_1, \beta_2$) are called "main effects"\index{general}{main effects}, and the terms with multiple $X$  ($\beta_{12}$) "interaction terms"\index{general}{interactions}. And since the $\beta$
+The terms with the single $X$ ($\beta_1, \beta_2$) are called Main Effects\index{general}{main effects}, and the terms with multiple $X$  ($\beta_{12}$) "interaction terms"\index{general}{interactions}. And since the $\beta$
 parameters enter the equation only linearly, this is referred to as a \emph{general linear model}. The $\epsilon$-s are called "\glspl{residual}"\index{general}{residuals}, and are expected to be approximately normally distributed around zero.
 
 \subsection{Overview}
@@ -480,7 +480,7 @@ To explain the effects of selection bias on a statistical analysis, consider the
 
 What went wrong?
 
-First, the sample was badly chosen, and not representative for the American voter: the mailing list for the survey were taken from telephone directories, club membership lists, and lists of magazine subscribers. Thus, they were strongly biased towards the American middle- and upper-class. And second, only about one fourth of the people asked responded. And people who respond to surveys are different from people who don't, the so-called "nonresponse bias"\index{general}{nonresponse bias}.
+First, the sample was badly chosen, and not representative for the American voter: the mailing list for the survey were taken from telephone directories, club membership lists, and lists of magazine subscribers. Thus, they were strongly biased towards the American middle- and upper-class. And second, only about one fourth of the people asked responded. And people who respond to surveys are different from people who don't, the so-called Nonresponse Bias\index{general}{nonresponse bias}.
 
 This example shows that a large sample size alone does not guarantee a representative response. You have to watch out for selection bias and nonresponse bias.
 
@@ -497,8 +497,8 @@ Care should be taken to avoid bias as much as possible.
 
 \subsubsection{Randomized controlled trial} \index{general}{randomized controlled trial}
 The gold standard for experimental scientific clinical trials is the \emph{randomized controlled trial}. Thereby bias is avoided by splitting the subjects to be tested into an \emph{intervention group} and a \emph{control group}\index{general}{control group}. The group allocation is made \emph{random}.
-In a designed experiment, there may be several conditions, called factors, that are controlled by the experimenter. By having the groups differ in only one aspect, the factor \emph{treatment}, we should be able to detect the effect of the treatment on the patients.
-Factors that can affect the outcome of the experiment are called \emph{covariates} or \emph{confoundings}. Through \emph{randomization}, covariates should be balanced across the groups.
+In a designed experiment, there may be several conditions, called Factors, that are controlled by the experimenter. By having the groups differ in only one aspect, the factor \emph{treatment}, we should be able to detect the effect of the treatment on the patients.
+Factors that can affect the outcome of the experiment are called Covariates or Confoundings. Through randomization, covariates should be balanced across the groups.
 
 \subsubsection{Randomization} \index{general}{randomization}
 This may be one of the most important aspects of experimental planning. \Gls{randomization} is used to avoid bias as much as possible, and there are different ways to randomize an experiment. For the randomization, \emph{random number generators}, which are available with most computer languages, can be used. To minimize the chance of bias, the randomly allocated numbers should be presented to the experimenter as late as possible.

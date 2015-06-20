@@ -1,24 +1,37 @@
 \chapter{Relation Between Several Variables}
 
-When we have two groups, we can ask the question: "Are they different?" The answer is provided by hypothesis tests: by a \emph{t-test} if the data are normally distributed, or by a \emph{Mann-Whitney test} otherwise. If we want to go one step further and predict the value of one variable from another, we have to use the technique of \emph{linear regression}.
+When we have two groups, we can ask the question: "Are they different?" The answer is provided by hypothesis tests: by a t-test if the data are normally distributed, or by a Mann-Whitney test otherwise. If we want to go one step further and predict the value of one variable from another, we have to use the technique of Linear Regression.
 
 So what happens when we have more than two groups?
 
-To answer the question "Are they different?" for more than two groups, we have to use the \emph{Analysis of Variance (ANOVA)-test} for data where the residuals are normally distributed. If this condition is not fulfilled, the \emph{Kruskal-Wallis Test} has to be used.
+To answer the question "Are they different?" for more than two groups, we have to use the Analysis of Variance (ANOVA)-test for data where the residuals are normally distributed. If this condition is not fulfilled, the Kruskal-Wallis Test has to be used.
 
 What should we do if we have paired data?
 
-If we have matched pairs for two groups, and the differences are not normally distributed, we can use the \emph{Wilcoxon signed rank sum test}. The rank test for more than two groups of matched data is the \emph{Friedman test}\index{general}{test!Friedman}.\footnote{It may be worth mentioning that Thom Baguley suggested the following: Where one-way repeated measures ANOVA is not appropriate, rank transformation followed by ANOVA will provide a more robust test with greater statistical power than the Friedman test.}
+If we have matched pairs for two groups, and the differences are not normally distributed, we can use the "Wilcoxon signed rank sum"-test. The rank test for more than two groups of matched data is the Friedman test\index{general}{test!Friedman}.\footnote{It may be worth mentioning that Thom Baguley suggested the following: Where one-way repeated measures ANOVA is not appropriate, rank transformation followed by ANOVA will provide a more robust test with greater statistical power than the Friedman test.}
 
 An example for the application of the Friedman test: Ten professional piano players are blindfolded, and are asked to judge the quality of three different pianos. Each player rates each piano on a scale of 1 to 10 (1 being the lowest possible grade, and 10 the highest possible grade). The null hypothesis is that all three pianos rate equally. To test the null hypothesis, the Friedman test is used on the ratings of the ten piano players.
 
-When moving from two to many variables, the correlation coefficient gets replaced by the \emph{correlation matrix}\index{general}{correlation matrix}. And if we want to and predict the value of \emph{many} other variables, linear regression has to be replaced by \emph{multilinear regression}\index{general}{regression!multilinear}, sometimes also referred to as \emph{multiple linear regression}.
+When moving from two to many variables, the correlation coefficient gets replaced by the correlation matrix\index{general}{correlation matrix}. And if we want to and predict the value of many other variables, linear regression has to be replaced by multilinear regression\index{general}{regression!multilinear}, sometimes also referred to as "multiple linear regression".
 
 However, watch out for the pitfalls that loom when you work with many variables! Take for example the following hypothetical case: you make a survey about the activity and life circumstances of a large range of people, covering all the numbers that you can get your hand on. In this survey you find out that a) rich people spend more time playing golf than poor people, and b) rich people tend to have fewer children than poor people. This leads to a strong negative correlation between playing golf and having children, and you may be tempted to (falsely) draw the conclusion that playing golf reduces your fertility, while in reality it is the higher income which causes both effects. \cite{Kaplan2009} nicely describes where those problems come from, and how best to avoid them.
 
 \section{Two-way ANOVA} \label{sec:anovaTwoWay} \index{general}{ANOVA!two-way} \index{general}{test!ANOVA}
 
-Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new element. We can look not only if each of the factors is significant; we can also check if the \emph{interaction} of the factors has a significant influence on the distribution of the data. For sticking to the example above, if only women with treatment B get healthy, we have a significant interaction effect between "gender" and "treatment".
+Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new element. We can look not only if each of the factors is significant; we can also check if the "interaction" of the factors has a significant influence on the distribution of the data. For example, if different men and women receive treatment with three different medications, and only women with treatment B get healthy, we have a significant interaction effect between \emph{gender} and \emph{treatment}.
+
+The most elegant way of implementing such a two-way ANOVAs is with \emph{statsmodels}:
+
+\begin{lstlisting}
+    from statsmodels.formula.api import ols
+    from statsmodels.stats.anova import anova_lm
+
+    # ... Get data into the pandas DataFrame "df", with fields "gender" and "treatment", and health-parameter in "health"
+    
+    formula = 'health ~ C(gender) + C(treatment) + C(gender):C(treatment)'
+    lm = ols(formula, df).fit()
+    anovaResults = anova_lm(lm)
+\end{lstlisting}
 
 \PyImg "anovaTwoway.py" (p \pageref{py:anovaTwoway}): Two-way Analysis of Variance (ANOVA).
 \index{python}{anovaTwoway}
@@ -33,7 +46,7 @@ Compared to one-way ANOVAs, the analysis with two-way ANOVAs has a new element. 
 
 \section{Three-way ANOVA} \label{sec:anovaThreeWay} \index{general}{ANOVA!three-way}
 
-When you have more than two factors, it is recommendable to use \emph{statistical modeling} for the data analysis (see Chapter \ref{chapter:Models}). However, as always with the analysis of statistical data, you should first inspect the data visually. \emph{seaborn} makes this quite simple:
+When you have more than two factors, it is recommendable to use \emph{statistical modeling} for the data analysis (see Chapter \ref{chapter:Models}). However, as always with the analysis of statistical data, you should first inspect the data visually. \emph{seaborn} makes this quite simple. Fig. \ref{fig:ANOVA3way} shows for example the puls-rate after (1 / 15 / 30) minutes of (resting / walking / running), in two groups who are eating different diets.
 
 \begin{figure}
   \centering
@@ -77,7 +90,7 @@ If you have three to six variables that may be related to each other, you can us
 
 \subsection{Correlation Matrix}\index{general}{Correlation matrix}
 
-An elegant way to visualize the correlation between a large number of variables is the \emph{correlation matrix}. Using \emph{seaborn}, it can be implemented elegantly as follows:
+An elegant way to visualize the correlation between a large number of variables is the \emph{correlation matrix}. Using \emph{seaborn}, the following example shows how to implement a correlation matrix. In the example, the parameter for \lstinline{np.random.RandomState} is the seed for the random number generation. The data are normally distributed dummy data, simulating 100 recordings from 30 different variables. The command \lstinline{sns.corrplot} calculates and visualized the cross correlation betwean each possible combination of variables (Fig. \ref:{fig:CorrelationMatrix}):
 
 \begin{figure}
   \centering
@@ -108,7 +121,7 @@ If you have truly independent variables, \emph{multilinear regression} is a stra
 
 \paragraph{Multiple Regression} \index{general}{regression!multiple}
 Example of \emph{multiple regression} with covariates (i.e. independent variables) $w_i$ and $x_i$.
-Again suppose that the data are 7 observations, and for each observed value to be predicted ($y_i$) there are two covariates that were also observed, $w_i$ and $x_i$. The model to be considered is
+Suppose that the data are 7 observations, and for each observed value to be predicted ($y_i$) there are two covariates that were also observed, $w_i$ and $x_i$. The model to be considered is
 
 \begin{equation}
   y_i = \beta_0 + \beta_1 w_i + \beta_2 x_i + \epsilon_i

@@ -12,7 +12,7 @@ Ordinal data have clear rankings, e.g. "none - little - some - much - very much"
 
 \end{description}
 
-A more complex question arises when the requirement arises not only to compare two groups, but also to make quantitative predictions for ordinal data. For example, suppose you want to calculate the probability that a patient survives an operation, based on the amount of anesthetic he/she receives. The answer to this question involves statistical modelling, and the tool of \gls{logreg}\index{general}{logistic regression}. If more than two ordinal (i.e. naturally ranked) levels are involved, the so-called \emph{ordinal logistic regression}\index{general}{ordinal logistic regression} is used.
+A more complex question arises when the requirement arises not only to compare two groups, but also to make quantitative predictions for ordinal data. For example, suppose you want to calculate the probability that a patient survives an operation, based on the amount of anesthetic he/she receives. The answer to this question involves statistical modelling, and the tool of \gls{logreg}\index{general}{logistic regression}. If more than two ordinal (i.e. naturally ranked) levels are involved, the so-called Ordinal Logistic Regression\index{general}{ordinal logistic regression} is used.
 
 \emph{Hypothesis tests} allow you to state quantitative probabilities on the likelihood of a hypothesis. \emph{Linear Regression Modeling} allows you to make predictions and give confidence intervals for output variables that depend linearly on given inputs. But a large class of problems exceeds these requirements. For example, suppose you want to calculate the probability that a patient survives an operation, based on the amount of anesthetic he/she receives, and you want to find out how much anesthetic you can give the patient so that the chance of survival is at least 95\%.
 
@@ -36,7 +36,7 @@ We can achieve such a bounded relationship, though, if we don't use the output o
   p(x) = \frac{1}{ 1 + e^{ \;\beta x + \alpha } }
 \end{equation}
 
-In this model, the variable $\beta$ that describes how quickly the function changes from 1 to 0, and $\alpha$ indicates the location of this change. This function is used frequently, and is called the \emph{logistic function}\index{general}{logistic function}.
+In this model, the variable $\beta$ that describes how quickly the function changes from 1 to 0, and $\alpha$ indicates the location of this change. This function is used frequently, and is called the Llogistic Function\index{general}{logistic function}.
 
 \subsection{Example: The Challenger Disaster}
 

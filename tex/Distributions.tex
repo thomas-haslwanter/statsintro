@@ -1,7 +1,7 @@
 \chapter{Distributions of one Variable}
 
 
-Distributions of one variable are called "univariate" distributions\index{general}{univariate}. They can be divided into "discrete distributions", where the observations can only take on integer values; and "continuous distributions", where the observation variables are float values.
+Distributions of one variable are called Univariate Distributions\index{general}{univariate}. They can be divided into Discrete Distributions, where the observations can only take on integer values; and Continuous Distributions, where the observation variables are float values.
 
 \section{Discrete Distributions}\index{general}{distributions!discrete}
 
@@ -363,7 +363,7 @@ Watch out: in \emph{Python}, by default the variance is calculated for "n". You 
 
 \subsubsection{Standard Error} \index{general}{standard error}
 
-The "standard error" is the estimate of the standard deviation of a coefficient. For example, in Fig. \ref{fig:sem}, we have 100 datapoints from a normal distribution about $5$. The more datapoints we have to estimate the mean value, the better our estimate of the mean. 
+The "standard error" is the estimate of the standard deviation of a coefficient. For example, in Fig. \ref{fig:sem}, we have 100 datapoints from a normal distribution about $5$. The more datapoints we have to estimate the mean value, the better our estimate of the mean.
 
 \begin{figure}[ht]
   \centering
@@ -396,7 +396,7 @@ where $std$ is the  standard deviation, and $N_{ISF}(\alpha)$ the inverse surviv
 
 \subsection{Parameters Describing the Form of a Distribution}
 
-In \texttt{scipy.stats}, continuous distribution functions are characterized by their "location" and their "scale". 
+In \texttt{scipy.stats}, continuous distribution functions are characterized by their "location" and their "scale".
 For example, for the normal distribution, (location/shape) are given by (mean/standard deviation) of the distribution. In contrast, for the uniform distribution, (location/shape) are given by the (start/end) of the range where the distribution is different from zero.
 
 \subsubsection{Location}\index{general}{distribution!location}
@@ -435,7 +435,7 @@ Distributions are "skewed" if they depart from symmetry (Fig. \ref{fig:skewkurto
 
 \subsubsection{Kurtosis}\index{general}{kurtosis}
 
-Kurtosis is a measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right), where the normal distribution is taken as the standard refernence. Distributions with negative or positive excess kurtosis are called "platykurtic" distributions or "leptokurtic" distributions, respectively.
+Kurtosis is a measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right), where the normal distribution is taken as the standard refernence. Distributions with negative or positive excess kurtosis are called Platykurtic Distributions or Leptokurtic Distributions, respectively.
 
 \section{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}\index{general}{normal distribution}\index{general}{Gaussian distribution}
 
@@ -728,20 +728,20 @@ The F statistic is $F = 0.494$, and has $n-1$ and $m-1$ degrees of freedom, wher
 
 \begin{lstlisting}
   In [1]: import numpy as np
-  
+
   In [2]: method1 = np.array([20.7,  20.3,  20.3,  20.3,  20.7,  19.9,  19.9,  19.9,  20.3, 20.3,  19.7,  20.3])
-  
+
   In [3]: method2 = np.array([ 19.7,  19.4,  20.1,  18.6,  18.8,  20.2,  18.7,  19. ])
-  
+
   In [4]: fval = np.var(method1, ddof=1)/np.var(method2, ddof=1)
-  
+
   In [5]: fd = stats.f(len(method2)-1,len(method2)-1)
-  
+
   In [6]: p = fd.cdf(fval)
-  
+
   In [7]: print(p)
   Out[7]: 0.041
-  
+
   In [8]: if (p<0.025) or (p>0.975):
               print('There is a significant difference between the two distributions.')
 \end{lstlisting}
@@ -769,7 +769,7 @@ Normal distributions are the easiest ones to work with. In some circumstances a 
 \label{fig:lognormal}
 \end{figure}
 
-\subsubsection{Weibull Distribution}\index{general}{distributions!weibull}
+\subsubsection{Weibull Distribution}\index{general}{distributions!weibull}\label{sec:Weibull}
 
 The Weibull distribution is the most commonly used distribution for modeling reliability data or "survival" data. It has two parameters, which allow it to handle increasing, decreasing or constant failure-rates (see Figure \ref{fig:weibull}).
 It is defined as
