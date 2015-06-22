@@ -93,7 +93,7 @@ In this model, the variable $\beta$ that describes how quickly the function chan
 
 Using the \emph{Python} package PyMC, a Monte-Carlo simulation of this model can be done remarkably easily:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     # --- Perform the MCMC-simulations ---
     temperature = challenger_data[:, 0]
     D = challenger_data[:, 1]  # defect or not?

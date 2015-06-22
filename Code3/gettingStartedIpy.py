@@ -23,29 +23,24 @@ superfluous. But it shows good Python coding style.
 # author: Thomas Haslwanter, date: May-2013
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
-import numpy as np
-import matplotlib.pyplot as plt
+# For interactive work it is convenient to use pylab
+from pylab import *
 
-
-# For Python programs, it is common to load the modules explicitly.
-# Don't worry here about not knowing the right modules: numpy, scipy, and
-# matplotlib is almost everything you will need most of the time, and you
-# will quickly get used to those.
 # Check out "gettingStarted.py", how this script would look with that explicit
-# use of the modules.
+# use of the modules numpy and matplotlib.pyplot.
 
 def main():
     '''Define the main function. '''
     # Create a sine-wave
-    t = np.arange(0,10,0.1)
-    x = np.sin(t)
+    t = arange(0,10,0.1)
+    x = sin(t)
 
     # Save the data in a text-file, in column form
     # The formatting is a bit clumsy: data are by default row variables; so to
     # get a matrix, you stack the two rows above each other, and then transpose
     # the matrix
     outFile = 'test.txt'
-    np.savetxt(outFile, np.vstack([t,x]).T)
+    np.savetxt(outFile, vstack([t,x]).T)
 
     # Read the data into a different variable
     inData = loadtxt(outFile)

@@ -141,7 +141,7 @@ You expect that there has been some foul play, and calculate how likely it is th
 
 is 5.5. The likelihood that this distribution came up by chance is
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     V, p = stats.chisquare(data)
     print(p)
     >>> 0.373130385949
@@ -184,7 +184,7 @@ We might have to subtract from the number of degrees of freedom the number of pa
 
 The \emph{Python} command \emph{stats.chi2\_contingency} returns the following list: ($\chi^2$-value, p-value, degrees-of-freedom, expected values).
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
      data = np.array([[43,9],
                       [44,4]])
     V, p, dof, expected = stats.chi2_contingency(data)

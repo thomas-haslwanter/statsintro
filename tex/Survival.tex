@@ -17,7 +17,7 @@ The Weibull distribution is characterized by a shape parameter, the Weibull Modu
 
 For statistical analysis of survival data, Cam Davidson-Pilon has developed the \emph{Python} package \emph{lifelines}. It can be installed with
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   pip install lifelines
 \end{lstlisting}
 
@@ -67,4 +67,4 @@ Note that the survival curve changes only when a "failure" occurs, i.e. when a s
 
 The most common test for comparing independent groups of survival times is the \emph{logrank test}. This test is a non-parametric hypothesis test, testing the probability that both groups come from the same underlying population. To explore the effect of different variables on survival, more advanced methods are required. For example, the Cox Regression model\index{general}{Cox regression model}, also called Cox Proportional Hazards model\index{general}{Cox proportional hazards model} introduced by Cox in 1972 is used widely when it is desired to investigate several variables at the same time.
 
-These tests, as well as other models for the analysis of survival data, are available in the \emph{lifelines} package.
+These tests, as well as other models for the analysis of survival data, are available in the \emph{lifelines} package. 

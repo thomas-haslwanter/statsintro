@@ -173,7 +173,7 @@ We will use \emph{Python} to explore measures of fit for linear regression: the 
 
 First we will look at a small data set from \href{http://lib.stat.cmu.edu/DASL/Stories/AlcoholandTobacco.html}{DASL library}, regarding the correlation between tobacco and alcohol purchases in different regions of the United Kingdom. The interesting feature of this data set is that Northern Ireland is reported as an outlier. Notwithstanding, we will use this data set to describe two tools for calculating a linear regression. We will alternatively use the \emph{statsmodels} and \emph{sklearn} modules for calculating the linear regression, while using \emph{pandas} for data management, and \emph{matplotlib} for plotting. To begin, we will import the modules, get the data into \emph{Python}, and have a look at them:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     import numpy as np
     import pandas as pd
     import matplotlib.pyplot as plt
@@ -215,13 +215,13 @@ First we will look at a small data set from \href{http://lib.stat.cmu.edu/DASL/S
 
 Fitting the model, leaving the outlier for the moment away is then very easy:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     result = smf.ols('Alcohol ~ Tobacco', df[:-1]).fit()
     print(result.summary())
 \end{lstlisting}
 
 Note that using the formula API from statsmodels, an intercept is automatically added.  This gives us
-\small\begin{lstlisting}
+\small\begin{lstlisting}[language=Python]
 
                             OLS Regression Results
 ==============================================================================
@@ -348,7 +348,7 @@ has an F distribution with $(DF_\text{mod}, DF_\text{res})$ degrees of freedom, 
 
 We can test this directly in \emph{Python} with
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     N = result.nobs
     k = result.df_model+1
     dfm, dfe = k-1, N - k
@@ -359,7 +359,7 @@ We can test this directly in \emph{Python} with
 
 which gives us
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     F-statistic: 12.785,  p-value: 0.00723
 \end{lstlisting}
 
@@ -403,7 +403,7 @@ It can be shown that the maximum likelihood estimator of $\sigma^2$ is
 
 We can calculate this in \emph{Python} as follows:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     N = result.nobs
     SSR = result.ssr
     s2 = SSR / N
@@ -442,7 +442,7 @@ Here, $N$ is the number of observations, $k$ is the number of parameters, and $\
 \subsubsection{Coefficients}
 The \emph{coefficients} or weights of the linear regression are contained in \lstinline{result.params}, and returned as a pandas Series object, since we used a pandas DataFrame as input. This is nice, because the coefficients are named for convenience.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     result.params
     >>> Intercept    2.041223
     >>> Tobacco      1.005896
@@ -457,7 +457,7 @@ We can obtain this directly by computing
 
 Here, $X$ is the matrix of predictor variables as columns, with an extra column of ones for the constant term, $y$ is the column vector of the response variable, and $\beta$ is the column vector of coefficients corresponding to the columns of $X$. In \emph{Python}:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     df['Eins'] = np.ones(( len(df), ))
     Y = df.Alcohol[:-1]
     X = df[['Tobacco','Eins']][:-1]
@@ -475,7 +475,7 @@ To obtain the \emph{standard errors of the coefficients} we will calculate the c
 
 Here, $\sigma^{2}$ is the variance, or the MSE (mean squared error) of the residuals. The standard errors are the square roots of the elements on the main diagonal of this covariance matrix. We can perform the operation above, and calculate the element-wise square root using the following \emph{Python} code,
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     X = df.Tobacco[:-1]
 
     # add a column of ones for the constant intercept term
@@ -513,7 +513,7 @@ The t statistic is given by the ratio of the coefficient (or factor) of the pred
 
 So, for the first factor, corresponding to the slope in our example, we have the following code,
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     i = 1
     beta = result.params[i]
     se = SE[i,i]
@@ -525,7 +525,7 @@ So, for the first factor, corresponding to the slope in our example, we have the
 
 Once we have a t statistic, we can (sort of) calculate the probability of observing a statistic at least as extreme as what we’ve already observed, given our assumptions about the normality of our errors by using the code,
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     N = result.nobs
     k = result.df_model + 1
     dof = N - k
@@ -550,7 +550,7 @@ The confidence interval is given by,
 
 Here, $\beta$ is one of the estimated coefficients, $z$ is a \emph{critical-value}, which is the t-statistic required to obtain a probability less than the alpha significance level, and $SE_{i,i}$ is the standard error. The critical value is calculated using the inverse of the cumulative distribution function. (The cumulative distribution function is the cumulative sum of the probability distribution.) In code, the confidence interval using a t-distribution looks like,
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     i = 0
 
     # the estimated coefficient, and its variance
@@ -584,7 +584,7 @@ Skew and kurtosis refer to the shape of a distribution. \emph{Skewness} is a mea
 
 As you see, the $\hat{\mu}_3$ and $\hat{\mu}_4$ are the third and fourth central moments of a distribution. One possible \emph{Python} implementation would be,
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     d = Y - result.fittedvalues
 
     S = np.mean( d**3.0 ) / np.mean( d**2.0 )**(3.0/2.0)
@@ -603,7 +603,7 @@ As you see, the $\hat{\mu}_3$ and $\hat{\mu}_4$ are the third and fourth central
 
 The Omnibus test uses skewness and kurtosis to test the null hypothesis that a distribution is normal. In this case, we’re looking at the distribution of the residual. If we obtain a very small value for $\Pr( \mbox{ Omnibus } )$, then the residuals are not normally distributed about zero, and we should maybe look at our model more closely. The \emph{statsmodels} OLS function uses the \lstinline{stats.normaltest()} function:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     (K2, p) = stats.normaltest(result.resid)
     print('Omnibus: {0}, p = {1}'.format(K2, p))
 
@@ -620,7 +620,7 @@ The Durbin-Watson test is used to detect the presence of autocorrelation (a rela
  DW = \dfrac{ \displaystyle \sum_{i=2}^{N} ( ( y_{i} - \hat{y}_i ) - ( y_{i-1} - \hat{y}_{i-1} ) )^{2} }{ \displaystyle \sum_{i=1}^{N} ( y_{i} - \hat{y}_{i} )^{2}}
  \end{equation}
 
- \begin{lstlisting}
+ \begin{lstlisting}[language=Python]
     DW = np.sum( np.diff( result.resid.values )**2.0 ) / result.ssr
     print('Durbin-Watson: {:.5f}'.format( DW ))
 
@@ -637,7 +637,7 @@ The Jarque-Bera test is another test that considers skewness (S), and kurtosis (
 
 Calculating the JB-statistic using the $\chi^{2}$ distribution with two degrees of freedom we have,
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     JB = (N/6.0) * ( S**2.0 + (1.0/4.0)*( K - 3.0 )**2.0 )
     p = 1.0 - stats.chi2(2).cdf(JB)
     print('JB-statistic: {:.5f},  p-value: {:.5f}'.format( JB, p ))
@@ -652,7 +652,7 @@ The \emph{condition number} \index{general}{condition number} measures the sensi
 
 We calculate the condition number by taking the eigenvalues of the product of the predictor variables (including the constant vector of ones) and then taking the square root of the ratio of the largest eigenvalue to the least eigenvalue. If the condition number is greater than thirty, then the regression may have multicollinearity.
 
-\begin{lstlisting}	
+\begin{lstlisting}[language=Python]	
     X = np.matrix( X )
     EV = np.linalg.eig( X * X.T )
     print(EV)
@@ -665,7 +665,7 @@ We calculate the condition number by taking the eigenvalues of the product of th
 Note that $X.T * X$ should be $( P + 1 ) \times ( P + 1 )$, where $P$ is the number of degrees of freedom of the model (the number of predictors) and the +1 represents the addition of the constant vector of ones for the intercept term. In our case, the product should be a $2 \times 2$ matrix, so we’ll have two eigenvalues. Then our condition number is given by,
 
 
-\begin{lstlisting}	
+\begin{lstlisting}[language=Python]	
     CN = np.sqrt( EV[0].max() / EV[0].min() )
     print('Condition No.: {:.5f}'.format( CN ))
 
@@ -678,7 +678,7 @@ Our condition number is juuust below 30 (weak!), so we can sort of sleep okay.
 
 Now that we have seen an example of linear regression with a reasonable degree of linearity, compare that with an example of one with a significant outlier. In practice, outliers should be understood before they are discarded, because they might turn out to be very important. They might signify a new trend, or some possibly catastrophic event.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     X = df[['Tobacco','Eins']]
     Y = df.Alcohol
     result = sm.OLS( Y, X ).fit()
@@ -686,7 +686,7 @@ Now that we have seen an example of linear regression with a reasonable degree o
 \end{lstlisting}
 
 \small
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
                             OLS Regression Results
 ==============================================================================
 Dep. Variable:                Alcohol   R-squared:                       0.050
@@ -717,13 +717,13 @@ Kurtosis:                       3.022   Cond. No.                         25.5
 
 In order to use \emph{sklearn}, we need to input our data in the form of vertical vectors. Therefore, in our case, we’ll cast the DataFrame to Numpy matrix so that vertical arrays stay vertical once they are sliced off the data set.
 
-\begin{lstlisting}	
+\begin{lstlisting}[language=Python]	
     data = np.matrix( df )
 \end{lstlisting}
 
 Next, we create the regression objects, and fit the data to them. In this case, we will consider a clean set, which will fit a linear regression better, which consists of the data for all of the regions except Northern Ireland, and an original set consisting of the original data
 
-\begin{lstlisting}	
+\begin{lstlisting}[language=Python]	
     cln = LinearRegression()
     org = LinearRegression()
 
@@ -737,7 +737,7 @@ Next, we create the regression objects, and fit the data to them. In this case, 
 
 The next piece of code produces a scatter plot of the regions, with all of the regions plotted as empty blue circles, except for Northern Ireland, which is depicted as a red star.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     mpl.rcParams['font.size']=16
 
     plt.plot( df.Tobacco[:-1], df.Alcohol[:-1], 'bo', markersize=10,
@@ -750,7 +750,7 @@ The next piece of code produces a scatter plot of the regions, with all of the r
 
 The next part generates a set of points from 2.5 to 4.85, and then predicts the response of those points using the linear regression object trained on the clean and original sets, respectively.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     test = np.arange( 2.5, 4.85, 0.1 )
     test = np.array( np.matrix( test ).T )
 
@@ -760,7 +760,7 @@ The next part generates a set of points from 2.5 to 4.85, and then predicts the 
 
 Finally, we limit and label the axes, add a title, overlay a grid, place the legend at the bottom, and then save the figure.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     xlabel('Tobacco') ; xlim(2.5,4.75)
     ylabel('Alcohol') ; ylim(2.75,7.0)
     title('Regression of Alcohol from Tobacco')

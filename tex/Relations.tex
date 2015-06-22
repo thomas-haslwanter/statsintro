@@ -1,4 +1,4 @@
-\chapter{Relation Between Two Continuous Variables}
+\chapter{Relations Between Two Continuous Variables}
 
 So far we have been dealing with problems where only one variable is measured. Expressions or functions which only depend on one variable are sometimes called "univariate"\index{general}{univariate}. If more than one variable is involved, we are dealing with "multivariate"\index{general}{multivariate} problems. In the simplest case we have two variables involved, and we need a "bivariate"\index{general}{bivariate} data analysis.
 
@@ -207,20 +207,20 @@ Caution: the sample correlation and $R^2$ are misleading if there is a nonlinear
 
 If you have vectors $x,y$ containing your data, you can use \texttt{statsmodels} to create a design matrix that also includes the $1's$ for the offset:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     import statsmodels.api as sm
     Xmat = sm.add_constant(x)
 \end{lstlisting}
 
 The parameters are then easily found as
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     params = np.linalg.lstsq(Xmat, y)
 \end{lstlisting}
 
 However, you get a lot more information if you use the OLS-fit from \texttt{statmodels}:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     import numpy as np
     import statsmodels.api as sm
 
@@ -241,7 +241,7 @@ However, you get a lot more information if you use the OLS-fit from \texttt{stat
 
 yields the following results:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
                             OLS Regression Results
 ==============================================================================
 Dep. Variable:                      y   R-squared:                       0.923
@@ -269,7 +269,7 @@ The meaning of many of these parameters is described in the chapter \nameref{cha
 
 From the \texttt{results}, you can extract e.g. the model parameters, standard errors, confidence intervals, and residuals:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     params = results.params
     std_err = results.bse
     ConfInt = results.conf_int()

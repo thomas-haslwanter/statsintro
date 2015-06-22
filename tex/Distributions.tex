@@ -21,7 +21,7 @@ so the chance for "tails" is $p_{tails} = 1-p_{heads}$.
 
 We see that one parameter, $p=p_{heads}$, completely determines everything, and we can fix the distribution with the commands
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [1]: from scipy import stats
   In [2]: p = 0.5
   In [3]: bernoulliDist = stats.bernoulli(p)
@@ -29,14 +29,14 @@ We see that one parameter, $p=p_{heads}$, completely determines everything, and 
 
 In \emph{Python} this is called a "frozen distribution function"\index{general}{frozen distribution function}, and it allows us to calculate everything we want for this distribution. For example, the probability if head comes up $0$ or $1$ times is given by the $probability mass function (PMF)$\index{general}{probability mass function, PMF}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [4]: p_tails = bernoulliDist.pmf(0)
   In [5]: p_heads = bernoulliDist.pmf(1)
 \end{lstlisting}
 
 And we can simulate 10 Bernoulli trials with
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [6]: trials = bernoulliDist.rvs(10)
 
   In [7]: trials
@@ -69,7 +69,7 @@ where ${n \choose k}={n! \over k!(n-k)!}$
 
 In \emph{Python}, the procedure is that same as above, with one additional paramter, the number of coin tosses. First we generate the frozen distribution function, for example for four coin tosses:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [1]: from scipy import stats
   In [2]: import numpy as np
 
@@ -79,7 +79,7 @@ In \emph{Python}, the procedure is that same as above, with one additional param
 
 and then we can calculate e.g. the probabilities how often heads come up during those four tosses, given by the PMF for the values zero to four:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [5]: binomDist.pmf(np.arange(5))
   Out[5]: array([ 0.0625,  0.25  ,  0.375 ,  0.25  ,  0.0625])
 \end{lstlisting}
@@ -255,7 +255,7 @@ In \emph{Python}, the most elegant way of working with distribution function is 
 
 \end{minipage}}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [1]: import numpy as np
   In [2]: from scipy import stats
   In [3]: myDF = stats.norm(5,3)
@@ -351,7 +351,7 @@ As mentioned in Table \ref{table:population}, in statistics it is common to deno
 
 Watch out: in \emph{Python}, by default the variance is calculated for "n". You have to set "ddof=1" to obtain the variance for "n-1":
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     In[19]: data = arange(7,14)
 
     In[20]: std(data, ddof=0)
@@ -491,7 +491,7 @@ The normal distribution with parameters $\mu$ and $\sigma$ is denoted as {$N(\mu
 \PyImg "distributionNormal.py" (p \pageref{py:distributionNormal}) shows simple manipulations of normal distribution functions.
 \index{python}{distributionNormal}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [1]:   import numpy as np
   In [2]:  from scipy import stats
   In [3]:  mu = -2
@@ -601,7 +601,7 @@ A very frequent application of the t-distribution is in the calculation of confi
 
 The following example shows how to calculate the t-values for confidence intervals, for n = 20 and $\alpha=0.05$. For comparison, I also calculate the corresponding value from the normal distribution:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [1]: from scipy import stats
   In [2]: n = 20
   In [3]: df = n-1
@@ -616,7 +616,7 @@ The following example shows how to calculate the t-values for confidence interva
 
 In \emph{Python}, the 95\% confidence interval for the mean can be obtained with a one-liner:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     In [8]: alpha = 0.95
     In [9]: df = len(data)-1
     In [10]: ci = stats.t.interval(alpha, df, loc=mean(data), scale=stats.sem(data))
@@ -726,7 +726,7 @@ Method 2: [ 19.7,  19.4,  20.1,  18.6,  18.8,  20.2,  18.7,  19. ]
 
 The F statistic is $F = 0.494$, and has $n-1$ and $m-1$ degrees of freedom, where $n$ and $m$ are the number of recordings with each method. The code sample below shows that the F statistic is close to the center of the distribution, so we cannot reject the hypothesis that the two methods have the same precision.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [1]: import numpy as np
 
   In [2]: method1 = np.array([20.7,  20.3,  20.3,  20.3,  20.7,  19.9,  19.9,  19.9,  20.3, 20.3,  19.7,  20.3])

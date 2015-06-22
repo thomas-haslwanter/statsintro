@@ -91,10 +91,10 @@ def main():
     # If you want to know confidence intervals, best switch to "pandas"
     # Note that this is an advanced topic, and requires new data structures
     # such ad "DataFrames" and "ordinary-least-squares" or "ols-models".
-    import pandas
+    import pandas as pd
     myDict = {'x':tHigh, 'y':xHigh}
-    df = pandas.DataFrame(myDict)
-    model = pandas.ols(y=df['y'], x=df['x'])
+    df = pd.DataFrame(myDict)
+    model = pd.ols(y=df['y'], x=df['x'])
     print(model)
     #raw_input('These are the summary results from Pandas - Hit any key to continue')
 

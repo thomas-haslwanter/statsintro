@@ -1,4 +1,4 @@
-\chapter{Test of Means of Continuous Data}
+\chapter{Tests of Means of Continuous Data}
 
 This chapter covers hypothesis tests for the mean value of groups:
 
@@ -40,7 +40,7 @@ What is the chance of finding a mean value at a distance of 0.5 or more from the
 
 In \emph{Python}, test statistic and p-value for the one sample t-test can be calculated with
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
       t, pVal = stats.ttest_1samp(data, checkValue)
 \end{lstlisting}
 
@@ -51,7 +51,7 @@ In \emph{Python}, test statistic and p-value for the one sample t-test can be ca
 
 If the data are not normally distributed, the one-sample t-test should not be used (although this test is fairly robust against deviations from normality, see Fig. \ref{fig:ttest_stability}). Instead, we must use a non-parametric test on the mean value. We can do this by performing a \emph{Wilcoxon signed rank sum test}. Note that in contrast to the one-sample t-test, this test checks for a difference from null:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     (rank, pVal) = stats.wilcoxon(data-checkValue)
 \end{lstlisting}
 
@@ -95,7 +95,7 @@ In the comparison of two groups with each other, two cases have to be distinguis
 
 Therefore the two tests \lstinline{stats.ttest_1samp} and \lstinline{stats.ttest_rel} provide the same result:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In [1]: import numpy as np
   In [2]: from scipy import stats
 
@@ -126,7 +126,7 @@ where $\bar{x}_i$ is the mean of the i-th sample, and \emph{se} indicates the \e
 
 Expressed in words, \emph{The variance of a sum of independent random variables equals the sum of the variances.}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     t_statistic, pVal = stats.ttest_ind(group1, group2)
 \end{lstlisting}
 
@@ -135,7 +135,7 @@ Expressed in words, \emph{The variance of a sum of independent random variables 
 If the measurement values from the two groups are not normally distributed we have to resort to a non-parametric test. The most common test for that is the \emph{Mann-Whitney(-Wilcoxon) test}. Watch out, because this test is sometimes also referred to as \emph{Wilcoxon rank-sum test}. This is different from the \emph{Wilcoxon signed rank sum test}!
 The test-statistic for this test is commonly indicated with \emph{u}:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     u_statistic, pVal = stats.mannwhitneyu(group1, group2)
 \end{lstlisting}
 
@@ -155,7 +155,7 @@ Let us take performance measurements from a racing team, on two different occasi
 
 These numbers can be generated, and a t-test comparing the two groups can be done, with the following \emph{Python} commands:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     import numpy as np
     from scipy import stats
 
@@ -170,7 +170,7 @@ The command \lstinline{random.seed(123)} initializes the random number generator
 
 \subsubsection{Statistical Modeling}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     import pandas as pd
     import statsmodels.formula.api as sm
 
@@ -182,7 +182,7 @@ The command \lstinline{random.seed(123)} initializes the random number generator
 
 The important line is the last but one, which produces the $results$. Thereby the function \lstinline{sm.ols}  ("ols" for "ordinary least square") function from \emph{statsmodels} tests the model which describes the difference between the results of \emph{Race1} and those of \emph{Race2} with only an offset (also called Intercept in the language of modeling). In other words, the model has only one parameter, the \emph{Intercept}. The results below show that the probability that this intercept is only $0.033$: the difference is significant.
 
- \small\begin{lstlisting}
+ \small\begin{lstlisting}[language=Python]
 
                              OLS Regression Results
 ==============================================================================
@@ -326,7 +326,7 @@ Tukey's studentized range test (HSD) is a test specific to the comparison of all
 
 While multiple testing is not yet included in \emph{Python} standardly, you can get a number of multiple-testing corrections done with the statsmodels package:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   In[7]: from statsmodels.sandbox.stats.multicomp import multipletests
   In[8]: multipletests([.05, 0.3, 0.01], method='bonferroni')
 Out[8]:

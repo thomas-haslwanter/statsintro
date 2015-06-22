@@ -50,7 +50,7 @@ In all three cases the results are similar: if the two distributions being compa
 
 In \emph{Python}, the plot can be generated with the command
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     stats.probplot(data, plot=plt)
 \end{lstlisting}
 
@@ -101,7 +101,7 @@ Assume that you are running a private educational institution. Your contract say
 
 The final exam of your 10 students produce the following scores (Fig. \ref{fig:ExampleTtest}):
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   scores = array([ 109.4, 76.2, 128.7, 93.7, 85.6, 117.7, 117.2, 87.3, 100.3, 55.1])
 \end{lstlisting}
 
@@ -117,7 +117,7 @@ A \emph{normality test} (\lstinline{stats.normaltest(scores)}) indicates that th
 
 The difference between our sample mean and the value we want to compare it to (\lstinline{ np.mean(scores) - 110} ) is \emph{12.9}. Normalized by the sample standard error (Eq. \ref{eq:Tdistribution}), this gives a value of \emph{t=-1.84}. Since the t-distribution is a known curve that depends only on the number of samples, and we can calculate the likelihood that we obtain a t-statistic of $|t| > 1.84$:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     tval = (110-np.mean(scores))/stats.sem(scores)  # 1.84
     td = stats.t(len(scores)-1)                     # "frozen" t-distribution
     p = 2*td.sf(tval)                               # 0.0995
@@ -253,7 +253,7 @@ For finding a difference between two normally distributed means, with standard d
 
 \emph{statsmodels} makes clever use of the fact that 3 of the 4 factors mentioned above are independent, and combines it with the \emph{Python} feature of "named parameters" to provide a program that takes 3 of those parameters as input, and calculates the remaining $4^{th}$ parameter. For example,
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     In [1]: from statsmodels.stats import power
 
     In [2]: nobs = power.tt_ind_solve_power(effect_size = 0.5, alpha =0.05, power=0.8)
@@ -265,7 +265,7 @@ tells us that if we compare two groups with the same number of subjects and the 
 
 Similarly,
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     In [4]: effect_size = power.tt_ind_solve_power(alpha =0.05, power=0.8, nobs1=25)
     In [5]: print(effect_size)
     Out[5]: 0.8087077886680407

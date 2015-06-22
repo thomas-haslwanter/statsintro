@@ -53,7 +53,7 @@ Other interesting plotting packages are:
 
 The following examples all have the same format:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     # Import standard packages
     import numpy as np
     import matplotlib.pyplot as plt
@@ -75,7 +75,7 @@ The following examples all have the same format:
 
 This is the simplest way to represent univariate data: just plot each individual data point. (In cases where many data points are superposed, you may want to add a little bit of jitter to show each data point.) The corresponding plot-command is
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     plt.plot(x, '.')
     # plt.scatter(np.arange(len(x), x))     # equivalent
 \end{lstlisting}
@@ -96,7 +96,7 @@ histogram}; and if you just connect the top center points of each bin, you obtai
 
 You can also smooth histograms with \acrfull{kde} (kde-plots). Those are nicely implemented and described in \emph{seaborn}.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     plt.hist(x, bins=25)
 \end{lstlisting}
 
@@ -112,7 +112,7 @@ Histograms have the disadvantage that they are discontinuous, and that their sha
 
 For the kernel density estimate, we place a normal kernel with variance 2.25 (indicated by the red dashed lines) on each of the data points xi. The kernels are summed to make the kernel density estimate (solid blue curve). The smoothness of the kernel density estimate is evident. Compared to the discreteness of the histogram, the kernel density estimates converge faster to the true underlying density for continuous random variables.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
   sns.kdeplot(x)
 \end{lstlisting}
 \begin{figure}[H]
@@ -150,7 +150,7 @@ When you use percentage points, the cumulative frequency presentation has the ad
   0 \leq x \leq 1
 \end{equation*}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     plt.plot(stats.cumfreq(x,numbins)[0])
 \end{lstlisting}
 
@@ -164,7 +164,7 @@ When you use percentage points, the cumulative frequency presentation has the ad
 
 \emph{Errorbars} are a common way to show mean value and variability when comparing a few measurement values. Note that you have to state explicitly if your errorbars correspond to the \emph{standard deviation} or to the \emph{standard error} of the data. Using \emph{standard errors} has a nice feature: When error bars for the \emph{standard error} for two groups overlap, you can be sure the difference between the two means is not statistically significant (P>0.05). Watch out, though, since the opposite is not always true!
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     index = np.arange(5)
     y = index**2
     errorBar = index/2
@@ -183,7 +183,7 @@ When you use percentage points, the cumulative frequency presentation has the ad
 
 There are a number of tests to check for outliers\index{general}{outliers}. The method suggested by Tukey is to check for data which lie more than 1.5 * IQR above or below the first/third quartile (see Section \ref{sec:centiles}).
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     plt.boxplot(x, sym='*')
 \end{lstlisting}
 
@@ -195,7 +195,7 @@ There are a number of tests to check for outliers\index{general}{outliers}. The 
 
 Boxplots are often combined with KDE-plots to produce so-called Violin-Plots \index {general}{plots!violinplot}, as shown in Figure \ref{fig:violin}.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     # Generate the data
     nd = stats.norm
     data = nd.rvs(size=(100))
@@ -218,7 +218,7 @@ Boxplots are often combined with KDE-plots to produce so-called Violin-Plots \in
 
 For some application the plotting abilities of \emph{pandas} can facilitate the generation of useful graphs, e.g. for grouped barplots:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     df = pd.DataFrame(np.random.rand(10, 4), columns=['a', 'b', 'c', 'd'])
     df.plot(kind='bar', grid=False)
 \end{lstlisting}
@@ -233,7 +233,7 @@ For some application the plotting abilities of \emph{pandas} can facilitate the 
 
 For other applications \emph{seaborn} may be the way to go, e.g. for pieplots. Note that here I have switched to a different color-palette.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     series = pd.Series(3 * np.random.rand(4), index=['a', 'b', 'c', 'd'], name='series')
     sns.set_palette("husl")
     series.plot(kind='pie', figsize=(6, 6))
@@ -256,7 +256,7 @@ For other applications \emph{seaborn} may be the way to go, e.g. for pieplots. N
 
 Simple scatter plots are trivial. But \emph{pandas} also makes fancy scatter plots easy:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
     df2 = pd.DataFrame(np.random.rand(50, 4), columns=['a', 'b', 'c', 'd'])
     df2.plot(kind='scatter', x='a', y='b', s=df['c']*300);
 \end{lstlisting}
@@ -271,7 +271,7 @@ Simple scatter plots are trivial. But \emph{pandas} also makes fancy scatter plo
 
 I have to admit that 3D plots are more intuitive in \emph{Matlab} than in \emph{Python}. However, they are straightforward to make. Here two examples:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
       # imports specific to the plots in this example
     import numpy as np
     from matplotlib import cm
