@@ -2,7 +2,7 @@
 
 There is a substantial difference in approach between hypothesis tests\index{general}{hypothesis test} and statistical modeling. In the former case, you typically start out with a null hypothesis. Based on your question and your data, you then select the appropriate statistical test as well as the desired significance level, and either accept or reject the null hypothesis.
 
-In contrast, statistical modeling is much more an interactive analysis of the data. Based on a first look at the data, you typically start out with selecting a statistical model that may describe your data. In the previous chapters, we have for example described the hypythesized linear relationship between data with the model
+In contrast, statistical modeling is much more an interactive analysis of the data. Based on a first look at the data, you typically start out with selecting a statistical model that may describe your data. In the previous chapters, we have for example described the hypothesized linear relationship between data with the model
 
 \begin{equation*}
   y = k*x + d .
@@ -26,7 +26,7 @@ For instance, if we have some variable $y$, and we want to regress it against so
     y \sim x + a + b + a:b
 \end{equation}
 
-This formula language is based on the notation introduced by Wilkinson and Rogsers (\cite{Wilkinson1973}, and also used by $S$ and $R$.
+This formula language is based on the notation introduced by Wilkinson and Rogers (\cite{Wilkinson1973}, and also used by $S$ and $R$.
 The symbols in Table \ref{tab:syntax} are used on the right hand side to denote different interactions.
 
 \begin{table}
@@ -523,7 +523,7 @@ So, for the first factor, corresponding to the slope in our example, we have the
     >>> t = 3.5756084542390316
 \end{lstlisting}
 
-Once we have a t statistic, we can (sort of) calculate the probability of observing a statistic at least as extreme as what we’ve already observed, given our assumptions about the normality of our errors by using the code,
+Once we have a t statistic, we can (sort of) calculate the probability of observing a statistic at least as extreme as what we have already observed, given our assumptions about the normality of our errors by using the code,
 
 \begin{lstlisting}[language=Python]
     N = result.nobs
@@ -775,7 +775,7 @@ Finally, we limit and label the axes, add a title, overlay a grid, place the leg
 
 \subsection{Conclusion}
 
-Before you do anything, visualize your data. If your data is highly dimensional, then at least examine a few slices using boxplots. At the end of the day, use your own judgement about a model based on your knowledge of your domain. Statistical tests should guide your reasoning, but they shouldn’t dominate it. In most cases, your data will not align itself with the assumptions made by most of the available tests. Under \url{http://www.nature.com/news/scientific-method-statistical-errors-1.14700} you can find a very interesting article from Nature on classical hypothesis testing. A more intuitive approach to hypothesis testing is Bayesian analysis.
+Before you do anything, visualize your data. If your data is highly dimensional, then at least examine a few slices using boxplots. At the end of the day, use your own judgement about a model based on your knowledge of your domain. Statistical tests should guide your reasoning, but they should not dominate it. In most cases, your data will not align itself with the assumptions made by most of the available tests. Under \url{http://www.nature.com/news/scientific-method-statistical-errors-1.14700} you can find a very interesting article from Nature on classical hypothesis testing. A more intuitive approach to hypothesis testing is Bayesian analysis.
 
 \section{Assumptions} \label{sec:Assumptions}
 

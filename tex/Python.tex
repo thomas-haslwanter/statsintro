@@ -1,10 +1,8 @@
-\part{Python}
-
 \chapter{Python}
 
 \section{Getting Started}
 
-There are three reasons why I have swiched from other programming languates to \emph{Python}:
+There are three reasons why I have switched from other programming languages to \emph{Python}:
 
 \begin{enumerate}
   \item It is the most elegant programming language that I know.
@@ -50,7 +48,7 @@ To facilitate the use of \emph{Python}, so called \emph{Python} Distributions co
 
 Neither of these two distributions require administrator rights. Personally I am using \emph{WinPython}, which is free and customizable. \emph{anaconda} is a more recent distribution, and is free for educational purposes.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.5\textwidth]{../Images/ScientificPython.jpg}\\
   \caption{The structure of the most important \emph{Python} packages for statistical applications.}
@@ -104,6 +102,17 @@ To get a list of all the \emph{Python} packages installed on your computer, type
 
 \emph{git} is a version control program, and \emph{github} is a central source code repository. If you are developing computer software, I strongly recommend the use of \emph{git}. You can use it locally, with very little overhead. And you can also use it to maintain and manage a remote backup of your program. While the real power of \emph{git} lies in its features for collaboration, I have been very happy with it for my own data and software. While an introduction to \emph{git} goes beyond the scope of this book, very good instructions are available under \url{https://git-scm.com/}. I am mostly working under Windows, and \emph{tortoisegit} (\url{https://code.google.com/p/tortoisegit/}) provides a very useful Windows Shell interface for \emph{git}. \emph{github} (\url{https://github.com/}) is an online project hosting using \emph{git}, and the place where you find the source code for the majority of \emph{Python} packages.
 
+\section{Conventions}
+
+In this book the following conventions will be used:
+\begin{itemize}
+  \item Text that is to be typed in at the computer is written as teletype, e.g. \lstinline{plot(x,y)}.
+  \item Optional text in command-line entries is expressed with square brackets and underscores, e.g. \lstinline{[_InstallationDir_]\bin}. (I use the underscores in addition, as sometimes the square brackets will be used for commands.)
+  \item Names referring to computer programs and applications are written in italics, e.g. \emph{IPython}.
+
+\end{itemize}
+
+
 \section{IPython}\index{general}{IPython}
 
 A good workflow for source code development can make a very big difference for your efficiency. For me, the most efficient way to write new code is as follows: I first get the individual steps worked out interactively in \emph{\Gls{IPython}} (\url{http://ipython.org/}). \emph{IPython }provides interactive computing with \emph{Python}, similar to the command-line in \emph{Matlab}. It comes with a command history, interactive data visualization, command completion, and a lot of features that make it quick and easy to try out code. When \emph{IPython} is started in "\gls{pylab}" mode, it automatically loads \lstinline{numpy} and \lstinline{matplotlib.pyplot} into the active workspace, and provides a very convenient, \emph{Matlab}-like programming environment.
@@ -142,7 +151,7 @@ To get started with \emph{Python} and \emph{IPython}, I will go step-by-step thr
 
   \item \textbf{In [2]:} The command \lstinline{t = r_[0:10:0.1]} is a shorthand version for \lstinline{t = arange(0, 10, 0.1)}, and generates a vector from 0 to 10, with a step size of 0.1.  \lstinline{r_} (and \lstinline{arange}) are commands in the \emph{numpy}  package. However, since \lstinline{numpy} has already been imported into the current workspace by \emph{IPython}, we can use these commands right away.
   \item \textbf{In [4]:} Since \emph{t} is a vector, and \emph{sin} is a function from \emph{numpy}, the sine-value is calculated automatically for each value of \emph{t}.
-  \item \textbf{In [5]:} In \emph{Python} scripts, changes of the current folder have to be performed with \lstinline{os.chdir()}. However, common tasks with interactive computing, like directory changes (\lstinline{%cd}), bookmarks for directories (\lstinline{%bookmark}), inspection of the workspace (\lstinline{%who} and \lstinline{%who}), etc, are implemented as "IPython magic functions". If no \emph{Python} variable with the same name exists, the "\%" sign can be left away, as here.
+  \item \textbf{In [5]:} In \emph{Python} scripts, changes of the current folder have to be performed with \lstinline{os.chdir()}. However, common tasks with interactive computing, like directory changes (\lstinline{%cd}), bookmarks for directories (\lstinline{%bookmark}), inspection of the workspace (\lstinline{%who} and \lstinline{%whos}), etc, are implemented as "IPython magic functions". If no \emph{Python} variable with the same name exists, the "\%" sign can be left away, as here.
   \item \textbf{In [6]:} Since we have started out with the command \lstinline{%pylab inline}, \emph{IPython} generates plots in the \emph{ipython qtconsole}, as shown in Fig. \ref{fig:qtConsole}. I have mentioned above that \emph{matplotlib} handles the graphics output. In the \emph{ipython qtconsole}, you can switch between inline graphs and output into a separate graphics-window with \lstinline{%matplotlib inline} and \lstinline{%matplotlib qt4} (see Fig. \ref{fig:qt4}). An external graphics window allows to zoom in and pan in the figure, get the cursor position (which can be handy in helping to find outliers), and get interactive input with the command \lstinline{ginput}. \emph{matplotlib}'s plotting commands closely follow the \emph{Matlab} conventions. Note that also generating graphics files is very simple. Here I generate the PNG-file "Sinewave.png", with a resolution of 200 dots-per-inch.
 \end{itemize}
 
@@ -181,7 +190,7 @@ To personalize IPython, generate your own profile as shown below. Thereby, \emph
             import os
             os.chdir(r'C:\mydir')
         \end{lstlisting}
-        Note: since Windows uses \lstinline{\} to separate directories, but \lstinline{\} is also the escape character in strings, directory paths using a simple backslashe have to be preceded by "r", indicating "raw strings".
+        Note: since Windows uses \lstinline{\} to separate directories, but \lstinline{\} is also the escape character in strings, directory paths using a simple backslash have to be preceded by "r", indicating "raw strings".
   \item Generate a file "ipy.bat" in \emph{mydir}, containing
       \begin{lstlisting}[language=Python]
       [_Python-directory_]\Scripts\ipython3 qtconsole --profile myname --pylab=inline
@@ -281,7 +290,7 @@ To combine the best of both worlds, the package \emph{rpy2} provides a way to tr
 
 \emph{IPython} is very helpful in working out the command syntax and sequence. The next step is to turn this in to a \emph{Python} program that can be run from the command-line. This section introduces a fairly large number of \emph{Python} conventions and syntax.
 
-An efficient way to to turn \emph{IPython} commands into a function is to
+An efficient way to turn \emph{IPython} commands into a function is to
 
 \begin{itemize}
   \item first obtain the command history with the command \lstinline{%hist}.
@@ -434,7 +443,7 @@ The next example shows you how to import functions from one module into another 
       \end{itemize}
   \item To get the current directory, use \lstinline{os.path.abspath(os.curdir)}.
   \item Everything in \emph{Python} is an object: to find out about "obj", use \lstinline{type(obj)} and \lstinline{dir(obj)}.
-  \item Learn to use the debugger. Personally, I always use the debugger from the IDE, and rarely resort to the built-indebugger \emph{pdb}.
+  \item Learn to use the debugger. Personally, I always use the debugger from the IDE, and rarely resort to the built-in debugger \emph{pdb}.
   \item Know "lists", "tuples", and "dictionaries"; also, know about \emph{numpy} "arrays" and \emph{pandas} "DataFrames".
   \item Use functions a lot, and understand the \lstinline{if __name__=='__main__':} construct.
   \item If you have all your personal functions in the directory \lstinline{mydir}, you can add this directory to your \lstinline{PYTHONPATH} with the command
@@ -550,26 +559,26 @@ For addressing individual elements in \emph{Python} lists or tuples, or in \emph
         In [3]: np.zeros( (2,3) )
         Out[3]: array([[ 0.,  0.,  0.],
                    [ 0.,  0.,  0.]])
-    \end{listing}
+    \end{lstlisting}
 
   \item[np.ones] Generates ones.
 
   \item[np.random.randn] Generates normally distributed numbers, with a mean of 0 and a standard deviation of 1.
 
   \item[np.arange] Generates a range of numbers. Parameters can be \lstinline{start, end, steppingInterval}. Note that the end-value is excluded!
-    \begin{listing}
+    \begin{lstlisting}
         In [4]: np.arange(3)
         Out[4]: array([0, 1, 2])
 
         In [5]: np.arange(1,3,0.5)
         Out[5]: array([ 1. ,  1.5,  2. ,  2.5])
-    \end{listing}
+    \end{lstlisting}
 
   \item[np.linspace] Generates linearly spaced numbers.
-    \begin{listing}
+    \begin{lstlisting}
         In [6]: np.linspace(0,10,6)
         Out[6]: array([  0.,   2.,   4.,   6.,   8.,  10.])
-    \end{listing}
+    \end{lstlisting}
 
   \item[np.array] Generates a numpy array from the given data.
     \begin{lstlisting}[language=Python]
@@ -612,7 +621,7 @@ The \emph{Python} core does not include any possibilities to generate plots. Thi
 \emph{matplotlib} contains a number of different modules and features:
 \begin{description}
   \item[matplotlib.pyplot] This is the module that is commonly used to generate plots, and is by convention imported in \emph{Python} functions and scripts with \lstinline{import matplotlib.pyplot as plt}. \emph{pyplot} \index{general}{pyplot} provides the interface to the plotting library in matplotlib. \emph{pyplot} handles lots of little details, such as creating figures and axes for the plot, so that the user can concentrate on the data analysis.
-  
+
     \item[matplotlib.mlab] Contains a number of functions that are commonly used in \emph{Matlab}, such as \lstinline{find}, \lstinline{griddata}, etc.
 
   \item["backends"] \emph{matplotlib} can produce output in many different formats, which are referred to as \emph{backends}\index{general}{backend}:
@@ -783,7 +792,7 @@ While pandas' DataFrames are similar to numpy arrays, their philosophy is differ
   \item[pandas] starts with the columns. E.g. \lstinline{df['values'][0]} is the first element of the column \lstinline{'values'}.
 \end{description}
 
-If a DataFrame has labelled rows, you can extract for example the row "rowlabel" with with \lstinline{df.loc['rowlabel']}. If you want to address a row by its number, e.g. row number "15", use \lstinline{df.iloc[15]}. You can also use \lstinline{iloc} to address "rows/columns", e.g. \lstinline{df.iloc[2:4,3]}.
+If a DataFrame has labelled rows, you can extract for example the row "rowlabel" with \lstinline{df.loc['rowlabel']}. If you want to address a row by its number, e.g. row number "15", use \lstinline{df.iloc[15]}. You can also use \lstinline{iloc} to address "rows/columns", e.g. \lstinline{df.iloc[2:4,3]}.
 
 Slicing of rows also works, e.g. \lstinline{df[0:5]} for the first 5 (!) rows. A sometimes confusing convention is that if you want to slice out a single row, e.g. row "5", you have to use \lstinline{df[5:6]}. If you use \lstinline{df[5]} alone, you get an error!
 
@@ -855,7 +864,7 @@ For statistical analysis, pandas becomes really powerful if you combine it with 
 
 \section{Statsmodels}\index{general}{statsmodels}
 
-\href{http://statsmodels.sourceforge.net/.}{statsmodels} is a \emph{Python} package contributed to the community by the \emph{statsmodels} development team. It has a very active user community, and has in the last five years massively improved the suitability of \emph{Python} for statistical data analysis. \emph{statsmodels} provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. \emph{statsmodels} also allows the formulation of models with the popular formula language based on the notation introduced by Wilkinson and Rogsers (\cite{Wilkinson1973}, and also used by \emph{S} and \emph{R}. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model
+\href{http://statsmodels.sourceforge.net/.}{statsmodels} is a \emph{Python} package contributed to the community by the \emph{statsmodels} development team. It has a very active user community, and has in the last five years massively improved the suitability of \emph{Python} for statistical data analysis. \emph{statsmodels} provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. An extensive list of result statistics are available for each estimator. \emph{statsmodels} also allows the formulation of models with the popular formula language based on the notation introduced by Wilkinson and Rogers (\cite{Wilkinson1973}, and also used by \emph{S} and \emph{R}. For example, data on the connection between academic "success", "intelligence" and "diligence" can be described with the model
 
 \begin{equation*}
     success \sim intelligence * diligence

@@ -5,7 +5,7 @@ author: ThH, date: May-2015'''
 # Import standard packages
 import numpy as np
 
-# additional packages
+# additional packages: this imports the function defined above
 import pythonFunction
 
 # Generate test-data

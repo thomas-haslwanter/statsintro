@@ -36,7 +36,7 @@ We can achieve such a bounded relationship, though, if we don't use the output o
   p(x) = \frac{1}{ 1 + e^{ \;\beta x + \alpha } }
 \end{equation}
 
-In this model, the variable $\beta$ that describes how quickly the function changes from 1 to 0, and $\alpha$ indicates the location of this change. This function is used frequently, and is called the Llogistic Function\index{general}{logistic function}.
+In this model, the variable $\beta$ that describes how quickly the function changes from 1 to 0, and $\alpha$ indicates the location of this change. This function is used frequently, and is called the Logistic Function\index{general}{logistic function}.
 
 \subsection{Example: The Challenger Disaster}
 
@@ -109,11 +109,11 @@ where $T(x), h(x), g(\theta), \eta(\theta), and A(\theta)$ are known functions.
 The linear predictor for GLM is the same as the one used for \emph{linear models}. The resulting terminology is unfortunately fairly confusing:
 
 \begin{description}
-  \item[General Linear Models] are models of the form $y=X\beta+ \epsilon$, where $\epsilon$ is normally distributed (see Chapter \ref{chapter:models}).
+  \item[General Linear Models] are models of the form $y=X\beta+ \epsilon$, where $\epsilon$ is normally distributed (see Chapter \ref{chapter:Models}).
   \item[Generalized Linear Models] encompass a much wider class of models, including all distributions from the exponential family \emph{and} a link function.
 \end{description}
 
-The \emph{link function} is an arbitrary function, with the only requirements that it is continuous and invertable.
+The \emph{link function} is an arbitrary function, with the only requirements that it is continuous and invertible.
 
 \section{Ordinal Logistic Regression}\index{general}{Logistic Ordinal Regression}
 
@@ -180,7 +180,7 @@ I've implemented a \emph{Python} version of this algorithm using Scipy's \lstinl
 Code can be found here as part of the minirank package, which is my sandbox for code related to ranking and ordinal regression. At some point I would like to submit it to scikit-learn but right now the I don't know how the code will scale to medium-scale problems, but I suspect not great. On top of that I'm not sure if there is a real demand of these models for scikit-learn and I don't want to bloat the package with unused features.
 Performance
 
-I compared the prediction accuracy of this model in the sense of mean absolute error (IPython notebook) on the boston house-prices dataset. To have an ordinal variable, I rounded the values to the closest integer, which gave me a problem of size 506 × 13 with 46 different target values. Although not a huge increase in accuracy, this model did give me better results on this particular dataset:
+I compared the prediction accuracy of this model in the sense of mean absolute error (IPython notebook) on the Boston house-prices data set. To have an ordinal variable, I rounded the values to the closest integer, which gave me a problem of size 506 × 13 with 46 different target values. Although not a huge increase in accuracy, this model did give me better results on this particular data set:
 
 Here, ordinal logistic regression is the best-performing model, followed by a Linear Regression model and a One-versus-All Logistic regression model as implemented in scikit-learn.
 

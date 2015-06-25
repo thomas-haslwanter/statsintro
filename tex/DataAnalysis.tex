@@ -60,7 +60,7 @@ In \emph{Python}, the plot can be generated with the command
   \caption{Left) Probability-density-function for a Chi2-distribution (k=3), which is clearly non-normal. Right) Corresponding Probability-plot}\label{fig:qqplotChi2}
 \end{figure}
 
-To understand the principle behind those plots, look at the right plot in Fig. \ref{fig:qqplotChi2}. Here we have \emph{100} random datapoints from a chi2-distribution, which is clearly unsymmetrical. The x-value of the first data point is (approximately) the $1/100$-quantile of a standard normal distribution (\lstinline{stats.norm().ppf(0.01)}), which corresponds to \emph{-2.33} (The exact value is slightly shifted, because of a small correcton, called "Filliben's estimate"\index{general}{Filliben's estimate}). The y-value is the smallest value of our data-set. Similarly, the second x-value corresponds approximately to \lstinline{stats.norm().ppf(0.01)}, and the second y-value is the second-lowest value of the data set, etc.
+To understand the principle behind those plots, look at the right plot in Fig. \ref{fig:qqplotChi2}. Here we have \emph{100} random data points from a chi2-distribution, which is clearly unsymmetrical. The x-value of the first data point is (approximately) the $1/100$-quantile of a standard normal distribution (\lstinline{stats.norm().ppf(0.01)}), which corresponds to \emph{-2.33} (The exact value is slightly shifted, because of a small correction, called "Filliben's estimate"\index{general}{Filliben's estimate}). The y-value is the smallest value of our data-set. Similarly, the second x-value corresponds approximately to \lstinline{stats.norm().ppf(0.01)}, and the second y-value is the second-lowest value of the data set, etc.
 
 \subsubsection{Hypothesis Tests for Normality}
 

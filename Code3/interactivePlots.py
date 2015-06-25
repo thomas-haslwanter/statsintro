@@ -4,7 +4,7 @@
 tricks that should make interactive use of plots simpler. The functions below show how to
 
 - Position figures on the screen (e.g. top left half of display)
-- Pause and proceed automatically after a few sec
+- Pause to display the plot, and proceed automatically after a few sec
 - Proceed on a click, or a keyboard hit
 - Evaluate keyboard inputs
 

@@ -67,7 +67,7 @@ where ${n \choose k}={n! \over k!(n-k)!}$
 
 \vspace{5 mm}
 
-In \emph{Python}, the procedure is that same as above, with one additional paramter, the number of coin tosses. First we generate the frozen distribution function, for example for four coin tosses:
+In \emph{Python}, the procedure is that same as above, with one additional parameter, the number of coin tosses. First we generate the frozen distribution function, for example for four coin tosses:
 
 \begin{lstlisting}[language=Python]
   In [1]: from scipy import stats
@@ -110,7 +110,7 @@ Clearly a die could roll too few sixes as easily as too many and we would be jus
 \PyImg "binomial.py" (p \pageref{py:binomial}): Example of a one-and two-sided binomial test.
 \index{python}{binomialTest}
 
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \begin{tabular}{l|c|c|}
       & Mean & Variance \\
@@ -268,7 +268,7 @@ In \emph{Python}, the most elegant way of working with distribution function is 
 
 \subsection{Distribution Center}\index{general}{distribution center}
 
-When we have a datasample from a distribution, we can characterize the center of the distribution with different parameters. Thereby the data can be evaluated in two ways:
+When we have a data sample from a distribution, we can characterize the center of the distribution with different parameters. Thereby the data can be evaluated in two ways:
 
 \begin{enumerate}
   \item By their value.
@@ -340,8 +340,8 @@ The best unbiased estimator for the population variance is given by
 
 Eq. \ref{eq:sampleVariance} is referred to as "sample variance"\index{general}{sample variance}.
 
-The \gls{sd_} \index{general}{standard deviation}\index{general} is the square root of the variance, and the
-"sample standard deviation"\index{general}{sample satandard deviation} the square root of the "sample variance":
+The \gls{sd_} \index{general}{standard deviation} is the square root of the variance, and the
+"sample standard deviation"\index{general}{sample standard deviation} the square root of the "sample variance":
 
 \begin{equation}
   s = \sqrt{var}
@@ -363,7 +363,7 @@ Watch out: in \emph{Python}, by default the variance is calculated for "n". You 
 
 \subsubsection{Standard Error} \index{general}{standard error}
 
-The "standard error" is the estimate of the standard deviation of a coefficient. For example, in Fig. \ref{fig:sem}, we have 100 datapoints from a normal distribution about $5$. The more datapoints we have to estimate the mean value, the better our estimate of the mean.
+The "standard error" is the estimate of the standard deviation of a coefficient. For example, in Fig. \ref{fig:sem}, we have 100 data points from a normal distribution about $5$. The more data points we have to estimate the mean value, the better our estimate of the mean.
 
 \begin{figure}[ht]
   \centering
@@ -378,7 +378,7 @@ For normally distributed data, the sample standard error of the mean (SE or SEM)
   SE = \frac{s}{\sqrt{n}} = \sqrt{\frac{{\sum\limits_{i = 1}^n {({x_i-\bar{x}})^2} }}{n-1}} \cdot \frac{1}{\sqrt{n}}
 \end{equation}
 
-So with 100 datapoints the standard deviation of our estimate, i.e. the standard error of the mean, is 10 times smaller than the sample standard deviation.
+So with 100 data points the standard deviation of our estimate, i.e. the standard error of the mean, is 10 times smaller than the sample standard deviation.
 
 \subsubsection{Confidence Intervals}\index{general}{confidence interval}
 
@@ -435,7 +435,7 @@ Distributions are "skewed" if they depart from symmetry (Fig. \ref{fig:skewkurto
 
 \subsubsection{Kurtosis}\index{general}{kurtosis}
 
-Kurtosis is a measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right), where the normal distribution is taken as the standard refernence. Distributions with negative or positive excess kurtosis are called Platykurtic Distributions or Leptokurtic Distributions, respectively.
+Kurtosis is a measure of the "peakedness" of the probability distribution (Fig. \ref{fig:skewkurtosis}, right), where the normal distribution is taken as the standard reference. Distributions with negative or positive excess kurtosis are called Platykurtic Distributions or Leptokurtic Distributions, respectively.
 
 \section{Normal Distribution} \label{sec:normalDistribution}\index{general}{distributions!normal}\index{general}{normal distribution}\index{general}{Gaussian distribution}
 
@@ -536,10 +536,10 @@ The central limit theorem states that the mean of a sufficiently large number of
   \centering
   % Requires \usepackage{graphicx}
   \includegraphics[width=0.7\textwidth]{../Images/CentralLimitTheorem.png}\\
-  \caption{Demonstration of the "Central Limit Theorem": Left) Histogram of random data between 0 and 1. Center) Histogram of average over two datapoints.) Right) Histogram of average over 10 datapoints.}\label{fig:CentralLimitTheorem}
+  \caption{Demonstration of the "Central Limit Theorem": Left) Histogram of random data between 0 and 1. Center) Histogram of average over two data points.) Right) Histogram of average over 10 data points.}\label{fig:CentralLimitTheorem}
 \end{figure}
 
-\PyImg "centralLimitTheorem.py" (p \pageref{py:centralLimitTheorem}) demonstrates that already averaging over 10 uniformly distributed datapoints produces an almost Gaussian distribution.
+\PyImg "centralLimitTheorem.py" (p \pageref{py:centralLimitTheorem}) demonstrates that already averaging over 10 uniformly distributed data points produces an almost Gaussian distribution.
 \index{python}{distributionDiscrete}
 
 \subsection{Application Example}
@@ -582,7 +582,7 @@ In the following, we will describe these distributions in more detail. Other dis
 
 \subsubsection{t Distribution}\index{general}{distributions!t-distribution}
 
-In 1908 W.S. Gosset, who worked for the Guinnes brewery in Dublin, was interested in the problems of small samples, for example the chemical properties of barley where sample sizes might be as low as 3. Since in these measurements the true variance of the mean was unknown, it must be approximated by the sample standard error of the mean. And the ratio between the sample mean and the standard error had a distribution that was unknown till Gosset, under the  pseudonym "Student", solved that problem.
+In 1908 W.S. Gosset, who worked for the Guinness brewery in Dublin, was interested in the problems of small samples, for example the chemical properties of barley where sample sizes might be as low as 3. Since in these measurements the true variance of the mean was unknown, it must be approximated by the sample standard error of the mean. And the ratio between the sample mean and the standard error had a distribution that was unknown till Gosset, under the  pseudonym "Student", solved that problem.
 The corresponding distribution is the t-distribution, and converges for larger values towards the normal distribution (Fig. \ref{fig:t}).
 
 Since in most cases the population mean and its variance are unknown, one typically works with the t-distribution when analyzing sample data.
@@ -868,7 +868,7 @@ This is a simple one: an even probability for all data values (Figure \ref{fig:u
     Calculate the corresponding mean, and the 99\% confidence interval for the mean. Note: with n values you have n-1 DOF for the t-distribution.
     (Correct answer: 68.0 +/- 17.2 kg)
 
-    \item \textbf{Chi-square Distribution:} Create 3 normally distributed datasets (mean = 0, SD = 1), with 1000 samples each. Then square them, sum them (so that you have 1000 data-points), and create a histogram with 100 bins. This should be similar to the curve for the Chi-square distribution, with 3 DOF (i.e. it should come down at the left, see figure below).
+    \item \textbf{Chi-square Distribution:} Create 3 normally distributed data sets (mean = 0, SD = 1), with 1000 samples each. Then square them, sum them (so that you have 1000 data-points), and create a histogram with 100 bins. This should be similar to the curve for the Chi-square distribution, with 3 DOF (i.e. it should come down at the left, see figure below).
     \begin{figure}
       \centering
       \includegraphics[width=0.5\textwidth]{../Images/chi2_3dof.png}\\
