@@ -1,23 +1,203 @@
-\chapter{ Statistical Models }\label{chapter:Models}\index{general}{statistical modeling}
+%\chapter{ Statistical Models }\label{chapter:Models}\index{general}{statistical modeling}
 
-There is a substantial difference in approach between hypothesis tests\index{general}{hypothesis test} and statistical modeling. In the former case, you typically start out with a null hypothesis. Based on your question and your data, you then select the appropriate statistical test as well as the desired significance level, and either accept or reject the null hypothesis.
+So far we have been dealing with problems where only one variable is measured. Expressions or functions which only depend on one variable are sometimes called "univariate"\index{general}{univariate}. If more than one variable is involved, we are dealing with "multivariate"\index{general}{multivariate} problems. In the simplest case we have two variables involved, and we need a "bivariate"\index{general}{bivariate} data analysis.
 
-In contrast, statistical modeling is much more an interactive analysis of the data. Based on a first look at the data, you typically start out with selecting a statistical model that may describe your data. In the previous chapters, we have for example described the hypothesized linear relationship between data with the model
+There is a substantial difference in approach between hypothesis tests\index{general}{hypothesis test} and statistical modeling. In the former case, one typically starts out with a null hypothesis. Based on the question and the data, one then selects the appropriate statistical test as well as the desired significance level, and either accepts or rejects the null hypothesis.
+
+In contrast, statistical modeling is much more an interactive analysis of the data. Typically one starts out with a visual inspection of the data, looking for correlations and/or relationships.
+Based on this first inspection, one selects a statistical model that may describe the data. In the simplest linear case, we can describe the hypothesized linear relationship between data with the model
 
 \begin{equation*}
   y = k*x + d .
 \end{equation*}
 
-You then
+Next
 \begin{itemize}
-  \item determine the model parameters (e.g. $k$ and $d$),
-  \item assess the quality of the model (e.g. through the $R^2$-value, or another suitable parameter),
-  \item and inspect the residuals, to check if your proposed model has missed essential features in the data.
+  \item the model parameters (e.g. $k$ and $d$) are determined,
+  \item the quality of the model is assessed,
+  \item and the residuals (i.e. the remaining errors) are inspected, to check if the proposed model has missed essential features in the data.
 \end{itemize}
 
-If you are not happy with the quality of the model, or if you find during the inspection of the residuals that you have either outliers or need another model, you modify your proposed model and repeat this procedure until you are happy with the results. You see that in comparison to hypothesis tests, statistical modeling involves much more an interactive playing with the data.
+If the residuals are too large, or if the visual inspection of the residuals shows outliers or suggests another model, the model is modified. This procedure is repeated until the results are satisfactory. So in comparison to hypothesis tests, statistical modeling involves much more an interactive analysis of the data.
 
-\section{Model language}
+\section{Linear Correlation}
+
+For two related variables, the "correlation" measures the association between the two variables. In contrast, a "linear regression" is used for the prediction of the value of one variable from another.
+
+\subsection{Correlation Coefficient} \index{general}{correlation coefficient}
+
+The \gls{correlation} coefficient between two variables answers the question: "Are the two variables related? I.e. if one variable changes, does the other also change?" If the two variables are normally distributed, the standard measure of determining the correlation coefficient, often ascribed to Pearson\index{general}{correlation!Pearson}, is
+
+\begin{equation}\label{eq:pearson}
+  r = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum\limits_{i=1}^n (X_i - \bar{X})^2} \sqrt{\sum\limits_{i=1}^n (Y_i - \bar{Y})^2}}
+\end{equation}
+
+With the  sample covariance\index{general}{covariance} $s_{xy}$ defined as
+
+\begin{equation}
+  s_{xy} = \frac{\sum\limits_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}
+\end{equation}
+
+and $s_x, s_y$ the sample standard deviations of the $x$ and $y$ values, respectively,  Eq. \ref{eq:pearson} can also be written as
+
+\begin{equation}
+  r = \frac{s_{xy}}{s_x \cdot s_y}.
+\end{equation}
+
+Pearson's correlation coefficient, sometimes also referred to as "population correlation coefficient" or "sample correlation", can take any value from -1 to +1. Examples are given in Figure \ref{fig:correlation}. Note that the formula for the correlation coefficient is symmetrical between $x$ and $y$ - which is not the case for linear regression!
+
+\subsection{Rank Correlation}\index{general}{rank correlation}
+
+If the data distribution is not normal, a different approach is necessary. In that case one can rank the set of subjects for each variable and compare the orderings. There are two commonly used methods of calculating the rank correlation. \index{general}{correlation!Spearman}
+\index{general}{correlation!Kendall's $\tau$}
+
+\begin{description}
+  \item[Spearman's $\rho$], which is exactly the same as the Pearson correlation coefficient $r$ calculated on the ranks of the observations.
+  \item[Kendall's $\tau$] is also a rank correlation coefficient, measuring the association between two measured quantities. It is harder to calculate than Spearman's rho, but it has been argued that confidence intervals for Spearman’s rho are less reliable and less interpretable than confidence intervals for Kendall’s tau-parameters.
+\end{description}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Correlation_examples2.png}\\
+  \caption{Several sets of (x, y) points, with the correlation coefficient of x and y for each set. Note that the correlation reflects the non-linearity and direction of a linear relationship (top row), but not the slope of that relationship (middle), nor many aspects of nonlinear relationships (bottom). N.B.: the figure in the center has a slope of 0 but in that case the correlation coefficient is undefined because the variance of Y is zero. (In Wikipedia. Retrieved May 27, 2015, from http://en.wikipedia.org/wiki/Correlation\_and\_dependence)}\label{fig:correlation}
+\end{figure}
+
+\section{General linear regression model}\index{general}{regression}
+
+We can use the method of \gls{linreg} when we want to predict the value of one variable from the value(s) of one or more other variables.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Linear_regression.png}\\
+  \caption{Linear regression.}\label{fig:regression}
+\end{figure}
+
+When we search for the best-fit line to a given $(x_i,y_i)$ data set, we are looking for the parameters $(k,d)$ which minimize the sum of the squared residuals $\epsilon_i$ in
+
+\begin{equation}\label{eq:simpleRegression}
+  y_i = k * x_i + d + \epsilon_i
+\end{equation}
+
+where $k$ is the slope or inclination of the line, and $d$ the Intercept. This is in fact just the one-dimensional example of the more general technique, which is described in the next section.
+Note that in contrast to the correlation, this relationship between $x$ and $y$ is not symmetrical any more: it is assumed that the $x-$values are known exactly, and that all the variability lies in the residuals.
+
+\subsection{Example 1: Simple Linear Regression}
+
+Suppose there are 7 data points $\left\{ {{y_i},{x_i}} \right\}$, where $i=1,2,...,7$. The simple linear regression model is
+
+\begin{equation}
+  y_i = \beta_0 + \beta_1 x_i +\epsilon_i, \,
+\end{equation}
+
+where $\beta_0$ is the y-intercept and $\beta_1$ is the slope of the regression line. This model can be represented in matrix form as
+
+\begin{equation}\label{eq:simpleRegressionMatrix}
+  \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+  =
+  \begin{bmatrix}1 & x_1  \\1 & x_2  \\1 & x_3  \\1 & x_4  \\1 & x_5  \\1 & x_6 \\ 1 & x_7  \end{bmatrix}
+  \begin{bmatrix} \beta_0 \\ \beta_1  \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
+\end{equation}
+where the first column of ones in the matrix on the right hand side represents the y-intercept term while the second column is the x-values associated with the y-value.
+
+\subsection{Example 2: Quadratic Fit}
+
+The equation for a quadratic fit to the given data is
+
+\begin{equation}
+  y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 +\epsilon_i, \,
+\end{equation}
+
+This can be rewritten in matrix form:
+
+\begin{equation}\label{eq:polynomialRegression}
+  \begin{bmatrix}y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \end{bmatrix}
+  =
+  \begin{bmatrix}1 & x_1 & x_1^2 \\1 & x_2  & x_2^2 \\1 & x_3  & x_3^2 \\1 & x_4  & x_4^2 \\1 & x_5  & x_5^2 \\1 & x_6  & x_6^2 \\ 1 & x_7  & x_7^2 \end{bmatrix}
+  \begin{bmatrix} \beta_0 \\ \beta_1  \\ \beta_2 \end{bmatrix}
+  +
+  \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6 \\ \epsilon_7 \end{bmatrix}
+\end{equation}
+
+% [xxx "the elements of which are assumed to be normally distributed about zero" - is this what the reviewer wanted, when he/she said "No, we also want variance of epsilon" xxx]
+\subsection{Coefficient of determination}\label{sec:coeffDetermination}
+
+In order to interpret r, let me first define a few common terms.
+
+\begin{description}
+  \item[Residuals] \index{general}{residuals}Differences between observed values and predicted values.
+\end{description}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/residuals_linreg.png}\\
+  \caption{Best-fit linear regression line (red) and residuals (black). }\label{fig:residuals}
+\end{figure}
+
+A data set has values $y_i$, each of which has an associated modelled value $f_i$ (also sometimes referred to as $\hat{y}_i$). Here, the values $y_i$ are called the Observed Values, and the modelled values $f_i$ are sometimes called the Predicted Values.
+
+In the following $\bar{y}$ is the mean of the observed data:
+
+\begin{equation}
+  \bar{y}=\frac{1}{n}\sum_{i=1}^n y_i
+\end{equation}
+
+where n is the number of observations.
+
+The "variability" of the data set is measured through different sums of squares:
+In the following $\hat{y}_i$ will indicate the fitted model values, and $\bar{y}$ will indicate the mean.
+
+\begin{itemize}
+  \item $SS_\text{mod} = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2$ is the \emph{Model Sum of Squares}, or the sum of squares for the regression. This value is sometimes also called the Explained Sum of Squares.
+  \item $SS_\text{res} = \sum_{i=1}^n (y_i-\hat{y}_i)^2$ is the \emph{Residuals Sum of Squares}, or the sum of squares for the errors.
+  \item $SS_\text{tot} = \sum_{i=1}^n (y_i-\bar{y})^2$ is the \emph{Total Sum of Squares}, and is equivalent to the sample variance multiplied by $n-1$.
+\end{itemize}
+
+For multiple regression models, $SS_\text{mod} + SS_\text{res} = SS_\text{tot}$
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Coefficient_of_Determination.png}\\
+  \caption{The better the linear regression (on the right) fits the data in comparison to the simple average (on the left graph), the closer the value of $R^2$ is to one. The areas of the blue squares represent the squared residuals with respect to the linear regression. The areas of the red squares represent the squared residuals with respect to the average value (from Wikipedia)}\label{fig:CoefDetermination}
+\end{figure}
+
+
+The notations $SS_{R}$ and $SS_{E}$ should be avoided, since in some texts their meaning is reversed to "Residual sum of squares" and "Explained sum of squares", respectively.
+
+With these expressions, the most general definition of the coefficient of determination, $R^2$, is
+
+\begin{equation}\label{eq:R2}
+  R^2 \equiv 1 - {SS_{\rm res}\over SS_{\rm tot}}.\,
+\end{equation}
+
+Since
+
+\begin{equation}
+  SS_\text{tot} = SS_\text{mod} + SS_\text{res}
+\end{equation}
+
+Eq. \ref{eq:R2} is equivalent to
+
+\begin{equation}
+  R^2 = \frac{SS_\text{mod}}{SS_\text{tot}}
+\end{equation}
+
+For simple linear regression (i.e. line-fits), the coefficient of determination\index{general}{coefficient of determination} or $R^2$ is the square of the correlation coefficient $r$. It is easier to interpret than the correlation coefficient r: values of $R^2$ close to 1 are good, values close to 0 are poor.
+Note that for general models it is common to write $R^2$, whereas for simple linear regression $r^2$ is used.
+
+\subsubsection{Relation to unexplained variance}\index{general}{unexplained variance}
+
+In a general form, $R^2$ can be seen to be related to the unexplained variance, since the second term in Eq. \ref{eq:R2} compares the unexplained variance (variance of the model's errors) with the total variance (of the data).
+
+\subsubsection{Examples}
+
+How large $R^2$ must be to be considered good depends on the discipline. They are usually expected to be larger in the physical sciences than it is in biology or the social sciences. In finance or marketing, it also depends on what is being modeled.
+
+Caution: the sample correlation and $R^2$ are misleading if there is a nonlinear relationship between the independent and dependent variables!
+
+
+\section{Model Language}
 The mini-language commonly used now in statistics to describe formulas was first used in the languages $R$ and $S$, but is now also available in \emph{Python} through the module \emph{patsy}.
 
 For instance, if we have some variable $y$, and we want to regress it against some other variables $x, a, b$, and the interaction of a and b, then we simply write
@@ -58,7 +238,7 @@ A very general definition of a regression model is the following:
 \begin{equation}
   y =f(x,\epsilon)
 \end{equation}
-In the case of a linear regression model, the model can be rewritten as in Eq \ref{eq:DesignMatrix}:
+In the case of a linear regression model, the model can be rewritten as:
 
 \begin{equation*}
     y=X\beta+ \epsilon,
@@ -112,19 +292,6 @@ Some remarks on terminology and general use:
 
 \subsubsection{Examples}
 
-\paragraph{Polynomial Model}
-Consider a situation where a small ball is being tossed up in the air and then we measure its heights of ascent $h_i$ at various moments in time $t_i$. Physics tells us that, ignoring the drag, the relationship can be modelled as:
-
-\begin{equation}
- h_i = \beta_1 t_i + \beta_2 t_i^2 + \varepsilon_i,
-\end{equation}
-
-where $\beta_1$ determines the initial velocity of the ball, $\beta_2$ is proportional to the standard gravity, and $\epsilon_i$ is due to measurement errors. Linear regression can be used to estimate the values of $\beta_1$ and $\beta_2$ from the measured data. This model is non-linear in the time variable, but it is linear in the parameters $\beta_1$ and $\beta_2$; if we take regressors $\mathbf{x}_i = (x_{i1},x_{i2}) = (t_i,t_i^2)$, the model takes on the standard form:
-
- $h_i = \mathbf{x}^{\rm T}_i\boldsymbol\beta + \varepsilon_i.$
-
-
-
 \paragraph{One-way ANOVA (Cell Means Model)}
 Example with a one-way analysis of variance (ANOVA) with 3 groups and 7 observations. The given data set has the first three observations belonging to the first group, the following two observations belong to the second group and the final two observations are from the third group.
 If the model to be fit is just the mean of each group, then the model is
@@ -167,6 +334,8 @@ In this model $\mu$ is the mean of the reference group and $\tau_i$ is the diffe
 \index{python}{linear regression model}
 
 \section{Linear Regression Analysis with Python}
+
+\subsection{Example 1: Tobacco and Alcohol in the UK}
 
 \footnote{The following is based on the \href{http://connor-johnson.com/2014/02/18/linear-regression-with-python/}{blog of Connor Johnson}.}
 We will use \emph{Python} to explore measures of fit for linear regression: the coefficient of determination ($R^2$), hypothesis tests (F, t, Omnibus), AIC, BIC, and other measures.
@@ -256,15 +425,7 @@ Most of the values listed in the summary are available via the \texttt{result} o
 \subsubsection{Definitions for Regression with Intercept}
 
 $n$ is the number of observations, $k$ is the number of regression parameters. For example, if you fit a straight line, $k=2$.
-In the following $\hat{y}_i$ will indicate the fitted model values, and $\bar{y}$ will indicate the mean.
-
-\begin{itemize}
-  \item $SS_\text{mod} = \sum_{i=1}^n (\hat{y}_i-\bar{y})^2$ is the \emph{Model Sum of Squares}, or the sum of squares for the regression.
-  \item $SS_\text{res} = \sum_{i=1}^n (y_i-\hat{y}_i)^2$ is the \emph{Residuals Sum of Squares}, or the sum of squares for the errors.
-  \item $SS_\text{tot} = \sum_{i=1}^n (y_i-\bar{y})^2$ is the \emph{Total Sum of Squares}, and is equivalent to the sample variance multiplied by $n-1$.
-\end{itemize}
-
-For multiple regression models, $SS_\text{mod} + SS_\text{res} = SS_\text{tot}$
+As above (Chapter \ref{sec:coeffDetermination}) $\hat{y}_i$ will indicate the fitted model values, and $\bar{y}$ will indicate the mean.
 
 \begin{itemize}
   \item $DF_\text{mod} = k - 1$ is the \emph{(Corrected) ModelDegrees of Freedom }. (The "-1" comes from the fact that we are only interested in the correlation, not in the absolute offset of the data.)
@@ -711,7 +872,8 @@ Kurtosis:                       3.022   Cond. No.                         25.5
 \end{lstlisting}
 \normalsize
 
-\subsection{Regression Using Sklearn}
+
+\subsection{Example 2: Regression Using Sklearn}
 
 \href{http://scikit-learn.org/}{\emph{Scikit-learn (sklearn)}} \index{general}{scikit-learn} is an open source machine learning library for the \emph{Python} programming language. It features various classification, regression and clustering algorithms.
 
@@ -773,11 +935,121 @@ Finally, we limit and label the axes, add a title, overlay a grid, place the leg
   \includegraphics[width=0.75\textwidth]{../Images/alcohol_regressed_over_tobacco.png}
 \end{figure}
 
+\subsection{Example 3: Linear Regression Model of a Noisy Quadratic Polynomial}
+
+If you have vectors $x,y$ containing your data, you can use \texttt{statsmodels} to create a design matrix that also includes the $1's$ for the offset:
+
+\begin{lstlisting}[language=Python]
+    import statsmodels.api as sm
+    Xmat = sm.add_constant(x)
+\end{lstlisting}
+
+The parameters are then easily found as
+
+\begin{lstlisting}[language=Python]
+    params = np.linalg.lstsq(Xmat, y)
+\end{lstlisting}
+
+However, you get a lot more information if you use the OLS-fit from \texttt{statmodels}:
+
+\begin{lstlisting}[language=Python]
+    import numpy as np
+    import statsmodels.api as sm
+
+    # Generate artificial data
+    nobs = 100
+    X = np.random.random(nobs)
+    X = sm.add_constant(X)
+    beta = [5, 3.5]
+    e = np.random.random(nobs)
+    y = np.dot(X, beta) + e
+
+    # Fit regression model
+    results = sm.OLS(y, X).fit()
+
+    # Inspect the results
+    print(results.summary())
+\end{lstlisting}
+
+yields the following results:
+
+\begin{lstlisting}[language=Python]
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.923
+Model:                            OLS   Adj. R-squared:                  0.922
+Method:                 Least Squares   F-statistic:                     1173.
+Date:                Fri, 04 Jul 2014   Prob (F-statistic):           2.45e-56
+Time:                        14:49:08   Log-Likelihood:                -15.390
+No. Observations:                 100   AIC:                             34.78
+Df Residuals:                      98   BIC:                             39.99
+Df Model:                           1
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+const          5.4410      0.059     92.685      0.000         5.324     5.557
+x1             3.5718      0.104     34.250      0.000         3.365     3.779
+==============================================================================
+Omnibus:                       21.620   Durbin-Watson:                   2.302
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):                5.798
+Skew:                           0.223   Prob(JB):                       0.0551
+Kurtosis:                       1.908   Cond. No.                         4.60
+==============================================================================
+\end{lstlisting}
+
+The meaning of many of these parameters is described in the chapter \nameref{chapter:Models}.
+
+From the \texttt{results}, you can extract e.g. the model parameters, standard errors, confidence intervals, and residuals:
+
+\begin{lstlisting}[language=Python]
+    params = results.params
+    std_err = results.bse
+    ConfInt = results.conf_int()
+    residuals = results.resid
+\end{lstlisting}
+
+
+
 \subsection{Conclusion}
 
 Before you do anything, visualize your data. If your data is highly dimensional, then at least examine a few slices using boxplots. At the end of the day, use your own judgement about a model based on your knowledge of your domain. Statistical tests should guide your reasoning, but they should not dominate it. In most cases, your data will not align itself with the assumptions made by most of the available tests. Under \url{http://www.nature.com/news/scientific-method-statistical-errors-1.14700} you can find a very interesting article from Nature on classical hypothesis testing. A more intuitive approach to hypothesis testing is Bayesian analysis.
 
 \section{Assumptions} \label{sec:Assumptions}
+
+To use the technique of linear regression, the following assumptions should be fulfilled:
+
+\begin{enumerate}
+  \item The independent variables (i.e. $x$) are exactly known.
+  \item Validity. Most importantly, the data you are analyzing should map to the research question you are trying to answer. This sounds obvious but is often overlooked or ignored because it can be inconvenient. For example, a linear regression does not properly describe a quadratic curve.
+  \item Additivity and linearity. The most important mathematical assumption of the regression model is that its deterministic component is a linear function of the separate predictors.
+  \item Independence of errors from the values of the independent variables.
+  \item Equal variance of errors.
+  \item Normality of errors.
+\end{enumerate}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/Anscombes_quartet.png}\\
+  \caption{The sets in the "Anscombe's quartet"\index{general}{Anscombe's quartet} have the same linear regression line but are themselves very different.}
+\end{figure}
+
+\PyImg "multivariate.py" (p \pageref{py:multivariate}): Analysis of multivariate data (regression, correlation).
+\index{python}{multivariate}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Images/regression_wLegend.png}\\
+  \caption{Regression, with confidence intervals for the mean, as well as for the predicted data. The red dotted line shows the confidence interval for the mean; and the green dotted line the confidence interval for predicted data. (This can be compared to the standard error and the standard deviation for a population.) The corresponding code can be found
+  at p. \pageref{py:fitLine}} \label{fig:regline}
+\end{figure}
+
+Since to my knowledge there exists no program in the \emph{Python} standard library (or numpy, scipy) to calculate the confidence intervals for a regression line, I include my corresponding program \emph{lineFit.py} \ref{py:fitLine}. The output of this program is shown in Figure \ref{fig:regline}. This program also shows how \emph{Python} programs intended for distribution should be documented.
+
+\PyImg "fitLine.py" (p \pageref{py:fitLine}): Linear regression fit.
+\index{python}{fitLine}
+
+
+
 
 Standard linear regression models with standard estimation techniques make a number of assumptions about the predictor variables, the response variables and their relationship.  Numerous extensions have been developed that allow each of these assumptions to be relaxed (i.e. reduced to a weaker form), and in some cases eliminated entirely.  Some methods are general enough that they can relax multiple assumptions at once, and in other cases this can be achieved by combining different extensions.  Generally these extensions make the estimation procedure more complex and time-consuming, and may also require more data in order to get an accurate model.
 
@@ -825,3 +1097,23 @@ The answer is bootstrapping. Bootstrapping is a scheme of \emph{resampling}, i.e
 
 \PyImg "bootstrapDemo.py" (p \pageref{py:bootstrapDemo}): Example of bootstrapping the confidence interval for the mean of a sample distribution.
 \index{python}{bootstrapDemo}
+\section{Exercises}
+
+\begin{enumerate}
+  \item \textbf{Correlation}
+
+    Read in the data for the average yearly temperature at the Sonnblick, from     \emph{https://github.com/thomas-haslwanter/statsintro/blob/master/Data/data\_others/AvgTemp.xls}
+    Calculate the Pearson and Spearman correlation, and Kendall's tau, for the temperature vs. year.
+
+  \item \textbf{Regression}
+
+    For the same data, calculate the yearly increase in temperature, assuming a linear increase with time.
+    Is this increase significant?
+
+  \item \textbf{Normality Check}
+
+    For the data from the regression model, check if the model is ok by testing if the residuals are normally distributed (e.g. by using the Kolmogorov-Smirnov test)
+
+\end{enumerate}
+
+
