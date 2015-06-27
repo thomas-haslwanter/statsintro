@@ -4,12 +4,21 @@ statsintro
 Introduction to Statistics
 --------------------------
 
-These notes intend to provide the Python basics that most undergrad and grad
-students need for the analysis of their data. No derivations of formulas are
-presented, and only the absolutely necessary background. Instead, hands-on
-demonstrations of how to impelement the analysis in Python are given.
+My notes on Introductory Statistics with Python intend to provide the Python
+basics that most undergrad and grad students need for the analysis of their
+data. No derivations of formulas are presented, and only the absolutely
+necessary background. Instead, hands-on demonstrations of how to impelement
+the analysis in Python are given.
 
-In addition to the sourcecode here on github, these notes are available 
+Since I am preparing a book on that topic, I will no longer be able to share
+the source code for the RST and the TEX files. What I indend to keep public
+as long as possible, and to update regularly, are the
+- Python programs
+- IPython notebooks
+- Images
+
+In addition to the these files, which are available here on github,
+these notes are available 
 - in a compiled form ( http://work.thaslwanter.at/Stats/html/ )
 - as PDF ( http://work.thaslwanter.at/Stats/StatsIntro.pdf )
 
