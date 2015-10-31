@@ -18,9 +18,7 @@ as long as possible, and to update regularly, are the
 - Images
 
 In addition to the these files, which are available here on github,
-these notes are available 
-- in a compiled form ( http://work.thaslwanter.at/Stats/html/ )
-- as PDF ( http://work.thaslwanter.at/Stats/StatsIntro.pdf )
+these notes are available in a compiled form ( http://work.thaslwanter.at/Stats/html/ )
 
 Python rocks - also for statistical tasks!
 
